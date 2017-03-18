@@ -19,7 +19,7 @@ function initChart() {
         StartTime: beginTime,
         EndTime: endTime,
     });
-    var chartDatas1 = dealWithChartDatas(chartDatas.c1);  
+    var chartDatas1 = dealWithChartDatas(chartDatas.c1);
     var chartDatas2 = dealWithChartDatas(chartDatas.c2);
     var datas = wrapChartDatas(chartDatas1, chartDatas2);
     $.jqplot.config.enablePlugins = true;
@@ -98,7 +98,7 @@ function initChart() {
             },
             yaxis: {
                 show: true,
-                label: $("#mornitorTestTypeSelectFirst").find("option:selected").text() + chartDatas1.unitParams[0], // y轴显示标题
+                label: $("#mornitorTestTypeSelectFirst").find("option:selected").text() + chartDatas1.unitParems[0], // y轴显示标题
                 labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
                 renderer: $.jqplot.LinearAxisRenderer,  // 设置横（纵）轴上数据加载的渲染器
                 autoscale: true,
@@ -114,7 +114,7 @@ function initChart() {
             },
             y2axis: {
                 show: true,
-                label: $("#mornitorTestTypeSelectSecond").find("option:selected").text() + chartDatas2.unitParams[0], // y轴显示标题
+                label: $("#mornitorTestTypeSelectSecond").find("option:selected").text()+chartDatas2.unitParems[0], // y轴显示标题
                 labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
                 renderer: $.jqplot.LinearAxisRenderer,  // 设置横（纵）轴上数据加载的渲染器
                 autoscale: true,
@@ -150,259 +150,259 @@ function initChart() {
         }
     });
 
-    //    plot1 = $.jqplot('chart2', datas.MinValueArray,
-    //{
-    //    title: {
-    //        text: $("#mornitorTestTypeSelectFirst").find("option:selected").text() + '与' + $("#mornitorTestTypeSelectSecond").find("option:selected").text() + '最小值对比曲线图',
-    //        textAlign: 'center',
-    //        show: true,//设置当前标题是否显示  
-    //        color: '#4bb2c5',
-    //        fontSize: '20px',
-    //    },
-    //    animate: true,
-    //    animateReplot: true,
-    //    cursor: {
-    //        style: 'crosshair',
-    //        show: true,
-    //        zoom: true,
-    //        showTooltip: false,
-    //        tooltipFormatString: '%.4P',
-    //        useAxesFormatters: false,
-    //    },
-    //    seriesDefaults: {
-    //        show: true,
-    //        lineWidth: 1,
-    //        pointLabels: {
-    //            show: false,
-    //            formatString: "%.0f",
-    //            location: "s",
-    //            ypadding: 1,
-    //        },
-    //        markerOptions: {
-    //            show: false,
-    //            lineWidth: 1,
-    //            size: 12
-    //        },
-    //        rendererOptions: {
-    //            smooth: true
-    //        }
-    //    },
-    //    series: [
-    //         {
-    //             label: chartDatas1.seriesParams,
-    //             lineWidth: 3,
-    //             yaxis: 'yaxis',
-    //             markerOptions:
-    //             {
-    //                 formatString: '%.2f',
-    //                 fontSize: '10pt'
-    //             }
-    //         },
-    //         {
-    //             label: chartDatas2.seriesParams,
-    //             lineWidth: 3,
-    //             yaxis: 'y2axis',
-    //             markerOptions:
-    //             {
-    //                 formatString: '%.2f',
-    //                 fontSize: '10pt'
-    //             }
-    //         },
-    //    ],
-    //    axes: {
-    //        xaxis: {
-    //            label: "监测日期",  //x轴显示标题
-    //            pad: 0,
-    //            renderer: $.jqplot.DateAxisRenderer, //x轴绘制方式
-    //            labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
-    //            tickRenderer: $.jqplot.CanvasAxisTickRenderer,
-    //            tickOptions: {
-    //                formatString: '%F %T', fontSize: '10pt', angle: -20
-    //            },
-    //            showTicks: true,
-    //            rendererOptions: { drawBaseline: false },
-    //            drawMajorGridlines: false
-    //        },
-    //        yaxis: {
-    //            show: true,
-    //            label: $("#mornitorTestTypeSelectFirst").find("option:selected").text() + chartDatas1.unitParams[0], // y轴显示标题
-    //            labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
-    //            renderer: $.jqplot.LinearAxisRenderer,  // 设置横（纵）轴上数据加载的渲染器
-    //            autoscale: true,
-    //            max: null,
-    //            min: null,
-    //            //tickInterval: 10,     //网格线间隔大小
-    //            numberTicks: 5,
-    //            tickOptions: { fontSize: '10pt' },
-    //            rendererOptions: {
-    //                forceTickAt0: true,
-    //                drawBaseline: false
-    //            }
-    //        },
-    //        y2axis: {
-    //            show: true,
-    //            label: $("#mornitorTestTypeSelectSecond").find("option:selected").text() + chartDatas2.unitParams[0], // y轴显示标题
-    //            labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
-    //            renderer: $.jqplot.LinearAxisRenderer,  // 设置横（纵）轴上数据加载的渲染器
-    //            autoscale: true,
-    //            max: null,
-    //            min: null,
-    //            //tickInterval: 10,     //网格线间隔大小
-    //            numberTicks: 5,
-    //            tickOptions: { fontSize: '10pt' },
-    //            rendererOptions: {
-    //                forceTickAt0: true,
-    //                drawBaseline: false
-    //            }
-    //        },
-    //    },
-    //    highlighter: {
-    //        lineWidthAdjust: 5,
-    //        show: true,
-    //        showLabel: true,
-    //        tooltipAxes: 'both',
-    //        sizeAdjust: 15,
-    //        tooltipLocation: 'ne',
-    //    },
-    //    legend: {
-    //        renderer: $.jqplot.EnhancedLegendRenderer,  //渲染器,实现分类标签的功能
-    //        show: true,//设置是否出现分类名称框（即所有分类的名称出现在图的某个位置）    
-    //        location: 'ne',
-    //        placement: 'outsideGrid',
-    //        background: '',   //背景颜色
-    //        textColor: '',//字体颜色
-    //        rowSpacing: '3px',
-    //        xoffset: 20,        // 分类名称框距图表区域上边框的距离（单位px）  
-    //        yoffset: -50        // 分类名称框距图表区域左边框的距离(单位px)  
-    //    }
-    //});
+    plot1 = $.jqplot('chart2', datas.MinValueArray,
+{
+    title: {
+        text: $("#mornitorTestTypeSelectFirst").find("option:selected").text() + '与' + $("#mornitorTestTypeSelectSecond").find("option:selected").text() + '最小值对比曲线图',
+        textAlign: 'center',
+        show: true,//设置当前标题是否显示  
+        color: '#4bb2c5',
+        fontSize: '20px',
+    },
+    animate: true,
+    animateReplot: true,
+    cursor: {
+        style: 'crosshair',
+        show: true,
+        zoom: true,
+        showTooltip: false,
+        tooltipFormatString: '%.4P',
+        useAxesFormatters: false,
+    },
+    seriesDefaults: {
+        show: true,
+        lineWidth: 1,
+        pointLabels: {
+            show: false,
+            formatString: "%.0f",
+            location: "s",
+            ypadding: 1,
+        },
+        markerOptions: {
+            show: false,
+            lineWidth: 1,
+            size: 12
+        },
+        rendererOptions: {
+            smooth: true
+        }
+    },
+    series: [
+         {
+             label: chartDatas1.seriesParams,
+             lineWidth: 3,
+             yaxis: 'yaxis',
+             markerOptions:
+             {
+                 formatString: '%.2f',
+                 fontSize: '10pt'
+             }
+         },
+         {
+             label: chartDatas2.seriesParams,
+             lineWidth: 3,
+             yaxis: 'y2axis',
+             markerOptions:
+             {
+                 formatString: '%.2f',
+                 fontSize: '10pt'
+             }
+         },
+    ],
+    axes: {
+        xaxis: {
+            label: "监测日期",  //x轴显示标题
+            pad: 0,
+            renderer: $.jqplot.DateAxisRenderer, //x轴绘制方式
+            labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+            tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+            tickOptions: {
+                formatString: '%F %T', fontSize: '10pt', angle: -20
+            },
+            showTicks: true,
+            rendererOptions: { drawBaseline: false },
+            drawMajorGridlines: false
+        },
+        yaxis: {
+            show: true,
+            label: $("#mornitorTestTypeSelectFirst").find("option:selected").text() + chartDatas1.unitParems[0], // y轴显示标题
+            labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+            renderer: $.jqplot.LinearAxisRenderer,  // 设置横（纵）轴上数据加载的渲染器
+            autoscale: true,
+            max: null,
+            min: null,
+            //tickInterval: 10,     //网格线间隔大小
+            numberTicks: 5,
+            tickOptions: { fontSize: '10pt' },
+            rendererOptions: {
+                forceTickAt0: true,
+                drawBaseline: false
+            }
+        },
+        y2axis: {
+            show: true,
+            label: $("#mornitorTestTypeSelectSecond").find("option:selected").text() + chartDatas2.unitParems[0], // y轴显示标题
+            labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+            renderer: $.jqplot.LinearAxisRenderer,  // 设置横（纵）轴上数据加载的渲染器
+            autoscale: true,
+            max: null,
+            min: null,
+            //tickInterval: 10,     //网格线间隔大小
+            numberTicks: 5,
+            tickOptions: { fontSize: '10pt' },
+            rendererOptions: {
+                forceTickAt0: true,
+                drawBaseline: false
+            }
+        },
+    },
+    highlighter: {
+        lineWidthAdjust: 5,
+        show: true,
+        showLabel: true,
+        tooltipAxes: 'both',
+        sizeAdjust: 15,
+        tooltipLocation: 'ne',
+    },
+    legend: {
+        renderer: $.jqplot.EnhancedLegendRenderer,  //渲染器,实现分类标签的功能
+        show: true,//设置是否出现分类名称框（即所有分类的名称出现在图的某个位置）    
+        location: 'ne',
+        placement: 'outsideGrid',
+        background: '',   //背景颜色
+        textColor: '',//字体颜色
+        rowSpacing: '3px',
+        xoffset: 20,        // 分类名称框距图表区域上边框的距离（单位px）  
+        yoffset: -50        // 分类名称框距图表区域左边框的距离(单位px)  
+    }
+});
 
-    //    plot1 = $.jqplot('chart3', datas.AverageValueArray,
-    //{
-    //    title: {
-    //        text: $("#mornitorTestTypeSelectFirst").find("option:selected").text() + '与' + $("#mornitorTestTypeSelectSecond").find("option:selected").text() + '平均值对比曲线图',
-    //        textAlign: 'center',
-    //        show: true,//设置当前标题是否显示  
-    //        color: '#4bb2c5',
-    //        fontSize: '20px',
-    //    },
-    //    animate: true,
-    //    animateReplot: true,
-    //    cursor: {
-    //        style: 'crosshair',
-    //        show: true,
-    //        zoom: true,
-    //        showTooltip: false,
-    //        tooltipFormatString: '%.4P',
-    //        useAxesFormatters: false,
-    //    },
-    //    seriesDefaults: {
-    //        show: true,
-    //        lineWidth: 1,
-    //        pointLabels: {
-    //            show: false,
-    //            formatString: "%.0f",
-    //            location: "s",
-    //            ypadding: 1,
-    //        },
-    //        markerOptions: {
-    //            show: false,
-    //            lineWidth: 1,
-    //            size: 12
-    //        },
-    //        rendererOptions: {
-    //            smooth: true
-    //        }
-    //    },
-    //    series: [
-    //         {
-    //             label: chartDatas1.seriesParams,
-    //             lineWidth: 3,
-    //             yaxis: 'yaxis',
-    //             markerOptions:
-    //             {
-    //                 formatString: '%.2f',
-    //                 fontSize: '10pt'
-    //             }
-    //         },
-    //         {
-    //             label: chartDatas2.seriesParams,
-    //             lineWidth: 3,
-    //             yaxis: 'y2axis',
-    //             markerOptions:
-    //             {
-    //                 formatString: '%.2f',
-    //                 fontSize: '10pt'
-    //             }
-    //         },
-    //    ],
-    //    axes: {
-    //        xaxis: {
-    //            label: "监测日期",  //x轴显示标题
-    //            pad: 0,
-    //            renderer: $.jqplot.DateAxisRenderer, //x轴绘制方式
-    //            labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
-    //            tickRenderer: $.jqplot.CanvasAxisTickRenderer,
-    //            tickOptions: {
-    //                formatString: '%F %T', fontSize: '10pt', angle: -20
-    //            },
-    //            showTicks: true,
-    //            rendererOptions: { drawBaseline: false },
-    //            drawMajorGridlines: false
-    //        },
-    //        yaxis: {
-    //            show: true,
-    //            label: $("#mornitorTestTypeSelectFirst").find("option:selected").text() + chartDatas1.unitParams[0], // y轴显示标题
-    //            labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
-    //            renderer: $.jqplot.LinearAxisRenderer,  // 设置横（纵）轴上数据加载的渲染器
-    //            autoscale: true,
-    //            max: null,
-    //            min: null,
-    //            //tickInterval: 10,     //网格线间隔大小
-    //            numberTicks: 5,
-    //            tickOptions: { fontSize: '10pt' },
-    //            rendererOptions: {
-    //                forceTickAt0: true,
-    //                drawBaseline: false
-    //            }
-    //        },
-    //        y2axis: {
-    //            show: true,
-    //            label: $("#mornitorTestTypeSelectSecond").find("option:selected").text() + chartDatas2.unitParams[0], // y轴显示标题
-    //            labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
-    //            renderer: $.jqplot.LinearAxisRenderer,  // 设置横（纵）轴上数据加载的渲染器
-    //            autoscale: true,
-    //            max: null,
-    //            min: null,
-    //            //tickInterval: 10,     //网格线间隔大小
-    //            numberTicks: 5,
-    //            tickOptions: { fontSize: '10pt' },
-    //            rendererOptions: {
-    //                forceTickAt0: true,
-    //                drawBaseline: false
-    //            }
-    //        },
-    //    },
-    //    highlighter: {
-    //        lineWidthAdjust: 5,
-    //        show: true,
-    //        showLabel: true,
-    //        tooltipAxes: 'both',
-    //        sizeAdjust: 15,
-    //        tooltipLocation: 'ne',
-    //    },
-    //    legend: {
-    //        renderer: $.jqplot.EnhancedLegendRenderer,  //渲染器,实现分类标签的功能
-    //        show: true,//设置是否出现分类名称框（即所有分类的名称出现在图的某个位置）    
-    //        location: 'ne',
-    //        placement: 'outsideGrid',
-    //        background: '',   //背景颜色
-    //        textColor: '',//字体颜色
-    //        rowSpacing: '3px',
-    //        xoffset: 20,        // 分类名称框距图表区域上边框的距离（单位px）  
-    //        yoffset: -50        // 分类名称框距图表区域左边框的距离(单位px)  
-    //    }
-    //});
+    plot1 = $.jqplot('chart3', datas.AverageValueArray,
+{
+    title: {
+        text: $("#mornitorTestTypeSelectFirst").find("option:selected").text() + '与' + $("#mornitorTestTypeSelectSecond").find("option:selected").text() + '平均值对比曲线图',
+        textAlign: 'center',
+        show: true,//设置当前标题是否显示  
+        color: '#4bb2c5',
+        fontSize: '20px',
+    },
+    animate: true,
+    animateReplot: true,
+    cursor: {
+        style: 'crosshair',
+        show: true,
+        zoom: true,
+        showTooltip: false,
+        tooltipFormatString: '%.4P',
+        useAxesFormatters: false,
+    },
+    seriesDefaults: {
+        show: true,
+        lineWidth: 1,
+        pointLabels: {
+            show: false,
+            formatString: "%.0f",
+            location: "s",
+            ypadding: 1,
+        },
+        markerOptions: {
+            show: false,
+            lineWidth: 1,
+            size: 12
+        },
+        rendererOptions: {
+            smooth: true
+        }
+    },
+    series: [
+         {
+             label: chartDatas1.seriesParams,
+             lineWidth: 3,
+             yaxis: 'yaxis',
+             markerOptions:
+             {
+                 formatString: '%.2f',
+                 fontSize: '10pt'
+             }
+         },
+         {
+             label: chartDatas2.seriesParams,
+             lineWidth: 3,
+             yaxis: 'y2axis',
+             markerOptions:
+             {
+                 formatString: '%.2f',
+                 fontSize: '10pt'
+             }
+         },
+    ],
+    axes: {
+        xaxis: {
+            label: "监测日期",  //x轴显示标题
+            pad: 0,
+            renderer: $.jqplot.DateAxisRenderer, //x轴绘制方式
+            labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+            tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+            tickOptions: {
+                formatString: '%F %T', fontSize: '10pt', angle: -20
+            },
+            showTicks: true,
+            rendererOptions: { drawBaseline: false },
+            drawMajorGridlines: false
+        },
+        yaxis: {
+            show: true,
+            label: $("#mornitorTestTypeSelectFirst").find("option:selected").text() + chartDatas1.unitParems[0], // y轴显示标题
+            labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+            renderer: $.jqplot.LinearAxisRenderer,  // 设置横（纵）轴上数据加载的渲染器
+            autoscale: true,
+            max: null,
+            min: null,
+            //tickInterval: 10,     //网格线间隔大小
+            numberTicks: 5,
+            tickOptions: { fontSize: '10pt' },
+            rendererOptions: {
+                forceTickAt0: true,
+                drawBaseline: false
+            }
+        },
+        y2axis: {
+            show: true,
+            label: $("#mornitorTestTypeSelectSecond").find("option:selected").text() + chartDatas2.unitParems[0], // y轴显示标题
+            labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+            renderer: $.jqplot.LinearAxisRenderer,  // 设置横（纵）轴上数据加载的渲染器
+            autoscale: true,
+            max: null,
+            min: null,
+            //tickInterval: 10,     //网格线间隔大小
+            numberTicks: 5,
+            tickOptions: { fontSize: '10pt' },
+            rendererOptions: {
+                forceTickAt0: true,
+                drawBaseline: false
+            }
+        },
+    },
+    highlighter: {
+        lineWidthAdjust: 5,
+        show: true,
+        showLabel: true,
+        tooltipAxes: 'both',
+        sizeAdjust: 15,
+        tooltipLocation: 'ne',
+    },
+    legend: {
+        renderer: $.jqplot.EnhancedLegendRenderer,  //渲染器,实现分类标签的功能
+        show: true,//设置是否出现分类名称框（即所有分类的名称出现在图的某个位置）    
+        location: 'ne',
+        placement: 'outsideGrid',
+        background: '',   //背景颜色
+        textColor: '',//字体颜色
+        rowSpacing: '3px',
+        xoffset: 20,        // 分类名称框距图表区域上边框的距离（单位px）  
+        yoffset: -50        // 分类名称框距图表区域左边框的距离(单位px)  
+    }
+});
 
     //能让分类隐藏和显示选中的折线
     var seriesShow = new Array(datas.seriesParams.length);
@@ -424,24 +424,62 @@ function initChart() {
             seriesShow[seriesIndex] = true;
         }
     });
+    $('#chart2').bind('jqplotClick', function (ev, gridpos, datapos, neighbor, plot) {
+        var seriesIndex = neighbor.seriesIndex;
+        if (seriesShow[seriesIndex]) {
+            plot.drawSeries({
+                showLine: false,
+            }, seriesIndex);
+            seriesShow[seriesIndex] = false;
+        }
+        else {
+            plot.drawSeries({
+                showLine: true,
+            }, seriesIndex);
+            seriesShow[seriesIndex] = true;
+        }
+    });
+    $('#chart3').bind('jqplotClick', function (ev, gridpos, datapos, neighbor, plot) {
+        var seriesIndex = neighbor.seriesIndex;
+        if (seriesShow[seriesIndex]) {
+            plot.drawSeries({
+                showLine: false,
+            }, seriesIndex);
+            seriesShow[seriesIndex] = false;
+        }
+        else {
+            plot.drawSeries({
+                showLine: true,
+            }, seriesIndex);
+            seriesShow[seriesIndex] = true;
+        }
+    });
 }
 
 function wrapChartDatas(source1, source2) {
     var result = new Object();
-    var MaxValueArray = [],seriesParams = [];
+    var MaxValueArray = [], MinValueArray = [], AverageValueArray = [], seriesParams = [];
     $.each(source1.MaxValueArray, function (i, data) {
         MaxValueArray.push(data);
     });
     $.each(source2.MaxValueArray, function (i, data) {
         MaxValueArray.push(data);
     });
-    $.each(source1.seriesParams, function (i, data) {
-        seriesParams.push(data);
+    $.each(source1.MinValuedataArray, function (i, data) {
+        MinValueArray.push(data);
     });
-    $.each(source2.seriesParams, function (i, data) {
-        seriesParams.push(data);
+    $.each(source2.MinValuedataArray, function (i, data) {
+        MinValueArray.push(data);
+    });
+    $.each(source1.AverageValuedataArray, function (i, data) {
+        AverageValueArray.push(data);
+    });
+    $.each(source2.AverageValuedataArray, function (i, data) {
+        AverageValueArray.push(data);
     });
     result.MaxValueArray = MaxValueArray;
+    result.MinValueArray = MinValueArray;
+    result.AverageValueArray = AverageValueArray;
     result.seriesParams = seriesParams;
     return result;
 }
@@ -451,13 +489,13 @@ function dealWithChartDatas(source) {
     var result = new Object();
     var MaxValueArray = [], seriesParams = [], unitParams = [];
     MaxValueArray = fillChartMaxValueDataArray(source);
-    //MinValuedataArray = fillChartMinValueDataArray(source);
-    //AverageValuedataArray = fillChartAverageValueDataArray(source);
+    MinValuedataArray = fillChartMinValueDataArray(source);
+    AverageValuedataArray = fillChartAverageValueDataArray(source);
     seriesParams = fillChartSeriesParams(source);
     unitParams = fillChartUnitParams(source);
     result.MaxValueArray = MaxValueArray;
-    //result.MinValuedataArray = MinValuedataArray;
-    //result.AverageValuedataArray = AverageValuedataArray;
+    result.MinValuedataArray = MinValuedataArray;
+    result.AverageValuedataArray = AverageValuedataArray;
     result.seriesParams = seriesParams;
     result.unitParems = unitParams;
     return result;
@@ -468,16 +506,36 @@ function fillChartMaxValueDataArray(source) {
     $.each(source.Datas, function (i, item) {
         var itemMaxArray = [];
         $.each(item.Models, function (j, myitem) {
-            itemMaxArray.push(myitem.CreateDateTime, myitem.MaxValue);
+            itemMaxArray.push([myitem.CreateDateTime, myitem.MaxValue]);
         });
         MaxValueArray.push(itemMaxArray);
     });
     return MaxValueArray;
-    
 }
 
+function fillChartMinValueDataArray(source) {
+    var MinValueArray = [];
+    $.each(source.Datas, function (i, item) {
+        var itemMinArray = [];
+        $.each(item.Models, function (j, myitem) {
+            itemMinArray.push([myitem.CreateDateTime, myitem.MinValue]);
+        });
+        MinValueArray.push(itemMinArray);
+    });
+    return MinValueArray;
+}
 
-
+function fillChartAverageValueDataArray(source) {
+    var AverageValueArray = [];
+    $.each(source.Datas, function (i, item) {
+        var itemAverageArray = [];
+        $.each(item.Models, function (j, myitem) {
+            itemAverageArray.push([myitem.CreateDateTime, myitem.AverageValue]);
+        });
+        AverageValueArray.push(itemAverageArray);
+    });
+    return AverageValueArray;
+}
 
 function fillChartSeriesParams(source) {
     var seriesParams = [];
