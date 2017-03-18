@@ -89,6 +89,9 @@
     <Compile Include="Implementations\DisplaymentDatasEigenvalueQueryService.cs" />
     <Compile Include="Implementations\DisplaymentMonitorDatasQueryChartService.cs" />
     <Compile Include="Implementations\DisplaymentMonitorDatasQueryFileSystemService.cs" />
+    <Compile Include="Implementations\HumidityDatasEigenvalueQueryService.cs" />
+    <Compile Include="Implementations\HumidityMonitorDatasQueryChartService.cs" />
+    <Compile Include="Implementations\HumidityMonitorDatasQueryFileSystemService.cs" />
     <Compile Include="Implementations\OriginalValueDownLoad\ConcreteStrainDatasOriginalValueDownLoadService.cs" />
     <Compile Include="Implementations\OriginalValueDownLoad\MonitorDatasOringinalValueDownLoadServiceBase.cs" />
     <Compile Include="Implementations\OriginalValueDownLoad\StrainMonitorDatasOriginalValueDownLoadFileSystemService.cs" />
@@ -100,6 +103,7 @@
     <Compile Include="Implementations\SteelLatticeStrainMonitorDatasQueryFileSystemService.cs" />
     <Compile Include="Interfaces\ICableForceDatasEigenvalueQueryService.cs" />
     <Compile Include="Interfaces\IDisplaymentDatasEigenvalueQueryService.cs" />
+    <Compile Include="Interfaces\IHumidityDatasEigenvalueQueryService.cs" />
     <Compile Include="Interfaces\IMonitorDatasOriginalValueDownLoadServiceBase.cs" />
     <Compile Include="Interfaces\ISteelArchStrainDatasEigenvalueQueryService.cs" />
     <Compile Include="Interfaces\ISteelLatticeStrainDatasEigenvalueQueryService.cs" />
@@ -134,10 +138,6 @@
     <Compile Include="Interfaces\ITempertureDatasQueryService.cs" />
     <Compile Include="Messaging\MonitoringDatas\DatasQuery\TemperatureDatasQueryResultResponse.cs" />
     <Compile Include="Implementations\CableForceDataRealTimeDisplayService.cs" />
-    <Compile Include="Implementations\HumidityMonitorDataQueryStatisticService.cs" />
-    <Compile Include="Implementations\HumidityMonitorDatasQueryChartService.cs" />
-    <Compile Include="Implementations\HumidityMonitorDatasQueryFileSystemService.cs" />
-    <Compile Include="Implementations\HumidityDatesQueryService.cs" />
     <Compile Include="Implementations\DisplaymentDataRealTimeDisplayService.cs" />
     <Compile Include="Implementations\TemperatureDataRealTimeDisplayService.cs" />
     <Compile Include="Interfaces\ICableForceDataRealTimeDisplayService.cs" />
@@ -158,7 +158,6 @@
     <Compile Include="Interfaces\IMonitoringPointsNumberService.cs" />
     <Compile Include="Interfaces\IMonitoringPointsPositionService.cs" />
     <Compile Include="Interfaces\IMonitoringTestTypeService.cs" />
-    <Compile Include="Interfaces\IHumidityDatasQueryService.cs" />
     <Compile Include="Interfaces\IStrainDataRealTimeDisplayService.cs" />
     <Compile Include="Interfaces\IConcreteStrainDatasEigenvalueQueryService.cs" />
     <Compile Include="Interfaces\ITemperatureDataRealTimeDisplayService.cs" />

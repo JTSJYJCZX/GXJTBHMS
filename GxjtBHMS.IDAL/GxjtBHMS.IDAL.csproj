@@ -47,12 +47,12 @@
     <Compile Include="ICableForceDatasEigenvalueDAL.cs" />
     <Compile Include="ICableForceThresholdValueGettingDAL.cs" />
     <Compile Include="IDisplaymentDatasEigenValueDAL.cs" />
+    <Compile Include="IHumidityDatasEigenvalueDAL.cs" />
     <Compile Include="IHumidityThresholdValueGettingDAL.cs" />
     <Compile Include="IRealTimeHumidityDatasDAL.cs" />
     <Compile Include="ISteelArchStrainDatasEigenValueDAL.cs" />
     <Compile Include="ISteelLatticeStrainDatasEigenValueDAL.cs" />
     <Compile Include="ITemperatureDatasDAL.cs" />
-    <Compile Include="IHumidityDatasDAL.cs" />
     <Compile Include="IThresholdValueDAL.cs" />
     <Compile Include="IDisplaymentThresholdValueGettingDAL.cs" />
     <Compile Include="IRealTimeCableForceDatasDAL.cs" />

@@ -9,21 +9,21 @@ namespace GxjtBHMS.Service
 {
     class HumidityEigenvalueDatasQuery : MonitoringDatasEigenvalueQueryServiceBase
     {
-        readonly IConcreteStrainDatasEigenvalueQueryService _concreteStrainDatasService;
+        readonly IHumidityDatasEigenvalueQueryService _humidityDatasService;
 
         public HumidityEigenvalueDatasQuery()
         {
-            _concreteStrainDatasService = new NinjectFactory()
-                .GetInstance<IConcreteStrainDatasEigenvalueQueryService>();
+            _humidityDatasService = new NinjectFactory()
+                .GetInstance<IHumidityDatasEigenvalueQueryService>();
         }
 
         public override ChartDatasResponse GetChartDatasBy(GetChartDatasRequest req)
         {
-            return _concreteStrainDatasService.GetChartDatasBy(req);
+            return _humidityDatasService.GetChartDatasBy(req);
         }
-    
 
-        
+
+
 
         public override PagedResponse GetPaginatorDatas(DatasQueryResultRequest req)
         {
@@ -31,8 +31,8 @@ namespace GxjtBHMS.Service
 
             try
             {
-                resp.TotalResultCount = _concreteStrainDatasService.GetTotalResultCountBy(req);
-                if (resp.TotalResultCount>0)
+                resp.TotalResultCount = _humidityDatasService.GetTotalResultCountBy(req);
+                if (resp.TotalResultCount > 0)
                 {
                     resp.Succeed = true;
                 }
@@ -50,7 +50,7 @@ namespace GxjtBHMS.Service
 
         public override DownLoadDatasResponse SaveAsFile(DatasQueryResultRequestBase req)
         {
-            return _concreteStrainDatasService.SaveAs(req);
+            return _humidityDatasService.SaveAs(req);
         }
     }
 }
