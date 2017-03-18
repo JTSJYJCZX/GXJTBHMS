@@ -70,7 +70,7 @@
     <Compile Include="MonitoringDatasDAL\HumidityDatasEigenvalueDAL.cs" />
     <Compile Include="MonitoringDatasDAL\SteelArchStrainDatasEigenvalueDAL.cs" />
     <Compile Include="MonitoringDatasDAL\SteelLatticeStrainDatasEigenvalueDAL.cs" />
-    <Compile Include="MonitoringDatasDAL\TemperatureDatasDAL.cs" />
+    <Compile Include="MonitoringDatasDAL\TemperatureDatasEigenvalueDAL.cs" />
     <Compile Include="MonitoringPointsNumberDAL.cs" />
     <Compile Include="MonitoringPointsPositionDAL.cs" />
     <Compile Include="MonitoringTestTypeDAL.cs" />
