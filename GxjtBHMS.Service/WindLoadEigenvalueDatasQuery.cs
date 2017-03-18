@@ -9,17 +9,17 @@ namespace GxjtBHMS.Service
 {
     class WindLoadEigenvalueDatasQuery : MonitoringDatasEigenvalueQueryServiceBase
     {
-        readonly IConcreteStrainDatasEigenvalueQueryService _concreteStrainDatasService;
+        readonly IWindLoadDatasEigenvalueQueryService _windLoadEigenValueDatasService;
 
         public WindLoadEigenvalueDatasQuery()
         {
-            _concreteStrainDatasService = new NinjectFactory()
-                .GetInstance<IConcreteStrainDatasEigenvalueQueryService>();
+            _windLoadEigenValueDatasService = new NinjectFactory()
+                .GetInstance<IWindLoadDatasEigenvalueQueryService>();
         }
 
         public override ChartDatasResponse GetChartDatasBy(GetChartDatasRequest req)
         {
-            return _concreteStrainDatasService.GetChartDatasBy(req);
+            return _windLoadEigenValueDatasService.GetChartDatasBy(req);
         }
     
 
@@ -31,7 +31,7 @@ namespace GxjtBHMS.Service
 
             try
             {
-                resp.TotalResultCount = _concreteStrainDatasService.GetTotalResultCountBy(req);
+                resp.TotalResultCount = _windLoadEigenValueDatasService.GetTotalResultCountBy(req);
                 if (resp.TotalResultCount>0)
                 {
                     resp.Succeed = true;
@@ -50,7 +50,7 @@ namespace GxjtBHMS.Service
 
         public override DownLoadDatasResponse SaveAsFile(DatasQueryResultRequestBase req)
         {
-            return _concreteStrainDatasService.SaveAs(req);
+            return _windLoadEigenValueDatasService.SaveAs(req);
         }
     }
 }

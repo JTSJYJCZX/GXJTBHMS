@@ -32,7 +32,7 @@ namespace GxjtBHMS.SqlServerDAL
         MonitoringTestType concreteStrainType = new MonitoringTestType { Name = ConcreteStrainTypeName, Unit = "(με)" };
         MonitoringTestType displacementType = new MonitoringTestType { Name = DisplacementTypeName, Unit = "(mm)" };
         MonitoringTestType cableForceType = new MonitoringTestType { Name = CableForceTypeName, Unit = "(kN)" };
-        MonitoringTestType windSpeedType = new MonitoringTestType { Name = WindSpeedTypeName };
+        MonitoringTestType windSpeedType = new MonitoringTestType { Name = WindSpeedTypeName,Unit="(m/s)" };
         MonitoringTestType temperatureType = new MonitoringTestType { Name = TemperatureTypeName, Unit = "(℃)" };
         MonitoringTestType humidityType = new MonitoringTestType { Name = HumidityTypeName, Unit = "(%)" };
 
@@ -85,7 +85,7 @@ namespace GxjtBHMS.SqlServerDAL
         MonitoringPointsPosition flexibleTiedBarCableForce = new MonitoringPointsPosition { Name = "柔性系杆", Description = "" };
 
         /// <summary>
-        /// 风载测试位移
+        /// 风载测试位置
         /// </summary>
         MonitoringPointsPosition windLoad = new MonitoringPointsPosition { Name = "风载", Description = "跨中拱顶" };
 
@@ -305,6 +305,7 @@ namespace GxjtBHMS.SqlServerDAL
         MonitoringPointsNumber cFFTBR5Point = new MonitoringPointsNumber { Name = "CF-FTB-R5" };
         MonitoringPointsNumber cFFTBR6Point = new MonitoringPointsNumber { Name = "CF-FTB-R6" };
 
+        MonitoringPointsNumber wL1Point = new MonitoringPointsNumber { Name = "WL-1" };
 
         protected override void Seed(BHMSContext context)
         {
@@ -667,6 +668,14 @@ namespace GxjtBHMS.SqlServerDAL
                     var humidityEigenvalue = new HumidityEigenvalueTable { PointsNumber = tmpNumbers25[j], Time = time, Max = random.Next(50, 60), Min = random.Next(20, 30), Average = random.Next(40, 50) };
                     context.HumidityEigenvalues.Add(humidityEigenvalue);
                 }
+
+                //风速
+                for (int j = 0; j < tmpNumbers29.Length; j++)
+                {
+                    var windLoadEigenvalue = new WindLoadEigenvalueTable { PointsNumber = tmpNumbers29[j], Time = time, Max = random.Next(6, 10), Min = random.Next(0, 3), Average = random.Next(2, 5) };
+                    context.WindLoadEigenvalues .Add(windLoadEigenvalue);
+                }
+
             }
         }
 
@@ -755,6 +764,7 @@ namespace GxjtBHMS.SqlServerDAL
         MonitoringPointsNumber[] tmpNumbers26;
         MonitoringPointsNumber[] tmpNumbers27;
         MonitoringPointsNumber[] tmpNumbers28;
+        MonitoringPointsNumber[] tmpNumbers29;
 
         void CreateMonitoringPointsNumberForPointsPosition(BHMSContext context, Dictionary<string, MonitoringPointsPosition> monitoringPointsPosition)
         {
@@ -842,6 +852,9 @@ namespace GxjtBHMS.SqlServerDAL
             tmpNumbers28 = new MonitoringPointsNumber[] {cFFTBL1Point,cFFTBL2Point,cFFTBL3Point,cFFTBL4Point,cFFTBL5Point,cFFTBL6Point,cFFTBR1Point,cFFTBR2Point,cFFTBR3Point,cFFTBR4Point,cFFTBR5Point,cFFTBR6Point};
             SetPointsPositionNavPropertyToMonitoringPointsNumberInstance(monitoringPointsPosition, tmpNumbers28, nameof(flexibleTiedBarCableForce));
 
+            tmpNumbers29 = new MonitoringPointsNumber[] { wL1Point};
+            SetPointsPositionNavPropertyToMonitoringPointsNumberInstance(monitoringPointsPosition, tmpNumbers29, nameof(windLoad));
+
             context.MonitoringPointsNumbers.AddRange(tmpNumbers1);
             context.MonitoringPointsNumbers.AddRange(tmpNumbers2);
             context.MonitoringPointsNumbers.AddRange(tmpNumbers3);
@@ -870,6 +883,7 @@ namespace GxjtBHMS.SqlServerDAL
             context.MonitoringPointsNumbers.AddRange(tmpNumbers26);
             context.MonitoringPointsNumbers.AddRange(tmpNumbers27);
             context.MonitoringPointsNumbers.AddRange(tmpNumbers28);
+            context.MonitoringPointsNumbers.AddRange(tmpNumbers29);
         }
 
         void CreateMonitoringPointsPositionsForTestType(BHMSContext context, Dictionary<string, MonitoringTestType> dict)

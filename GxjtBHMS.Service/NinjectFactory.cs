@@ -43,6 +43,10 @@ namespace GxjtBHMS.Service
             _ninjectKernel.Bind<ITemperatureDatasEigenvalueQueryService>().To<TemperatureDatasEigenvalueQueryService>();
             _ninjectKernel.Bind<ITemperatureDatasEigenvalueDAL>().To<TemperatureDatasEigenvalueDAL>();
 
+            _ninjectKernel.Bind<IWindLoadDatasEigenvalueQueryService>().To<WindLoadDatasEigenvalueQueryService>();
+            _ninjectKernel.Bind<IWindLoadDatasEigenValueDAL>().To<WindLoadDatasEigenvalueDAL>();
+
+
             _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryChartService<ConcreteStrainEigenvalueTable>>().To<ConcreteStrainMonitorDatasQueryChartService>();
             _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryChartService<DisplacementEigenvalueTable>>().To<DisplaymentMonitorDatasQueryChartService>();
             _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryChartService<CableForceEigenvalueTable>>().To<CableForceMonitorDatasQueryChartService>();
@@ -50,7 +54,7 @@ namespace GxjtBHMS.Service
             _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryChartService<TemperatureEigenvalueTable>>().To<TemperatureMonitorDatasQueryChartService>();
             _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryChartService<SteelArchStrainEigenvalueTable>>().To<SteelArchStrainMonitorDatasQueryChartService>();
             _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryChartService<SteelLatticeStrainEigenvalueTable>>().To<SteelLatticeStrainMonitorDatasQueryChartService>();
-
+            _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryChartService<WindLoadEigenvalueTable>>().To<WindLoadMonitorDatasQueryChartService>();
 
             _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryFileSystemService<ConcreteStrainTable>>().To<StrainMonitorDatasOriginalValueDownLoadFileSystemService>();
             _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryFileSystemService<ConcreteStrainEigenvalueTable>>().To<ConcreteStrainMonitorDatasEigenValueQueryFileSystemService>();
@@ -60,7 +64,7 @@ namespace GxjtBHMS.Service
             _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryFileSystemService<TemperatureEigenvalueTable>>().To<TemperatureMonitorDatasQueryFileSystemService>();
             _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryFileSystemService<SteelArchStrainEigenvalueTable>>().To<SteelArchStrainMonitorDatasQueryFileSystemService>();
             _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryFileSystemService<SteelLatticeStrainEigenvalueTable>>().To<SteelLatticeStrainMonitorDatasQueryFileSystemService>();
-
+            _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryFileSystemService<WindLoadEigenvalueTable>>().To<WindLoadMonitorDatasEigenValueQueryFileSystemService>();
 
         }
     }
