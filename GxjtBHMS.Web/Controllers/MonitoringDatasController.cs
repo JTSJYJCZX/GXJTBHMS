@@ -3,7 +3,6 @@ using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.Messaging.MonitoringDatas;
 using GxjtBHMS.Web.ExtensionMehtods.MonitoringDatas;
 using GxjtBHMS.Web.Models;
-using GxjtBHMS.Web.ViewModels;
 using GxjtBHMS.Web.ViewModels.MonitoringDatas;
 using System;
 using System.Collections.Generic;
@@ -49,21 +48,13 @@ namespace GxjtBHMS.Web.Controllers
                 PointsPositionId = conditions.MornitoringPointsPositionId
             };
             var monitoringDatasQueryService = MonitoringDatasEigenvalueQueryServiceFactory.GetQueryServiceFrom(conditions.MornitoringTestTypeId);
-            var resp = monitoringDatasQueryService.GetPaginatorDatas(req);
-            var paginatorModel = new PaginatorModel();
-            if (resp.Succeed)
+            var result = monitoringDatasQueryService.HasQueryResult(req);
+            if (result)
             {
-                paginatorModel = new PaginatorModel()
-                {
-                    TotalCounts = resp.TotalResultCount,
-                };
+                return PartialView("DataQuerySearchContentPartial");
             }
-            else
-            {
-                TempData[WebConstants.MessageColor] = StyleConstants.RedColor;
-                TempData[WebConstants.MessageKey] = resp.Message;
-            }
-            return PartialView("DataQuerySearchContentPartial", paginatorModel);
+            return Content("<span style='color:red'>无记录</span>");
+
         }
 
         public ActionResult GetChartDatas(MornitoringDataSearchBarBaseView conditions)

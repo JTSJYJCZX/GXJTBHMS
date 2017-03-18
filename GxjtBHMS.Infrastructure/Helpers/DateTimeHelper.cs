@@ -13,5 +13,10 @@ namespace GxjtBHMS.Infrastructure.Helpers
         {
             return source.ToString("yyyy-MM-dd");
         }
+
+        public static string FormatDateWithoutSymbol(this DateTime source)
+        {
+            return source.ToString("yyyyMMdd");
+        }
     }
 }

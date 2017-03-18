@@ -1,7 +1,5 @@
 ﻿using System;
-using GxjtBHMS.Service.Messaging;
 using GxjtBHMS.Service.Messaging.MonitoringDatas;
-using GxjtBHMS.Service.Messaging.MonitoringDatas.DatasQuery;
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.Messaging.MonitoringDatasDownLoad;
 
@@ -22,31 +20,26 @@ namespace GxjtBHMS.Service
              return  _concreteStrainDatasService.GetChartDatasBy(req);
 
         }
-    
 
-        
 
-        public override PagedResponse GetPaginatorDatas(DatasQueryResultRequest req)
+
+
+        public override bool HasQueryResult(DatasQueryResultRequest req)
         {
-            var resp = new PagedResponse();
-
+            var result = false;
             try
             {
-                resp.TotalResultCount = _concreteStrainDatasService.GetTotalResultCountBy(req);
-                if (resp.TotalResultCount>0)
+                var count = _concreteStrainDatasService.GetTotalResultCountBy(req);
+                if (count > 0)
                 {
-                    resp.Succeed = true;
-                }
-                else
-                {
-                    resp.Message = "无记录";
+                    return true;
                 }
             }
             catch (Exception ex)
             {
                 Log(ex);
             }
-            return resp;
+            return result;
         }
 
 

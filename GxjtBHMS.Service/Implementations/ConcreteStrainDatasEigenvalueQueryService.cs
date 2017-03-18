@@ -2,16 +2,8 @@
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.Messaging.MonitoringDatas;
 using GxjtBHMS.IDAL;
-using System.Linq;
 using System.Collections.Generic;
-using GxjtBHMS.Models;
-using GxjtBHMS.Infrastructure.Configuration;
-using GxjtBHMS.Service.ExtensionMethods.MonitoringDatas.DatasQuery;
-using GxjtBHMS.Service.Messaging;
-using Microsoft.Office.Interop.Excel;
-using GxjtBHMS.Service.Messaging.MonitoringDatas.DatasQuery;
 using GxjtBHMS.Service.Messaging.MonitoringDatasDownLoad;
-using GxjtBHMS.Models.MonitoringDatasTable;
 using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
 
 namespace GxjtBHMS.Service.Implementations

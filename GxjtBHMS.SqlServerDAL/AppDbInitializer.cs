@@ -598,6 +598,18 @@ namespace GxjtBHMS.SqlServerDAL
                     context.ConcreteStrainEigenvalues.Add(concreteStrainEigenvalue);
                 }
 
+                //混凝土应变原始数据初始化
+                for (int j = 0; j < tmpNumbers16.Length; j++)
+                {
+                    var concreteStrain = new ConcreteStrainTable { PointsNumber = tmpNumbers16[j], Time = time, Strain=random.Next(10, 40),Temperature=random.Next(5,60) };
+                    context.ConcreteStrains.Add(concreteStrain);
+                }
+                for (int j = 0; j < tmpNumbers17.Length; j++)
+                {
+                    var concreteStrain = new ConcreteStrainTable { PointsNumber = tmpNumbers17[j], Time = time, Strain = random.Next(10, 40), Temperature = random.Next(5, 60) };
+                    context.ConcreteStrains.Add(concreteStrain);
+                }
+
 
 
                 //位移初始化

@@ -40,10 +40,12 @@ namespace GxjtBHMS.Service.Implementations
         public string GetMixedNameWithTestTypeNameAndPointPositionNameAndCurrentDateTimeByPositionId(int positionId)
         {
             var model = _mppDAL.FindBy(m => m.Id == positionId, new string[] { "TestType" }).SingleOrDefault();
-            string positionName = model.Name;
-            string testTypeName = model.TestType.Name;
-            string currentDateTime = DateTimeHelper.FormatDate(DateTime.Now);
-            return string.Concat(testTypeName, positionName, currentDateTime);
+            return CreateMixedName(model.Name, model.TestType.Name, DateTime.Now.FormatDateWithoutSymbol());
+        }
+
+        string CreateMixedName(string positionName, string testTypeName, string currentDateTime)
+        {
+            return string.Concat(testTypeName,"_", positionName,"_", currentDateTime);
         }
 
         public QueryMonitoringPointsPositionsByTestTypeIdResponse GetMonitoringPointsPositionsByTestTypeId(int ttId)
