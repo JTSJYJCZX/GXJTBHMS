@@ -12,14 +12,14 @@ using GxjtBHMS.Service.Messaging.MonitoringDatasDownLoad;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    public class HumidityDatasQueryService : MonitorDatasQueryServiceBase<HumidityTable>, IHumidityDatasQueryService
+    public class HumidityDatasQueryService : MonitorDatasEigenvalueQueryServiceBase<HumidityTable>, IHumidityDatasQueryService
     {
         readonly IHumidityDatasDAL _humidityDatasDAL;
 
         public HumidityDatasQueryService(
             IHumidityDatasDAL humidityDatasDAL,
             IMonitorDatasEigenvalueQueryChartService<HumidityTable> chartService,
-            IMonitorDatasQueryFileSystemService<HumidityTable> fileSystemService
+            IMonitorDatasEigenvalueQueryFileSystemService<HumidityTable> fileSystemService
             ) : base(chartService, fileSystemService)
         {
             _humidityDatasDAL = humidityDatasDAL;

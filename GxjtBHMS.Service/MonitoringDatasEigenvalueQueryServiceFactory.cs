@@ -19,9 +19,9 @@ namespace GxjtBHMS.Service
                 case 5:
                     return new CableForceEigenvalueDatasQuery();
                 case 6:
-                    return new TemperatureEigenvalueDatasQuery();
-                case 7:
                     return new HumidityEigenvalueDatasQuery();
+                case 7:
+                    return new TemperatureEigenvalueDatasQuery();
                 case 8:
                     return new WindLoadEigenvalueDatasQuery();
                 default:

@@ -12,7 +12,7 @@ using System.Linq;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    class DisplaymentMonitorDatasQueryFileSystemService : IMonitorDatasQueryFileSystemService<DisplacementTable>
+    class DisplaymentMonitorDatasQueryFileSystemService : IMonitorDatasEigenvalueQueryFileSystemService<DisplacementTable>
     {
         readonly IDisplaymentDatasDAL _displaymentDatasDAL;
         public DisplaymentMonitorDatasQueryFileSystemService(IDisplaymentDatasDAL displaymentDatasDAL)

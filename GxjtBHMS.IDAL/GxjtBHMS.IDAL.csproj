@@ -49,6 +49,7 @@
     <Compile Include="IDisplaymentDatasDAL.cs" />
     <Compile Include="IHumidityThresholdValueGettingDAL.cs" />
     <Compile Include="IRealTimeHumidityDatasDAL.cs" />
+    <Compile Include="ISteelArchStrainDatasEigenValueDAL.cs" />
     <Compile Include="ITemperatureDatasDAL.cs" />
     <Compile Include="IHumidityDatasDAL.cs" />
     <Compile Include="IThresholdValueDAL.cs" />
