@@ -122,19 +122,17 @@ function initChart() {
             },
         },
         series: chartDatas.seriesParams, //如果有多个分类需要显示，这在此处设置各个分类的相关配置属性 eg.设置各个分类在分类名称框中的分类名称[label: 'Traps Division'},{label: 'Decoy Division'},{label: 'Harmony Division'}]配置参数设置同seriesDefaults    
-
         axesDefaults: {
             labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
             renderer: $.jqplot.LinearAxisRenderer,  // 设置横（纵）轴上数据加载的渲染器
             rendererOptions: {},   // 设置renderer的Option配置对象，线状图不需要设置
         },
-
         axisDefaults: {                  // 通过该配置设置各个轴的公有属性。
             labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
             show: true,  // 是否渲染轴，自动确定。
             autoscale: true,
             pad: 1.2,       // 一个相乘因子，（数据在横（纵）轴上最大值-数据在横（纵）轴上最小值）*pad值=该轴显示的横（纵）坐标区间长度该轴显示的横（纵）坐标区间长度=横（纵）坐标显示的最大值-横（纵）坐标显示的最小值，如果设置了max和min的值的话，那么会优先考虑min和max设置的值。
-            numberTicks: 20,  //一个相除因子，用于设置横（纵）坐标刻度间隔横（纵）坐标刻度间隔值=横（纵）坐标区间长度/(numberTicks-1)   
+            numberTicks: 50,  //一个相除因子，用于设置横（纵）坐标刻度间隔横（纵）坐标刻度间隔值=横（纵）坐标区间长度/(numberTicks-1)   
             labelRenderer: $.jqplot.CanvasAxisLabelRenderer, //该渲染器主要用于将显示于刻度处的值显示于两个刻度之间，当然其表达意思也发生变化，因为刻度值处值表示某个点处的值，而它则代表某个范围内的值。该渲染器比较适合与柱状图联合使用。
             renderer: $.jqplot.LinearAxisRenderer,  // 设置横（纵）轴上数据加载的渲染器   
             renderer: $.jqplot.DateAxisRenderer, //该渲染器主要用于显示刻度为日期格式的坐标轴，它增强了javascript的本地数据处理能力，它几乎支持所有的日期格式。另外，该渲染器还提供了强大的格式化功能，它能将数据中日期字符串格式化为你需要的格式并显示在坐标轴的刻度线上。
@@ -157,12 +155,9 @@ function initChart() {
                     fontWeight: 'normal', //字体的粗细    
                     fontStretch: 1//刻度值在所在方向（坐标轴外）上的伸展(拉伸)度    
                 },
-                drawMajorGridlines: true   //画主网格线
-
+                drawMajorGridlines: true  //画主网格线
             },
-
             yaxis: {
-
                 label: $("#mornitorTestTypeSelect").find("option:selected").text() + chartDatas.unitParems[0], // y轴显示标题
                 tickOptions: {
                     mark: 'inside',    // 设置横（纵）坐标刻度在坐标轴上显示方式，分为坐标轴内，外，穿过坐标轴显示    
@@ -186,9 +181,7 @@ function initChart() {
             show: true,
             zoom: true,
             showTooltip: false
-
         },
-
         highlighter: {
             show: true,
             lineWidthAdjust: 2.5,   //当鼠标移动到放大的数据点上时，设置增大的数据点的宽度         
