@@ -1,5 +1,6 @@
 ﻿using GxjtBHMS.Infrastructure.Helpers;
 using GxjtBHMS.Models;
+using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.SqlServerDAL;
 using Microsoft.Office.Interop.Excel;
@@ -12,16 +13,16 @@ using System.Linq;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    class DisplaymentMonitorDatasQueryFileSystemService : IMonitorDatasEigenvalueQueryFileSystemService<DisplacementTable>
+    class DisplaymentMonitorDatasQueryFileSystemService : IMonitorDatasEigenvalueQueryFileSystemService<DisplacementEigenvalueTable>
     {
-        readonly IDisplaymentDatasDAL _displaymentDatasDAL;
-        public DisplaymentMonitorDatasQueryFileSystemService(IDisplaymentDatasDAL displaymentDatasDAL)
+        readonly IDisplaymentDatasEigenValueDAL  _displaymentDatasDAL;
+        public DisplaymentMonitorDatasQueryFileSystemService(IDisplaymentDatasEigenValueDAL  displaymentDatasDAL)
         {
             _displaymentDatasDAL = displaymentDatasDAL;
         }
-        public object ConvertToDocument(IList<Func<DisplacementTable, bool>> ps)
+        public object ConvertToDocument(IList<Func<DisplacementEigenvalueTable, bool>> ps)
         {
-            IEnumerable<DisplacementTable> displaymentsExcludePaging = new List<DisplacementTable>();
+            IEnumerable<DisplacementEigenvalueTable> displaymentsExcludePaging = new List<DisplacementEigenvalueTable>();
             displaymentsExcludePaging = _displaymentDatasDAL.FindBy(ps, ServiceConstant.PointsNumberPointsPositionNavigationProperty);//获取不分页的查询结果
             HSSFWorkbook workbook = new HSSFWorkbook();
             ISheet sheet = workbook.CreateSheet("位移查询结果");
@@ -37,8 +38,10 @@ namespace GxjtBHMS.Service.Implementations
                 row.CreateCell(0).SetCellValue(i + 1);
                 row.CreateCell(1).SetCellValue(displaymentsExcludePaging.ToArray()[i].PointsNumber.Name);
                 row.CreateCell(2).SetCellValue("");
-                row.CreateCell(3).SetCellValue(displaymentsExcludePaging.ToArray()[i].Displayment );
-                row.CreateCell(4).SetCellValue(displaymentsExcludePaging.ToArray()[i].Time.FormatDateTime());
+                row.CreateCell(3).SetCellValue(displaymentsExcludePaging.ToArray()[i].Max);
+                row.CreateCell(4).SetCellValue(displaymentsExcludePaging.ToArray()[i].Min);
+                row.CreateCell(5).SetCellValue(displaymentsExcludePaging.ToArray()[i].Average);
+                row.CreateCell(6).SetCellValue(displaymentsExcludePaging.ToArray()[i].Time.FormatDateTime());
             }
             return workbook;
         }      

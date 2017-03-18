@@ -10,17 +10,18 @@ using GxjtBHMS.Service.Messaging;
 using GxjtBHMS.Service.ExtensionMethods.MonitoringDatas.DatasQuery;
 using GxjtBHMS.Service.Messaging.MonitoringDatas.DatasQuery;
 using GxjtBHMS.Service.Messaging.MonitoringDatasDownLoad;
+using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    public class CableForceDatasQueryService : MonitorDatasEigenvalueQueryServiceBase<CableForceTable>, ICableForceDatasQueryService
+    public class CableForceDatasEigenvalueQueryService : MonitorDatasEigenvalueQueryServiceBase<CableForceEigenvalueTable>, ICableForceDatasEigenvalueQueryService
     {
-        readonly ICableForceDatasDAL _cableForceDatasDAL;
+        readonly ICableForceDatasEigenvalueDAL  _cableForceDatasDAL;
 
-        public CableForceDatasQueryService(
-            ICableForceDatasDAL cableForceDatasDAL,
-            IMonitorDatasEigenvalueQueryChartService<CableForceTable> chartService,
-            IMonitorDatasEigenvalueQueryFileSystemService<CableForceTable> fileSystemService
+        public CableForceDatasEigenvalueQueryService(
+            ICableForceDatasEigenvalueDAL  cableForceDatasDAL,
+            IMonitorDatasEigenvalueQueryChartService<CableForceEigenvalueTable> chartService,
+            IMonitorDatasEigenvalueQueryFileSystemService<CableForceEigenvalueTable> fileSystemService
             ) : base(chartService, fileSystemService)
         {
             _cableForceDatasDAL = cableForceDatasDAL;
@@ -30,7 +31,7 @@ namespace GxjtBHMS.Service.Implementations
         public ChartDatasResponse GetChartDatasBy(GetChartDatasRequest req)
         {
             var resp = new ChartDatasResponse();
-            IList<Func<CableForceTable, bool>> ps = new List<Func<CableForceTable, bool>>();
+            IList<Func<CableForceEigenvalueTable, bool>> ps = new List<Func<CableForceEigenvalueTable, bool>>();
             try
             {
                 DealWithConditions(req, ps);
@@ -50,7 +51,7 @@ namespace GxjtBHMS.Service.Implementations
          public DownLoadDatasResponse SaveAs(DatasQueryResultRequestBase req)
         {
             var resp = new DownLoadDatasResponse();
-            IList<Func<CableForceTable, bool>> ps = new List<Func<CableForceTable, bool>>();
+            IList<Func<CableForceEigenvalueTable, bool>> ps = new List<Func<CableForceEigenvalueTable, bool>>();
             try
             {
                 DealWithConditions(req, ps);
@@ -65,32 +66,9 @@ namespace GxjtBHMS.Service.Implementations
             return resp;
         }
 
-        public DisplaymentDatasQueryResultResponse GetPaginatorDataBy(DatasQueryResultRequest req)
-        {
-
-            var resp = new DisplaymentDatasQueryResultResponse();
-            IEnumerable<CableForceTable> displaymentsExcludePaging = new List<CableForceTable>();
-            IList<Func<CableForceTable, bool>> ps = new List<Func<CableForceTable, bool>>();
-            try
-            {
-                DealWithConditions(req, ps);
-                var numberOfResultsPrePage = ApplicationSettingsFactory.GetApplicationSettings().NumberOfResultsPrePage;//获取每页记录数
-                displaymentsExcludePaging = _cableForceDatasDAL.FindBy(ps, ServiceConstant.PointsNumberPointsPositionNavigationProperty);//获取不分页的查询结果
-                resp.TotalResultCount = _cableForceDatasDAL.GetCountByContains(ps.ToArray(), ServiceConstant.PointsNumberPointsPositionNavigationProperty);
-                resp.Succeed = true;
-
-            }
-            catch (Exception ex)
-            {
-                resp.Message = "搜索数据列表信息发生错误";
-                Log(ex);
-            }
-            return resp;
-        }
-
         public long GetTotalResultCountBy(DatasQueryResultRequest req)
         {
-            IList<Func<CableForceTable, bool>> ps = new List<Func<CableForceTable, bool>>();
+            IList<Func<CableForceEigenvalueTable, bool>> ps = new List<Func<CableForceEigenvalueTable, bool>>();
             DealWithConditions(req, ps);
             return _cableForceDatasDAL.GetCountByContains(ps, ServiceConstant.PointsNumberPointsPositionNavigationProperty);
         }

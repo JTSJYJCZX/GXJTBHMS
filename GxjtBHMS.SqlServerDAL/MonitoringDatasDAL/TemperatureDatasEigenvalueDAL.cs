@@ -1,18 +1,18 @@
 ﻿using GxjtBHMS.IDAL;
-using GxjtBHMS.Models;
+using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL
 {
-    public class TemperatureDatasDAL : Repository<TemperatureTable, int>, ITemperatureDatasDAL
+    public class TemperatureDatasEigenvalueDAL : Repository<TemperatureEigenvalueTable, int>, ITemperatureDatasEigenvalueDAL
     {
-        public override IEnumerable<TemperatureTable> FindBy(IList<Func<TemperatureTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
+        public override IEnumerable<TemperatureEigenvalueTable> FindBy(IList<Func<TemperatureEigenvalueTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
         {
             using (var ctx = new BHMSContext())
             {
-                var source = DealWithNavigationPropertys(navigationProperties, ctx.Temperatures);//处理导航属性
+                var source = DealWithNavigationPropertys(navigationProperties, ctx.TemperatureEigenvalues);//处理导航属性
 
                 var result = DealWithConditions(ps.ToArray(), source);//处理条件筛选
 

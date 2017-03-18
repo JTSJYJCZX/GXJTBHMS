@@ -9,21 +9,21 @@ namespace GxjtBHMS.Service
 {
     class TemperatureEigenvalueDatasQuery : MonitoringDatasEigenvalueQueryServiceBase
     {
-        readonly IConcreteStrainDatasEigenvalueQueryService _concreteStrainDatasService;
+        readonly ITemperatureDatasEigenvalueQueryService _temperatureDatasService;
 
         public TemperatureEigenvalueDatasQuery()
         {
-            _concreteStrainDatasService = new NinjectFactory()
-                .GetInstance<IConcreteStrainDatasEigenvalueQueryService>();
+            _temperatureDatasService = new NinjectFactory()
+                .GetInstance<ITemperatureDatasEigenvalueQueryService>();
         }
 
         public override ChartDatasResponse GetChartDatasBy(GetChartDatasRequest req)
         {
-            return _concreteStrainDatasService.GetChartDatasBy(req);
+            return _temperatureDatasService.GetChartDatasBy(req);
         }
-    
 
-        
+
+
 
         public override PagedResponse GetPaginatorDatas(DatasQueryResultRequest req)
         {
@@ -31,8 +31,8 @@ namespace GxjtBHMS.Service
 
             try
             {
-                resp.TotalResultCount = _concreteStrainDatasService.GetTotalResultCountBy(req);
-                if (resp.TotalResultCount>0)
+                resp.TotalResultCount = _temperatureDatasService.GetTotalResultCountBy(req);
+                if (resp.TotalResultCount > 0)
                 {
                     resp.Succeed = true;
                 }
@@ -50,7 +50,7 @@ namespace GxjtBHMS.Service
 
         public override DownLoadDatasResponse SaveAsFile(DatasQueryResultRequestBase req)
         {
-            return _concreteStrainDatasService.SaveAs(req);
+            return _temperatureDatasService.SaveAs(req);
         }
     }
 }

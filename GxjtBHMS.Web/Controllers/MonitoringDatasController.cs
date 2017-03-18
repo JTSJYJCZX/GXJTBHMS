@@ -58,7 +58,7 @@ namespace GxjtBHMS.Web.Controllers
                 paginatorModel = new PaginatorModel()
                 {
                     TotalCounts = resp.TotalResultCount,
-                }; 
+                };
             }
             else
             {
@@ -79,11 +79,11 @@ namespace GxjtBHMS.Web.Controllers
                 PointsPositionId = conditions.MornitoringPointsPositionId
             };
             var monitoringDatasQueryService = MonitoringDatasEigenvalueQueryServiceFactory.GetQueryServiceFrom(conditions.MornitoringTestTypeId);
-            resp = monitoringDatasQueryService.GetChartDatasBy(req);          
+            resp = monitoringDatasQueryService.GetChartDatasBy(req);
             return Json(resp.Datas, JsonRequestBehavior.AllowGet);
         }
- 
-    [ChildActionOnly]
+
+        [ChildActionOnly]
         public ActionResult GetDataQuerySearchBar()
         {
             int firstTestTypeId;
@@ -200,12 +200,13 @@ namespace GxjtBHMS.Web.Controllers
             var resp = monitoringDatasQueryService.SaveAsFile(req);
             var guid = "";
             guid = Guid.NewGuid().ToString();
-            CacheHelper.SetCache(guid,resp.Datas);
+            CacheHelper.SetCache(guid, resp.Datas);
             return Json(guid, JsonRequestBehavior.AllowGet);
         }
 
-        public void OriginCode(string guid)
+        public void OriginCode(string guid, int typeId)
         {
+            string preFileName = GetDownloadPreFileNameByTestTypeId(typeId);
             object obj = CacheHelper.GetCache(guid);
             NPOI.HSSF.UserModel.HSSFWorkbook book = obj as NPOI.HSSF.UserModel.HSSFWorkbook;
             if (book != null)
@@ -213,13 +214,20 @@ namespace GxjtBHMS.Web.Controllers
                 // 写入到客户端  
                 System.IO.MemoryStream ms = new System.IO.MemoryStream();
                 book.Write(ms);
-                Response.AddHeader("Content-Disposition", string.Format("attachment; filename={0}.xls",DateTime.Now.ToString("yyyyMMddHHmmssfff")));
+                Response.AddHeader("Content-Disposition", string.Format("attachment; filename={0}.xls", string.Concat(preFileName, DateTime.Now.ToString("yyyyMMddHHmmssfff"))));
                 Response.BinaryWrite(ms.ToArray());
                 book = null;
                 ms.Close();
                 ms.Dispose();
             }
             CacheHelper.RemoveAllCache(guid);
+        }
+
+        string GetDownloadPreFileNameByTestTypeId(int typeId)
+        {
+            if (typeId == 0)
+                throw new ApplicationException("未知测试类型错误");
+            return "默认";
         }
     }
 }

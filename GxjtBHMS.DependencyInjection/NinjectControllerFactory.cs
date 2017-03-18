@@ -48,17 +48,6 @@ namespace GxjtBHMS.DependencyInjection
             _ninjectKernel.Bind<IConcreteStrainDatasEigenvalueQueryService>().To<ConcreteStrainDatasEigenvalueQueryService>();
             _ninjectKernel.Bind<IConcreteStrainDatasEigenValueDAL>().To<ConcreteStrainDatasEigenvalueDAL>();
 
-            _ninjectKernel.Bind<IHumidityDatasQueryService>().To<HumidityDatasQueryService>();
-            _ninjectKernel.Bind<IHumidityDatasDAL>().To<HumidityDatasDAL>();
-
-            _ninjectKernel.Bind<ITemperatureDatasQueryService>().To<TemperatureDatasQueryService>();
-            _ninjectKernel.Bind<ITemperatureDatasDAL>().To<TemperatureDatasDAL>();
-
-
-
-            _ninjectKernel.Bind<IDisplaymentDatasQueryService>().To<DisplaymentDatasQueryService>();
-            _ninjectKernel.Bind<IDisplaymentDatasDAL>().To<DisplaymentDatasDAL>();
-
             _ninjectKernel.Bind<IStrainDataRealTimeDisplayService>().To<StrainDataRealTimeDisplayService>();
             _ninjectKernel.Bind<IRealTimeStrainDatasDAL>().To<RealTimeStrainDatasDAL>();
             _ninjectKernel.Bind<IDisplaymentDataRealTimeDisplayService>().To<DisplaymentDataRealTimeDisplayService>();

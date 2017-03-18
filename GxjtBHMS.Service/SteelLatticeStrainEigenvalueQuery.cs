@@ -9,21 +9,21 @@ namespace GxjtBHMS.Service
 {
     class SteelLatticeStrainEigenvalueDatasQuery : MonitoringDatasEigenvalueQueryServiceBase
     {
-        readonly IConcreteStrainDatasEigenvalueQueryService _concreteStrainDatasService;
+        readonly ISteelLatticeStrainDatasEigenvalueQueryService _concreteStrainDatasService;
 
         public SteelLatticeStrainEigenvalueDatasQuery()
         {
             _concreteStrainDatasService = new NinjectFactory()
-                .GetInstance<IConcreteStrainDatasEigenvalueQueryService>();
+                .GetInstance<ISteelLatticeStrainDatasEigenvalueQueryService>();
         }
 
         public override ChartDatasResponse GetChartDatasBy(GetChartDatasRequest req)
         {
             return _concreteStrainDatasService.GetChartDatasBy(req);
         }
-    
 
-        
+
+
 
         public override PagedResponse GetPaginatorDatas(DatasQueryResultRequest req)
         {
@@ -32,7 +32,7 @@ namespace GxjtBHMS.Service
             try
             {
                 resp.TotalResultCount = _concreteStrainDatasService.GetTotalResultCountBy(req);
-                if (resp.TotalResultCount>0)
+                if (resp.TotalResultCount > 0)
                 {
                     resp.Succeed = true;
                 }
