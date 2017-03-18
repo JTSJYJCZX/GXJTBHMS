@@ -90,7 +90,7 @@ function initChart() {
                 labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
                 tickRenderer: $.jqplot.CanvasAxisTickRenderer,
                 tickOptions: {
-                    formatString: '%F %T', fontSize: '10pt', angle: -20
+                    formatString: '%F %T', fontSize: '10pt', angle: 40
                 },
                 showTicks: true,
                 rendererOptions: { drawBaseline: false },
@@ -217,7 +217,7 @@ function initChart() {
             labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
             tickRenderer: $.jqplot.CanvasAxisTickRenderer,
             tickOptions: {
-                formatString: '%F %T', fontSize: '10pt', angle: -20
+                formatString: '%F %T', fontSize: '10pt', angle: 40
             },
             showTicks: true,
             rendererOptions: { drawBaseline: false },
@@ -344,7 +344,7 @@ function initChart() {
             labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
             tickRenderer: $.jqplot.CanvasAxisTickRenderer,
             tickOptions: {
-                formatString: '%F %T', fontSize: '10pt', angle: -20
+                formatString: '%F %T', fontSize: '10pt', angle: 40
             },
             showTicks: true,
             rendererOptions: { drawBaseline: false },
