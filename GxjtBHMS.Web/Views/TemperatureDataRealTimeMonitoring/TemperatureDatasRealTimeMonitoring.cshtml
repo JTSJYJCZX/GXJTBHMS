@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "TemperatureDatasRealTimeMonitoring";
+}
+
+<div class="img-container">
+    <img src="~/Content/Images/温度.png" class="section img-responsive carousel-inner img-rounded" />
+    <span id="Te-BT" class="TH1">TH1</span>
+    <span id="Te-BB" class="TH2">TH2</span>
+    <span id="Te-F" class="TH3">TH3</span>
+</div>
+
+<script>
+    $(function () {
+        var numHub = $.connection.temperatureDatasRealTimeMonitoringHub;
+        numHub.client.realTimeTemperatureDatas = function (models) {
+            $.each(models, function (i, model) {
+                $("#" + model.PointsNumber).html(model.CurrentData);
+                $("#" + model.PointsNumber).css("color", model.WarningColor);
+            });
+        }
+        $.connection.hub.start().done(function () {
+            numHub.server.displayWarningTemperatureDatas(3);
+        })
+    });
+</script>
+
+
+@section scripts{
+    <script src="~/Scripts/jquery.signalR-2.2.1.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+}
+
+@Styles.Render("~/content/hotspotcss")

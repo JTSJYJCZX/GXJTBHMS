@@ -1,0 +1,26 @@
+﻿@model IEnumerable<GxjtBHMS.Service.ViewModels.DataQueryResult.StrainDatasModel>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td>测点编号</td>
+                <td>应变值</td>
+                <td>温度</td>
+                <td>时间</td>
+            </tr>
+        </thead>
+
+        @foreach (var m in Model)
+        {
+            @Html.Hidden("currentPageIndex", Request.Params["currentPageIndex"])
+            @Html.AntiForgeryToken()
+            <tr>
+                <td>@m.PointsNumber</td>
+                <td>@m.Strain</td>
+                <td>@m.Temperature</td>
+                <td>@m.Time</td>
+            </tr>
+        }
+    </table>
+</div>

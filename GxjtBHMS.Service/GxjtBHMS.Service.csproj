@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4EAD21BF-1CC9-4328-8C1D-A633DD61C653}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GxjtBHMS.Service</RootNamespace>
+    <AssemblyName>GxjtBHMS.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MathNet.Numerics, Version=3.13.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathNet.Numerics.3.13.1\lib\net40\MathNet.Numerics.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI, Version=2.2.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.2.1\lib\net40\NPOI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.2.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.2.1\lib\net40\NPOI.OOXML.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.2.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.2.1\lib\net40\NPOI.OpenXml4Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.2.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.2.1\lib\net40\NPOI.OpenXmlFormats.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutoMapper\Configuration.cs" />
+    <Compile Include="Implementations\OriginalValueDownLoad\ConcreteStrainDatasOriginalValueDownLoadService.cs" />
+    <Compile Include="Implementations\OriginalValueDownLoad\MonitorDatasOringinalValueDownLoadServiceBase.cs" />
+    <Compile Include="Implementations\OriginalValueDownLoad\StrainMonitorDatasOriginalValueDownLoadFileSystemService.cs" />
+    <Compile Include="Interfaces\IMonitorDatasOriginalValueDownLoadServiceBase.cs" />
+    <Compile Include="Messaging\MonitoringDatasDownLoad\DownLoadOriginalvalueDatasResponse.cs" />
+    <Compile Include="MonitoringDatasOriginalValueDownLoad\ConcreteStrainDatasOriginalValueDownLoad.cs" />
+    <Compile Include="Interfaces\IConcreteStrainDatasOriginalValueDownLoadService.cs" />
+    <Compile Include="MonitoringDatasOriginalValueDownLoad\MonitoringDatasOriginalvalueQueryServiceBase.cs" />
+    <Compile Include="MonitoringDatasOriginalValueDownLoadServiceFactory.cs" />
+    <Compile Include="WindLoadEigenvalueDatasQuery.cs" />
+    <Compile Include="HumidityEigenvalueDatasQuery.cs" />
+    <Compile Include="TemperatureEigenvalueDatasQuery.cs" />
+    <Compile Include="CableForceEigenvalueDatasQuery.cs" />
+    <Compile Include="DisplaymentEigenvalueDatasQuery.cs" />
+    <Compile Include="SteelLatticeStrainEigenvalueQuery.cs" />
+    <Compile Include="SteelArchStrainEigenvalueDatasQuery.cs" />
+    <Compile Include="ExtensionMethods\AdminUser\UserServiceExtension.cs" />
+    <Compile Include="ExtensionMethods\GetEnumDescription\EnumUnit.cs" />
+    <Compile Include="ExtensionMethods\MonitoringDatas\DatasQuery\CableForceDatasQueryServiceExtension.cs" />
+    <Compile Include="ExtensionMethods\MonitoringDatas\DatasQuery\DisplaymentDatasQueryServiceExtension.cs" />
+    <Compile Include="ExtensionMethods\MonitoringDatas\DatasQuery\TemperatureDatasQueryServiceExtension.cs" />
+    <Compile Include="ExtensionMethods\MonitoringDatas\DatasQuery\HumidityDatasQueryServiceExtension.cs" />
+    <Compile Include="ExtensionMethods\MonitoringDatas\DatasQuery\StrainDatasQueryServiceExtension.cs" />
+    <Compile Include="ExtensionMethods\MonitoringDatas\MonitoringPointsNumber\MonitoringPointsNumberExtension.cs" />
+    <Compile Include="ExtensionMethods\MonitoringDatas\MonitoringPointsPosition\MonitoringPointsPositionExtension.cs" />
+    <Compile Include="ExtensionMethods\MonitoringDatas\TestTypes\MonitoringTestTypeExtension.cs" />
+    <Compile Include="Implementations\HumidityDataRealTimeDisplayService.cs" />
+    <Compile Include="Implementations\TemperatureDatesQueryService.cs" />
+    <Compile Include="Implementations\TemperatureMonitorDataQueryStatisticService.cs" />
+    <Compile Include="Implementations\TemperatureMonitorDatasQueryChartService.cs" />
+    <Compile Include="Implementations\TemperatureMonitorDatasQueryFileSystemService.cs" />
+    <Compile Include="Interfaces\IHumidityDataRealTimeDisplayService.cs" />
+    <Compile Include="Interfaces\ITempertureDatasQueryService.cs" />
+    <Compile Include="Messaging\MonitoringDatas\DatasQuery\TemperatureDatasQueryResultResponse.cs" />
+    <Compile Include="Implementations\CableForceDataRealTimeDisplayService.cs" />
+    <Compile Include="Implementations\CableForceDatasQueryService.cs" />
+    <Compile Include="Implementations\HumidityMonitorDataQueryStatisticService.cs" />
+    <Compile Include="Implementations\CableForceMonitorDataQueryStatisticService.cs" />
+    <Compile Include="Implementations\HumidityMonitorDatasQueryChartService.cs" />
+    <Compile Include="Implementations\HumidityMonitorDatasQueryFileSystemService.cs" />
+    <Compile Include="Implementations\HumidityDatesQueryService.cs" />
+    <Compile Include="Implementations\DisplaymentDataRealTimeDisplayService.cs" />
+    <Compile Include="Implementations\DisplaymentMonitorDataQueryStatisticService.cs" />
+    <Compile Include="Implementations\CableForceMonitorDatasQueryChartService.cs" />
+    <Compile Include="Implementations\DisplaymentMonitorDatasQueryChartService.cs" />
+    <Compile Include="Implementations\CableForceMonitorDatasQueryFileSystemService.cs" />
+    <Compile Include="Implementations\DisplaymentMonitorDatasQueryFileSystemService.cs" />
+    <Compile Include="Implementations\TemperatureDataRealTimeDisplayService.cs" />
+    <Compile Include="Interfaces\ICableForceDataRealTimeDisplayService.cs" />
+    <Compile Include="Interfaces\ICableForceDatasQueryService.cs" />
+    <Compile Include="Interfaces\IDisplaymentDataRealTimeDisplayService.cs" />
+    <Compile Include="Interfaces\IMonitorDataQueryStatisticService.cs" />
+    <Compile Include="Interfaces\IMonitorDatasQueryFileSystemService.cs" />
+    <Compile Include="Implementations\StrainMonitorDataQueryStatisticService.cs" />
+    <Compile Include="Implementations\ConcreteStrainMonitorDatasEigenValueQueryFileSystemService.cs" />
+    <Compile Include="Implementations\MonitorDatasQueryServiceBase.cs" />
+    <Compile Include="Implementations\MonitoringPointsNumberService.cs" />
+    <Compile Include="Implementations\MonitoringPointsPositionService.cs" />
+    <Compile Include="Implementations\MonitoringTestTypeService.cs" />
+    <Compile Include="Implementations\DisplaymentDatasQueryService.cs" />
+    <Compile Include="Implementations\StrainDataRealTimeDisplayService.cs" />
+    <Compile Include="Implementations\ConcreteStrainDatasEigenvalueQueryService.cs" />
+    <Compile Include="Implementations\StrainMonitorDatasQueryChartService.cs" />
+    <Compile Include="Interfaces\IMonitorDatasQueryChartService.cs" />
+    <Compile Include="Interfaces\IDisplaymentDatasQueryService.cs" />
+    <Compile Include="Interfaces\IMonitorDatasEigenlavueQueryServiceBase.cs" />
+    <Compile Include="Implementations\ThresholdValueSettingService.cs" />
+    <Compile Include="Interfaces\IMonitoringPointsNumberService.cs" />
+    <Compile Include="Interfaces\IMonitoringPointsPositionService.cs" />
+    <Compile Include="Interfaces\IMonitoringTestTypeService.cs" />
+    <Compile Include="Interfaces\IHumidityDatasQueryService.cs" />
+    <Compile Include="Interfaces\IStrainDataRealTimeDisplayService.cs" />
+    <Compile Include="Interfaces\IStrainDatasQueryService.cs" />
+    <Compile Include="Interfaces\ITemperatureDataRealTimeDisplayService.cs" />
+    <Compile Include="Interfaces\IThresholdValueSettingService.cs" />
+    <Compile Include="Messaging\AdminUser\EditUserRequest.cs" />
+    <Compile Include="Messaging\AdminUser\SearchUserResponse.cs" />
+    <Compile Include="Messaging\AdminUser\UsersSearchRequest.cs" />
+    <Compile Include="Messaging\MonitoringDatasDownLoad\DownLoadDatasResponse.cs" />
+    <Compile Include="Messaging\MonitoringDatas\DatasQuery\DisplaymentDatasQueryResultResponse.cs" />
+    <Compile Include="Messaging\MonitoringDatas\DatasQuery\DatasQueryResultRequest.cs" />
+    <Compile Include="Messaging\MonitoringDatas\DatasQuery\DatasQueryResultRequestBase.cs" />
+    <Compile Include="Messaging\MonitoringDatas\DatasChart\GetChartDatasRequest.cs" />
+    <Compile Include="Messaging\MonitoringDatas\DatasQuery\GetPagedDatasResponse.cs" />
+    <Compile Include="Messaging\MonitoringDatas\DatasQuery\QueryAllMonitoringMonitoringPointsNumberResponse.cs" />
+    <Compile Include="Messaging\MonitoringDatas\DatasQuery\QueryAllMonitoringMonitoringPointsPositionResponse.cs" />
+    <Compile Include="Messaging\MonitoringDatas\DatasQuery\QueryAllMonitoringTestTypesResponse.cs" />
+    <Compile Include="Messaging\MonitoringDatas\DatasQuery\QueryMonitoringMonitoringPointsPositionsByTestTypeIdResponse.cs" />
+    <Compile Include="Messaging\MonitoringDatas\DatasQuery\QueryMonitoringPointsNumberByPointsPositionIdResponse.cs" />
+    <Compile Include="Messaging\MonitoringDatas\DatasChart\ChartDatasResponse.cs" />
+    <Compile Include="Messaging\MonitoringDatas\DatasQuery\HumidityDatasQueryResultResponse.cs" />
+    <Compile Include="Messaging\MonitoringDatas\DatasQuery\StrainDatasQueryResultResponse.cs" />
+    <Compile Include="Messaging\MonitoringDatas\DatasStatistics\DisplaymentDatasStatisticsResponse.cs" />
+    <Compile Include="Messaging\MonitoringDatas\DatasStatistics\StrainDatasStatisticsResponse.cs" />
+    <Compile Include="Messaging\PagedResponse.cs" />
+    <Compile Include="Messaging\ResponseBase.cs" />
+    <Compile Include="Messaging\ThresholdValueSetting\PointsNumberSearchRequest.cs" />
+    <Compile Include="Messaging\ThresholdValueSetting\StrainThresholdValueResponse.cs" />
+    <Compile Include="Messaging\ThresholdValueSetting\StrainThresholdValueSettingRequest.cs" />
+    <Compile Include="Messaging\User\GetUsersResponse.cs" />
+    <Compile Include="Messaging\User\LoginRequest.cs" />
+    <Compile Include="Messaging\User\LoginResponse.cs" />
+    <Compile Include="Messaging\User\ModifyPasswordResponse.cs" />
+    <Compile Include="Messaging\User\ModifyPwdRequest.cs" />
+    <Compile Include="Messaging\User\RegUserResponse.cs" />
+    <Compile Include="Implementations\AdminUserService.cs" />
+    <Compile Include="Implementations\UserService.cs" />
+    <Compile Include="Interfaces\IAdminUserService.cs" />
+    <Compile Include="Interfaces\IUserService.cs" />
+    <Compile Include="Messaging\User\TestTypeResponse.cs" />
+    <Compile Include="Messaging\User\TestTypeRequest.cs" />
+    <Compile Include="MonitoringDatasEigenvalueQueryServiceBase.cs" />
+    <Compile Include="MonitoringDatasEigenvalueQueryServiceFactory.cs" />
+    <Compile Include="NinjectFactory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceBase.cs" />
+    <Compile Include="ServiceConstant.cs" />
+    <Compile Include="ConcreteStrainEigenvalueDatasQuery.cs" />
+    <Compile Include="ViewModels\DataQueryResult\CableForceDatasModel.cs" />
+    <Compile Include="ViewModels\DataQueryResult\TemperatureDatasMode.cs" />
+    <Compile Include="ViewModels\DataQueryResult\ResultStatisticsModel.cs" />
+    <Compile Include="ViewModels\DataQueryResult\DisplaymentDatasModel.cs" />
+    <Compile Include="ViewModels\DataQueryResult\HumidityDatasModel.cs" />
+    <Compile Include="ViewModels\DataQueryResult\StrainDatasModel.cs" />
+    <Compile Include="ViewModels\MonitoringDatas\MonitoringDatasCharts\ChartDataModel.cs" />
+    <Compile Include="ViewModels\MonitoringDatas\MonitoringDatasCharts\ChartGroupDataModel.cs" />
+    <Compile Include="ViewModels\MonitoringDatas\MonitoringPointsNumber\MonitoringPointsNumberViewModel.cs" />
+    <Compile Include="ViewModels\MonitoringDatas\MonitoringPointsPosition\MonitoringPointsPositionViewModel.cs" />
+    <Compile Include="ViewModels\MonitoringDatas\TestType\MonitoringTestTypeViewModel.cs" />
+    <Compile Include="ViewModels\SelectListItemModel.cs" />
+    <Compile Include="ViewModels\RealTimeDatasDisplay\IncludeSectionWarningColorDataModel.cs" />
+    <Compile Include="ViewModels\RealTimeDatasDisplay\RealTimeDataModel.cs" />
+    <Compile Include="ViewModels\RealTimeDatasDisplay\RealTimeWarningDataModel.cs" />
+    <Compile Include="ViewModels\RealTimeDatasDisplay\WarningGrade.cs" />
+    <Compile Include="ViewModels\TestTypeView.cs" />
+    <Compile Include="ViewModels\UsersInfoView.cs" />
+    <Compile Include="ViewModels\UserStateView.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GxjtBHMS.IDAL\GxjtBHMS.IDAL.csproj">
+      <Project>{73d55ef6-a4ea-4f09-a5a6-bbd40c07cdb1}</Project>
+      <Name>GxjtBHMS.IDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GxjtBHMS.Infrastructure\GxjtBHMS.Infrastructure.csproj">
+      <Project>{034a8f2b-54a4-4c49-8930-c3d064b132f7}</Project>
+      <Name>GxjtBHMS.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GxjtBHMS.Models\GxjtBHMS.Models.csproj">
+      <Project>{529ba514-8969-4abb-815c-b55f1f3cb2c1}</Project>
+      <Name>GxjtBHMS.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GxjtBHMS.SqlServerDAL\GxjtBHMS.SqlServerDAL.csproj">
+      <Project>{53DFE27C-54C8-40D5-96FA-86C5244E0B8F}</Project>
+      <Name>GxjtBHMS.SqlServerDAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AutoMapper\Profiles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

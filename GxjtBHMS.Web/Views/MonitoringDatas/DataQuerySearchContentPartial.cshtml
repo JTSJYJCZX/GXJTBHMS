@@ -1,0 +1,29 @@
+﻿@model PaginatorModel
+<div id="message"><span style='color:@TempData[WebConstants.MessageColor]'>@TempData[WebConstants.MessageKey]</span></div>
+<!--图标显示开始-->
+
+<div id="dataQuery" >
+    <input type="button" id="OriginalValueSaveAs" value="原始数据下载" class="btn btn-default" />
+    <input type="button" id="EigenvalueSaveAs" value="特征值数据下载" class="btn btn-default" />
+</div>
+<hr />
+<div id="chart1" style="width:100%"></div>
+<hr />
+<hr />
+<div id="chart2" style="width:100%"></div>
+<hr />
+<hr />
+<div id="chart3" style="width:100%"></div>
+<!--图标显示结束-->
+<hr />
+
+
+
+
+<script>
+    $(function(){
+        initChart();
+    });
+  
+</script>
+<script src="~/Scripts/dataQuery-SearchContentPartial-website.js"></script>

@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "DisplacementDatasRealTimeMonitoring";
+}
+
+<div class="hotspotContainer" id="hotspotContainer1">
+    <div class="popover1" data-easein="cardInTop" data-easeout="cardOutTop" id="pop1">
+        <div class="popover-inner">
+            <h3 class="popover-title">A截面位移数据实时显示</h3>
+            <div class="img-container">
+                <img src="~/Content/Images/断面图.png" class="section img-responsive carousel-inner img-rounded" />
+                <span id="DI-A1" class="A1">A1</span>
+                <span id="DI-A2" class="A2">A2</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="popover1" data-easein="cardInTop" data-easeout="cardOutTop" id="pop2">
+        <div class="popover-inner">
+            <h3 class="popover-title">B截面位移数据实时显示</h3>
+            <div class="img-container">
+                <img src="~/Content/Images/断面图.png" class="section img-responsive carousel-inner  img-rounded" />
+                <span id="DI-B1" class="A1">B1</span>
+                <span id="DI-B2" class="A2">B2</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="popover1" data-easein="cardInTop" data-easeout="cardOutTop" id="pop3">
+        <div class="popover-inner">
+            <h3 class="popover-title">C截面位移数据实时显示</h3>
+            <div class="img-container">
+                <img src="~/Content/Images/断面图.png" class="section img-responsive carousel-inner img-rounded" />
+                <span id="DI-C1" class="A1">C1</span>
+                <span id="DI-C2" class="A2">C2</span>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="popover1" data-easein="cardInTop" data-easeout="cardOutTop" id="pop6">
+        <div class="popover-inner">
+            <h3 class="popover-title">F截面位移数据实时显示</h3>
+            <div class="img-container">
+                <img src="~/Content/Images/断面图.png" class="section img-responsive carousel-inner img-rounded" />
+                <span id="DI-F1" class="A1">F1</span>
+                <span id="DI-F2" class="A2">F2</span>
+            </div>
+        </div>
+    </div>
+
+    <span class="info-icon info-icon1" id="section0" data-target="pop1"> A截面 </span>
+    <span class="info-icon info-icon2 " id="section1" data-target="pop2"> B截面 </span>
+    <span class="info-icon info-icon3 " id="section2" data-target="pop3"> C截面 </span>
+    <span class="info-icon info-icon6 " id="section3" data-target="pop6"> F截面 </span>
+
+    <img src="~/Content/Images/应变截面示意图.png" alt="" class="largeimage" id="image2" />
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function ($) {
+        var _pop2 = $('#hotspotContainer1').hotSpot({
+            slideshow: false,
+            triggerBy: 'click',
+            autoHide: false
+        });
+        $('#image2').on('click', function (event) {
+            _pop2.hideCurrentPop();
+        });
+
+    });
+</script>
+
+<script>
+    $(function () {
+        var numHub = $.connection.displacementDatasRealTimeMonitoringHub;
+        numHub.client.realTimeDisplayDatas = function (models) {
+            $.each(models, function (i, model) {
+                $.each(model.WarningRealTimeData, function (j, DisplaymentData) {
+                    $("#" + DisplaymentData.PointsNumber).html(DisplaymentData.CurrentData);
+                    $("#" + DisplaymentData.PointsNumber).css("color", DisplaymentData.WarningColor);
+                });
+                $("#" + "section" + i).css("color", model.SectionWarningColor);
+            });
+        }
+        $.connection.hub.start().done(function () {
+            numHub.server.displayWarningDisplaymentDatas(2);
+        })
+    });
+</script>
+
+
+@section scripts{
+    <script src="~/Scripts/jquery.signalR-2.2.1.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+}
+
+@Styles.Render("~/content/hotspotcss")
+@Scripts.Render("~/bundles/hotspot")
+
+
+
+

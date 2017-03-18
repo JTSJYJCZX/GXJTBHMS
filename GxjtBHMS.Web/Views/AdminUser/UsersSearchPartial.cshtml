@@ -1,0 +1,6 @@
+﻿@model UsersSearchConditionView
+<div>
+    <span>用户名：</span> <span>@Html.TextBoxFor(m => m.ContainsUserName, new { id = "ContainsUserNameID" })</span>
+    <span>用户状态：</span><span>@Html.DropDownListFor(m => m.SearchUserStateId, (IEnumerable<SelectListItem>)ViewData[WebConstants.SearchBarUserStateDropDownListDataSourceKey], new { id = "UserStateID" })</span>
+    <input type="button" id="btnQuery" value="查询" />
+</div>

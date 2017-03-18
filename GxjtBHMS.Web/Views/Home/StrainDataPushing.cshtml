@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "StrainDataPushing";
+}
+
+<h2>应变数据推送测试</h2>
+
+<div>
+    <span id="showtime" style="color:red;background-color:aquamarine;font-size:24px;"></span>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/sigalR")
+    @Scripts.Render("~/bundles/htmlencode")
+    @*虚拟hubs脚本无法事前绑定*@
+    <script src="~/signalr/hubs"></script>
+    <script src="~/Scripts/strainDataPushing.website.js"></script>
+}

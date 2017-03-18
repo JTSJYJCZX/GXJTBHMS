@@ -1,0 +1,112 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GxjtBHMS.Tests.ControllerTests", "GxjtBHMS.Tests\GxjtBHMS.Tests.ControllerTests.csproj", "{36DB7802-FCB5-40D2-BFFD-AB4F73275CCD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GxjtBHMS.Service", "GxjtBHMS.Service\GxjtBHMS.Service.csproj", "{4EAD21BF-1CC9-4328-8C1D-A633DD61C653}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GxjtBHMS.IDAL", "GxjtBHMS.IDAL\GxjtBHMS.IDAL.csproj", "{73D55EF6-A4EA-4F09-A5A6-BBD40C07CDB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GxjtBHMS.SqlServerDAL", "GxjtBHMS.SqlServerDAL\GxjtBHMS.SqlServerDAL.csproj", "{53DFE27C-54C8-40D5-96FA-86C5244E0B8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GxjtBHMS.Infrastructure", "GxjtBHMS.Infrastructure\GxjtBHMS.Infrastructure.csproj", "{034A8F2B-54A4-4C49-8930-C3D064B132F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GxjtBHMS.Models", "GxjtBHMS.Models\GxjtBHMS.Models.csproj", "{529BA514-8969-4ABB-815C-B55F1F3CB2C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GxjtBHMS.Tests.UnitTests", "GxjtBHMS.Tests.UnitTests\GxjtBHMS.Tests.UnitTests.csproj", "{ABA62B4B-5BE3-4343-8956-6E2C495F1539}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GxjtBHMS.Tests.IntegrationTests", "GxjtBHMS.Tests.IntegrationTests\GxjtBHMS.Tests.IntegrationTests.csproj", "{A50B67DB-1BE0-4677-A40B-B62C247AD845}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GxjtBHMS.Web", "GxjtBHMS.Web\GxjtBHMS.Web.csproj", "{B5B5A536-6D2C-4EEA-96FF-43BC2D2EDFFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GxjtBHMS.DependencyInjection", "GxjtBHMS.DependencyInjection\GxjtBHMS.DependencyInjection.csproj", "{483EBFB6-9E8E-46B1-BE8E-F170AD0C541E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36DB7802-FCB5-40D2-BFFD-AB4F73275CCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36DB7802-FCB5-40D2-BFFD-AB4F73275CCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36DB7802-FCB5-40D2-BFFD-AB4F73275CCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36DB7802-FCB5-40D2-BFFD-AB4F73275CCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EAD21BF-1CC9-4328-8C1D-A633DD61C653}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EAD21BF-1CC9-4328-8C1D-A633DD61C653}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EAD21BF-1CC9-4328-8C1D-A633DD61C653}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EAD21BF-1CC9-4328-8C1D-A633DD61C653}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73D55EF6-A4EA-4F09-A5A6-BBD40C07CDB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73D55EF6-A4EA-4F09-A5A6-BBD40C07CDB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73D55EF6-A4EA-4F09-A5A6-BBD40C07CDB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73D55EF6-A4EA-4F09-A5A6-BBD40C07CDB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53DFE27C-54C8-40D5-96FA-86C5244E0B8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53DFE27C-54C8-40D5-96FA-86C5244E0B8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53DFE27C-54C8-40D5-96FA-86C5244E0B8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53DFE27C-54C8-40D5-96FA-86C5244E0B8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{034A8F2B-54A4-4C49-8930-C3D064B132F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{034A8F2B-54A4-4C49-8930-C3D064B132F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{034A8F2B-54A4-4C49-8930-C3D064B132F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{034A8F2B-54A4-4C49-8930-C3D064B132F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{529BA514-8969-4ABB-815C-B55F1F3CB2C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{529BA514-8969-4ABB-815C-B55F1F3CB2C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{529BA514-8969-4ABB-815C-B55F1F3CB2C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{529BA514-8969-4ABB-815C-B55F1F3CB2C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABA62B4B-5BE3-4343-8956-6E2C495F1539}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABA62B4B-5BE3-4343-8956-6E2C495F1539}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABA62B4B-5BE3-4343-8956-6E2C495F1539}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABA62B4B-5BE3-4343-8956-6E2C495F1539}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A50B67DB-1BE0-4677-A40B-B62C247AD845}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A50B67DB-1BE0-4677-A40B-B62C247AD845}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A50B67DB-1BE0-4677-A40B-B62C247AD845}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A50B67DB-1BE0-4677-A40B-B62C247AD845}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5B5A536-6D2C-4EEA-96FF-43BC2D2EDFFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5B5A536-6D2C-4EEA-96FF-43BC2D2EDFFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5B5A536-6D2C-4EEA-96FF-43BC2D2EDFFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5B5A536-6D2C-4EEA-96FF-43BC2D2EDFFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{483EBFB6-9E8E-46B1-BE8E-F170AD0C541E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{483EBFB6-9E8E-46B1-BE8E-F170AD0C541E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{483EBFB6-9E8E-46B1-BE8E-F170AD0C541E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{483EBFB6-9E8E-46B1-BE8E-F170AD0C541E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 11
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://jtjc.chinacloudapp.cn:8888/tfs/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = GxjtBHMS.DependencyInjection\\GxjtBHMS.DependencyInjection.csproj
+		SccProjectName1 = GxjtBHMS.DependencyInjection
+		SccLocalPath1 = GxjtBHMS.DependencyInjection
+		SccProjectUniqueName2 = GxjtBHMS.IDAL\\GxjtBHMS.IDAL.csproj
+		SccProjectName2 = GxjtBHMS.IDAL
+		SccLocalPath2 = GxjtBHMS.IDAL
+		SccProjectUniqueName3 = GxjtBHMS.Infrastructure\\GxjtBHMS.Infrastructure.csproj
+		SccProjectName3 = GxjtBHMS.Infrastructure
+		SccLocalPath3 = GxjtBHMS.Infrastructure
+		SccProjectUniqueName4 = GxjtBHMS.Models\\GxjtBHMS.Models.csproj
+		SccProjectName4 = GxjtBHMS.Models
+		SccLocalPath4 = GxjtBHMS.Models
+		SccProjectUniqueName5 = GxjtBHMS.Service\\GxjtBHMS.Service.csproj
+		SccProjectName5 = GxjtBHMS.Service
+		SccLocalPath5 = GxjtBHMS.Service
+		SccProjectUniqueName6 = GxjtBHMS.SqlServerDAL\\GxjtBHMS.SqlServerDAL.csproj
+		SccProjectName6 = GxjtBHMS.SqlServerDAL
+		SccLocalPath6 = GxjtBHMS.SqlServerDAL
+		SccProjectUniqueName7 = GxjtBHMS.Tests.IntegrationTests\\GxjtBHMS.Tests.IntegrationTests.csproj
+		SccProjectName7 = GxjtBHMS.Tests.IntegrationTests
+		SccLocalPath7 = GxjtBHMS.Tests.IntegrationTests
+		SccProjectUniqueName8 = GxjtBHMS.Tests.UnitTests\\GxjtBHMS.Tests.UnitTests.csproj
+		SccProjectName8 = GxjtBHMS.Tests.UnitTests
+		SccLocalPath8 = GxjtBHMS.Tests.UnitTests
+		SccProjectUniqueName9 = GxjtBHMS.Tests\\GxjtBHMS.Tests.ControllerTests.csproj
+		SccProjectName9 = GxjtBHMS.Tests
+		SccLocalPath9 = GxjtBHMS.Tests
+		SccProjectUniqueName10 = GxjtBHMS.Web\\GxjtBHMS.Web.csproj
+		SccProjectName10 = GxjtBHMS.Web
+		SccLocalPath10 = GxjtBHMS.Web
+	EndGlobalSection
+EndGlobal

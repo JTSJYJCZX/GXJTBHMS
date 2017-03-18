@@ -1,0 +1,31 @@
+﻿@model GxjtBHMS.Web.ViewModels.ThresholdValueSetting.ThresholdValueSettingView
+<div class="table-responsive">
+    <div id="message"></div>
+    <table class="table table-striped">
+        <thead>
+            <tr class="text-center">
+                <td>测点编号</td>
+                <td>正标准值</td>
+                <td>正一级阈值</td>
+                <td>正二级阈值</td>
+                <td>正三级阈值</td>
+                <td>负标准值</td>
+                <td>负一级阈值</td>
+                <td>负二级阈值</td>
+                <td>负三级阈值</td>
+                <td>保存</td>
+                <td>清除</td>
+            </tr>
+        </thead>
+        @foreach (var item in Model.StrainThresholdValues)
+        {
+            @Html.Partial("StrainThresholdValuePartial", item)
+        }
+    </table>   
+</div>
+<script>
+    $(function(){
+        jqPaginatorSetting('#paginationNav',@Model.PaginatorModel.TotalPages,@Model.PaginatorModel.CurrentPageIndex);
+    });
+</script>
+

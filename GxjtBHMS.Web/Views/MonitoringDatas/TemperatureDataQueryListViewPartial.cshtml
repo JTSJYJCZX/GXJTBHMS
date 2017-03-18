@@ -1,0 +1,23 @@
+﻿@model IEnumerable<GxjtBHMS.Service.ViewModels.DataQueryResult.TemperatureDatasModel>
+
+<div class="table-responsive">   
+    <table class="table table-striped">
+        <thead>
+            <tr class="text-center">
+                <td>测点编号</td>
+                <td>温度（℃）</td>
+                <td>时间</td>
+            </tr>
+        </thead>
+
+        @foreach (var m in Model)
+        {
+            <tr class="text-center">
+                <td>@m.PointsNumber</td>
+                <td>@m.Temperature</td>
+                <td>@m.Time</td>
+            </tr>
+        }
+    </table>
+</div>
+@Html.AntiForgeryToken()

@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "CableForceDatasRealTimeMonitoring";
+}
+
+
+<div class="img-container">
+    <img src="~/Content/Images/吊杆.png" class="section img-responsive carousel-inner img-rounded" />
+    <span id="CA-S1" class="CAS1">CAS1</span>
+    <span id="CA-S2" class="CAS2">CAS2</span>
+    <span id="CA-S3" class="CAS3">CAS3</span>
+    <span id="CA-S4" class="CAS4">CAS4</span>
+    <span id="CA-S5" class="CAS5">CAS5</span>
+    <span id="CA-X1" class="CAX1">CAX1</span>
+    <span id="CA-X2" class="CAX2">CAX2</span>
+    <span id="CA-X3" class="CAX3">CAX3</span>
+    <span id="CA-X4" class="CAX4">CAX4</span>
+    <span id="CA-X5" class="CAX5">CAX5</span>
+</div>
+
+
+<script>
+    $(function () {
+        var numHub = $.connection.cableForceDatasRealTimeMonitoringHub;
+        numHub.client.realTimeDisplayDatas = function (models) {
+            $.each(models, function (i, model) {
+                $("#" + model.PointsNumber).html(model.CurrentData);
+                $("#" + model.PointsNumber).css("color", model.WarningColor);
+            });
+        }
+        $.connection.hub.start().done(function () {
+            numHub.server.displayWarningCableForceDatas(4);
+        })
+    });
+</script>
+
+
+@section scripts{
+    <script src="~/Scripts/jquery.signalR-2.2.1.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+}
+
+@Styles.Render("~/content/hotspotcss")
+
+
+

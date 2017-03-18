@@ -1,0 +1,1047 @@
+
+a, a:visited {
+    color: #0088cc;
+    text-decoration: none;
+}
+
+    a:hover {
+        color: #005580;
+        text-decoration: underline;
+    }
+
+
+
+.hotspotContainer {
+    position: relative;
+    margin: 0 auto 10px auto;
+    padding: 0;
+    text-align: center;
+}
+
+
+.largeimage {
+    position: relative;
+    max-width: 100%;
+    height: auto;
+    z-index: 1000;
+}
+
+span.info-icon {
+    max-width: 100%;
+    height: auto;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+img.info-icon {
+    max-width: 100%;
+    height: auto;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+#hotspotContainer1 .info-icon1 {
+    position: absolute;
+    top: 21%;
+    left: 15%;
+}
+
+#hotspotContainer1 .info-icon2 {
+    position: absolute;
+    top: 60%;
+    left: 22%;
+}
+
+#hotspotContainer1 .info-icon3 {
+    position: absolute;
+    top: 60%;
+    left: 31%;
+}
+
+#hotspotContainer1 .info-icon4 {
+    position: absolute;
+    top: 20%;
+    left: 37%;
+}
+
+#hotspotContainer1 .info-icon5 {
+    position: absolute;
+    top: 15%;
+    left: 47%;
+}
+
+#hotspotContainer1 .info-icon6 {
+    position: absolute;
+    top: 21%;
+    left: 58%;
+}
+
+#hotspotContainer1 .info-icon7 {
+    position: absolute;
+    top: 60%;
+    left: 66%;
+}
+
+#hotspotContainer1 .info-icon8 {
+    position: absolute;
+    top: 60%;
+    left: 76%;
+}
+
+#hotspotContainer1 .info-icon9 {
+    position: absolute;
+    top: 22%;
+    left: 82%;
+}
+
+.popover1 {
+    position: absolute;
+    z-index: 1010;
+    opacity: 0;
+    /*设置 div 元素的不透明级别,从 0.0 （完全透明）到 1.0（完全不透明）*/
+    display: none;
+    /*此元素不会被显示*/
+    width: 100%;
+    height: auto;
+    padding: 1px;
+    text-align: center;
+    /*此元素左对齐*/
+    white-space: normal;
+    /*空白会被浏览器忽略。*/
+    background-color: #808080;
+    /*border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.2);*/
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    /*用这个属性能实现圆角边框的效果*/
+    /*-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);*/
+    /*向框添加一个或多个阴影*/
+    /*-webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;*/
+    /*规定背景的绘制区域：背景被裁剪到内边距框。*/
+}
+
+
+#pop1 {
+    position: absolute;
+    top: 99%;
+    max-width: 100%;
+    height: auto;
+}
+
+#pop2 {
+    position: absolute;
+    top: 99%;
+    max-width: 100%;
+    height: auto;
+}
+
+#pop3 {
+    position: absolute;
+    top: 99%;
+    max-width: 100%;
+    height: auto;
+}
+
+#pop4 {
+    position: absolute;
+    top: 99%;
+    max-width: 100%;
+    height: auto;
+}
+
+#pop5 {
+    position: absolute;
+    top: 99%;
+    max-width: 100%;
+    height: auto;
+}
+
+#pop6 {
+    position: absolute;
+    top: 99%;
+    max-width: 100%;
+    height: auto;
+}
+
+#pop7 {
+    position: absolute;
+    top: 99%;
+    max-width: 100%;
+    height: auto;
+}
+
+#pop8 {
+    position: absolute;
+    top: 99%;
+    max-width: 100%;
+    height: auto;
+}
+
+#pop9 {
+    position: absolute;
+    top: 99%;
+    max-width: 100%;
+    height: auto;
+}
+
+/*.popover.top {
+    margin-top: -10px;
+}
+
+.popover.right {
+    margin-left: 10px;
+}
+
+.popover.bottom {
+    margin-top: 10px;
+}
+
+.popover.left {
+    margin-left: -10px;
+}*/
+
+/*控制各个弹框中标题的样式*/
+.popover-title {
+    padding: 8px 14px;
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 18px;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #ebebeb;
+    -webkit-border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
+}
+/*控制各个弹框中内容的样式*/
+.popover-content {
+    height: 290px;
+}
+
+/*设置弹框指示箭头（弹框边的三角形）样式*/
+/*.popover .arrow,
+.popover .arrow:after {
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+}*/
+
+/*.popover .arrow {
+    border-width: 11px;
+}
+
+    .popover .arrow:after {
+        border-width: 10px;
+        content: "";
+    }
+
+.popover.top .arrow {
+    bottom: -11px;
+    left: 50%;
+    margin-left: -11px;
+    border-top-color: #0088cc;
+    border-top-color: #0088cc;
+    border-bottom-width: 0;
+}
+
+    .popover.top .arrow:after {
+        bottom: 1px;
+        margin-left: -10px;
+        border-top-color: #0088cc;
+        border-bottom-width: 0;
+    }
+
+.popover.right .arrow {
+    top: 50%;
+    left: -11px;
+    margin-top: -11px;
+    border-right-color: #0088cc;
+    border-right-color: #0088cc;
+    border-left-width: 0;
+}
+
+    .popover.right .arrow:after {
+        bottom: -10px;
+        left: 1px;
+        border-right-color: #0088cc;
+        border-left-width: 0;
+    }
+
+.popover.bottom .arrow {
+    top: -11px;
+    left: 50%;
+    margin-left: -11px;
+    border-bottom-color: #999;
+    border-bottom-color: #0088cc;
+    border-top-width: 0;
+}
+
+    .popover.bottom .arrow:after {
+        top: 1px;
+        margin-left: -10px;
+        border-bottom-color: #0088cc;
+        border-top-width: 0;
+    }
+
+.popover.left .arrow {
+    top: 50%;
+    right: -11px;
+    margin-top: -11px;
+    border-left-color: #999;
+    border-left-color: #0088cc;
+    border-right-width: 0;
+}
+
+    .popover.left .arrow:after {
+        right: 1px;
+        bottom: -10px;
+        border-left-color: #0088cc;
+        border-right-width: 0;
+    }*/
+
+/*定义动画样式*/
+.animated {
+    -webkit-animation-duration: 0.6s;
+    -moz-animation-duration: 0.6s;
+    -o-animation-duration: 0.6s;
+    animation-duration: 0.6s;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    -o-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+/*设置上下左右弹框的进入和飞出样式*/
+@-webkit-keyframes cardInTop {
+    0% {
+        -webkit-transform-origin: 50% 100% 0px;
+        -webkit-transform: perspective(500px) rotateX(-90deg) scale(0.5, 0.5);
+    }
+
+    100% {
+        -webkit-transform-origin: 50% 100% 0px;
+        -webkit-transform: perspective(500px) rotateX(0deg) scale(1, 1);
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes cardInTop {
+    0% {
+        -moz-transform-origin: 50% 100% 0px;
+        -moz-transform: perspective(500px) rotateX(-90deg) scale(0.5, 0.5);
+    }
+
+    100% {
+        -moz-transform-origin: 50% 100% 0px;
+        -moz-transform: perspective(500px) rotateX(0deg) scale(1, 1);
+        opacity: 1;
+    }
+}
+
+@-o-keyframes cardInTop {
+    0% {
+        -o-transform-origin: 50% 100% 0px;
+        -o-transform: perspective(500px) rotateX(-90deg) scale(0.5, 0.5);
+    }
+
+    100% {
+        -o-transform-origin: 50% 100% 0px;
+        -o-transform: perspective(500px) rotateX(0deg) scale(1, 1);
+        opacity: 1;
+    }
+}
+
+@keyframes cardInTop {
+    0% {
+        transform-origin: 50% 100% 0px;
+        transform: perspective(500px) rotateX(-90deg) scale(0.5, 0.5);
+    }
+
+    100% {
+        transform-origin: 50% 100% 0px;
+        transform: perspective(500px) rotateX(0deg) scale(1, 1);
+        opacity: 1;
+    }
+}
+
+.cardInTop {
+    -webkit-animation-name: cardInTop;
+    -moz-animation-name: cardInTop;
+    -o-animation-name: cardInTop;
+    animation-name: cardInTop;
+}
+
+@-webkit-keyframes cardInBottom {
+    0% {
+        -webkit-transform-origin: 50% 0% 0px;
+        -webkit-transform: perspective(500px) rotateX(90deg) scale(0.5, 0.5);
+    }
+
+    100% {
+        -webkit-transform-origin: 50% 0% 0px;
+        -webkit-transform: perspective(500px) rotateX(0deg) scale(1, 1);
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes cardInBottom {
+    0% {
+        -moz-transform-origin: 50% 0% 0px;
+        -moz-transform: perspective(500px) rotateX(90deg) scale(0.5, 0.5);
+    }
+
+    100% {
+        -moz-transform-origin: 50% 0% 0px;
+        -moz-transform: perspective(500px) rotateX(0deg) scale(1, 1);
+        opacity: 1;
+    }
+}
+
+@-o-keyframes cardInBottom {
+    0% {
+        -o-transform-origin: 50% 0% 0px;
+        -o-transform: perspective(500px) rotateX(90deg) scale(0.5, 0.5);
+    }
+
+    100% {
+        -o-transform-origin: 50% 0% 0px;
+        -o-transform: perspective(500px) rotateX(0deg) scale(1, 1);
+        opacity: 1;
+    }
+}
+
+@keyframes cardInBottom {
+    0% {
+        transform-origin: 50% 0% 0px;
+        transform: perspective(500px) rotateX(90deg) scale(0.5, 0.5);
+    }
+
+    100% {
+        transform-origin: 50% 0% 0px;
+        transform: perspective(500px) rotateX(0deg) scale(1, 1);
+        opacity: 1;
+    }
+}
+
+.cardInBottom {
+    -webkit-animation-name: cardInBottom;
+    -moz-animation-name: cardInBottom;
+    -o-animation-name: cardInBottom;
+    animation-name: cardInBottom;
+}
+
+@-webkit-keyframes cardInLeft {
+    0% {
+        -webkit-transform-origin: 100% 50% 0px;
+        -webkit-transform: perspective(500px) rotateY(-90deg) scale(0, 0);
+    }
+
+    100% {
+        -webkit-transform-origin: 100% 50% 0px;
+        -webkit-transform: perspective(500px) rotateY(0deg) scale(1, 1);
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes cardInLeft {
+    0% {
+        -moz-transform-origin: 100% 50% 0px;
+        -moz-transform: perspective(500px) rotateY(-90deg) scale(0, 0);
+    }
+
+    100% {
+        -moz-transform-origin: 100% 50% 0px;
+        -moz-transform: perspective(500px) rotateY(0deg) scale(1, 1);
+        opacity: 1;
+    }
+}
+
+@-o-keyframes cardInLeft {
+    0% {
+        -o-transform-origin: 100% 50% 0px;
+        -o-transform: perspective(500px) rotateY(-90deg) scale(0, 0);
+    }
+
+    100% {
+        -o-transform-origin: 100% 50% 0px;
+        -o-transform: perspective(500px) rotateY(0deg) scale(1, 1);
+        opacity: 1;
+    }
+}
+
+@keyframes cardInLeft {
+    0% {
+        transform-origin: 100% 50% 0px;
+        transform: perspective(500px) rotateX(-90deg) scale(0, 0);
+    }
+
+    100% {
+        transform-origin: 100% 50% 0px;
+        transform: perspective(500px) rotateX(0deg) scale(1, 1);
+        opacity: 1;
+    }
+}
+
+.cardInLeft {
+    -webkit-animation-name: cardInLeft;
+    -moz-animation-name: cardInLeft;
+    -o-animation-name: cardInLeft;
+    animation-name: cardInLeft;
+}
+
+@-webkit-keyframes cardInRight {
+    0% {
+        -webkit-transform-origin: 0% 50% 0px;
+        -webkit-transform: perspective(500px) rotateY(90deg) scale(0, 0);
+    }
+
+    100% {
+        -webkit-transform-origin: 0% 50% 0px;
+        -webkit-transform: perspective(500px) rotateY(0deg) scale(1, 1);
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes cardInRight {
+    0% {
+        -moz-transform-origin: 0% 50% 0px;
+        -moz-transform: perspective(500px) rotateY(90deg) scale(0, 0);
+    }
+
+    100% {
+        -moz-transform-origin: 0% 50% 0px;
+        -moz-transform: perspective(500px) rotateY(0deg) scale(1, 1);
+        opacity: 1;
+    }
+}
+
+@-o-keyframes cardInRight {
+    0% {
+        -o-transform-origin: 0% 50% 0px;
+        -o-transform: perspective(500px) rotateY(90deg) scale(0, 0);
+    }
+
+    100% {
+        -o-transform-origin: 0% 50% 0px;
+        -o-transform: perspective(500px) rotateY(0deg) scale(1, 1);
+        opacity: 1;
+    }
+}
+
+@keyframes cardInRight {
+    0% {
+        transform-origin: 0% 50% 0px;
+        transform: perspective(500px) rotateX(90deg) scale(0, 0);
+    }
+
+    100% {
+        transform-origin: 0% 50% 0px;
+        transform: perspective(500px) rotateX(0deg) scale(1, 1);
+        opacity: 1;
+    }
+}
+
+.cardInRight {
+    -webkit-animation-name: cardInRight;
+    -moz-animation-name: cardInRight;
+    -o-animation-name: cardInRight;
+    animation-name: cardInRight;
+}
+
+@-webkit-keyframes cardOutTop {
+    0% {
+        -webkit-transform-origin: 50% 100% 0px;
+        -webkit-transform: perspective(500px) rotateX(0deg) scale(1, 1);
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform-origin: 50% 100% 0px;
+        -webkit-transform: perspective(500px) rotateX(-90deg) scale(0.5, 0.5);
+        opacity: 0;
+    }
+}
+
+@-moz-keyframes cardOutTop {
+    0% {
+        -moz-transform-origin: 50% 100% 0px;
+        -moz-transform: perspective(500px) rotateX(0deg) scale(1, 1);
+        opacity: 1;
+    }
+
+    100% {
+        -moz-transform-origin: 50% 100% 0px;
+        -moz-transform: perspective(500px) rotateX(-90deg) scale(0.5, 0.5);
+        opacity: 0;
+    }
+}
+
+@-o-keyframes cardOutTop {
+    0% {
+        -o-transform-origin: 50% 100% 0px;
+        -o-transform: perspective(500px) rotateX(0deg) scale(1, 1);
+        opacity: 1;
+    }
+
+    100% {
+        -o-transform-origin: 50% 100% 0px;
+        -o-transform: perspective(500px) rotateX(-90deg) scale(0.5, 0.5);
+        opacity: 0;
+    }
+}
+
+@keyframes cardOutTop {
+    0% {
+        transform-origin: 50% 100% 0px;
+        transform: perspective(500px) rotateX(0deg) scale(1, 1);
+        opacity: 1;
+    }
+
+    100% {
+        transform-origin: 50% 100% 0px;
+        transform: perspective(500px) rotateX(-90deg) scale(0.5, 0.5);
+        opacity: 0;
+    }
+}
+
+.cardOutTop {
+    -webkit-animation-name: cardOutTop;
+    -moz-animation-name: cardOutTop;
+    -o-animation-name: cardOutTop;
+    animation-name: cardOutTop;
+}
+
+@-webkit-keyframes cardOutBottom {
+    0% {
+        -webkit-transform-origin: 50% 0% 0px;
+        -webkit-transform: perspective(500px) rotateX(0deg) scale(1, 1);
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform-origin: 50% 0% 0px;
+        -webkit-transform: perspective(500px) rotateX(90deg) scale(0.5, 0.5);
+        opacity: 0;
+    }
+}
+
+@-moz-keyframes cardOutBottom {
+    0% {
+        -moz-transform-origin: 50% 0% 0px;
+        -moz-transform: perspective(500px) rotateX(0deg) scale(1, 1);
+        opacity: 1;
+    }
+
+    100% {
+        -moz-transform-origin: 50% 0% 0px;
+        -moz-transform: perspective(500px) rotateX(90deg) scale(0.5, 0.5);
+        opacity: 0;
+    }
+}
+
+@-o-keyframes cardOutBottom {
+    0% {
+        -o-transform-origin: 50% 0% 0px;
+        -o-transform: perspective(500px) rotateX(0deg) scale(1, 1);
+        opacity: 1;
+    }
+
+    100% {
+        -o-transform-origin: 50% 0% 0px;
+        -o-transform: perspective(500px) rotateX(90deg) scale(0.5, 0.5);
+        opacity: 0;
+    }
+}
+
+@keyframes cardOutBottom {
+    0% {
+        transform-origin: 50% 0% 0px;
+        transform: perspective(500px) rotateX(0deg) scale(1, 1);
+        opacity: 1;
+    }
+
+    100% {
+        transform-origin: 50% 0% 0px;
+        transform: perspective(500px) rotateX(90deg) scale(0.5, 0.5);
+        opacity: 0;
+    }
+}
+
+.cardOutBottom {
+    -webkit-animation-name: cardOutBottom;
+    -moz-animation-name: cardOutBottom;
+    -o-animation-name: cardOutBottom;
+    animation-name: cardOutBottom;
+}
+
+@-webkit-keyframes cardOutLeft {
+    0% {
+        -webkit-transform-origin: 100% 50% 0px;
+        -webkit-transform: perspective(500px) rotateY(0deg) scale(1, 1);
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform-origin: 100% 50% 0px;
+        -webkit-transform: perspective(500px) rotateY(90deg) scale(0, 0);
+        opacity: 0;
+    }
+}
+
+@-moz-keyframes cardOutLeft {
+    0% {
+        -moz-transform-origin: 100% 50% 0px;
+        -moz-transform: perspective(500px) rotateY(0deg) scale(1, 1);
+        opacity: 1;
+    }
+
+    100% {
+        -moz-transform-origin: 100% 50% 0px;
+        -moz-transform: perspective(500px) rotateY(90deg) scale(0, 0);
+        opacity: 0;
+    }
+}
+
+@-o-keyframes cardOutLeft {
+    0% {
+        -o-transform-origin: 100% 50% 0px;
+        -o-transform: perspective(500px) rotateY(0deg) scale(1, 1);
+        opacity: 1;
+    }
+
+    100% {
+        -o-transform-origin: 100% 50% 0px;
+        -o-transform: perspective(500px) rotateY(90deg) scale(0, 0);
+        opacity: 0;
+    }
+}
+
+@keyframes cardOutLeft {
+    0% {
+        transform-origin: 100% 50% 0px;
+        transform: perspective(500px) rotateX(0deg) scale(1, 1);
+        opacity: 1;
+    }
+
+    100% {
+        transform-origin: 100% 50% 0px;
+        transform: perspective(500px) rotateX(90deg) scale(0, 0);
+        opacity: 0;
+    }
+}
+
+.cardOutLeft {
+    -webkit-animation-name: cardOutLeft;
+    -moz-animation-name: cardOutLeft;
+    -o-animation-name: cardOutLeft;
+    animation-name: cardOutLeft;
+}
+
+
+@-webkit-keyframes cardOutRight {
+    0% {
+        -webkit-transform-origin: 0% 50% 0px;
+        -webkit-transform: perspective(500px) rotateY(0deg) scale(1, 1);
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform-origin: 0% 50% 0px;
+        -webkit-transform: perspective(500px) rotateY(-90deg) scale(0, 0);
+        opacity: 0;
+    }
+}
+
+@-moz-keyframes cardOutRight {
+    0% {
+        -moz-transform-origin: 0% 50% 0px;
+        -moz-transform: perspective(500px) rotateY(0deg) scale(1, 1);
+        opacity: 1;
+    }
+
+    100% {
+        -moz-transform-origin: 0% 50% 0px;
+        -moz-transform: perspective(500px) rotateY(-90deg) scale(0, 0);
+        opacity: 0;
+    }
+}
+
+@-o-keyframes cardOutRight {
+    0% {
+        -o-transform-origin: 0% 50% 0px;
+        -o-transform: perspective(500px) rotateY(0deg) scale(1, 1);
+        opacity: 1;
+    }
+
+    100% {
+        -o-transform-origin: 0% 50% 0px;
+        -o-transform: perspective(500px) rotateY(-90deg) scale(0, 0);
+        opacity: 0;
+    }
+}
+
+@keyframes cardOutRight {
+    0% {
+        transform-origin: 0% 50% 0px;
+        transform: perspective(500px) rotateX(0deg) scale(1, 1);
+        opacity: 1;
+    }
+
+    100% {
+        transform-origin: 0% 50% 0px;
+        transform: perspective(500px) rotateX(-90deg) scale(0, 0);
+        opacity: 0;
+    }
+}
+
+.cardOutRight {
+    -webkit-animation-name: cardOutRight;
+    -moz-animation-name: cardOutRight;
+    -o-animation-name: cardOutRight;
+    animation-name: cardOutRight;
+}
+
+
+/*热点内文本样式*/
+.img-container {
+    position: relative;
+}
+
+    .img-container img {
+        position: absolute;
+        margin-top: 1%;
+        text-align: center;
+        z-index: 1;
+    }
+
+
+
+    .img-container .A1 {
+        color: #000000;
+        position: absolute;
+        left: 14%;
+        margin-top: 2%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+    .img-container .A2 {
+        color: #000000;
+        position: absolute;
+        left: 30%;
+        margin-top: 2%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+    .img-container .A3 {
+        color: #000000;
+        position: absolute;
+        left: 14%;
+        margin-top: 18%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+    .img-container .A4 {
+        color: #000000;
+        position: absolute;
+        left: 30%;
+        margin-top: 18%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+    .img-container .A5 {
+        color: #000000;
+        position: absolute;
+        left: 60%;
+        margin-top: 2%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+    .img-container .A6 {
+        color: #000000;
+        position: absolute;
+        left: 76%;
+        margin-top: 2%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+    .img-container .A7 {
+        color: #000000;
+        position: absolute;
+        left: 60%;
+        margin-top: 18%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+    .img-container .A8 {
+        color: #000000;
+        position: absolute;
+        left: 76%;
+        margin-top: 18%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+    .img-container .A9 {
+        color: #ff0000;
+        position: absolute;
+        left: 5%;
+        margin-top: 21%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+
+    .img-container .CAS1 {
+        color: #ff0000;
+        position: absolute;
+        left: 16%;
+        margin-top: 11.5%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+    .img-container .CAS2 {
+        color: #ff0000;
+        position: absolute;
+        left: 36%;
+        margin-top: 11.5%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+    .img-container .CAS3 {
+        color: #ff0000;
+        position: absolute;
+        left: 48%;
+        margin-top: 11%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+    .img-container .CAS4 {
+        color: #ff0000;
+        position: absolute;
+        left: 63%;
+        margin-top: 11.5%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+    .img-container .CAS5 {
+        color: #ff0000;
+        position: absolute;
+        left: 82%;
+        margin-top: 11.5%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+    .img-container .CAX1 {
+        color: #ff0000;
+        position: absolute;
+        left: 16%;
+        margin-top: 36%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+    .img-container .CAX2 {
+        color: #ff0000;
+        position: absolute;
+        left: 36%;
+        margin-top: 36%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+    .img-container .CAX3 {
+        color: #ff0000;
+        position: absolute;
+        left: 48%;
+        margin-top: 35%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+    .img-container .CAX4 {
+        color: #ff0000;
+        position: absolute;
+        left: 63%;
+        margin-top: 36%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+    .img-container .CAX5 {
+        color: #ff0000;
+        position: absolute;
+        left: 82%;
+        margin-top: 36%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+
+    .img-container .TH1 {
+        color: #ff0000;
+        position: absolute;
+        left: 52%;
+        margin-top: 5%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+    .img-container .TH2 {
+        color: #ff0000;
+        position: absolute;
+        left: 49%;
+        margin-top: 13%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+    .img-container .TH3 {
+        color: #ff0000;
+        position: absolute;
+        left: 65%;
+        margin-top: 14%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }

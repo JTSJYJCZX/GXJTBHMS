@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    @*网页宽度默认等于屏幕宽度（width=device-width），原始缩放比例（initial-scale=1）为1.0，即网页初始大小占屏幕面积的100%。*@
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>梧州西江四桥健康监测系统</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/content/mask/chardinjs")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/system")
+    @Scripts.Render("~/bundles/mask/chardinjs")
+
+
+    <script>
+        var userName = "@Session[WebConstants.UserNickNameKey].ToString()";
+        $(function () {
+            if (userName != "admin") {
+                $("li.adminli").css("display", "none");
+            }
+        })
+    </script>
+
+</head>
+
+<body>
+    <div class="navbar navbar-duomi navbar-static-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+
+                <span id="top-title">梧州市西江四桥运营期健康监测系统&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+
+                <span id="welecom">
+                    欢迎您： @Html.ActionLink(Session[WebConstants.UserNickNameKey].ToString(), "EditUserInfo", "User", "", new { style = "color:white" })&nbsp&nbsp&nbsp
+                </span>
+
+                <span>
+                    @using (Html.BeginForm(actionName: "Logout", controllerName: "User", method: FormMethod.Post, htmlAttributes: new { id = "logoutForm" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <a href="javascript:void($('#logoutForm').submit())" onclick="return confirm('确认注销吗？')"><span style="color:white">注销</span></a>
+                    }
+                </span>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 " id="sidebar">
+                <ul id="main-nav" class="nav nav-tabs nav-stacked" style="">
+                    <li class="active">
+                        <a href="#systemSetting" class="nav-header collapsed" data-toggle="collapse">
+                            <i class="glyphicon glyphicon-cog"></i>&nbsp系统介绍
+                            <span class="pull-right glyphicon glyphicon-chevron-down"></span>
+                        </a>
+                        <ul id="systemSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
+                            <li>
+                                <a href="/SystemInformation/SystemDescription"><i class="glyphicon glyphicon-align-center"></i>&nbsp系统总体说明</a>
+                            </li>
+
+                            <li>
+                                <a href="/SystemInformation/SystemFunctionIntroduction"><i class="glyphicon glyphicon-align-center"></i>&nbsp系统功能简介</a>
+                            </li>
+                            <li>
+                                <a href="/SystemInformation/MonitoringPointsPositionAndNumber"><i class="glyphicon glyphicon-align-center"></i>&nbsp测点布置及编号</a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    <li>
+                        <a href="#systemSetting1" class="nav-header collapsed" data-toggle="collapse">
+                            <i class="glyphicon glyphicon-search"></i>&nbsp
+                            实时监测与预警
+                            <span class="pull-right glyphicon glyphicon-chevron-down"></span>
+                        </a>
+                        <ul id="systemSetting1" class="nav nav-list collapse secondmenu" style="height: 0px;">
+                            <li>
+                                <a href="/StrainDataRealTimeMonitoring/StrainDatasRealTimeMonitoring"><i class="glyphicon glyphicon-stats glyphicon "></i>&nbsp应变监测</a>
+                            </li>
+                            <li>
+                                <a href="/DisplacementDataRealTimeMonitoring/DisplacementDatasRealTimeMonitoring"><i class="glyphicon glyphicon-stats glyphicon "></i>&nbsp位移监测</a>
+                            </li>
+                            <li>
+                                <a href="/TemperatureDataRealTimeMonitoring/TemperatureDatasRealTimeMonitoring"><i class="glyphicon glyphicon-stats glyphicon "></i>&nbsp温度监测</a>
+                            </li>
+                            <li>
+                                <a href="/HumidityDataRealTimeMonitoring/HumidityDatasRealTimeMonitoring"><i class="glyphicon glyphicon-stats glyphicon "></i>&nbsp湿度监测</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="glyphicon glyphicon-stats glyphicon "></i>&nbsp风速风向监测</a>
+                            </li>
+                            <li>
+                                <a href="/CableForceDataRealTimeMonitoring/CableForceDatasRealTimeMonitoring"><i class="glyphicon glyphicon-stats glyphicon "></i>&nbsp索力监测</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#systemSetting3" class="nav-header collapsed" data-toggle="collapse">
+                            <i class="glyphicon glyphicon-download-alt"></i>&nbsp
+                            数据查询与统计
+                            <span class="pull-right glyphicon glyphicon-chevron-down"></span>
+                        </a>
+                        <ul id="systemSetting3" class="nav nav-list collapse secondmenu" style="height: 0px;">
+                            <li><a href="/MonitoringDatas/DataQuery"><i class="glyphicon glyphicon-eye-open"></i>&nbsp数据查询</a></li>
+                            <li><a href="/MonitoringDatasComparingQuery/DataComparingQuery"><i class="glyphicon glyphicon-fullscreen"></i>&nbsp对比查询</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-asterisk"></i>&nbsp车载统计</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-edit"></i>&nbsp报警数据管理</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-eye-open"></i>&nbsp异常事件管理</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#systemSetting4" class="nav-header collapsed" data-toggle="collapse">
+                            <i class="glyphicon glyphicon-th-list"></i>&nbsp
+                            健康状态评估
+                            <span class="pull-right glyphicon glyphicon-chevron-down"></span>
+                        </a>
+                        <ul id="systemSetting4" class="nav nav-list collapse secondmenu" style="height: 0px;">
+                            <li><a href="#"><i class="glyphicon glyphicon-user"></i>&nbsp巡检系统</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-th-list"></i>&nbsp监测系统</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-asterisk"></i>&nbsp评估系统</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#systemSetting5" class="nav-header collapsed" data-toggle="collapse">
+                            <i class="glyphicon glyphicon-user"></i>&nbsp
+                            账户管理
+                            <span class="pull-right glyphicon glyphicon-chevron-down"></span>
+                        </a>
+                        <ul id="systemSetting5" class="nav nav-list collapse secondmenu" style="height: 0px;">
+                            <li>
+                                <a href="/User/EditUserInfo"><i class="glyphicon glyphicon-list"></i>&nbsp编辑账号</a>
+                            </li>
+                            <li class="adminli">
+                                <a href="/AdminUser/RegistUser"><i class="glyphicon glyphicon-pencil"></i>&nbsp用户注册</a>
+                            </li>
+                            <li class="adminli">
+                                <a href="/AdminUser/ListUserMessage"><i class="glyphicon glyphicon-briefcase"></i>&nbsp用户管理</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#systemSetting6" class="nav-header collapsed" data-toggle="collapse">
+                            <i class="glyphicon glyphicon-th-list"></i> &nbsp系统管理
+                            <span class="pull-right glyphicon glyphicon-chevron-down"></span>
+                        </a>
+                        <ul id="systemSetting6" class="nav nav-list collapse secondmenu" style="height: 0px;">
+                            <li><a href="/ThresholdValueSetting/ThresholdValueSetting"><i class="glyphicon glyphicon-align-left"></i>&nbsp阈值设置</a></li>
+
+
+                        </ul>
+                    </li>
+
+
+
+                </ul>
+            </div>
+            <div class="col-md-10">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+</body>
+@RenderSection("scripts", required: false)
+</html>
+
+
+

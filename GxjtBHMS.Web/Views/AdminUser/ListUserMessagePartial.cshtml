@@ -1,0 +1,33 @@
+﻿@model UserSeachResultView
+@{
+    ViewBag.Title = "ListUserMessagePartial";
+}
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td>用户名</td>
+                <td>状态</td>
+                <td>操作1</td>
+                <td>操作2</td>
+            </tr>
+        </thead>
+        @foreach (var m in Model.Users)
+            {
+            @Html.Partial("UserInfoPartial", new EditUserView
+           {
+               UserName = m.UserName,
+               UserId = m.UserId,
+               UserStateId = m.StateId
+               
+           });
+            }
+    </table>
+    <script>
+        jqPaginatorSetting('#paginationNav',@Model.PaginatorModel.TotalPages,@Model.PaginatorModel.CurrentPageIndex);
+    </script>
+</div>
+@Html.AntiForgeryToken()
+
+
+

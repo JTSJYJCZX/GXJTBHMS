@@ -1,0 +1,211 @@
+﻿/*常规格式设置*/
+#main-nav {
+    margin-left: 1px;
+}
+
+    #main-nav.nav-tabs.nav-stacked > li > a {
+        padding: 10px 8px;
+        font-size: 12px;
+        font-weight: 600;
+        color: #4A515B;
+        background: #E9E9E9;
+        background: -moz-linear-gradient(top, #FAFAFA 0%, #E9E9E9 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FAFAFA), color-stop(100%,#E9E9E9));
+        background: -webkit-linear-gradient(top, #FAFAFA 0%,#E9E9E9 100%);
+        background: -o-linear-gradient(top, #FAFAFA 0%,#E9E9E9 100%);
+        background: -ms-linear-gradient(top, #FAFAFA 0%,#E9E9E9 100%);
+        background: linear-gradient(top, #FAFAFA 0%,#E9E9E9 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FAFAFA', endColorstr='#E9E9E9');
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#FAFAFA', endColorstr='#E9E9E9')";
+        border: 1px solid #D5D5D5;
+        border-radius: 4px;
+    }
+
+        #main-nav.nav-tabs.nav-stacked > li > a > span {
+            color: #4A515B;
+        }
+
+        #main-nav.nav-tabs.nav-stacked > li.active > a, #main-nav.nav-tabs.nav-stacked > li > a:hover {
+            color: #FFF;
+            background: #1138b7;
+            background: -moz-linear-gradient(top, #1138b7 0%,#1138b7 100%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1138b7), color-stop(100%,#1138b7));
+            background: -webkit-linear-gradient(top, #1138b7 0%,#1138b7 100%);
+            background: -o-linear-gradient(top,#1138b7 0%,#1138b7 100%);
+            background: -ms-linear-gradient(top, #1138b7 0%,#1138b7 100%);
+            background: linear-gradient(top, #1138b7 0%,#1138b7 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1138b7', endColorstr='#1138b7');
+            -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#1138b7', endColorstr='#1138b7')";
+            border-color: #1138b7;
+        }
+#top-title {
+        color:#fff;
+        font-size:2em;
+    font-family: KaiTi;
+    font-weight: bold;
+    text-shadow: #ffffff 10px 5px 10px;
+}
+
+#welecom {
+        color:#FFF;
+                font-size:1em;
+}
+
+#sidebar {
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;
+}
+
+#main-nav.nav-tabs.nav-stacked > li.active > a, #main-nav.nav-tabs.nav-stacked > li > a:hover > span {
+    color: #FFF;
+}
+
+#main-nav.nav-tabs.nav-stacked > li {
+    margin-bottom: 4px;
+}
+
+/*定义二级菜单样式*/
+.secondmenu a {
+    font-size: 10px;
+    color: #4A515B;
+    text-align: center;
+}
+
+.navbar-static-top {
+    background-color: #1138b7;
+    margin-bottom: 5px;
+}
+
+.navbar-brand {
+    background: url('') no-repeat 10px 8px;
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 50px;
+    color: #fff;
+}
+
+/*数据查询*/
+.searchContent {
+    background-color:#fff;
+}
+
+/*标题*/
+h1 {
+    color: #808080;
+    font-family: KaiTi;
+    font-weight: bold;
+    text-shadow: #ffffff 10px 5px 10px;
+}
+
+h2 {
+    color: #ffffff;
+    font-size: 30px;
+    font-family: KaiTi;
+    font-weight: bold;
+    padding-left: 30px;
+    text-shadow: #ffffff 10px 5px 10px;
+}
+
+.title {
+    background-image: url(/Content/Images/titleBackgound.jpg);
+    background-size: 100% 100%;
+    height: 70px;
+    border-style: none;
+    border-width: 2px;
+    border-color: Background;
+    border-bottom-width: thick;
+}
+
+    .title.toptitle li {
+        list-style: none;
+        float: left;
+    }
+
+
+
+.menu {
+    background-color: darkblue;
+    text-align: left;
+    height: 30px;
+    padding-top: 4px;
+}
+
+    .menu a {
+        color: aliceblue;
+        text-decoration: none;
+        font-family: 'Microsoft YaHei';
+        font-size: 16px;
+        margin-left: 12px;
+        padding-left: 12px;
+    }
+
+a:hover {
+    background-color: dodgerblue;
+}
+
+
+.form-horizontal {
+    margin-top: 10px;
+}
+
+/*遮罩*/
+.mask {
+    position: absolute;
+    top: 0px;
+    filter: alpha(opacity=60);
+    background-color: #777;
+    z-index: 1002;
+    left: 0px;
+    opacity: 0.5;
+    -moz-opacity: 0.5;
+    text-align: center;
+    margin: 0px auto;
+}
+
+span {
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+/*加载图片*/
+.loadingPic {
+    height: 45px;
+    width: 45px;
+    vertical-align: middle;
+}
+
+
+
+        /************ Table ************/
+        .xwtable {
+            width: 100%;
+            border-collapse: collapse;
+            border: 5px double #1138b7;
+        }
+
+            .xwtable thead td {
+                font-size: 15px;
+                color: #000000;
+                text-align: center;
+                background: repeat-x top center;
+                border: 1px solid #1138b7;
+                font-weight: bold;
+            }
+
+            .xwtable tbody tr {
+                background: rgba(0, 0, 0, 0.00);
+                font-size: 12px;
+                color: #000000;
+            }
+
+                .xwtable tbody tr.alt-row {
+                    background: #f2f7fc;
+                }
+
+            .xwtable td {
+                line-height: 30px;
+                text-align: center;
+                padding: 3px 10px 3px 10px;
+                height: 18px;
+                border: 1px solid #1138b7;
+            }

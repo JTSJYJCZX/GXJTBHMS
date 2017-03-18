@@ -1,0 +1,45 @@
+﻿@model GxjtBHMS.Web.ViewModels.ThresholdValueSetting.StrainThresholdValueView
+    <tr class="text-center">
+        <td>
+           <span class = "text-center form-control">@Model.PointsNumber</span>                 
+        </td>
+        <td>
+            @Html.TextBoxFor(m => m.PositiveStandardValue,new { @class = "text-center form-control" })      
+        </td>
+        <td>
+            @Html.TextBoxFor(m => m.PositiveFirstLevelThresholdValue, new { @class = "text-center form-control" })
+        </td>
+        <td>
+            @Html.TextBoxFor(m => m.PositiveSecondLevelThresholdValue, new { @class = "text-center form-control" })
+        </td>
+        <td>
+            @Html.TextBoxFor(m => m.PositiveThirdLevelThresholdValue, new { @class = "text-center form-control" })
+        </td>
+        <td>
+            @Html.TextBoxFor(m => m.NegativeStandardValue, new { @class = "text-center form-control" })
+        </td>
+        <td>
+            @Html.TextBoxFor(m => m.NegativeFirstLevelThresholdValue, new { @class = "text-center form-control" })
+        </td>
+        <td>
+            @Html.TextBoxFor(m => m.NegativeSecondLevelThresholdValue, new { @class = "text-center form-control" })
+        </td>
+        <td>
+            @Html.TextBoxFor(m => m.NegativeThirdLevelThresholdValue, new { @class = "text-center form-control" })
+        </td>
+        <td>
+            @Html.HiddenFor(m => m.PointsNumberId)
+            @Html.HiddenFor(m => m.PointsNumber)
+            <input class="form-control" type="button" onclick="saveThresholdValue(this, '/ThresholdValueSetting/SaveThresholdValue')" operate="save" value="保存" />
+        </td>
+        <td>
+            @Html.HiddenFor(m => m.PointsNumberId)
+            @Html.HiddenFor(m => m.PointsNumber)
+            <input class="form-control" type="button" onclick="saveThresholdValue(this, '/ThresholdValueSetting/SaveThresholdValue')" operate="remove" value="清除" />
+        </td>
+    </tr>
+
+@Html.AntiForgeryToken()
+
+
+

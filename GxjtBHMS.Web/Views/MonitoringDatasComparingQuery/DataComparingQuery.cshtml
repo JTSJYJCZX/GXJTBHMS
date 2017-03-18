@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "数据对比查询";
+}
+
+@Html.Action("GetDataComparingQuerySearchBar") @*搜索栏*@
+<div id="searchContent"></div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/monitoringDatasComparingSearchBar")
+    @Scripts.Render("~/bundles/mask/chardinjs")
+    @Styles.Render("~/content/mask/chardinjs")
+    @Scripts.Render("~/bundles/jqueryunobtrusiveajax")
+    @Styles.Render("~/content/css/bootstrap-select")
+    @Scripts.Render("~/bundles/bootstrap-select")
+    @Styles.Render("~/content/datetimepickercss")
+    @Scripts.Render("~/bundles/datetimepicker")
+    @Styles.Render("~/content/jqplotcss")
+    @Scripts.Render("~/bundles/jqplot")
+    @Scripts.Render("~/bundles/jqplot/plugins")
+}
+
