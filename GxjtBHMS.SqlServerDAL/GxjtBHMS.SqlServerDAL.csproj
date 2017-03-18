@@ -68,6 +68,7 @@
     <Compile Include="MonitoringDatasDAL\ConcreteStrainDatasOriginalValueDAL.cs" />
     <Compile Include="MonitoringDatasDAL\DisplaymentDatasEigenvalueDAL.cs" />
     <Compile Include="MonitoringDatasDAL\SteelArchStrainDatasEigenvalueDAL.cs" />
+    <Compile Include="MonitoringDatasDAL\SteelLatticeStrainDatasEigenvalueDAL.cs" />
     <Compile Include="MonitoringDatasDAL\TemperatureDatasDAL.cs" />
     <Compile Include="MonitoringDatasDAL\HumidityDatasDAL.cs" />
     <Compile Include="MonitoringPointsNumberDAL.cs" />

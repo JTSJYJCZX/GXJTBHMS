@@ -89,8 +89,12 @@
     <Compile Include="Implementations\SteelArchStrainDatasEigenvalueQueryService.cs" />
     <Compile Include="Implementations\SteelArchStrainMonitorDatasQueryChartService.cs" />
     <Compile Include="Implementations\SteelArchStrainMonitorDatasQueryFileSystemService.cs" />
+    <Compile Include="Implementations\SteelLatticeStrainDatasEigenvalueQueryService.cs" />
+    <Compile Include="Implementations\SteelLatticeStrainMonitorDatasQueryChartService.cs" />
+    <Compile Include="Implementations\SteelLatticeStrainMonitorDatasQueryFileSystemService.cs" />
     <Compile Include="Interfaces\IMonitorDatasOriginalValueDownLoadServiceBase.cs" />
     <Compile Include="Interfaces\ISteelArchStrainDatasEigenvalueQueryService.cs" />
+    <Compile Include="Interfaces\ISteelLatticeStrainDatasEigenvalueQueryService.cs" />
     <Compile Include="Messaging\MonitoringDatasDownLoad\DownLoadOriginalvalueDatasResponse.cs" />
     <Compile Include="MonitoringDatasOriginalValueDownLoad\ConcreteStrainDatasOriginalValueDownLoad.cs" />
     <Compile Include="Interfaces\IConcreteStrainDatasOriginalValueDownLoadService.cs" />
