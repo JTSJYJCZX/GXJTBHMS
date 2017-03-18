@@ -24,7 +24,7 @@
                 MornitoringPointsNumberIds: testPointsNumberIds
             },
             success: function (data) {              
-                document.location.href = "/MonitoringDatas/OriginCode?guid=" + data;      
+                document.location.href = "/MonitoringDatas/OriginCode?guid=" + data + "&typeId=" + testTypeId;
             },
             error: function (result) {
                 alert(result.responseText);
