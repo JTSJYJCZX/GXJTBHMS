@@ -5,6 +5,8 @@ using GxjtBHMS.Service.Messaging.MonitoringDatas;
 using GxjtBHMS.IDAL;
 using GxjtBHMS.Models;
 using GxjtBHMS.Service.ExtensionMethods.MonitoringDatas.PointsPosition;
+using System.Linq;
+using GxjtBHMS.Infrastructure.Helpers;
 
 namespace GxjtBHMS.Service.Implementations
 {
@@ -35,15 +37,24 @@ namespace GxjtBHMS.Service.Implementations
             return resp;
         }
 
+        public string GetMixedNameWithTestTypeNameAndPointPositionNameAndCurrentDateTimeByPositionId(int positionId)
+        {
+            var model = _mppDAL.FindBy(m => m.Id == positionId, new string[] { "TestType" }).SingleOrDefault();
+            string positionName = model.Name;
+            string testTypeName = model.TestType.Name;
+            string currentDateTime = DateTimeHelper.FormatDate(DateTime.Now);
+            return string.Concat(testTypeName, positionName, currentDateTime);
+        }
+
         public QueryMonitoringPointsPositionsByTestTypeIdResponse GetMonitoringPointsPositionsByTestTypeId(int ttId)
         {
             var resp = new QueryMonitoringPointsPositionsByTestTypeIdResponse();
             try
             {
-                if (ttId==0)
+                if (ttId == 0)
                 {
                     resp.Succeed = false;
-                }               
+                }
                 var source = _mppDAL.GetModelsByTestTypeId(ttId);
                 var models = source.ConvertToMonitoringTestTypeViewModelCollection();
                 resp.Datas = models;
