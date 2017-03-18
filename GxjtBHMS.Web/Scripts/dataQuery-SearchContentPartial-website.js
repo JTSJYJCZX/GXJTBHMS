@@ -80,6 +80,7 @@ function initChart() {
         EndTime: endTime,
         MornitoringPointsNumberIds: testPointsNumberIds,
     });
+    
     $.jqplot.config.enablePlugins = true;
     plot1 = $.jqplot('chart1', chartDatas.MaxdataArray,
     {
