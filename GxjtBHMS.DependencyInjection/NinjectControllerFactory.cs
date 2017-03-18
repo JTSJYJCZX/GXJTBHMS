@@ -56,8 +56,6 @@ namespace GxjtBHMS.DependencyInjection
 
 
 
-            _ninjectKernel.Bind<IDisplaymentDatasQueryService>().To<DisplaymentDatasQueryService>();
-            _ninjectKernel.Bind<IDisplaymentDatasDAL>().To<DisplaymentDatasDAL>();
 
             _ninjectKernel.Bind<IStrainDataRealTimeDisplayService>().To<StrainDataRealTimeDisplayService>();
             _ninjectKernel.Bind<IRealTimeStrainDatasDAL>().To<RealTimeStrainDatasDAL>();

@@ -34,8 +34,8 @@ namespace GxjtBHMS.Service
             _ninjectKernel.Bind<ISteelArchStrainDatasEigenValueDAL>().To<SteelArchStrainDatasEigenvalueDAL>();
             _ninjectKernel.Bind<ISteelLatticeStrainDatasEigenvalueQueryService>().To<SteelLatticeStrainDatasEigenvalueQueryService>();
             _ninjectKernel.Bind<ISteelLatticeStrainDatasEigenValueDAL>().To<SteelLatticeStrainDatasEigenvalueDAL>();
-            _ninjectKernel.Bind<IDisplaymentDatasQueryService>().To<DisplaymentDatasQueryService>();
-            _ninjectKernel.Bind<IDisplaymentDatasDAL>().To<DisplaymentDatasDAL>();
+            _ninjectKernel.Bind<IDisplaymentDatasEigenvalueQueryService>().To<DisplaymentDatasEigenvalueQueryService>();
+            _ninjectKernel.Bind<IDisplaymentDatasEigenValueDAL>().To<DisplaymentDatasEigenValueDAL>();
             _ninjectKernel.Bind<ICableForceDatasQueryService>().To<CableForceDatasQueryService>();
             _ninjectKernel.Bind<ICableForceDatasDAL>().To<CableForceDatasDAL>();
             _ninjectKernel.Bind<IHumidityDatasQueryService>().To<HumidityDatasQueryService>();
@@ -44,7 +44,7 @@ namespace GxjtBHMS.Service
             _ninjectKernel.Bind<ITemperatureDatasDAL>().To<TemperatureDatasDAL>();
 
             _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryChartService<ConcreteStrainEigenvalueTable>>().To<ConcreteStrainMonitorDatasQueryChartService>();
-             _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryChartService<DisplacementTable>>().To<DisplaymentMonitorDatasQueryChartService>();
+            _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryChartService<DisplacementEigenvalueTable>>().To<DisplaymentMonitorDatasQueryChartService>();
             _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryChartService<CableForceTable>>().To<CableForceMonitorDatasQueryChartService>();
             _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryChartService<HumidityTable>>().To<HumidityMonitorDatasQueryChartService>();
             _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryChartService<TemperatureTable>>().To<TemperatureMonitorDatasQueryChartService>();
@@ -54,7 +54,7 @@ namespace GxjtBHMS.Service
 
             _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryFileSystemService<ConcreteStrainTable>>().To<StrainMonitorDatasOriginalValueDownLoadFileSystemService>();
             _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryFileSystemService<ConcreteStrainEigenvalueTable>>().To<ConcreteStrainMonitorDatasEigenValueQueryFileSystemService>();
-            _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryFileSystemService<DisplacementTable>>().To<DisplaymentMonitorDatasQueryFileSystemService>();
+            _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryFileSystemService<DisplacementEigenvalueTable>>().To<DisplaymentMonitorDatasQueryFileSystemService>();
             _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryFileSystemService<CableForceTable>>().To<CableForceMonitorDatasQueryFileSystemService>();
             _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryFileSystemService<HumidityTable>>().To<HumidityMonitorDatasQueryFileSystemService>();
             _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryFileSystemService<TemperatureTable>>().To<TemperatureMonitorDatasQueryFileSystemService>();

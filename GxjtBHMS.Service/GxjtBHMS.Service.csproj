@@ -83,6 +83,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoMapper\Configuration.cs" />
+    <Compile Include="Implementations\DisplaymentDatasEigenvalueQueryService.cs" />
+    <Compile Include="Implementations\DisplaymentMonitorDatasQueryChartService.cs" />
+    <Compile Include="Implementations\DisplaymentMonitorDatasQueryFileSystemService.cs" />
     <Compile Include="Implementations\OriginalValueDownLoad\ConcreteStrainDatasOriginalValueDownLoadService.cs" />
     <Compile Include="Implementations\OriginalValueDownLoad\MonitorDatasOringinalValueDownLoadServiceBase.cs" />
     <Compile Include="Implementations\OriginalValueDownLoad\StrainMonitorDatasOriginalValueDownLoadFileSystemService.cs" />
@@ -92,6 +95,7 @@
     <Compile Include="Implementations\SteelLatticeStrainDatasEigenvalueQueryService.cs" />
     <Compile Include="Implementations\SteelLatticeStrainMonitorDatasQueryChartService.cs" />
     <Compile Include="Implementations\SteelLatticeStrainMonitorDatasQueryFileSystemService.cs" />
+    <Compile Include="Interfaces\IDisplaymentDatasEigenvalueQueryService.cs" />
     <Compile Include="Interfaces\IMonitorDatasOriginalValueDownLoadServiceBase.cs" />
     <Compile Include="Interfaces\ISteelArchStrainDatasEigenvalueQueryService.cs" />
     <Compile Include="Interfaces\ISteelLatticeStrainDatasEigenvalueQueryService.cs" />
@@ -133,11 +137,8 @@
     <Compile Include="Implementations\HumidityMonitorDatasQueryFileSystemService.cs" />
     <Compile Include="Implementations\HumidityDatesQueryService.cs" />
     <Compile Include="Implementations\DisplaymentDataRealTimeDisplayService.cs" />
-    <Compile Include="Implementations\DisplaymentMonitorDataQueryStatisticService.cs" />
     <Compile Include="Implementations\CableForceMonitorDatasQueryChartService.cs" />
-    <Compile Include="Implementations\DisplaymentMonitorDatasQueryChartService.cs" />
     <Compile Include="Implementations\CableForceMonitorDatasQueryFileSystemService.cs" />
-    <Compile Include="Implementations\DisplaymentMonitorDatasQueryFileSystemService.cs" />
     <Compile Include="Implementations\TemperatureDataRealTimeDisplayService.cs" />
     <Compile Include="Interfaces\ICableForceDataRealTimeDisplayService.cs" />
     <Compile Include="Interfaces\ICableForceDatasQueryService.cs" />
@@ -149,12 +150,10 @@
     <Compile Include="Implementations\MonitoringPointsNumberService.cs" />
     <Compile Include="Implementations\MonitoringPointsPositionService.cs" />
     <Compile Include="Implementations\MonitoringTestTypeService.cs" />
-    <Compile Include="Implementations\DisplaymentDatasQueryService.cs" />
     <Compile Include="Implementations\StrainDataRealTimeDisplayService.cs" />
     <Compile Include="Implementations\ConcreteStrainDatasEigenvalueQueryService.cs" />
     <Compile Include="Implementations\ConcreteStrainMonitorDatasQueryChartService.cs" />
     <Compile Include="Interfaces\IMonitorDatasEigenvalueQueryChartService.cs" />
-    <Compile Include="Interfaces\IDisplaymentDatasQueryService.cs" />
     <Compile Include="Interfaces\IMonitorDatasEigenlavueQueryServiceBase.cs" />
     <Compile Include="Implementations\ThresholdValueSettingService.cs" />
     <Compile Include="Interfaces\IMonitoringPointsNumberService.cs" />

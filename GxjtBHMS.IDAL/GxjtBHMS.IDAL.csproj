@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="ICableForceDatasDAL.cs" />
     <Compile Include="ICableForceThresholdValueGettingDAL.cs" />
-    <Compile Include="IDisplaymentDatasDAL.cs" />
+    <Compile Include="IDisplaymentDatasEigenValueDAL.cs" />
     <Compile Include="IHumidityThresholdValueGettingDAL.cs" />
     <Compile Include="IRealTimeHumidityDatasDAL.cs" />
     <Compile Include="ISteelArchStrainDatasEigenValueDAL.cs" />
