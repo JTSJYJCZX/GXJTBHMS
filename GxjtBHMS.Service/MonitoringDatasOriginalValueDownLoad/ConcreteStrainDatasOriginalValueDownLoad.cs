@@ -17,7 +17,7 @@ namespace GxjtBHMS.Service
                 .GetInstance<IConcreteStrainDatasOriginalValueDownLoadService>();
         }
          
-        public override DownLoadOriginalvalueDatasResponse OriginalvalueSaveAsFile(DatasQueryResultRequestBase req)
+        public override DownLoadOriginalvalueDatasResponse SaveAsFile(DatasQueryResultRequestBase req)
         {
             return _concreteStrainDatasOriginalValueDownLoadService.SaveAs(req);
         }

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using GxjtBHMS.Service.Messaging.MonitoringDatas;
-using GxjtBHMS.Service.ViewModels.MonitoringDatas.MonitoringPointsPosition;
+﻿using GxjtBHMS.Service.Messaging.MonitoringDatas;
 
 namespace GxjtBHMS.Service.Interfaces
 {
@@ -8,5 +6,6 @@ namespace GxjtBHMS.Service.Interfaces
     {
         QueryAllMonitoringPointsPositionResponse GetAllMonitoringPointsPosition();
         QueryMonitoringPointsPositionsByTestTypeIdResponse GetMonitoringPointsPositionsByTestTypeId(int ttId);
+        string GetMixedNameWithTestTypeNameAndPointPositionNameAndCurrentDateTimeByPositionId(int positionId);
     }
 }

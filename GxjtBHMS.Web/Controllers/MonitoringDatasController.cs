@@ -1,5 +1,4 @@
-﻿using GxjtBHMS.Infrastructure.Configuration;
-using GxjtBHMS.Service;
+﻿using GxjtBHMS.Service;
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.Messaging.MonitoringDatas;
 using GxjtBHMS.Web.ExtensionMehtods.MonitoringDatas;
@@ -8,7 +7,6 @@ using GxjtBHMS.Web.ViewModels;
 using GxjtBHMS.Web.ViewModels.MonitoringDatas;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -176,7 +174,7 @@ namespace GxjtBHMS.Web.Controllers
                 PointsPositionId = conditions.MornitoringPointsPositionId
             };
             var monitoringDatasQueryService = MonitoringDatasOriginalValueDownLoadServiceFactory.GetQueryServiceFrom(conditions.MornitoringTestTypeId);
-            var resp = monitoringDatasQueryService.OriginalvalueSaveAsFile(req);
+            var resp = monitoringDatasQueryService.SaveAsFile(req);
             var guid = "";
             guid = Guid.NewGuid().ToString();
             CacheHelper.SetCache(guid, resp.Datas);
@@ -204,9 +202,9 @@ namespace GxjtBHMS.Web.Controllers
             return Json(guid, JsonRequestBehavior.AllowGet);
         }
 
-        public void OriginCode(string guid, int typeId)
+        public void OriginCode(string guid, int pointsPositionId = 0)
         {
-            string preFileName = GetDownloadPreFileNameByTestTypeId(typeId);
+            string preFileName = GetDownloadPreFileNameByTestTypeId(pointsPositionId);
             object obj = CacheHelper.GetCache(guid);
             NPOI.HSSF.UserModel.HSSFWorkbook book = obj as NPOI.HSSF.UserModel.HSSFWorkbook;
             if (book != null)
@@ -214,7 +212,7 @@ namespace GxjtBHMS.Web.Controllers
                 // 写入到客户端  
                 System.IO.MemoryStream ms = new System.IO.MemoryStream();
                 book.Write(ms);
-                Response.AddHeader("Content-Disposition", string.Format("attachment; filename={0}.xls", string.Concat(preFileName, DateTime.Now.ToString("yyyyMMddHHmmssfff"))));
+                Response.AddHeader("Content-Disposition", string.Format("attachment; filename={0}.xls", preFileName));
                 Response.BinaryWrite(ms.ToArray());
                 book = null;
                 ms.Close();
@@ -223,11 +221,12 @@ namespace GxjtBHMS.Web.Controllers
             CacheHelper.RemoveAllCache(guid);
         }
 
-        string GetDownloadPreFileNameByTestTypeId(int typeId)
+        string GetDownloadPreFileNameByTestTypeId(int pointsPositionId)
         {
-            if (typeId == 0)
-                throw new ApplicationException("未知测试类型错误");
-            return "默认";
+            if (pointsPositionId == 0)
+                throw new ApplicationException("测试位置编号错误");
+
+            return _mpps.GetMixedNameWithTestTypeNameAndPointPositionNameAndCurrentDateTimeByPositionId(pointsPositionId);
         }
     }
 }
