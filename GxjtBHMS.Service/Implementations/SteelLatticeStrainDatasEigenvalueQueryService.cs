@@ -16,23 +16,23 @@ using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    public class ConcreteStrainDatasEigenvalueQueryService : MonitorDatasEigenvalueQueryServiceBase<ConcreteStrainEigenvalueTable>, 
-        IConcreteStrainDatasEigenvalueQueryService
+    public class SteelLatticeStrainDatasEigenvalueQueryService : MonitorDatasEigenvalueQueryServiceBase<SteelLatticeStrainEigenvalueTable>,
+        ISteelLatticeStrainDatasEigenvalueQueryService
     {
-        readonly IConcreteStrainDatasEigenValueDAL _concreteStrainDatasEigenValueDAL;
-        public ConcreteStrainDatasEigenvalueQueryService(IConcreteStrainDatasEigenValueDAL concreteStrainDatasEigenValueDAL,
-            IMonitorDatasEigenvalueQueryChartService<ConcreteStrainEigenvalueTable> chartService,
-            IMonitorDatasEigenvalueQueryFileSystemService<ConcreteStrainEigenvalueTable> fileSystemService
+        readonly ISteelLatticeStrainDatasEigenValueDAL _steelLatticeStrainDatasEigenValueDAL;
+        public SteelLatticeStrainDatasEigenvalueQueryService(ISteelLatticeStrainDatasEigenValueDAL steelLatticeStrainDatasEigenValueDAL,
+            IMonitorDatasEigenvalueQueryChartService<SteelLatticeStrainEigenvalueTable> chartService,
+            IMonitorDatasEigenvalueQueryFileSystemService<SteelLatticeStrainEigenvalueTable> fileSystemService
             ) : base(chartService, fileSystemService)
         {
-            _concreteStrainDatasEigenValueDAL = concreteStrainDatasEigenValueDAL;
+            _steelLatticeStrainDatasEigenValueDAL = steelLatticeStrainDatasEigenValueDAL;
         }
     
 
         public ChartDatasResponse GetChartDatasBy(GetChartDatasRequest req)
         {
             var resp = new ChartDatasResponse();
-            IList<Func<ConcreteStrainEigenvalueTable, bool>> ps = new List<Func<ConcreteStrainEigenvalueTable, bool>>();
+            IList<Func<SteelLatticeStrainEigenvalueTable, bool>> ps = new List<Func<SteelLatticeStrainEigenvalueTable, bool>>();
             try
             {
                 DealWithConditions(req, ps);
@@ -47,10 +47,12 @@ namespace GxjtBHMS.Service.Implementations
             return resp;
         }
 
+       
+
         public DownLoadDatasResponse SaveAs(DatasQueryResultRequestBase req)
         {
             var resp = new DownLoadDatasResponse();
-            IList<Func<ConcreteStrainEigenvalueTable, bool>> ps = new List<Func<ConcreteStrainEigenvalueTable, bool>>();
+            IList<Func<SteelLatticeStrainEigenvalueTable, bool>> ps = new List<Func<SteelLatticeStrainEigenvalueTable, bool>>();
             try
             {
                 DealWithConditions(req, ps);
@@ -65,11 +67,12 @@ namespace GxjtBHMS.Service.Implementations
             return resp;
         }
 
+
         public long GetTotalResultCountBy(DatasQueryResultRequest req)
         {
-            IList<Func<ConcreteStrainEigenvalueTable, bool>> ps = new List<Func<ConcreteStrainEigenvalueTable, bool>>();
+            IList<Func<SteelLatticeStrainEigenvalueTable, bool>> ps = new List<Func<SteelLatticeStrainEigenvalueTable, bool>>();
             DealWithConditions(req, ps);
-            return _concreteStrainDatasEigenValueDAL.GetCountByContains(ps, ServiceConstant.PointsNumberPointsPositionNavigationProperty);
+            return _steelLatticeStrainDatasEigenValueDAL.GetCountByContains(ps, ServiceConstant.PointsNumberPointsPositionNavigationProperty);
         }
     }
 }

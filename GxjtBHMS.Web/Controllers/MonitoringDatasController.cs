@@ -14,7 +14,9 @@ using System.Web.Mvc;
 
 namespace GxjtBHMS.Web.Controllers
 {
-
+    /// <summary>
+    /// 监测数据查询控制器
+    /// </summary>
     public class MonitoringDatasController : BaseController
     {
         IMonitoringTestTypeService _mtts;

@@ -12,14 +12,14 @@ using GxjtBHMS.Service.Messaging.MonitoringDatasDownLoad;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    public class TemperatureDatasQueryService : MonitorDatasQueryServiceBase<TemperatureTable>, ITemperatureDatasQueryService
+    public class TemperatureDatasQueryService : MonitorDatasEigenvalueQueryServiceBase<TemperatureTable>, ITemperatureDatasQueryService
     {
         readonly ITemperatureDatasDAL _temperatureDatasDAL;
 
         public TemperatureDatasQueryService(
             ITemperatureDatasDAL temperatureDatasDAL,
             IMonitorDatasEigenvalueQueryChartService<TemperatureTable> chartService,
-            IMonitorDatasQueryFileSystemService<TemperatureTable> fileSystemService
+            IMonitorDatasEigenvalueQueryFileSystemService<TemperatureTable> fileSystemService
             ) : base(chartService, fileSystemService)
         {
             _temperatureDatasDAL = temperatureDatasDAL;

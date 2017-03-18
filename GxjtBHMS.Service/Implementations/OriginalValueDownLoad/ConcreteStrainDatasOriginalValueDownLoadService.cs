@@ -21,7 +21,7 @@ namespace GxjtBHMS.Service.Implementations
     {
         readonly IConcreteStrainDatasOriginalValueDAL _concreteStrainDatasOriginalValueDAL;
         public ConcreteStrainDatasOriginalValueDownLoadService(IConcreteStrainDatasOriginalValueDAL concreteStrainDatasOriginalValueDAL,
-            IMonitorDatasQueryFileSystemService<ConcreteStrainTable> fileSystemService
+            IMonitorDatasEigenvalueQueryFileSystemService<ConcreteStrainTable> fileSystemService
             ) : base(fileSystemService)
         {
             _concreteStrainDatasOriginalValueDAL = concreteStrainDatasOriginalValueDAL;

@@ -13,17 +13,17 @@ using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    class ConcreteStrainMonitorDatasEigenValueQueryFileSystemService : IMonitorDatasEigenvalueQueryFileSystemService<ConcreteStrainEigenvalueTable>
+    class SteelLatticeStrainMonitorDatasQueryFileSystemService : IMonitorDatasEigenvalueQueryFileSystemService<SteelLatticeStrainEigenvalueTable>
     {
-        readonly IConcreteStrainDatasEigenValueDAL _concreteStrainDatasDAL;
-        public ConcreteStrainMonitorDatasEigenValueQueryFileSystemService(IConcreteStrainDatasEigenValueDAL concreteStrainDatasDAL)
+        readonly ISteelLatticeStrainDatasEigenValueDAL _strainDatasDAL;
+        public SteelLatticeStrainMonitorDatasQueryFileSystemService(ISteelLatticeStrainDatasEigenValueDAL strainDatasDAL)
         {
-            _concreteStrainDatasDAL = concreteStrainDatasDAL;
+            _strainDatasDAL = strainDatasDAL;
         }
-        public object ConvertToDocument(IList<Func<ConcreteStrainEigenvalueTable, bool>> ps)
+        public object ConvertToDocument(IList<Func<SteelLatticeStrainEigenvalueTable, bool>> ps)
         {
-            IEnumerable<ConcreteStrainEigenvalueTable> strainsExcludePaging = new List<ConcreteStrainEigenvalueTable>();
-            strainsExcludePaging = _concreteStrainDatasDAL.FindBy(ps, ServiceConstant.PointsNumberPointsPositionNavigationProperty);//获取不分页的查询结果
+            IEnumerable<SteelLatticeStrainEigenvalueTable> strainsExcludePaging = new List<SteelLatticeStrainEigenvalueTable>();
+            strainsExcludePaging = _strainDatasDAL.FindBy(ps, ServiceConstant.PointsNumberPointsPositionNavigationProperty);//获取不分页的查询结果
             HSSFWorkbook workbook = new HSSFWorkbook();
             ISheet sheet = workbook.CreateSheet("应变查询结果");
             IRow headRow = sheet.CreateRow(0);

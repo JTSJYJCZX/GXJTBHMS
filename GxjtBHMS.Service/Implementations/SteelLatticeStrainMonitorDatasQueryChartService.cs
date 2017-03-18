@@ -11,15 +11,15 @@ using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    class StrainMonitorDatasQueryChartService : IMonitorDatasEigenvalueQueryChartService<ConcreteStrainEigenvalueTable>
+    class SteelLatticeStrainMonitorDatasQueryChartService : IMonitorDatasEigenvalueQueryChartService<SteelLatticeStrainEigenvalueTable>
     {
-        readonly IConcreteStrainDatasEigenValueDAL _strainDatasDAL;
-        public StrainMonitorDatasQueryChartService(IConcreteStrainDatasEigenValueDAL strainDatasDAL)
+        readonly ISteelLatticeStrainDatasEigenValueDAL _strainDatasDAL;
+        public SteelLatticeStrainMonitorDatasQueryChartService(ISteelLatticeStrainDatasEigenValueDAL strainDatasDAL)
         {
             _strainDatasDAL = strainDatasDAL;
         }
 
-        public IEnumerable<ChartGroupDataModel> GetChartDataSourceBy(IList<Func<ConcreteStrainEigenvalueTable, bool>> ps)
+        public IEnumerable<ChartGroupDataModel> GetChartDataSourceBy(IList<Func<SteelLatticeStrainEigenvalueTable, bool>> ps)
         {
             var source = _strainDatasDAL.FindBy(ps, ServiceConstant.PointsNumberPointsPositionNavigationProperty);
             var groupDatas = source.GroupBy(m => m.PointsNumber.Name);

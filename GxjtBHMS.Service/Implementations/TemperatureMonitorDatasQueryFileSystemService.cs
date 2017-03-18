@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    class TemperatureMonitorDatasQueryFileSystemService : IMonitorDatasQueryFileSystemService<TemperatureTable>
+    class TemperatureMonitorDatasQueryFileSystemService : IMonitorDatasEigenvalueQueryFileSystemService<TemperatureTable>
     {
         readonly ITemperatureDatasDAL _temperatureDatasDAL;
         public TemperatureMonitorDatasQueryFileSystemService(ITemperatureDatasDAL temperatureDatasDAL)

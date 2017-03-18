@@ -13,14 +13,14 @@ using GxjtBHMS.Service.Messaging.MonitoringDatasDownLoad;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    public class CableForceDatasQueryService : MonitorDatasQueryServiceBase<CableForceTable>, ICableForceDatasQueryService
+    public class CableForceDatasQueryService : MonitorDatasEigenvalueQueryServiceBase<CableForceTable>, ICableForceDatasQueryService
     {
         readonly ICableForceDatasDAL _cableForceDatasDAL;
 
         public CableForceDatasQueryService(
             ICableForceDatasDAL cableForceDatasDAL,
             IMonitorDatasEigenvalueQueryChartService<CableForceTable> chartService,
-            IMonitorDatasQueryFileSystemService<CableForceTable> fileSystemService
+            IMonitorDatasEigenvalueQueryFileSystemService<CableForceTable> fileSystemService
             ) : base(chartService, fileSystemService)
         {
             _cableForceDatasDAL = cableForceDatasDAL;
