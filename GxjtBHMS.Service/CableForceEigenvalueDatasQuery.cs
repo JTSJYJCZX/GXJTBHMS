@@ -9,21 +9,21 @@ namespace GxjtBHMS.Service
 {
     class CableForceEigenvalueDatasQuery : MonitoringDatasEigenvalueQueryServiceBase
     {
-        readonly IConcreteStrainDatasEigenvalueQueryService _concreteStrainDatasService;
+        readonly ICableForceDatasEigenvalueQueryService _cableForceDatasService;
 
         public CableForceEigenvalueDatasQuery()
         {
-            _concreteStrainDatasService = new NinjectFactory()
-                .GetInstance<IConcreteStrainDatasEigenvalueQueryService>();
+            _cableForceDatasService = new NinjectFactory()
+                .GetInstance<ICableForceDatasEigenvalueQueryService>();
         }
 
         public override ChartDatasResponse GetChartDatasBy(GetChartDatasRequest req)
         {
-            return _concreteStrainDatasService.GetChartDatasBy(req);
+            return _cableForceDatasService.GetChartDatasBy(req);
         }
-    
 
-        
+
+
 
         public override PagedResponse GetPaginatorDatas(DatasQueryResultRequest req)
         {
@@ -31,8 +31,8 @@ namespace GxjtBHMS.Service
 
             try
             {
-                resp.TotalResultCount = _concreteStrainDatasService.GetTotalResultCountBy(req);
-                if (resp.TotalResultCount>0)
+                resp.TotalResultCount = _cableForceDatasService.GetTotalResultCountBy(req);
+                if (resp.TotalResultCount > 0)
                 {
                     resp.Succeed = true;
                 }
@@ -50,7 +50,7 @@ namespace GxjtBHMS.Service
 
         public override DownLoadDatasResponse SaveAsFile(DatasQueryResultRequestBase req)
         {
-            return _concreteStrainDatasService.SaveAs(req);
+            return _cableForceDatasService.SaveAs(req);
         }
     }
 }

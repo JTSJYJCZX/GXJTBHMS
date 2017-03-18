@@ -83,6 +83,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoMapper\Configuration.cs" />
+    <Compile Include="Implementations\CableForceDatasEigenvalueQueryService.cs" />
+    <Compile Include="Implementations\CableForceMonitorDatasQueryChartService.cs" />
+    <Compile Include="Implementations\CableForceMonitorDatasQueryFileSystemService.cs" />
     <Compile Include="Implementations\DisplaymentDatasEigenvalueQueryService.cs" />
     <Compile Include="Implementations\DisplaymentMonitorDatasQueryChartService.cs" />
     <Compile Include="Implementations\DisplaymentMonitorDatasQueryFileSystemService.cs" />
@@ -95,6 +98,7 @@
     <Compile Include="Implementations\SteelLatticeStrainDatasEigenvalueQueryService.cs" />
     <Compile Include="Implementations\SteelLatticeStrainMonitorDatasQueryChartService.cs" />
     <Compile Include="Implementations\SteelLatticeStrainMonitorDatasQueryFileSystemService.cs" />
+    <Compile Include="Interfaces\ICableForceDatasEigenvalueQueryService.cs" />
     <Compile Include="Interfaces\IDisplaymentDatasEigenvalueQueryService.cs" />
     <Compile Include="Interfaces\IMonitorDatasOriginalValueDownLoadServiceBase.cs" />
     <Compile Include="Interfaces\ISteelArchStrainDatasEigenvalueQueryService.cs" />
@@ -130,18 +134,13 @@
     <Compile Include="Interfaces\ITempertureDatasQueryService.cs" />
     <Compile Include="Messaging\MonitoringDatas\DatasQuery\TemperatureDatasQueryResultResponse.cs" />
     <Compile Include="Implementations\CableForceDataRealTimeDisplayService.cs" />
-    <Compile Include="Implementations\CableForceDatasQueryService.cs" />
     <Compile Include="Implementations\HumidityMonitorDataQueryStatisticService.cs" />
-    <Compile Include="Implementations\CableForceMonitorDataQueryStatisticService.cs" />
     <Compile Include="Implementations\HumidityMonitorDatasQueryChartService.cs" />
     <Compile Include="Implementations\HumidityMonitorDatasQueryFileSystemService.cs" />
     <Compile Include="Implementations\HumidityDatesQueryService.cs" />
     <Compile Include="Implementations\DisplaymentDataRealTimeDisplayService.cs" />
-    <Compile Include="Implementations\CableForceMonitorDatasQueryChartService.cs" />
-    <Compile Include="Implementations\CableForceMonitorDatasQueryFileSystemService.cs" />
     <Compile Include="Implementations\TemperatureDataRealTimeDisplayService.cs" />
     <Compile Include="Interfaces\ICableForceDataRealTimeDisplayService.cs" />
-    <Compile Include="Interfaces\ICableForceDatasQueryService.cs" />
     <Compile Include="Interfaces\IDisplaymentDataRealTimeDisplayService.cs" />
     <Compile Include="Interfaces\IMonitorDataQueryStatisticService.cs" />
     <Compile Include="Interfaces\IMonitorDatasEigenvalueQueryFileSystemService.cs" />

@@ -64,7 +64,7 @@
     <Compile Include="AppDbInitializer.cs" />
     <Compile Include="BHMSContext.cs" />
     <Compile Include="DALConstant.cs" />
-    <Compile Include="MonitoringDatasDAL\CableForceDatasDAL.cs" />
+    <Compile Include="MonitoringDatasDAL\CableForceDatasEigenvalueDAL.cs" />
     <Compile Include="MonitoringDatasDAL\ConcreteStrainDatasOriginalValueDAL.cs" />
     <Compile Include="MonitoringDatasDAL\DisplaymentDatasEigenvalueDAL.cs" />
     <Compile Include="MonitoringDatasDAL\SteelArchStrainDatasEigenvalueDAL.cs" />

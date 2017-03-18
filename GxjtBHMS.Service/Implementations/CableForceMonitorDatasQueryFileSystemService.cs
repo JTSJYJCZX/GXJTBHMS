@@ -1,5 +1,6 @@
 ﻿using GxjtBHMS.Infrastructure.Helpers;
 using GxjtBHMS.Models;
+using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.SqlServerDAL;
 using NPOI.HSSF.UserModel;
@@ -10,16 +11,16 @@ using System.Linq;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    class CableForceMonitorDatasQueryFileSystemService : IMonitorDatasEigenvalueQueryFileSystemService<CableForceTable>
+    class CableForceMonitorDatasQueryFileSystemService : IMonitorDatasEigenvalueQueryFileSystemService<CableForceEigenvalueTable>
     {
-        readonly ICableForceDatasDAL _cableForceDatasDAL;
-        public CableForceMonitorDatasQueryFileSystemService(ICableForceDatasDAL cableForceDatasDAL)
+        readonly ICableForceDatasEigenvalueDAL  _cableForceDatasDAL;
+        public CableForceMonitorDatasQueryFileSystemService(ICableForceDatasEigenvalueDAL  cableForceDatasDAL)
         {
             _cableForceDatasDAL = cableForceDatasDAL;
         }
-        public object ConvertToDocument(IList<Func<CableForceTable, bool>> ps)
+        public object ConvertToDocument(IList<Func<CableForceEigenvalueTable, bool>> ps)
         {
-            IEnumerable<CableForceTable> cableForcesExcludePaging = new List<CableForceTable>();
+            IEnumerable<CableForceEigenvalueTable> cableForcesExcludePaging = new List<CableForceEigenvalueTable>();
             cableForcesExcludePaging = _cableForceDatasDAL.FindBy(ps, ServiceConstant.PointsNumberPointsPositionNavigationProperty);//获取不分页的查询结果
             HSSFWorkbook workbook = new HSSFWorkbook();
             ISheet sheet = workbook.CreateSheet("索力查询结果");
@@ -37,10 +38,10 @@ namespace GxjtBHMS.Service.Implementations
                 row.CreateCell(0).SetCellValue(i + 1);
                 row.CreateCell(1).SetCellValue(cableForcesExcludePaging.ToArray()[i].PointsNumber.Name);
                 row.CreateCell(2).SetCellValue("");
-                row.CreateCell(3).SetCellValue(cableForcesExcludePaging.ToArray()[i].CableForce);
-                row.CreateCell(4).SetCellValue(cableForcesExcludePaging.ToArray()[i].Time.FormatDateTime());
-                row.CreateCell(5).SetCellValue(cableForcesExcludePaging.ToArray()[i].Temperature);
-                row.CreateCell(6).SetCellValue(cableForcesExcludePaging.ToArray()[i].Frequency);
+                row.CreateCell(3).SetCellValue(cableForcesExcludePaging.ToArray()[i].Max);
+                row.CreateCell(4).SetCellValue(cableForcesExcludePaging.ToArray()[i].Min);
+                row.CreateCell(5).SetCellValue(cableForcesExcludePaging.ToArray()[i].Average);
+                row.CreateCell(6).SetCellValue(cableForcesExcludePaging.ToArray()[i].Time.FormatDateTime());
             }
             return workbook;
         }      
