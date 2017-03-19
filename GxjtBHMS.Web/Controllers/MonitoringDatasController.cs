@@ -56,7 +56,7 @@ namespace GxjtBHMS.Web.Controllers
             return Content("<span style='color:red'>无记录</span>");
 
         }
-
+        //获取曲线图数据
         public ActionResult GetChartDatas(MornitoringDataSearchBarBaseView conditions)
         {
             var resp = new ChartDatasResponse();
