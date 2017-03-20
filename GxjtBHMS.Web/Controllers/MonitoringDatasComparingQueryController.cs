@@ -1,12 +1,9 @@
-﻿using GxjtBHMS.Infrastructure.Configuration;
-using GxjtBHMS.Service;
+﻿using GxjtBHMS.Service;
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.Messaging.MonitoringDatas;
 using GxjtBHMS.Service.ViewModels.MonitoringDatas.MonitoringDatasCharts;
 using GxjtBHMS.Web.ExtensionMehtods.MonitoringDatas;
 using GxjtBHMS.Web.Models;
-using GxjtBHMS.Web.ViewModels;
-using GxjtBHMS.Web.ViewModels.MonitoringDatas;
 using GxjtBHMS.Web.ViewModels.MonitoringDatasComparing;
 using System;
 using System.Collections.Generic;
@@ -34,8 +31,46 @@ namespace GxjtBHMS.Web.Controllers
         {
             return View();
         }
-        public ActionResult ComparingQuery()
+        public ActionResult ComparingQuery(MornitoringDataComparingSearchBarView conditions)
         {
+            if (conditions.MornitoringPointsNumberIds[0]== conditions.MornitoringPointsNumberIdsSecond[0])
+            {
+                return Content("<span style='color:red'>对比查询不能选择同一个测点</span>");
+            }
+            if (conditions.EndTime < conditions.StartTime)
+            {
+                return Content("<span style='color:red'>开始时间不能晚于结束时间</span>");
+            }
+            var reqFirst = new DatasQueryResultRequest
+            {
+                StartTime = conditions.StartTime,
+                EndTime = conditions.EndTime,
+                PointsNumberIds = conditions.MornitoringPointsNumberIds,
+                PointsPositionId = conditions.MornitoringPointsPositionId
+            };
+            var monitoringDatasQueryServiceFirst = MonitoringDatasEigenvalueQueryServiceFactory.GetQueryServiceFrom(conditions.MornitoringTestTypeId);
+            var resultFirst = monitoringDatasQueryServiceFirst.HasQueryResult(reqFirst);
+            var reqSecond = new DatasQueryResultRequest
+            {
+                StartTime = conditions.StartTime,
+                EndTime = conditions.EndTime,
+                PointsNumberIds = conditions.MornitoringPointsNumberIdsSecond,
+                PointsPositionId = conditions.MornitoringPointsPositionIdSecond
+            };
+            var monitoringDatasQueryServiceSecond = MonitoringDatasEigenvalueQueryServiceFactory.GetQueryServiceFrom(conditions.MornitoringTestTypeIdSecond);
+            var resultSecond = monitoringDatasQueryServiceSecond.HasQueryResult(reqSecond);
+            if (!resultFirst&& resultSecond)
+            {
+                return Content("<span style='color:red'>所选第一个测点无记录</span>");
+            }
+            else if (!resultSecond&& resultFirst)
+            {
+                return Content("<span style='color:red'>所选第二个测点无记录</span>");
+            }
+            else if(!resultFirst&& !resultSecond)
+            {
+                return Content("<span style='color:red'>所选测点均无记录</span>");
+            }
             return PartialView("DataComparingQuerySearchContentPartial");
         }
 

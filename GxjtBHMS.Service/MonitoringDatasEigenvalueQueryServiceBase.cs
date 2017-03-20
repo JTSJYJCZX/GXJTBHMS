@@ -3,7 +3,7 @@ using GxjtBHMS.Service.Messaging.MonitoringDatasDownLoad;
 
 namespace GxjtBHMS.Service
 {
-    public abstract class MonitoringDatasEigenvalueQueryServiceBase:ServiceBase
+    public abstract class MonitoringDatasEigenvalueQueryServiceBase: ServiceBase
     {
         public abstract bool HasQueryResult(DatasQueryResultRequest req);
 
