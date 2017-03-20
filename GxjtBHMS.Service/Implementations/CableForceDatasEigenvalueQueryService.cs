@@ -21,7 +21,7 @@ namespace GxjtBHMS.Service.Implementations
         public CableForceDatasEigenvalueQueryService(
             ICableForceDatasEigenvalueDAL  cableForceDatasDAL,
             IMonitorDatasEigenvalueQueryChartService<CableForceEigenvalueTable> chartService,
-            IMonitorDatasEigenvalueQueryFileSystemService<CableForceEigenvalueTable> fileSystemService
+            IMonitorDatasQueryFileSystemService<CableForceEigenvalueTable> fileSystemService
             ) : base(chartService, fileSystemService)
         {
             _cableForceDatasDAL = cableForceDatasDAL;

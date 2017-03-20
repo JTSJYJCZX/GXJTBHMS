@@ -21,7 +21,7 @@ namespace GxjtBHMS.Service.Implementations
         public DisplaymentDatasEigenvalueQueryService(
             IDisplaymentDatasEigenValueDAL  displaymentDatasDAL,
             IMonitorDatasEigenvalueQueryChartService<DisplacementEigenvalueTable> chartService,
-            IMonitorDatasEigenvalueQueryFileSystemService<DisplacementEigenvalueTable> fileSystemService
+            IMonitorDatasQueryFileSystemService<DisplacementEigenvalueTable> fileSystemService
             ) : base(chartService, fileSystemService)
         {
             _displaymentDatasDAL = displaymentDatasDAL;

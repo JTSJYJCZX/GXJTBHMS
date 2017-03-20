@@ -13,7 +13,7 @@ using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    class WindLoadMonitorDatasEigenValueQueryFileSystemService : IMonitorDatasEigenvalueQueryFileSystemService<WindLoadEigenvalueTable>
+    class WindLoadMonitorDatasEigenValueQueryFileSystemService : IMonitorDatasQueryFileSystemService<WindLoadEigenvalueTable>
     {
         readonly IWindLoadDatasEigenValueDAL _windLoadEigenValueDatasDAL;
         public WindLoadMonitorDatasEigenValueQueryFileSystemService(IWindLoadDatasEigenValueDAL windLoadEigenValueDatasDAL)

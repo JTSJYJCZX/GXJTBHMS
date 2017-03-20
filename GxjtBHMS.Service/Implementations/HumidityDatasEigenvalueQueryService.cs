@@ -20,7 +20,7 @@ namespace GxjtBHMS.Service.Implementations
         public HumidityDatasEigenvalueQueryService(
             IHumidityDatasEigenvalueDAL humidityDatasDAL,
             IMonitorDatasEigenvalueQueryChartService<HumidityEigenvalueTable> chartService,
-            IMonitorDatasEigenvalueQueryFileSystemService<HumidityEigenvalueTable> fileSystemService
+            IMonitorDatasQueryFileSystemService<HumidityEigenvalueTable> fileSystemService
             ) : base(chartService, fileSystemService)
         {
             _humidityDatasDAL = humidityDatasDAL;

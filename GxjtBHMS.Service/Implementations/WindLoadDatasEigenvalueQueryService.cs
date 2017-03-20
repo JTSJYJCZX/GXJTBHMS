@@ -22,7 +22,7 @@ namespace GxjtBHMS.Service.Implementations
         readonly IWindLoadDatasEigenValueDAL _windLoadDatasEigenValueDAL;
         public WindLoadDatasEigenvalueQueryService(IWindLoadDatasEigenValueDAL windLoadDatasEigenValueDAL,
             IMonitorDatasEigenvalueQueryChartService<WindLoadEigenvalueTable> chartService,
-            IMonitorDatasEigenvalueQueryFileSystemService<WindLoadEigenvalueTable> fileSystemService
+            IMonitorDatasQueryFileSystemService<WindLoadEigenvalueTable> fileSystemService
             ) : base(chartService, fileSystemService)
         {
             _windLoadDatasEigenValueDAL = windLoadDatasEigenValueDAL;

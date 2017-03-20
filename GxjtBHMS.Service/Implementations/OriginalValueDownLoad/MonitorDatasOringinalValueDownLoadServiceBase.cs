@@ -10,8 +10,8 @@ namespace GxjtBHMS.Service.Implementations
     public abstract class MonitorDatasOringinalValueDownLoadServiceBase<T> : ServiceBase where T : MonitorDatasQueryConditionsModel
     {
 
-        readonly protected IMonitorDatasEigenvalueQueryFileSystemService<T> _fileSystemService;
-        public MonitorDatasOringinalValueDownLoadServiceBase( IMonitorDatasEigenvalueQueryFileSystemService<T> fileSystemService
+        readonly protected IMonitorDatasQueryFileSystemService<T> _fileSystemService;
+        public MonitorDatasOringinalValueDownLoadServiceBase( IMonitorDatasQueryFileSystemService<T> fileSystemService
             )
         {
             _fileSystemService = fileSystemService;

@@ -1,7 +1,4 @@
-﻿using System;
-using GxjtBHMS.Service.Messaging;
-using GxjtBHMS.Service.Messaging.MonitoringDatas;
-using GxjtBHMS.Service.Messaging.MonitoringDatas.DatasQuery;
+﻿using GxjtBHMS.Service.Messaging.MonitoringDatas;
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.Messaging.MonitoringDatasDownLoad;
 

@@ -10,9 +10,9 @@ namespace GxjtBHMS.Service.Implementations
     public abstract class MonitorDatasEigenvalueQueryServiceBase<T> : ServiceBase where T : MonitorDatasQueryConditionsModel
     {
         readonly protected IMonitorDatasEigenvalueQueryChartService<T> _chartService;
-        readonly protected IMonitorDatasEigenvalueQueryFileSystemService<T> _fileSystemService;
+        readonly protected IMonitorDatasQueryFileSystemService<T> _fileSystemService;
         public MonitorDatasEigenvalueQueryServiceBase(IMonitorDatasEigenvalueQueryChartService<T> chartService, 
-            IMonitorDatasEigenvalueQueryFileSystemService<T> fileSystemService
+            IMonitorDatasQueryFileSystemService<T> fileSystemService
             )
         {
             _chartService = chartService;

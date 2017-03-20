@@ -13,7 +13,7 @@ using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    class SteelLatticeStrainMonitorDatasQueryFileSystemService : IMonitorDatasEigenvalueQueryFileSystemService<SteelLatticeStrainEigenvalueTable>
+    class SteelLatticeStrainMonitorDatasQueryFileSystemService : IMonitorDatasQueryFileSystemService<SteelLatticeStrainEigenvalueTable>
     {
         readonly ISteelLatticeStrainDatasEigenValueDAL _strainDatasDAL;
         public SteelLatticeStrainMonitorDatasQueryFileSystemService(ISteelLatticeStrainDatasEigenValueDAL strainDatasDAL)

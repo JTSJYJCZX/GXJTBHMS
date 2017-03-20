@@ -22,7 +22,7 @@ namespace GxjtBHMS.Service.Implementations
         readonly ISteelArchStrainDatasEigenValueDAL _steelArchStrainDatasEigenValueDAL;
         public SteelArchStrainDatasEigenvalueQueryService(ISteelArchStrainDatasEigenValueDAL steelArchStrainDatasEigenValueDAL,
             IMonitorDatasEigenvalueQueryChartService<SteelArchStrainEigenvalueTable> chartService,
-            IMonitorDatasEigenvalueQueryFileSystemService<SteelArchStrainEigenvalueTable> fileSystemService
+            IMonitorDatasQueryFileSystemService<SteelArchStrainEigenvalueTable> fileSystemService
             ) : base(chartService, fileSystemService)
         {
             _steelArchStrainDatasEigenValueDAL = steelArchStrainDatasEigenValueDAL;

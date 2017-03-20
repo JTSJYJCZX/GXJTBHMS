@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    class CableForceMonitorDatasQueryFileSystemService : IMonitorDatasEigenvalueQueryFileSystemService<CableForceEigenvalueTable>
+    class CableForceMonitorDatasQueryFileSystemService : IMonitorDatasQueryFileSystemService<CableForceEigenvalueTable>
     {
         readonly ICableForceDatasEigenvalueDAL  _cableForceDatasDAL;
         public CableForceMonitorDatasQueryFileSystemService(ICableForceDatasEigenvalueDAL  cableForceDatasDAL)

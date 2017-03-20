@@ -8,22 +8,22 @@ using GxjtBHMS.Models.MonitoringDatasTable;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    public class ConcreteStrainDatasOriginalValueDownLoadService : MonitorDatasOringinalValueDownLoadServiceBase<ConcreteStrainTable>, 
-        IConcreteStrainDatasOriginalValueDownLoadService
+    public class SteelArchStrainDatasOriginalValueDownLoadService : MonitorDatasOringinalValueDownLoadServiceBase<SteelArchStrainTable>,
+        ISteelArchStrainDatasOriginalValueDownLoadService
     {
-        readonly IConcreteStrainDatasOriginalValueDAL _concreteStrainDatasOriginalValueDAL;
-        public ConcreteStrainDatasOriginalValueDownLoadService(IConcreteStrainDatasOriginalValueDAL concreteStrainDatasOriginalValueDAL,
-            IMonitorDatasQueryFileSystemService<ConcreteStrainTable> fileSystemService
+        readonly ISteelArchStrainDatasOriginalValueDAL _steelArchStrainDatasOriginalValueDAL;
+        public SteelArchStrainDatasOriginalValueDownLoadService(ISteelArchStrainDatasOriginalValueDAL steelArchStrainDatasOriginalValueDAL,
+            IMonitorDatasQueryFileSystemService<SteelArchStrainTable> fileSystemService
             ) : base(fileSystemService)
         {
-            _concreteStrainDatasOriginalValueDAL = concreteStrainDatasOriginalValueDAL;
+            _steelArchStrainDatasOriginalValueDAL = steelArchStrainDatasOriginalValueDAL;
         }
 
 
         public DownLoadOriginalvalueDatasResponse SaveAs(DatasQueryResultRequestBase req)
         {
             var resp = new DownLoadOriginalvalueDatasResponse();
-            IList<Func<ConcreteStrainTable, bool>> ps = new List<Func<ConcreteStrainTable, bool>>();
+            IList<Func<SteelArchStrainTable, bool>> ps = new List<Func<SteelArchStrainTable, bool>>();
             try
             {
                 DealWithConditions(req, ps);

@@ -20,7 +20,7 @@ namespace GxjtBHMS.Service.Implementations
         public TemperatureDatasEigenvalueQueryService(
             ITemperatureDatasEigenvalueDAL temperatureDatasDAL,
             IMonitorDatasEigenvalueQueryChartService<TemperatureEigenvalueTable> chartService,
-            IMonitorDatasEigenvalueQueryFileSystemService<TemperatureEigenvalueTable> fileSystemService
+            IMonitorDatasQueryFileSystemService<TemperatureEigenvalueTable> fileSystemService
             ) : base(chartService, fileSystemService)
         {
             _temperatureDatasDAL = temperatureDatasDAL;

@@ -3,7 +3,7 @@ using GxjtBHMS.Models.MonitoringDatasTable;
 
 namespace GxjtBHMS.IDAL
 {
-    public interface IConcreteStrainDatasOriginalValueDAL : IReadOnlyRepository<ConcreteStrainTable, int>
+    public interface ISteelArchStrainDatasOriginalValueDAL : IReadOnlyRepository<SteelArchStrainTable, int>
     {
 
     }

@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    class HumidityMonitorDatasQueryFileSystemService : IMonitorDatasEigenvalueQueryFileSystemService<HumidityEigenvalueTable>
+    class HumidityMonitorDatasQueryFileSystemService : IMonitorDatasQueryFileSystemService<HumidityEigenvalueTable>
     {
         readonly IHumidityDatasEigenvalueDAL _humidityDatasDAL;
         public HumidityMonitorDatasQueryFileSystemService(IHumidityDatasEigenvalueDAL humidityDatasDAL)

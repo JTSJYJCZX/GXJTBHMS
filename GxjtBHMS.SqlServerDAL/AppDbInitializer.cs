@@ -481,10 +481,11 @@ namespace GxjtBHMS.SqlServerDAL
         }
         private void CreateMonitoringDatas(BHMSContext context)
         {
-            InitialMonitoringDatas(context);
+            InitialMonitoringDatasEigenValue(context);
+            InitialMonitoringDatasOriginalValue(context);
         }
 
-        void InitialMonitoringDatas(BHMSContext context)
+        void InitialMonitoringDatasEigenValue(BHMSContext context)
         {
             var random = new Random();
 
@@ -494,7 +495,7 @@ namespace GxjtBHMS.SqlServerDAL
             for (int i = 0; i < 5; i++)
             {
                 DateTime time = DateTime.Now.AddHours(intlTime + i);
-                //钢拱肋应变初始化
+                //钢拱肋应变特征值初始化
                 for (int j = 0; j < tmpNumbers1.Length; j++)
                 {
                     var steelArchStrainEigenvalue = new SteelArchStrainEigenvalueTable { PointsNumber = tmpNumbers1[j], Time = time, Max = random.Next(100, 150), Min = random.Next(-100, -50), Average = random.Next(-50, 100) };
@@ -537,8 +538,7 @@ namespace GxjtBHMS.SqlServerDAL
                     context.SteelArchStrainEigenvalues.Add(steelArchStrainEigenvalue);
                 }
 
-
-                //钢格构应变初始化
+                //钢格构应变特征值初始化
                 for (int j = 0; j < tmpNumbers8.Length; j++)
                 {
                     var steelLatticeStrainEigenvalue = new SteelLatticeStrainEigenvalueTable { PointsNumber = tmpNumbers8[j], Time = time, Max = random.Next(10, 20), Min = random.Next(-100, -50), Average = random.Next(-50, 100) };
@@ -587,7 +587,7 @@ namespace GxjtBHMS.SqlServerDAL
                     context.SteelLatticeStrainEigenvalues.Add(steelLatticeStrainEigenvalue);
                 }
 
-                //混凝土应变初始化
+                //混凝土应变特征值初始化
                 for (int j = 0; j < tmpNumbers16.Length; j++)
                 {
                     var concreteStrainEigenvalue = new ConcreteStrainEigenvalueTable { PointsNumber = tmpNumbers16[j], Time = time, Max = random.Next(10, 40), Min = random.Next(-20, -10), Average = random.Next(-10, 10) };
@@ -599,21 +599,7 @@ namespace GxjtBHMS.SqlServerDAL
                     context.ConcreteStrainEigenvalues.Add(concreteStrainEigenvalue);
                 }
 
-                //混凝土应变原始数据初始化
-                for (int j = 0; j < tmpNumbers16.Length; j++)
-                {
-                    var concreteStrain = new ConcreteStrainTable { PointsNumber = tmpNumbers16[j], Time = time, Strain=random.Next(10, 40),Temperature=random.Next(5,60) };
-                    context.ConcreteStrains.Add(concreteStrain);
-                }
-                for (int j = 0; j < tmpNumbers17.Length; j++)
-                {
-                    var concreteStrain = new ConcreteStrainTable { PointsNumber = tmpNumbers17[j], Time = time, Strain = random.Next(10, 40), Temperature = random.Next(5, 60) };
-                    context.ConcreteStrains.Add(concreteStrain);
-                }
-
-
-
-                //位移初始化
+                //位移特征值初始化
                 for (int j = 0; j < tmpNumbers18.Length; j++)
                 {
                     var displacementEigenvalue = new DisplacementEigenvalueTable { PointsNumber = tmpNumbers18[j], Time = time, Max = random.Next(10, 40), Min = random.Next(-20, -10), Average = random.Next(-10, 10) };
@@ -635,8 +621,7 @@ namespace GxjtBHMS.SqlServerDAL
                     context.DisplacementEigenvalues.Add(displacementEigenvalue);
                 }
 
-
-                //索力初始化
+                //索力特征值初始化
                 for (int j = 0; j < tmpNumbers26.Length; j++)
                 {
                     var cableForceEigenvalue = new CableForceEigenvalueTable { PointsNumber = tmpNumbers26[j], Time = time, Max = random.Next(1200, 1500), Min = random.Next(800, 1100), Average = random.Next(1000, 1300) };
@@ -655,7 +640,7 @@ namespace GxjtBHMS.SqlServerDAL
                     context.CableForceEigenvalues.Add(cableForceEigenvalue);
                 }
 
-                //温度初始化
+                //温度特征值初始化
                 for (int j = 0; j < tmpNumbers22.Length; j++)
                 {
                     var temperatureEigenvalue = new TemperatureEigenvalueTable { PointsNumber = tmpNumbers22[j], Time = time, Max = random.Next(50, 60), Min = random.Next(0, 10), Average = random.Next(20, 30) };
@@ -668,7 +653,7 @@ namespace GxjtBHMS.SqlServerDAL
                     context.TemperatureEigenvalues.Add(temperatureEigenvalue);
                 }
 
-                //湿度初始化
+                //湿度特征值初始化
                 for (int j = 0; j < tmpNumbers24.Length; j++)
                 {
                     var humidityEigenvalue = new HumidityEigenvalueTable { PointsNumber = tmpNumbers24[j], Time = time, Max = random.Next(50, 60), Min = random.Next(20, 30), Average = random.Next(40, 50) };
@@ -681,15 +666,207 @@ namespace GxjtBHMS.SqlServerDAL
                     context.HumidityEigenvalues.Add(humidityEigenvalue);
                 }
 
-                //风速
+                //风速特征值
                 for (int j = 0; j < tmpNumbers29.Length; j++)
                 {
                     var windLoadEigenvalue = new WindLoadEigenvalueTable { PointsNumber = tmpNumbers29[j], Time = time, Max = random.Next(6, 10), Min = random.Next(0, 3), Average = random.Next(2, 5) };
                     context.WindLoadEigenvalues .Add(windLoadEigenvalue);
                 }
+            }
+        }
+
+        void InitialMonitoringDatasOriginalValue(BHMSContext context)
+        {
+            var random = new Random();
+
+
+            int intlTime = -120;
+
+            for (int i = 0; i < 120; i++)
+            {
+                DateTime time = DateTime.Now.AddMinutes(intlTime + i);
+                //钢拱肋应变初始值初始化
+                for (int j = 0; j < tmpNumbers1.Length; j++)
+                {
+                    var steelArchStrainOriginalvalue = new SteelArchStrainTable { PointsNumber = tmpNumbers1[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70) };
+                    context.SteelArchStrains.Add(steelArchStrainOriginalvalue);
+                }
+
+                for (int j = 0; j < tmpNumbers2.Length; j++)
+                {
+                    var steelArchStrainOriginalvalue = new SteelArchStrainTable { PointsNumber = tmpNumbers2[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70) };
+                    context.SteelArchStrains.Add(steelArchStrainOriginalvalue);
+                }
+
+                for (int j = 0; j < tmpNumbers3.Length; j++)
+                {
+                    var steelArchStrainOriginalvalue = new SteelArchStrainTable { PointsNumber = tmpNumbers3[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70) };
+                    context.SteelArchStrains.Add(steelArchStrainOriginalvalue);
+                }
+
+                for (int j = 0; j < tmpNumbers4.Length; j++)
+                {
+                    var steelArchStrainOriginalvalue = new SteelArchStrainTable { PointsNumber = tmpNumbers4[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70) };
+                    context.SteelArchStrains.Add(steelArchStrainOriginalvalue);
+                }
+
+                for (int j = 0; j < tmpNumbers5.Length; j++)
+                {
+                    var steelArchStrainOriginalvalue = new SteelArchStrainTable { PointsNumber = tmpNumbers5[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70) };
+                    context.SteelArchStrains.Add(steelArchStrainOriginalvalue);
+                }
+
+                for (int j = 0; j < tmpNumbers6.Length; j++)
+                {
+                    var steelArchStrainOriginalvalue = new SteelArchStrainTable { PointsNumber = tmpNumbers6[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70) };
+                    context.SteelArchStrains.Add(steelArchStrainOriginalvalue);
+                }
+
+                for (int j = 0; j < tmpNumbers7.Length; j++)
+                {
+                    var steelArchStrainOriginalvalue = new SteelArchStrainTable { PointsNumber = tmpNumbers7[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70) };
+                    context.SteelArchStrains.Add(steelArchStrainOriginalvalue);
+                }
+
+
+                //钢格构应变初始值初始化
+                for (int j = 0; j < tmpNumbers8.Length; j++)
+                {
+                    var steelLatticeStrainOriginalvalue = new SteelLatticeStrainTable { PointsNumber = tmpNumbers8[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70) };
+                    context.SteelLatticeStrains.Add(steelLatticeStrainOriginalvalue);
+                }
+
+                for (int j = 0; j < tmpNumbers9.Length; j++)
+                {
+                    var steelLatticeStrainOriginalvalue = new SteelLatticeStrainTable { PointsNumber = tmpNumbers9[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70) };
+                    context.SteelLatticeStrains.Add(steelLatticeStrainOriginalvalue);
+                }
+
+                for (int j = 0; j < tmpNumbers10.Length; j++)
+                {
+                    var steelLatticeStrainOriginalvalue = new SteelLatticeStrainTable { PointsNumber = tmpNumbers10[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70) };
+                    context.SteelLatticeStrains.Add(steelLatticeStrainOriginalvalue);
+                }
+
+                for (int j = 0; j < tmpNumbers11.Length; j++)
+                {
+                    var steelLatticeStrainOriginalvalue = new SteelLatticeStrainTable { PointsNumber = tmpNumbers11[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70) };
+                    context.SteelLatticeStrains.Add(steelLatticeStrainOriginalvalue);
+                }
+
+                for (int j = 0; j < tmpNumbers12.Length; j++)
+                {
+                    var steelLatticeStrainOriginalvalue = new SteelLatticeStrainTable { PointsNumber = tmpNumbers12[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70) };
+                    context.SteelLatticeStrains.Add(steelLatticeStrainOriginalvalue);
+                }
+
+                for (int j = 0; j < tmpNumbers13.Length; j++)
+                {
+                    var steelLatticeStrainOriginalvalue = new SteelLatticeStrainTable { PointsNumber = tmpNumbers13[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70) };
+                    context.SteelLatticeStrains.Add(steelLatticeStrainOriginalvalue);
+                }
+
+                for (int j = 0; j < tmpNumbers14.Length; j++)
+                {
+                    var steelLatticeStrainOriginalvalue = new SteelLatticeStrainTable { PointsNumber = tmpNumbers14[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70) };
+                    context.SteelLatticeStrains.Add(steelLatticeStrainOriginalvalue);
+                }
+
+                for (int j = 0; j < tmpNumbers15.Length; j++)
+                {
+                    var steelLatticeStrainOriginalvalue = new SteelLatticeStrainTable { PointsNumber = tmpNumbers15[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70) };
+                    context.SteelLatticeStrains.Add(steelLatticeStrainOriginalvalue);
+                }
+
+                //混凝土应变原始数据初始化
+                for (int j = 0; j < tmpNumbers16.Length; j++)
+                {
+                    var concreteStrain = new ConcreteStrainTable { PointsNumber = tmpNumbers16[j], Time = time, Strain = random.Next(10, 40), Temperature = random.Next(5, 60) };
+                    context.ConcreteStrains.Add(concreteStrain);
+                }
+                for (int j = 0; j < tmpNumbers17.Length; j++)
+                {
+                    var concreteStrain = new ConcreteStrainTable { PointsNumber = tmpNumbers17[j], Time = time, Strain = random.Next(10, 40), Temperature = random.Next(5, 60) };
+                    context.ConcreteStrains.Add(concreteStrain);
+                }
+
+                //位移初始值初始化
+                for (int j = 0; j < tmpNumbers18.Length; j++)
+                {
+                    var displacementOriginalValue = new DisplacementTable { PointsNumber = tmpNumbers18[j], Time = time, Displayment = random.Next(-20, 40) };
+                    context.Displacements.Add(displacementOriginalValue);
+                }
+                for (int j = 0; j < tmpNumbers19.Length; j++)
+                {
+                    var displacementOriginalValue = new DisplacementTable { PointsNumber = tmpNumbers19[j], Time = time, Displayment = random.Next(-20, 40) };
+                    context.Displacements.Add(displacementOriginalValue);
+                }
+                for (int j = 0; j < tmpNumbers20.Length; j++)
+                {
+                    var displacementOriginalValue = new DisplacementTable { PointsNumber = tmpNumbers20[j], Time = time, Displayment = random.Next(-20, 40) };
+                    context.Displacements.Add(displacementOriginalValue);
+                }
+                for (int j = 0; j < tmpNumbers21.Length; j++)
+                {
+                    var displacementOriginalValue = new DisplacementTable { PointsNumber = tmpNumbers21[j], Time = time, Displayment = random.Next(-20, 40) };
+                    context.Displacements.Add(displacementOriginalValue);
+                }
+
+                //索力初始值初始化
+                for (int j = 0; j < tmpNumbers26.Length; j++)
+                {
+                    var cableForceOriginalValue = new CableForceTable { PointsNumber = tmpNumbers26[j], Time = time, CableForce = random.Next(800, 1500), Temperature = random.Next(5, 70) };
+                    context.CableForces.Add(cableForceOriginalValue);
+                }
+
+                for (int j = 0; j < tmpNumbers27.Length; j++)
+                {
+                    var cableForceOriginalValue = new CableForceTable { PointsNumber = tmpNumbers27[j], Time = time, CableForce = random.Next(800, 1500), Temperature = random.Next(5, 70) };
+                    context.CableForces.Add(cableForceOriginalValue);
+                }
+
+                for (int j = 0; j < tmpNumbers28.Length; j++)
+                {
+                    var cableForceOriginalValue = new CableForceTable { PointsNumber = tmpNumbers28[j], Time = time, CableForce = random.Next(800, 1500), Temperature = random.Next(5, 70) };
+                    context.CableForces.Add(cableForceOriginalValue);
+                }
+
+                //温度初始值初始化
+                for (int j = 0; j < tmpNumbers22.Length; j++)
+                {
+                    var temperatureOriginalValue = new TemperatureTable { PointsNumber = tmpNumbers22[j], Time = time, Temperature = random.Next(5, 45) };
+                    context.Temperatures.Add(temperatureOriginalValue);
+                }
+
+                for (int j = 0; j < tmpNumbers23.Length; j++)
+                {
+                    var temperatureOriginalValue = new TemperatureTable { PointsNumber = tmpNumbers23[j], Time = time, Temperature = random.Next(5, 70) };
+                    context.Temperatures.Add(temperatureOriginalValue);
+                }
+
+                //湿度初始值初始化
+                for (int j = 0; j < tmpNumbers24.Length; j++)
+                {
+                    var humidityOriginalValue = new HumidityTable { PointsNumber = tmpNumbers24[j], Time = time, Humidity = random.Next(20, 60) };
+                    context.Humiditys.Add(humidityOriginalValue);
+                }
+
+                for (int j = 0; j < tmpNumbers25.Length; j++)
+                {
+                    var humidityOriginalValue = new HumidityTable { PointsNumber = tmpNumbers25[j], Time = time, Humidity = random.Next(20, 60) };
+                    context.Humiditys.Add(humidityOriginalValue);
+                }
+
+                //风速初始值
+                for (int j = 0; j < tmpNumbers29.Length; j++)
+                {
+                    var windLoadOriginalValue = new WindLoadTable { PointsNumber = tmpNumbers29[j], Time = time, WindSpeed = random.Next(0, 10) };
+                    context.WindLoads.Add(windLoadOriginalValue);
+                }
 
             }
         }
+
 
         void CreateAdminUser(BHMSContext context)
         {

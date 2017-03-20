@@ -1,31 +1,28 @@
-﻿using GxjtBHMS.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Office.Interop.Excel;
 using GxjtBHMS.IDAL;
 using GxjtBHMS.Service.Interfaces;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using GxjtBHMS.Infrastructure.Helpers;
 using GxjtBHMS.Models.MonitoringDatasTable;
-using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    class StrainMonitorDatasOriginalValueDownLoadFileSystemService : IMonitorDatasEigenvalueQueryFileSystemService<ConcreteStrainTable>
+    class SteelArchStrainMonitorDatasOriginalValueDownLoadFileSystemService : IMonitorDatasQueryFileSystemService<SteelArchStrainTable>
     {
-        readonly IConcreteStrainDatasOriginalValueDAL _strainOriginalDatasDAL;
-        public StrainMonitorDatasOriginalValueDownLoadFileSystemService(IConcreteStrainDatasOriginalValueDAL strainOriginalDatasDAL)
+        readonly ISteelArchStrainDatasOriginalValueDAL _steelArchStrainOriginalDatasDAL;
+        public SteelArchStrainMonitorDatasOriginalValueDownLoadFileSystemService(ISteelArchStrainDatasOriginalValueDAL steelArchStrainOriginalDatasDAL)
         {
-            _strainOriginalDatasDAL = strainOriginalDatasDAL;
+            _steelArchStrainOriginalDatasDAL = steelArchStrainOriginalDatasDAL;
         }
-        public object ConvertToDocument(IList<Func<ConcreteStrainTable, bool>> ps)
+        public object ConvertToDocument(IList<Func<SteelArchStrainTable, bool>> ps)
         {
-            IEnumerable<ConcreteStrainTable> strainsExcludePaging = new List<ConcreteStrainTable>();
-            strainsExcludePaging = _strainOriginalDatasDAL.FindBy(ps, ServiceConstant.PointsNumberPointsPositionNavigationProperty);//获取不分页的查询结果
+            IEnumerable<SteelArchStrainTable> strainsExcludePaging = new List<SteelArchStrainTable>();
+            strainsExcludePaging = _steelArchStrainOriginalDatasDAL.FindBy(ps, ServiceConstant.PointsNumberPointsPositionNavigationProperty);//获取不分页的查询结果
             HSSFWorkbook workbook = new HSSFWorkbook();
-            ISheet sheet = workbook.CreateSheet("应变查询结果");
+            ISheet sheet = workbook.CreateSheet("钢拱肋应变原始数据查询结果");
             IRow headRow = sheet.CreateRow(0);
             headRow.CreateCell(0).SetCellValue("序号");
             headRow.CreateCell(1).SetCellValue("测点编号");

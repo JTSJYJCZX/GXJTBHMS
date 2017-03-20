@@ -22,7 +22,7 @@ namespace GxjtBHMS.Service.Implementations
         readonly ISteelLatticeStrainDatasEigenValueDAL _steelLatticeStrainDatasEigenValueDAL;
         public SteelLatticeStrainDatasEigenvalueQueryService(ISteelLatticeStrainDatasEigenValueDAL steelLatticeStrainDatasEigenValueDAL,
             IMonitorDatasEigenvalueQueryChartService<SteelLatticeStrainEigenvalueTable> chartService,
-            IMonitorDatasEigenvalueQueryFileSystemService<SteelLatticeStrainEigenvalueTable> fileSystemService
+            IMonitorDatasQueryFileSystemService<SteelLatticeStrainEigenvalueTable> fileSystemService
             ) : base(chartService, fileSystemService)
         {
             _steelLatticeStrainDatasEigenValueDAL = steelLatticeStrainDatasEigenValueDAL;

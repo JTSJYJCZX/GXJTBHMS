@@ -9,8 +9,8 @@ namespace GxjtBHMS.Service
         {
             switch (mornitoringTestTypeId)
             {
-                //case 1:
-                //    return new SteelArchStrainOriginalValueDatasDownLoad();
+                case 1:
+                    return new SteelArchStrainOriginalValueDatasDownLoad();
                 //case 2:
                 //    return new SteelLatticeStrainOriginalValueDatasDownLoad();
                 case 3:

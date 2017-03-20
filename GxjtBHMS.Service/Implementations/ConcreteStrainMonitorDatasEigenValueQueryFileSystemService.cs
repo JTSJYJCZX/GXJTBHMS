@@ -13,7 +13,7 @@ using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    class ConcreteStrainMonitorDatasEigenValueQueryFileSystemService : IMonitorDatasEigenvalueQueryFileSystemService<ConcreteStrainEigenvalueTable>
+    class ConcreteStrainMonitorDatasEigenValueQueryFileSystemService : IMonitorDatasQueryFileSystemService<ConcreteStrainEigenvalueTable>
     {
         readonly IConcreteStrainDatasEigenValueDAL _concreteStrainDatasDAL;
         public ConcreteStrainMonitorDatasEigenValueQueryFileSystemService(IConcreteStrainDatasEigenValueDAL concreteStrainDatasDAL)

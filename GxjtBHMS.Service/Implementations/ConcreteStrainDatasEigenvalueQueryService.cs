@@ -14,7 +14,7 @@ namespace GxjtBHMS.Service.Implementations
         readonly IConcreteStrainDatasEigenValueDAL _concreteStrainDatasEigenValueDAL;
         public ConcreteStrainDatasEigenvalueQueryService(IConcreteStrainDatasEigenValueDAL concreteStrainDatasEigenValueDAL,
             IMonitorDatasEigenvalueQueryChartService<ConcreteStrainEigenvalueTable> chartService,
-            IMonitorDatasEigenvalueQueryFileSystemService<ConcreteStrainEigenvalueTable> fileSystemService
+            IMonitorDatasQueryFileSystemService<ConcreteStrainEigenvalueTable> fileSystemService
             ) : base(chartService, fileSystemService)
         {
             _concreteStrainDatasEigenValueDAL = concreteStrainDatasEigenValueDAL;
