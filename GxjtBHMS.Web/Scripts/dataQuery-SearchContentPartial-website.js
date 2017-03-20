@@ -57,7 +57,7 @@
                 MornitoringPointsNumberIds: testPointsNumberIds
             },
             success: function (data) {
-                document.location.href = "/MonitoringDatas/OriginCode?guid=" + data;
+                document.location.href = "/MonitoringDatas/OriginCode?guid=" + data + "&pointsPositionId=" + testPointPositionId;
             },
             error: function (result) {
                 alert(result.responseText);
