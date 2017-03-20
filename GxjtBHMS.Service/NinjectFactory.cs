@@ -27,7 +27,8 @@ namespace GxjtBHMS.Service
             _ninjectKernel.Bind<IConcreteStrainDatasOriginalValueDAL>().To<ConcreteStrainDatasOriginalValueDAL>();
             _ninjectKernel.Bind<ISteelArchStrainDatasOriginalValueDownLoadService>().To<SteelArchStrainDatasOriginalValueDownLoadService>();
             _ninjectKernel.Bind<ISteelArchStrainDatasOriginalValueDAL>().To<SteelArchStrainDatasOriginalValueDAL>();
-
+            _ninjectKernel.Bind<ISteelLatticeStrainDatasOriginalValueDownLoadService>().To<SteelLatticeStrainDatasOriginalValueDownLoadService>();
+            _ninjectKernel.Bind<ISteelLatticeStrainDatasOriginalValueDAL>().To<SteelLatticeStrainDatasOriginalValueDAL>();
 
             _ninjectKernel.Bind<IConcreteStrainDatasEigenvalueQueryService>().To<ConcreteStrainDatasEigenvalueQueryService>();
             _ninjectKernel.Bind<IConcreteStrainDatasEigenValueDAL>().To<ConcreteStrainDatasEigenvalueDAL>();
@@ -59,6 +60,8 @@ namespace GxjtBHMS.Service
 
             _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<SteelArchStrainTable>>().To<SteelArchStrainMonitorDatasOriginalValueDownLoadFileSystemService>();
             _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<ConcreteStrainTable>>().To<ConcreteStrainMonitorDatasOriginalValueDownLoadFileSystemService>();
+            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<SteelLatticeStrainTable>>().To<SteelLatticeStrainMonitorDatasOriginalValueDownLoadFileSystemService>();
+
             _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<ConcreteStrainEigenvalueTable>>().To<ConcreteStrainMonitorDatasEigenValueQueryFileSystemService>();
             _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<DisplacementEigenvalueTable>>().To<DisplaymentMonitorDatasQueryFileSystemService>();
             _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<CableForceEigenvalueTable>>().To<CableForceMonitorDatasQueryFileSystemService>();
