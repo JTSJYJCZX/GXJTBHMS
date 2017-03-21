@@ -8,6 +8,8 @@ using Ninject;
 using GxjtBHMS.Models;
 using GxjtBHMS.Service.Implementations.OriginalValueDownLoad;
 using GxjtBHMS.IDAL.OriginalValueDownLoad;
+using GxjtBHMS.Service.Interfaces.MonitoringDatasOriginalValueDownLoadInerfaces;
+using GxjtBHMS.SqlServerDAL.MonitoringDatasDAL;
 
 namespace GxjtBHMS.Service
 {
@@ -36,6 +38,10 @@ namespace GxjtBHMS.Service
             _ninjectKernel.Bind<IDisplacementDatasOriginalValueDAL>().To<DisplacementDatasOriginalValueDAL>();
             _ninjectKernel.Bind<ICableForceDatasOriginalValueDownLoadService>().To<CableForceDatasOriginalValueDownloadService>();
             _ninjectKernel.Bind<ICableForceDatasOriginalValueDAL>().To<CableForceDatasOriginalValueDAL>();
+            _ninjectKernel.Bind<ITemperatureDatasOriginalValueDownLoadService>().To<TemperatureDatasOriginalValueDownLoadService>();
+            _ninjectKernel.Bind<ITemperatureDatasOriginalValueDAL>().To<TemperatureDatasOriginalValueDAL>();
+            _ninjectKernel.Bind<IHumidityDatasOriginalValueDownLoadService>().To<HumidityDatasOriginalValueDownLoadService>();
+            _ninjectKernel.Bind<IHumidityDatasOriginalValueDAL>().To<HumidityDatasOriginalValueDAL>();
 
             _ninjectKernel.Bind<IConcreteStrainDatasEigenvalueQueryService>().To<ConcreteStrainDatasEigenvalueQueryService>();
             _ninjectKernel.Bind<IConcreteStrainDatasEigenValueDAL>().To<ConcreteStrainDatasEigenvalueDAL>();
@@ -70,6 +76,8 @@ namespace GxjtBHMS.Service
             _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<SteelLatticeStrainTable>>().To<SteelLatticeStrainMonitorDatasOriginalValueDownloadFileSystemService>();
             _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<DisplacementTable>>().To<DisplacementMonitorDatasOriginalValueDownloadFileSystemService>();
             _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<CableForceTable>>().To<CableForceMonitorDatasOriginalValueDownloadFileSystemService>();
+            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<TemperatureTable>>().To<TemperatureDatasOriginalValueDownLoadFileSystemService>();
+            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<HumidityTable>>().To<HumidityDatasOriginalValueDownLoadFileSystemService>();
 
 
             _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<ConcreteStrainEigenvalueTable>>().To<ConcreteStrainMonitorDatasEigenValueQueryFileSystemService>();
