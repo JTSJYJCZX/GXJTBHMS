@@ -46,6 +46,8 @@
   <ItemGroup>
     <Compile Include="ICableForceDatasEigenvalueDAL.cs" />
     <Compile Include="ICableForceThresholdValueGettingDAL.cs" />
+    <Compile Include="OriginalValueDownLoad\IHumidityDatasOriginalValueDAL.cs" />
+    <Compile Include="OriginalValueDownLoad\ITemperatureDatasOriginalValueDAL.cs" />
     <Compile Include="IWindLoadDatasEigenValueDAL.cs" />
     <Compile Include="IDisplaymentDatasEigenValueDAL.cs" />
     <Compile Include="IHumidityDatasEigenvalueDAL.cs" />
