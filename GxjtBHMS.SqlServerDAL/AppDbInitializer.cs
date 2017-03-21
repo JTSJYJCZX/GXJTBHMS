@@ -680,9 +680,9 @@ namespace GxjtBHMS.SqlServerDAL
             var random = new Random();
 
 
-            int intlTime = -120;
+            int intlTime = -5;
 
-            for (int i = 0; i < 120; i++)
+            for (int i = 0; i < 5; i++)
             {
                 DateTime time = DateTime.Now.AddMinutes(intlTime + i);
                 //钢拱肋应变初始值初始化

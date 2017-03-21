@@ -25,8 +25,6 @@ namespace GxjtBHMS.Tests.ControllerTests
         [TestMethod]
         public void OriginCode_ValidedGuidAndTestTypeId_ReturnResponseWithExcelBinaryData()
         {
-            
-           
         }
     }
 }
