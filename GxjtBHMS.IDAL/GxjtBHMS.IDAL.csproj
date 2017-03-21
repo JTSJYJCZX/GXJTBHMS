@@ -68,6 +68,7 @@
     <Compile Include="ITemperatureThresholdValueGettingDAL.cs" />
     <Compile Include="IThresholdValueSettingDAL.cs" />
     <Compile Include="IUser.cs" />
+    <Compile Include="OriginalValueDownLoad\ICableForceDatasOriginalValueDAL.cs" />
     <Compile Include="OriginalValueDownLoad\IDisplacementDatasOriginalValueDAL.cs" />
     <Compile Include="OriginalValueDownLoad\ISteelLatticeStrainDatasOriginalValueDAL.cs" />
     <Compile Include="OriginalValueDownLoad\ISteelArchStrainDatasOriginalValueDAL.cs" />

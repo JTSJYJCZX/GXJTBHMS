@@ -36,7 +36,7 @@ namespace GxjtBHMS.SqlServerDAL
         public DbSet<SteelLatticeStrainEigenvalueTable> SteelLatticeStrainEigenvalues { get; set; }//钢格构应变特征值
         public DbSet<ConcreteStrainEigenvalueTable> ConcreteStrainEigenvalues { get; set; }//混凝土应变特征值
         public DbSet<DisplacementEigenvalueTable> DisplacementEigenvalues { get; set; }//位移特征值
-        public DbSet<CableForceEigenvalueTable> CableForceEigenvalues { get; set; }//索力特征值
+        public DbSet<CableForceEigenValueTable> CableForceEigenvalues { get; set; }//索力特征值
         public DbSet<TemperatureEigenvalueTable> TemperatureEigenvalues { get; set; }//温度特征值
         public DbSet<HumidityEigenvalueTable> HumidityEigenvalues { get; set; }//湿度特征值
         public DbSet<WindLoadEigenvalueTable> WindLoadEigenvalues { get; set; }//风载特征值

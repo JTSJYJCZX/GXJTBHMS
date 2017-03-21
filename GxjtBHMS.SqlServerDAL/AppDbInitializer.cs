@@ -624,19 +624,19 @@ namespace GxjtBHMS.SqlServerDAL
                 //索力特征值初始化
                 for (int j = 0; j < tmpNumbers26.Length; j++)
                 {
-                    var cableForceEigenvalue = new CableForceEigenvalueTable { PointsNumber = tmpNumbers26[j], Time = time, Max = random.Next(1200, 1500), Min = random.Next(800, 1100), Average = random.Next(1000, 1300) };
+                    var cableForceEigenvalue = new CableForceEigenValueTable { PointsNumber = tmpNumbers26[j], Time = time, Max = random.Next(1200, 1500), Min = random.Next(800, 1100), Average = random.Next(1000, 1300) };
                     context.CableForceEigenvalues.Add(cableForceEigenvalue);
                 }
 
                 for (int j = 0; j < tmpNumbers27.Length; j++)
                 {
-                    var cableForceEigenvalue = new CableForceEigenvalueTable { PointsNumber = tmpNumbers27[j], Time = time, Max = random.Next(1200, 1500), Min = random.Next(800, 1100), Average = random.Next(1000, 1300) };
+                    var cableForceEigenvalue = new CableForceEigenValueTable { PointsNumber = tmpNumbers27[j], Time = time, Max = random.Next(1200, 1500), Min = random.Next(800, 1100), Average = random.Next(1000, 1300) };
                     context.CableForceEigenvalues.Add(cableForceEigenvalue);
                 }
 
                 for (int j = 0; j < tmpNumbers28.Length; j++)
                 {
-                    var cableForceEigenvalue = new CableForceEigenvalueTable { PointsNumber = tmpNumbers28[j], Time = time, Max = random.Next(1200, 1500), Min = random.Next(800, 1100), Average = random.Next(1000, 1300) };
+                    var cableForceEigenvalue = new CableForceEigenValueTable { PointsNumber = tmpNumbers28[j], Time = time, Max = random.Next(1200, 1500), Min = random.Next(800, 1100), Average = random.Next(1000, 1300) };
                     context.CableForceEigenvalues.Add(cableForceEigenvalue);
                 }
 

@@ -11,16 +11,16 @@ using System.Linq;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    class CableForceMonitorDatasQueryFileSystemService : IMonitorDatasQueryFileSystemService<CableForceEigenvalueTable>
+    class CableForceMonitorDatasEigenValueQueryFileSystemService : IMonitorDatasQueryFileSystemService<CableForceEigenValueTable>
     {
         readonly ICableForceDatasEigenvalueDAL  _cableForceDatasDAL;
-        public CableForceMonitorDatasQueryFileSystemService(ICableForceDatasEigenvalueDAL  cableForceDatasDAL)
+        public CableForceMonitorDatasEigenValueQueryFileSystemService(ICableForceDatasEigenvalueDAL  cableForceDatasDAL)
         {
             _cableForceDatasDAL = cableForceDatasDAL;
         }
-        public object ConvertToDocument(IList<Func<CableForceEigenvalueTable, bool>> ps)
+        public object ConvertToDocument(IList<Func<CableForceEigenValueTable, bool>> ps)
         {
-            IEnumerable<CableForceEigenvalueTable> cableForcesExcludePaging = new List<CableForceEigenvalueTable>();
+            IEnumerable<CableForceEigenValueTable> cableForcesExcludePaging = new List<CableForceEigenValueTable>();
             cableForcesExcludePaging = _cableForceDatasDAL.FindBy(ps, ServiceConstant.PointsNumberPointsPositionNavigationProperty);//获取不分页的查询结果
             HSSFWorkbook workbook = new HSSFWorkbook();
             ISheet sheet = workbook.CreateSheet("索力查询结果");

@@ -14,14 +14,14 @@ using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    public class CableForceDatasEigenvalueQueryService : MonitorDatasEigenvalueQueryServiceBase<CableForceEigenvalueTable>, ICableForceDatasEigenvalueQueryService
+    public class CableForceDatasEigenvalueQueryService : MonitorDatasEigenvalueQueryServiceBase<CableForceEigenValueTable>, ICableForceDatasEigenvalueQueryService
     {
         readonly ICableForceDatasEigenvalueDAL  _cableForceDatasDAL;
 
         public CableForceDatasEigenvalueQueryService(
             ICableForceDatasEigenvalueDAL  cableForceDatasDAL,
-            IMonitorDatasEigenvalueQueryChartService<CableForceEigenvalueTable> chartService,
-            IMonitorDatasQueryFileSystemService<CableForceEigenvalueTable> fileSystemService
+            IMonitorDatasEigenvalueQueryChartService<CableForceEigenValueTable> chartService,
+            IMonitorDatasQueryFileSystemService<CableForceEigenValueTable> fileSystemService
             ) : base(chartService, fileSystemService)
         {
             _cableForceDatasDAL = cableForceDatasDAL;
@@ -31,7 +31,7 @@ namespace GxjtBHMS.Service.Implementations
         public ChartDatasResponse GetChartDatasBy(GetChartDatasRequest req)
         {
             var resp = new ChartDatasResponse();
-            IList<Func<CableForceEigenvalueTable, bool>> ps = new List<Func<CableForceEigenvalueTable, bool>>();
+            IList<Func<CableForceEigenValueTable, bool>> ps = new List<Func<CableForceEigenValueTable, bool>>();
             try
             {
                 DealWithConditions(req, ps);
@@ -51,7 +51,7 @@ namespace GxjtBHMS.Service.Implementations
          public DownLoadDatasResponse SaveAs(DatasQueryResultRequestBase req)
         {
             var resp = new DownLoadDatasResponse();
-            IList<Func<CableForceEigenvalueTable, bool>> ps = new List<Func<CableForceEigenvalueTable, bool>>();
+            IList<Func<CableForceEigenValueTable, bool>> ps = new List<Func<CableForceEigenValueTable, bool>>();
             try
             {
                 DealWithConditions(req, ps);
@@ -68,7 +68,7 @@ namespace GxjtBHMS.Service.Implementations
 
         public long GetTotalResultCountBy(DatasQueryResultRequest req)
         {
-            IList<Func<CableForceEigenvalueTable, bool>> ps = new List<Func<CableForceEigenvalueTable, bool>>();
+            IList<Func<CableForceEigenValueTable, bool>> ps = new List<Func<CableForceEigenValueTable, bool>>();
             DealWithConditions(req, ps);
             return _cableForceDatasDAL.GetCountByContains(ps, ServiceConstant.PointsNumberPointsPositionNavigationProperty);
         }

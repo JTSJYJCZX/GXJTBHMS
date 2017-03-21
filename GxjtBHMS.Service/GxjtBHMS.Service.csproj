@@ -85,8 +85,9 @@
     <Compile Include="AutoMapper\Configuration.cs" />
     <Compile Include="Implementations\CableForceDatasEigenvalueQueryService.cs" />
     <Compile Include="Implementations\CableForceMonitorDatasQueryChartService.cs" />
-    <Compile Include="Implementations\CableForceMonitorDatasQueryFileSystemService.cs" />
+    <Compile Include="Implementations\CableForceMonitorDatasEigenValueQueryFileSystemService.cs" />
     <Compile Include="Implementations\OriginalValueDownLoad\CableForceDatasOriginalValueDownloadService.cs" />
+    <Compile Include="Implementations\OriginalValueDownLoad\CableForceMonitorDatasOriginalValueDownloadFileSystemService.cs" />
     <Compile Include="Implementations\OriginalValueDownLoad\DisplacementDatasOriginalValueDownloadService.cs" />
     <Compile Include="Implementations\OriginalValueDownLoad\DisplacementMonitorDatasOriginalValueDownloadFileSystemService.cs" />
     <Compile Include="Implementations\OriginalValueDownLoad\SteelLatticeStrainDatasOriginalValueDownloadService.cs" />
@@ -118,7 +119,7 @@
     <Compile Include="Interfaces\IWindLoadDatasEigenvalueQueryService.cs" />
     <Compile Include="Interfaces\IDisplaymentDatasEigenvalueQueryService.cs" />
     <Compile Include="Interfaces\IHumidityDatasEigenvalueQueryService.cs" />
-    <Compile Include="Interfaces\IMonitorDatasOriginalValueDownLoadServiceBase.cs" />
+    <Compile Include="Interfaces\MonitoringDatasOriginalValueDownLoadInerfaces\IMonitorDatasOriginalValueDownLoadServiceBase.cs" />
     <Compile Include="Interfaces\ISteelArchStrainDatasEigenvalueQueryService.cs" />
     <Compile Include="Interfaces\ISteelLatticeStrainDatasEigenvalueQueryService.cs" />
     <Compile Include="Interfaces\ITemperatureDatasEigenvalueQueryService.cs" />
