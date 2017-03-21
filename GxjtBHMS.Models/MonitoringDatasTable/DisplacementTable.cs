@@ -2,7 +2,7 @@
 {
     public class DisplacementTable : MonitorDatasQueryConditionsModel
     {
-        public double Displayment { get; set; }
+        public double Displacement { get; set; }
     }
 }
     

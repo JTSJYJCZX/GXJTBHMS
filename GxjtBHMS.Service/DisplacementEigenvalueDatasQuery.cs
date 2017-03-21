@@ -7,11 +7,11 @@ using GxjtBHMS.Service.Messaging.MonitoringDatasDownLoad;
 
 namespace GxjtBHMS.Service
 {
-    class DisplaymentEigenvalueDatasQuery : MonitoringDatasEigenvalueQueryServiceBase
+    class DisplacementEigenvalueDatasQuery : MonitoringDatasEigenvalueQueryServiceBase
     {
         readonly IDisplaymentDatasEigenvalueQueryService _displaymentDatasService;
 
-        public DisplaymentEigenvalueDatasQuery()
+        public DisplacementEigenvalueDatasQuery()
         {
             _displaymentDatasService = new NinjectFactory()
                 .GetInstance<IDisplaymentDatasEigenvalueQueryService>();

@@ -15,7 +15,7 @@ namespace GxjtBHMS.Service
                 case 3:
                     return new ConcreteStrainEigenvalueDatasQuery();
                 case 4:
-                    return new DisplaymentEigenvalueDatasQuery();
+                    return new DisplacementEigenvalueDatasQuery();
                 case 5:
                     return new CableForceEigenvalueDatasQuery();
                 case 6:

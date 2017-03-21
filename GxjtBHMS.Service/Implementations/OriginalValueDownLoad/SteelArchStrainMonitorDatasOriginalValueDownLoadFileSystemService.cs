@@ -10,10 +10,10 @@ using GxjtBHMS.Models.MonitoringDatasTable;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    class SteelArchStrainMonitorDatasOriginalValueDownLoadFileSystemService : IMonitorDatasQueryFileSystemService<SteelArchStrainTable>
+    class SteelArchStrainMonitorDatasOriginalValueDownloadFileSystemService : IMonitorDatasQueryFileSystemService<SteelArchStrainTable>
     {
         readonly ISteelArchStrainDatasOriginalValueDAL _steelArchStrainOriginalDatasDAL;
-        public SteelArchStrainMonitorDatasOriginalValueDownLoadFileSystemService(ISteelArchStrainDatasOriginalValueDAL steelArchStrainOriginalDatasDAL)
+        public SteelArchStrainMonitorDatasOriginalValueDownloadFileSystemService(ISteelArchStrainDatasOriginalValueDAL steelArchStrainOriginalDatasDAL)
         {
             _steelArchStrainOriginalDatasDAL = steelArchStrainOriginalDatasDAL;
         }

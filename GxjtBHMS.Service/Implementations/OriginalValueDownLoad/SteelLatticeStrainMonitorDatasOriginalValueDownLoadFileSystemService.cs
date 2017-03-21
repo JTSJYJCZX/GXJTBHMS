@@ -10,10 +10,10 @@ using GxjtBHMS.Models.MonitoringDatasTable;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    class SteelLatticeStrainMonitorDatasOriginalValueDownLoadFileSystemService : IMonitorDatasQueryFileSystemService<SteelLatticeStrainTable>
+    class SteelLatticeStrainMonitorDatasOriginalValueDownloadFileSystemService : IMonitorDatasQueryFileSystemService<SteelLatticeStrainTable>
     {
         readonly ISteelLatticeStrainDatasOriginalValueDAL _steelLatticeStrainOriginalDatasDAL;
-        public SteelLatticeStrainMonitorDatasOriginalValueDownLoadFileSystemService(ISteelLatticeStrainDatasOriginalValueDAL steelLatticeStrainOriginalDatasDAL)
+        public SteelLatticeStrainMonitorDatasOriginalValueDownloadFileSystemService(ISteelLatticeStrainDatasOriginalValueDAL steelLatticeStrainOriginalDatasDAL)
         {
             _steelLatticeStrainOriginalDatasDAL = steelLatticeStrainOriginalDatasDAL;
         }

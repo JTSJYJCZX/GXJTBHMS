@@ -793,22 +793,22 @@ namespace GxjtBHMS.SqlServerDAL
                 //位移初始值初始化
                 for (int j = 0; j < tmpNumbers18.Length; j++)
                 {
-                    var displacementOriginalValue = new DisplacementTable { PointsNumber = tmpNumbers18[j], Time = time, Displayment = random.Next(-20, 40) };
+                    var displacementOriginalValue = new DisplacementTable { PointsNumber = tmpNumbers18[j], Time = time, Displacement = random.Next(-20, 40) };
                     context.Displacements.Add(displacementOriginalValue);
                 }
                 for (int j = 0; j < tmpNumbers19.Length; j++)
                 {
-                    var displacementOriginalValue = new DisplacementTable { PointsNumber = tmpNumbers19[j], Time = time, Displayment = random.Next(-20, 40) };
+                    var displacementOriginalValue = new DisplacementTable { PointsNumber = tmpNumbers19[j], Time = time, Displacement = random.Next(-20, 40) };
                     context.Displacements.Add(displacementOriginalValue);
                 }
                 for (int j = 0; j < tmpNumbers20.Length; j++)
                 {
-                    var displacementOriginalValue = new DisplacementTable { PointsNumber = tmpNumbers20[j], Time = time, Displayment = random.Next(-20, 40) };
+                    var displacementOriginalValue = new DisplacementTable { PointsNumber = tmpNumbers20[j], Time = time, Displacement = random.Next(-20, 40) };
                     context.Displacements.Add(displacementOriginalValue);
                 }
                 for (int j = 0; j < tmpNumbers21.Length; j++)
                 {
-                    var displacementOriginalValue = new DisplacementTable { PointsNumber = tmpNumbers21[j], Time = time, Displayment = random.Next(-20, 40) };
+                    var displacementOriginalValue = new DisplacementTable { PointsNumber = tmpNumbers21[j], Time = time, Displacement = random.Next(-20, 40) };
                     context.Displacements.Add(displacementOriginalValue);
                 }
 

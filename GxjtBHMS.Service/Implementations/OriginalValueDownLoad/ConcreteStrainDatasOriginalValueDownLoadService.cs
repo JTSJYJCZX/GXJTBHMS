@@ -1,24 +1,20 @@
 ﻿using System;
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.Messaging.MonitoringDatas;
-using GxjtBHMS.IDAL;
 using System.Collections.Generic;
 using GxjtBHMS.Service.Messaging.MonitoringDatasDownLoad;
 using GxjtBHMS.Models.MonitoringDatasTable;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    public class ConcreteStrainDatasOriginalValueDownLoadService : MonitorDatasOringinalValueDownLoadServiceBase<ConcreteStrainTable>, 
+    public class ConcreteStrainDatasOriginalValueDownloadService : MonitorDatasOringinalValueDownloadServiceBase<ConcreteStrainTable>, 
         IConcreteStrainDatasOriginalValueDownLoadService
     {
-        readonly IConcreteStrainDatasOriginalValueDAL _concreteStrainDatasOriginalValueDAL;
-        public ConcreteStrainDatasOriginalValueDownLoadService(IConcreteStrainDatasOriginalValueDAL concreteStrainDatasOriginalValueDAL,
+        public ConcreteStrainDatasOriginalValueDownloadService(
             IMonitorDatasQueryFileSystemService<ConcreteStrainTable> fileSystemService
             ) : base(fileSystemService)
         {
-            _concreteStrainDatasOriginalValueDAL = concreteStrainDatasOriginalValueDAL;
         }
-
 
         public DownLoadOriginalvalueDatasResponse SaveAs(DatasQueryResultRequestBase req)
         {

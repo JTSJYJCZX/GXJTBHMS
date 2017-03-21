@@ -1,18 +1,17 @@
 ﻿using System;
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.Messaging.MonitoringDatas;
-using GxjtBHMS.IDAL;
 using System.Collections.Generic;
 using GxjtBHMS.Service.Messaging.MonitoringDatasDownLoad;
-using GxjtBHMS.Models.MonitoringDatasTable;
+using GxjtBHMS.Models;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    public class SteelArchStrainDatasOriginalValueDownloadService : MonitorDatasOringinalValueDownloadServiceBase<SteelArchStrainTable>,
-        ISteelArchStrainDatasOriginalValueDownLoadService
+    public class DisplacementDatasOriginalValueDownloadService : MonitorDatasOringinalValueDownloadServiceBase<DisplacementTable>,
+        IDisplacementDatasOriginalValueDownLoadService
     {
-        public SteelArchStrainDatasOriginalValueDownloadService(
-            IMonitorDatasQueryFileSystemService<SteelArchStrainTable> fileSystemService
+        public DisplacementDatasOriginalValueDownloadService(
+            IMonitorDatasQueryFileSystemService<DisplacementTable> fileSystemService
             ) : base(fileSystemService)
         {
         }
@@ -21,7 +20,7 @@ namespace GxjtBHMS.Service.Implementations
         public DownLoadOriginalvalueDatasResponse SaveAs(DatasQueryResultRequestBase req)
         {
             var resp = new DownLoadOriginalvalueDatasResponse();
-            IList<Func<SteelArchStrainTable, bool>> ps = new List<Func<SteelArchStrainTable, bool>>();
+            IList<Func<DisplacementTable, bool>> ps = new List<Func<DisplacementTable, bool>>();
             try
             {
                 DealWithConditions(req, ps);

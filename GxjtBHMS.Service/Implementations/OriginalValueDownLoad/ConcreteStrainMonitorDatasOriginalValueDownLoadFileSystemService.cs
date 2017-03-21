@@ -10,17 +10,17 @@ using GxjtBHMS.Models.MonitoringDatasTable;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    class ConcreteStrainMonitorDatasOriginalValueDownLoadFileSystemService : IMonitorDatasQueryFileSystemService<ConcreteStrainTable>
+    class ConcreteStrainMonitorDatasOriginalValueDownloadFileSystemService : IMonitorDatasQueryFileSystemService<ConcreteStrainTable>
     {
-        readonly IConcreteStrainDatasOriginalValueDAL _strainOriginalDatasDAL;
-        public ConcreteStrainMonitorDatasOriginalValueDownLoadFileSystemService(IConcreteStrainDatasOriginalValueDAL strainOriginalDatasDAL)
+        readonly IConcreteStrainDatasOriginalValueDAL _concreteStrainOriginalDatasDAL;
+        public ConcreteStrainMonitorDatasOriginalValueDownloadFileSystemService(IConcreteStrainDatasOriginalValueDAL strainOriginalDatasDAL)
         {
-            _strainOriginalDatasDAL = strainOriginalDatasDAL;
+            _concreteStrainOriginalDatasDAL = strainOriginalDatasDAL;
         }
         public object ConvertToDocument(IList<Func<ConcreteStrainTable, bool>> ps)
         {
             IEnumerable<ConcreteStrainTable> strainsExcludePaging = new List<ConcreteStrainTable>();
-            strainsExcludePaging = _strainOriginalDatasDAL.FindBy(ps, ServiceConstant.PointsNumberPointsPositionNavigationProperty);//获取不分页的查询结果
+            strainsExcludePaging = _concreteStrainOriginalDatasDAL.FindBy(ps, ServiceConstant.PointsNumberPointsPositionNavigationProperty);//获取不分页的查询结果
             HSSFWorkbook workbook = new HSSFWorkbook();
             ISheet sheet = workbook.CreateSheet("混凝土应变原始数据查询结果");
             IRow headRow = sheet.CreateRow(0);
@@ -28,6 +28,7 @@ namespace GxjtBHMS.Service.Implementations
             headRow.CreateCell(1).SetCellValue("测点编号");
             headRow.CreateCell(2).SetCellValue("监测时间");
             headRow.CreateCell(3).SetCellValue("应变值");
+            headRow.CreateCell(4).SetCellValue("温度");
             for (int i = 0; i < strainsExcludePaging.ToArray().Length; i++)
             {
                 IRow row = sheet.CreateRow(i + 1);
@@ -35,6 +36,7 @@ namespace GxjtBHMS.Service.Implementations
                 row.CreateCell(1).SetCellValue(strainsExcludePaging.ToArray()[i].PointsNumber.Name);
                 row.CreateCell(2).SetCellValue(strainsExcludePaging.ToArray()[i].Time.FormatDateTime());
                 row.CreateCell(3).SetCellValue(strainsExcludePaging.ToArray()[i].Strain);
+                row.CreateCell(4).SetCellValue(strainsExcludePaging.ToArray()[i].Temperature);
             }           
             return workbook;         
         }       

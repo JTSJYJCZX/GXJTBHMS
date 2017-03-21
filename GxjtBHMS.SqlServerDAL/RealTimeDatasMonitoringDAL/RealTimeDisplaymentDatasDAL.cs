@@ -28,7 +28,7 @@ namespace GxjtBHMS.SqlServerDAL.RealTimeDatasMonitoringDAL
                 {
                     PointNumberId = sorce.PointsNumberId,
                     PointNumberName = sorce.PointsNumber.Name,
-                    DisplaymentDatas = sorce.Displayment
+                    DisplaymentDatas = sorce.Displacement
                 };
                 result.Add(realTimeModel);
             }
@@ -57,7 +57,7 @@ namespace GxjtBHMS.SqlServerDAL.RealTimeDatasMonitoringDAL
                     newDisplaymentDatas = new DisplacementTable()
                     {
                         PointsNumberId = item,
-                        Displayment = random.Next(-35, 35),
+                        Displacement = random.Next(-35, 35),
                         Time = DateTime.Now
                     };
                 }
@@ -66,7 +66,7 @@ namespace GxjtBHMS.SqlServerDAL.RealTimeDatasMonitoringDAL
                     newDisplaymentDatas = new DisplacementTable()
                     {
                         PointsNumberId = item,
-                        Displayment = random.Next(-20, 20),
+                        Displacement = random.Next(-20, 20),
                         Time = DateTime.Now
                     };
                 }

@@ -8,15 +8,13 @@ using GxjtBHMS.Models.MonitoringDatasTable;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    public class SteelLatticeStrainDatasOriginalValueDownLoadService : MonitorDatasOringinalValueDownLoadServiceBase<SteelLatticeStrainTable>,
+    public class SteelLatticeStrainDatasOriginalValueDownloadService : MonitorDatasOringinalValueDownloadServiceBase<SteelLatticeStrainTable>,
         ISteelLatticeStrainDatasOriginalValueDownLoadService
     {
-        readonly ISteelLatticeStrainDatasOriginalValueDAL _steelLatticeStrainDatasOriginalValueDAL;
-        public SteelLatticeStrainDatasOriginalValueDownLoadService(ISteelLatticeStrainDatasOriginalValueDAL steelLatticeStrainDatasOriginalValueDAL,
+        public SteelLatticeStrainDatasOriginalValueDownloadService(
             IMonitorDatasQueryFileSystemService<SteelLatticeStrainTable> fileSystemService
             ) : base(fileSystemService)
         {
-            _steelLatticeStrainDatasOriginalValueDAL = steelLatticeStrainDatasOriginalValueDAL;
         }
 
         public DownLoadOriginalvalueDatasResponse SaveAs(DatasQueryResultRequestBase req)

@@ -1,17 +1,18 @@
 ﻿using GxjtBHMS.Models;
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.Messaging.MonitoringDatas;
+using GxjtBHMS.Service.Messaging.MonitoringDatasDownLoad;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    public abstract class MonitorDatasOringinalValueDownLoadServiceBase<T> : ServiceBase where T : MonitorDatasQueryConditionsModel
+    public abstract class MonitorDatasOringinalValueDownloadServiceBase<T> : ServiceBase where T : MonitorDatasQueryConditionsModel
     {
 
         readonly protected IMonitorDatasQueryFileSystemService<T> _fileSystemService;
-        public MonitorDatasOringinalValueDownLoadServiceBase( IMonitorDatasQueryFileSystemService<T> fileSystemService
+        public MonitorDatasOringinalValueDownloadServiceBase(IMonitorDatasQueryFileSystemService<T> fileSystemService
             )
         {
             _fileSystemService = fileSystemService;
@@ -49,6 +50,5 @@ namespace GxjtBHMS.Service.Implementations
         {
             return source.Count() == 0;
         }
-
     }
 }

@@ -15,10 +15,10 @@ namespace GxjtBHMS.Service
                     return new SteelLatticeStrainOriginalValueDatasDownLoad();
                 case 3:
                     return new ConcreteStrainDatasOriginalValueDownLoad();
-                //case 4:
-                //    return new DisplaymentDatasOriginalValueDownLoad();
-                //case 5:
-                //    return new CableForceDatasOriginalValueDownLoad();
+                case 4:
+                    return new DisplacementDatasOriginalValueDownLoad();
+                case 5:
+                    return new CableForceDatasOriginalValueDownLoad();
                 //case 6:
                 //    return new TemperatureDatasOriginalValueDownLoad();
                 //case 7:

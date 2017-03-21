@@ -12,7 +12,7 @@ namespace GxjtBHMS.Service.ExtensionMethods.MonitoringDatas.DatasQuery
             return source.Select(m => new DisplaymentDatasModel
             {
                 PointsNumber = m.PointsNumber.Name,
-                Displayment = m.Displayment,
+                Displayment = m.Displacement,
                 Time = m.Time.ToString()
             });
         }

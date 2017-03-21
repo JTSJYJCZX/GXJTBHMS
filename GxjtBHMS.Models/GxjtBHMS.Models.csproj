@@ -57,7 +57,7 @@
     <Compile Include="MonitoringDatasEigenvalueTable\WindLoadEigenvalueTable.cs" />
     <Compile Include="MonitoringDatasTable\CableForceTable.cs" />
     <Compile Include="MonitoringDatasTable\ConcreteStrainTable.cs" />
-    <Compile Include="MonitoringDatasTable\DisplaymentTable.cs" />
+    <Compile Include="MonitoringDatasTable\DisplacementTable.cs" />
     <Compile Include="Encryption\AppEncryptionStrategy.cs" />
     <Compile Include="Encryption\EncryptContext.cs" />
     <Compile Include="Encryption\EncryptContextFactory.cs" />
