@@ -22,12 +22,12 @@ namespace GxjtBHMS.Service.Implementations.OriginalValueDownLoad
             IEnumerable<TemperatureTable> temperaturesExcludePaging = new List<TemperatureTable>();
             temperaturesExcludePaging = _temperatureDatasOriginalValueDAL.FindBy(ps, ServiceConstant.PointsNumberPointsPositionNavigationProperty);
             HSSFWorkbook workbook = new HSSFWorkbook();
-            ISheet sheet = workbook.CreateSheet("温度初始值数据查询结果");
+            ISheet sheet = workbook.CreateSheet("温度原始数据查询结果");
             IRow headRow = sheet.CreateRow(0);
             headRow.CreateCell(0).SetCellValue("序号");
             headRow.CreateCell(1).SetCellValue("测点编号");
             headRow.CreateCell(2).SetCellValue("监测时间");
-            headRow.CreateCell(3).SetCellValue("温度");
+            headRow.CreateCell(3).SetCellValue("温度(℃)");
             for (int i = 0;i< temperaturesExcludePaging.ToArray().Length;i++)
             {
                 IRow row = sheet.CreateRow(i+1);

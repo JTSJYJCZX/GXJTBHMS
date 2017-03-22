@@ -13,7 +13,7 @@ namespace GxjtBHMS.Service
             _steelArchStrainDatasOriginalValueDownloadService = new NinjectFactory()
                 .GetInstance<ISteelArchStrainDatasOriginalValueDownloadService>();
         }
-         
+
         public override DownloadOriginalvalueDatasResponse SaveAsFile(DatasQueryResultRequestBase req)
         {
             return _steelArchStrainDatasOriginalValueDownloadService.SaveAs(req);

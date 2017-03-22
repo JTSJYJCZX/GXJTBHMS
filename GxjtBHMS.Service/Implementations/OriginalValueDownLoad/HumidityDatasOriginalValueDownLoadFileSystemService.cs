@@ -27,7 +27,7 @@ namespace GxjtBHMS.Service.Implementations.OriginalValueDownLoad
             headRow.CreateCell(0).SetCellValue("序号");
             headRow.CreateCell(1).SetCellValue("测点编号");
             headRow.CreateCell(2).SetCellValue("监测时间");
-            headRow.CreateCell(3).SetCellValue("湿度");
+            headRow.CreateCell(3).SetCellValue("湿度(%)");
             for(int i = 0; i < HumiditiesExcludePaging.ToArray().Length; i++)
             {
                 IRow Row = sheet.CreateRow(i+1);

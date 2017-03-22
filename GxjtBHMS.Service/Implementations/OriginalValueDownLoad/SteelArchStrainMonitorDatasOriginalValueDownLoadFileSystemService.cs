@@ -27,8 +27,8 @@ namespace GxjtBHMS.Service.Implementations
             headRow.CreateCell(0).SetCellValue("序号");
             headRow.CreateCell(1).SetCellValue("测点编号");
             headRow.CreateCell(2).SetCellValue("监测时间");
-            headRow.CreateCell(3).SetCellValue("应变值");
-            headRow.CreateCell(4).SetCellValue("温度");
+            headRow.CreateCell(3).SetCellValue("应变值(με)");
+            headRow.CreateCell(4).SetCellValue("温度(℃)");
             for (int i = 0; i < strainsExcludePaging.ToArray().Length; i++)
             {
                 IRow row = sheet.CreateRow(i + 1);
