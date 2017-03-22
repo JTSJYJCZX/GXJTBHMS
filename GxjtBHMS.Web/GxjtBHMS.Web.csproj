@@ -305,6 +305,7 @@
     <Compile Include="ViewModels\MonitoringDatas\MornitoringDataSearchBarBaseView.cs" />
     <Compile Include="ViewModels\PaginatorModel.cs" />
     <Compile Include="ViewModels\Shared\SimplePagedViewModel.cs" />
+    <Compile Include="ViewModels\ThresholdValueSetting\ThresholdValueSearchBarBaseView.cs" />
     <Compile Include="ViewModels\ThresholdValueSetting\QueryPointsNumberConditonView.cs" />
     <Compile Include="ViewModels\ThresholdValueSetting\StrainThresholdValueView.cs" />
     <Compile Include="ViewModels\ThresholdValueSetting\ThresholdValueSettingView.cs" />
@@ -584,6 +585,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\strainDataPushing.website.js" />
     <Content Include="Scripts\system.js" />
+    <Content Include="Scripts\thresholdValueSetting\ThresholdValueSearchPartial.website.js" />
     <Content Include="Scripts\thresholdValueSetting\listThresholdValueMessage-website.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\jqPaginator.html" />
@@ -635,6 +637,7 @@
     <Content Include="Views\CableForceDataRealTimeMonitoring\CableForceDatasRealTimeMonitoring.cshtml" />
     <Content Include="Views\TemperatureDataRealTimeMonitoring\TemperatureDatasRealTimeMonitoring.cshtml" />
     <Content Include="Views\HumidityDataRealTimeMonitoring\HumidityDatasRealTimeMonitoring.cshtml" />
+    <Content Include="Views\ThresholdValueSetting\ThresholdValuePullDownSearchPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -104,6 +104,10 @@ namespace GxjtBHMS.Web
             //系统通用脚本
             bundles.Add(new ScriptBundle("~/bundles/system").Include(
                 "~/Scripts/system.js"));
+
+            //阈值设置下拉菜单搜索栏脚本
+            bundles.Add(new ScriptBundle("~/bundles/thresholdValueSearchBar").Include(
+                     "~/Scripts/thresholdValueSetting/ThresholdValueSearchPartial.website.js"));
         }
     }
 }

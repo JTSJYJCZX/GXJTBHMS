@@ -8,17 +8,26 @@ using GxjtBHMS.Web.Models;
 using GxjtBHMS.Service.Messaging;
 using GxjtBHMS.Web.ViewModels;
 using GxjtBHMS.Web.Models.Attributes;
+using System;
+using GxjtBHMS.Web.ExtensionMehtods.MonitoringDatas;
 
 namespace GxjtBHMS.Web.Controllers.StateEvaluation
 {
-    public class ThresholdValueSettingController : Controller
+    public class ThresholdValueSettingController : BaseController
     {
-        public ThresholdValueSettingController(IThresholdValueSettingService thresholdValueSettingService)
+        IMonitoringTestTypeService _mtts;
+        IMonitoringPointsNumberService _mpns;
+        IMonitoringPointsPositionService _mpps;
+        readonly IThresholdValueSettingService _thresholdValueSettingService;
+        public ThresholdValueSettingController(IThresholdValueSettingService thresholdValueSettingService, IMonitoringTestTypeService mtts,
+            IMonitoringPointsNumberService mpns,
+            IMonitoringPointsPositionService mpps)
         {
             _thresholdValueSettingService = thresholdValueSettingService;
+            _mtts = mtts;
+            _mpns = mpns;
+            _mpps = mpps;
         }
-        readonly IThresholdValueSettingService _thresholdValueSettingService;
-
 
         public ActionResult ThresholdValueSetting()
         {
@@ -34,6 +43,75 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
                 TempData[WebConstants.MessageKey] = resp.Message;
             }
             return View();
+        }
+
+        public ActionResult GetThresholdValueSettingListByPullDownSearchBar(ThresholdValueSearchBarBaseView conditions)
+        {
+            var req = new PointsNumberSearchRequest
+            {
+               
+            };
+            var resp = _thresholdValueSettingService.GetThresholdValueBy(req);
+            IEnumerable<StrainThresholdValueView> models = new List<StrainThresholdValueView>();
+            var resultView = new ThresholdValueSettingView();
+            if (resp.Succeed)
+            {
+                resultView.StrainThresholdValues = resp.StrainThresholdValues.Select(m => new StrainThresholdValueView
+                {
+                    PointsNumber = m.PointsNumber.Name,
+                    PointsNumberId = m.PointsNumberId,
+                    PositiveFirstLevelThresholdValue = m.PositiveFirstLevelThresholdValue,
+                    PositiveSecondLevelThresholdValue = m.PositiveSecondLevelThresholdValue,
+                    NegativeFirstLevelThresholdValue = m.NegativeFirstLevelThresholdValue,
+                    NegativeSecondLevelThresholdValue = m.NegativeSecondLevelThresholdValue,
+
+                });
+            }
+            else
+            {
+                return Json(new { color = StyleConstants.RedColor, message = resp.Message }, JsonRequestBehavior.AllowGet);
+            }
+            return PartialView("ThresholdValueSettingListPartial");
+        }
+
+
+
+
+        [ChildActionOnly]
+        public ActionResult GetThresholdValuePullDownSearchBar()
+        {
+            int firstTestTypeId;
+            SaveMonitoringTestTypesSelectListItemsToViewData(out firstTestTypeId);
+            int tmpMornitoringPointsPositionId;
+            SaveMonitoringPointsPositionSelectListItemsToViewData(firstTestTypeId, out tmpMornitoringPointsPositionId);
+            return PartialView("ThresholdValuePullDownSearchPartial");
+        }
+
+        /// <summary>
+        /// 获得测试类型下拉列表
+        /// </summary>
+        void SaveMonitoringTestTypesSelectListItemsToViewData(out int firstTestTypeId)
+        {
+            firstTestTypeId = 1;
+            var resp = _mtts.GetAllTestType();
+            if (resp.Datas.Count() > 0)
+            {
+                firstTestTypeId = Convert.ToInt32(resp.Datas.First().Id);
+            }
+            SaveSelectListItemCollectionToViewData(resp.Datas, WebConstants.MonitoringTestTypesKey, false);
+        }
+        /// <summary>
+        /// 获得测点位置下拉列表
+        /// </summary>
+        void SaveMonitoringPointsPositionSelectListItemsToViewData(int mornitoringTestTypeId, out int mornitoringPointsPositionId)
+        {
+            var resp = _mpps.GetMonitoringPointsPositionsByTestTypeId(mornitoringTestTypeId);
+            mornitoringPointsPositionId = 0;
+            if (resp.Datas.Count() > 0)
+            {
+                mornitoringPointsPositionId = Convert.ToInt32(resp.Datas.First().Id);
+            }
+            SaveSelectListItemCollectionToViewData(resp.Datas, WebConstants.MonitoringPointsPositionKey, false);
         }
 
         public ActionResult GetThresholdValueSettingList(QueryPointsNumberConditonView conditions)
@@ -52,14 +130,11 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
                 {
                     PointsNumber = m.PointsNumber.Name,
                     PointsNumberId = m.PointsNumberId,
-                    PositiveStandardValue = m.PositiveStandardValue,
                     PositiveFirstLevelThresholdValue = m.PositiveFirstLevelThresholdValue,
-                    PositiveSecondLevelThresholdValue = m.PositiveSecondLevelThresholdValue,
-                    PositiveThirdLevelThresholdValue = m.PositiveThirdLevelThresholdValue,
-                    NegativeStandardValue = m.NegativeStandardValue,
+                    PositiveSecondLevelThresholdValue = m.PositiveSecondLevelThresholdValue,           
                     NegativeFirstLevelThresholdValue = m.NegativeFirstLevelThresholdValue,
                     NegativeSecondLevelThresholdValue = m.NegativeSecondLevelThresholdValue,
-                    NegativeThirdLevelThresholdValue = m.NegativeThirdLevelThresholdValue
+     
                 });
                 resultView.PaginatorModel = new PaginatorModel { TotalPages = resp.TotalPages, CurrentPageIndex = conditions.CurrentPageIndex };
             }
@@ -119,6 +194,38 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
         public ActionResult UniformSettingThresholdValue()
         {            
             return PartialView("UniformSettingStrainThresholdValuePartial");
+        }
+
+        public ActionResult GetMonitoringPointsPositionsByTestTypeId(int testTypeId = 0)
+        {
+            IList<SelectListItem> selectListItemCollection = new List<SelectListItem>();
+
+            var resp = _mpps.GetMonitoringPointsPositionsByTestTypeId(testTypeId);
+
+            if (resp.Succeed)
+            {
+                selectListItemCollection = resp
+                    .Datas
+                    .ConvertToSelectListItemCollection();
+            }
+
+            return Json(selectListItemCollection, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetMonitoringPointsNumbersByPointsPositions(int pointsPositions = 0)
+        {
+            IList<SelectListItem> selectListItemCollection = new List<SelectListItem>();
+
+            var resp = _mpns.GetMonitoringPointsNumberByPointsPositionId(pointsPositions);
+
+            if (resp.Succeed)
+            {
+                selectListItemCollection = resp
+                    .Datas
+                    .ConvertToSelectListItemCollection();
+            }
+
+            return Json(selectListItemCollection, JsonRequestBehavior.AllowGet);
         }
     }
 }

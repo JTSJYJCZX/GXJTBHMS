@@ -1,0 +1,15 @@
+﻿@model GxjtBHMS.Web.ViewModels.ThresholdValueSetting.ThresholdValueSearchBarBaseView
+
+<div class="form-group searchContent">
+    <label for="mornitorTestTypeSelect" class="control-label"> 测试类型：</label>
+    @Html.DropDownListFor(m => m.MornitoringTestTypeId, (IEnumerable<SelectListItem>)ViewData[WebConstants.MonitoringTestTypesKey],
+            new { id = "mornitorTestTypeSelect", @class = "selectpicker" })
+
+    <label for="monitorTestPointsPositionSelect" class="control-label  col-md-offset-1">        测点位置：    </label>
+    @Html.DropDownListFor(m => m.MornitoringPointsPositionId, (IEnumerable<SelectListItem>)ViewData[WebConstants.MonitoringPointsPositionKey],
+      new { id = "monitorTestPointsPositionSelect", @class = "selectpicker" })
+
+    <input type="button" id="bttnquery" value="查询" class="btn btn-default col-md-offset-1" />
+</div>
+
+<hr />

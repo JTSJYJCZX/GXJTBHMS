@@ -62,3 +62,4 @@
 /// <reference path="straindatapushing.website.js" />
 /// <reference path="system.js" />
 /// <reference path="thresholdvaluesetting/listthresholdvaluemessage-website.js" />
+/// <reference path="thresholdvaluesetting/thresholdvaluesearchpartial.website.js" />
