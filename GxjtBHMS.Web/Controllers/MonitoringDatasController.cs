@@ -190,8 +190,7 @@ namespace GxjtBHMS.Web.Controllers
             };
             var monitoringDatasQueryService = MonitoringDatasEigenvalueQueryServiceFactory.GetQueryServiceFrom(conditions.MornitoringTestTypeId);
             var resp = monitoringDatasQueryService.SaveAsFile(req);
-            var guid = "";
-            guid = Guid.NewGuid().ToString();
+            var guid = Guid.NewGuid().ToString();
             CacheHelper.SetCache(guid, resp.Datas);
             return Json(guid, JsonRequestBehavior.AllowGet);
         }
@@ -203,8 +202,8 @@ namespace GxjtBHMS.Web.Controllers
             {
                 throw new ApplicationException("guid invalid");
             }
-            string preFileName = GetDownloadPreFileNameByTestTypeId(pointsPositionId);
             var ms = _fileConverter.GetStream(obj);
+            string preFileName = GetDownloadFileNameByTestTypeId(pointsPositionId);
             Response.AddHeader("Content-Disposition", string.Format("attachment; filename={0}.xls", preFileName));
             Response.BinaryWrite(ms.ToArray());
             ms.Close();
@@ -212,9 +211,9 @@ namespace GxjtBHMS.Web.Controllers
             CacheHelper.RemoveAllCache(guid);
         }
 
-        string GetDownloadPreFileNameByTestTypeId(int pointsPositionId)
+        string GetDownloadFileNameByTestTypeId(int pointsPositionId)
         {
-            return _mpps.GetMixedNameWithTestTypeNameAndPointPositionNameAndCurrentDateTimeByPositionId(pointsPositionId);
+            return _mpps.CreateDownloadFileMixedName(pointsPositionId);
         }
     }
 }

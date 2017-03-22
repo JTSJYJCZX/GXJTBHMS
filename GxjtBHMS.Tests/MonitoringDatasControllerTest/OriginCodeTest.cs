@@ -35,7 +35,7 @@ namespace GxjtBHMS.Tests.ControllerTests.MonitoringDatasControllerTest
         {
             const string fileName = "test";
 
-            _monitoringPointsPositionService.GetMixedNameWithTestTypeNameAndPointPositionNameAndCurrentDateTimeByPositionId(Arg.Any<int>()).Returns(fileName);
+            _monitoringPointsPositionService.CreateDownloadFileMixedName(Arg.Any<int>()).Returns(fileName);
 
             string preFileName = string.Format("attachment; filename={0}.xls", fileName);
 

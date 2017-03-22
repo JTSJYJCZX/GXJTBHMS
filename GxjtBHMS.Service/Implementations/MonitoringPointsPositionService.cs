@@ -37,7 +37,7 @@ namespace GxjtBHMS.Service.Implementations
             return resp;
         }
 
-        public string GetMixedNameWithTestTypeNameAndPointPositionNameAndCurrentDateTimeByPositionId(int positionId)
+        public string CreateDownloadFileMixedName(int positionId)
         {
             var model = _mppDAL.FindBy(m => m.Id == positionId, new string[] { "TestType" }).SingleOrDefault();
             return CreateMixedName(model.Name, model.TestType.Name, DateTime.Now.FormatDateWithoutSymbol());
