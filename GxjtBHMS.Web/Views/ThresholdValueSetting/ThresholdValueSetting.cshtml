@@ -2,65 +2,21 @@
     ViewBag.Title = "阈值设置";
 }
 
-<h2>阈值设置</h2>
+<h1 style="text-align:center" >监测数据预警值阈值设置</h1>
+<hr />
+<hr />
 
-<ul id="myTab" class="nav nav-tabs">
-    <li class="active" id="strainThresholdValue"><a href="#strainThresholdValueSetting" data-toggle="tab">应变阈值设置</a></li>
-    <li><a href="#displaymentThresholdValueSetting" data-toggle="tab">位移阈值设置</a></li>
-    <li><a href="#cableForceThresholdValueSetting" data-toggle="tab">索力阈值设置</a></li>
-    <li><a href="#TemperatureAndHumidityThresholdValueSetting" data-toggle="tab">温湿度阈值设置</a></li>
-    <li><a href="#windSpeedThresholdValueSetting" data-toggle="tab">风速阈值设置</a></li>
-</ul>
-
-<div id="myTabContent" class="tab-content">
-
-    <div class="tab-pane fade in active" id="strainThresholdValueSetting">
-        <h1 class="text-center" style="color:black">应变阈值设置表格</h1>
-        <hr />
-        <h5 style="color:red">注：应变阈值设置注意事项</h5>
-        <h5 style="color:red">1、正阈值范围为0~10000；负阈值范围为-10000~0。</h5>
-        <hr />
-        <div id="message"></div>
-        <div>@Html.Action("GetThresholdValueSearchBar")</div>
-
-        <hr />
-        <div id="strainThresholdValueContent"></div>
-        <!--分页开始-->
-        <div class="pagination" style="display:none" id="paginationNav"></div>
-
-        <!--分页结束-->
-        @Html.Hidden("TotalPages", ViewData["TotalPages"])@*将总页数暂存到隐藏域中，以便给初始化分页导航脚本函数使用*@
-    </div>
-    <div class="tab-pane fade" id="displaymentThresholdValueSetting">
-        <h1 class="text-center" style="color:black">位移阈值设置表格</h1>
-        <hr />
-        <h5 style="color:red">注：位移阈值设置注意事项</h5>
-        <h5 style="color:red">1、正阈值范围为0~10000；负阈值范围为-10000~0。</h5>
-        <hr />
-        <div id="displaymentMessage"></div>
-        <div>@Html.Action("GetThresholdValueSearchBar")</div>
-
-        <hr />
-        <div id="displaymentThresholdValueContent"></div>
-        <!--分页开始-->
-        <div class="pagination" style="display:none" id="paginationNav"></div>
-
-        <!--分页结束-->
-        @Html.Hidden("TotalPages", ViewData["TotalPages"])@*将总页数暂存到隐藏域中，以便给初始化分页导航脚本函数使用*@
-    </div>
-    <div class="tab-pane fade" id="cableForceThresholdValueSetting">
-        <p>索力阈值设置表格</p>
-    </div>
-    <div class="tab-pane fade" id="TemperatureAndHumidityThresholdValueSetting">
-        <p>温湿度阈值设置表格</p>
-    </div>
-    <div class="tab-pane fade" id="windSpeedThresholdValueSetting">
-        <p>风速阈值设置表格</p>
-    </div>
+@Html.Action("GetThresholdValuePullDownSearchBar") @*下拉菜单搜索条件*@
+<div id="searchContent">
+    @*查询结果区域*@
 </div>
 
+
 @section scripts{
+    @Scripts.Render("~/bundles/thresholdValueSearchBar")
     @Scripts.Render("~/bundles/listThresholdValueMessage-website")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/jqPaginator")
+    @Styles.Render("~/content/css/bootstrap-select")
+    @Scripts.Render("~/bundles/bootstrap-select")
 }

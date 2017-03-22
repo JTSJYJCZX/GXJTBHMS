@@ -1,5 +1,4 @@
 ﻿using GxjtBHMS.Infrastructure.Helpers;
-using GxjtBHMS.Models;
 using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.SqlServerDAL;
