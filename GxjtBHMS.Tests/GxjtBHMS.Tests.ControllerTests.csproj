@@ -115,7 +115,7 @@
   <ItemGroup>
     <Compile Include="FakeControllerHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="MonitoringDatasControllerDownloadSearchResultTest.cs" />
+    <Compile Include="MonitoringDatasControllerTest\OriginCodeTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />

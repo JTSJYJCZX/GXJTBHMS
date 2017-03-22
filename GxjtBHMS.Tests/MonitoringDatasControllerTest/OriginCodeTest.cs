@@ -5,25 +5,29 @@ using GxjtBHMS.Service.Interfaces;
 using NSubstitute;
 using GxjtBHMS.Web.Models;
 using NPOI.HSSF.UserModel;
+using System.IO;
 
-namespace GxjtBHMS.Tests.ControllerTests
+namespace GxjtBHMS.Tests.ControllerTests.MonitoringDatasControllerTest
 {
     [TestClass]
-    public class MonitoringDatasControllerDownloadSearchResultTest
+    public class OriginCodeTest
     {
         MonitoringDatasController _controller;
         IMonitoringTestTypeService _monitoringTestTypeService;
         IMonitoringPointsNumberService _monitoringPointsNumberService;
         IMonitoringPointsPositionService _monitoringPointsPositionService;
-
+        IFileConverter _fileConverter;
+        string key = string.Empty;
         [TestInitialize]
         public void Setup()
         {
             _monitoringTestTypeService = Substitute.For<IMonitoringTestTypeService>();
             _monitoringPointsNumberService = Substitute.For<IMonitoringPointsNumberService>();
             _monitoringPointsPositionService = Substitute.For<IMonitoringPointsPositionService>();
-            _controller = new MonitoringDatasController(_monitoringTestTypeService, _monitoringPointsNumberService, _monitoringPointsPositionService);
+            _fileConverter = Substitute.For<IFileConverter>();
+            _controller = new MonitoringDatasController(_monitoringTestTypeService, _monitoringPointsNumberService, _monitoringPointsPositionService, _fileConverter);
             _controller.SetFakeControllerContext();
+            key = Guid.NewGuid().ToString();
         }
 
         [TestMethod]
@@ -35,9 +39,9 @@ namespace GxjtBHMS.Tests.ControllerTests
 
             string preFileName = string.Format("attachment; filename={0}.xls", fileName);
 
-            var key = Guid.NewGuid().ToString();
-
             CacheHelper.SetCache(key, new HSSFWorkbook());
+
+            _fileConverter.GetStream(CacheHelper.GetCache(key)).Returns(new MemoryStream());
 
             _controller.OriginCode(key, Arg.Any<int>());
 
@@ -47,13 +51,20 @@ namespace GxjtBHMS.Tests.ControllerTests
         [TestMethod]
         public void OriginCode_ValidedGuidAndTestTypeId_ReponseBinaryWriteIsCalled()
         {
-            var key = Guid.NewGuid().ToString();
-
             CacheHelper.SetCache(key, new HSSFWorkbook());
+
+            _fileConverter.GetStream(CacheHelper.GetCache(key)).Returns(new MemoryStream());
 
             _controller.OriginCode(key, Arg.Any<int>());
 
             _controller.Response.Received().BinaryWrite(Arg.Any<byte[]>());
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ApplicationException))]
+        public void OriginCode_InvalidGuid_ThrowException()
+        {
+            _controller.OriginCode(key, Arg.Any<int>());
         }
 
     }

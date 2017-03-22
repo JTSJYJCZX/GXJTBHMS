@@ -86,6 +86,7 @@
     <Compile Include="Implementations\CableForceDatasEigenvalueQueryService.cs" />
     <Compile Include="Implementations\CableForceMonitorDatasQueryChartService.cs" />
     <Compile Include="Implementations\CableForceMonitorDatasEigenValueQueryFileSystemService.cs" />
+    <Compile Include="Implementations\ExcelFileConverter.cs" />
     <Compile Include="Implementations\OriginalValueDownLoad\CableForceDatasOriginalValueDownloadService.cs" />
     <Compile Include="Implementations\OriginalValueDownLoad\CableForceMonitorDatasOriginalValueDownloadFileSystemService.cs" />
     <Compile Include="Implementations\OriginalValueDownLoad\DisplacementDatasOriginalValueDownloadService.cs" />
@@ -122,6 +123,7 @@
     <Compile Include="Implementations\TemperatureMonitorDatasQueryChartService.cs" />
     <Compile Include="Implementations\TemperatureMonitorDatasQueryFileSystemService.cs" />
     <Compile Include="Interfaces\ICableForceDatasEigenvalueQueryService.cs" />
+    <Compile Include="Interfaces\IFileConverter.cs" />
     <Compile Include="Interfaces\IWindLoadDatasEigenvalueQueryService.cs" />
     <Compile Include="Interfaces\IDisplaymentDatasEigenvalueQueryService.cs" />
     <Compile Include="Interfaces\IHumidityDatasEigenvalueQueryService.cs" />
