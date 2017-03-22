@@ -1,6 +1,6 @@
 ﻿namespace GxjtBHMS.Service.Interfaces
 {
-    public interface ICableForceDatasOriginalValueDownLoadService : IMonitorDatasOriginalValueDownLoadServiceBase
+    public interface ICableForceDatasOriginalValueDownloadService : IMonitorDatasOriginalValueDownloadServiceBase
     {
      
     }

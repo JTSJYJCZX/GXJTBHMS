@@ -8,18 +8,18 @@ using GxjtBHMS.Service.Messaging.MonitoringDatasDownLoad;
 
 namespace GxjtBHMS.Service.Implementations.OriginalValueDownLoad
 {
-    public class TemperatureDatasOriginalValueDownLoadService : MonitorDatasOringinalValueDownloadServiceBase<TemperatureTable>,
-        ITemperatureDatasOriginalValueDownLoadService
+    public class TemperatureDatasOriginalValueDownloadService : MonitorDatasOringinalValueDownloadServiceBase<TemperatureTable>,
+        ITemperatureDatasOriginalValueDownloadService
     {
-        public TemperatureDatasOriginalValueDownLoadService(IMonitorDatasQueryFileSystemService<TemperatureTable> fileSystemService) :
+        public TemperatureDatasOriginalValueDownloadService(IMonitorDatasQueryFileSystemService<TemperatureTable> fileSystemService) :
             base(fileSystemService)
         {
         }
 
-        public DownLoadOriginalvalueDatasResponse SaveAs(DatasQueryResultRequestBase req)
+        public DownloadOriginalvalueDatasResponse SaveAs(DatasQueryResultRequestBase req)
         {
             IList<Func<TemperatureTable, bool>> ps = new List<Func<TemperatureTable,bool>>();
-            var resp = new DownLoadOriginalvalueDatasResponse();
+            var resp = new DownloadOriginalvalueDatasResponse();
             try
             {
                 DealWithConditions(req, ps);

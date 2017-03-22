@@ -9,7 +9,7 @@ using GxjtBHMS.Models.MonitoringDatasTable;
 namespace GxjtBHMS.Service.Implementations
 {
     public class SteelArchStrainDatasOriginalValueDownloadService : MonitorDatasOringinalValueDownloadServiceBase<SteelArchStrainTable>,
-        ISteelArchStrainDatasOriginalValueDownLoadService
+        ISteelArchStrainDatasOriginalValueDownloadService
     {
         public SteelArchStrainDatasOriginalValueDownloadService(
             IMonitorDatasQueryFileSystemService<SteelArchStrainTable> fileSystemService
@@ -18,9 +18,9 @@ namespace GxjtBHMS.Service.Implementations
         }
 
 
-        public DownLoadOriginalvalueDatasResponse SaveAs(DatasQueryResultRequestBase req)
+        public DownloadOriginalvalueDatasResponse SaveAs(DatasQueryResultRequestBase req)
         {
-            var resp = new DownLoadOriginalvalueDatasResponse();
+            var resp = new DownloadOriginalvalueDatasResponse();
             IList<Func<SteelArchStrainTable, bool>> ps = new List<Func<SteelArchStrainTable, bool>>();
             try
             {

@@ -1,7 +1,6 @@
 ﻿using GxjtBHMS.Models;
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.Messaging.MonitoringDatas;
-using GxjtBHMS.Service.Messaging.MonitoringDatasDownLoad;
 using System;
 using System.Collections.Generic;
 using System.Linq;

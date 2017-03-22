@@ -10,10 +10,10 @@ using System.Linq;
 
 namespace GxjtBHMS.Service.Implementations.OriginalValueDownLoad
 {
-    class HumidityDatasOriginalValueDownLoadFileSystemService : IMonitorDatasQueryFileSystemService<HumidityTable>
+    class HumidityDatasOriginalValueDownloadFileSystemService : IMonitorDatasQueryFileSystemService<HumidityTable>
     {
         readonly IHumidityDatasOriginalValueDAL _humidityDatasOriginalValueDAL;
-        public HumidityDatasOriginalValueDownLoadFileSystemService(IHumidityDatasOriginalValueDAL humidityDatasOriginalValueDAL)
+        public HumidityDatasOriginalValueDownloadFileSystemService(IHumidityDatasOriginalValueDAL humidityDatasOriginalValueDAL)
         {
             _humidityDatasOriginalValueDAL = humidityDatasOriginalValueDAL;
         }

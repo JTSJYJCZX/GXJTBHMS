@@ -164,7 +164,7 @@ namespace GxjtBHMS.Web.Controllers
                 EndTime = conditions.EndTime,
                 PointsPositionId = conditions.MornitoringPointsPositionId
             };
-            var monitoringDatasQueryService = MonitoringDatasOriginalValueDownLoadServiceFactory.GetQueryServiceFrom(conditions.MornitoringTestTypeId);
+            var monitoringDatasQueryService = MonitoringDatasOriginalValueDownloadServiceFactory.GetQueryServiceFrom(conditions.MornitoringTestTypeId);
             var resp = monitoringDatasQueryService.SaveAsFile(req);
             var guid = "";
             guid = Guid.NewGuid().ToString();

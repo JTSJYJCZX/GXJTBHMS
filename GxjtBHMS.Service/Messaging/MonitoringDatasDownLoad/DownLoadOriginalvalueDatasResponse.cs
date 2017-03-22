@@ -1,6 +1,6 @@
 ﻿namespace GxjtBHMS.Service.Messaging.MonitoringDatasDownLoad
 {
-    public  class DownLoadOriginalvalueDatasResponse : ResponseBase
+    public  class DownloadOriginalvalueDatasResponse : ResponseBase
     {
         public dynamic Datas { get; set; }
     }
