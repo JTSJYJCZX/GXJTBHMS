@@ -10,7 +10,7 @@ using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    public class CableForceMonitorDatasQueryChartService : IMonitorDatasEigenvalueQueryChartService<CableForceEigenvalueTable>
+    public class CableForceMonitorDatasQueryChartService : IMonitorDatasEigenvalueQueryChartService<CableForceEigenValueTable>
     {
         readonly ICableForceDatasEigenvalueDAL  _cableForceDatasDAL;
         public CableForceMonitorDatasQueryChartService(ICableForceDatasEigenvalueDAL   cableForceDatasDAL)
@@ -18,7 +18,7 @@ namespace GxjtBHMS.Service.Implementations
             _cableForceDatasDAL = cableForceDatasDAL;
         }
 
-        public IEnumerable<ChartGroupDataModel> GetChartDataSourceBy(IList<Func<CableForceEigenvalueTable, bool>> ps)
+        public IEnumerable<ChartGroupDataModel> GetChartDataSourceBy(IList<Func<CableForceEigenValueTable, bool>> ps)
         {
             var source = _cableForceDatasDAL.FindBy(ps, ServiceConstant.PointsNumberPointsPositionNavigationProperty);
             var groupDatas = source.GroupBy(m => m.PointsNumber.Name);

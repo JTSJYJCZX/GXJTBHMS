@@ -1,25 +1,25 @@
 ﻿using GxjtBHMS.Models;
-using GxjtBHMS.Service.Interfaces;
 using System;
 using System.Collections.Generic;
+using GxjtBHMS.Service.Interfaces;
+using GxjtBHMS.Service.Interfaces.MonitoringDatasOriginalValueDownLoadInerfaces;
 using GxjtBHMS.Service.Messaging.MonitoringDatas;
 using GxjtBHMS.Service.Messaging.MonitoringDatasDownLoad;
 
 namespace GxjtBHMS.Service.Implementations.OriginalValueDownLoad
 {
-    public class CableForceDatasOriginalValueDownloadService : MonitorDatasOringinalValueDownloadServiceBase<CableForceTable>,
-          ICableForceDatasOriginalValueDownLoadService
+    public class TemperatureDatasOriginalValueDownLoadService : MonitorDatasOringinalValueDownloadServiceBase<TemperatureTable>,
+        ITemperatureDatasOriginalValueDownLoadService
     {
-        public CableForceDatasOriginalValueDownloadService(
-            IMonitorDatasQueryFileSystemService<CableForceTable> fileSystemService) : base(fileSystemService)
+        public TemperatureDatasOriginalValueDownLoadService(IMonitorDatasQueryFileSystemService<TemperatureTable> fileSystemService) :
+            base(fileSystemService)
         {
-
         }
 
         public DownLoadOriginalvalueDatasResponse SaveAs(DatasQueryResultRequestBase req)
         {
+            IList<Func<TemperatureTable, bool>> ps = new List<Func<TemperatureTable,bool>>();
             var resp = new DownLoadOriginalvalueDatasResponse();
-            IList<Func<CableForceTable, bool>> ps = new List<Func<CableForceTable, bool>>();
             try
             {
                 DealWithConditions(req, ps);

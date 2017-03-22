@@ -1,6 +1,6 @@
 ﻿namespace GxjtBHMS.Models.MonitoringDatasEigenvalueTable
 {
-    public class CableForceEigenvalueTable:MonitoringDatasEigenvalueModel
+    public class CableForceEigenValueTable:MonitoringDatasEigenvalueModel
     {
     }
 }

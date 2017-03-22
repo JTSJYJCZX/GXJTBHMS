@@ -1,28 +1,27 @@
 ﻿using GxjtBHMS.Models;
-using GxjtBHMS.Service.Interfaces;
+using GxjtBHMS.Service.Interfaces.MonitoringDatasOriginalValueDownLoadInerfaces;
 using System;
 using System.Collections.Generic;
+using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.Messaging.MonitoringDatas;
 using GxjtBHMS.Service.Messaging.MonitoringDatasDownLoad;
 
 namespace GxjtBHMS.Service.Implementations.OriginalValueDownLoad
 {
-    public class CableForceDatasOriginalValueDownloadService : MonitorDatasOringinalValueDownloadServiceBase<CableForceTable>,
-          ICableForceDatasOriginalValueDownLoadService
+    public class HumidityDatasOriginalValueDownLoadService : MonitorDatasOringinalValueDownloadServiceBase<HumidityTable>,
+        IHumidityDatasOriginalValueDownLoadService
     {
-        public CableForceDatasOriginalValueDownloadService(
-            IMonitorDatasQueryFileSystemService<CableForceTable> fileSystemService) : base(fileSystemService)
+        public HumidityDatasOriginalValueDownLoadService(IMonitorDatasQueryFileSystemService<HumidityTable> fileSystemService) : base(fileSystemService)
         {
-
         }
 
         public DownLoadOriginalvalueDatasResponse SaveAs(DatasQueryResultRequestBase req)
         {
             var resp = new DownLoadOriginalvalueDatasResponse();
-            IList<Func<CableForceTable, bool>> ps = new List<Func<CableForceTable, bool>>();
+            IList<Func<HumidityTable, bool>> ps = new List<Func<HumidityTable, bool>>();
             try
             {
-                DealWithConditions(req, ps);
+                DealWithConditions(req,ps);
                 resp.Datas = _fileSystemService.ConvertToDocument(ps);
                 resp.Succeed = true;
             }

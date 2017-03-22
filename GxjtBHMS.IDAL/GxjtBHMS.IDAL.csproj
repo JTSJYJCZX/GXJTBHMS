@@ -46,6 +46,8 @@
   <ItemGroup>
     <Compile Include="ICableForceDatasEigenvalueDAL.cs" />
     <Compile Include="ICableForceThresholdValueGettingDAL.cs" />
+    <Compile Include="OriginalValueDownLoad\IHumidityDatasOriginalValueDAL.cs" />
+    <Compile Include="OriginalValueDownLoad\ITemperatureDatasOriginalValueDAL.cs" />
     <Compile Include="IWindLoadDatasEigenValueDAL.cs" />
     <Compile Include="IDisplaymentDatasEigenValueDAL.cs" />
     <Compile Include="IHumidityDatasEigenvalueDAL.cs" />
@@ -68,6 +70,7 @@
     <Compile Include="ITemperatureThresholdValueGettingDAL.cs" />
     <Compile Include="IThresholdValueSettingDAL.cs" />
     <Compile Include="IUser.cs" />
+    <Compile Include="OriginalValueDownLoad\ICableForceDatasOriginalValueDAL.cs" />
     <Compile Include="OriginalValueDownLoad\IDisplacementDatasOriginalValueDAL.cs" />
     <Compile Include="OriginalValueDownLoad\ISteelLatticeStrainDatasOriginalValueDAL.cs" />
     <Compile Include="OriginalValueDownLoad\ISteelArchStrainDatasOriginalValueDAL.cs" />

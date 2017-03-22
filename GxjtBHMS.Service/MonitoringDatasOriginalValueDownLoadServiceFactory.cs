@@ -1,4 +1,5 @@
 ﻿using GxjtBHMS.Service;
+using GxjtBHMS.Service.MonitoringDatasOriginalValueDownLoad;
 using System;
 
 namespace GxjtBHMS.Service
@@ -19,10 +20,10 @@ namespace GxjtBHMS.Service
                     return new DisplacementDatasOriginalValueDownLoad();
                 case 5:
                     return new CableForceDatasOriginalValueDownLoad();
-                //case 6:
-                //    return new TemperatureDatasOriginalValueDownLoad();
-                //case 7:
-                //    return new HumidityDatasOriginalValueDownLoad();
+                case 6:
+                    return new HumidityDatasOriginalValueDownLoad();
+                case 7:
+                    return new TemperatureDatasOriginalValueDownLoad();
                 //case 8:
                 //    return new WindLoadDatasOriginalValueDownLoad();
                 default:
