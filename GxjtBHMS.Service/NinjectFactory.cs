@@ -10,6 +10,7 @@ using GxjtBHMS.Service.Implementations.OriginalValueDownLoad;
 using GxjtBHMS.IDAL.OriginalValueDownLoad;
 using GxjtBHMS.Service.Interfaces.MonitoringDatasOriginalValueDownLoadInerfaces;
 using GxjtBHMS.SqlServerDAL.MonitoringDatasDAL;
+using GxjtBHMS.Service.Interfaces.MonitoringDatasQueryServiceInerfaces;
 
 namespace GxjtBHMS.Service
 {
@@ -43,22 +44,13 @@ namespace GxjtBHMS.Service
             _ninjectKernel.Bind<IHumidityDatasOriginalValueDownLoadService>().To<HumidityDatasOriginalValueDownLoadService>();
             _ninjectKernel.Bind<IHumidityDatasOriginalValueDAL>().To<HumidityDatasOriginalValueDAL>();
 
-            _ninjectKernel.Bind<IConcreteStrainDatasEigenvalueQueryService>().To<ConcreteStrainDatasEigenvalueQueryService>();
             _ninjectKernel.Bind<IConcreteStrainDatasEigenValueDAL>().To<ConcreteStrainDatasEigenvalueDAL>();
-            _ninjectKernel.Bind<ISteelArchStrainDatasEigenvalueQueryService>().To<SteelArchStrainDatasEigenvalueQueryService>();
             _ninjectKernel.Bind<ISteelArchStrainDatasEigenValueDAL>().To<SteelArchStrainDatasEigenvalueDAL>();
-            _ninjectKernel.Bind<ISteelLatticeStrainDatasEigenvalueQueryService>().To<SteelLatticeStrainDatasEigenvalueQueryService>();
             _ninjectKernel.Bind<ISteelLatticeStrainDatasEigenValueDAL>().To<SteelLatticeStrainDatasEigenvalueDAL>();
-            _ninjectKernel.Bind<IDisplaymentDatasEigenvalueQueryService>().To<DisplaymentDatasEigenvalueQueryService>();
             _ninjectKernel.Bind<IDisplaymentDatasEigenValueDAL>().To<DisplaymentDatasEigenValueDAL>();
-            _ninjectKernel.Bind<ICableForceDatasEigenvalueQueryService>().To<CableForceDatasEigenvalueQueryService>();
             _ninjectKernel.Bind<ICableForceDatasEigenvalueDAL>().To<CableForceDatasEigenvalueDAL>();
-            _ninjectKernel.Bind<IHumidityDatasEigenvalueQueryService>().To<HumidityDatasEigenvalueQueryService>();
             _ninjectKernel.Bind<IHumidityDatasEigenvalueDAL>().To<HumidityDatasEigenvalueDAL>();
-            _ninjectKernel.Bind<ITemperatureDatasEigenvalueQueryService>().To<TemperatureDatasEigenvalueQueryService>();
             _ninjectKernel.Bind<ITemperatureDatasEigenvalueDAL>().To<TemperatureDatasEigenvalueDAL>();
-
-            _ninjectKernel.Bind<IWindLoadDatasEigenvalueQueryService>().To<WindLoadDatasEigenvalueQueryService>();
             _ninjectKernel.Bind<IWindLoadDatasEigenValueDAL>().To<WindLoadDatasEigenvalueDAL>();
 
 

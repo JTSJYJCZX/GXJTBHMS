@@ -55,7 +55,6 @@ namespace GxjtBHMS.Web.Controllers
                 return PartialView("DataQuerySearchContentPartial");
             }
             return Content("<span style='color:red'>无记录</span>");
-
         }
         //获取曲线图数据
         public ActionResult GetChartDatas(MornitoringDataSearchBarBaseView conditions)
@@ -187,7 +186,7 @@ namespace GxjtBHMS.Web.Controllers
                 PointsPositionId = conditions.MornitoringPointsPositionId
             };
             var monitoringDatasQueryService = MonitoringDatasEigenvalueQueryServiceFactory.GetQueryServiceFrom(conditions.MornitoringTestTypeId);
-            var resp = monitoringDatasQueryService.SaveAsFile(req);
+            var resp = monitoringDatasQueryService.SaveAs(req);
             var guid = "";
             guid = Guid.NewGuid().ToString();
             CacheHelper.SetCache(guid, resp.Datas);
