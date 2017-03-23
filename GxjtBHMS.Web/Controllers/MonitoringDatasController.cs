@@ -203,7 +203,7 @@ namespace GxjtBHMS.Web.Controllers
                 throw new ApplicationException("guid invalid");
             }
             var ms = _fileConverter.GetStream(obj);
-            string preFileName = GetDownloadFileNameByTestTypeId(pointsPositionId);
+            string preFileName = GetDownloadPreFileNameByTestTypeId(pointsPositionId,dataType);
             Response.AddHeader("Content-Disposition", string.Format("attachment; filename={0}.xls", preFileName));
             Response.BinaryWrite(ms.ToArray());
             ms.Close();
@@ -213,7 +213,7 @@ namespace GxjtBHMS.Web.Controllers
 
         string GetDownloadPreFileNameByTestTypeId(int pointsPositionId, string dataType)
         {
-            return string.Concat(dataType, _mpps.GetMixedNameWithTestTypeNameAndPointPositionNameAndCurrentDateTimeByPositionId(pointsPositionId)) ;
+            return  _mpps.CreateDownloadFileMixedName(pointsPositionId,dataType) ;
         }
     }
 }

@@ -43,7 +43,7 @@ namespace GxjtBHMS.Tests.ControllerTests.MonitoringDatasControllerTest
 
             _fileConverter.GetStream(CacheHelper.GetCache(key)).Returns(new MemoryStream());
 
-            _controller.OriginCode(key, Arg.Any<int>());
+            _controller.OriginCode(key, Arg.Any<int>(),Arg.Any<string>());
 
             _controller.Response.Received().AddHeader("Content-Disposition", preFileName);
         }
@@ -55,7 +55,7 @@ namespace GxjtBHMS.Tests.ControllerTests.MonitoringDatasControllerTest
 
             _fileConverter.GetStream(CacheHelper.GetCache(key)).Returns(new MemoryStream());
 
-            _controller.OriginCode(key, Arg.Any<int>());
+            _controller.OriginCode(key, Arg.Any<int>(), Arg.Any<string>());
 
             _controller.Response.Received().BinaryWrite(Arg.Any<byte[]>());
         }
@@ -64,7 +64,7 @@ namespace GxjtBHMS.Tests.ControllerTests.MonitoringDatasControllerTest
         [ExpectedException(typeof(ApplicationException))]
         public void OriginCode_InvalidGuid_ThrowException()
         {
-            _controller.OriginCode(key, Arg.Any<int>());
+            _controller.OriginCode(key, Arg.Any<int>(), Arg.Any<string>());
         }
 
     }
