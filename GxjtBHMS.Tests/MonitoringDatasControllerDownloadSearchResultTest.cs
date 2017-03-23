@@ -39,7 +39,7 @@ namespace GxjtBHMS.Tests.ControllerTests
 
             CacheHelper.SetCache(key, new HSSFWorkbook());
 
-            _controller.OriginCode(key, Arg.Any<int>());
+            _controller.OriginCode(key, Arg.Any<int>(),Arg.Any<string>());
 
             _controller.Response.Received().AddHeader("Content-Disposition", preFileName);
         }
@@ -51,7 +51,7 @@ namespace GxjtBHMS.Tests.ControllerTests
 
             CacheHelper.SetCache(key, new HSSFWorkbook());
 
-            _controller.OriginCode(key, Arg.Any<int>());
+            _controller.OriginCode(key, Arg.Any<int>(), Arg.Any<string>());
 
             _controller.Response.Received().BinaryWrite(Arg.Any<byte[]>());
         }

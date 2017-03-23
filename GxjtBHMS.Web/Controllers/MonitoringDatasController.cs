@@ -194,13 +194,13 @@ namespace GxjtBHMS.Web.Controllers
             return Json(guid, JsonRequestBehavior.AllowGet);
         }
 
-        public void OriginCode(string guid, int pointsPositionId)
+        public void OriginCode(string guid, int pointsPositionId,string dataType)
         {
             object obj = CacheHelper.GetCache(guid);
             NPOI.HSSF.UserModel.HSSFWorkbook book = obj as NPOI.HSSF.UserModel.HSSFWorkbook;
             if (book != null)
             {
-                string preFileName = GetDownloadPreFileNameByTestTypeId(pointsPositionId);
+                string preFileName = GetDownloadPreFileNameByTestTypeId(pointsPositionId,dataType);
                 // 写入到客户端  
                 MemoryStream ms = new MemoryStream();
                 book.Write(ms);
@@ -213,9 +213,9 @@ namespace GxjtBHMS.Web.Controllers
             CacheHelper.RemoveAllCache(guid);
         }
 
-        string GetDownloadPreFileNameByTestTypeId(int pointsPositionId)
+        string GetDownloadPreFileNameByTestTypeId(int pointsPositionId, string dataType)
         {
-            return _mpps.GetMixedNameWithTestTypeNameAndPointPositionNameAndCurrentDateTimeByPositionId(pointsPositionId);
+            return string.Concat(dataType, _mpps.GetMixedNameWithTestTypeNameAndPointPositionNameAndCurrentDateTimeByPositionId(pointsPositionId)) ;
         }
     }
 }
