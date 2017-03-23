@@ -188,7 +188,7 @@ namespace GxjtBHMS.Web.Controllers
                 PointsPositionId = conditions.MornitoringPointsPositionId
             };
             var monitoringDatasQueryService = MonitoringDatasEigenvalueQueryServiceFactory.GetQueryServiceFrom(conditions.MornitoringTestTypeId);
-            var resp = monitoringDatasQueryService.SaveAsFile(req);
+            var resp = monitoringDatasQueryService.SaveAs(req);
             var guid = Guid.NewGuid().ToString();
             CacheHelper.SetCache(guid, resp.Datas);
             return Json(guid, JsonRequestBehavior.AllowGet);

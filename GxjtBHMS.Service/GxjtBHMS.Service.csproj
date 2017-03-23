@@ -85,6 +85,7 @@
     <Compile Include="AutoMapper\Configuration.cs" />
     <Compile Include="Implementations\EigenvalueChartQueryService\CableForceMonitorDatasQueryChartService.cs" />
     <Compile Include="Implementations\EigenvalueDownLoadService\CableForceMonitorDatasEigenValueQueryFileSystemService.cs" />
+    <Compile Include="Implementations\ExcelFileConverter.cs" />
     <Compile Include="Implementations\OriginalValueDownLoad\CableForceDatasOriginalValueDownloadService.cs" />
     <Compile Include="Implementations\OriginalValueDownLoad\CableForceMonitorDatasOriginalValueDownloadFileSystemService.cs" />
     <Compile Include="Implementations\OriginalValueDownLoad\DisplacementDatasOriginalValueDownloadService.cs" />
@@ -112,6 +113,9 @@
     <Compile Include="Implementations\EigenvalueDownLoadService\SteelLatticeStrainMonitorDatasQueryFileSystemService.cs" />
     <Compile Include="Implementations\EigenvalueChartQueryService\TemperatureMonitorDatasQueryChartService.cs" />
     <Compile Include="Implementations\EigenvalueDownLoadService\TemperatureMonitorDatasQueryFileSystemService.cs" />
+    <Compile Include="Implementations\OriginalValueDownLoad\WindLoadDatasOriginalValueDownloadFileSystemService.cs" />
+    <Compile Include="Implementations\OriginalValueDownLoad\WindLoadDatasOriginalValueDownloadService.cs" />
+    <Compile Include="Interfaces\IFileConverter.cs" />
     <Compile Include="Interfaces\MonitoringDatasOriginalValueDownLoadInerfaces\IHumidityDatasOriginalValueDownLoadService.cs" />
     <Compile Include="Interfaces\MonitoringDatasOriginalValueDownLoadInerfaces\IMonitorDatasOriginalValueDownLoadServiceBase.cs" />
     <Compile Include="Interfaces\MonitoringDatasOriginalValueDownLoadInerfaces\ICableForceDatasOriginalValueDownLoadService.cs" />
@@ -119,6 +123,7 @@
     <Compile Include="Interfaces\MonitoringDatasOriginalValueDownLoadInerfaces\ISteelLatticeStrainDatasOriginalValueDownLoadService.cs" />
     <Compile Include="Interfaces\MonitoringDatasOriginalValueDownLoadInerfaces\ISteelArchStrainDatasOriginalValueDownLoadService.cs" />
     <Compile Include="Interfaces\MonitoringDatasOriginalValueDownLoadInerfaces\ITemperatureDatasOriginalValueDownloadService.cs" />
+    <Compile Include="Interfaces\MonitoringDatasOriginalValueDownLoadInerfaces\IWindLoadDatasOriginalValueDownLoadService.cs" />
     <Compile Include="Messaging\MonitoringDatasDownLoad\DownLoadOriginalvalueDatasResponse.cs" />
     <Compile Include="MonitoringDatasOriginalValueDownLoad\CableForceDatasOriginalValueDownload.cs" />
     <Compile Include="MonitoringDatasOriginalValueDownLoad\DisplacementDatasOriginalValueDownload.cs" />
@@ -128,6 +133,7 @@
     <Compile Include="MonitoringDatasOriginalValueDownLoad\ConcreteStrainDatasOriginalValueDownload.cs" />
     <Compile Include="Interfaces\MonitoringDatasOriginalValueDownloadInerfaces\IConcreteStrainDatasOriginalValueDownloadService.cs" />
     <Compile Include="MonitoringDatasOriginalValueDownLoad\MonitoringDatasOriginalvalueQueryServiceBase.cs" />
+    <Compile Include="MonitoringDatasOriginalValueDownLoad\WindLoadDatasOriginalValueDownLoad.cs" />
     <Compile Include="ServiceFactory\MonitoringDatasOriginalValueDownLoadServiceFactory.cs" />
     <Compile Include="MonitoringDatasOriginalValueDownLoad\TemperatureDatasOriginalValueDownLoad.cs" />
     <Compile Include="MonitoringDatasQueryService\WindLoadEigenvalueDatasQuery.cs" />
