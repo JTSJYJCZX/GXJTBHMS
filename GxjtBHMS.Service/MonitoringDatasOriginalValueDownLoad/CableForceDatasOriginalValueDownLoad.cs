@@ -4,19 +4,19 @@ using GxjtBHMS.Service.Messaging.MonitoringDatasDownLoad;
 
 namespace GxjtBHMS.Service
 {
-    class CableForceDatasOriginalValueDownLoad : MonitoringDatasOriginalvalueQueryServiceBase
+    class CableForceDatasOriginalValueDownload : MonitoringDatasOriginalvalueQueryServiceBase
     {
-        readonly ICableForceDatasOriginalValueDownLoadService _cableForceDatasOriginalValueDownLoadService;
+        readonly ICableForceDatasOriginalValueDownloadService _cableForceDatasOriginalValueDownloadService;
 
-        public CableForceDatasOriginalValueDownLoad()
+        public CableForceDatasOriginalValueDownload()
         {
-            _cableForceDatasOriginalValueDownLoadService = new NinjectFactory()
-                .GetInstance<ICableForceDatasOriginalValueDownLoadService>();
+            _cableForceDatasOriginalValueDownloadService = new NinjectFactory()
+                .GetInstance<ICableForceDatasOriginalValueDownloadService>();
         }
          
-        public override DownLoadOriginalvalueDatasResponse SaveAsFile(DatasQueryResultRequestBase req)
+        public override DownloadOriginalvalueDatasResponse SaveAsFile(DatasQueryResultRequestBase req)
         {
-            return _cableForceDatasOriginalValueDownLoadService.SaveAs(req);
+            return _cableForceDatasOriginalValueDownloadService.SaveAs(req);
         }
     }
 }

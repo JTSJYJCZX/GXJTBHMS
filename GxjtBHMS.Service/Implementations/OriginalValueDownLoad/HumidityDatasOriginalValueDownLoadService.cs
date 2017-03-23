@@ -8,16 +8,16 @@ using GxjtBHMS.Service.Messaging.MonitoringDatasDownLoad;
 
 namespace GxjtBHMS.Service.Implementations.OriginalValueDownLoad
 {
-    public class HumidityDatasOriginalValueDownLoadService : MonitorDatasOringinalValueDownloadServiceBase<HumidityTable>,
-        IHumidityDatasOriginalValueDownLoadService
+    public class HumidityDatasOriginalValueDownloadService : MonitorDatasOringinalValueDownloadServiceBase<HumidityTable>,
+        IHumidityDatasOriginalValueDownloadService
     {
-        public HumidityDatasOriginalValueDownLoadService(IMonitorDatasQueryFileSystemService<HumidityTable> fileSystemService) : base(fileSystemService)
+        public HumidityDatasOriginalValueDownloadService(IMonitorDatasQueryFileSystemService<HumidityTable> fileSystemService) : base(fileSystemService)
         {
         }
 
-        public DownLoadOriginalvalueDatasResponse SaveAs(DatasQueryResultRequestBase req)
+        public DownloadOriginalvalueDatasResponse SaveAs(DatasQueryResultRequestBase req)
         {
-            var resp = new DownLoadOriginalvalueDatasResponse();
+            var resp = new DownloadOriginalvalueDatasResponse();
             IList<Func<HumidityTable, bool>> ps = new List<Func<HumidityTable, bool>>();
             try
             {

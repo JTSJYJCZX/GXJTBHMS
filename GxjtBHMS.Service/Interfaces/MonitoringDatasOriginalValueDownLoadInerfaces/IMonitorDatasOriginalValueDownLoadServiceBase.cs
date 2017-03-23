@@ -3,8 +3,8 @@ using GxjtBHMS.Service.Messaging.MonitoringDatasDownLoad;
 
 namespace GxjtBHMS.Service.Interfaces
 {
-    public interface IMonitorDatasOriginalValueDownLoadServiceBase
+    public interface IMonitorDatasOriginalValueDownloadServiceBase
     {
-        DownLoadOriginalvalueDatasResponse SaveAs(DatasQueryResultRequestBase req);
+        DownloadOriginalvalueDatasResponse SaveAs(DatasQueryResultRequestBase req);
     }
 }

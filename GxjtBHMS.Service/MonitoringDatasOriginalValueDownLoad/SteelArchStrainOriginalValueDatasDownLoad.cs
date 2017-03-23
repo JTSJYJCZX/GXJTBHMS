@@ -4,19 +4,19 @@ using GxjtBHMS.Service.Messaging.MonitoringDatasDownLoad;
 
 namespace GxjtBHMS.Service
 {
-    class SteelArchStrainOriginalValueDatasDownLoad : MonitoringDatasOriginalvalueQueryServiceBase
+    class SteelArchStrainOriginalValueDatasDownload : MonitoringDatasOriginalvalueQueryServiceBase
     {
-        readonly ISteelArchStrainDatasOriginalValueDownLoadService _steelArchStrainDatasOriginalValueDownLoadService;
+        readonly ISteelArchStrainDatasOriginalValueDownloadService _steelArchStrainDatasOriginalValueDownloadService;
 
-        public SteelArchStrainOriginalValueDatasDownLoad()
+        public SteelArchStrainOriginalValueDatasDownload()
         {
-            _steelArchStrainDatasOriginalValueDownLoadService = new NinjectFactory()
-                .GetInstance<ISteelArchStrainDatasOriginalValueDownLoadService>();
+            _steelArchStrainDatasOriginalValueDownloadService = new NinjectFactory()
+                .GetInstance<ISteelArchStrainDatasOriginalValueDownloadService>();
         }
-         
-        public override DownLoadOriginalvalueDatasResponse SaveAsFile(DatasQueryResultRequestBase req)
+
+        public override DownloadOriginalvalueDatasResponse SaveAsFile(DatasQueryResultRequestBase req)
         {
-            return _steelArchStrainDatasOriginalValueDownLoadService.SaveAs(req);
+            return _steelArchStrainDatasOriginalValueDownloadService.SaveAs(req);
         }
     }
 }

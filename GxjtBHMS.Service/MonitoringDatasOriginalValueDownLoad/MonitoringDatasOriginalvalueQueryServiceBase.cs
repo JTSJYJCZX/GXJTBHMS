@@ -5,6 +5,6 @@ namespace GxjtBHMS.Service
 {
     public abstract class MonitoringDatasOriginalvalueQueryServiceBase : ServiceBase
     {
-        public abstract DownLoadOriginalvalueDatasResponse SaveAsFile(DatasQueryResultRequestBase req);
+        public abstract DownloadOriginalvalueDatasResponse SaveAsFile(DatasQueryResultRequestBase req);
     }
 }

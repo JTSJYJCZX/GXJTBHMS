@@ -1,31 +1,30 @@
-﻿using GxjtBHMS.Service;
-using GxjtBHMS.Service.MonitoringDatasOriginalValueDownLoad;
+﻿using GxjtBHMS.Service.MonitoringDatasOriginalValueDownLoad;
 using System;
 
 namespace GxjtBHMS.Service
 {
-    public class MonitoringDatasOriginalValueDownLoadServiceFactory
+    public class MonitoringDatasOriginalValueDownloadServiceFactory
     {
         public static MonitoringDatasOriginalvalueQueryServiceBase GetQueryServiceFrom(int mornitoringTestTypeId)
         {
             switch (mornitoringTestTypeId)
             {
                 case 1:
-                    return new SteelArchStrainOriginalValueDatasDownLoad();
+                    return new SteelArchStrainOriginalValueDatasDownload();
                 case 2:
-                    return new SteelLatticeStrainOriginalValueDatasDownLoad();
+                    return new SteelLatticeStrainOriginalValueDatasDownload();
                 case 3:
-                    return new ConcreteStrainDatasOriginalValueDownLoad();
+                    return new ConcreteStrainDatasOriginalValueDownload();
                 case 4:
-                    return new DisplacementDatasOriginalValueDownLoad();
+                    return new DisplacementDatasOriginalValueDownload();
                 case 5:
-                    return new CableForceDatasOriginalValueDownLoad();
+                    return new CableForceDatasOriginalValueDownload();
                 case 6:
-                    return new HumidityDatasOriginalValueDownLoad();
+                    return new HumidityDatasOriginalValueDownload();
                 case 7:
-                    return new TemperatureDatasOriginalValueDownLoad();
-                //case 8:
-                //    return new WindLoadDatasOriginalValueDownLoad();
+                    return new TemperatureDatasOriginalValueDownload();
+                case 8:
+                    return new WindLoadDatasOriginalValueDownload();
                 default:
                     throw new ApplicationException("No TestTypeId");
             }

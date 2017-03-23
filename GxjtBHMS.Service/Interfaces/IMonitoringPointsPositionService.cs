@@ -6,6 +6,6 @@ namespace GxjtBHMS.Service.Interfaces
     {
         QueryAllMonitoringPointsPositionResponse GetAllMonitoringPointsPosition();
         QueryMonitoringPointsPositionsByTestTypeIdResponse GetMonitoringPointsPositionsByTestTypeId(int ttId);
-        string GetMixedNameWithTestTypeNameAndPointPositionNameAndCurrentDateTimeByPositionId(int positionId);
+        string CreateDownloadFileMixedName(int positionId, string dataType);
     }
 }

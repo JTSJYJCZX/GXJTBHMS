@@ -1,6 +1,6 @@
 ﻿namespace GxjtBHMS.Service.Interfaces
 {
-    public interface ISteelLatticeStrainDatasOriginalValueDownLoadService : IMonitorDatasOriginalValueDownLoadServiceBase
+    public interface ISteelLatticeStrainDatasOriginalValueDownloadService : IMonitorDatasOriginalValueDownloadServiceBase
     {
      
     }

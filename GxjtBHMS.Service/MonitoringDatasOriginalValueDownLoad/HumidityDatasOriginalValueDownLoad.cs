@@ -4,16 +4,16 @@ using GxjtBHMS.Service.Interfaces.MonitoringDatasOriginalValueDownLoadInerfaces;
 
 namespace GxjtBHMS.Service.MonitoringDatasOriginalValueDownLoad
 {
-    public class HumidityDatasOriginalValueDownLoad : MonitoringDatasOriginalvalueQueryServiceBase
+    public class HumidityDatasOriginalValueDownload : MonitoringDatasOriginalvalueQueryServiceBase
     {
-        readonly IHumidityDatasOriginalValueDownLoadService _humidityDatasOriginalValueDownLoadService;
-        public HumidityDatasOriginalValueDownLoad()
+        readonly IHumidityDatasOriginalValueDownloadService _humidityDatasOriginalValueDownloadService;
+        public HumidityDatasOriginalValueDownload()
         {
-            _humidityDatasOriginalValueDownLoadService = new NinjectFactory().GetInstance<IHumidityDatasOriginalValueDownLoadService>();
+            _humidityDatasOriginalValueDownloadService = new NinjectFactory().GetInstance<IHumidityDatasOriginalValueDownloadService>();
         }
-        public override DownLoadOriginalvalueDatasResponse SaveAsFile(DatasQueryResultRequestBase req)
+        public override DownloadOriginalvalueDatasResponse SaveAsFile(DatasQueryResultRequestBase req)
         {
-            return _humidityDatasOriginalValueDownLoadService.SaveAs(req);
+            return _humidityDatasOriginalValueDownloadService.SaveAs(req);
         }
     }
 }

@@ -9,7 +9,7 @@ using GxjtBHMS.Models.MonitoringDatasTable;
 namespace GxjtBHMS.Service.Implementations
 {
     public class SteelLatticeStrainDatasOriginalValueDownloadService : MonitorDatasOringinalValueDownloadServiceBase<SteelLatticeStrainTable>,
-        ISteelLatticeStrainDatasOriginalValueDownLoadService
+        ISteelLatticeStrainDatasOriginalValueDownloadService
     {
         public SteelLatticeStrainDatasOriginalValueDownloadService(
             IMonitorDatasQueryFileSystemService<SteelLatticeStrainTable> fileSystemService
@@ -17,9 +17,9 @@ namespace GxjtBHMS.Service.Implementations
         {
         }
 
-        public DownLoadOriginalvalueDatasResponse SaveAs(DatasQueryResultRequestBase req)
+        public DownloadOriginalvalueDatasResponse SaveAs(DatasQueryResultRequestBase req)
         {
-            var resp = new DownLoadOriginalvalueDatasResponse();
+            var resp = new DownloadOriginalvalueDatasResponse();
             IList<Func<SteelLatticeStrainTable, bool>> ps = new List<Func<SteelLatticeStrainTable, bool>>();
             try
             {
