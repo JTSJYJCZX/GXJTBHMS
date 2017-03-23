@@ -23,7 +23,7 @@ namespace GxjtBHMS.Web.ViewModels.ThresholdValueSetting
         public double? PositiveSecondLevelThresholdValue { get; set; }
         /// <summary>
         /// 负标准值
-        /// 负的一二三级阈值
+        /// 负的一二级阈值
         /// </summary>
 
        

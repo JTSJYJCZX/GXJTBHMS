@@ -21,9 +21,6 @@ namespace GxjtBHMS.Service
 
         }
 
-
-
-
         public override bool HasQueryResult(DatasQueryResultRequest req)
         {
             var result = false;

@@ -27,12 +27,12 @@ namespace GxjtBHMS.SqlServerDAL
         const string TemperatureTypeName = "温度";
         const string HumidityTypeName = "湿度";
 
-        MonitoringTestType steelArchStrainType = new MonitoringTestType { Name = SteelArchStrainTypeName, Unit="(με)" };
+        MonitoringTestType steelArchStrainType = new MonitoringTestType { Name = SteelArchStrainTypeName, Unit = "(με)" };
         MonitoringTestType steelLatticeStrainType = new MonitoringTestType { Name = SteelLatticeStrainTypeName, Unit = "(με)" };
         MonitoringTestType concreteStrainType = new MonitoringTestType { Name = ConcreteStrainTypeName, Unit = "(με)" };
         MonitoringTestType displacementType = new MonitoringTestType { Name = DisplacementTypeName, Unit = "(mm)" };
         MonitoringTestType cableForceType = new MonitoringTestType { Name = CableForceTypeName, Unit = "(kN)" };
-        MonitoringTestType windSpeedType = new MonitoringTestType { Name = WindSpeedTypeName,Unit="(m/s)" };
+        MonitoringTestType windSpeedType = new MonitoringTestType { Name = WindSpeedTypeName, Unit = "(m/s)" };
         MonitoringTestType temperatureType = new MonitoringTestType { Name = TemperatureTypeName, Unit = "(℃)" };
         MonitoringTestType humidityType = new MonitoringTestType { Name = HumidityTypeName, Unit = "(%)" };
 
@@ -70,7 +70,7 @@ namespace GxjtBHMS.SqlServerDAL
         /// </summary>
         MonitoringPointsPosition environmentTemp = new MonitoringPointsPosition { Name = "环境温度", Description = "" };
         MonitoringPointsPosition steelArchTemp = new MonitoringPointsPosition { Name = "钢拱肋温度", Description = "" };
- 
+
         /// <summary>
         /// 湿度截面号
         /// </summary>
@@ -337,7 +337,7 @@ namespace GxjtBHMS.SqlServerDAL
         }
 
         private void InitialHumidityThresholdValue(BHMSContext context)
-        {           
+        {
         }
 
         private void CreateTemperatureThresholdValues(BHMSContext context)
@@ -347,7 +347,7 @@ namespace GxjtBHMS.SqlServerDAL
 
         private void InitialTemperatureThresholdValue(BHMSContext context)
         {
-            
+
         }
 
         private void CreateCableForceThresholdValues(BHMSContext context)
@@ -356,7 +356,7 @@ namespace GxjtBHMS.SqlServerDAL
         }
 
         private void InitialCableForceThresholdValue(BHMSContext context)
-        {           
+        {
         }
 
         private void CreateDisplaymentThresholdValues(BHMSContext context)
@@ -373,10 +373,8 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new DisplaymentThresholdValueTable
                 {
                     PointsNumber = tmpNumbers18[i],
-                    PositiveStandardValue = p,
                     PositiveFirstLevelThresholdValue = p * 0.8,
                     PositiveSecondLevelThresholdValue = p * 1.0,
-                    PositiveThirdLevelThresholdValue = p * 1.2,
                     NegativeStandardValue = n,
                     NegativeFirstLevelThresholdValue = n * 0.8,
                     NegativeSecondLevelThresholdValue = n * 1.0,
@@ -389,10 +387,8 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new DisplaymentThresholdValueTable
                 {
                     PointsNumber = tmpNumbers19[i],
-                    PositiveStandardValue = p,
                     PositiveFirstLevelThresholdValue = p * 0.8,
                     PositiveSecondLevelThresholdValue = p * 1.0,
-                    PositiveThirdLevelThresholdValue = p * 1.2,
                     NegativeStandardValue = n,
                     NegativeFirstLevelThresholdValue = n * 0.8,
                     NegativeSecondLevelThresholdValue = n * 1.0,
@@ -405,10 +401,8 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new DisplaymentThresholdValueTable
                 {
                     PointsNumber = tmpNumbers20[i],
-                    PositiveStandardValue = p,
                     PositiveFirstLevelThresholdValue = p * 0.8,
                     PositiveSecondLevelThresholdValue = p * 1.0,
-                    PositiveThirdLevelThresholdValue = p * 1.2,
                     NegativeStandardValue = n,
                     NegativeFirstLevelThresholdValue = n * 0.8,
                     NegativeSecondLevelThresholdValue = n * 1.0,
@@ -421,10 +415,8 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new DisplaymentThresholdValueTable
                 {
                     PointsNumber = tmpNumbers21[i],
-                    PositiveStandardValue = p,
                     PositiveFirstLevelThresholdValue = p * 0.8,
                     PositiveSecondLevelThresholdValue = p * 1.0,
-                    PositiveThirdLevelThresholdValue = p * 1.2,
                     NegativeStandardValue = n,
                     NegativeFirstLevelThresholdValue = n * 0.8,
                     NegativeSecondLevelThresholdValue = n * 1.0,
@@ -446,38 +438,28 @@ namespace GxjtBHMS.SqlServerDAL
             var n = -80.00;
             for (int i = 0; i < tmpNumbers16.Length; i++)
             {
-                var ThresholdValue = new StrainThresholdValueTable
+                var ThresholdValue = new ConcreteStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers16[i],
-                    PositiveStandardValue = p,
                     PositiveFirstLevelThresholdValue = p * 0.8,
                     PositiveSecondLevelThresholdValue = p * 1.0,
-                    PositiveThirdLevelThresholdValue = p * 1.2,
-                    NegativeStandardValue = n,
                     NegativeFirstLevelThresholdValue = n * 0.8,
                     NegativeSecondLevelThresholdValue = n * 1.0,
-                    NegativeThirdLevelThresholdValue = n * 1.2
                 };
-                context.StrainThresholdValues.Add(ThresholdValue);
+                context.ConcreteStrainThresholdValues.Add(ThresholdValue);
             }
-                for (int i = 0; i < tmpNumbers17.Length; i++)
+            for (int i = 0; i < tmpNumbers17.Length; i++)
+            {
+                var ThresholdValue = new ConcreteStrainThresholdValueTable
                 {
-                    var ThresholdValue = new StrainThresholdValueTable
-                    {
-                        PointsNumber = tmpNumbers17[i],
-                        PositiveStandardValue = p,
-                        PositiveFirstLevelThresholdValue = p * 0.8,
-                        PositiveSecondLevelThresholdValue = p * 1.0,
-                        PositiveThirdLevelThresholdValue = p * 1.2,
-                        NegativeStandardValue = n,
-                        NegativeFirstLevelThresholdValue = n * 0.8,
-                        NegativeSecondLevelThresholdValue = n * 1.0,
-                        NegativeThirdLevelThresholdValue = n * 1.2
-                    };
-                    context.StrainThresholdValues.Add(ThresholdValue);
-
-
-                }            
+                    PointsNumber = tmpNumbers17[i],
+                    PositiveFirstLevelThresholdValue = p * 0.8,
+                    PositiveSecondLevelThresholdValue = p * 1.0,
+                    NegativeFirstLevelThresholdValue = n * 0.8,
+                    NegativeSecondLevelThresholdValue = n * 1.0,
+                };
+                context.ConcreteStrainThresholdValues.Add(ThresholdValue);
+            }
         }
         private void CreateMonitoringDatas(BHMSContext context)
         {
@@ -489,7 +471,7 @@ namespace GxjtBHMS.SqlServerDAL
         {
             var random = new Random();
 
-           
+
             int intlTime = -5;
 
             for (int i = 0; i < 5; i++)
@@ -670,7 +652,7 @@ namespace GxjtBHMS.SqlServerDAL
                 for (int j = 0; j < tmpNumbers29.Length; j++)
                 {
                     var windLoadEigenvalue = new WindLoadEigenvalueTable { PointsNumber = tmpNumbers29[j], Time = time, Max = random.Next(6, 10), Min = random.Next(0, 3), Average = random.Next(2, 5) };
-                    context.WindLoadEigenvalues .Add(windLoadEigenvalue);
+                    context.WindLoadEigenvalues.Add(windLoadEigenvalue);
                 }
             }
         }
@@ -957,91 +939,91 @@ namespace GxjtBHMS.SqlServerDAL
 
         void CreateMonitoringPointsNumberForPointsPosition(BHMSContext context, Dictionary<string, MonitoringPointsPosition> monitoringPointsPosition)
         {
-            tmpNumbers1 = new MonitoringPointsNumber[] { sSAAL1Point,sSAAL2Point, sSAAL3Point, sSAAL4Point, sSAAR1Point, sSAAR2Point, sSAAR3Point, sSAAR4Point };
+            tmpNumbers1 = new MonitoringPointsNumber[] { sSAAL1Point, sSAAL2Point, sSAAL3Point, sSAAL4Point, sSAAR1Point, sSAAR2Point, sSAAR3Point, sSAAR4Point };
             SetPointsPositionNavPropertyToMonitoringPointsNumberInstance(monitoringPointsPosition, tmpNumbers1, nameof(steelArchStrainSectionA));
 
-            tmpNumbers2 = new MonitoringPointsNumber[] {sSABL1Point,sSABL2Point, sSABL3Point, sSABL4Point, sSABR1Point, sSABR2Point, sSABR3Point, sSABR4Point};
+            tmpNumbers2 = new MonitoringPointsNumber[] { sSABL1Point, sSABL2Point, sSABL3Point, sSABL4Point, sSABR1Point, sSABR2Point, sSABR3Point, sSABR4Point };
             SetPointsPositionNavPropertyToMonitoringPointsNumberInstance(monitoringPointsPosition, tmpNumbers2, nameof(steelArchStrainSectionB));
 
-            tmpNumbers3 = new MonitoringPointsNumber[] {sSACL1Point, sSACL2Point, sSACL3Point, sSACL4Point, sSACR1Point, sSACR2Point, sSACR3Point, sSACR4Point};
+            tmpNumbers3 = new MonitoringPointsNumber[] { sSACL1Point, sSACL2Point, sSACL3Point, sSACL4Point, sSACR1Point, sSACR2Point, sSACR3Point, sSACR4Point };
             SetPointsPositionNavPropertyToMonitoringPointsNumberInstance(monitoringPointsPosition, tmpNumbers3, nameof(steelArchStrainSectionC));
 
-            tmpNumbers4 = new MonitoringPointsNumber[] { sSADL1Point,  sSADL2Point, sSADL3Point, sSADL4Point, sSADR1Point, sSADR2Point, sSADR3Point, sSADR4Point };
+            tmpNumbers4 = new MonitoringPointsNumber[] { sSADL1Point, sSADL2Point, sSADL3Point, sSADL4Point, sSADR1Point, sSADR2Point, sSADR3Point, sSADR4Point };
             SetPointsPositionNavPropertyToMonitoringPointsNumberInstance(monitoringPointsPosition, tmpNumbers4, nameof(steelArchStrainSectionD));
 
-            tmpNumbers5 = new MonitoringPointsNumber[] {sSAEL1Point, sSAEL2Point, sSAEL3Point, sSAEL4Point ,sSAER1Point ,sSAER2Point, sSAER3Point, sSAER4Point};
+            tmpNumbers5 = new MonitoringPointsNumber[] { sSAEL1Point, sSAEL2Point, sSAEL3Point, sSAEL4Point, sSAER1Point, sSAER2Point, sSAER3Point, sSAER4Point };
             SetPointsPositionNavPropertyToMonitoringPointsNumberInstance(monitoringPointsPosition, tmpNumbers5, nameof(steelArchStrainSectionE));
 
-            tmpNumbers6 = new MonitoringPointsNumber[] {sATBA1Point,sATBA2Point,sATBA3Point,sATBA4Point};
+            tmpNumbers6 = new MonitoringPointsNumber[] { sATBA1Point, sATBA2Point, sATBA3Point, sATBA4Point };
             SetPointsPositionNavPropertyToMonitoringPointsNumberInstance(monitoringPointsPosition, tmpNumbers6, nameof(archTransverseBraceStrainSectionA));
 
             tmpNumbers7 = new MonitoringPointsNumber[] { sATBB1Point, sATBB2Point, sATBB3Point, sATBB4Point };
             SetPointsPositionNavPropertyToMonitoringPointsNumberInstance(monitoringPointsPosition, tmpNumbers7, nameof(archTransverseBraceStrainSectionB));
 
-            tmpNumbers8 = new MonitoringPointsNumber[] { sITBA1Point,sITBA2Point };
+            tmpNumbers8 = new MonitoringPointsNumber[] { sITBA1Point, sITBA2Point };
             SetPointsPositionNavPropertyToMonitoringPointsNumberInstance(monitoringPointsPosition, tmpNumbers8, nameof(intercostalTransverseBeamStrainSectionA));
 
             tmpNumbers9 = new MonitoringPointsNumber[] { sITBB1Point, sITBB2Point };
             SetPointsPositionNavPropertyToMonitoringPointsNumberInstance(monitoringPointsPosition, tmpNumbers9, nameof(intercostalTransverseBeamStrainSectionB));
 
-            tmpNumbers10 = new MonitoringPointsNumber[] {sUSCBA1Point ,sUSCBA2Point };
+            tmpNumbers10 = new MonitoringPointsNumber[] { sUSCBA1Point, sUSCBA2Point };
             SetPointsPositionNavPropertyToMonitoringPointsNumberInstance(monitoringPointsPosition, tmpNumbers10, nameof(upperSteelCrossBeamStrainSectionA));
 
             tmpNumbers11 = new MonitoringPointsNumber[] { sUSCBB1Point, sUSCBB2Point };
             SetPointsPositionNavPropertyToMonitoringPointsNumberInstance(monitoringPointsPosition, tmpNumbers11, nameof(upperSteelCrossBeamStrainSectionB));
 
-            tmpNumbers12 = new MonitoringPointsNumber[] { sUSLBA1Point,sUSLBA2Point,sUSLBA3Point};
+            tmpNumbers12 = new MonitoringPointsNumber[] { sUSLBA1Point, sUSLBA2Point, sUSLBA3Point };
             SetPointsPositionNavPropertyToMonitoringPointsNumberInstance(monitoringPointsPosition, tmpNumbers12, nameof(upperSteelLongitudinalBeamStrainSectionA));
 
             tmpNumbers13 = new MonitoringPointsNumber[] { sUSLBB1Point, sUSLBB2Point, sUSLBB3Point };
             SetPointsPositionNavPropertyToMonitoringPointsNumberInstance(monitoringPointsPosition, tmpNumbers13, nameof(upperSteelLongitudinalBeamStrainSectionB));
 
-            tmpNumbers14 = new MonitoringPointsNumber[] { sRTBAL1Point,sRTBAL2Point,sRTBAL3Point,sRTBAL4Point, sRTBAR1Point,sRTBAR2Point,sRTBAR3Point, sRTBAR4Point };
+            tmpNumbers14 = new MonitoringPointsNumber[] { sRTBAL1Point, sRTBAL2Point, sRTBAL3Point, sRTBAL4Point, sRTBAR1Point, sRTBAR2Point, sRTBAR3Point, sRTBAR4Point };
             SetPointsPositionNavPropertyToMonitoringPointsNumberInstance(monitoringPointsPosition, tmpNumbers14, nameof(rigidTiedBarStrainSectionA));
 
-            tmpNumbers15 = new MonitoringPointsNumber[] { sRTBBL1Point, sRTBBL2Point,sRTBBL3Point,sRTBBL4Point,sRTBBR1Point,sRTBBR2Point,sRTBBR3Point,sRTBBR4Point};
+            tmpNumbers15 = new MonitoringPointsNumber[] { sRTBBL1Point, sRTBBL2Point, sRTBBL3Point, sRTBBL4Point, sRTBBR1Point, sRTBBR2Point, sRTBBR3Point, sRTBBR4Point };
             SetPointsPositionNavPropertyToMonitoringPointsNumberInstance(monitoringPointsPosition, tmpNumbers15, nameof(rigidTiedBarStrainSectionB));
 
-            tmpNumbers16 = new MonitoringPointsNumber[] { sCAAL1Point , sCAAL2Point, sCAAL3Point, sCAAL4Point, sCAAR1Point, sCAAR2Point ,sCAAR3Point, sCAAR4Point };
+            tmpNumbers16 = new MonitoringPointsNumber[] { sCAAL1Point, sCAAL2Point, sCAAL3Point, sCAAL4Point, sCAAR1Point, sCAAR2Point, sCAAR3Point, sCAAR4Point };
             SetPointsPositionNavPropertyToMonitoringPointsNumberInstance(monitoringPointsPosition, tmpNumbers16, nameof(concreteArchStrainSectionA));
 
             tmpNumbers17 = new MonitoringPointsNumber[] { sCABL1Point, sCABL2Point, sCABL3Point, sCABL4Point, sCABR1Point, sCABR2Point, sCABR3Point, sCABR4Point };
             SetPointsPositionNavPropertyToMonitoringPointsNumberInstance(monitoringPointsPosition, tmpNumbers17, nameof(concreteArchStrainSectionB));
 
-            tmpNumbers18 = new MonitoringPointsNumber[] { dSA1xPoint,dSA2xPoint,  dSA3xPoint,  dSA4xPoint,  dSA1yPoint , dSA2yPoint , dSA3yPoint , dSA4yPoint , dSA1zPoint,  dSA2zPoint,  dSA3zPoint,  dSA4zPoint };
+            tmpNumbers18 = new MonitoringPointsNumber[] { dSA1xPoint, dSA2xPoint, dSA3xPoint, dSA4xPoint, dSA1yPoint, dSA2yPoint, dSA3yPoint, dSA4yPoint, dSA1zPoint, dSA2zPoint, dSA3zPoint, dSA4zPoint };
             SetPointsPositionNavPropertyToMonitoringPointsNumberInstance(monitoringPointsPosition, tmpNumbers18, nameof(steelArchDis));
 
-            tmpNumbers19 = new MonitoringPointsNumber[] {  dBD1Point ,    dBD2Point,   dBD3Point  , dBD4Point ,  dBD5Point ,  dBD6Point };
+            tmpNumbers19 = new MonitoringPointsNumber[] { dBD1Point, dBD2Point, dBD3Point, dBD4Point, dBD5Point, dBD6Point };
             SetPointsPositionNavPropertyToMonitoringPointsNumberInstance(monitoringPointsPosition, tmpNumbers19, nameof(bridgeDeckDis));
 
-            tmpNumbers20 = new MonitoringPointsNumber[] {dSP1Point,dSP2Point,dSP3Point,dSP4Point};
+            tmpNumbers20 = new MonitoringPointsNumber[] { dSP1Point, dSP2Point, dSP3Point, dSP4Point };
             SetPointsPositionNavPropertyToMonitoringPointsNumberInstance(monitoringPointsPosition, tmpNumbers20, nameof(transitionPierDis));
 
-            tmpNumbers21 = new MonitoringPointsNumber[] { dE1Point, dE2Point ,dE3Point,dE4Point};
+            tmpNumbers21 = new MonitoringPointsNumber[] { dE1Point, dE2Point, dE3Point, dE4Point };
             SetPointsPositionNavPropertyToMonitoringPointsNumberInstance(monitoringPointsPosition, tmpNumbers21, nameof(expansionDis));
 
-            tmpNumbers22 = new MonitoringPointsNumber[] { tE1Point};
+            tmpNumbers22 = new MonitoringPointsNumber[] { tE1Point };
             SetPointsPositionNavPropertyToMonitoringPointsNumberInstance(monitoringPointsPosition, tmpNumbers22, nameof(environmentTemp));
 
-            tmpNumbers23 = new MonitoringPointsNumber[] {tSAL1Point, tSAL2Point, tSAL3Point, tSAL4Point, tSAR1Point, tSAR2Point, tSAR3Point, tSAR4Point };
+            tmpNumbers23 = new MonitoringPointsNumber[] { tSAL1Point, tSAL2Point, tSAL3Point, tSAL4Point, tSAR1Point, tSAR2Point, tSAR3Point, tSAR4Point };
             SetPointsPositionNavPropertyToMonitoringPointsNumberInstance(monitoringPointsPosition, tmpNumbers23, nameof(steelArchTemp));
 
-            tmpNumbers24 = new MonitoringPointsNumber[] { hE1Point};
+            tmpNumbers24 = new MonitoringPointsNumber[] { hE1Point };
             SetPointsPositionNavPropertyToMonitoringPointsNumberInstance(monitoringPointsPosition, tmpNumbers24, nameof(environmentHum));
 
-            tmpNumbers25 = new MonitoringPointsNumber[] {  hSAL1Point, hSAL2Point, hSAL3Point, hSAL4Point, hSAR1Point, hSAR2Point, hSAR3Point, hSAR4Point };
+            tmpNumbers25 = new MonitoringPointsNumber[] { hSAL1Point, hSAL2Point, hSAL3Point, hSAL4Point, hSAR1Point, hSAR2Point, hSAR3Point, hSAR4Point };
             SetPointsPositionNavPropertyToMonitoringPointsNumberInstance(monitoringPointsPosition, tmpNumbers25, nameof(steelArchHum));
 
-            tmpNumbers26 = new MonitoringPointsNumber[] { cFUPHL1Point,cFUPHL2Point,cFUPHL3Point,cFUPHL4Point,cFUPHL5Point,cFUPHL6Point,cFUPHL7Point,cFUPHL8Point,cFUPHL9Point,cFUPHR1Point,cFUPHR2Point,cFUPHR3Point,cFUPHR4Point,cFUPHR5Point,cFUPHR6Point,cFUPHR7Point, cFUPHR8Point, cFUPHR9Point };
+            tmpNumbers26 = new MonitoringPointsNumber[] { cFUPHL1Point, cFUPHL2Point, cFUPHL3Point, cFUPHL4Point, cFUPHL5Point, cFUPHL6Point, cFUPHL7Point, cFUPHL8Point, cFUPHL9Point, cFUPHR1Point, cFUPHR2Point, cFUPHR3Point, cFUPHR4Point, cFUPHR5Point, cFUPHR6Point, cFUPHR7Point, cFUPHR8Point, cFUPHR9Point };
             SetPointsPositionNavPropertyToMonitoringPointsNumberInstance(monitoringPointsPosition, tmpNumbers26, nameof(upperHangerCableForce));
 
-            tmpNumbers27 = new MonitoringPointsNumber[] {cFUNHL1Point,cFUNHL2Point,cFUNHL3Point,cFUNHL4Point,cFUNHR1Point,cFUNHR2Point,cFUNHR3Point,cFUNHR4Point};
+            tmpNumbers27 = new MonitoringPointsNumber[] { cFUNHL1Point, cFUNHL2Point, cFUNHL3Point, cFUNHL4Point, cFUNHR1Point, cFUNHR2Point, cFUNHR3Point, cFUNHR4Point };
             SetPointsPositionNavPropertyToMonitoringPointsNumberInstance(monitoringPointsPosition, tmpNumbers27, nameof(underHangerCableForce));
 
-            tmpNumbers28 = new MonitoringPointsNumber[] {cFFTBL1Point,cFFTBL2Point,cFFTBL3Point,cFFTBL4Point,cFFTBL5Point,cFFTBL6Point,cFFTBR1Point,cFFTBR2Point,cFFTBR3Point,cFFTBR4Point,cFFTBR5Point,cFFTBR6Point};
+            tmpNumbers28 = new MonitoringPointsNumber[] { cFFTBL1Point, cFFTBL2Point, cFFTBL3Point, cFFTBL4Point, cFFTBL5Point, cFFTBL6Point, cFFTBR1Point, cFFTBR2Point, cFFTBR3Point, cFFTBR4Point, cFFTBR5Point, cFFTBR6Point };
             SetPointsPositionNavPropertyToMonitoringPointsNumberInstance(monitoringPointsPosition, tmpNumbers28, nameof(flexibleTiedBarCableForce));
 
-            tmpNumbers29 = new MonitoringPointsNumber[] { wL1Point};
+            tmpNumbers29 = new MonitoringPointsNumber[] { wL1Point };
             SetPointsPositionNavPropertyToMonitoringPointsNumberInstance(monitoringPointsPosition, tmpNumbers29, nameof(windLoad));
 
             context.MonitoringPointsNumbers.AddRange(tmpNumbers1);
@@ -1082,25 +1064,25 @@ namespace GxjtBHMS.SqlServerDAL
             MonitoringPointsPosition[] tmpSections1 = { steelArchStrainSectionA, steelArchStrainSectionB, steelArchStrainSectionC, steelArchStrainSectionD, steelArchStrainSectionE, archTransverseBraceStrainSectionA, archTransverseBraceStrainSectionB };
             SetTestTypeNavPropertyToMonitoringPointsPositionInstance(dict, tmpSections1, nameof(steelArchStrainType));
 
-            MonitoringPointsPosition[] tmpSections2 = { intercostalTransverseBeamStrainSectionA , intercostalTransverseBeamStrainSectionB, upperSteelCrossBeamStrainSectionA , upperSteelCrossBeamStrainSectionB, upperSteelLongitudinalBeamStrainSectionA , upperSteelLongitudinalBeamStrainSectionB, rigidTiedBarStrainSectionA , rigidTiedBarStrainSectionB};
+            MonitoringPointsPosition[] tmpSections2 = { intercostalTransverseBeamStrainSectionA, intercostalTransverseBeamStrainSectionB, upperSteelCrossBeamStrainSectionA, upperSteelCrossBeamStrainSectionB, upperSteelLongitudinalBeamStrainSectionA, upperSteelLongitudinalBeamStrainSectionB, rigidTiedBarStrainSectionA, rigidTiedBarStrainSectionB };
             SetTestTypeNavPropertyToMonitoringPointsPositionInstance(dict, tmpSections2, nameof(steelLatticeStrainType));
 
-            MonitoringPointsPosition[] tmpSections3 = { concreteArchStrainSectionA , concreteArchStrainSectionB};
+            MonitoringPointsPosition[] tmpSections3 = { concreteArchStrainSectionA, concreteArchStrainSectionB };
             SetTestTypeNavPropertyToMonitoringPointsPositionInstance(dict, tmpSections3, nameof(concreteStrainType));
 
-            MonitoringPointsPosition[] tmpSections4 = { steelArchDis , bridgeDeckDis ,transitionPierDis,expansionDis};
+            MonitoringPointsPosition[] tmpSections4 = { steelArchDis, bridgeDeckDis, transitionPierDis, expansionDis };
             SetTestTypeNavPropertyToMonitoringPointsPositionInstance(dict, tmpSections4, nameof(displacementType));
 
-            MonitoringPointsPosition[] tmpSections5 = {upperHangerCableForce,underHangerCableForce,flexibleTiedBarCableForce};
+            MonitoringPointsPosition[] tmpSections5 = { upperHangerCableForce, underHangerCableForce, flexibleTiedBarCableForce };
             SetTestTypeNavPropertyToMonitoringPointsPositionInstance(dict, tmpSections5, nameof(cableForceType));
 
-            MonitoringPointsPosition[] tmpSections6 = { environmentHum,steelArchHum };
+            MonitoringPointsPosition[] tmpSections6 = { environmentHum, steelArchHum };
             SetTestTypeNavPropertyToMonitoringPointsPositionInstance(dict, tmpSections6, nameof(humidityType));
 
             MonitoringPointsPosition[] tmpSections7 = { environmentTemp, steelArchTemp };
             SetTestTypeNavPropertyToMonitoringPointsPositionInstance(dict, tmpSections7, nameof(temperatureType));
 
-            MonitoringPointsPosition[] tmpSections8 = { windLoad};
+            MonitoringPointsPosition[] tmpSections8 = { windLoad };
             SetTestTypeNavPropertyToMonitoringPointsPositionInstance(dict, tmpSections8, nameof(windSpeedType));
 
             context.MonitoringPointsPositions.AddRange(tmpSections1);

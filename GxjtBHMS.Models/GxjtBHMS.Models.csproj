@@ -82,7 +82,7 @@
     <Compile Include="ThresholdValueSetting\CableForceThresholdValueTable.cs" />
     <Compile Include="ThresholdValueSetting\DisplaymentThresholdValueTable.cs" />
     <Compile Include="ThresholdValueSetting\HumidityThresholdValueTable.cs" />
-    <Compile Include="ThresholdValueSetting\StrainThresholdValueTable.cs" />
+    <Compile Include="ThresholdValueSetting\ConcreteStrainThresholdValueTable.cs" />
     <Compile Include="ThresholdValueSetting\TemperatureThresholdValueTable.cs" />
     <Compile Include="ThresholdValueSetting\ThresholdValueBase.cs" />
     <Compile Include="User.cs" />

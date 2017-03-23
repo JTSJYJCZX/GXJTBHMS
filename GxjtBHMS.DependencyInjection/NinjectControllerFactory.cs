@@ -60,7 +60,8 @@ namespace GxjtBHMS.DependencyInjection
             _ninjectKernel.Bind<IHumidityDataRealTimeDisplayService>().To<HumidityDataRealTimeDisplayService>();
             _ninjectKernel.Bind<IRealTimeHumidityDatasDAL>().To<RealTimeHumidityDatasDAL>();
 
-
+            _ninjectKernel.Bind<IConcreteStrainThresholdValueSettingService>().To<ConcreteStrainThresholdValueSettingService>();
+            _ninjectKernel.Bind<IConcreteStrainDatasEigenValueDAL>().To<ConcreteStrainDatasEigenvalueDAL>();
             _ninjectKernel.Bind<IThresholdValueSettingService>().To<ThresholdValueSettingService>();
             _ninjectKernel.Bind<IThresholdValueSettingDAL>().To<ThresholdValueDatasDAL>();
             _ninjectKernel.Bind<IStrainThresholdValueGettingDAL>().To<StrainThresholdValueGettingDAL>();

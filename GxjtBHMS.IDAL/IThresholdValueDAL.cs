@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 namespace GxjtBHMS.IDAL
 {
-    public interface IThresholdValueDAL : IReadOnlyRepository<StrainThresholdValueTable, int>, IRepository<StrainThresholdValueTable>
+    public interface IThresholdValueDAL : IReadOnlyRepository<ConcreteStrainThresholdValueTable, int>, IRepository<ConcreteStrainThresholdValueTable>
     {
-        IEnumerable<StrainThresholdValueTable> GetStrainThresholdValue(int pointPositionId);
+        IEnumerable<ConcreteStrainThresholdValueTable> GetStrainThresholdValue(int pointPositionId);
     }
 }

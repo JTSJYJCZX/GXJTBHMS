@@ -5,13 +5,13 @@ using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL.ThresholdValueDatasDAL
 {
-    public class StrainThresholdValueGettingDAL : Repository<StrainThresholdValueTable, int>, IStrainThresholdValueGettingDAL
+    public class StrainThresholdValueGettingDAL : Repository<ConcreteStrainThresholdValueTable, int>, IStrainThresholdValueGettingDAL
     {
-        public IEnumerable<StrainThresholdValueTable> GetStrainThresholdValue(int pointPositionId)
+        public IEnumerable<ConcreteStrainThresholdValueTable> GetStrainThresholdValue(int pointPositionId)
         {
             MonitoringPointsNumberDAL mpnDAL = new MonitoringPointsNumberDAL();
             var pointsNumberId = mpnDAL.FindBy(m => m.PointsPositionId == pointPositionId).Select(m => m.Id).ToArray();
-            List<StrainThresholdValueTable> thresholdValue = new List<StrainThresholdValueTable>();
+            List<ConcreteStrainThresholdValueTable> thresholdValue = new List<ConcreteStrainThresholdValueTable>();
             foreach (var item in pointsNumberId)
             {
                 

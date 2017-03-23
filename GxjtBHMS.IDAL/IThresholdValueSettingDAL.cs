@@ -4,7 +4,7 @@ using GxjtBHMS.Infrastructure.Domain;
 namespace GxjtBHMS.IDAL
 
 {
-    public interface IThresholdValueSettingDAL : IReadOnlyRepository<StrainThresholdValueTable, int>,IRepository<StrainThresholdValueTable>
+    public interface IThresholdValueSettingDAL : IReadOnlyRepository<ConcreteStrainThresholdValueTable, int>,IRepository<ConcreteStrainThresholdValueTable>
     {
     }
 }

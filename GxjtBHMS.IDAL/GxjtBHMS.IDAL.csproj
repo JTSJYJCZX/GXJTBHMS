@@ -76,6 +76,7 @@
     <Compile Include="OriginalValueDownLoad\ISteelArchStrainDatasOriginalValueDAL.cs" />
     <Compile Include="OriginalValueDownLoad\IConcreteStrainDatasOriginalValueDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThresholdValueSetting\IConcreteStrainThresholdValueSettingDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GxjtBHMS.Infrastructure\GxjtBHMS.Infrastructure.csproj">

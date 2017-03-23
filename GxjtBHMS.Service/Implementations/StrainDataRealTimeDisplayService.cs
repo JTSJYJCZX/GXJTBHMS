@@ -50,63 +50,63 @@ namespace GxjtBHMS.Service.Implementations
             return resultOfAllSection;
         }
 
-        private List<RealTimeWarningDataModel> GetResultsOfOneSection(StrainThresholdValueTable[] thresholdValue, RealTimeStrainModel[] source)
+        private List<RealTimeWarningDataModel> GetResultsOfOneSection(ConcreteStrainThresholdValueTable[] thresholdValue, RealTimeStrainModel[] source)
         {
             List<RealTimeWarningDataModel> sectionModel = new List<RealTimeWarningDataModel>();
-            for (int i = 0; i < source.Length; i++)
-            {
-                RealTimeWarningDataModel pointModel = new RealTimeWarningDataModel();
-                pointModel.PointsNumber = source[i].PointNumberName;
-                pointModel.CurrentData = source[i].StrainDatas;
-                pointModel.WarningGrade = GetPointWarningGrade(thresholdValue[i], source[i].StrainDatas);
-                pointModel.WarningColor = pointModel.WarningGrade.FetchDescription();
-                sectionModel.Add(pointModel);
-            }
+            //for (int i = 0; i < source.Length; i++)
+            //{
+            //    RealTimeWarningDataModel pointModel = new RealTimeWarningDataModel();
+            //    pointModel.PointsNumber = source[i].PointNumberName;
+            //    pointModel.CurrentData = source[i].StrainDatas;
+            //    pointModel.WarningGrade = GetPointWarningGrade(thresholdValue[i], source[i].StrainDatas);
+            //    pointModel.WarningColor = pointModel.WarningGrade.FetchDescription();
+            //    sectionModel.Add(pointModel);
+            //}
             return sectionModel;
         }
 
-        private WarningGrade GetPointWarningGrade(StrainThresholdValueTable pointThresholdValue, double pointCurrentData)
-        {
-            if (IsHealth(pointThresholdValue, pointCurrentData))
-            {
-                return WarningGrade.Health;
-            }
-            else if (IsFirstWarning(pointThresholdValue, pointCurrentData))
-            {
-                return WarningGrade.FirstWarning;
-            }
-            else if (IsSecondWarning(pointThresholdValue, pointCurrentData))
-            {
-                return WarningGrade.SecondWarning;
-            }
-            else if (IsThirdWarning(pointThresholdValue, pointCurrentData))
-            {
-                return WarningGrade.Danger;
-            }
-            else
-            {
-                throw new ArgumentNullException("数据有误！");
-            }
-        }
+        //private WarningGrade GetPointWarningGrade(ConcreteStrainThresholdValueTable pointThresholdValue, double pointCurrentData)
+        //{
+        //    if (IsHealth(pointThresholdValue, pointCurrentData))
+        //    {
+        //        return WarningGrade.Health;
+        //    }
+        //    else if (IsFirstWarning(pointThresholdValue, pointCurrentData))
+        //    {
+        //        return WarningGrade.FirstWarning;
+        //    }
+        //    else if (IsSecondWarning(pointThresholdValue, pointCurrentData))
+        //    {
+        //        return WarningGrade.SecondWarning;
+        //    }
+        //    else if (IsThirdWarning(pointThresholdValue, pointCurrentData))
+        //    {
+        //        return WarningGrade.Danger;
+        //    }
+        //    else
+        //    {
+        //        throw new ArgumentNullException("数据有误！");
+        //    }
+        //}
 
-        bool IsThirdWarning(StrainThresholdValueTable pointThresholdValue, double pointCurrentData)
-        {
-            return pointCurrentData >= pointThresholdValue.PositiveThirdLevelThresholdValue || pointCurrentData <= pointThresholdValue.NegativeThirdLevelThresholdValue;
-        }
+        //bool IsThirdWarning(ConcreteStrainThresholdValueTable pointThresholdValue, double pointCurrentData)
+        //{
+        //    return pointCurrentData >= pointThresholdValue.PositiveThirdLevelThresholdValue || pointCurrentData <= pointThresholdValue.NegativeThirdLevelThresholdValue;
+        //}
 
-        bool IsSecondWarning(StrainThresholdValueTable pointThresholdValue, double pointCurrentData)
-        {
-            return (pointCurrentData < pointThresholdValue.PositiveThirdLevelThresholdValue && pointCurrentData >= pointThresholdValue.PositiveSecondLevelThresholdValue) || (pointCurrentData > pointThresholdValue.NegativeThirdLevelThresholdValue && pointCurrentData <= pointThresholdValue.NegativeSecondLevelThresholdValue);
-        }
+        //bool IsSecondWarning(ConcreteStrainThresholdValueTable pointThresholdValue, double pointCurrentData)
+        //{
+        //    return (pointCurrentData < pointThresholdValue.PositiveThirdLevelThresholdValue && pointCurrentData >= pointThresholdValue.PositiveSecondLevelThresholdValue) || (pointCurrentData > pointThresholdValue.NegativeThirdLevelThresholdValue && pointCurrentData <= pointThresholdValue.NegativeSecondLevelThresholdValue);
+        //}
 
-        bool IsFirstWarning(StrainThresholdValueTable pointThresholdValue, double pointCurrentData)
-        {
-            return (pointCurrentData < pointThresholdValue.PositiveSecondLevelThresholdValue && pointCurrentData >= pointThresholdValue.PositiveFirstLevelThresholdValue) || (pointCurrentData > pointThresholdValue.NegativeSecondLevelThresholdValue && pointCurrentData <= pointThresholdValue.NegativeFirstLevelThresholdValue);
-        }
+        //bool IsFirstWarning(ConcreteStrainThresholdValueTable pointThresholdValue, double pointCurrentData)
+        //{
+        //    return (pointCurrentData < pointThresholdValue.PositiveSecondLevelThresholdValue && pointCurrentData >= pointThresholdValue.PositiveFirstLevelThresholdValue) || (pointCurrentData > pointThresholdValue.NegativeSecondLevelThresholdValue && pointCurrentData <= pointThresholdValue.NegativeFirstLevelThresholdValue);
+        //}
 
-        bool IsHealth(StrainThresholdValueTable pointThresholdValue, double pointCurrentData)
-        {
-            return pointCurrentData < pointThresholdValue.PositiveFirstLevelThresholdValue && pointCurrentData > pointThresholdValue.NegativeFirstLevelThresholdValue;
-        }
+        //bool IsHealth(ConcreteStrainThresholdValueTable pointThresholdValue, double pointCurrentData)
+        //{
+        //    return pointCurrentData < pointThresholdValue.PositiveFirstLevelThresholdValue && pointCurrentData > pointThresholdValue.NegativeFirstLevelThresholdValue;
+        //}
     }
 }

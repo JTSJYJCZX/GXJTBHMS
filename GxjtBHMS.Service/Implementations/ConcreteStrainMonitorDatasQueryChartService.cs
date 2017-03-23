@@ -11,7 +11,7 @@ using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    class ConcreteStrainMonitorDatasQueryChartService : IMonitorDatasEigenvalueQueryChartService<ConcreteStrainEigenvalueTable>
+    class ConcreteStrainMonitorDatasQueryChartService :IMonitorDatasEigenvalueQueryChartService<ConcreteStrainEigenvalueTable>
     {
         readonly IConcreteStrainDatasEigenValueDAL _strainDatasDAL;
         public ConcreteStrainMonitorDatasQueryChartService(IConcreteStrainDatasEigenValueDAL strainDatasDAL)

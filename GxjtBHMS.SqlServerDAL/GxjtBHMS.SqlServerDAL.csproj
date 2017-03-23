@@ -93,6 +93,7 @@
     <Compile Include="ThresholdValueDatasDAL\DisplaymentThresholdValueGettingDAL.cs" />
     <Compile Include="ThresholdValueDatasDAL\HumidityThresholdValueGettingDAL.cs" />
     <Compile Include="ThresholdValueDatasDAL\TemperatureThresholdValueGettingDAL.cs" />
+    <Compile Include="ThresholdValueDatasDAL\ConcreteStrainThresholdValueDatasDAL.cs" />
     <Compile Include="ThresholdValueDatasDAL\ThresholdValueDatasDAL.cs" />
     <Compile Include="ThresholdValueDatasDAL\StrainThresholdValueGettingDAL.cs" />
     <Compile Include="UserDALImpl.cs" />

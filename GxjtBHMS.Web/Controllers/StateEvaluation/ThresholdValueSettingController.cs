@@ -10,6 +10,7 @@ using GxjtBHMS.Web.ViewModels;
 using GxjtBHMS.Web.Models.Attributes;
 using System;
 using GxjtBHMS.Web.ExtensionMehtods.MonitoringDatas;
+using GxjtBHMS.Service;
 
 namespace GxjtBHMS.Web.Controllers.StateEvaluation
 {
@@ -47,16 +48,18 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
 
         public ActionResult GetThresholdValueSettingListByPullDownSearchBar(ThresholdValueSearchBarBaseView conditions)
         {
-            var req = new PointsNumberSearchRequest
+
+            var req = new GetThresholdValueByPointsPositionSearchRequest
             {
-               
+               PointsPositionId=conditions.MornitoringPointsPositionId
             };
-            var resp = _thresholdValueSettingService.GetThresholdValueBy(req);
+            var thresholdValueSettingService = ThresholdValueSettingServiceFactory.GetThresholdValueServiceFrom(conditions.MornitoringTestTypeId);
+            var resp = thresholdValueSettingService.GetThresholdValueListByPointsPosition(req);
             IEnumerable<StrainThresholdValueView> models = new List<StrainThresholdValueView>();
             var resultView = new ThresholdValueSettingView();
             if (resp.Succeed)
             {
-                resultView.StrainThresholdValues = resp.StrainThresholdValues.Select(m => new StrainThresholdValueView
+                resultView.StrainThresholdValues = resp.ConcreteStrainThresholdValues.Select(m => new StrainThresholdValueView
                 {
                     PointsNumber = m.PointsNumber.Name,
                     PointsNumberId = m.PointsNumberId,
@@ -71,7 +74,7 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
             {
                 return Json(new { color = StyleConstants.RedColor, message = resp.Message }, JsonRequestBehavior.AllowGet);
             }
-            return PartialView("ThresholdValueSettingListPartial");
+            return PartialView("ThresholdValueSettingListPartial",resultView);
         }
 
 
@@ -126,7 +129,7 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
             var resultView = new ThresholdValueSettingView();
             if (resp.Succeed)
             {
-                resultView.StrainThresholdValues = resp.StrainThresholdValues.Select(m => new StrainThresholdValueView
+                resultView.StrainThresholdValues = resp.ConcreteStrainThresholdValues.Select(m => new StrainThresholdValueView
                 {
                     PointsNumber = m.PointsNumber.Name,
                     PointsNumberId = m.PointsNumberId,
@@ -181,14 +184,10 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
         void SaveThresholdValuesFromViewToRequest(StrainThresholdValueSettingRequest req, StrainThresholdValueView model)
         {
                 var tg = ThresholdValuesConvert.ConvertForm(model.ThresholdValues);
-                req.PositiveStandardValue = tg.PositiveStandardValueGroup.StandardValue;
                 req.PositiveFirstLevelThresholdValue = tg.PositiveStandardValueGroup.FirstLevelThresholdValue;
                 req.PositiveSecondLevelThresholdValue = tg.PositiveStandardValueGroup.SecondLevelThresholdValue;
-                req.PositiveThirdLevelThresholdValue = tg.PositiveStandardValueGroup.ThirdLevelThresholdValue;
-                req.NegativeStandardValue = tg.NegativeStandardValueGroup.StandardValue;
                 req.NegativeFirstLevelThresholdValue = tg.NegativeStandardValueGroup.FirstLevelThresholdValue;
                 req.NegativeSecondLevelThresholdValue = tg.NegativeStandardValueGroup.SecondLevelThresholdValue;
-                req.NegativeThirdLevelThresholdValue = tg.NegativeStandardValueGroup.ThirdLevelThresholdValue;
         }
 
         public ActionResult UniformSettingThresholdValue()

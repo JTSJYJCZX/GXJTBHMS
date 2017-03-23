@@ -3,10 +3,9 @@ using GxjtBHMS.Service.Messaging.ThresholdValueSetting;
 
 namespace GxjtBHMS.Service.Interfaces
 {
-    public interface IThresholdValueSettingService
+    public interface IConcreteStrainThresholdValueSettingService
     {
-       ConcreteStrainThresholdValueResponse GetThresholdValueBy(PointsNumberSearchRequest req);
+        ConcreteStrainThresholdValueResponse GetThresholdValueListByPointsPosition(GetThresholdValueByPointsPositionSearchRequest req);
         ConcreteStrainThresholdValueResponse ModifyStrainThresholdValue(StrainThresholdValueSettingRequest model);
-        PagedResponse GetPaginatorDatas(PointsNumberSearchRequest req);
     }
 }

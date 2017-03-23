@@ -98,6 +98,7 @@
     <Compile Include="Implementations\OriginalValueDownLoad\SteelArchStrainDatasOriginalValueDownloadService.cs" />
     <Compile Include="Implementations\OriginalValueDownLoad\TemperatureDatasOriginalValueDownLoadFileSystemService.cs" />
     <Compile Include="Implementations\OriginalValueDownLoad\TemperatureDatasOriginalValueDownLoadService.cs" />
+    <Compile Include="Implementations\ThresholdValueSettingService\ConcreteStrainThresholdValueSettingService.cs" />
     <Compile Include="Implementations\WindLoadMonitorDatasEigenValueQueryFileSystemService.cs" />
     <Compile Include="Implementations\WindLoadMonitorDatasQueryChartService.cs" />
     <Compile Include="Implementations\WindLoadDatasEigenvalueQueryService.cs" />
@@ -133,7 +134,11 @@
     <Compile Include="Interfaces\MonitoringDatasOriginalValueDownLoadInerfaces\ISteelLatticeStrainDatasOriginalValueDownLoadService.cs" />
     <Compile Include="Interfaces\MonitoringDatasOriginalValueDownLoadInerfaces\ISteelArchStrainDatasOriginalValueDownLoadService.cs" />
     <Compile Include="Interfaces\MonitoringDatasOriginalValueDownLoadInerfaces\ITemperatureDatasOriginalValueDownloadService.cs" />
+    <Compile Include="Interfaces\ThresholdValueSettingInerfaces\IConcreteStrainThresholdValueSettingService.cs" />
     <Compile Include="Messaging\MonitoringDatasDownLoad\DownLoadOriginalvalueDatasResponse.cs" />
+    <Compile Include="Messaging\ThresholdValueSetting\GetThresholdValueByPointsPositionSearchRequest.cs" />
+    <Compile Include="ThresholdValueSettingServiceBase.cs" />
+    <Compile Include="ThresholdValueSettingServiceFactory.cs" />
     <Compile Include="MonitoringDatasOriginalValueDownLoad\CableForceDatasOriginalValueDownLoad.cs" />
     <Compile Include="MonitoringDatasOriginalValueDownLoad\DisplacementDatasOriginalValueDownLoad.cs" />
     <Compile Include="MonitoringDatasOriginalValueDownLoad\HumidityDatasOriginalValueDownLoad.cs" />

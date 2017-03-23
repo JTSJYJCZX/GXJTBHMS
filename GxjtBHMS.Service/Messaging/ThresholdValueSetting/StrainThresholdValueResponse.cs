@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace GxjtBHMS.Service.Messaging
 {
-    public class StrainThresholdValueResponse : PagedResponse
+    public class ConcreteStrainThresholdValueResponse :PagedResponse
     {
-        public StrainThresholdValueResponse()
+        public ConcreteStrainThresholdValueResponse()
         {
-            StrainThresholdValues = new List<StrainThresholdValueTable>();
+            ConcreteStrainThresholdValues = new List<ConcreteStrainThresholdValueTable>();
         }
-        public IEnumerable<StrainThresholdValueTable> StrainThresholdValues { get; set; }
+        public IEnumerable<ConcreteStrainThresholdValueTable> ConcreteStrainThresholdValues { get; set; }
     }
 }

@@ -61,14 +61,14 @@ namespace GxjtBHMS.Service.Implementations
             {
                 return WarningGrade.FirstWarning;
             }
-            else if (pointCurrentData < pointThresholdValue.PositiveThirdLevelThresholdValue && pointCurrentData >= pointThresholdValue.PositiveSecondLevelThresholdValue)
-            {
-                return WarningGrade.SecondWarning;
-            }
-            else if (pointCurrentData >= pointThresholdValue.PositiveThirdLevelThresholdValue)
-            {
-                return WarningGrade.Danger;
-            }
+            //else if (pointCurrentData < pointThresholdValue.PositiveThirdLevelThresholdValue && pointCurrentData >= pointThresholdValue.PositiveSecondLevelThresholdValue)
+            //{
+            //    return WarningGrade.SecondWarning;
+            //}
+            //else if (pointCurrentData >= pointThresholdValue.PositiveThirdLevelThresholdValue)
+            //{
+            //    return WarningGrade.Danger;
+            //}
             else
             {
                 throw new ArgumentNullException("数据有误！");

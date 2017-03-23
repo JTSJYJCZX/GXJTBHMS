@@ -10,6 +10,7 @@ using GxjtBHMS.Service.Implementations.OriginalValueDownLoad;
 using GxjtBHMS.IDAL.OriginalValueDownLoad;
 using GxjtBHMS.Service.Interfaces.MonitoringDatasOriginalValueDownLoadInerfaces;
 using GxjtBHMS.SqlServerDAL.MonitoringDatasDAL;
+using GxjtBHMS.SqlServerDAL.ThresholdValueDatasDAL;
 
 namespace GxjtBHMS.Service
 {
@@ -27,6 +28,11 @@ namespace GxjtBHMS.Service
         }
         void AddBinding()
         {
+            _ninjectKernel.Bind<IConcreteStrainThresholdValueSettingDAL>().To<ConcreteStrainThresholdValueDatasDAL>();
+            _ninjectKernel.Bind<IConcreteStrainThresholdValueSettingService>().To<ConcreteStrainThresholdValueSettingService>();
+
+
+
 
             _ninjectKernel.Bind<IConcreteStrainDatasOriginalValueDownLoadService>().To<ConcreteStrainDatasOriginalValueDownloadService>();
             _ninjectKernel.Bind<IConcreteStrainDatasOriginalValueDAL>().To<ConcreteStrainDatasOriginalValueDAL>();

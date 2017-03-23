@@ -10,50 +10,22 @@ using GxjtBHMS.Infrastructure.Configuration;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    public class ThresholdValueSettingService : ServiceBase, IThresholdValueSettingService
+    public class ConcreteStrainThresholdValueSettingService : ThresholdValueSettingServiceBase,IConcreteStrainThresholdValueSettingService
     {
-
-
-
         const string PointsNumber_NavigationProperty = "PointsNumber";
-        IThresholdValueSettingDAL _thresholdValueSettingDAL;
-        public ThresholdValueSettingService(IThresholdValueSettingDAL thresholdValueSettingDAL)
+        IConcreteStrainThresholdValueSettingDAL _concreteStrainthresholdValueSettingDAL;
+        public ConcreteStrainThresholdValueSettingService()
         {
-            _thresholdValueSettingDAL = thresholdValueSettingDAL;
+           
+        }
+        public ConcreteStrainThresholdValueSettingService(IConcreteStrainThresholdValueSettingDAL concreteStrainthresholdValueSettingDAL)
+        {
+            _concreteStrainthresholdValueSettingDAL = concreteStrainthresholdValueSettingDAL;
         }
 
-
-        public PagedResponse GetPaginatorDatas(PointsNumberSearchRequest req)
+        public override ConcreteStrainThresholdValueResponse GetThresholdValueListByPointsPosition(GetThresholdValueByPointsPositionSearchRequest req)
         {
-            var resp = new PagedResponse();
-            IList<Func<ConcreteStrainThresholdValueTable, bool>> ps = new List<Func<ConcreteStrainThresholdValueTable, bool>>();
-            try
-            {
-                DealWithContainsPointsNumber(req, ps);
-                resp.TotalResultCount = _thresholdValueSettingDAL.GetCountByContains(ps);
-                if (resp.TotalResultCount > 0)
-                {
-                    resp.Succeed = true;
-                }
-                else
-                {
-                    resp.Message = "无记录！";
-                }
-            }
-            catch (Exception ex)
-            {
-                resp.Message = "获取分页数据发生错误";
-                Log(ex);
-            }
-            return resp;
-        }
-
-        void DealWithContainsPointsNumber(PointsNumberSearchRequest req, IList<Func<ConcreteStrainThresholdValueTable, bool>> ps)
-        {
-            if (!string.IsNullOrEmpty(req.PointNumber))
-            {
-                ps.Add(m => m.PointsNumber.Name.Contains(req.PointNumber));
-            }
+            throw new NotImplementedException();
         }
 
         void DealWithEqualPointsPosition(GetThresholdValueByPointsPositionSearchRequest req, IList<Func<ConcreteStrainThresholdValueTable, bool>> ps)
@@ -63,24 +35,22 @@ namespace GxjtBHMS.Service.Implementations
                 ps.Add(m => m.PointsNumber.PointsPositionId == req.PointsPositionId);
             }
         }
-   
 
-        ConcreteStrainThresholdValueResponse IThresholdValueSettingService.GetThresholdValueBy(PointsNumberSearchRequest req)
+        ConcreteStrainThresholdValueResponse IConcreteStrainThresholdValueSettingService.GetThresholdValueListByPointsPosition(GetThresholdValueByPointsPositionSearchRequest req)
         {
+
             var resp = new ConcreteStrainThresholdValueResponse();
             IList<Func<ConcreteStrainThresholdValueTable, bool>> ps = new List<Func<ConcreteStrainThresholdValueTable, bool>>();
-            var numberOfResultsPrePage = ApplicationSettingsFactory.GetApplicationSettings().NumberOfResultsPrePage;
+            DealWithEqualPointsPosition(req, ps);
             try
             {
-                DealWithContainsPointsNumber(req, ps);
-                var thresholdValues = _thresholdValueSettingDAL.FindBy(ps, req.CurrentPageIndex, numberOfResultsPrePage,PointsNumber_NavigationProperty);
+                var thresholdValues = _concreteStrainthresholdValueSettingDAL.FindBy(ps, PointsNumber_NavigationProperty);
                 if (HasNoSearchResult(thresholdValues))
                 {
                     resp.Message = "无记录！";
                 }
                 else
                 {
-                    resp.TotalResultCount = _thresholdValueSettingDAL.GetCountByContains(ps,PointsNumber_NavigationProperty);
                     resp.ConcreteStrainThresholdValues = thresholdValues;
                     resp.Succeed = true;
                 }
@@ -93,22 +63,25 @@ namespace GxjtBHMS.Service.Implementations
             return resp;
         }
 
+
+
+ 
         bool HasNoSearchResult(IEnumerable<ConcreteStrainThresholdValueTable> thresholdValues)
         {
             return thresholdValues.Count() == 0;
         }
 
-        ConcreteStrainThresholdValueResponse IThresholdValueSettingService.ModifyStrainThresholdValue(StrainThresholdValueSettingRequest model)
+        ConcreteStrainThresholdValueResponse IConcreteStrainThresholdValueSettingService.ModifyStrainThresholdValue(StrainThresholdValueSettingRequest model)
         {
             var resp = new ConcreteStrainThresholdValueResponse();
             try
             {
-                var ThresholdValue = _thresholdValueSettingDAL.FindBy(m => m.PointsNumberId == model.PointsNumberId).SingleOrDefault();
+                var ThresholdValue = _concreteStrainthresholdValueSettingDAL.FindBy(m => m.PointsNumberId == model.PointsNumberId).SingleOrDefault();
                 ThresholdValue.PositiveFirstLevelThresholdValue = model.PositiveFirstLevelThresholdValue;
                 ThresholdValue.PositiveSecondLevelThresholdValue = model.PositiveSecondLevelThresholdValue;
                 ThresholdValue.NegativeFirstLevelThresholdValue = model.NegativeFirstLevelThresholdValue;
                 ThresholdValue.NegativeSecondLevelThresholdValue = model.NegativeSecondLevelThresholdValue;
-                _thresholdValueSettingDAL.Save(ThresholdValue);
+                _concreteStrainthresholdValueSettingDAL.Save(ThresholdValue);
                 resp.Message = "保存成功！";
                 resp.Succeed = true;
             }

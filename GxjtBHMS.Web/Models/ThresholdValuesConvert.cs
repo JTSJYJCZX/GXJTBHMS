@@ -7,15 +7,10 @@
             var result = new ThresholdValueGroup();
             if (value != null && value.Length > 0)
             {
-                result.PositiveStandardValueGroup.StandardValue = value[0];
-                result.PositiveStandardValueGroup.FirstLevelThresholdValue = value[1];
-                result.PositiveStandardValueGroup.SecondLevelThresholdValue = value[2];
-                result.PositiveStandardValueGroup.ThirdLevelThresholdValue = value[3];
-
-                result.NegativeStandardValueGroup.StandardValue = value[4];
-                result.NegativeStandardValueGroup.FirstLevelThresholdValue = value[5];
-                result.NegativeStandardValueGroup.SecondLevelThresholdValue = value[6];
-                result.NegativeStandardValueGroup.ThirdLevelThresholdValue = value[7];
+                result.PositiveStandardValueGroup.FirstLevelThresholdValue = value[0];
+                result.PositiveStandardValueGroup.SecondLevelThresholdValue = value[1];
+                result.NegativeStandardValueGroup.FirstLevelThresholdValue = value[2];
+                result.NegativeStandardValueGroup.SecondLevelThresholdValue = value[3];
             }
             return result;
         }

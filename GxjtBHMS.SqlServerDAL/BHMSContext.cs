@@ -41,7 +41,7 @@ namespace GxjtBHMS.SqlServerDAL
         public DbSet<HumidityEigenvalueTable> HumidityEigenvalues { get; set; }//湿度特征值
         public DbSet<WindLoadEigenvalueTable> WindLoadEigenvalues { get; set; }//风载特征值
 
-        public DbSet<StrainThresholdValueTable> StrainThresholdValues { get; set; }//应变阈值
+        public DbSet<ConcreteStrainThresholdValueTable> ConcreteStrainThresholdValues { get; set; }//应变阈值
         public DbSet<DisplaymentThresholdValueTable> DisplaymentThresholdValues { get; set; }//位移阈值
         public DbSet<CableForceThresholdValueTable> CableForceThresholdValues { get; set; }//索力阈值
         public DbSet<TemperatureThresholdValueTable> TemperatureThresholdValues { get; set; }//温度阈值
