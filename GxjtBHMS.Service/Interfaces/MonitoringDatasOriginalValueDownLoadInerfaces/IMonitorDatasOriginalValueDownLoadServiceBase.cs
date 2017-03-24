@@ -5,6 +5,6 @@ namespace GxjtBHMS.Service.Interfaces
 {
     public interface IMonitorDatasOriginalValueDownloadServiceBase
     {
-        DownloadOriginalvalueDatasResponse SaveAs(DatasQueryResultRequestBase req);
+        DownLoadDatasResponse SaveAs(DatasQueryResultRequestBase req);
     }
 }
