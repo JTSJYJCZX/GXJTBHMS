@@ -4,7 +4,7 @@ using GxjtBHMS.Service.Messaging.MonitoringDatasDownLoad;
 
 namespace GxjtBHMS.Service
 {
-    class CableForceDatasOriginalValueDownload : MonitoringDatasOriginalvalueQueryServiceBase
+    class CableForceDatasOriginalValueDownload 
     {
         readonly ICableForceDatasOriginalValueDownloadService _cableForceDatasOriginalValueDownloadService;
 
@@ -14,9 +14,9 @@ namespace GxjtBHMS.Service
                 .GetInstance<ICableForceDatasOriginalValueDownloadService>();
         }
          
-        public override DownloadOriginalvalueDatasResponse SaveAsFile(DatasQueryResultRequestBase req)
-        {
-            return _cableForceDatasOriginalValueDownloadService.SaveAs(req);
-        }
+        //public override DownloadOriginalvalueDatasResponse SaveAsFile(DatasQueryResultRequestBase req)
+        //{
+        //    return _cableForceDatasOriginalValueDownloadService.SaveAs(req);
+        //}
     }
 }

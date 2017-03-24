@@ -8,7 +8,6 @@ using Ninject;
 using GxjtBHMS.Models;
 using GxjtBHMS.Service.Implementations.OriginalValueDownLoad;
 using GxjtBHMS.IDAL.OriginalValueDownLoad;
-using GxjtBHMS.Service.Interfaces.MonitoringDatasOriginalValueDownLoadInerfaces;
 using GxjtBHMS.SqlServerDAL.MonitoringDatasDAL;
 using GxjtBHMS.Service.Interfaces.MonitoringDatasQueryServiceInerfaces;
 
@@ -29,21 +28,21 @@ namespace GxjtBHMS.Service
         void AddBinding()
         {
 
-            _ninjectKernel.Bind<IConcreteStrainDatasOriginalValueDownloadService>().To<ConcreteStrainDatasOriginalValueDownloadService>();
+            //_ninjectKernel.Bind<IConcreteStrainDatasOriginalValueDownloadService>().To<ConcreteStrainDatasOriginalValueDownloadService>();
             _ninjectKernel.Bind<IConcreteStrainDatasOriginalValueDAL>().To<ConcreteStrainDatasOriginalValueDAL>();
-            _ninjectKernel.Bind<ISteelArchStrainDatasOriginalValueDownloadService>().To<SteelArchStrainDatasOriginalValueDownloadService>();
+            //_ninjectKernel.Bind<ISteelArchStrainDatasOriginalValueDownloadService>().To<SteelArchStrainDatasOriginalValueDownloadService>();
             _ninjectKernel.Bind<ISteelArchStrainDatasOriginalValueDAL>().To<SteelArchStrainDatasOriginalValueDAL>();
-            _ninjectKernel.Bind<ISteelLatticeStrainDatasOriginalValueDownloadService>().To<SteelLatticeStrainDatasOriginalValueDownloadService>();
+            //_ninjectKernel.Bind<ISteelLatticeStrainDatasOriginalValueDownloadService>().To<SteelLatticeStrainDatasOriginalValueDownloadService>();
             _ninjectKernel.Bind<ISteelLatticeStrainDatasOriginalValueDAL>().To<SteelLatticeStrainDatasOriginalValueDAL>();
-            _ninjectKernel.Bind<IDisplacementDatasOriginalValueDownloadService>().To<DisplacementDatasOriginalValueDownloadService>();
+            //_ninjectKernel.Bind<IDisplacementDatasOriginalValueDownloadService>().To<DisplacementDatasOriginalValueDownloadService>();
             _ninjectKernel.Bind<IDisplacementDatasOriginalValueDAL>().To<DisplacementDatasOriginalValueDAL>();
-            _ninjectKernel.Bind<ICableForceDatasOriginalValueDownloadService>().To<CableForceDatasOriginalValueDownloadService>();
+            //_ninjectKernel.Bind<ICableForceDatasOriginalValueDownloadService>().To<CableForceDatasOriginalValueDownloadService>();
             _ninjectKernel.Bind<ICableForceDatasOriginalValueDAL>().To<CableForceDatasOriginalValueDAL>();
-            _ninjectKernel.Bind<ITemperatureDatasOriginalValueDownloadService>().To<TemperatureDatasOriginalValueDownloadService>();
+            //_ninjectKernel.Bind<ITemperatureDatasOriginalValueDownloadService>().To<TemperatureDatasOriginalValueDownloadService>();
             _ninjectKernel.Bind<ITemperatureDatasOriginalValueDAL>().To<TemperatureDatasOriginalValueDAL>();
-            _ninjectKernel.Bind<IHumidityDatasOriginalValueDownloadService>().To<HumidityDatasOriginalValueDownloadService>();
+            //_ninjectKernel.Bind<IHumidityDatasOriginalValueDownloadService>().To<HumidityDatasOriginalValueDownloadService>();
             _ninjectKernel.Bind<IHumidityDatasOriginalValueDAL>().To<HumidityDatasOriginalValueDAL>();
-            _ninjectKernel.Bind<IWindLoadDatasOriginalValueDownloadService>().To<WindLoadDatasOriginalValueDownloadService>();
+            //_ninjectKernel.Bind<IWindLoadDatasOriginalValueDownloadService>().To<WindLoadDatasOriginalValueDownloadService>();
             _ninjectKernel.Bind<IWindLoadDatasOriginalValueDAL>().To<WindLoadDatasOriginalValueDAL>();
 
             _ninjectKernel.Bind<IConcreteStrainDatasEigenValueDAL>().To<ConcreteStrainDatasEigenvalueDAL>();

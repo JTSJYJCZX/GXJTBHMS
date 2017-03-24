@@ -167,7 +167,7 @@ namespace GxjtBHMS.Web.Controllers
                 PointsPositionId = conditions.MornitoringPointsPositionId
             };
             var monitoringDatasQueryService = MonitoringDatasOriginalValueDownloadServiceFactory.GetQueryServiceFrom(conditions.MornitoringTestTypeId);
-            var resp = monitoringDatasQueryService.SaveAsFile(req);
+            var resp = monitoringDatasQueryService.SaveAs(req);
             var guid = "";
             guid = Guid.NewGuid().ToString();
             CacheHelper.SetCache(guid, resp.Datas);
