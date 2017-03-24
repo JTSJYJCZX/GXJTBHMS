@@ -1,7 +1,7 @@
 ﻿using GxjtBHMS.Service.Messaging.MonitoringDatas;
 using GxjtBHMS.Service.Messaging.MonitoringDatasDownLoad;
 
-namespace GxjtBHMS.Service.MonitoringDatasOriginalValueDownLoad
+namespace GxjtBHMS.Service.Implementations
 {
     public abstract class MonitoringDatasOriValueServiceBase: ServiceBase
     {
