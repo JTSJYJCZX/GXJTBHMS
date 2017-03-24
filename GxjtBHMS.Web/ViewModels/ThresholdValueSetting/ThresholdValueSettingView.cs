@@ -9,11 +9,11 @@ namespace GxjtBHMS.Web.ViewModels.ThresholdValueSetting
     {
         public ThresholdValueSettingView()
         {
-            StrainThresholdValues = new List<StrainThresholdValueView>();
+            ThresholdValues = new List<ThresholdValueView>();
             //PaginatorModel = new PaginatorModel();
         }
 
-        public IEnumerable<StrainThresholdValueView> StrainThresholdValues;
+        public IEnumerable<ThresholdValueView> ThresholdValues;
         public PaginatorModel PaginatorModel { get; set; }
 
     }

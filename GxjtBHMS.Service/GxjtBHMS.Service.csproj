@@ -134,9 +134,11 @@
     <Compile Include="Interfaces\MonitoringDatasOriginalValueDownLoadInerfaces\ISteelLatticeStrainDatasOriginalValueDownLoadService.cs" />
     <Compile Include="Interfaces\MonitoringDatasOriginalValueDownLoadInerfaces\ISteelArchStrainDatasOriginalValueDownLoadService.cs" />
     <Compile Include="Interfaces\MonitoringDatasOriginalValueDownLoadInerfaces\ITemperatureDatasOriginalValueDownloadService.cs" />
-    <Compile Include="Interfaces\ThresholdValueSettingInerfaces\IConcreteStrainThresholdValueSettingService.cs" />
     <Compile Include="Messaging\MonitoringDatasDownLoad\DownLoadOriginalvalueDatasResponse.cs" />
     <Compile Include="Messaging\ThresholdValueSetting\GetThresholdValueByPointsPositionSearchRequest.cs" />
+    <Compile Include="Messaging\ThresholdValueSetting\ThresholdValueIncludeNegativeModel.cs" />
+    <Compile Include="Messaging\ThresholdValueSetting\ThresholdValueModel.cs" />
+    <Compile Include="ThresholdValueSettingServiceAbstractBase.cs" />
     <Compile Include="ThresholdValueSettingServiceBase.cs" />
     <Compile Include="ThresholdValueSettingServiceFactory.cs" />
     <Compile Include="MonitoringDatasOriginalValueDownLoad\CableForceDatasOriginalValueDownLoad.cs" />
@@ -193,7 +195,7 @@
     <Compile Include="Interfaces\IStrainDataRealTimeDisplayService.cs" />
     <Compile Include="Interfaces\IConcreteStrainDatasEigenvalueQueryService.cs" />
     <Compile Include="Interfaces\ITemperatureDataRealTimeDisplayService.cs" />
-    <Compile Include="Interfaces\IThresholdValueSettingService.cs" />
+    <Compile Include="Interfaces\ThresholdValueSettingInerfaces\IThresholdValueSettingService.cs" />
     <Compile Include="Messaging\AdminUser\EditUserRequest.cs" />
     <Compile Include="Messaging\AdminUser\SearchUserResponse.cs" />
     <Compile Include="Messaging\AdminUser\UsersSearchRequest.cs" />
@@ -216,7 +218,7 @@
     <Compile Include="Messaging\PagedResponse.cs" />
     <Compile Include="Messaging\ResponseBase.cs" />
     <Compile Include="Messaging\ThresholdValueSetting\PointsNumberSearchRequest.cs" />
-    <Compile Include="Messaging\ThresholdValueSetting\StrainThresholdValueResponse.cs" />
+    <Compile Include="Messaging\ThresholdValueSetting\ThresholdValueResponse.cs" />
     <Compile Include="Messaging\ThresholdValueSetting\StrainThresholdValueSettingRequest.cs" />
     <Compile Include="Messaging\User\GetUsersResponse.cs" />
     <Compile Include="Messaging\User\LoginRequest.cs" />

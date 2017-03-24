@@ -10,48 +10,33 @@ using GxjtBHMS.Infrastructure.Configuration;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    public class ConcreteStrainThresholdValueSettingService : ThresholdValueSettingServiceBase,IConcreteStrainThresholdValueSettingService
+    public class ConcreteStrainThresholdValueSettingService : ThresholdValueSettingServiceBase<ConcreteStrainThresholdValueTable>
     {
-        const string PointsNumber_NavigationProperty = "PointsNumber";
-        IConcreteStrainThresholdValueSettingDAL _concreteStrainthresholdValueSettingDAL;
-        public ConcreteStrainThresholdValueSettingService()
+        public override ThresholdValueResponse GetThresholdValueListByPointsPosition(GetThresholdValueByPointsPositionSearchRequest req)
         {
-           
-        }
-        public ConcreteStrainThresholdValueSettingService(IConcreteStrainThresholdValueSettingDAL concreteStrainthresholdValueSettingDAL)
-        {
-            _concreteStrainthresholdValueSettingDAL = concreteStrainthresholdValueSettingDAL;
-        }
-
-        public override ConcreteStrainThresholdValueResponse GetThresholdValueListByPointsPosition(GetThresholdValueByPointsPositionSearchRequest req)
-        {
-            throw new NotImplementedException();
-        }
-
-        void DealWithEqualPointsPosition(GetThresholdValueByPointsPositionSearchRequest req, IList<Func<ConcreteStrainThresholdValueTable, bool>> ps)
-        {
-            if (req.PointsPositionId > 0)
-            {
-                ps.Add(m => m.PointsNumber.PointsPositionId == req.PointsPositionId);
-            }
-        }
-
-        ConcreteStrainThresholdValueResponse IConcreteStrainThresholdValueSettingService.GetThresholdValueListByPointsPosition(GetThresholdValueByPointsPositionSearchRequest req)
-        {
-
-            var resp = new ConcreteStrainThresholdValueResponse();
-            IList<Func<ConcreteStrainThresholdValueTable, bool>> ps = new List<Func<ConcreteStrainThresholdValueTable, bool>>();
-            DealWithEqualPointsPosition(req, ps);
+            var resp = new ThresholdValueResponse();
             try
             {
-                var thresholdValues = _concreteStrainthresholdValueSettingDAL.FindBy(ps, PointsNumber_NavigationProperty);
-                if (HasNoSearchResult(thresholdValues))
+                var source = QueryThresholdValueListByPointsPosition(req);
+                var result = new List<ThresholdValueIncludeNegativeModel>();          
+                foreach (var item in source)
+                {
+                    var resultItem = new ThresholdValueIncludeNegativeModel();
+                    resultItem.PointsNumberId = item.PointsNumberId;
+                    resultItem.PointsNumberName = item.PointsNumber.Name;
+                    resultItem.PositiveFirstLevelThresholdValue = item.PositiveFirstLevelThresholdValue;
+                    resultItem.PositiveSecondLevelThresholdValue = item.PositiveSecondLevelThresholdValue;
+                    resultItem.NegativeFirstLevelThresholdValue = item.NegativeFirstLevelThresholdValue;
+                    resultItem.NegativeSecondLevelThresholdValue = item.NegativeSecondLevelThresholdValue;
+                    result.Add(resultItem);
+                }
+                if (HasNoSearchResult(result))
                 {
                     resp.Message = "无记录！";
                 }
                 else
                 {
-                    resp.ConcreteStrainThresholdValues = thresholdValues;
+                    resp.ThresholdValuesIncludeNegative = result;
                     resp.Succeed = true;
                 }
             }
@@ -63,25 +48,22 @@ namespace GxjtBHMS.Service.Implementations
             return resp;
         }
 
-
-
- 
-        bool HasNoSearchResult(IEnumerable<ConcreteStrainThresholdValueTable> thresholdValues)
+        public override ThresholdValueResponse ModifyThresholdValue(ThresholdValueSettingRequest req)
         {
-            return thresholdValues.Count() == 0;
-        }
-
-        ConcreteStrainThresholdValueResponse IConcreteStrainThresholdValueSettingService.ModifyStrainThresholdValue(StrainThresholdValueSettingRequest model)
-        {
-            var resp = new ConcreteStrainThresholdValueResponse();
+            var resp = new ThresholdValueResponse();
             try
             {
-                var ThresholdValue = _concreteStrainthresholdValueSettingDAL.FindBy(m => m.PointsNumberId == model.PointsNumberId).SingleOrDefault();
-                ThresholdValue.PositiveFirstLevelThresholdValue = model.PositiveFirstLevelThresholdValue;
-                ThresholdValue.PositiveSecondLevelThresholdValue = model.PositiveSecondLevelThresholdValue;
-                ThresholdValue.NegativeFirstLevelThresholdValue = model.NegativeFirstLevelThresholdValue;
-                ThresholdValue.NegativeSecondLevelThresholdValue = model.NegativeSecondLevelThresholdValue;
-                _concreteStrainthresholdValueSettingDAL.Save(ThresholdValue);
+                var source = ModifyThresholdValueByPointsNumberId(req);
+                foreach (var item in source)
+                {
+                    item.PositiveFirstLevelThresholdValue = req.PositiveFirstLevelThresholdValue;
+                    item.PositiveSecondLevelThresholdValue = req.PositiveSecondLevelThresholdValue;
+                    item.NegativeFirstLevelThresholdValue = req.NegativeFirstLevelThresholdValue;
+                    item.NegativeSecondLevelThresholdValue = req.NegativeSecondLevelThresholdValue;
+                }
+                var thresholdValue = source.First();
+                SaveThresholdValueByPointsNumberId(thresholdValue);
+                
                 resp.Message = "保存成功！";
                 resp.Succeed = true;
             }

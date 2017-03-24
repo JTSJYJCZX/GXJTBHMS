@@ -19,12 +19,10 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
         IMonitoringTestTypeService _mtts;
         IMonitoringPointsNumberService _mpns;
         IMonitoringPointsPositionService _mpps;
-        readonly IThresholdValueSettingService _thresholdValueSettingService;
-        public ThresholdValueSettingController(IThresholdValueSettingService thresholdValueSettingService, IMonitoringTestTypeService mtts,
+        public ThresholdValueSettingController(IMonitoringTestTypeService mtts,
             IMonitoringPointsNumberService mpns,
             IMonitoringPointsPositionService mpps)
         {
-            _thresholdValueSettingService = thresholdValueSettingService;
             _mtts = mtts;
             _mpns = mpns;
             _mpps = mpps;
@@ -32,17 +30,17 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
 
         public ActionResult ThresholdValueSetting()
         {
-            var resp = _thresholdValueSettingService.GetPaginatorDatas(new PointsNumberSearchRequest());
+            //var resp = _thresholdValueSettingService.GetPaginatorDatas(new PointsNumberSearchRequest());
 
-            if (resp.Succeed)
-            {
-                ViewData["TotalPages"] = resp.TotalPages;
-            }
-            else
-            {
-                TempData[WebConstants.MessageColor] = StyleConstants.RedColor;
-                TempData[WebConstants.MessageKey] = resp.Message;
-            }
+            //if (resp.Succeed)
+            //{
+            //    ViewData["TotalPages"] = resp.TotalPages;
+            //}
+            //else
+            //{
+            //    TempData[WebConstants.MessageColor] = StyleConstants.RedColor;
+            //    TempData[WebConstants.MessageKey] = resp.Message;
+            //}
             return View();
         }
 
@@ -55,19 +53,19 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
             };
             var thresholdValueSettingService = ThresholdValueSettingServiceFactory.GetThresholdValueServiceFrom(conditions.MornitoringTestTypeId);
             var resp = thresholdValueSettingService.GetThresholdValueListByPointsPosition(req);
-            IEnumerable<StrainThresholdValueView> models = new List<StrainThresholdValueView>();
+            IEnumerable<ThresholdValueView> models = new List<ThresholdValueView>();
             var resultView = new ThresholdValueSettingView();
             if (resp.Succeed)
             {
-                resultView.StrainThresholdValues = resp.ConcreteStrainThresholdValues.Select(m => new StrainThresholdValueView
+                resultView.ThresholdValues = resp.ThresholdValuesIncludeNegative.Select(m => new ThresholdValueView
                 {
-                    PointsNumber = m.PointsNumber.Name,
+                    TestTypeId=conditions.MornitoringTestTypeId,
+                    PointsNumber = m.PointsNumberName,
                     PointsNumberId = m.PointsNumberId,
                     PositiveFirstLevelThresholdValue = m.PositiveFirstLevelThresholdValue,
                     PositiveSecondLevelThresholdValue = m.PositiveSecondLevelThresholdValue,
                     NegativeFirstLevelThresholdValue = m.NegativeFirstLevelThresholdValue,
                     NegativeSecondLevelThresholdValue = m.NegativeSecondLevelThresholdValue,
-
                 });
             }
             else
@@ -76,9 +74,6 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
             }
             return PartialView("ThresholdValueSettingListPartial",resultView);
         }
-
-
-
 
         [ChildActionOnly]
         public ActionResult GetThresholdValuePullDownSearchBar()
@@ -117,36 +112,36 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
             SaveSelectListItemCollectionToViewData(resp.Datas, WebConstants.MonitoringPointsPositionKey, false);
         }
 
-        public ActionResult GetThresholdValueSettingList(QueryPointsNumberConditonView conditions)
-        {
-            var req = new PointsNumberSearchRequest
-            {
-                PointNumber = conditions.ContainsPointsNumber,
-                CurrentPageIndex = conditions.CurrentPageIndex
-            };
-            var resp = _thresholdValueSettingService.GetThresholdValueBy(req);
-            IEnumerable<StrainThresholdValueView> models = new List<StrainThresholdValueView>();
-            var resultView = new ThresholdValueSettingView();
-            if (resp.Succeed)
-            {
-                resultView.StrainThresholdValues = resp.ConcreteStrainThresholdValues.Select(m => new StrainThresholdValueView
-                {
-                    PointsNumber = m.PointsNumber.Name,
-                    PointsNumberId = m.PointsNumberId,
-                    PositiveFirstLevelThresholdValue = m.PositiveFirstLevelThresholdValue,
-                    PositiveSecondLevelThresholdValue = m.PositiveSecondLevelThresholdValue,           
-                    NegativeFirstLevelThresholdValue = m.NegativeFirstLevelThresholdValue,
-                    NegativeSecondLevelThresholdValue = m.NegativeSecondLevelThresholdValue,
+        //public ActionResult GetThresholdValueSettingList(QueryPointsNumberConditonView conditions)
+        //{
+        //    var req = new PointsNumberSearchRequest
+        //    {
+        //        PointNumber = conditions.ContainsPointsNumber,
+        //        CurrentPageIndex = conditions.CurrentPageIndex
+        //    };
+        //    var resp = _thresholdValueSettingService.GetThresholdValueBy(req);
+        //    IEnumerable<StrainThresholdValueView> models = new List<StrainThresholdValueView>();
+        //    var resultView = new ThresholdValueSettingView();
+        //    if (resp.Succeed)
+        //    {
+        //        resultView.StrainThresholdValues = resp.ThresholdValues.Select(m => new StrainThresholdValueView
+        //        {
+        //            PointsNumber = m.PointsNumber.Name,
+        //            PointsNumberId = m.PointsNumberId,
+        //            PositiveFirstLevelThresholdValue = m.PositiveFirstLevelThresholdValue,
+        //            PositiveSecondLevelThresholdValue = m.PositiveSecondLevelThresholdValue,           
+        //            NegativeFirstLevelThresholdValue = m.NegativeFirstLevelThresholdValue,
+        //            NegativeSecondLevelThresholdValue = m.NegativeSecondLevelThresholdValue,
      
-                });
-                resultView.PaginatorModel = new PaginatorModel { TotalPages = resp.TotalPages, CurrentPageIndex = conditions.CurrentPageIndex };
-            }
-            else
-            {
-                return Json(new { color = StyleConstants.RedColor, message = resp.Message }, JsonRequestBehavior.AllowGet);
-            }
-            return PartialView("ThresholdValueSettingListPartial", resultView);
-        }
+        //        });
+        //        resultView.PaginatorModel = new PaginatorModel { TotalPages = resp.TotalPages, CurrentPageIndex = conditions.CurrentPageIndex };
+        //    }
+        //    else
+        //    {
+        //        return Json(new { color = StyleConstants.RedColor, message = resp.Message }, JsonRequestBehavior.AllowGet);
+        //    }
+        //    return PartialView("ThresholdValueSettingListPartial", resultView);
+        //}
 
         [ChildActionOnly]
         public ActionResult GetThresholdValueSearchBar(QueryPointsNumberConditonView conditions)
@@ -156,19 +151,20 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
 
         [HttpPost]
         [MyValidateAntiForgeryToken]
-        public ActionResult SaveThresholdValue(StrainThresholdValueView model)
+        public ActionResult SaveThresholdValue(ThresholdValueView model)
         {
             var color = string.Empty;
             var message = string.Empty;
             if (ModelState.IsValid)
             {
-                var req = new StrainThresholdValueSettingRequest
+                var req = new ThresholdValueSettingRequest
                 {
                     PointsNumber = model.PointsNumber,
                     PointsNumberId = model.PointsNumberId
                 };
-                SaveThresholdValuesFromViewToRequest(req,model);
-                var resp = _thresholdValueSettingService.ModifyStrainThresholdValue(req);
+                SaveThresholdValuesFromViewToRequest(req, model);
+                var thresholdValueSettingService = ThresholdValueSettingServiceFactory.GetThresholdValueServiceFrom(model.TestTypeId);
+                var resp = thresholdValueSettingService.ModifyThresholdValue(req);
                 message = resp.Message;
                 color = resp.Succeed ? StyleConstants.GreenColor : StyleConstants.RedColor;
             }
@@ -178,10 +174,9 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
                 color = StyleConstants.RedColor;
             }
             return Json(new { color, message }, JsonRequestBehavior.AllowGet);
-
         }
 
-        void SaveThresholdValuesFromViewToRequest(StrainThresholdValueSettingRequest req, StrainThresholdValueView model)
+        void SaveThresholdValuesFromViewToRequest(ThresholdValueSettingRequest req, ThresholdValueView model)
         {
                 var tg = ThresholdValuesConvert.ConvertForm(model.ThresholdValues);
                 req.PositiveFirstLevelThresholdValue = tg.PositiveStandardValueGroup.FirstLevelThresholdValue;
@@ -190,10 +185,6 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
                 req.NegativeSecondLevelThresholdValue = tg.NegativeStandardValueGroup.SecondLevelThresholdValue;
         }
 
-        public ActionResult UniformSettingThresholdValue()
-        {            
-            return PartialView("UniformSettingStrainThresholdValuePartial");
-        }
 
         public ActionResult GetMonitoringPointsPositionsByTestTypeId(int testTypeId = 0)
         {

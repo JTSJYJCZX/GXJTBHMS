@@ -13,12 +13,13 @@
                 <td>清除</td>
             </tr>
         </thead>
-        @foreach (var item in Model.StrainThresholdValues)
+        @foreach (var item in Model.ThresholdValues)
         {
             @Html.Partial("StrainThresholdValuePartial", item)
         }
     </table>   
 </div>
+
 @*<script>
     $(function(){
         jqPaginatorSetting('#paginationNav',@Model.PaginatorModel.TotalPages,@Model.PaginatorModel.CurrentPageIndex);

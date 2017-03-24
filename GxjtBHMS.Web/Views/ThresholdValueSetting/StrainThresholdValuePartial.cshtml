@@ -1,4 +1,4 @@
-﻿@model GxjtBHMS.Web.ViewModels.ThresholdValueSetting.StrainThresholdValueView
+﻿@model GxjtBHMS.Web.ViewModels.ThresholdValueSetting.ThresholdValueView
     <tr class="text-center">
         <td>
            <span class = "text-center form-control">@Model.PointsNumber</span>                 
@@ -16,16 +16,19 @@
             @Html.TextBoxFor(m => m.NegativeSecondLevelThresholdValue, new { @class = "text-center form-control" })
         </td>
         <td>
+            @Html.HiddenFor(m=>m.TestTypeId)
             @Html.HiddenFor(m => m.PointsNumberId)
             @Html.HiddenFor(m => m.PointsNumber)
             <input class="form-control" type="button" onclick="saveThresholdValue(this, '/ThresholdValueSetting/SaveThresholdValue')" operate="save" value="保存" />
         </td>
         <td>
+            @Html.HiddenFor(m => m.TestTypeId)
             @Html.HiddenFor(m => m.PointsNumberId)
             @Html.HiddenFor(m => m.PointsNumber)
-            <input class="form-control" type="button" onclick="saveThresholdValue(this, '/ThresholdValueSetting/SaveThresholdValue')" operate="remove" value="清除" />
+            <input class="form-control" type="button" onclick="clearThresholdValue(this)" operate="remove" value="清除" />
         </td>
     </tr>
+
 
 @Html.AntiForgeryToken()
 

@@ -5,10 +5,7 @@
     /// </summary>
     public class PositiveStandardValueGroup
     {
-        /// <summary>
-        /// 正标准值
-        /// </summary>
-        public double? StandardValue { get; set; }
+        
         /// <summary>
         /// 正一级阈值
         /// </summary>
@@ -17,18 +14,13 @@
         /// 正二级阈值
         /// </summary>
         public double? SecondLevelThresholdValue { get; set; }
-        /// <summary>
-        /// 正三级阈值
-        /// </summary>
-        public double? ThirdLevelThresholdValue { get; set; }
+        
 
         public double?[] ToArray()
         {
             return new double?[] {
-                StandardValue,
                 FirstLevelThresholdValue,
                 SecondLevelThresholdValue,
-                ThirdLevelThresholdValue
             };
         }
     }

@@ -10,7 +10,7 @@ using GxjtBHMS.Infrastructure.Domain;
 
 namespace GxjtBHMS.SqlServerDAL.ThresholdValueDatasDAL
 {
-   public class ThresholdValueDatasDAL : Repository<ConcreteStrainThresholdValueTable, int>, IThresholdValueSettingDAL
+   public class ConcreteStrainThresholdValueSettingDAL : Repository<ConcreteStrainThresholdValueTable, int>, IThresholdValueSettingDAL<ConcreteStrainThresholdValueTable>
     {
         public override IEnumerable<ConcreteStrainThresholdValueTable> FindAll()
         {

@@ -68,7 +68,7 @@
     <Compile Include="IMonitoringTestTypeDAL.cs" />
     <Compile Include="IConcreteStrainDatasEigenValueDAL.cs" />
     <Compile Include="ITemperatureThresholdValueGettingDAL.cs" />
-    <Compile Include="IThresholdValueSettingDAL.cs" />
+    <Compile Include="ThresholdValueSetting\IThresholdValueSettingDAL.cs" />
     <Compile Include="IUser.cs" />
     <Compile Include="OriginalValueDownLoad\ICableForceDatasOriginalValueDAL.cs" />
     <Compile Include="OriginalValueDownLoad\IDisplacementDatasOriginalValueDAL.cs" />
@@ -76,7 +76,6 @@
     <Compile Include="OriginalValueDownLoad\ISteelArchStrainDatasOriginalValueDAL.cs" />
     <Compile Include="OriginalValueDownLoad\IConcreteStrainDatasOriginalValueDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ThresholdValueSetting\IConcreteStrainThresholdValueSettingDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GxjtBHMS.Infrastructure\GxjtBHMS.Infrastructure.csproj">

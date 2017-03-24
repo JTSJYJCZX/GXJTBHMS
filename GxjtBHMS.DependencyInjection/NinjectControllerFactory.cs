@@ -1,4 +1,5 @@
 ﻿using GxjtBHMS.IDAL;
+using GxjtBHMS.Models.ThresholdValueSetting;
 using GxjtBHMS.Service.Implementations;
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.SqlServerDAL;
@@ -60,10 +61,9 @@ namespace GxjtBHMS.DependencyInjection
             _ninjectKernel.Bind<IHumidityDataRealTimeDisplayService>().To<HumidityDataRealTimeDisplayService>();
             _ninjectKernel.Bind<IRealTimeHumidityDatasDAL>().To<RealTimeHumidityDatasDAL>();
 
-            _ninjectKernel.Bind<IConcreteStrainThresholdValueSettingService>().To<ConcreteStrainThresholdValueSettingService>();
+            _ninjectKernel.Bind<IThresholdValueSettingDAL<ConcreteStrainThresholdValueTable>>().To<ConcreteStrainThresholdValueSettingDAL>();
             _ninjectKernel.Bind<IConcreteStrainDatasEigenValueDAL>().To<ConcreteStrainDatasEigenvalueDAL>();
-            _ninjectKernel.Bind<IThresholdValueSettingService>().To<ThresholdValueSettingService>();
-            _ninjectKernel.Bind<IThresholdValueSettingDAL>().To<ThresholdValueDatasDAL>();
+            //_ninjectKernel.Bind<IThresholdValueSettingService>().To<ThresholdValueSettingService>();
             _ninjectKernel.Bind<IStrainThresholdValueGettingDAL>().To<StrainThresholdValueGettingDAL>();
             _ninjectKernel.Bind<IDisplaymentThresholdValueGettingDAL>().To<DisplaymentThresholdValueGettingDAL>();
             _ninjectKernel.Bind<ICableForceThresholdValueGettingDAL>().To<CableForceThresholdValueGettingDAL>();

@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace GxjtBHMS.Web.ViewModels.ThresholdValueSetting
 {
-    public class StrainThresholdValueView
+    public class ThresholdValueView
     {
-
+        public int TestTypeId { get; set; }
         public string PointsNumber { get; set; }
         public int PointsNumberId { get; set; } 
 

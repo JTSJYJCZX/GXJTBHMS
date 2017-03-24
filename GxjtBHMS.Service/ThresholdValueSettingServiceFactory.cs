@@ -5,7 +5,7 @@ namespace GxjtBHMS.Service
 {
     public class ThresholdValueSettingServiceFactory
     {
-        public static ThresholdValueSettingServiceBase GetThresholdValueServiceFrom(int mornitoringTestTypeId)
+        public static ThresholdValueSettingServiceAbstractBase GetThresholdValueServiceFrom(int mornitoringTestTypeId)
         {
             switch (mornitoringTestTypeId)
             {

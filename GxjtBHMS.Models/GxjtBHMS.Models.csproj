@@ -85,6 +85,7 @@
     <Compile Include="ThresholdValueSetting\ConcreteStrainThresholdValueTable.cs" />
     <Compile Include="ThresholdValueSetting\TemperatureThresholdValueTable.cs" />
     <Compile Include="ThresholdValueSetting\ThresholdValueBase.cs" />
+    <Compile Include="ThresholdValueSetting\ThresholdValueConditionBase.cs" />
     <Compile Include="User.cs" />
     <Compile Include="UserIsActiveSpecification.cs" />
     <Compile Include="UserNavigationProperties.cs" />
