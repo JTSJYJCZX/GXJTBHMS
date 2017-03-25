@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace GxjtBHMS.Service.MonitoringDatasQueryService
 {
-    public  class MonitorDatasEigenvalueQueryServiceBase<T>: MonitoringDatasEigenvalueServiceBase where T : MonitorDatasQueryConditionsModel
+    public class MonitorDatasEigenvalueQueryServiceBase<T>:ServiceBase where T : MonitorDatasQueryConditionsModel
     {
         readonly protected IMonitorDatasEigenvalueQueryChartService<T> _chartService;
         readonly protected IMonitorDatasQueryFileSystemService<T> _fileSystemService;
@@ -20,7 +20,7 @@ namespace GxjtBHMS.Service.MonitoringDatasQueryService
         }
         protected const string NoRecordsMessage = "无记录！";
 
-        public override ChartDatasResponse GetChartDatasBy(GetChartDatasRequest req)
+        public  ChartDatasResponse GetChartDatasBy(GetChartDatasRequest req)
         {
 
             var resp = new ChartDatasResponse();
@@ -39,7 +39,7 @@ namespace GxjtBHMS.Service.MonitoringDatasQueryService
             return resp;
         }
 
-        public override bool HasQueryResult(DatasQueryResultRequest req)
+        public  bool HasQueryResult(DatasQueryResultRequest req)
         {
             var result = false;
             IList<Func<T, bool>> ps = new List<Func<T, bool>>();
@@ -59,7 +59,7 @@ namespace GxjtBHMS.Service.MonitoringDatasQueryService
             return result;
         }
 
-        public override DownLoadDatasResponse SaveAs(DatasQueryResultRequestBase req)
+        public DownLoadDatasResponse SaveAs(DatasQueryResultRequestBase req)
         {
             var resp = new DownLoadDatasResponse();
             IList<Func<T, bool>> ps = new List<Func<T, bool>>();

@@ -1,30 +1,32 @@
-﻿using GxjtBHMS.Service.MonitoringDatasQueryService;
+﻿using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
+using GxjtBHMS.Service.MonitoringDatasQueryService;
+using NPOI.SS.Formula.Functions;
 using System;
 
 namespace GxjtBHMS.Service
 {
     public class MonitoringDatasEigenvalueQueryServiceFactory
     {
-        public static MonitoringDatasEigenvalueServiceBase GetQueryServiceFrom(int mornitoringTestTypeId)
+        public static dynamic GetQueryServiceFrom(int mornitoringTestTypeId)
         {
             switch (mornitoringTestTypeId)
             {
                 case 1:
-                    return new SteelArchStrainEigenvalueDatasQuery();
+                    return new MonitorDatasEigenvalueQueryServiceBase<SteelArchStrainEigenvalueTable>();
                 case 2:
-                    return new SteelLatticeStrainEigenvalueDatasQuery();
+                    return new MonitorDatasEigenvalueQueryServiceBase<SteelLatticeStrainEigenvalueTable>();
                 case 3:
-                    return new ConcreteStrainEigenvalueDatasQuery();
+                    return new MonitorDatasEigenvalueQueryServiceBase<ConcreteStrainEigenvalueTable>();
                 case 4:
-                    return new DisplacementEigenvalueDatasQuery();
+                    return new MonitorDatasEigenvalueQueryServiceBase<DisplacementEigenvalueTable>();
                 case 5:
-                    return new CableForceEigenvalueDatasQuery();
+                    return new MonitorDatasEigenvalueQueryServiceBase<CableForceEigenValueTable>();
                 case 6:
-                    return new HumidityEigenvalueDatasQuery();
+                    return new MonitorDatasEigenvalueQueryServiceBase<HumidityEigenvalueTable>();
                 case 7:
-                    return new TemperatureEigenvalueDatasQuery();
+                    return new MonitorDatasEigenvalueQueryServiceBase<TemperatureEigenvalueTable>();
                 case 8:
-                    return new WindLoadEigenvalueDatasQuery();
+                    return new MonitorDatasEigenvalueQueryServiceBase<WindLoadEigenvalueTable>();
                 default:
                     throw new ApplicationException("No TestTypeId");
             }
