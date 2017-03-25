@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoMapper\Configuration.cs" />
+    <Compile Include="Implementations\ThresholdValueService\ConcreteStrainThresholdValueSettingService.cs" />
     <Compile Include="Implementations\EigenvalueChartQueryService\CableForceMonitorDatasQueryChartService.cs" />
     <Compile Include="Implementations\EigenvalueDownLoadService\CableForceMonitorDatasEigenValueQueryFileSystemService.cs" />
     <Compile Include="Implementations\ExcelFileConverter.cs" />
@@ -117,6 +118,9 @@
     <Compile Include="Implementations\OriginalValueDownloadService\WindLoadDatasOriginalValueDownloadService.cs" />
     <Compile Include="Interfaces\IFileConverter.cs" />
     <Compile Include="Implementations\OriginalValueDownloadServiceBase\MonitoringDatasOriValueServiceBase.cs" />
+    <Compile Include="Messaging\ThresholdValueSetting\GetThresholdValueByPointsPositionSearchRequest.cs" />
+    <Compile Include="Messaging\ThresholdValueSetting\ThresholdValueIncludeNegativeModel.cs" />
+    <Compile Include="Messaging\ThresholdValueSetting\ThresholdValueModel.cs" />
     <Compile Include="ServiceFactory\MonitoringDatasOriginalValueDownLoadServiceFactory.cs" />
     <Compile Include="MonitoringDatasQueryService\WindLoadEigenvalueDatasQuery.cs" />
     <Compile Include="MonitoringDatasQueryService\HumidityEigenvalueDatasQuery.cs" />
@@ -152,7 +156,6 @@
     <Compile Include="Implementations\StrainDataRealTimeDisplayService.cs" />
     <Compile Include="Implementations\EigenvalueChartQueryService\ConcreteStrainMonitorDatasQueryChartService.cs" />
     <Compile Include="Interfaces\MonitoringDatasQueryServiceInerfaces\IMonitorDatasEigenvalueQueryChartService.cs" />
-    <Compile Include="Implementations\ThresholdValueSettingService.cs" />
     <Compile Include="Interfaces\IMonitoringPointsNumberService.cs" />
     <Compile Include="Interfaces\IMonitoringPointsPositionService.cs" />
     <Compile Include="Interfaces\IMonitoringTestTypeService.cs" />
@@ -202,6 +205,9 @@
     <Compile Include="ServiceBase.cs" />
     <Compile Include="ServiceConstant.cs" />
     <Compile Include="MonitoringDatasQueryService\ConcreteStrainEigenvalueDatasQuery.cs" />
+    <Compile Include="ServiceFactory\ThresholdValueSettingServiceFactory.cs" />
+    <Compile Include="ThresholdValueSettingServiceAbstractBase.cs" />
+    <Compile Include="ThresholdValueSettingServiceBase.cs" />
     <Compile Include="ViewModels\DataQueryResult\CableForceDatasModel.cs" />
     <Compile Include="ViewModels\DataQueryResult\TemperatureDatasMode.cs" />
     <Compile Include="ViewModels\DataQueryResult\ResultStatisticsModel.cs" />
