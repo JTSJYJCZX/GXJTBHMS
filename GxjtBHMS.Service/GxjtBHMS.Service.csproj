@@ -122,13 +122,6 @@
     <Compile Include="Messaging\ThresholdValueSetting\ThresholdValueIncludeNegativeModel.cs" />
     <Compile Include="Messaging\ThresholdValueSetting\ThresholdValueModel.cs" />
     <Compile Include="ServiceFactory\MonitoringDatasOriginalValueDownLoadServiceFactory.cs" />
-    <Compile Include="MonitoringDatasQueryService\WindLoadEigenvalueDatasQuery.cs" />
-    <Compile Include="MonitoringDatasQueryService\HumidityEigenvalueDatasQuery.cs" />
-    <Compile Include="MonitoringDatasQueryService\TemperatureEigenvalueDatasQuery.cs" />
-    <Compile Include="MonitoringDatasQueryService\CableForceEigenvalueDatasQuery.cs" />
-    <Compile Include="MonitoringDatasQueryService\DisplacementEigenvalueDatasQuery.cs" />
-    <Compile Include="MonitoringDatasQueryService\SteelLatticeStrainEigenvalueQuery.cs" />
-    <Compile Include="MonitoringDatasQueryService\SteelArchStrainEigenvalueDatasQuery.cs" />
     <Compile Include="ExtensionMethods\AdminUser\UserServiceExtension.cs" />
     <Compile Include="ExtensionMethods\GetEnumDescription\EnumUnit.cs" />
     <Compile Include="ExtensionMethods\MonitoringDatas\DatasQuery\CableForceDatasQueryServiceExtension.cs" />
@@ -198,13 +191,11 @@
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Messaging\User\TestTypeResponse.cs" />
     <Compile Include="Messaging\User\TestTypeRequest.cs" />
-    <Compile Include="MonitoringDatasQueryService\MonitoringDatasEigenvalueServiceBase.cs" />
     <Compile Include="ServiceFactory\MonitoringDatasEigenvalueQueryServiceFactory.cs" />
     <Compile Include="NinjectFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceBase.cs" />
     <Compile Include="ServiceConstant.cs" />
-    <Compile Include="MonitoringDatasQueryService\ConcreteStrainEigenvalueDatasQuery.cs" />
     <Compile Include="ServiceFactory\ThresholdValueSettingServiceFactory.cs" />
     <Compile Include="ThresholdValueSettingServiceAbstractBase.cs" />
     <Compile Include="ThresholdValueSettingServiceBase.cs" />
