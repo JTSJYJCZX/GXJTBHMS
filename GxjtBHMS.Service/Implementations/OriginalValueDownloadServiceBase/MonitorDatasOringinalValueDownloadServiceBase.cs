@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    public abstract class MonitorDatasOringinalValueDownloadServiceBase<T> : MonitoringDatasOriValueServiceBase where T : MonitorDatasQueryConditionsModel
+    public class MonitorDatasOringinalValueDownloadServiceBase<T> : ServiceBase where T : MonitorDatasQueryConditionsModel
     {
 
         readonly protected IMonitorDatasQueryFileSystemService<T> _fileSystemService;
@@ -17,7 +17,7 @@ namespace GxjtBHMS.Service.Implementations
             _fileSystemService = new NinjectFactory().GetInstance<IMonitorDatasQueryFileSystemService<T>>();
         }
 
-        public override DownLoadDatasResponse SaveAs(DatasQueryResultRequestBase req)
+        public DownLoadDatasResponse SaveAs(DatasQueryResultRequestBase req)
         {
             var resp = new DownLoadDatasResponse();
             IList<Func<T, bool>> ps = new List<Func<T, bool>>();
@@ -54,7 +54,7 @@ namespace GxjtBHMS.Service.Implementations
             if (req.PointsNumberIds != null && req.PointsNumberIds.Length > 0)
             {
                 ps.Add(m => req.PointsNumberIds.Contains(m.PointsNumberId));
-            }            
+            }
         }
 
         protected void DealWithConditions(DatasQueryResultRequestBase req, IList<Func<T, bool>> ps)

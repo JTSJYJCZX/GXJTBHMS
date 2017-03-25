@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace GxjtBHMS.Service.MonitoringDatasQueryService
 {
-    public abstract class MonitorDatasEigenvalueQueryServiceBase<T>: MonitoringDatasEigenvalueServiceBase where T : MonitorDatasQueryConditionsModel
+    public  class MonitorDatasEigenvalueQueryServiceBase<T>: MonitoringDatasEigenvalueServiceBase where T : MonitorDatasQueryConditionsModel
     {
         readonly protected IMonitorDatasEigenvalueQueryChartService<T> _chartService;
         readonly protected IMonitorDatasQueryFileSystemService<T> _fileSystemService;
