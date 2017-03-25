@@ -25,7 +25,7 @@
             @Html.HiddenFor(m => m.TestTypeId)
             @Html.HiddenFor(m => m.PointsNumberId)
             @Html.HiddenFor(m => m.PointsNumber)
-            <input class="form-control" type="button" onclick="clearThresholdValue(this)" operate="remove" value="清除" />
+            <input class="form-control" type="button" onclick="saveThresholdValue(this, '/ThresholdValueSetting/SaveThresholdValue')" operate="remove" value="一键清空" />
         </td>
     </tr>
 

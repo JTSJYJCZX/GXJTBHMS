@@ -65,27 +65,27 @@ function accessResource(n) {
 }
 
 
-function clearThresholdValue(saveSender)
-{ 
-    if (!confirm('是否操作?')) return;
-    var $saveSender = $(saveSender);
-    var testTypeId = $saveSender.prev().prev().prev().val();
-    var pointsNumberId = $saveSender.prev().prev().val();
-    var pointsNumberVal = $saveSender.prev().val();
-    var $textboxArray = findThresholdValuesFromTheSameLineTextBoxs($saveSender);//查询阈值所在的文本框
-    var headers = getHeadersWithAntiForgeryToken();
-    var isRemoveOP = $saveSender.attr('operate') === "remove";
-    var params = {
-        TestTypeId: testTypeId,
-        PointsNumber: pointsNumberVal,
-        PointsNumberId: pointsNumberId
-    };
-    if (isRemoveOP) {
-        clearCurrentThresholdValues($saveSender);
-    }
+//function clearThresholdValue(saveSender)
+//{ 
+//    if (!confirm('是否操作?')) return;
+//    var $saveSender = $(saveSender);
+//    var testTypeId = $saveSender.prev().prev().prev().val();
+//    var pointsNumberId = $saveSender.prev().prev().val();
+//    var pointsNumberVal = $saveSender.prev().val();
+//    var $textboxArray = findThresholdValuesFromTheSameLineTextBoxs($saveSender);//查询阈值所在的文本框
+//    var headers = getHeadersWithAntiForgeryToken();
+//    var isRemoveOP = $saveSender.attr('operate') === "remove";
+//    var params = {
+//        TestTypeId: testTypeId,
+//        PointsNumber: pointsNumberVal,
+//        PointsNumberId: pointsNumberId
+//    };
+//    if (isRemoveOP) {
+//        clearCurrentThresholdValues($saveSender);
+//    }
 
 
-}
+//}
 
 
 function saveThresholdValue(saveSender, url) {
@@ -101,15 +101,22 @@ function saveThresholdValue(saveSender, url) {
         TestTypeId:testTypeId,
         PointsNumber: pointsNumberVal,
         PointsNumberId: pointsNumberId
-    };
-         
+    };         
     if (!isRemoveOP) {
         var thresholdValues = [];
         $textboxArray.each(function (i) {
             thresholdValues.push($(this).val());
         });
         params['ThresholdValues'] = thresholdValues;
-    } 
+    }
+    if (isRemoveOP) {
+        clearCurrentThresholdValues($saveSender);
+        var thresholdValues = [];
+        $textboxArray.each(function (i) {
+            thresholdValues.push("");
+        })
+        params['ThresholdValues'] = thresholdValues;
+    }
     ajaxHandler(url, headers, params);
 }
 
@@ -118,6 +125,5 @@ function findThresholdValuesFromTheSameLineTextBoxs(button) {
 }
 
 function clearCurrentThresholdValues(button) {
-    button.parent().parent().find(":text").val("");
-
+    button.parent().parent().find(":text").val("");   
 }
