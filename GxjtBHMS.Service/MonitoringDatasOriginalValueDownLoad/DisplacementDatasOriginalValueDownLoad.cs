@@ -4,19 +4,19 @@ using GxjtBHMS.Service.Messaging.MonitoringDatasDownLoad;
 
 namespace GxjtBHMS.Service
 {
-    class DisplacementDatasOriginalValueDownLoad : MonitoringDatasOriginalvalueQueryServiceBase
+    class DisplacementDatasOriginalValueDownload : MonitoringDatasOriginalvalueQueryServiceBase
     {
-        readonly IDisplacementDatasOriginalValueDownLoadService _displacementmentDatasOriginalValueDownLoadService;
+        readonly IDisplacementDatasOriginalValueDownloadService _displacementmentDatasOriginalValueDownloadService;
 
-        public DisplacementDatasOriginalValueDownLoad()
+        public DisplacementDatasOriginalValueDownload()
         {
-            _displacementmentDatasOriginalValueDownLoadService = new NinjectFactory()
-                .GetInstance<IDisplacementDatasOriginalValueDownLoadService>();
+            _displacementmentDatasOriginalValueDownloadService = new NinjectFactory()
+                .GetInstance<IDisplacementDatasOriginalValueDownloadService>();
         }
          
-        public override DownLoadOriginalvalueDatasResponse SaveAsFile(DatasQueryResultRequestBase req)
+        public override DownloadOriginalvalueDatasResponse SaveAsFile(DatasQueryResultRequestBase req)
         {
-            return _displacementmentDatasOriginalValueDownLoadService.SaveAs(req);
+            return _displacementmentDatasOriginalValueDownloadService.SaveAs(req);
         }
     }
 }

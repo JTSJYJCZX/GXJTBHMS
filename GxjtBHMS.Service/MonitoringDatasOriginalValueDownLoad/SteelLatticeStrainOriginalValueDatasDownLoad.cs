@@ -4,19 +4,19 @@ using GxjtBHMS.Service.Messaging.MonitoringDatasDownLoad;
 
 namespace GxjtBHMS.Service
 {
-    class SteelLatticeStrainOriginalValueDatasDownLoad : MonitoringDatasOriginalvalueQueryServiceBase
+    class SteelLatticeStrainOriginalValueDatasDownload : MonitoringDatasOriginalvalueQueryServiceBase
     {
-        readonly ISteelLatticeStrainDatasOriginalValueDownLoadService _steelLatticeStrainDatasOriginalValueDownLoadService;
+        readonly ISteelLatticeStrainDatasOriginalValueDownloadService _steelLatticeStrainDatasOriginalValueDownloadService;
 
-        public SteelLatticeStrainOriginalValueDatasDownLoad()
+        public SteelLatticeStrainOriginalValueDatasDownload()
         {
-            _steelLatticeStrainDatasOriginalValueDownLoadService = new NinjectFactory()
-                .GetInstance<ISteelLatticeStrainDatasOriginalValueDownLoadService>();
+            _steelLatticeStrainDatasOriginalValueDownloadService = new NinjectFactory()
+                .GetInstance<ISteelLatticeStrainDatasOriginalValueDownloadService>();
         }
          
-        public override DownLoadOriginalvalueDatasResponse SaveAsFile(DatasQueryResultRequestBase req)
+        public override DownloadOriginalvalueDatasResponse SaveAsFile(DatasQueryResultRequestBase req)
         {
-            return _steelLatticeStrainDatasOriginalValueDownLoadService.SaveAs(req);
+            return _steelLatticeStrainDatasOriginalValueDownloadService.SaveAs(req);
         }
     }
 }

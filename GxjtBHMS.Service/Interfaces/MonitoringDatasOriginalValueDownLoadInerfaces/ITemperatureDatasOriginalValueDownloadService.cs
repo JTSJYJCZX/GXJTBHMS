@@ -1,6 +1,6 @@
 ﻿namespace GxjtBHMS.Service.Interfaces.MonitoringDatasOriginalValueDownLoadInerfaces
 {
-  public interface ITemperatureDatasOriginalValueDownLoadService :IMonitorDatasOriginalValueDownLoadServiceBase
+  public interface ITemperatureDatasOriginalValueDownloadService :IMonitorDatasOriginalValueDownloadServiceBase
     {
     }
 }

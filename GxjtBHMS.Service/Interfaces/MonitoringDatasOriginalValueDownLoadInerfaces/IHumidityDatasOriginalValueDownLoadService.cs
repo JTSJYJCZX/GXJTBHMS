@@ -1,6 +1,7 @@
 ﻿namespace GxjtBHMS.Service.Interfaces.MonitoringDatasOriginalValueDownLoadInerfaces
 {
-    public interface IHumidityDatasOriginalValueDownLoadService:IMonitorDatasOriginalValueDownLoadServiceBase
+    public interface IHumidityDatasOriginalValueDownloadService:IMonitorDatasOriginalValueDownloadServiceBase
     {
+
     }
 }

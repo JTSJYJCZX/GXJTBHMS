@@ -4,17 +4,17 @@ using GxjtBHMS.Service.Messaging.MonitoringDatasDownLoad;
 
 namespace GxjtBHMS.Service.MonitoringDatasOriginalValueDownLoad
 {
-    class TemperatureDatasOriginalValueDownLoad:MonitoringDatasOriginalvalueQueryServiceBase
+    class TemperatureDatasOriginalValueDownload:MonitoringDatasOriginalvalueQueryServiceBase
     {
-        readonly ITemperatureDatasOriginalValueDownLoadService _temperatureDatasOriginalValueDownLoadService;
-        public TemperatureDatasOriginalValueDownLoad()
+        readonly ITemperatureDatasOriginalValueDownloadService _temperatureDatasOriginalValueDownloadService;
+        public TemperatureDatasOriginalValueDownload()
         {
-            _temperatureDatasOriginalValueDownLoadService = new NinjectFactory().GetInstance<ITemperatureDatasOriginalValueDownLoadService>();
+            _temperatureDatasOriginalValueDownloadService = new NinjectFactory().GetInstance<ITemperatureDatasOriginalValueDownloadService>();
         }
 
-        public override DownLoadOriginalvalueDatasResponse SaveAsFile(DatasQueryResultRequestBase req)
+        public override DownloadOriginalvalueDatasResponse SaveAsFile(DatasQueryResultRequestBase req)
         {
-            return _temperatureDatasOriginalValueDownLoadService.SaveAs(req);
+            return _temperatureDatasOriginalValueDownloadService.SaveAs(req);
         }
     }
 }

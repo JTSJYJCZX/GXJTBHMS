@@ -37,15 +37,15 @@ namespace GxjtBHMS.Service.Implementations
             return resp;
         }
 
-        public string GetMixedNameWithTestTypeNameAndPointPositionNameAndCurrentDateTimeByPositionId(int positionId)
+        public string CreateDownloadFileMixedName(int positionId, string dataType)
         {
             var model = _mppDAL.FindBy(m => m.Id == positionId, new string[] { "TestType" }).SingleOrDefault();
-            return CreateMixedName(model.Name, model.TestType.Name, DateTime.Now.FormatDateWithoutSymbol());
+            return CreateMixedName(dataType,model.Name, model.TestType.Name, DateTime.Now.FormatDateWithoutSymbol());
         }
 
-        string CreateMixedName(string positionName, string testTypeName, string currentDateTime)
+        string CreateMixedName(string dataType,string positionName, string testTypeName, string currentDateTime)
         {
-            return string.Concat(testTypeName,"_", positionName,"_", currentDateTime);
+            return string.Concat(dataType,testTypeName, "_", positionName,"_", currentDateTime);
         }
 
         public QueryMonitoringPointsPositionsByTestTypeIdResponse GetMonitoringPointsPositionsByTestTypeId(int ttId)

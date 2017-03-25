@@ -4,19 +4,19 @@ using GxjtBHMS.Service.Messaging.MonitoringDatasDownLoad;
 
 namespace GxjtBHMS.Service
 {
-    class ConcreteStrainDatasOriginalValueDownLoad : MonitoringDatasOriginalvalueQueryServiceBase
+    class ConcreteStrainDatasOriginalValueDownload : MonitoringDatasOriginalvalueQueryServiceBase
     {
-        readonly IConcreteStrainDatasOriginalValueDownLoadService _concreteStrainDatasOriginalValueDownLoadService;
+        readonly IConcreteStrainDatasOriginalValueDownloadService _concreteStrainDatasOriginalValueDownloadService;
 
-        public ConcreteStrainDatasOriginalValueDownLoad()
+        public ConcreteStrainDatasOriginalValueDownload()
         {
-            _concreteStrainDatasOriginalValueDownLoadService = new NinjectFactory()
-                .GetInstance<IConcreteStrainDatasOriginalValueDownLoadService>();
+            _concreteStrainDatasOriginalValueDownloadService = new NinjectFactory()
+                .GetInstance<IConcreteStrainDatasOriginalValueDownloadService>();
         }
          
-        public override DownLoadOriginalvalueDatasResponse SaveAsFile(DatasQueryResultRequestBase req)
+        public override DownloadOriginalvalueDatasResponse SaveAsFile(DatasQueryResultRequestBase req)
         {
-            return _concreteStrainDatasOriginalValueDownLoadService.SaveAs(req);
+            return _concreteStrainDatasOriginalValueDownloadService.SaveAs(req);
         }
     }
 }

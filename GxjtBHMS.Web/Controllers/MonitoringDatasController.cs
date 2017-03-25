@@ -6,7 +6,6 @@ using GxjtBHMS.Web.Models;
 using GxjtBHMS.Web.ViewModels.MonitoringDatas;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -20,15 +19,18 @@ namespace GxjtBHMS.Web.Controllers
         IMonitoringTestTypeService _mtts;
         IMonitoringPointsNumberService _mpns;
         IMonitoringPointsPositionService _mpps;
+        IFileConverter _fileConverter;
         public MonitoringDatasController
             (IMonitoringTestTypeService mtts,
             IMonitoringPointsNumberService mpns,
-            IMonitoringPointsPositionService mpps
+            IMonitoringPointsPositionService mpps,
+           IFileConverter fileConverter
             )
         {
             _mtts = mtts;
             _mpns = mpns;
             _mpps = mpps;
+            _fileConverter = fileConverter;
         }
         public ActionResult DataQuery()
         {
@@ -55,7 +57,6 @@ namespace GxjtBHMS.Web.Controllers
                 return PartialView("DataQuerySearchContentPartial");
             }
             return Content("<span style='color:red'>无记录</span>");
-
         }
         //获取曲线图数据
         public ActionResult GetChartDatas(MornitoringDataSearchBarBaseView conditions)
@@ -165,8 +166,8 @@ namespace GxjtBHMS.Web.Controllers
                 EndTime = conditions.EndTime,
                 PointsPositionId = conditions.MornitoringPointsPositionId
             };
-            var monitoringDatasQueryService = MonitoringDatasOriginalValueDownLoadServiceFactory.GetQueryServiceFrom(conditions.MornitoringTestTypeId);
-            var resp = monitoringDatasQueryService.SaveAsFile(req);
+            var monitoringDatasQueryService = MonitoringDatasOriginalValueDownloadServiceFactory.GetQueryServiceFrom(conditions.MornitoringTestTypeId);
+            var resp = monitoringDatasQueryService.SaveAs(req);
             var guid = "";
             guid = Guid.NewGuid().ToString();
             CacheHelper.SetCache(guid, resp.Datas);
@@ -187,35 +188,31 @@ namespace GxjtBHMS.Web.Controllers
                 PointsPositionId = conditions.MornitoringPointsPositionId
             };
             var monitoringDatasQueryService = MonitoringDatasEigenvalueQueryServiceFactory.GetQueryServiceFrom(conditions.MornitoringTestTypeId);
-            var resp = monitoringDatasQueryService.SaveAsFile(req);
-            var guid = "";
-            guid = Guid.NewGuid().ToString();
+            var resp = monitoringDatasQueryService.SaveAs(req);
+            var guid = Guid.NewGuid().ToString();
             CacheHelper.SetCache(guid, resp.Datas);
             return Json(guid, JsonRequestBehavior.AllowGet);
         }
 
-        public void OriginCode(string guid, int pointsPositionId)
+        public void OriginCode(string guid, int pointsPositionId,string dataType)
         {
             object obj = CacheHelper.GetCache(guid);
-            NPOI.HSSF.UserModel.HSSFWorkbook book = obj as NPOI.HSSF.UserModel.HSSFWorkbook;
-            if (book != null)
+            if (obj == null)
             {
-                string preFileName = GetDownloadPreFileNameByTestTypeId(pointsPositionId);
-                // 写入到客户端  
-                MemoryStream ms = new MemoryStream();
-                book.Write(ms);
-                Response.AddHeader("Content-Disposition", string.Format("attachment; filename={0}.xls", preFileName));
-                Response.BinaryWrite(ms.ToArray());
-                book = null;
-                ms.Close();
-                ms.Dispose();
+                throw new ApplicationException("guid invalid");
             }
+            var ms = _fileConverter.GetStream(obj);
+            string preFileName = GetDownloadPreFileNameByTestTypeId(pointsPositionId,dataType);
+            Response.AddHeader("Content-Disposition", string.Format("attachment; filename={0}.xls", preFileName));
+            Response.BinaryWrite(ms.ToArray());
+            ms.Close();
+            ms.Dispose();
             CacheHelper.RemoveAllCache(guid);
         }
 
-        string GetDownloadPreFileNameByTestTypeId(int pointsPositionId)
+        string GetDownloadPreFileNameByTestTypeId(int pointsPositionId, string dataType)
         {
-            return _mpps.GetMixedNameWithTestTypeNameAndPointPositionNameAndCurrentDateTimeByPositionId(pointsPositionId);
+            return  _mpps.CreateDownloadFileMixedName(pointsPositionId,dataType) ;
         }
     }
 }
