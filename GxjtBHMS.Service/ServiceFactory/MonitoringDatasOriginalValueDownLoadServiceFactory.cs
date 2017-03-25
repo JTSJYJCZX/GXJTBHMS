@@ -1,31 +1,33 @@
 ﻿using GxjtBHMS.Service.Implementations;
 using GxjtBHMS.Service.Implementations.OriginalValueDownLoad;
 using System;
+using GxjtBHMS.Models;
+using GxjtBHMS.Models.MonitoringDatasTable;
 
 namespace GxjtBHMS.Service
 {
     public class MonitoringDatasOriginalValueDownloadServiceFactory
     {
-        public static MonitoringDatasOriValueServiceBase GetQueryServiceFrom(int mornitoringTestTypeId)
+        public static dynamic GetQueryServiceFrom(int mornitoringTestTypeId)
         {
             switch (mornitoringTestTypeId)
             {
                 case 1:
-                    return new SteelArchStrainDatasOriginalValueDownloadService();
+                    return new MonitorDatasOringinalValueDownloadServiceBase<SteelArchStrainTable>();
                 case 2:
-                    return new SteelLatticeStrainDatasOriginalValueDownloadService();
+                    return new MonitorDatasOringinalValueDownloadServiceBase<SteelLatticeStrainTable>();
                 case 3:
-                    return new ConcreteStrainDatasOriginalValueDownloadService();
+                    return new MonitorDatasOringinalValueDownloadServiceBase<ConcreteStrainTable>();
                 case 4:
-                    return new DisplacementDatasOriginalValueDownloadService();
+                    return new MonitorDatasOringinalValueDownloadServiceBase<DisplacementTable>();
                 case 5:
-                    return new CableForceDatasOriginalValueDownloadService();
+                    return new MonitorDatasOringinalValueDownloadServiceBase<CableForceTable>();
                 case 6:
-                    return new HumidityDatasOriginalValueDownloadService();
+                    return new MonitorDatasOringinalValueDownloadServiceBase<HumidityTable>();
                 case 7:
-                    return new TemperatureDatasOriginalValueDownloadService();
+                    return new MonitorDatasOringinalValueDownloadServiceBase<TemperatureTable>();
                 case 8:
-                    return new WindLoadDatasOriginalValueDownloadService();
+                    return new MonitorDatasOringinalValueDownloadServiceBase<WindLoadTable>();
                 default:
                     throw new ApplicationException("No TestTypeId");
             }
