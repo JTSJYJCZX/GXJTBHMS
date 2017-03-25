@@ -18,7 +18,7 @@ namespace GxjtBHMS.Service.Implementations
             try
             {
                 var source = QueryThresholdValueListByPointsPosition(req);
-                var result = new List<ThresholdValueIncludeNegativeModel>();          
+                var result = new List<ThresholdValueIncludeNegativeModel>();
                 foreach (var item in source)
                 {
                     var resultItem = new ThresholdValueIncludeNegativeModel();
@@ -53,17 +53,12 @@ namespace GxjtBHMS.Service.Implementations
             var resp = new ThresholdValueResponse();
             try
             {
-                var source = ModifyThresholdValueByPointsNumberId(req);
-                foreach (var item in source)
-                {
-                    item.PositiveFirstLevelThresholdValue = req.PositiveFirstLevelThresholdValue;
-                    item.PositiveSecondLevelThresholdValue = req.PositiveSecondLevelThresholdValue;
-                    item.NegativeFirstLevelThresholdValue = req.NegativeFirstLevelThresholdValue;
-                    item.NegativeSecondLevelThresholdValue = req.NegativeSecondLevelThresholdValue;
-                }
-                var thresholdValue = source.First();
-                SaveThresholdValueByPointsNumberId(thresholdValue);
-                
+                var thresholdValues = ModifyThresholdValueByPointsNumberId(req);
+                thresholdValues.PositiveFirstLevelThresholdValue = req.PositiveFirstLevelThresholdValue;
+                thresholdValues.PositiveSecondLevelThresholdValue = req.PositiveSecondLevelThresholdValue;
+                thresholdValues.NegativeFirstLevelThresholdValue = req.NegativeFirstLevelThresholdValue;
+                thresholdValues.NegativeSecondLevelThresholdValue = req.NegativeSecondLevelThresholdValue;
+                SaveThresholdValueByPointsNumberId(thresholdValues);
                 resp.Message = "保存成功！";
                 resp.Succeed = true;
             }

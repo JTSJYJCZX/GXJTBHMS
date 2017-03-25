@@ -28,11 +28,11 @@ namespace GxjtBHMS.Service
             return _thresholdValueSettingDAL.FindBy(ps, PointsNumber_NavigationProperty);
         }
 
-        public IEnumerable<T> ModifyThresholdValueByPointsNumberId(ThresholdValueSettingRequest req)
+        public T ModifyThresholdValueByPointsNumberId(ThresholdValueSettingRequest req)
         {
             IList<Func<T, bool>> ps = new List<Func<T, bool>>();
             DealWithContainsPointsNumber(req, ps);
-            return _thresholdValueSettingDAL.FindBy(ps, PointsNumber_NavigationProperty);
+            return _thresholdValueSettingDAL.FindBy(ps, PointsNumber_NavigationProperty).SingleOrDefault();
         }
 
         public void SaveThresholdValueByPointsNumberId(T ThresholdValue)
