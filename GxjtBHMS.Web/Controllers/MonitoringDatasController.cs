@@ -18,7 +18,7 @@ namespace GxjtBHMS.Web.Controllers
     {
         IMonitoringTestTypeService _mtts;
         IMonitoringPointsNumberService _mpns;
-        IMonitoringPointsPositionService _mpps;
+        readonly IMonitoringPointsPositionService _mpps;
         IFileConverter _fileConverter;
         public MonitoringDatasController
             (IMonitoringTestTypeService mtts,
@@ -91,7 +91,7 @@ namespace GxjtBHMS.Web.Controllers
         {
             firstTestTypeId = 1;
             var resp = _mtts.GetAllTestType();
-            if (resp.Datas.Count() > 0)
+            if (resp.Datas.Any())
             {
                 firstTestTypeId = Convert.ToInt32(resp.Datas.First().Id);
             }
@@ -104,7 +104,7 @@ namespace GxjtBHMS.Web.Controllers
         {
             var resp = _mpps.GetMonitoringPointsPositionsByTestTypeId(mornitoringTestTypeId);
             mornitoringPointsPositionId = 0;
-            if (resp.Datas.Count() > 0)
+            if (resp.Datas.Any())
             {
                 mornitoringPointsPositionId = Convert.ToInt32(resp.Datas.First().Id);
             }
