@@ -2,7 +2,7 @@
 
 namespace GxjtBHMS.Models.ThresholdValueSetting
 {
-    public  class TemperatureThresholdValueTable : ContainNegativeThresholdValueBase
+    public  class SteelArchStrainThresholdValueTable : ContainNegativeThresholdValueBase
     {
         
     }

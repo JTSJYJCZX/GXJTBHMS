@@ -1,6 +1,9 @@
-﻿namespace GxjtBHMS.Models.ThresholdValueSetting
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace GxjtBHMS.Models.ThresholdValueSetting
 {
-    public class HumidityThresholdValueTable : ThresholdValueBase
+    public  class HumidityThresholdValueTable : WithoutNegativeThresholdValueBase
     {
+        
     }
 }

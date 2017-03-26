@@ -53,24 +53,51 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
             };
             var thresholdValueSettingService = ThresholdValueSettingServiceFactory.GetThresholdValueServiceFrom(conditions.MornitoringTestTypeId);
             var resp = thresholdValueSettingService.GetThresholdValueListByPointsPosition(req);
-            IEnumerable<ThresholdValueView> models = new List<ThresholdValueView>();
+            var models = new List<ThresholdValueView>();
             var resultView = new ThresholdValueSettingView();
-            if (resp.Succeed)
+            if (resp.IsContainNegative)
             {
-                resultView.ThresholdValues = resp.ThresholdValuesIncludeNegative.Select(m => new ThresholdValueView
+                if (resp.Succeed)
                 {
-                    TestTypeId=conditions.MornitoringTestTypeId,
-                    PointsNumber = m.PointsNumberName,
-                    PointsNumberId = m.PointsNumberId,
-                    PositiveFirstLevelThresholdValue = m.PositiveFirstLevelThresholdValue,
-                    PositiveSecondLevelThresholdValue = m.PositiveSecondLevelThresholdValue,
-                    NegativeFirstLevelThresholdValue = m.NegativeFirstLevelThresholdValue,
-                    NegativeSecondLevelThresholdValue = m.NegativeSecondLevelThresholdValue,
-                });
+                    foreach (var item in resp.ThresholdValueContainNegative)
+                    {
+                        var resultItem = new ThresholdValueView();
+                        resultItem.TestTypeId = conditions.MornitoringTestTypeId;
+                        resultItem.PointsNumber = item.PointsNumberName;
+                        resultItem.PointsNumberId = item.PointsNumberId;
+                        resultItem.PositiveFirstLevelThresholdValue = item.PositiveFirstLevelThresholdValue;
+                        resultItem.PositiveSecondLevelThresholdValue = item.PositiveSecondLevelThresholdValue;
+                        resultItem.NegativeFirstLevelThresholdValue = item.NegativeFirstLevelThresholdValue;
+                        resultItem.NegativeSecondLevelThresholdValue = item.NegativeSecondLevelThresholdValue;
+                        models.Add(resultItem);
+                    }
+                    resultView.ThresholdValues = models;
+                }
+                else
+                {
+                    return Json(new { color = StyleConstants.RedColor, message = resp.Message }, JsonRequestBehavior.AllowGet);
+                }
             }
-            else
+           else
             {
-                return Json(new { color = StyleConstants.RedColor, message = resp.Message }, JsonRequestBehavior.AllowGet);
+                if (resp.Succeed)
+                {
+                    foreach (var item in resp.ThresholdValuesWithoutNegative)
+                    {
+                        var resultItem = new ThresholdValueView();
+                        resultItem.TestTypeId = conditions.MornitoringTestTypeId;
+                        resultItem.PointsNumber = item.PointsNumberName;
+                        resultItem.PointsNumberId = item.PointsNumberId;
+                        resultItem.PositiveFirstLevelThresholdValue = item.PositiveFirstLevelThresholdValue;
+                        resultItem.PositiveSecondLevelThresholdValue = item.PositiveSecondLevelThresholdValue;
+                        models.Add(resultItem);
+                    }
+                    resultView.ThresholdValues = models;
+                }
+                else
+                {
+                    return Json(new { color = StyleConstants.RedColor, message = resp.Message }, JsonRequestBehavior.AllowGet);
+                }
             }
             return PartialView("ThresholdValueSettingListPartial",resultView);
         }

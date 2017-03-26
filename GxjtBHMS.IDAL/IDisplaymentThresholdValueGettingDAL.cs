@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace GxjtBHMS.IDAL
 {
-    public interface IDisplaymentThresholdValueGettingDAL : IReadOnlyRepository<DisplaymentThresholdValueTable, int>, IRepository<DisplaymentThresholdValueTable>
+    public interface IDisplaymentThresholdValueGettingDAL : IReadOnlyRepository<DisplacementThresholdValueTable, int>, IRepository<DisplacementThresholdValueTable>
     {
-        IEnumerable<DisplaymentThresholdValueTable> GetDisplaymentThresholdValue(int pointPositionId);
+        IEnumerable<DisplacementThresholdValueTable> GetDisplaymentThresholdValue(int pointPositionId);
     }
 }

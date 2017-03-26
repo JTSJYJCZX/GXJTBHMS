@@ -8,8 +8,8 @@ namespace GxjtBHMS.Service.Interfaces
 {
     public interface IThresholdValueSettingService
     {
-        ThresholdValueResponse GetThresholdValueBy(PointsNumberSearchRequest req);
-        ThresholdValueResponse ModifyStrainThresholdValue(ThresholdValueSettingRequest model);
+        ThresholdValueIncludeNegativeResponse GetThresholdValueBy(PointsNumberSearchRequest req);
+        ThresholdValueIncludeNegativeResponse ModifyStrainThresholdValue(ThresholdValueSettingRequest model);
         PagedResponse GetPaginatorDatas(PointsNumberSearchRequest req);
     }
 }

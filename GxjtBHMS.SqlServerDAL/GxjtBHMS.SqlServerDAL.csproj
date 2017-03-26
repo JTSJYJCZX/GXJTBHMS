@@ -94,7 +94,14 @@
     <Compile Include="ThresholdValueDatasDAL\DisplaymentThresholdValueGettingDAL.cs" />
     <Compile Include="ThresholdValueDatasDAL\HumidityThresholdValueGettingDAL.cs" />
     <Compile Include="ThresholdValueDatasDAL\TemperatureThresholdValueGettingDAL.cs" />
-    <Compile Include="ThresholdValueDatasDAL\ConcreteStrainThresholdValueSettingDAL.cs" />
+    <Compile Include="ThresholdValueDatasSettingDAL\SteelLatticeStrainThresholdValueSettingDAL.cs" />
+    <Compile Include="ThresholdValueDatasSettingDAL\DisplacementThresholdValueSettingDAL.cs" />
+    <Compile Include="ThresholdValueDatasSettingDAL\CableForceThresholdValueSettingDAL.cs" />
+    <Compile Include="ThresholdValueDatasSettingDAL\HumidityThresholdValueSettingDAL.cs" />
+    <Compile Include="ThresholdValueDatasSettingDAL\TemperatureThresholdValueSettingDAL.cs" />
+    <Compile Include="ThresholdValueDatasSettingDAL\WindLoadThresholdValueSettingDAL.cs" />
+    <Compile Include="ThresholdValueDatasSettingDAL\SteelArchStrainThresholdValueSettingDAL.cs" />
+    <Compile Include="ThresholdValueDatasSettingDAL\ConcreteStrainThresholdValueSettingDAL.cs" />
     <Compile Include="ThresholdValueDatasDAL\StrainThresholdValueGettingDAL.cs" />
     <Compile Include="UserDALImpl.cs" />
   </ItemGroup>

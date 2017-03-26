@@ -7,7 +7,7 @@ namespace GxjtBHMS.Models.ThresholdValueSetting
     /// <summary>
     /// 阈值基类
     /// </summary>
-    public class ThresholdValueBase :ThresholdValueConditionBase
+    public class WithoutNegativeThresholdValueBase :ThresholdValueConditionBase
     {
         /// <summary>
         /// 正的一二级阈值

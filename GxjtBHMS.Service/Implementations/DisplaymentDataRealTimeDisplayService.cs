@@ -48,7 +48,7 @@ namespace GxjtBHMS.Service.Implementations
             return resultOfAllSection;
         }
 
-        private IEnumerable<RealTimeWarningDataModel> GetResultsOfOneSection(DisplaymentThresholdValueTable[] thresholdValue, RealTimeDisplaymentModel[] source)
+        private IEnumerable<RealTimeWarningDataModel> GetResultsOfOneSection(DisplacementThresholdValueTable[] thresholdValue, RealTimeDisplaymentModel[] source)
         {
             List<RealTimeWarningDataModel> sectionModel = new List<RealTimeWarningDataModel>();
             //for (int i = 0; i < source.Length; i++)

@@ -1,6 +1,9 @@
-﻿namespace GxjtBHMS.Models.ThresholdValueSetting
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace GxjtBHMS.Models.ThresholdValueSetting
 {
-    public class CableForceThresholdValueTable:ThresholdValueBase
+    public  class CableForceThresholdValueTable : WithoutNegativeThresholdValueBase
     {
+        
     }
 }

@@ -85,7 +85,6 @@
     <Compile Include="AutoMapper\Configuration.cs" />
     <Compile Include="Implementations\EigenvalueChartQueryService\MonitorDatasQueryChartService.cs" />
     <Compile Include="Implementations\EigenvalueDownLoadService\MonitorDatasEigenValueQueryFileSystemService.cs" />
-    <Compile Include="Implementations\ThresholdValueService\ConcreteStrainThresholdValueSettingService.cs" />
     <Compile Include="Implementations\ExcelFileConverter.cs" />
     <Compile Include="Implementations\OriginalValueFileSystemService\CableForceMonitorDatasOriginalValueDownloadFileSystemService.cs" />
     <Compile Include="Implementations\OriginalValueFileSystemService\DisplacementMonitorDatasOriginalValueDownloadFileSystemService.cs" />
@@ -96,10 +95,12 @@
     <Compile Include="Implementations\OriginalValueDownloadServiceBase\MonitorDatasOringinalValueDownloadServiceBase.cs" />
     <Compile Include="Implementations\OriginalValueFileSystemService\ConcreteStrainMonitorDatasOriginalValueDownloadFileSystemService.cs" />
     <Compile Include="Implementations\OriginalValueFileSystemService\WindLoadDatasOriginalValueDownloadFileSystemService.cs" />
+    <Compile Include="Implementations\ThresholdValueService\WithoutNegativeThresholdValueSettingServiceBase.cs" />
     <Compile Include="Interfaces\IFileConverter.cs" />
     <Compile Include="Messaging\ThresholdValueSetting\GetThresholdValueByPointsPositionSearchRequest.cs" />
     <Compile Include="Messaging\ThresholdValueSetting\ThresholdValueIncludeNegativeModel.cs" />
     <Compile Include="Messaging\ThresholdValueSetting\ThresholdValueModel.cs" />
+    <Compile Include="Messaging\ThresholdValueSetting\ThresholdValueResponse.cs" />
     <Compile Include="ServiceFactory\MonitoringDatasOriginalValueDownLoadServiceFactory.cs" />
     <Compile Include="ExtensionMethods\AdminUser\UserServiceExtension.cs" />
     <Compile Include="ExtensionMethods\GetEnumDescription\EnumUnit.cs" />
@@ -154,7 +155,7 @@
     <Compile Include="Messaging\PagedResponse.cs" />
     <Compile Include="Messaging\ResponseBase.cs" />
     <Compile Include="Messaging\ThresholdValueSetting\PointsNumberSearchRequest.cs" />
-    <Compile Include="Messaging\ThresholdValueSetting\ThresholdValueResponse.cs" />
+    <Compile Include="Messaging\ThresholdValueSetting\ThresholdValueIncludeNegativeResponse.cs" />
     <Compile Include="Messaging\ThresholdValueSetting\StrainThresholdValueSettingRequest.cs" />
     <Compile Include="Messaging\User\GetUsersResponse.cs" />
     <Compile Include="Messaging\User\LoginRequest.cs" />
@@ -174,8 +175,7 @@
     <Compile Include="ServiceBase.cs" />
     <Compile Include="ServiceConstant.cs" />
     <Compile Include="ServiceFactory\ThresholdValueSettingServiceFactory.cs" />
-    <Compile Include="ThresholdValueSettingServiceAbstractBase.cs" />
-    <Compile Include="ThresholdValueSettingServiceBase.cs" />
+    <Compile Include="Implementations\ThresholdValueService\ContainNegativeThresholdValueSettingServiceBase.cs" />
     <Compile Include="ViewModels\DataQueryResult\CableForceDatasModel.cs" />
     <Compile Include="ViewModels\DataQueryResult\TemperatureDatasMode.cs" />
     <Compile Include="ViewModels\DataQueryResult\ResultStatisticsModel.cs" />

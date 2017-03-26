@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace GxjtBHMS.Service.Messaging
 {
-    public class ThresholdValueResponse :PagedResponse
+    public class ThresholdValueIncludeNegativeResponse :PagedResponse
     {
-        public IEnumerable<ThresholdValueModel> ThresholdValuesWithoutNegative { get; set; }
+        public IEnumerable<ThresholdValueContainNegativeModel> ThresholdValueContainNegative { get; set; }
         public bool IsContainNegative { get; set; }
     }
 }
