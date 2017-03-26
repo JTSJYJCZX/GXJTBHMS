@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL
 {
-    public class WindLoadDatasEigenvalueDAL : Repository<WindLoadEigenvalueTable, int>, IWindLoadDatasEigenValueDAL
+    public class WindLoadDatasEigenvalueDAL : Repository<WindLoadEigenvalueTable, int>,IMonitoringDatasEigenvalueDAL<WindLoadEigenvalueTable>
     {
         public override IEnumerable<WindLoadEigenvalueTable> FindBy(IList<Func<WindLoadEigenvalueTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
         {

@@ -8,7 +8,7 @@ using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
 
 namespace GxjtBHMS.SqlServerDAL
 {
-    public class DisplaymentDatasEigenValueDAL : Repository<DisplacementEigenvalueTable, int>,IDisplaymentDatasEigenValueDAL 
+    public class DisplaymentDatasEigenValueDAL : Repository<DisplacementEigenvalueTable, int>,IMonitoringDatasEigenvalueDAL<DisplacementEigenvalueTable>
     {
         public override IEnumerable<DisplacementEigenvalueTable> FindBy(IList<Func<DisplacementEigenvalueTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
         {

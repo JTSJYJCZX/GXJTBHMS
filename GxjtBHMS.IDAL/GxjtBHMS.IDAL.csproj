@@ -44,19 +44,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICableForceDatasEigenvalueDAL.cs" />
+    <Compile Include="IMonitoringDatasEigenvalueDAL.cs" />
     <Compile Include="ICableForceThresholdValueGettingDAL.cs" />
     <Compile Include="OriginalValueDownLoad\IWindLoadDatasOriginalValueDAL.cs" />
     <Compile Include="OriginalValueDownLoad\IHumidityDatasOriginalValueDAL.cs" />
     <Compile Include="OriginalValueDownLoad\ITemperatureDatasOriginalValueDAL.cs" />
-    <Compile Include="IWindLoadDatasEigenValueDAL.cs" />
-    <Compile Include="IDisplaymentDatasEigenValueDAL.cs" />
-    <Compile Include="IHumidityDatasEigenvalueDAL.cs" />
     <Compile Include="IHumidityThresholdValueGettingDAL.cs" />
     <Compile Include="IRealTimeHumidityDatasDAL.cs" />
-    <Compile Include="ISteelArchStrainDatasEigenValueDAL.cs" />
-    <Compile Include="ISteelLatticeStrainDatasEigenValueDAL.cs" />
-    <Compile Include="ITemperatureDatasEigenvalueDAL.cs" />
     <Compile Include="IThresholdValueDAL.cs" />
     <Compile Include="IDisplaymentThresholdValueGettingDAL.cs" />
     <Compile Include="IRealTimeCableForceDatasDAL.cs" />
@@ -67,7 +61,6 @@
     <Compile Include="IMonitoringPointsNumberDAL.cs" />
     <Compile Include="IMonitoringPointsPositionDAL.cs" />
     <Compile Include="IMonitoringTestTypeDAL.cs" />
-    <Compile Include="IConcreteStrainDatasEigenValueDAL.cs" />
     <Compile Include="ITemperatureThresholdValueGettingDAL.cs" />
     <Compile Include="ThresholdValueSetting\IThresholdValueSettingDAL.cs" />
     <Compile Include="IUser.cs" />

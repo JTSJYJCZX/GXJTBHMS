@@ -11,17 +11,17 @@ using GxjtBHMS.Service.Interfaces.MonitoringDatasQueryServiceInerfaces;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    public class CableForceMonitorDatasQueryChartService : IMonitorDatasEigenvalueQueryChartService<CableForceEigenValueTable>
+    public class MonitorDatasQueryChartService<T> : IMonitorDatasEigenvalueQueryChartService<T> where T: MonitoringDatasEigenvalueModel
     {
-        readonly ICableForceDatasEigenvalueDAL  _cableForceDatasDAL;
-        public CableForceMonitorDatasQueryChartService(ICableForceDatasEigenvalueDAL   cableForceDatasDAL)
+        readonly IMonitoringDatasEigenvalueDAL<T> _monitoringDatasDAL;
+        public MonitorDatasQueryChartService(IMonitoringDatasEigenvalueDAL<T> monitoringDatasDAL)
         {
-            _cableForceDatasDAL = cableForceDatasDAL;
+            _monitoringDatasDAL = monitoringDatasDAL;
         }
 
-        public IEnumerable<ChartGroupDataModel> GetChartDataSourceBy(IList<Func<CableForceEigenValueTable, bool>> ps)
+        public IEnumerable<ChartGroupDataModel> GetChartDataSourceBy(IList<Func<T, bool>> ps)
         {
-            var source = _cableForceDatasDAL.FindBy(ps, ServiceConstant.PointsNumberPointsPositionNavigationProperty);
+            var source = _monitoringDatasDAL.FindBy(ps, ServiceConstant.PointsNumberPointsPositionNavigationProperty);
             var groupDatas = source.GroupBy(m => m.PointsNumber.Name);
             var datas = new List<ChartGroupDataModel>();
             foreach (var group in groupDatas)
@@ -33,9 +33,9 @@ namespace GxjtBHMS.Service.Implementations
             return datas;
         }
 
-        public long GetTotalResultCountBy(IList<Func<CableForceEigenValueTable, bool>> ps)
+        public long GetTotalResultCountBy(IList<Func<T, bool>> ps)
         {
-            return _cableForceDatasDAL.GetCountByContains(ps, ServiceConstant.PointsNumberPointsPositionNavigationProperty);
+            return _monitoringDatasDAL.GetCountByContains(ps, ServiceConstant.PointsNumberPointsPositionNavigationProperty);
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL
 {
-    public class SteelLatticeStrainDatasEigenvalueDAL : Repository<SteelLatticeStrainEigenvalueTable, int>, ISteelLatticeStrainDatasEigenValueDAL
+    public class SteelLatticeStrainDatasEigenvalueDAL : Repository<SteelLatticeStrainEigenvalueTable, int>, IMonitoringDatasEigenvalueDAL<SteelLatticeStrainEigenvalueTable>
     {
         public override IEnumerable<SteelLatticeStrainEigenvalueTable> FindBy(IList<Func<SteelLatticeStrainEigenvalueTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
         {

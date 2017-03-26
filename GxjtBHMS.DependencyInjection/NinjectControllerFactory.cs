@@ -46,7 +46,6 @@ namespace GxjtBHMS.DependencyInjection
             _ninjectKernel.Bind<IMonitoringPointsNumberService>().To<MonitoringPointsNumberService>();
             _ninjectKernel.Bind<IMonitoringPointsNumberDAL>().To<MonitoringPointsNumberDAL>();
 
-            _ninjectKernel.Bind<IConcreteStrainDatasEigenValueDAL>().To<ConcreteStrainDatasEigenvalueDAL>();
 
             _ninjectKernel.Bind<IStrainDataRealTimeDisplayService>().To<StrainDataRealTimeDisplayService>();
             _ninjectKernel.Bind<IRealTimeStrainDatasDAL>().To<RealTimeStrainDatasDAL>();
@@ -61,7 +60,6 @@ namespace GxjtBHMS.DependencyInjection
             _ninjectKernel.Bind<IRealTimeHumidityDatasDAL>().To<RealTimeHumidityDatasDAL>();
 
             _ninjectKernel.Bind<IThresholdValueSettingDAL<ConcreteStrainThresholdValueTable>>().To<ConcreteStrainThresholdValueSettingDAL>();
-            _ninjectKernel.Bind<IConcreteStrainDatasEigenValueDAL>().To<ConcreteStrainDatasEigenvalueDAL>();
             //_ninjectKernel.Bind<IThresholdValueSettingService>().To<ThresholdValueSettingService>();
             _ninjectKernel.Bind<IStrainThresholdValueGettingDAL>().To<StrainThresholdValueGettingDAL>();
             _ninjectKernel.Bind<IDisplaymentThresholdValueGettingDAL>().To<DisplaymentThresholdValueGettingDAL>();

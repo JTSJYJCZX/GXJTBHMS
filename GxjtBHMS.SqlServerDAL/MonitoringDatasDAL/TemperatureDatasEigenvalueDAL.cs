@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL
 {
-    public class TemperatureDatasEigenvalueDAL : Repository<TemperatureEigenvalueTable, int>, ITemperatureDatasEigenvalueDAL
+    public class TemperatureDatasEigenvalueDAL : Repository<TemperatureEigenvalueTable, int>,IMonitoringDatasEigenvalueDAL<TemperatureEigenvalueTable>
     {
         public override IEnumerable<TemperatureEigenvalueTable> FindBy(IList<Func<TemperatureEigenvalueTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
         {

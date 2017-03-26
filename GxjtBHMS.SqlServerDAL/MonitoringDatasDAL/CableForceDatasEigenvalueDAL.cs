@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL
 {
-    public class CableForceDatasEigenvalueDAL : Repository<CableForceEigenValueTable, int>, ICableForceDatasEigenvalueDAL 
+    public class CableForceDatasEigenvalueDAL : Repository<CableForceEigenValueTable, int>,IMonitoringDatasEigenvalueDAL<CableForceEigenValueTable>
     {
         public override IEnumerable<CableForceEigenValueTable> FindBy(IList<Func<CableForceEigenValueTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
         {
