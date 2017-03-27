@@ -8,7 +8,8 @@ namespace GxjtBHMS.Web.ViewModels.ThresholdValueSetting
     {
         public int TestTypeId { get; set; }
         public string PointsNumber { get; set; }
-        public int PointsNumberId { get; set; } 
+        public int PointsNumberId { get; set; }
+        public int PointsPositionId { get; set; }
 
         #region MyRegion
         /// <summary>

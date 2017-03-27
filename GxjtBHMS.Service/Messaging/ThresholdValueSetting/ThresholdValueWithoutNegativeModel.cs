@@ -6,5 +6,6 @@
         public int PointsNumberId { get; set; }
         public double? PositiveFirstLevelThresholdValue { get; set; }
         public double? PositiveSecondLevelThresholdValue { get; set; }
+        public bool IsContainNegative { get; set; }
     }
 }

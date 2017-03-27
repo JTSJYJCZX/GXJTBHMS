@@ -94,6 +94,8 @@
     <Compile Include="ThresholdValueDatasDAL\DisplaymentThresholdValueGettingDAL.cs" />
     <Compile Include="ThresholdValueDatasDAL\HumidityThresholdValueGettingDAL.cs" />
     <Compile Include="ThresholdValueDatasDAL\TemperatureThresholdValueGettingDAL.cs" />
+    <Compile Include="ThresholdValueDatasSettingDAL\MonitoringPointsPositionThresholdValueSettingDAL.cs" />
+    <Compile Include="ThresholdValueDatasSettingDAL\MonitoringPointsNumberThresholdValueSettingDAL.cs" />
     <Compile Include="ThresholdValueDatasSettingDAL\SteelLatticeStrainThresholdValueSettingDAL.cs" />
     <Compile Include="ThresholdValueDatasSettingDAL\DisplacementThresholdValueSettingDAL.cs" />
     <Compile Include="ThresholdValueDatasSettingDAL\CableForceThresholdValueSettingDAL.cs" />

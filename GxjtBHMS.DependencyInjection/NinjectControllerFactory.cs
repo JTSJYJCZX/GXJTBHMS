@@ -67,15 +67,12 @@ namespace GxjtBHMS.DependencyInjection
             _ninjectKernel.Bind<ITemperatureThresholdValueGettingDAL>().To<TemperatureThresholdValueGettingDAL>();
             _ninjectKernel.Bind<IHumidityThresholdValueGettingDAL>().To<HumidityThresholdValueGettingDAL>();
 
-            _ninjectKernel.Bind<IThresholdValueSettingDAL<WindLoadThresholdValueTable>>().To<WindLoadThresholdValueSettingDAL>();
-            _ninjectKernel.Bind<IThresholdValueSettingDAL<SteelArchStrainThresholdValueTable>>().To<SteelArchStrainThresholdValueSettingDAL>();            _ninjectKernel.Bind<IThresholdValueSettingDAL<SteelLatticeStrainThresholdValueTable>>().To<SteelLatticeStrainThresholdValueSettingDAL>();
-            _ninjectKernel.Bind<IThresholdValueSettingDAL<ConcreteStrainThresholdValueTable>>().To<ConcreteStrainThresholdValueSettingDAL>();
-            _ninjectKernel.Bind<IThresholdValueSettingDAL<DisplacementThresholdValueTable>>().To<DisplacementThresholdValueSettingDAL>();
-            _ninjectKernel.Bind<IThresholdValueSettingDAL<CableForceThresholdValueTable>>().To<CableForceThresholdValueSettingDAL>();
-            _ninjectKernel.Bind<IThresholdValueSettingDAL<HumidityThresholdValueTable>>().To<HumidityThresholdValueSettingDAL>();
-            _ninjectKernel.Bind<IThresholdValueSettingDAL<TemperatureThresholdValueTable>>().To<TemperatureThresholdValueSettingDAL>();
 
             _ninjectKernel.Bind<IFileConverter>().To<ExcelFileConverter>();
+
+
+
+
 
             
         }

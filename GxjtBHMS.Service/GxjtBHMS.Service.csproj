@@ -95,9 +95,14 @@
     <Compile Include="Implementations\OriginalValueDownloadServiceBase\MonitorDatasOringinalValueDownloadServiceBase.cs" />
     <Compile Include="Implementations\OriginalValueFileSystemService\ConcreteStrainMonitorDatasOriginalValueDownloadFileSystemService.cs" />
     <Compile Include="Implementations\OriginalValueFileSystemService\WindLoadDatasOriginalValueDownloadFileSystemService.cs" />
+    <Compile Include="Implementations\ThresholdValueService\GetThresholdValueSettingListBySearchBarService.cs" />
     <Compile Include="Implementations\ThresholdValueService\WithoutNegativeThresholdValueSettingServiceBase.cs" />
     <Compile Include="Interfaces\IFileConverter.cs" />
+    <Compile Include="Messaging\ThresholdValueSetting\GetThresholdValueByPointsNumberSearchBarRequest.cs" />
     <Compile Include="Messaging\ThresholdValueSetting\GetThresholdValueByPointsPositionSearchRequest.cs" />
+    <Compile Include="Messaging\ThresholdValueSetting\GetPointsPositionByContainPointsNumberResponse.cs" />
+    <Compile Include="Messaging\ThresholdValueSetting\ThresholdValueQueryConditionModel.cs" />
+    <Compile Include="Messaging\ThresholdValueSetting\ThresholdValueModel.cs" />
     <Compile Include="Messaging\ThresholdValueSetting\ThresholdValueContainNegativeModel.cs" />
     <Compile Include="Messaging\ThresholdValueSetting\ThresholdValueWithoutNegativeModel.cs" />
     <Compile Include="Messaging\ThresholdValueSetting\ThresholdValueWithoutNegativeResponse.cs" />

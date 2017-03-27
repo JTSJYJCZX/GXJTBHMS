@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GxjtBHMS.Models
 {
-    public abstract class EntityBase<TId>
+    public abstract class EntityBase<TId> 
     {
 
         IList<string> _brokenRules = new List<string>();

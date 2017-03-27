@@ -1,6 +1,7 @@
 ﻿@model GxjtBHMS.Web.ViewModels.ThresholdValueSetting.QueryPointsNumberConditonView
 <div>
-    <span>测点编号：</span> <span>@Html.TextBoxFor(m =>m.ContainsPointsNumber)</span>    
-    <input type="button" id="btnQuery" value="查询" class="control-label" />
+    <label class="control-label"> 测点编号：</label>
+    @Html.TextBoxFor(m =>m.ContainsPointsNumber)    
+    <input type="button" id="btnQuery" value="查询" class="btn btn-default col-md-offset-1"  />
 </div>
-<div id="uniformSetting"></div>
+@*<div id="uniformSetting"></div>*@

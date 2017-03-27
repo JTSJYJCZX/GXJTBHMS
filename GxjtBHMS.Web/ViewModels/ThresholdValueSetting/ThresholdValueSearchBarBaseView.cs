@@ -6,6 +6,7 @@ namespace GxjtBHMS.Web.ViewModels.ThresholdValueSetting
     {
         public int MornitoringTestTypeId { get; set; }
         public int MornitoringPointsPositionId { get; set; }
+        public string MornitoringPointsNumber { get; set; }
         public int[] MornitoringPointsNumberIds { get; set; }
     }
 }
