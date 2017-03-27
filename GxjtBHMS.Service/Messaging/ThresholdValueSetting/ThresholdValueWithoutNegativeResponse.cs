@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GxjtBHMS.Service.Messaging
 {
-    public class ThresholdValueResponse :PagedResponse
+    public class ThresholdValueWithoutNegativeResponse :PagedResponse
     {
         public IEnumerable<ThresholdValueWithoutNegativeModel> ThresholdValuesWithoutNegative { get; set; }
         public bool IsContainNegative { get; set; }

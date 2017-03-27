@@ -6,7 +6,6 @@ using System.Linq;
 using GxjtBHMS.Service.Messaging.ThresholdValueSetting;
 using GxjtBHMS.Web.Models;
 using GxjtBHMS.Service.Messaging;
-using GxjtBHMS.Web.ViewModels;
 using GxjtBHMS.Web.Models.Attributes;
 using System;
 using GxjtBHMS.Web.ExtensionMehtods.MonitoringDatas;
@@ -69,6 +68,7 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
                         resultItem.PositiveSecondLevelThresholdValue = item.PositiveSecondLevelThresholdValue;
                         resultItem.NegativeFirstLevelThresholdValue = item.NegativeFirstLevelThresholdValue;
                         resultItem.NegativeSecondLevelThresholdValue = item.NegativeSecondLevelThresholdValue;
+                        resultItem.IsContainNegative = true;
                         models.Add(resultItem);
                     }
                     resultView.ThresholdValues = models;
@@ -83,6 +83,7 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
                         resultItem.PointsNumberId = item.PointsNumberId;
                         resultItem.PositiveFirstLevelThresholdValue = item.PositiveFirstLevelThresholdValue;
                         resultItem.PositiveSecondLevelThresholdValue = item.PositiveSecondLevelThresholdValue;
+                        resultItem.IsContainNegative = false;
                         models.Add(resultItem);
                     }
                     resultView.ThresholdValues = models;

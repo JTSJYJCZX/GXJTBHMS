@@ -13,11 +13,19 @@
                 <td>一键清除</td>
             </tr>
         </thead>
+
         @foreach (var item in Model.ThresholdValues)
         {
-            @Html.Partial("StrainThresholdValuePartial", item)
+            var isContainNagetive = item.IsContainNegative;
+            if (isContainNagetive)
+            {
+                @Html.Partial("StrainThresholdValuePartial", item);
+            }
+            else
+            {
+                @Html.Partial("StrainThresholdValueWithoutNagetivePartial", item);
+            }
         }
-    </table>   
+    </table>
 </div>
-
 

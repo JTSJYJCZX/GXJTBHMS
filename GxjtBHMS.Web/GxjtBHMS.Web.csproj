@@ -622,6 +622,7 @@
     <Content Include="Views\TemperatureDataRealTimeMonitoring\TemperatureDatasRealTimeMonitoring.cshtml" />
     <Content Include="Views\HumidityDataRealTimeMonitoring\HumidityDatasRealTimeMonitoring.cshtml" />
     <Content Include="Views\ThresholdValueSetting\ThresholdValuePullDownSearchPartial.cshtml" />
+    <Content Include="Views\ThresholdValueSetting\StrainThresholdValueWithoutNagetivePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
