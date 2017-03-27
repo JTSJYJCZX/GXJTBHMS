@@ -55,9 +55,9 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
             var resp = thresholdValueSettingService.GetThresholdValueListByPointsPosition(req);
             var models = new List<ThresholdValueView>();
             var resultView = new ThresholdValueSettingView();
-            if (resp.IsContainNegative)
+            if (resp.Succeed)
             {
-                if (resp.Succeed)
+                if (resp.IsContainNegative)
                 {
                     foreach (var item in resp.ThresholdValueContainNegative)
                     {
@@ -75,13 +75,6 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
                 }
                 else
                 {
-                    return Json(new { color = StyleConstants.RedColor, message = resp.Message }, JsonRequestBehavior.AllowGet);
-                }
-            }
-           else
-            {
-                if (resp.Succeed)
-                {
                     foreach (var item in resp.ThresholdValuesWithoutNegative)
                     {
                         var resultItem = new ThresholdValueView();
@@ -94,10 +87,10 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
                     }
                     resultView.ThresholdValues = models;
                 }
-                else
-                {
-                    return Json(new { color = StyleConstants.RedColor, message = resp.Message }, JsonRequestBehavior.AllowGet);
-                }
+            }
+            else
+            {
+                return Json(new { color = StyleConstants.RedColor, message = resp.Message }, JsonRequestBehavior.AllowGet);
             }
             return PartialView("ThresholdValueSettingListPartial",resultView);
         }

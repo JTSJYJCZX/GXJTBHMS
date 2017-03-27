@@ -1,6 +1,6 @@
 ﻿namespace GxjtBHMS.Service.Messaging.ThresholdValueSetting
 {
-    public class ThresholdValueModel
+    public class ThresholdValueWithoutNegativeModel
     {
         public string PointsNumberName { get; set; }
         public int PointsNumberId { get; set; }

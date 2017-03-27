@@ -27,10 +27,10 @@ namespace GxjtBHMS.Service
             try
             {
                 var source = QueryThresholdValueListByPointsPosition(req);
-                var result = new List<ThresholdValueModel>();
+                var result = new List<ThresholdValueWithoutNegativeModel>();
                 foreach (var item in source)
                 {
-                    var resultItem = new ThresholdValueModel();
+                    var resultItem = new ThresholdValueWithoutNegativeModel();
                     resultItem.PointsNumberId = item.PointsNumberId;
                     resultItem.PointsNumberName = item.PointsNumber.Name;
                     resultItem.PositiveFirstLevelThresholdValue = item.PositiveFirstLevelThresholdValue;
@@ -111,7 +111,7 @@ namespace GxjtBHMS.Service
             }
         }
 
-        protected bool HasNoSearchResult(IEnumerable<ThresholdValueModel> thresholdValues)
+        protected bool HasNoSearchResult(IEnumerable<ThresholdValueWithoutNegativeModel> thresholdValues)
         {
             return thresholdValues.Count() == 0;
         }

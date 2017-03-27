@@ -98,9 +98,9 @@
     <Compile Include="Implementations\ThresholdValueService\WithoutNegativeThresholdValueSettingServiceBase.cs" />
     <Compile Include="Interfaces\IFileConverter.cs" />
     <Compile Include="Messaging\ThresholdValueSetting\GetThresholdValueByPointsPositionSearchRequest.cs" />
-    <Compile Include="Messaging\ThresholdValueSetting\ThresholdValueIncludeNegativeModel.cs" />
-    <Compile Include="Messaging\ThresholdValueSetting\ThresholdValueModel.cs" />
-    <Compile Include="Messaging\ThresholdValueSetting\ThresholdValueResponse.cs" />
+    <Compile Include="Messaging\ThresholdValueSetting\ThresholdValueContainNegativeModel.cs" />
+    <Compile Include="Messaging\ThresholdValueSetting\ThresholdValueWithoutNegativeModel.cs" />
+    <Compile Include="Messaging\ThresholdValueSetting\ThresholdValueWithoutNegativeResponse.cs" />
     <Compile Include="ServiceFactory\MonitoringDatasOriginalValueDownLoadServiceFactory.cs" />
     <Compile Include="ExtensionMethods\AdminUser\UserServiceExtension.cs" />
     <Compile Include="ExtensionMethods\GetEnumDescription\EnumUnit.cs" />
@@ -155,7 +155,7 @@
     <Compile Include="Messaging\PagedResponse.cs" />
     <Compile Include="Messaging\ResponseBase.cs" />
     <Compile Include="Messaging\ThresholdValueSetting\PointsNumberSearchRequest.cs" />
-    <Compile Include="Messaging\ThresholdValueSetting\ThresholdValueIncludeNegativeResponse.cs" />
+    <Compile Include="Messaging\ThresholdValueSetting\ThresholdValueContainNegativeResponse.cs" />
     <Compile Include="Messaging\ThresholdValueSetting\StrainThresholdValueSettingRequest.cs" />
     <Compile Include="Messaging\User\GetUsersResponse.cs" />
     <Compile Include="Messaging\User\LoginRequest.cs" />
