@@ -163,6 +163,7 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
 
                 };
                 var thresholdValueSettingService = ThresholdValueSettingServiceFactory.GetThresholdValueServiceFrom(item.TestTypeId);
+
                 var resultByPointNumber = thresholdValueSettingService.GetThresholdValueListByPointsNumber(req);
 
                 if (resultByPointNumber.IsContainNegative)
@@ -175,6 +176,7 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
                         resultItem.PositiveSecondLevelThresholdValue = resultByPointNumber.PositiveSecondLevelThresholdValue;
                         resultItem.NegativeFirstLevelThresholdValue = resultByPointNumber.NegativeFirstLevelThresholdValue;
                         resultItem.NegativeSecondLevelThresholdValue = resultByPointNumber.NegativeSecondLevelThresholdValue;
+                    resultItem.IsContainNegative = true;
                         models.Add(resultItem);
                     }
                 else
@@ -185,6 +187,7 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
                     resultItem.PointsNumberId = resultByPointNumber.PointsNumberId;
                     resultItem.PositiveFirstLevelThresholdValue = resultByPointNumber.PositiveFirstLevelThresholdValue;
                     resultItem.PositiveSecondLevelThresholdValue = resultByPointNumber.PositiveSecondLevelThresholdValue;
+                    resultItem.IsContainNegative = false;
                     models.Add(resultItem);
                 }
                 resultView.ThresholdValues = models;

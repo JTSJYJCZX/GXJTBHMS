@@ -56,6 +56,27 @@ namespace GxjtBHMS.Service
             return resp;
         }
 
+        public ThresholdValueWithoutNegativeModel GetThresholdValueListByPointsNumber(GetThresholdValueByPointsPositionSearchRequest req)
+        {
+            var result = new ThresholdValueWithoutNegativeModel();
+            try
+            {
+                var source = QueryThresholdValueListByPointsNumber(req);
+                result.PointsNumberId = source.PointsNumberId;
+                result.PointsNumberName = source.PointsNumber.Name;
+                result.PositiveFirstLevelThresholdValue = source.PositiveFirstLevelThresholdValue;
+                result.PositiveSecondLevelThresholdValue = source.PositiveSecondLevelThresholdValue;
+                result.IsContainNegative = false;
+            }
+            catch (Exception ex)
+            {
+                Log(ex);
+            }
+            return result;
+        }
+
+
+
         public ThresholdValueWithoutNegativeResponse ModifyThresholdValue(ThresholdValueSettingRequest req)
         {
             var resp = new ThresholdValueWithoutNegativeResponse();
@@ -75,7 +96,16 @@ namespace GxjtBHMS.Service
             }
             return resp;
         }
-        
+
+
+        T QueryThresholdValueListByPointsNumber(GetThresholdValueByPointsPositionSearchRequest req)
+        {
+            IList<Func<T, bool>> ps = new List<Func<T, bool>>();
+            DealWithEqualPointsNumber(req, ps);
+            return _thresholdValueSettingDAL.FindBy(ps, PointsNumber_NavigationProperty).SingleOrDefault();
+        }
+
+
         public IEnumerable<T> QueryThresholdValueListByPointsPosition(GetThresholdValueByPointsPositionSearchRequest req)
         {
             IList<Func<T, bool>> ps = new List<Func<T, bool>>();
@@ -102,6 +132,16 @@ namespace GxjtBHMS.Service
                 ps.Add(m => m.PointsNumber.PointsPositionId == req.PointsPositionId);
             }
         }
+
+        void DealWithEqualPointsNumber(GetThresholdValueByPointsPositionSearchRequest req, IList<Func<T, bool>> ps)
+        {
+            if (!string.IsNullOrEmpty(req.PointsNumber))
+            {
+                ps.Add(m => m.PointsNumber.Name == req.PointsNumber);
+            }
+        }
+
+
 
         void DealWithContainsPointsNumber(ThresholdValueSettingRequest req, IList<Func<T, bool>> ps)
         {
