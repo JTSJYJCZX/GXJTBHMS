@@ -1,6 +1,5 @@
 ﻿@model GxjtBHMS.Web.ViewModels.ThresholdValueSetting.ThresholdValueView
-
-
+ 
 <tr class="text-center">
     <td>
         <span class="text-center form-control">@Model.PointsNumber</span>
@@ -12,10 +11,10 @@
         @Html.TextBoxFor(m => m.PositiveSecondLevelThresholdValue, new { @class = "text-center form-control" })
     </td>
     <td>
-        @Html.TextBoxFor(m => m.NegativeFirstLevelThresholdValue, new { @id = "NegativeFirst", @class = "text-center form-control"})
+        @Html.TextBoxFor(m => m.NegativeFirstLevelThresholdValue, new { @id = "NegativeFirst", @class = "text-center form-control", @readonly = "readonly" })
     </td>
     <td>
-        @Html.TextBoxFor(m => m.NegativeSecondLevelThresholdValue, new { @id = "NegativeSecond", @class = "text-center form-control"})
+        @Html.TextBoxFor(m => m.NegativeSecondLevelThresholdValue, new { @id = "NegativeSecond", @class = "text-center form-control", @readonly = "readonly" })
     </td>
     <td>
         @Html.HiddenFor(m => m.TestTypeId)
@@ -30,6 +29,17 @@
         <input class="form-control" type="button" onclick="saveThresholdValue(this, '/ThresholdValueSetting/SaveThresholdValue')" operate="remove" value="一键清空" />
     </td>
 </tr>
+
+@*<script>
+    $(function (){
+        var isContainNagetive=@Model.IsContainNegative;
+        if(isContainNagetive){
+            alert("true")
+            $('#NegativeFirst').removeClass("readonly");
+            $('#NegativeSecond').removeClass("readonly");
+        }
+    });
+</script>*@
 
 @Html.AntiForgeryToken()
 

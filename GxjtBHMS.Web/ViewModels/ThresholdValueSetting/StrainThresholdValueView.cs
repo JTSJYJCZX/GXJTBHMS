@@ -10,6 +10,8 @@ namespace GxjtBHMS.Web.ViewModels.ThresholdValueSetting
         public string PointsNumber { get; set; }
         public int PointsNumberId { get; set; } 
 
+        public bool IsContainNegative { get; set; }
+
         #region MyRegion
         /// <summary>
         /// 正标准值

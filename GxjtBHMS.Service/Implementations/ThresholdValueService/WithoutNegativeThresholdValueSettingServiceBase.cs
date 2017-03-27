@@ -21,9 +21,9 @@ namespace GxjtBHMS.Service
                  .GetInstance<IThresholdValueSettingDAL<T>>();
         }
         
-        public ThresholdValueResponse GetThresholdValueListByPointsPosition(GetThresholdValueByPointsPositionSearchRequest req)
+        public ThresholdValueWithoutNegativeResponse GetThresholdValueListByPointsPosition(GetThresholdValueByPointsPositionSearchRequest req)
         {
-            var resp = new ThresholdValueResponse();
+            var resp = new ThresholdValueWithoutNegativeResponse();
             try
             {
                 var source = QueryThresholdValueListByPointsPosition(req);
@@ -56,9 +56,9 @@ namespace GxjtBHMS.Service
             return resp;
         }
 
-        public ThresholdValueResponse ModifyThresholdValue(ThresholdValueSettingRequest req)
+        public ThresholdValueWithoutNegativeResponse ModifyThresholdValue(ThresholdValueSettingRequest req)
         {
-            var resp = new ThresholdValueResponse();
+            var resp = new ThresholdValueWithoutNegativeResponse();
             try
             {
                 var thresholdValues = ModifyThresholdValueByPointsNumberId(req);

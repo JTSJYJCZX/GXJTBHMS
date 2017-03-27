@@ -29,7 +29,6 @@ namespace GxjtBHMS.Service
         }
         void AddBinding()
         {
-            _ninjectKernel.Bind<IThresholdValueSettingDAL<ConcreteStrainThresholdValueTable>>().To<ConcreteStrainThresholdValueSettingDAL>();
 
             //_ninjectKernel.Bind<IConcreteStrainDatasOriginalValueDownloadService>().To<ConcreteStrainDatasOriginalValueDownloadService>();
             _ninjectKernel.Bind<IConcreteStrainDatasOriginalValueDAL>().To<ConcreteStrainDatasOriginalValueDAL>();
@@ -89,8 +88,9 @@ namespace GxjtBHMS.Service
             _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<TemperatureEigenvalueTable>>().To<MonitorDatasEigenValueQueryFileSystemService<TemperatureEigenvalueTable>>();
             _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<WindLoadEigenvalueTable>>().To<MonitorDatasEigenValueQueryFileSystemService<WindLoadEigenvalueTable>>();
 
+            _ninjectKernel.Bind<IThresholdValueSettingDAL<SteelArchStrainThresholdValueTable>>().To<SteelArchStrainThresholdValueSettingDAL>();
+            _ninjectKernel.Bind<IThresholdValueSettingDAL<SteelLatticeStrainThresholdValueTable>>().To<SteelLatticeStrainThresholdValueSettingDAL>();
             _ninjectKernel.Bind<IThresholdValueSettingDAL<WindLoadThresholdValueTable>>().To<WindLoadThresholdValueSettingDAL>();
-            _ninjectKernel.Bind<IThresholdValueSettingDAL<SteelArchStrainThresholdValueTable>>().To<SteelArchStrainThresholdValueSettingDAL>(); _ninjectKernel.Bind<IThresholdValueSettingDAL<SteelLatticeStrainThresholdValueTable>>().To<SteelLatticeStrainThresholdValueSettingDAL>();
             _ninjectKernel.Bind<IThresholdValueSettingDAL<ConcreteStrainThresholdValueTable>>().To<ConcreteStrainThresholdValueSettingDAL>();
             _ninjectKernel.Bind<IThresholdValueSettingDAL<DisplacementThresholdValueTable>>().To<DisplacementThresholdValueSettingDAL>();
             _ninjectKernel.Bind<IThresholdValueSettingDAL<CableForceThresholdValueTable>>().To<CableForceThresholdValueSettingDAL>();
