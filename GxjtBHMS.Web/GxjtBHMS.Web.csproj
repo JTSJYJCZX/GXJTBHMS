@@ -233,6 +233,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AbnormalThresholdValueSetting\AbormalThresholdValueController.cs" />
     <Compile Include="Controllers\AdminUserController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -271,6 +272,8 @@
     <Compile Include="Startup.cs" />
     <Compile Include="RealTimeMonitoringHub\StrainDatasRealTimeMonitoringHub.cs" />
     <Compile Include="Validations\StrainThresholdValuesValidationAttribute.cs" />
+    <Compile Include="ViewModels\AbormalThresholdValue\AbormalThresholdValueSettingView.cs" />
+    <Compile Include="ViewModels\AbormalThresholdValue\AbormalThresholdValueView.cs" />
     <Compile Include="ViewModels\CurrentStainDatas\CurrentStrainDatasView.cs" />
     <Compile Include="ViewModels\CurrentStainDatas\IncudeSectionWaringColor.cs" />
     <Compile Include="ViewModels\CurrentStainDatas\RealTimeWarningStrainDataViewModel.cs" />
@@ -291,7 +294,7 @@
     <Compile Include="ViewModels\Shared\SimplePagedViewModel.cs" />
     <Compile Include="ViewModels\ThresholdValueSetting\ThresholdValueSearchBarBaseView.cs" />
     <Compile Include="ViewModels\ThresholdValueSetting\QueryPointsNumberConditonView.cs" />
-    <Compile Include="ViewModels\ThresholdValueSetting\StrainThresholdValueView.cs" />
+    <Compile Include="ViewModels\ThresholdValueSetting\ThresholdValueView.cs" />
     <Compile Include="ViewModels\ThresholdValueSetting\ThresholdValueSettingView.cs" />
     <Compile Include="ViewModels\User\LoginView.cs" />
     <Compile Include="ViewModels\User\ModifyPasswordView.cs" />
@@ -614,7 +617,7 @@
     <Content Include="Views\MonitoringDatasComparingQuery\DataComparingQuery.cshtml" />
     <Content Include="Views\MonitoringDatas\CableForceDataQueryListViewPartial.cshtml" />
     <Content Include="Views\StrainDataRealTimeMonitoring\StrainDatasRealTimeMonitoring.cshtml" />
-    <Content Include="Views\DisplacementDataRealTimeMonitoring\DisplacementDatasRealTimeMonitoring.cshtml" />
+    <Content Include="Views\ThresholdValueSetting\DisplacementDataRealTimeMonitoring\DisplacementDatasRealTimeMonitoring.cshtml" />
     <Content Include="Views\MonitoringDatas\HumidityDataQueryListViewPartial.cshtml" />
     <Content Include="Views\MonitoringDatas\TemperatureDataQueryListViewPartial.cshtml" />
     <Content Include="Views\MonitoringDatasComparingQuery\DataComparingQuerySearchContentPartial.cshtml" />
@@ -623,9 +626,14 @@
     <Content Include="Views\HumidityDataRealTimeMonitoring\HumidityDatasRealTimeMonitoring.cshtml" />
     <Content Include="Views\ThresholdValueSetting\ThresholdValuePullDownSearchPartial.cshtml" />
     <Content Include="Views\ThresholdValueSetting\StrainThresholdValueWithoutNagetivePartial.cshtml" />
+    <Content Include="Views\AbormalThresholdValue\AbormalThresholdValueSetting.cshtml" />
+    <Content Include="Views\AbormalThresholdValue\AbnomalThresholdValueListPartial.cshtml" />
+    <Content Include="Views\AbormalThresholdValue\AbormalThresholdValuePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\AbormalThreshold\" />
+    <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

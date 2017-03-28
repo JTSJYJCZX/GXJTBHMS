@@ -82,6 +82,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbnomalThresholdValueService\AbnomalThresholdValueSettingService.cs" />
     <Compile Include="AutoMapper\Configuration.cs" />
     <Compile Include="Implementations\EigenvalueChartQueryService\MonitorDatasQueryChartService.cs" />
     <Compile Include="Implementations\EigenvalueDownLoadService\MonitorDatasEigenValueQueryFileSystemService.cs" />
@@ -99,6 +100,7 @@
     <Compile Include="Implementations\ThresholdValueService\GetThresholdValueSettingListBySearchBarService.cs" />
     <Compile Include="Implementations\ThresholdValueService\WithoutNegativeThresholdValueSettingServiceBase.cs" />
     <Compile Include="Interfaces\IFileConverter.cs" />
+    <Compile Include="Messaging\AbnomalThresholdValueSetting\AbnomalThresholdValueResponse.cs" />
     <Compile Include="Messaging\ThresholdValueSetting\GetThresholdValueByPointsNumberSearchBarRequest.cs" />
     <Compile Include="Messaging\ThresholdValueSetting\GetThresholdValueByPointsPositionSearchRequest.cs" />
     <Compile Include="Messaging\ThresholdValueSetting\GetPointsPositionByContainPointsNumberResponse.cs" />

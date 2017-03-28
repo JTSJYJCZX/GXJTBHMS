@@ -7,6 +7,7 @@ using System;
 using GxjtBHMS.Models.ThresholdValueSetting;
 using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
 using GxjtBHMS.Models.MonitoringDatasTable;
+using GxjtBHMS.Models.AbnormalThresholdValueSetting;
 
 namespace GxjtBHMS.SqlServerDAL
 {
@@ -330,6 +331,7 @@ namespace GxjtBHMS.SqlServerDAL
             CreateTemperatureThresholdValues(context);
             CreateHumidityThresholdValues(context);
             CreateWindloadThresholdValues(context);
+            CreateAbnormalThresholdValue(context);
         }
 
         /// <summary>
@@ -1150,6 +1152,42 @@ namespace GxjtBHMS.SqlServerDAL
                 }
 
             }
+        }
+        /// <summary>
+        /// 初始化异常阈值
+        /// </summary>
+        /// <param name="context"></param>
+        void CreateAbnormalThresholdValue(BHMSContext context)
+        {
+            var steelStrainThresholdValue = new AbnormalThresholdValueTable { TypeName = "钢结构应变", MaxLevelThresholdValue = 1000, MinLevelThresholdValue = -1000, };
+            var concreteStrainThresholdValue = new AbnormalThresholdValueTable { TypeName = "混凝土结构应变", MaxLevelThresholdValue = 1000, MinLevelThresholdValue = -1000, };
+            var upperHangerCableForceThresholdValue = new AbnormalThresholdValueTable { TypeName = "上层吊杆索力", MaxLevelThresholdValue = 1000, MinLevelThresholdValue = -1000, };
+            var underHangerCableForceThresholdValue = new AbnormalThresholdValueTable { TypeName = "下层吊杆索力", MaxLevelThresholdValue = 1000, MinLevelThresholdValue = -1000, };
+            var flexibleTiedBarCableForceThresholdValue = new AbnormalThresholdValueTable { TypeName = "柔性系杆", MaxLevelThresholdValue = 1000, MinLevelThresholdValue = -1000, };
+            var tempThresholdValue = new AbnormalThresholdValueTable { TypeName = "温度", MaxLevelThresholdValue = 1000, MinLevelThresholdValue = -1000, };
+            var humThresholdValue = new AbnormalThresholdValueTable { TypeName = "湿度", MaxLevelThresholdValue = 1000, MinLevelThresholdValue = -1000, };
+            var windLoadThresholdValue = new AbnormalThresholdValueTable { TypeName = "风速", MaxLevelThresholdValue = 1000, MinLevelThresholdValue = -1000, };
+            var steelArchXDisThresholdValue = new AbnormalThresholdValueTable { TypeName = "钢拱肋X方向位移", MaxLevelThresholdValue = 1000, MinLevelThresholdValue = -1000, };
+            var steelArchYDisThresholdValue = new AbnormalThresholdValueTable { TypeName = "钢拱肋Y方向位移", MaxLevelThresholdValue = 1000, MinLevelThresholdValue = -1000, };
+            var steelArchZDisThresholdValue = new AbnormalThresholdValueTable { TypeName = "钢拱肋Z方向位移", MaxLevelThresholdValue = 1000, MinLevelThresholdValue = -1000, };
+            var bridgeDeckDisThresholdValue = new AbnormalThresholdValueTable { TypeName = "桥面挠度", MaxLevelThresholdValue = 1000, MinLevelThresholdValue = -1000, };
+            var transitionPierDisThresholdValue = new AbnormalThresholdValueTable { TypeName = "过渡墩变形", MaxLevelThresholdValue = 1000, MinLevelThresholdValue = -1000, };
+            var expansionDisThresholdValue = new AbnormalThresholdValueTable { TypeName = "伸缩缝变形", MaxLevelThresholdValue = 1000, MinLevelThresholdValue = -1000, };
+            context.AbnormalThresholdValue.Add(steelStrainThresholdValue);
+            context.AbnormalThresholdValue.Add(concreteStrainThresholdValue);
+            context.AbnormalThresholdValue.Add(upperHangerCableForceThresholdValue);
+            context.AbnormalThresholdValue.Add(underHangerCableForceThresholdValue);
+            context.AbnormalThresholdValue.Add(flexibleTiedBarCableForceThresholdValue);
+            context.AbnormalThresholdValue.Add(tempThresholdValue);
+            context.AbnormalThresholdValue.Add(humThresholdValue);
+            context.AbnormalThresholdValue.Add(windLoadThresholdValue);
+            context.AbnormalThresholdValue.Add(steelArchXDisThresholdValue);
+            context.AbnormalThresholdValue.Add(steelArchYDisThresholdValue);
+            context.AbnormalThresholdValue.Add(steelArchZDisThresholdValue);
+            context.AbnormalThresholdValue.Add(bridgeDeckDisThresholdValue);
+            context.AbnormalThresholdValue.Add(transitionPierDisThresholdValue);
+            context.AbnormalThresholdValue.Add(expansionDisThresholdValue);
+
         }
 
 

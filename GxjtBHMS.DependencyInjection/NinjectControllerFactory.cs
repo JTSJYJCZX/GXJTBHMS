@@ -3,6 +3,7 @@ using GxjtBHMS.Models.ThresholdValueSetting;
 using GxjtBHMS.Service.Implementations;
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.SqlServerDAL;
+using GxjtBHMS.SqlServerDAL.AbnormalThresholdValueSettingDAL;
 using GxjtBHMS.SqlServerDAL.RealTimeDatasMonitoringDAL;
 using GxjtBHMS.SqlServerDAL.ThresholdValueDatasDAL;
 using Ninject;
@@ -66,6 +67,7 @@ namespace GxjtBHMS.DependencyInjection
             _ninjectKernel.Bind<ITemperatureThresholdValueGettingDAL>().To<TemperatureThresholdValueGettingDAL>();
             _ninjectKernel.Bind<IHumidityThresholdValueGettingDAL>().To<HumidityThresholdValueGettingDAL>();
 
+      
 
             _ninjectKernel.Bind<IFileConverter>().To<ExcelFileConverter>();
 

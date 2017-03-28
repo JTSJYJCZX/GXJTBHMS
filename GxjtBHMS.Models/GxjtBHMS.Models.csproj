@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbnormalThresholdValueSetting\AbnormalThresholdValueTable.cs" />
     <Compile Include="MointoringDatasEigenvalueModel.cs" />
     <Compile Include="MonitoringDatasEigenvalueTable\CableForceEigenvalueTable.cs" />
     <Compile Include="MonitoringDatasEigenvalueTable\ConcreteStrainEigenvalueTable.cs" />

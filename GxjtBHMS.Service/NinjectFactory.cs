@@ -12,6 +12,7 @@ using GxjtBHMS.SqlServerDAL.MonitoringDatasDAL;
 using GxjtBHMS.SqlServerDAL.ThresholdValueDatasDAL;
 using GxjtBHMS.Models.ThresholdValueSetting;
 using GxjtBHMS.Service.Interfaces.MonitoringDatasQueryServiceInerfaces;
+using GxjtBHMS.SqlServerDAL.AbnormalThresholdValueSettingDAL;
 
 namespace GxjtBHMS.Service
 {
@@ -99,7 +100,7 @@ namespace GxjtBHMS.Service
             _ninjectKernel.Bind<IThresholdValueSettingDAL<HumidityThresholdValueTable>>().To<HumidityThresholdValueSettingDAL>();
             _ninjectKernel.Bind<IThresholdValueSettingDAL<TemperatureThresholdValueTable>>().To<TemperatureThresholdValueSettingDAL>();
 
-
+            _ninjectKernel.Bind<IAbnomalThresholdValueSettingDAL>().To<AbnormalThresholdValueSettingDAL>();
 
 
         }

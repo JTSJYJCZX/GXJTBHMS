@@ -14,7 +14,7 @@ namespace GxjtBHMS.Web.Validations
         public const int NegativeThresholdValueMaxValue = 0;
     }
 
-    enum StrainThresholdValueType
+    enum ThresholdValueType
     {
         /// <summary>
         /// 正值
@@ -26,12 +26,12 @@ namespace GxjtBHMS.Web.Validations
         Negative,
     }
 
-    abstract class StrainThresholdValuesValidationServiceBase
+    abstract class ThresholdValuesValidationServiceBase
     {
         public abstract bool IsValid();
     }
 
-    class PositiveStandardValueValidationService : StrainThresholdValuesValidationServiceBase
+    class PositiveStandardValueValidationService : ThresholdValuesValidationServiceBase
     {
         double _value;
 
@@ -46,7 +46,7 @@ namespace GxjtBHMS.Web.Validations
         }
     }
 
-    class NegativeStandardValueValidationService : StrainThresholdValuesValidationServiceBase
+    class NegativeStandardValueValidationService : ThresholdValuesValidationServiceBase
     {
         double _value;
 
@@ -61,16 +61,16 @@ namespace GxjtBHMS.Web.Validations
         }
     }
 
-    class StrainThresholdValuesValidationFactory
+    class ThresholdValuesValidationFactory
     {
-        public static StrainThresholdValuesValidationServiceBase GetValidationService(StrainThresholdValueType type, double value)
+        public static ThresholdValuesValidationServiceBase GetValidationService(ThresholdValueType type, double value)
         {
 
             switch (type)
             {
-                case StrainThresholdValueType.Positive:
+                case ThresholdValueType.Positive:
                     return new PositiveStandardValueValidationService(value);
-                case StrainThresholdValueType.Negative:
+                case ThresholdValueType.Negative:
                     return new NegativeStandardValueValidationService(value);
                 default:
                     throw new ApplicationException("No StrainThresholdValuesValidationService");
@@ -78,7 +78,7 @@ namespace GxjtBHMS.Web.Validations
         }
     }
 
-    class StrainThresholdValuesValidationAttribute : ValidationAttribute
+    class ThresholdValuesValidationAttribute : ValidationAttribute
     {
         public override bool IsValid(object value)
         {
@@ -94,7 +94,7 @@ namespace GxjtBHMS.Web.Validations
                     //便利字典值可空double数组
                     if (item.HasValue)
                     {//有值就验证该值是否合法
-                        returnVal = StrainThresholdValuesValidationFactory
+                        returnVal = ThresholdValuesValidationFactory
                      .GetValidationService(key, item.Value)
                      .IsValid();
                         if (!returnVal) break;//只要遇到非法的阈值就终止循环
@@ -105,9 +105,9 @@ namespace GxjtBHMS.Web.Validations
             return returnVal;
         }
 
-        Dictionary<StrainThresholdValueType, double?[]> ConvertToCategoriesDict(double?[] thresholdValues)
+        Dictionary<ThresholdValueType, double?[]> ConvertToCategoriesDict(double?[] thresholdValues)
         {
-            var dict = new Dictionary<StrainThresholdValueType, double?[]>();
+            var dict = new Dictionary<ThresholdValueType, double?[]>();
             var tg = ThresholdValuesConvert.ConvertForm(thresholdValues);
             AddPositiveValuesToDict(dict, tg.PositiveStandardValueGroup);
             AddNegativeValuesToDict(dict, tg.NegativeStandardValueGroup);
@@ -119,14 +119,14 @@ namespace GxjtBHMS.Web.Validations
         /// </summary>
         /// <param name="dict">字典</param>
         /// <param name="group">负值分组</param>
-        void AddNegativeValuesToDict(Dictionary<StrainThresholdValueType, double?[]> dict, NegativeStandardValueGroup group)
+        void AddNegativeValuesToDict(Dictionary<ThresholdValueType, double?[]> dict, NegativeStandardValueGroup group)
         {
-            dict.Add(StrainThresholdValueType.Negative, group.ToArray());//负阈值数据
+            dict.Add(ThresholdValueType.Negative, group.ToArray());//负阈值数据
         }
 
-        void AddPositiveValuesToDict(Dictionary<StrainThresholdValueType, double?[]> dict, PositiveStandardValueGroup group)
+        void AddPositiveValuesToDict(Dictionary<ThresholdValueType, double?[]> dict, PositiveStandardValueGroup group)
         {
-            dict.Add(StrainThresholdValueType.Positive, group.ToArray());//正阈值数据
+            dict.Add(ThresholdValueType.Positive, group.ToArray());//正阈值数据
         }
 
     }

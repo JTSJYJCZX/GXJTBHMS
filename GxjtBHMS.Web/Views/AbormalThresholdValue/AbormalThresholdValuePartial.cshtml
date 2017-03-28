@@ -1,0 +1,24 @@
+﻿@model GxjtBHMS.Web.ViewModels.AbormalThresholdValueSetting.AbormalThresholdValueView
+
+<tr class="text-center">
+    <td>
+        <span class="text-center form-control">@Model.TypeName</span>
+    </td>
+    <td>
+        @Html.TextBoxFor(m => m.MaxLevelThresholdValue, new { @class = "text-center form-control" })
+    </td>
+
+    <td>
+        @Html.TextBoxFor(m => m.MinLevelThresholdValue, new { @class = "text-center form-control" })
+    </td>
+    
+    <td>
+        @Html.HiddenFor(m => m.TypeId)
+        @Html.HiddenFor(m => m.TypeName)   
+        <input class="form-control" type="button" onclick="saveThresholdValue(this, '/ThresholdValueSetting/SaveThresholdValue')" operate="save" value="保存" />
+    </td>
+   </tr>
+
+@Html.AntiForgeryToken()
+
+
