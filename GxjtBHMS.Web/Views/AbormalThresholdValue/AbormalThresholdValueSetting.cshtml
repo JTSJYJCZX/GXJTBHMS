@@ -1,22 +1,14 @@
-﻿@{
-    ViewBag.Title = "阈值设置";
+﻿
+@{
+    ViewBag.Title = "AbormalThresholdValueSetting";
 }
-
-<h1 style="text-align:center" >监测数据预警值阈值设置</h1>
-
-<hr />
-
-@Html.Action("GetThresholdValueSearchBar") @*下拉菜单搜索条件*@
+<h1 style="text-align:center">监测数据异常值阈值设置</h1>
 
 <hr />
 
-@Html.Action("GetThresholdValuePullDownSearchBar") @*下拉菜单搜索条件*@
+@Html.Action("GetAbnomalThresholdValueList") @*阈值查询*@
 
-
-<div id="searchContent">
-    @*查询结果区域*@
-</div>
-
+<hr />
 
 @section scripts{
     @Scripts.Render("~/bundles/thresholdValueSearchBar")

@@ -8,7 +8,8 @@ namespace GxjtBHMS.Web.ViewModels.ThresholdValueSetting
     {
         public int TestTypeId { get; set; }
         public string PointsNumber { get; set; }
-        public int PointsNumberId { get; set; } 
+        public int PointsNumberId { get; set; }
+        public int PointsPositionId { get; set; }
 
         public bool IsContainNegative { get; set; }
 
@@ -40,7 +41,7 @@ namespace GxjtBHMS.Web.ViewModels.ThresholdValueSetting
         //public PaginatorModel PaginatorModel { get; set; }
 
         [DisplayName("测点阈值")]
-        [StrainThresholdValuesValidation]
+        [ThresholdValuesValidation]
         public double?[] ThresholdValues { get; set; }
     }
 }

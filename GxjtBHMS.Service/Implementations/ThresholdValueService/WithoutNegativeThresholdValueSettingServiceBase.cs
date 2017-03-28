@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace GxjtBHMS.Service
 {
-    public class WithoutNegativeThresholdValueSettingServiceBase<T>:ServiceBase where T :WithoutNegativeThresholdValueBase
+    public class WithoutNegativeThresholdValueSettingServiceBase<T>: ThresholdValueSettingServiceBase<T> where T :WithoutNegativeThresholdValueBase
     {
         const string PointsNumber_NavigationProperty = "PointsNumber";
         IThresholdValueSettingDAL<T> _thresholdValueSettingDAL;
@@ -56,6 +56,27 @@ namespace GxjtBHMS.Service
             return resp;
         }
 
+        public ThresholdValueWithoutNegativeModel GetThresholdValueListByPointsNumber(GetThresholdValueByPointsPositionSearchRequest req)
+        {
+            var result = new ThresholdValueWithoutNegativeModel();
+            try
+            {
+                var source = QueryThresholdValueListByPointsNumber(req);
+                result.PointsNumberId = source.PointsNumberId;
+                result.PointsNumberName = source.PointsNumber.Name;
+                result.PositiveFirstLevelThresholdValue = source.PositiveFirstLevelThresholdValue;
+                result.PositiveSecondLevelThresholdValue = source.PositiveSecondLevelThresholdValue;
+                result.IsContainNegative = false;
+            }
+            catch (Exception ex)
+            {
+                Log(ex);
+            }
+            return result;
+        }
+
+
+
         public ThresholdValueWithoutNegativeResponse ModifyThresholdValue(ThresholdValueSettingRequest req)
         {
             var resp = new ThresholdValueWithoutNegativeResponse();
@@ -75,46 +96,8 @@ namespace GxjtBHMS.Service
             }
             return resp;
         }
-        
-        public IEnumerable<T> QueryThresholdValueListByPointsPosition(GetThresholdValueByPointsPositionSearchRequest req)
-        {
-            IList<Func<T, bool>> ps = new List<Func<T, bool>>();
-            DealWithEqualPointsPosition(req, ps);
-            return _thresholdValueSettingDAL.FindBy(ps, PointsNumber_NavigationProperty);
-        }
 
-        public T ModifyThresholdValueByPointsNumberId(ThresholdValueSettingRequest req)
-        {
-            IList<Func<T, bool>> ps = new List<Func<T, bool>>();
-            DealWithContainsPointsNumber(req, ps);
-            return _thresholdValueSettingDAL.FindBy(ps, PointsNumber_NavigationProperty).SingleOrDefault();
-        }
 
-        public void SaveThresholdValueByPointsNumberId(T ThresholdValue)
-        {
-            _thresholdValueSettingDAL.Save(ThresholdValue);
-        }
-
-        void DealWithEqualPointsPosition(GetThresholdValueByPointsPositionSearchRequest req, IList<Func<T, bool>> ps)
-        {
-            if (req.PointsPositionId > 0)
-            {
-                ps.Add(m => m.PointsNumber.PointsPositionId == req.PointsPositionId);
-            }
-        }
-
-        void DealWithContainsPointsNumber(ThresholdValueSettingRequest req, IList<Func<T, bool>> ps)
-        {
-            if (!string.IsNullOrEmpty(req.PointsNumber))
-            {
-                ps.Add(m => m.PointsNumber.Name.Contains(req.PointsNumber));
-            }
-        }
-
-        protected bool HasNoSearchResult(IEnumerable<ThresholdValueWithoutNegativeModel> thresholdValues)
-        {
-            return thresholdValues.Count() == 0;
-        }
 
 
     }

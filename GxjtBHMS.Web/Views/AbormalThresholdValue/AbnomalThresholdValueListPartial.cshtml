@@ -1,0 +1,24 @@
+﻿@model  GxjtBHMS.Web.ViewModels.AbormalThresholdValue.AbormalThresholdValueSettingView
+<div class="table-responsive">
+    <div id="message"></div>
+    <table class="table table-striped">
+        <thead>
+            <tr class="text-center">
+                <td>测试类型</td>
+                <td>上限阈值</td>
+                <td>下限阈值</td>
+                <td>保存</td>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model.AbormalThresholdValues)
+        {
+
+            @Html.Partial("AbormalThresholdValuePartial", item);
+
+        }
+    </table>
+</div>
+
+
+

@@ -1,5 +1,6 @@
 ﻿using GxjtBHMS.Infrastructure.Configuration;
 using GxjtBHMS.Models;
+using GxjtBHMS.Models.AbnormalThresholdValueSetting;
 using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
 using GxjtBHMS.Models.MonitoringDatasTable;
 using GxjtBHMS.Models.ThresholdValueSetting;
@@ -49,5 +50,8 @@ namespace GxjtBHMS.SqlServerDAL
         public DbSet<TemperatureThresholdValueTable> TemperatureThresholdValues { get; set; }//温度阈值
         public DbSet<HumidityThresholdValueTable> HumidityThresholdValues { get; set; }//湿度阈值
         public DbSet<WindLoadThresholdValueTable> WindLoadThresholdValues { get; set; }//风荷载阈值
+
+        public DbSet<AbnormalThresholdValueTable> AbnormalThresholdValue { get; set; }//异常阈值
+
     }
 }

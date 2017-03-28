@@ -29,20 +29,14 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
 
         public ActionResult ThresholdValueSetting()
         {
-            //var resp = _thresholdValueSettingService.GetPaginatorDatas(new PointsNumberSearchRequest());
-
-            //if (resp.Succeed)
-            //{
-            //    ViewData["TotalPages"] = resp.TotalPages;
-            //}
-            //else
-            //{
-            //    TempData[WebConstants.MessageColor] = StyleConstants.RedColor;
-            //    TempData[WebConstants.MessageKey] = resp.Message;
-            //}
             return View();
         }
 
+        /// <summary>
+        /// 通过下拉菜单条件查询阈值列表
+        /// </summary>
+        /// <param name="conditions"></param>
+        /// <returns></returns>
         public ActionResult GetThresholdValueSettingListByPullDownSearchBar(ThresholdValueSearchBarBaseView conditions)
         {
 
@@ -133,43 +127,84 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
             SaveSelectListItemCollectionToViewData(resp.Datas, WebConstants.MonitoringPointsPositionKey, false);
         }
 
-        //public ActionResult GetThresholdValueSettingList(QueryPointsNumberConditonView conditions)
-        //{
-        //    var req = new PointsNumberSearchRequest
-        //    {
-        //        PointNumber = conditions.ContainsPointsNumber,
-        //        CurrentPageIndex = conditions.CurrentPageIndex
-        //    };
-        //    var resp = _thresholdValueSettingService.GetThresholdValueBy(req);
-        //    IEnumerable<StrainThresholdValueView> models = new List<StrainThresholdValueView>();
-        //    var resultView = new ThresholdValueSettingView();
-        //    if (resp.Succeed)
-        //    {
-        //        resultView.StrainThresholdValues = resp.ThresholdValues.Select(m => new StrainThresholdValueView
-        //        {
-        //            PointsNumber = m.PointsNumber.Name,
-        //            PointsNumberId = m.PointsNumberId,
-        //            PositiveFirstLevelThresholdValue = m.PositiveFirstLevelThresholdValue,
-        //            PositiveSecondLevelThresholdValue = m.PositiveSecondLevelThresholdValue,           
-        //            NegativeFirstLevelThresholdValue = m.NegativeFirstLevelThresholdValue,
-        //            NegativeSecondLevelThresholdValue = m.NegativeSecondLevelThresholdValue,
-     
-        //        });
-        //        resultView.PaginatorModel = new PaginatorModel { TotalPages = resp.TotalPages, CurrentPageIndex = conditions.CurrentPageIndex };
-        //    }
-        //    else
-        //    {
-        //        return Json(new { color = StyleConstants.RedColor, message = resp.Message }, JsonRequestBehavior.AllowGet);
-        //    }
-        //    return PartialView("ThresholdValueSettingListPartial", resultView);
-        //}
-
-        [ChildActionOnly]
-        public ActionResult GetThresholdValueSearchBar(QueryPointsNumberConditonView conditions)
+        /// <summary>
+        /// 通过查询条件获得阈值搜索条件
+        /// </summary>
+        /// <param name="conditions"></param>
+        /// <returns></returns>
+        public IEnumerable<ThresholdValueQueryConditionModel> GetThresholdValueSearchConditionByConditonPointsNumber(QueryPointsNumberConditonView conditions)
         {
-            return PartialView("ThresholdValueSearchPartial", conditions);
+            var req = new PointsNumberSearchRequest
+            {
+                PointNumber = conditions.ContainsPointsNumber,
+            };
+            var thresholdValueSettingService = new GetThresholdValueSettingListBySearchBarService();
+            return thresholdValueSettingService.GetPointsPositionsByContainPointsNumber(conditions.ContainsPointsNumber);
         }
 
+       /// <summary>
+       /// 通过搜索栏查询阈值列表
+       /// </summary>
+       /// <param name="conditions"></param>
+       /// <returns></returns>
+        public ActionResult GetThresholdValueSettingList(QueryPointsNumberConditonView conditions)
+        {
+            var models = new List<ThresholdValueView>();
+            var resultView = new ThresholdValueSettingView();
+            var  resultCondition=  GetThresholdValueSearchConditionByConditonPointsNumber(conditions);
+            foreach (var item in resultCondition)
+            {
+                var req = new GetThresholdValueByPointsPositionSearchRequest
+                {
+                    PointsPositionId = item.PointsPositionId,
+                    PointsNumber=item.PointsName
+
+                };
+                var thresholdValueSettingService = ThresholdValueSettingServiceFactory.GetThresholdValueServiceFrom(item.TestTypeId);
+
+                var resultByPointNumber = thresholdValueSettingService.GetThresholdValueListByPointsNumber(req);
+
+                if (resultByPointNumber.IsContainNegative)
+                {                  
+                        var resultItem = new ThresholdValueView();
+                        resultItem.TestTypeId = item.TestTypeId;
+                        resultItem.PointsNumber = resultByPointNumber.PointsNumberName;
+                        resultItem.PointsNumberId = resultByPointNumber.PointsNumberId;
+                        resultItem.PositiveFirstLevelThresholdValue = resultByPointNumber.PositiveFirstLevelThresholdValue;
+                        resultItem.PositiveSecondLevelThresholdValue = resultByPointNumber.PositiveSecondLevelThresholdValue;
+                        resultItem.NegativeFirstLevelThresholdValue = resultByPointNumber.NegativeFirstLevelThresholdValue;
+                        resultItem.NegativeSecondLevelThresholdValue = resultByPointNumber.NegativeSecondLevelThresholdValue;
+                    resultItem.IsContainNegative = true;
+                        models.Add(resultItem);
+                    }
+                else
+                {
+                    var resultItem = new ThresholdValueView();
+                    resultItem.TestTypeId = item.TestTypeId;
+                    resultItem.PointsNumber = resultByPointNumber.PointsNumberName;
+                    resultItem.PointsNumberId = resultByPointNumber.PointsNumberId;
+                    resultItem.PositiveFirstLevelThresholdValue = resultByPointNumber.PositiveFirstLevelThresholdValue;
+                    resultItem.PositiveSecondLevelThresholdValue = resultByPointNumber.PositiveSecondLevelThresholdValue;
+                    resultItem.IsContainNegative = false;
+                    models.Add(resultItem);
+                }
+                resultView.ThresholdValues = models;
+            }
+
+            return PartialView("ThresholdValueSettingListPartial", resultView);
+        }
+
+        [ChildActionOnly]
+        public ActionResult GetThresholdValueSearchBar()
+        {
+            return PartialView("ThresholdValueSearchPartial");
+        }
+
+        /// <summary>
+        /// 修改阈值后保存阈值
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [MyValidateAntiForgeryToken]
         public ActionResult SaveThresholdValue(ThresholdValueView model)
@@ -223,20 +258,5 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
             return Json(selectListItemCollection, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GetMonitoringPointsNumbersByPointsPositions(int pointsPositions = 0)
-        {
-            IList<SelectListItem> selectListItemCollection = new List<SelectListItem>();
-
-            var resp = _mpns.GetMonitoringPointsNumberByPointsPositionId(pointsPositions);
-
-            if (resp.Succeed)
-            {
-                selectListItemCollection = resp
-                    .Datas
-                    .ConvertToSelectListItemCollection();
-            }
-
-            return Json(selectListItemCollection, JsonRequestBehavior.AllowGet);
-        }
     }
 }
