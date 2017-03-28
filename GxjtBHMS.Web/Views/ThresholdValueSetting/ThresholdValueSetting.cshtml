@@ -3,12 +3,15 @@
 }
 
 <h1 style="text-align:center" >监测数据预警值阈值设置</h1>
+
 <hr />
+
+@Html.Action("GetThresholdValueSearchBar") @*下拉菜单搜索条件*@
+
 <hr />
 
 @Html.Action("GetThresholdValuePullDownSearchBar") @*下拉菜单搜索条件*@
 
-@Html.Action("GetThresholdValueSearchBar") @*下拉菜单搜索条件*@
 
 <div id="searchContent">
     @*查询结果区域*@

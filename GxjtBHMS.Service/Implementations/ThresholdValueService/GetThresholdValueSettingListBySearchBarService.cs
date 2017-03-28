@@ -12,14 +12,14 @@ namespace GxjtBHMS.Service
     public class GetThresholdValueSettingListBySearchBarService : ServiceBase
     {
         const string PointsPosition_NavigationProperty = "PointsPosition";
-        IThresholdValueSettingDAL<MonitoringPointsNumber> _getPointsPositionDAL;
-        IThresholdValueSettingDAL<MonitoringPointsPosition> _getTestTypeDAL;
+        IMonitoringPointsNumberDAL _getPointsPositionDAL;
+        IMonitoringPointsPositionDAL _getTestTypeDAL;
         public GetThresholdValueSettingListBySearchBarService()
         {
             _getPointsPositionDAL = new NinjectFactory()
-                 .GetInstance<IThresholdValueSettingDAL<MonitoringPointsNumber>>();
+                 .GetInstance<IMonitoringPointsNumberDAL>();
             _getTestTypeDAL = new NinjectFactory()
-                .GetInstance<IThresholdValueSettingDAL<MonitoringPointsPosition>>();
+                .GetInstance<IMonitoringPointsPositionDAL>();
         }
 
         public IEnumerable<ThresholdValueQueryConditionModel>  GetPointsPositionsByContainPointsNumber(string containPointNumber)
@@ -55,8 +55,6 @@ namespace GxjtBHMS.Service
             if (!string.IsNullOrEmpty(containPointNumber))
             {
                 ps.Add(m => m.Name.Contains(containPointNumber));
-
-
             }
         }
     }

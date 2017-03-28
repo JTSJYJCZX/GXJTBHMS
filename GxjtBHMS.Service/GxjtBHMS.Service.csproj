@@ -95,6 +95,7 @@
     <Compile Include="Implementations\OriginalValueDownloadServiceBase\MonitorDatasOringinalValueDownloadServiceBase.cs" />
     <Compile Include="Implementations\OriginalValueFileSystemService\ConcreteStrainMonitorDatasOriginalValueDownloadFileSystemService.cs" />
     <Compile Include="Implementations\OriginalValueFileSystemService\WindLoadDatasOriginalValueDownloadFileSystemService.cs" />
+    <Compile Include="Implementations\ThresholdValueService\ThresholdValueSettingServiceBase.cs" />
     <Compile Include="Implementations\ThresholdValueService\GetThresholdValueSettingListBySearchBarService.cs" />
     <Compile Include="Implementations\ThresholdValueService\WithoutNegativeThresholdValueSettingServiceBase.cs" />
     <Compile Include="Interfaces\IFileConverter.cs" />

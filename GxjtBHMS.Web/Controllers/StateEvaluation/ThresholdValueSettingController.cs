@@ -29,20 +29,14 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
 
         public ActionResult ThresholdValueSetting()
         {
-            //var resp = _thresholdValueSettingService.GetPaginatorDatas(new PointsNumberSearchRequest());
-
-            //if (resp.Succeed)
-            //{
-            //    ViewData["TotalPages"] = resp.TotalPages;
-            //}
-            //else
-            //{
-            //    TempData[WebConstants.MessageColor] = StyleConstants.RedColor;
-            //    TempData[WebConstants.MessageKey] = resp.Message;
-            //}
             return View();
         }
 
+        /// <summary>
+        /// 通过下拉菜单条件查询阈值列表
+        /// </summary>
+        /// <param name="conditions"></param>
+        /// <returns></returns>
         public ActionResult GetThresholdValueSettingListByPullDownSearchBar(ThresholdValueSearchBarBaseView conditions)
         {
 
@@ -148,7 +142,11 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
             return thresholdValueSettingService.GetPointsPositionsByContainPointsNumber(conditions.ContainsPointsNumber);
         }
 
-       
+       /// <summary>
+       /// 通过搜索栏查询阈值列表
+       /// </summary>
+       /// <param name="conditions"></param>
+       /// <returns></returns>
         public ActionResult GetThresholdValueSettingList(QueryPointsNumberConditonView conditions)
         {
             var models = new List<ThresholdValueView>();
@@ -202,6 +200,11 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
             return PartialView("ThresholdValueSearchPartial");
         }
 
+        /// <summary>
+        /// 修改阈值后保存阈值
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [MyValidateAntiForgeryToken]
         public ActionResult SaveThresholdValue(ThresholdValueView model)
@@ -255,20 +258,5 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
             return Json(selectListItemCollection, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GetMonitoringPointsNumbersByPointsPositions(int pointsPositions = 0)
-        {
-            IList<SelectListItem> selectListItemCollection = new List<SelectListItem>();
-
-            var resp = _mpns.GetMonitoringPointsNumberByPointsPositionId(pointsPositions);
-
-            if (resp.Succeed)
-            {
-                selectListItemCollection = resp
-                    .Datas
-                    .ConvertToSelectListItemCollection();
-            }
-
-            return Json(selectListItemCollection, JsonRequestBehavior.AllowGet);
-        }
     }
 }

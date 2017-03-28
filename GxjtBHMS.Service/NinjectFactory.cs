@@ -29,6 +29,8 @@ namespace GxjtBHMS.Service
         }
         void AddBinding()
         {
+            _ninjectKernel.Bind<IMonitoringPointsNumberDAL>().To<MonitoringPointsNumberDAL>();
+            _ninjectKernel.Bind<IMonitoringPointsPositionDAL>().To<MonitoringPointsPositionDAL>();
 
             //_ninjectKernel.Bind<IConcreteStrainDatasOriginalValueDownloadService>().To<ConcreteStrainDatasOriginalValueDownloadService>();
             _ninjectKernel.Bind<IConcreteStrainDatasOriginalValueDAL>().To<ConcreteStrainDatasOriginalValueDAL>();
@@ -98,8 +100,6 @@ namespace GxjtBHMS.Service
             _ninjectKernel.Bind<IThresholdValueSettingDAL<TemperatureThresholdValueTable>>().To<TemperatureThresholdValueSettingDAL>();
 
 
-            _ninjectKernel.Bind<IThresholdValueSettingDAL<MonitoringPointsNumber>>().To<MonitoringPointsNumberThresholdValueSettingDAL>();
-            _ninjectKernel.Bind<IThresholdValueSettingDAL<MonitoringPointsPosition>>().To<MonitoringPointsPositionThresholdValueSettingDAL>();
 
 
         }
