@@ -25,10 +25,10 @@ namespace GxjtBHMS.Web.Controllers.AbnormalThresholdValue
             var resp = abnormalthresholdValueSettingService.GetAbnormalThresholdValueList();
             var models = new List<AbnormalThresholdValueView>();
             var resultView = new AbnormalThresholdValueSettingView();
-            //if (resp.Succeed)
-            //{
-                
-                    foreach (var item in resp.AbnormalThresholdValue)
+            if (resp.Succeed)
+            {
+
+                foreach (var item in resp.AbnormalThresholdValue)
                     {
                         var resultItem = new AbnormalThresholdValueView();
                         resultItem.TypeId = item.Id;
@@ -38,13 +38,15 @@ namespace GxjtBHMS.Web.Controllers.AbnormalThresholdValue
                         models.Add(resultItem);
                     }
                     resultView.AbnormalThresholdValues = models;
-            //}
-            //else
-            //{
-            //    return Json(new { color = StyleConstants.RedColor, message = resp.Message }, JsonRequestBehavior.AllowGet);
-            //}
+                return PartialView("AbnormalThresholdValueListPartial", resultView);
 
-            return PartialView("AbnormalThresholdValueListPartial", resultView);
+            }
+            else
+            {
+                TempData[WebConstants.MessageColor] = StyleConstants.RedColor;
+                TempData[WebConstants.Message] = resp.Message;
+                return null;
+            }
         }
 
         /// <summary>
