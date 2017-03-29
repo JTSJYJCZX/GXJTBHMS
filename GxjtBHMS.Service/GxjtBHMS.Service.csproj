@@ -87,6 +87,7 @@
     <Compile Include="Implementations\EigenvalueChartQueryService\MonitorDatasQueryChartService.cs" />
     <Compile Include="Implementations\EigenvalueDownLoadService\MonitorDatasEigenValueQueryFileSystemService.cs" />
     <Compile Include="Implementations\ExcelFileConverter.cs" />
+    <Compile Include="Implementations\OriginalValueDownloadServiceBase\MonitorDatasOriginalValueDownloadFileSystemServiceBase.cs" />
     <Compile Include="Implementations\OriginalValueFileSystemService\CableForceMonitorDatasOriginalValueDownloadFileSystemService.cs" />
     <Compile Include="Implementations\OriginalValueFileSystemService\DisplacementMonitorDatasOriginalValueDownloadFileSystemService.cs" />
     <Compile Include="Implementations\OriginalValueFileSystemService\HumidityDatasOriginalValueDownloadFileSystemService.cs" />

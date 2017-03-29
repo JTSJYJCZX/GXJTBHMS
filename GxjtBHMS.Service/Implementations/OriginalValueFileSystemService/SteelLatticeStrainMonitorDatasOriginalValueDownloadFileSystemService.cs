@@ -10,35 +10,23 @@ using GxjtBHMS.Models.MonitoringDatasTable;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    class SteelLatticeStrainMonitorDatasOriginalValueDownloadFileSystemService : IMonitorDatasQueryFileSystemService<SteelLatticeStrainTable>
+    class SteelLatticeStrainMonitorDatasOriginalValueDownloadFileSystemService : MonitorDatasOriginalValueDownloadFileSystemServiceBase<SteelLatticeStrainTable>
     {
-        readonly ISteelLatticeStrainDatasOriginalValueDAL _steelLatticeStrainOriginalDatasDAL;
-        public SteelLatticeStrainMonitorDatasOriginalValueDownloadFileSystemService(ISteelLatticeStrainDatasOriginalValueDAL steelLatticeStrainOriginalDatasDAL)
+        public SteelLatticeStrainMonitorDatasOriginalValueDownloadFileSystemService(ISteelLatticeStrainDatasOriginalValueDAL steelLatticeStrainOriginalDatasDAL):base(steelLatticeStrainOriginalDatasDAL)
         {
-            _steelLatticeStrainOriginalDatasDAL = steelLatticeStrainOriginalDatasDAL;
+            _sheetName = "钢拱肋应变原始数据查询结果";
         }
-        public object ConvertToDocument(IList<Func<SteelLatticeStrainTable, bool>> ps)
+
+        protected override void PartialHeadRow(IRow headRow)
         {
-            IEnumerable<SteelLatticeStrainTable> strainsExcludePaging = new List<SteelLatticeStrainTable>();
-            strainsExcludePaging = _steelLatticeStrainOriginalDatasDAL.FindBy(ps, ServiceConstant.PointsNumberPointsPositionNavigationProperty);//获取不分页的查询结果
-            HSSFWorkbook workbook = new HSSFWorkbook();
-            ISheet sheet = workbook.CreateSheet("钢拱肋应变原始数据查询结果");
-            IRow headRow = sheet.CreateRow(0);
-            headRow.CreateCell(0).SetCellValue("序号");
-            headRow.CreateCell(1).SetCellValue("测点编号");
-            headRow.CreateCell(2).SetCellValue("监测时间");
             headRow.CreateCell(3).SetCellValue("应变值(με)");
             headRow.CreateCell(4).SetCellValue("温度(℃)");
-            for (int i = 0; i < strainsExcludePaging.ToArray().Length; i++)
-            {
-                IRow row = sheet.CreateRow(i + 1);
-                row.CreateCell(0).SetCellValue(i + 1);
-                row.CreateCell(1).SetCellValue(strainsExcludePaging.ToArray()[i].PointsNumber.Name);
-                row.CreateCell(2).SetCellValue(strainsExcludePaging.ToArray()[i].Time.FormatDateTime());
-                row.CreateCell(3).SetCellValue(strainsExcludePaging.ToArray()[i].Strain);
-                row.CreateCell(4).SetCellValue(strainsExcludePaging.ToArray()[i].Temperature);
-            }           
-            return workbook;         
-        }       
+        }
+
+        protected override void BuildPartialContent(IRow row, int index, IEnumerable<SteelLatticeStrainTable> source)
+        {
+            row.CreateCell(3).SetCellValue(source.ToArray()[index].Strain);
+            row.CreateCell(4).SetCellValue(source.ToArray()[index].Temperature);
+        }
     }
 }
