@@ -44,7 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbnomalThresholdValueSetting\IAbnomalThresholdValueSettingDAL.cs" />
+    <Compile Include="AbnormalThresholdValueSetting\IAbnormalThresholdValueSettingDAL.cs" />
     <Compile Include="IMonitoringDatasEigenvalueDAL.cs" />
     <Compile Include="ICableForceThresholdValueGettingDAL.cs" />
     <Compile Include="OriginalValueDownLoad\IWindLoadDatasOriginalValueDAL.cs" />

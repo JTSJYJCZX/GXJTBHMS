@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace GxjtBHMS.Service.Messaging
 {
-    public class AbnomalThresholdValueResponse : ResponseBase
+    public class AbnormalThresholdValueResponse : ResponseBase
     {
-        public IEnumerable<AbnormalThresholdValueTable> AbnomalThresholdValue { get; set; }   
+        public IEnumerable<AbnormalThresholdValueTable> AbnormalThresholdValue { get; set; }   
 
     }
 }

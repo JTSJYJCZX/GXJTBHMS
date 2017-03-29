@@ -2,9 +2,9 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace GxjtBHMS.Web.ViewModels.AbormalThresholdValueSetting
+namespace GxjtBHMS.Web.ViewModels.AbnormalThresholdValueSetting
 {
-    public class AbormalThresholdValueView
+    public class AbnormalThresholdValueView
     {
         public int TypeId { get; set; }
         public string TypeName { get; set; }
@@ -17,7 +17,7 @@ namespace GxjtBHMS.Web.ViewModels.AbormalThresholdValueSetting
         [DisplayName("下限阈值")]
         public double? MinLevelThresholdValue { get; set; }
         [DisplayName("测点阈值")]
-        [ThresholdValuesValidation]
-        public double?[] AbormalThresholdValues { get; set; }
+       
+        public double?[] AbnormalThresholdValues { get; set; }
     }
 }

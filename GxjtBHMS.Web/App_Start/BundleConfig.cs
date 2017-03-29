@@ -108,6 +108,10 @@ namespace GxjtBHMS.Web
             //阈值设置下拉菜单搜索栏脚本
             bundles.Add(new ScriptBundle("~/bundles/thresholdValueSearchBar").Include(
                      "~/Scripts/thresholdValueSetting/ThresholdValueSearchPartial.website.js"));
+
+            //异常阈值保存脚本
+            bundles.Add(new ScriptBundle("~/bundles/AbnormalThresholdValueSetting").Include(
+                     "~/Scripts/AbnormalThresholdValueSetting/listAbnormalThresholdValueMessage-website.js"));
         }
     }
 }

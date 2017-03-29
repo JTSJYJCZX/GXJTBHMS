@@ -100,7 +100,7 @@ namespace GxjtBHMS.Service
             _ninjectKernel.Bind<IThresholdValueSettingDAL<HumidityThresholdValueTable>>().To<HumidityThresholdValueSettingDAL>();
             _ninjectKernel.Bind<IThresholdValueSettingDAL<TemperatureThresholdValueTable>>().To<TemperatureThresholdValueSettingDAL>();
 
-            _ninjectKernel.Bind<IAbnomalThresholdValueSettingDAL>().To<AbnormalThresholdValueSettingDAL>();
+            _ninjectKernel.Bind<IAbnormalThresholdValueSettingDAL>().To<AbnormalThresholdValueSettingDAL>();
 
 
         }

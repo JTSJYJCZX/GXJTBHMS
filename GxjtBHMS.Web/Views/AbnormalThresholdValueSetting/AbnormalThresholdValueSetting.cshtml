@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "AbnormalThresholdValueSetting";
+}
+<h1 style="text-align:center">监测数据异常值阈值设置</h1>
+
+<hr />
+
+@Html.Action("GetAbnormalThresholdValueList") @*阈值查询*@
+
+<hr />
+
+@section scripts{
+    @Scripts.Render("~/bundles/AbnormalThresholdValueSetting")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Styles.Render("~/content/css/bootstrap-select")
+    @Scripts.Render("~/bundles/bootstrap-select")
+}

@@ -1,4 +1,4 @@
-﻿@model GxjtBHMS.Web.ViewModels.AbormalThresholdValueSetting.AbormalThresholdValueView
+﻿@model GxjtBHMS.Web.ViewModels.AbnormalThresholdValueSetting.AbnormalThresholdValueView
 
 <tr class="text-center">
     <td>
@@ -15,7 +15,7 @@
     <td>
         @Html.HiddenFor(m => m.TypeId)
         @Html.HiddenFor(m => m.TypeName)   
-        <input class="form-control" type="button" onclick="saveThresholdValue(this, '/ThresholdValueSetting/SaveThresholdValue')" operate="save" value="保存" />
+        <input class="form-control" type="button" onclick="abnormalSaveThresholdValue(this, '/AbnormalThresholdValueSetting/AbnormalSaveThresholdValue')" operate="save" value="保存" />
     </td>
    </tr>
 

@@ -1,4 +1,4 @@
-﻿@model  GxjtBHMS.Web.ViewModels.AbormalThresholdValue.AbormalThresholdValueSettingView
+﻿@model  GxjtBHMS.Web.ViewModels.AbnormalThresholdValue.AbnormalThresholdValueSettingView
 <div class="table-responsive">
     <div id="message"></div>
     <table class="table table-striped">
@@ -11,10 +11,10 @@
             </tr>
         </thead>
 
-        @foreach (var item in Model.AbormalThresholdValues)
+        @foreach (var item in Model.AbnormalThresholdValues)
         {
 
-            @Html.Partial("AbormalThresholdValuePartial", item);
+            @Html.Partial("AbnormalThresholdValuePartial", item);
 
         }
     </table>

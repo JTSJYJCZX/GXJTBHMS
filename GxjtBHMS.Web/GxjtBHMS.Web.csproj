@@ -233,7 +233,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AbnormalThresholdValueSetting\AbormalThresholdValueController.cs" />
+    <Compile Include="Controllers\AbnormalThresholdValueSetting\AbnormalThresholdValueController.cs" />
     <Compile Include="Controllers\AdminUserController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -272,8 +272,8 @@
     <Compile Include="Startup.cs" />
     <Compile Include="RealTimeMonitoringHub\StrainDatasRealTimeMonitoringHub.cs" />
     <Compile Include="Validations\StrainThresholdValuesValidationAttribute.cs" />
-    <Compile Include="ViewModels\AbormalThresholdValue\AbormalThresholdValueSettingView.cs" />
-    <Compile Include="ViewModels\AbormalThresholdValue\AbormalThresholdValueView.cs" />
+    <Compile Include="ViewModels\AbnormalThresholdValue\AbnormalThresholdValueSettingView.cs" />
+    <Compile Include="ViewModels\AbnormalThresholdValue\AbnormalThresholdValueView.cs" />
     <Compile Include="ViewModels\CurrentStainDatas\CurrentStrainDatasView.cs" />
     <Compile Include="ViewModels\CurrentStainDatas\IncudeSectionWaringColor.cs" />
     <Compile Include="ViewModels\CurrentStainDatas\RealTimeWarningStrainDataViewModel.cs" />
@@ -368,6 +368,7 @@
     <Content Include="Models\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\AbnormalThresholdValueSetting\listAbnormalThresholdValueMessage-website.js" />
     <Content Include="Scripts\adminUser\listUserMessage-website.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
@@ -626,13 +627,12 @@
     <Content Include="Views\HumidityDataRealTimeMonitoring\HumidityDatasRealTimeMonitoring.cshtml" />
     <Content Include="Views\ThresholdValueSetting\ThresholdValuePullDownSearchPartial.cshtml" />
     <Content Include="Views\ThresholdValueSetting\StrainThresholdValueWithoutNagetivePartial.cshtml" />
-    <Content Include="Views\AbormalThresholdValue\AbormalThresholdValueSetting.cshtml" />
-    <Content Include="Views\AbormalThresholdValue\AbnomalThresholdValueListPartial.cshtml" />
-    <Content Include="Views\AbormalThresholdValue\AbormalThresholdValuePartial.cshtml" />
+    <Content Include="Views\AbnormalThresholdValueSetting\AbnormalThresholdValueListPartial.cshtml" />
+    <Content Include="Views\AbnormalThresholdValueSetting\AbnormalThresholdValuePartial.cshtml" />
+    <Content Include="Views\AbnormalThresholdValueSetting\AbnormalThresholdValueSetting.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\AbormalThreshold\" />
     <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>

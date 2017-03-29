@@ -5,7 +5,7 @@ using GxjtBHMS.Models.AbnormalThresholdValueSetting;
 
 namespace GxjtBHMS.SqlServerDAL.AbnormalThresholdValueSettingDAL
 {
-    public class AbnormalThresholdValueSettingDAL : Repository<AbnormalThresholdValueTable, int>, IAbnomalThresholdValueSettingDAL
+    public class AbnormalThresholdValueSettingDAL : Repository<AbnormalThresholdValueTable, int>, IAbnormalThresholdValueSettingDAL
     {
         
     }

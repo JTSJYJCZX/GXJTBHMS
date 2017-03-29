@@ -1,4 +1,5 @@
 ﻿/// <autosync enabled="true" />
+/// <reference path="abnormalthresholdvaluesetting/listabnormalthresholdvaluemessage-website.js" />
 /// <reference path="adminuser/listusermessage-website.js" />
 /// <reference path="ai.0.15.0-build58334.js" />
 /// <reference path="bootstrap.min.js" />
