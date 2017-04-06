@@ -45,16 +45,33 @@ namespace GxjtBHMS.Service
         public IEnumerable<MonitoringPointsNumber> QueryThresholdValueListByPointsPosition(string containPointNumber)
         {
             IList<Func<MonitoringPointsNumber, bool>> ps = new List<Func<MonitoringPointsNumber, bool>>();
-            DealWithContainsPointsNumber(containPointNumber,ps);
+            DealWithContainsPointsNumberToUpper(containPointNumber,ps);
             return _getPointsPositionDAL.FindBy(ps, PointsPosition_NavigationProperty);  
         }
 
-
+        /// <summary>
+        /// 处理查询条件中包含测点编号字符串
+        /// </summary>
+        /// <param name="containPointNumber"></param>
+        /// <param name="ps"></param>
         void DealWithContainsPointsNumber(string containPointNumber, IList<Func<MonitoringPointsNumber, bool>> ps)
         {
             if (!string.IsNullOrEmpty(containPointNumber))
             {
                 ps.Add(m => m.Name.Contains(containPointNumber));
+            }
+        }
+
+        /// <summary>
+        /// 处理查询条件包含测点编号字符串，且匹配字段转换成大写，查询条件也转换成大写
+        /// </summary>
+        /// <param name="containPointNumber"></param>
+        /// <param name="ps"></param>
+        void DealWithContainsPointsNumberToUpper(string containPointNumber, IList<Func<MonitoringPointsNumber, bool>> ps)
+        {
+            if (!string.IsNullOrEmpty(containPointNumber))
+            {
+                ps.Add(m => m.Name.ToUpper().Contains(containPointNumber.ToUpper()));
             }
         }
     }

@@ -1,29 +1,29 @@
 ﻿@model MornitoringDataSearchBarBaseView
 
 <div class="form-group searchContent">
-    <label for="mornitorTestTypeSelect" class="control-label"> 测试类型：</label>
+    <label for="mornitorTestTypeSelectFirst" class="control-label"> 测试类型：</label>
     @Html.DropDownListFor(m => m.MornitoringTestTypeId, (IEnumerable<SelectListItem>)ViewData[WebConstants.MonitoringTestTypesKey],
             new { id = "mornitorTestTypeSelectFirst", @class = "selectpicker" })
-    <label for="monitorTestPointsPositionSelect" class="control-label col-md-offset-1"> 测点位置：</label>
+    <label for="monitorTestPointsPositionSelectFirst" class="control-label col-md-offset-1"> 测点位置：</label>
     @Html.DropDownListFor(m => m.MornitoringPointsPositionId, (IEnumerable<SelectListItem>)ViewData[WebConstants.MonitoringPointsPositionKey],
       new { id = "monitorTestPointsPositionSelectFirst", @class = "selectpicker" })
 
-    <label for="monitorTestPointsNumberSelect" class="control-label col-md-offset-1">   测点编号：</label>
+    <label for="monitorTestPointsNumberSelectFirst" class="control-label col-md-offset-1">   测点编号：</label>
     @Html.DropDownListFor(m => m.MornitoringPointsNumberIds, (IEnumerable<SelectListItem>)ViewData[WebConstants.MonitoringPointsNumberKey],
       new { id = "monitorTestPointsNumberSelectFirst", @class = "selectpicker"})
 </div>
 
 <div class="form-group searchContent">
-    <label for="mornitorTestTypeSelect" class="control-label"> 测试类型：</label>
+    <label for="mornitorTestTypeSelectSecond" class="control-label"> 测试类型：</label>
     @Html.DropDownListFor(m => m.MornitoringTestTypeId, (IEnumerable<SelectListItem>)ViewData[WebConstants.MonitoringTestTypesKey],
             new { id = "mornitorTestTypeSelectSecond", @class = "selectpicker" })
-    <label for="monitorTestPointsPositionSelect" class="control-label col-md-offset-1"> 测点位置：</label>
+    <label for="monitorTestPointsPositionSelectSecond" class="control-label col-md-offset-1"> 测点位置：</label>
     @Html.DropDownListFor(m => m.MornitoringPointsPositionId, (IEnumerable<SelectListItem>)ViewData[WebConstants.MonitoringPointsPositionKey],
       new { id = "monitorTestPointsPositionSelectSecond", @class = "selectpicker" })
 
-    <label for="monitorTestPointsNumberSelect" class="control-label col-md-offset-1">   测点编号：</label>
+    <label for="monitorTestPointsNumberSelectSecond" class="control-label col-md-offset-1">   测点编号：</label>
     @Html.DropDownListFor(m => m.MornitoringPointsNumberIds, (IEnumerable<SelectListItem>)ViewData[WebConstants.MonitoringPointsNumberKey],
-      new { id = "monitorTestPointsNumberSelectSecond", @class = "selectpicker" })
+      new { id = "monitorTestPointsNumberSelectSecond", @class = "selectpicker"})
 </div>
 
 <div class="form-group searchContent">

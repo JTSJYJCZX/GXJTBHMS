@@ -135,11 +135,11 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
         public IEnumerable<ThresholdValueQueryConditionModel> GetThresholdValueSearchConditionByConditonPointsNumber(QueryPointsNumberConditonView conditions)
         {
             var req = new PointsNumberSearchRequest
-            {
-                PointNumber = conditions.ContainsPointsNumber,
+            {//自动去除前导空格
+                PointNumber = conditions.ContainsPointsNumber.Trim()
             };
             var thresholdValueSettingService = new GetThresholdValueSettingListBySearchBarService();
-            return thresholdValueSettingService.GetPointsPositionsByContainPointsNumber(conditions.ContainsPointsNumber);
+            return thresholdValueSettingService.GetPointsPositionsByContainPointsNumber(req.PointNumber);
         }
 
        /// <summary>

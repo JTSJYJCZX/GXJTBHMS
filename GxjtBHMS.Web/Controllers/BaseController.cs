@@ -25,6 +25,6 @@ namespace GxjtBHMS.Web.Controllers
                 ViewData[viewDataKey] = selectMonitoringPointsNumberListItemCollection.ToList().InsertPleaseChoiceSelectListItem();
             else
                 ViewData[viewDataKey] = selectMonitoringPointsNumberListItemCollection;
-        }
+        }   
     }
 }

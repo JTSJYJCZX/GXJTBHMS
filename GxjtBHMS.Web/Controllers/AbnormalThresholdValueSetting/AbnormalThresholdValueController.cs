@@ -29,15 +29,15 @@ namespace GxjtBHMS.Web.Controllers.AbnormalThresholdValue
             {
 
                 foreach (var item in resp.AbnormalThresholdValue)
-                    {
-                        var resultItem = new AbnormalThresholdValueView();
-                        resultItem.TypeId = item.Id;
-                        resultItem.TypeName = item.TypeName;
-                        resultItem.MaxLevelThresholdValue = item.MaxLevelThresholdValue;
-                        resultItem.MinLevelThresholdValue = item.MinLevelThresholdValue;
-                        models.Add(resultItem);
-                    }
-                    resultView.AbnormalThresholdValues = models;
+                {
+                    var resultItem = new AbnormalThresholdValueView();
+                    resultItem.TypeId = item.Id;
+                    resultItem.TypeName = item.TypeName;
+                    resultItem.MaxLevelThresholdValue = item.MaxLevelThresholdValue;
+                    resultItem.MinLevelThresholdValue = item.MinLevelThresholdValue;
+                    models.Add(resultItem);
+                }
+                resultView.AbnormalThresholdValues = models;
                 return PartialView("AbnormalThresholdValueListPartial", resultView);
 
             }
@@ -65,9 +65,8 @@ namespace GxjtBHMS.Web.Controllers.AbnormalThresholdValue
                 var req = new AbnormalThresholdValueSettingRequest
                 {
                     TypeId = model.TypeId,
-                    TypeName = model.TypeName,
-                    MaxLevelThresholdValue=model.AbnormalThresholdValues[0],
-                    MinLevelThresholdValue=model.AbnormalThresholdValues[1]
+                    MaxLevelThresholdValue = model.AbnormalThresholdValues[0],
+                    MinLevelThresholdValue = model.AbnormalThresholdValues[1]
                 };
                 var abnomalthresholdValueSettingService = new AbnormalThresholdValueSettingService();
                 var resp = abnomalthresholdValueSettingService.ModifyAbnormalThresholdValue(req);
