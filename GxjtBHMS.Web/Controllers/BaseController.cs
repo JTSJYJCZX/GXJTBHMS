@@ -25,6 +25,22 @@ namespace GxjtBHMS.Web.Controllers
                 ViewData[viewDataKey] = selectMonitoringPointsNumberListItemCollection.ToList().InsertPleaseChoiceSelectListItem();
             else
                 ViewData[viewDataKey] = selectMonitoringPointsNumberListItemCollection;
-        }   
+        }
+
+        protected void SaveSelectListItemCollectionToViewData(IEnumerable<SelectListItemModel> source, string viewDataKey, bool hasPleaseChoiceItem,int defaultChoiceId=0)
+        {
+            var selectMonitoringPointsNumberListItemCollection = source != null ? source.Select(m => new SelectListItem { Text = m.Name, Value = m.Id.ToString() }) : new List<SelectListItem>();
+            if (hasPleaseChoiceItem)
+                ViewData[viewDataKey] = selectMonitoringPointsNumberListItemCollection.ToList().InsertPleaseChoiceSelectListItem();
+            if (defaultChoiceId > 0)
+            {
+                var newselectMonitoringPointsNumberListItemArray = selectMonitoringPointsNumberListItemCollection.ToArray();
+                newselectMonitoringPointsNumberListItemArray[defaultChoiceId - 1].Selected = true;
+                var newSelectMonitoringPointsNumberListItemCollection = newselectMonitoringPointsNumberListItemArray.ToList();
+                ViewData[viewDataKey] = newSelectMonitoringPointsNumberListItemCollection;
+            }
+            else
+                ViewData[viewDataKey] = selectMonitoringPointsNumberListItemCollection;
+        }
     }
 }
