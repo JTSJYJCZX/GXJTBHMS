@@ -239,12 +239,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MonitoringDatasComparingQueryController.cs" />
     <Compile Include="Controllers\MonitoringDatasController.cs" />
-    <Compile Include="Controllers\RealTimeMonitoring\CableForceDataRealTimeMonitoringController.cs" />
-    <Compile Include="Controllers\RealTimeMonitoring\DisplacementDataRealTimeMonitoringController.cs" />
-    <Compile Include="Controllers\RealTimeMonitoring\HumidityDataRealTimeMonitoringController.cs" />
-    <Compile Include="Controllers\RealTimeMonitoring\TemperatureDataRealTimeMonitoringController.cs" />
     <Compile Include="Controllers\StateEvaluation\ThresholdValueSettingController.cs" />
-    <Compile Include="Controllers\RealTimeMonitoring\StrainDataRealTimeMonitoringController.cs" />
+    <Compile Include="Controllers\RealTimeMonitoring\RealTimeMonitoringController.cs" />
     <Compile Include="Controllers\SystemInformationController.cs" />
     <Compile Include="Files\ExtensionMehtods\GetEnumDescription\EnumUnit.cs" />
     <Compile Include="Files\FilesCreater\WordCreater.cs" />
@@ -617,19 +613,21 @@
     <Content Include="Views\MonitoringDatasComparingQuery\DataComparingQuerySearchPartial.cshtml" />
     <Content Include="Views\MonitoringDatasComparingQuery\DataComparingQuery.cshtml" />
     <Content Include="Views\MonitoringDatas\CableForceDataQueryListViewPartial.cshtml" />
-    <Content Include="Views\StrainDataRealTimeMonitoring\StrainDatasRealTimeMonitoring.cshtml" />
-    <Content Include="Views\ThresholdValueSetting\DisplacementDataRealTimeMonitoring\DisplacementDatasRealTimeMonitoring.cshtml" />
+    <Content Include="Views\RealTimeMonitoring\SteelArchStrainDatasRealTimeMonitoring.cshtml" />
+    <Content Include="Views\RealTimeMonitoring\DisplacementDatasRealTimeMonitoring.cshtml" />
     <Content Include="Views\MonitoringDatas\HumidityDataQueryListViewPartial.cshtml" />
     <Content Include="Views\MonitoringDatas\TemperatureDataQueryListViewPartial.cshtml" />
     <Content Include="Views\MonitoringDatasComparingQuery\DataComparingQuerySearchContentPartial.cshtml" />
-    <Content Include="Views\CableForceDataRealTimeMonitoring\CableForceDatasRealTimeMonitoring.cshtml" />
-    <Content Include="Views\TemperatureDataRealTimeMonitoring\TemperatureDatasRealTimeMonitoring.cshtml" />
-    <Content Include="Views\HumidityDataRealTimeMonitoring\HumidityDatasRealTimeMonitoring.cshtml" />
+    <Content Include="Views\RealTimeMonitoring\CableForceDatasRealTimeMonitoring.cshtml" />
+    <Content Include="Views\RealTimeMonitoring\TemperatureDatasRealTimeMonitoring.cshtml" />
+    <Content Include="Views\RealTimeMonitoring\HumidityDatasRealTimeMonitoring.cshtml" />
     <Content Include="Views\ThresholdValueSetting\ThresholdValuePullDownSearchPartial.cshtml" />
     <Content Include="Views\ThresholdValueSetting\StrainThresholdValueWithoutNagetivePartial.cshtml" />
     <Content Include="Views\AbnormalThresholdValueSetting\AbnormalThresholdValueListPartial.cshtml" />
     <Content Include="Views\AbnormalThresholdValueSetting\AbnormalThresholdValuePartial.cshtml" />
     <Content Include="Views\AbnormalThresholdValueSetting\AbnormalThresholdValueSetting.cshtml" />
+    <Content Include="Views\RealTimeMonitoring\SteelLatticeStrainDatasRealTimeMonitoring.cshtml" />
+    <Content Include="Views\RealTimeMonitoring\ConcreteStrainStrainDatasRealTimeMonitoring.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

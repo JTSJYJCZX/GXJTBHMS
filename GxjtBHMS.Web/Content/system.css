@@ -66,9 +66,16 @@
 
 /*定义二级菜单样式*/
 .secondmenu a {
-    font-size: 10px;
+    font-size: 12px;
     color: #4A515B;
-    text-align: center;
+    text-align: left;
+}
+/*定义三级菜单样式*/
+.secondmenu .thirdmenu a {
+    font-size: 11px;
+    color: #4A515B;
+    text-align: left;
+    margin-left: 15px;
 }
 
 .navbar-static-top {
