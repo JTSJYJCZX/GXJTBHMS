@@ -130,4 +130,30 @@ namespace GxjtBHMS.Web.Validations
         }
 
     }
+
+
+    class AbnormalThresholdValuesValidationAttribute : ValidationAttribute
+    {
+        public override bool IsValid(object value)
+        {
+            if (value == null)
+                return false;
+            var thresholdValues = value as double?[];
+            var returnVal = true;
+            var maxValue = thresholdValues[0];
+            for (int i = 0; i < thresholdValues.Length; i++)
+            {
+                if (!thresholdValues[i].HasValue)
+                {//遍历数组是否有值
+                    returnVal = false;
+                }
+                if (thresholdValues[i] >= maxValue && i > 0)
+                {//遍历数组是否有下限值超过上限值的输入
+                    returnVal = false;
+                }
+                if (!returnVal) break;//只要遇到非法的阈值就终止循环
+            }
+            return returnVal;
+        }
+    }
 }

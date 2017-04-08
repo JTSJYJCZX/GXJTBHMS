@@ -18,6 +18,7 @@ namespace GxjtBHMS.Web.ViewModels.AbnormalThresholdValueSetting
         public double? MinLevelThresholdValue { get; set; }
         [DisplayName("测点阈值")]
        
+        [AbnormalThresholdValuesValidation]
         public double?[] AbnormalThresholdValues { get; set; }
     }
 }

@@ -78,29 +78,41 @@ namespace GxjtBHMS.Web.Controllers
         public ActionResult GetDataComparingQuerySearchBar()
         {
             int firstTestTypeId;
-            SaveMonitoringTestTypesSelectListItemsToViewData(out firstTestTypeId);
+            int defaultChoiceTestTypeId;
+            var resp = _mtts.GetAllTestType();
+            SaveMonitoringTestTypesSelectListItemsToViewData(1, WebConstants.MonitoringTestTypesKey,out firstTestTypeId);
+            SaveMonitoringTestTypesSelectListItemsToViewData(Convert.ToInt32(resp.Datas.Last().Id), WebConstants.MonitoringTestTypesSecondKey, out defaultChoiceTestTypeId);
             int tmpMornitoringPointsPositionId;
-            SaveMonitoringPointsPositionSelectListItemsToViewData(firstTestTypeId, out tmpMornitoringPointsPositionId);
-            SaveMonitoringPointsNumberSelectListItemsToViewData(tmpMornitoringPointsPositionId);
+            int tmpMornitoringPointsPositionIdSecond;
+            SaveMonitoringPointsPositionSelectListItemsToViewData(firstTestTypeId, WebConstants.MonitoringPointsPositionKey, out tmpMornitoringPointsPositionId);
+            SaveMonitoringPointsPositionSelectListItemsToViewData(defaultChoiceTestTypeId, WebConstants.MonitoringPointsPositionSecondKey, out tmpMornitoringPointsPositionIdSecond);
+            SaveMonitoringPointsNumberSelectListItemsToViewData(WebConstants.MonitoringPointsNumberKey, tmpMornitoringPointsPositionId);
+            SaveMonitoringPointsNumberSelectListItemsToViewData(WebConstants.MonitoringPointsNumberSecondKey, tmpMornitoringPointsPositionIdSecond);
             return PartialView("DataComparingQuerySearchPartial");
         }
         /// <summary>
         /// 获得测试类型下拉列表
         /// </summary>
-        void SaveMonitoringTestTypesSelectListItemsToViewData(out int firstTestTypeId)
+        void SaveMonitoringTestTypesSelectListItemsToViewData(int defaultChoiceId, string viewDataKey,out int firstTestTypeId)
         {
             firstTestTypeId = 1;
             var resp = _mtts.GetAllTestType();
             if (resp.Datas.Count() > 0)
             {
                 firstTestTypeId = Convert.ToInt32(resp.Datas.First().Id);
+                if(defaultChoiceId!= firstTestTypeId)
+                {
+                    firstTestTypeId =defaultChoiceId;
+                    SaveSelectListItemCollectionToViewData(resp.Datas, viewDataKey, false, firstTestTypeId);
+                }
+                else SaveSelectListItemCollectionToViewData(resp.Datas, viewDataKey, false);
             }
-            SaveSelectListItemCollectionToViewData(resp.Datas, WebConstants.MonitoringTestTypesKey, false);
+            else SaveSelectListItemCollectionToViewData(resp.Datas, viewDataKey, false);
         }
         /// <summary>
         /// 获得测点位置下拉列表
         /// </summary>
-        void SaveMonitoringPointsPositionSelectListItemsToViewData(int mornitoringTestTypeId, out int mornitoringPointsPositionId)
+        void SaveMonitoringPointsPositionSelectListItemsToViewData(int mornitoringTestTypeId, string viewDataKey, out int mornitoringPointsPositionId)
         {
             var resp = _mpps.GetMonitoringPointsPositionsByTestTypeId(mornitoringTestTypeId);
             mornitoringPointsPositionId = 0;
@@ -108,15 +120,15 @@ namespace GxjtBHMS.Web.Controllers
             {
                 mornitoringPointsPositionId = Convert.ToInt32(resp.Datas.First().Id);
             }
-            SaveSelectListItemCollectionToViewData(resp.Datas, WebConstants.MonitoringPointsPositionKey, false);
+            SaveSelectListItemCollectionToViewData(resp.Datas, viewDataKey, false);
         }
         /// <summary>
         /// 获得测点编号下拉列表
         /// </summary>
-        void SaveMonitoringPointsNumberSelectListItemsToViewData(int mornitoringPointsPositionId = 0)
+        void SaveMonitoringPointsNumberSelectListItemsToViewData(string viewDataKey,int mornitoringPointsPositionId = 0)
         {
             var resp = _mpns.GetMonitoringPointsNumberByPointsPositionId(mornitoringPointsPositionId);
-            SaveSelectListItemCollectionToViewData(resp.Datas, WebConstants.MonitoringPointsNumberKey, false);
+            SaveSelectListItemCollectionToViewData(resp.Datas, viewDataKey, false);
         }
 
         public ActionResult GetChartDatasComparing(MornitoringDataComparingSearchBarView conditions)
