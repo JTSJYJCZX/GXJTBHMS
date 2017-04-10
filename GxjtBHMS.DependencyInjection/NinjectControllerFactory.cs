@@ -48,26 +48,8 @@ namespace GxjtBHMS.DependencyInjection
             _ninjectKernel.Bind<IMonitoringPointsNumberDAL>().To<MonitoringPointsNumberDAL>();
 
 
-            _ninjectKernel.Bind<IStrainDataRealTimeDisplayService>().To<StrainDataRealTimeDisplayService>();
-            _ninjectKernel.Bind<IRealTimeStrainDatasDAL>().To<RealTimeStrainDatasDAL>();
-            _ninjectKernel.Bind<IDisplaymentDataRealTimeDisplayService>().To<DisplaymentDataRealTimeDisplayService>();
-            _ninjectKernel.Bind<IRealTimeDisplaymentDatasDAL>().To<RealTimeDisplaymentDatasDAL>();
-            _ninjectKernel.Bind<ICableForceDataRealTimeDisplayService>().To<CableForceDataRealTimeDisplayService>();
-            _ninjectKernel.Bind<IRealTimeCableForceDatasDAL>().To<RealTimeCableForceDatasDAL>();
-            _ninjectKernel.Bind<ITemperatureDataRealTimeDisplayService>().To<TemperatureDataRealTimeDisplayService>();
-            _ninjectKernel.Bind<IRealTimeTemperatureDatasDAL>().To<RealTimeTemperatureDatasDAL>();
-
-            _ninjectKernel.Bind<IHumidityDataRealTimeDisplayService>().To<HumidityDataRealTimeDisplayService>();
-            _ninjectKernel.Bind<IRealTimeHumidityDatasDAL>().To<RealTimeHumidityDatasDAL>();
-
-
-            _ninjectKernel.Bind<IStrainThresholdValueGettingDAL>().To<StrainThresholdValueGettingDAL>();
-            _ninjectKernel.Bind<IDisplaymentThresholdValueGettingDAL>().To<DisplaymentThresholdValueGettingDAL>();
-            _ninjectKernel.Bind<ICableForceThresholdValueGettingDAL>().To<CableForceThresholdValueGettingDAL>();
-            _ninjectKernel.Bind<ITemperatureThresholdValueGettingDAL>().To<TemperatureThresholdValueGettingDAL>();
-            _ninjectKernel.Bind<IHumidityThresholdValueGettingDAL>().To<HumidityThresholdValueGettingDAL>();
-
-      
+            _ninjectKernel.Bind<ISteelArchStrainRealTimeDatasService>().To<SteelArchStrainRealTimeDatasService>();
+            _ninjectKernel.Bind<ISteelArchStrainRealTimeDatasDAL >().To<SteelArchStrainRealTimeDatasDAL>();
 
             _ninjectKernel.Bind<IFileConverter>().To<ExcelFileConverter>();
 

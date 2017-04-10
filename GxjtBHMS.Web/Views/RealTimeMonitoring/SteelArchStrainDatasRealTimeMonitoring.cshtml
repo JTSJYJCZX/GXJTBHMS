@@ -183,7 +183,7 @@
 
 <script>
     $(function () {
-        var numHub = $.connection.strainDatasRealTimeMonitoringHub;
+        var numHub = $.connection.steelArchStrainDatasRealTimeMonitoringHub;
         numHub.client.realTimeDisplayDatas = function (models) {
             $.each(models, function (i, model) {
                 $.each(model.WarningRealTimeData, function (j, strainData) {
@@ -194,7 +194,7 @@
             });
         }
         $.connection.hub.start().done(function () {
-            numHub.server.displayWarningStrainDatas(1);
+            numHub.server.displayWarningSteelArchStrainDatas(1);
         })
     });
 </script>

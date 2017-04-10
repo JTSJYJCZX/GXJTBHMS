@@ -52,6 +52,7 @@ namespace GxjtBHMS.SqlServerDAL
         public DbSet<WindLoadThresholdValueTable> WindLoadThresholdValues { get; set; }//风荷载阈值
 
         public DbSet<AbnormalThresholdValueTable> AbnormalThresholdValue { get; set; }//异常阈值
+        public DbSet<ThresholdGradeTable> ThresholdGradeModel { get; set; }//预警等级
 
     }
 }

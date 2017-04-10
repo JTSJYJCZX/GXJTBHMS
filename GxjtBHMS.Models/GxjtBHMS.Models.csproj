@@ -74,12 +74,7 @@
     <Compile Include="MonitoringDatasTable\WindLoadTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MonitoringDatasTable\TemperatureTable.cs" />
-    <Compile Include="RealTimeMonitoringDatas\RealTimeCableForceModel.cs" />
-    <Compile Include="RealTimeMonitoringDatas\RealTimeDatasBaseModel.cs" />
-    <Compile Include="RealTimeMonitoringDatas\RealTimeDisplaymentModel.cs" />
-    <Compile Include="RealTimeMonitoringDatas\RealTimeHumidityModel.cs" />
-    <Compile Include="RealTimeMonitoringDatas\RealTimeStrainModel.cs" />
-    <Compile Include="RealTimeMonitoringDatas\RealTimeTemperatureModel.cs" />
+    <Compile Include="ThresholdGradeTable.cs" />
     <Compile Include="ThresholdValueSetting\DisplacementThresholdValueTable.cs" />
     <Compile Include="ThresholdValueSetting\CableForceThresholdValueTable.cs" />
     <Compile Include="ThresholdValueSetting\HumidityThresholdValueTable.cs" />

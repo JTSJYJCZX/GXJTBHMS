@@ -261,12 +261,8 @@
     <Compile Include="Models\StrainDatasHandler.cs" />
     <Compile Include="Models\ThresholdValuesConvert.cs" />
     <Compile Include="Models\ThresholdValueGroup.cs" />
-    <Compile Include="RealTimeMonitoringHub\CableForceDatasRealTimeMonitoringHub.cs" />
-    <Compile Include="RealTimeMonitoringHub\DisplacementDatasRealTimeMonitoringHub.cs" />
-    <Compile Include="RealTimeMonitoringHub\HumidityDatasRealTimeMonitoringHub.cs" />
-    <Compile Include="RealTimeMonitoringHub\TemperatureDatasRealTimeMonitoringHub.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="RealTimeMonitoringHub\StrainDatasRealTimeMonitoringHub.cs" />
+    <Compile Include="RealTimeMonitoringHub\SteelArchStrainDatasRealTimeMonitoringHub.cs" />
     <Compile Include="Validations\StrainThresholdValuesValidationAttribute.cs" />
     <Compile Include="ViewModels\AbnormalThresholdValue\AbnormalThresholdValueSettingView.cs" />
     <Compile Include="ViewModels\AbnormalThresholdValue\AbnormalThresholdValueView.cs" />
