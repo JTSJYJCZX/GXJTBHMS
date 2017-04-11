@@ -1,45 +1,41 @@
 ﻿using GxjtBHMS.Service.Interfaces;
+using GxjtBHMS.IDAL;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using GxjtBHMS.Service.ViewModels.RealTimeDatasDisplay;
-using GxjtBHMS.IDAL;
-using GxjtBHMS.Service.ExtensionMethods.GetEnumDescription;
-using GxjtBHMS.Models.RealTimeMonitoringDatas;
-using GxjtBHMS.Models.ThresholdValueSetting;
+using System.Linq;
+using GxjtBHMS.Models.MonitoringDatasTable;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    public class DisplaymentDataRealTimeDisplayService : ServiceBase, IDisplaymentDataRealTimeDisplayService
+    public class SteelArchStrainRealTimeDatasService : ServiceBase, ISteelArchStrainRealTimeDatasService
     {
-        IRealTimeDisplaymentDatasDAL _cddDAL;
+        ISteelArchStrainRealTimeDatasDAL  _csdDAL;
         IMonitoringPointsNumberDAL _mpnDAL;
-        IDisplaymentThresholdValueGettingDAL _dtvDAL;
         IMonitoringPointsPositionDAL _mppDAL;
-        public DisplaymentDataRealTimeDisplayService(IRealTimeDisplaymentDatasDAL cddDAL, IMonitoringPointsNumberDAL mpnDAL, IDisplaymentThresholdValueGettingDAL dtvDAL, IMonitoringPointsPositionDAL mppDAL)
+        public SteelArchStrainRealTimeDatasService(ISteelArchStrainRealTimeDatasDAL  csdDAL, IMonitoringPointsNumberDAL mpnDAL, IMonitoringPointsPositionDAL mppDAL)
         {
-            _cddDAL = cddDAL;
+            _csdDAL = csdDAL;
             _mpnDAL = mpnDAL;
-            _dtvDAL = dtvDAL;
             _mppDAL = mppDAL;
 
         }
-        public IEnumerable<IncludeSectionWarningColorDataModel> GetWarningDisplaymentDatasBy(int testTypeId)
+
+
+        public IEnumerable<IncludeSectionWarningColorDataModel> GetWarningStrainDatasBy(IEnumerable<int> sectionIds)
         {
             List<IncludeSectionWarningColorDataModel> resultOfAllSection = new List<IncludeSectionWarningColorDataModel>();
             try
             {
-                var sectionsId = _mppDAL.GetModelsByTestTypeId(testTypeId).Select(m => m.Id).ToArray();
-                foreach (var item in sectionsId)
+                foreach (var item in sectionIds)
                 {
                     IncludeSectionWarningColorDataModel resultOfOneSection = new IncludeSectionWarningColorDataModel();
-                    var thresholdValue = _dtvDAL.GetDisplaymentThresholdValue(item).ToArray();
-                    var source = _cddDAL.GetRealTimeDisplayments(item).ToArray();
-                    resultOfOneSection.WarningRealTimeData = GetResultsOfOneSection(thresholdValue, source);
-                    resultOfOneSection.SectionWarningGrade = resultOfOneSection.WarningRealTimeData.Select(m => m.WarningGrade).Max();
-                    resultOfOneSection.SectionWarningColor = resultOfOneSection.SectionWarningGrade.FetchDescription();
+                    var source = _csdDAL.GetRealTimeStrains(item).ToArray();
+                    resultOfOneSection.WarningRealTimeData = GetResultsOfOneSection(source);
+                    var maxGrade = resultOfOneSection.WarningRealTimeData.Select(m=>m.WarningGrade).Max();
+                    resultOfOneSection.SectionWarningColor = resultOfOneSection.WarningRealTimeData.Where(m=>m.WarningGrade== maxGrade).Select(m=>m.WarningColor).First();
                     resultOfAllSection.Add(resultOfOneSection);
-                }
+                }          
             }
             catch (Exception ex)
             {
@@ -48,22 +44,27 @@ namespace GxjtBHMS.Service.Implementations
             return resultOfAllSection;
         }
 
-        private IEnumerable<RealTimeWarningDataModel> GetResultsOfOneSection(DisplacementThresholdValueTable[] thresholdValue, RealTimeDisplaymentModel[] source)
+        private List<RealTimeWarningDataModel> GetResultsOfOneSection(SteelArchStrainTable[] source)
         {
             List<RealTimeWarningDataModel> sectionModel = new List<RealTimeWarningDataModel>();
-            //for (int i = 0; i < source.Length; i++)
-            //{
-            //    RealTimeWarningDataModel pointModel = new RealTimeWarningDataModel();
-            //    pointModel.PointsNumber = source[i].PointNumberName;
-            //    pointModel.CurrentData = source[i].DisplaymentDatas;
-            //    pointModel.WarningGrade = GetPointWarningGrade(thresholdValue[i], source[i].DisplaymentDatas);
-            //    pointModel.WarningColor = pointModel.WarningGrade.FetchDescription();
-            //    sectionModel.Add(pointModel);
-            //}
+            for (int i = 0; i < source.Length; i++)
+            {
+                RealTimeWarningDataModel pointModel = new RealTimeWarningDataModel();
+                pointModel.PointsNumber = source[i].PointsNumber.Name;
+                pointModel.CurrentData = source[i].Strain;
+                pointModel.WarningColor = source[i].ThresholdGrade.ThresholdColor;
+                pointModel.WarningGrade = source[i].ThresholdGradeId;
+                sectionModel.Add(pointModel);
+            }
             return sectionModel;
         }
 
-        //private WarningGrade GetPointWarningGrade(DisplaymentThresholdValueTable pointThresholdValue, double pointCurrentData)
+        public IEnumerable<int> GetSectionIdsBy(int testTypeId)
+        {
+            return _mppDAL.GetModelsByTestTypeId(testTypeId).Select(m => m.Id);
+        }
+
+        //private WarningGrade GetPointWarningGrade(ConcreteStrainThresholdValueTable pointThresholdValue, double pointCurrentData)
         //{
         //    if (IsHealth(pointThresholdValue, pointCurrentData))
         //    {
@@ -87,25 +88,24 @@ namespace GxjtBHMS.Service.Implementations
         //    }
         //}
 
-        //bool IsThirdWarning(DisplaymentThresholdValueTable pointThresholdValue, double pointCurrentData)
+        //bool IsThirdWarning(ConcreteStrainThresholdValueTable pointThresholdValue, double pointCurrentData)
         //{
         //    return pointCurrentData >= pointThresholdValue.PositiveThirdLevelThresholdValue || pointCurrentData <= pointThresholdValue.NegativeThirdLevelThresholdValue;
         //}
 
-        //bool IsSecondWarning(DisplaymentThresholdValueTable pointThresholdValue, double pointCurrentData)
+        //bool IsSecondWarning(ConcreteStrainThresholdValueTable pointThresholdValue, double pointCurrentData)
         //{
         //    return (pointCurrentData < pointThresholdValue.PositiveThirdLevelThresholdValue && pointCurrentData >= pointThresholdValue.PositiveSecondLevelThresholdValue) || (pointCurrentData > pointThresholdValue.NegativeThirdLevelThresholdValue && pointCurrentData <= pointThresholdValue.NegativeSecondLevelThresholdValue);
         //}
 
-        //bool IsFirstWarning(DisplaymentThresholdValueTable pointThresholdValue, double pointCurrentData)
+        //bool IsFirstWarning(ConcreteStrainThresholdValueTable pointThresholdValue, double pointCurrentData)
         //{
         //    return (pointCurrentData < pointThresholdValue.PositiveSecondLevelThresholdValue && pointCurrentData >= pointThresholdValue.PositiveFirstLevelThresholdValue) || (pointCurrentData > pointThresholdValue.NegativeSecondLevelThresholdValue && pointCurrentData <= pointThresholdValue.NegativeFirstLevelThresholdValue);
         //}
 
-        //bool IsHealth(DisplaymentThresholdValueTable pointThresholdValue, double pointCurrentData)
+        //bool IsHealth(ConcreteStrainThresholdValueTable pointThresholdValue, double pointCurrentData)
         //{
         //    return pointCurrentData < pointThresholdValue.PositiveFirstLevelThresholdValue && pointCurrentData > pointThresholdValue.NegativeFirstLevelThresholdValue;
         //}
     }
 }
-

@@ -46,19 +46,11 @@
   <ItemGroup>
     <Compile Include="AbnormalThresholdValueSetting\IAbnormalThresholdValueSettingDAL.cs" />
     <Compile Include="IMonitoringDatasEigenvalueDAL.cs" />
-    <Compile Include="ICableForceThresholdValueGettingDAL.cs" />
     <Compile Include="OriginalValueDownLoad\IWindLoadDatasOriginalValueDAL.cs" />
     <Compile Include="OriginalValueDownLoad\IHumidityDatasOriginalValueDAL.cs" />
     <Compile Include="OriginalValueDownLoad\ITemperatureDatasOriginalValueDAL.cs" />
-    <Compile Include="IHumidityThresholdValueGettingDAL.cs" />
-    <Compile Include="IRealTimeHumidityDatasDAL.cs" />
     <Compile Include="IThresholdValueDAL.cs" />
-    <Compile Include="IDisplaymentThresholdValueGettingDAL.cs" />
-    <Compile Include="IRealTimeCableForceDatasDAL.cs" />
-    <Compile Include="IRealTimeDisplaymentDatasDAL.cs" />
-    <Compile Include="IRealTimeStrainDatasDAL.cs" />
-    <Compile Include="IRealTimeTemperatureDatasDAL.cs" />
-    <Compile Include="IStrainThresholdValueGettingDAL.cs" />
+    <Compile Include="RealTimeDatas\ISteelArchStrainRealTimeDatasDAL.cs" />
     <Compile Include="IMonitoringPointsNumberDAL.cs" />
     <Compile Include="IMonitoringPointsPositionDAL.cs" />
     <Compile Include="IMonitoringTestTypeDAL.cs" />

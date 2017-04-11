@@ -1,9 +1,6 @@
-﻿using GxjtBHMS.IDAL;
-using GxjtBHMS.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using GxjtBHMS.Models.RealTimeMonitoringDatas;
 using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
 
 namespace GxjtBHMS.SqlServerDAL

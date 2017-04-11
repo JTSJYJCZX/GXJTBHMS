@@ -308,6 +308,27 @@ namespace GxjtBHMS.SqlServerDAL
 
         MonitoringPointsNumber wL1Point = new MonitoringPointsNumber { Name = "WL-1" };
 
+        /// <summary>
+        /// 预警等级
+        /// </summary>
+        /// <param name="context"></param>
+        ThresholdGradeTable ThresholdGrade1 = new ThresholdGradeTable
+        {
+            ThresholdGrade = "正常",
+            ThresholdColor = "绿色"
+        };
+        ThresholdGradeTable ThresholdGrade2 = new ThresholdGradeTable
+        {
+            ThresholdGrade = "黄色预警",
+            ThresholdColor = "黄色"
+        };
+        ThresholdGradeTable ThresholdGrade3 = new ThresholdGradeTable
+        {
+            ThresholdGrade = "红色预警",
+            ThresholdColor = "红色"
+        };
+
+
         protected override void Seed(BHMSContext context)
         {
             InitDbDatas(context);
@@ -333,6 +354,7 @@ namespace GxjtBHMS.SqlServerDAL
             CreateWindloadThresholdValues(context);
             CreateAbnormalThresholdValue(context);
             CreateSafetyPreWarning_CableFrces(context);
+            CreateThresholdGradeValue(context);
         }
 
         /// <summary>
@@ -386,7 +408,17 @@ namespace GxjtBHMS.SqlServerDAL
             }
 
         }
+        /// <summary>
+        /// 预警等级初始化
+        /// </summary>
+        /// <param name="context"></param>
+        private void CreateThresholdGradeValue(BHMSContext context)
+        {
 
+            context.ThresholdGradeModel.Add(ThresholdGrade1);
+            context.ThresholdGradeModel.Add(ThresholdGrade2);
+            context.ThresholdGradeModel.Add(ThresholdGrade3);
+        }
 
 
 
@@ -1018,6 +1050,8 @@ namespace GxjtBHMS.SqlServerDAL
             }
         }
 
+
+
         void InitialMonitoringDatasOriginalValue(BHMSContext context)
         {
             var random = new Random();
@@ -1025,49 +1059,51 @@ namespace GxjtBHMS.SqlServerDAL
 
             int intlTime = -5;
 
+
+
             for (int i = 0; i < 5; i++)
             {
                 DateTime time = DateTime.Now.AddMinutes(intlTime + i);
                 //钢拱肋应变初始值初始化
                 for (int j = 0; j < tmpNumbers1.Length; j++)
                 {
-                    var steelArchStrainOriginalvalue = new SteelArchStrainTable { PointsNumber = tmpNumbers1[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70) };
+                    var steelArchStrainOriginalvalue = new SteelArchStrainTable { PointsNumber = tmpNumbers1[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
                     context.SteelArchStrains.Add(steelArchStrainOriginalvalue);
                 }
 
                 for (int j = 0; j < tmpNumbers2.Length; j++)
                 {
-                    var steelArchStrainOriginalvalue = new SteelArchStrainTable { PointsNumber = tmpNumbers2[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70) };
+                    var steelArchStrainOriginalvalue = new SteelArchStrainTable { PointsNumber = tmpNumbers2[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade2 };
                     context.SteelArchStrains.Add(steelArchStrainOriginalvalue);
                 }
 
                 for (int j = 0; j < tmpNumbers3.Length; j++)
                 {
-                    var steelArchStrainOriginalvalue = new SteelArchStrainTable { PointsNumber = tmpNumbers3[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70) };
+                    var steelArchStrainOriginalvalue = new SteelArchStrainTable { PointsNumber = tmpNumbers3[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade3 };
                     context.SteelArchStrains.Add(steelArchStrainOriginalvalue);
                 }
 
                 for (int j = 0; j < tmpNumbers4.Length; j++)
                 {
-                    var steelArchStrainOriginalvalue = new SteelArchStrainTable { PointsNumber = tmpNumbers4[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70) };
+                    var steelArchStrainOriginalvalue = new SteelArchStrainTable { PointsNumber = tmpNumbers4[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
                     context.SteelArchStrains.Add(steelArchStrainOriginalvalue);
                 }
 
                 for (int j = 0; j < tmpNumbers5.Length; j++)
                 {
-                    var steelArchStrainOriginalvalue = new SteelArchStrainTable { PointsNumber = tmpNumbers5[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70) };
+                    var steelArchStrainOriginalvalue = new SteelArchStrainTable { PointsNumber = tmpNumbers5[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
                     context.SteelArchStrains.Add(steelArchStrainOriginalvalue);
                 }
 
                 for (int j = 0; j < tmpNumbers6.Length; j++)
                 {
-                    var steelArchStrainOriginalvalue = new SteelArchStrainTable { PointsNumber = tmpNumbers6[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70) };
+                    var steelArchStrainOriginalvalue = new SteelArchStrainTable { PointsNumber = tmpNumbers6[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
                     context.SteelArchStrains.Add(steelArchStrainOriginalvalue);
                 }
 
                 for (int j = 0; j < tmpNumbers7.Length; j++)
                 {
-                    var steelArchStrainOriginalvalue = new SteelArchStrainTable { PointsNumber = tmpNumbers7[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70) };
+                    var steelArchStrainOriginalvalue = new SteelArchStrainTable { PointsNumber = tmpNumbers7[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
                     context.SteelArchStrains.Add(steelArchStrainOriginalvalue);
                 }
 

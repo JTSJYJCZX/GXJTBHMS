@@ -84,18 +84,9 @@
     <Compile Include="MonitoringPointsPositionDAL.cs" />
     <Compile Include="MonitoringTestTypeDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RealTimeDatasMonitoringDAL\RealTimeCableForceDatasDAL.cs" />
-    <Compile Include="RealTimeDatasMonitoringDAL\RealTimeDisplaymentDatasDAL.cs" />
-    <Compile Include="RealTimeDatasMonitoringDAL\RealTimeHumidityDatasDAL.cs" />
-    <Compile Include="RealTimeDatasMonitoringDAL\RealTimeStrainDatasDAL.cs" />
-    <Compile Include="RealTimeDatasMonitoringDAL\RealTimeTemperatureDatasDAL.cs" />
+    <Compile Include="RealTimeDatasMonitoringDAL\SteelArchStrainRealTimeDatasDAL.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="MonitoringDatasDAL\ConcreteStrainDatasEigenvalueDAL.cs" />
-    <Compile Include="SafetyPreWarningDAL\SafetyPreWarningDAL.cs" />
-    <Compile Include="ThresholdValueDatasDAL\CableForceThresholdValueGettingDAL.cs" />
-    <Compile Include="ThresholdValueDatasDAL\DisplaymentThresholdValueGettingDAL.cs" />
-    <Compile Include="ThresholdValueDatasDAL\HumidityThresholdValueGettingDAL.cs" />
-    <Compile Include="ThresholdValueDatasDAL\TemperatureThresholdValueGettingDAL.cs" />
     <Compile Include="ThresholdValueDatasSettingDAL\SteelLatticeStrainThresholdValueSettingDAL.cs" />
     <Compile Include="ThresholdValueDatasSettingDAL\DisplacementThresholdValueSettingDAL.cs" />
     <Compile Include="ThresholdValueDatasSettingDAL\CableForceThresholdValueSettingDAL.cs" />
@@ -104,7 +95,6 @@
     <Compile Include="ThresholdValueDatasSettingDAL\WindLoadThresholdValueSettingDAL.cs" />
     <Compile Include="ThresholdValueDatasSettingDAL\SteelArchStrainThresholdValueSettingDAL.cs" />
     <Compile Include="ThresholdValueDatasSettingDAL\ConcreteStrainThresholdValueSettingDAL.cs" />
-    <Compile Include="ThresholdValueDatasDAL\StrainThresholdValueGettingDAL.cs" />
     <Compile Include="UserDALImpl.cs" />
   </ItemGroup>
   <ItemGroup>
