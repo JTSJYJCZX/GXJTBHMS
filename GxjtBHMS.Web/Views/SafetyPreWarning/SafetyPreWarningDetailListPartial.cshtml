@@ -1,0 +1,25 @@
+﻿@model GxjtBHMS.Web.ViewModels.SafetyPreWarning.SafetyPreWarningModels
+<div class="table-responsive">
+    <div id="message"></div>
+    <table class="table table-condensed" >       
+            <tr class="text-center ">
+                <td>序号</td>
+                <td>测点编号</td>
+                <td>监测时间</td>
+                <td>监测值</td>
+                <td>单位</td>
+                <td>阈值</td>
+                <td>预警等级</td>
+                <td>建议</td>
+            </tr>
+      
+        @foreach (var item in Model.SafetyPreWarnings)
+        {
+            
+            @Html.Partial("SafetyPreWarningPartial", item);
+        }
+
+    </table>
+    <hr />
+</div>
+

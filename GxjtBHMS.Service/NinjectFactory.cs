@@ -95,9 +95,12 @@ namespace GxjtBHMS.Service
 
             _ninjectKernel.Bind<IAbnormalThresholdValueSettingDAL>().To<AbnormalThresholdValueSettingDAL>();
 
-            _ninjectKernel.Bind<ISafetyPreWarningDetailDAL<SafetyPreWarning_CableFrceTable>>().To<SafetyPreWarningDAL>();
+            _ninjectKernel.Bind<ISafetyPreWarningDetailDAL<SafetyPreWarning_CableFrceTable>>().To<SafetyPreWarning_CableFrceTableDAL>();
+            _ninjectKernel.Bind<ISafetyPreWarningDetailDAL<SafetyPreWarning_DisplacementTable>>().To<SafetyPreWarning_DisplacementTableDAL>();
+            _ninjectKernel.Bind<ISafetyPreWarningDetailDAL<SafetyPreWarning_TemperatureTable>>().To<SafetyPreWarning_TemperatureTableDAL>();
+            _ninjectKernel.Bind<ISafetyPreWarningDetailDAL<SafetyPreWarning_WindLoadTable>>().To<SafetyPreWarning_WindLoadTableDAL>();
 
-      
+
 
         }
     }

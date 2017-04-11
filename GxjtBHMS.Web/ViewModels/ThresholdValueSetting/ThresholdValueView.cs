@@ -38,8 +38,6 @@ namespace GxjtBHMS.Web.ViewModels.ThresholdValueSetting
         public double? NegativeSecondLevelThresholdValue { get; set; }       
         #endregion
 
-        //public PaginatorModel PaginatorModel { get; set; }
-
         [DisplayName("测点阈值")]
         [ThresholdValuesValidation]
         public double?[] ThresholdValues { get; set; }

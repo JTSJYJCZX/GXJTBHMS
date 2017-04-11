@@ -1,0 +1,33 @@
+﻿@model GxjtBHMS.Web.ViewModels.SafetyPreWarning.SafetyPreWarningViewModel
+
+<tr class="text-center" style="border:hidden">
+    <td >
+        <span class="text-center" style="border:hidden">@Model.Id </span>
+    </td>
+    <td>
+        @Html.TextBoxFor(m => m.PointsNumber , new { @class = "text-center", @style = "border:hidden" })
+    </td>
+    <td>
+        @Html.TextBoxFor(m => m.Time , new { @class = "text-center ", @style = "border:hidden" })
+    </td>
+    <td>
+        @Html.TextBoxFor(m => m.MonitoringData , new {@class = "text-center ", @style = "border:hidden" })
+    </td>
+    <td>
+        @Html.TextBoxFor(m => m.Unit, new {  @class = "text-center ", @style = "border:hidden" })
+    </td>
+    <td>
+        @Html.TextBoxFor(m => m.ThresholdValue, new { @class = "text-center", @style = "border:hidden" })
+    </td>
+    <td>
+        @Html.TextBoxFor(m => m.SafetyPreWarningState, new {  @class = "text-center ", @style = "border:hidden" })
+    </td>
+    <td>
+        @Html.TextBoxFor(m => m.Suggestion, new { @class = "text-center", @style = "border:hidden" })
+    </td>    
+</tr>
+
+@Html.AntiForgeryToken()
+
+
+

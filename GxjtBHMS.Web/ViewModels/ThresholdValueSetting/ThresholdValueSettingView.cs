@@ -10,7 +10,6 @@ namespace GxjtBHMS.Web.ViewModels.ThresholdValueSetting
         public ThresholdValueSettingView()
         {
             ThresholdValues = new List<ThresholdValueView>();
-            //PaginatorModel = new PaginatorModel();
         }
 
         public IEnumerable<ThresholdValueView> ThresholdValues;

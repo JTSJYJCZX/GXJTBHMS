@@ -1,11 +1,10 @@
-﻿using GxjtBHMS.Models;
-using System;
+﻿using System;
 
-namespace GxjtBHMS.Service.ViewModels.MonitoringDatas.SafetyPreWarning
+namespace GxjtBHMS.Web.ViewModels.SafetyPreWarning
 {
-    public class SafetyPreWarningDetailQueryModel:EntityBase<int>
+    public class SafetyPreWarningViewModel
     {
-        //public int Id { get; set; }
+        public int Id { get; set; }
         public string  PointsNumber { get; set; }
         public DateTime Time { get; set; }
         public double MonitoringData { get; set; }
@@ -13,5 +12,8 @@ namespace GxjtBHMS.Service.ViewModels.MonitoringDatas.SafetyPreWarning
         public double ThresholdValue { get; set; }
         public string SafetyPreWarningState { get; set; }
         public string Suggestion { get; set; }
+
+
+        public double?[] SafetyPreWarnings { get; set; }
     }
 }

@@ -14,15 +14,15 @@ namespace GxjtBHMS.Service.ServiceFactory
         {
             switch (mornitoringTestTypeId)
             {
-                //case 1:
-                //    return new MonitorDatasEigenvalueQueryServiceBase<SteelArchStrainEigenvalueTable>();
-                //case 2:
-                //    return new MonitorDatasEigenvalueQueryServiceBase<SteelLatticeStrainEigenvalueTable>();
+                case 1:
+                    return new SafetyPreWarningQueryServiceBase<SafetyPreWarning_WindLoadTable>();
+                case 2:
+                    return new SafetyPreWarningQueryServiceBase<SafetyPreWarning_TemperatureTable>();
                 case 3:
-                    return new SafetyPreWarningQueryServiceBase<SafetyPreWarning_CableFrceTable>();                      
-                //case 4:
-                //    return new MonitorDatasEigenvalueQueryServiceBase<DisplacementEigenvalueTable>();
-               
+                    return new SafetyPreWarningQueryServiceBase<SafetyPreWarning_CableFrceTable>();
+                case 4:
+                    return new SafetyPreWarningQueryServiceBase<SafetyPreWarning_DisplacementTable>();
+
                 default:
                     throw new ApplicationException("No TestTypeId");
             }

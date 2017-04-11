@@ -8,9 +8,19 @@
 
 @Html.Action("GetSafetyWarningSearchContent")
 
-
+<hr />
 
 <div id="searchContent">
     @*查询结果区域*@
 </div>
 
+
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/SafetyPreWarningDetailSearchPartialwebsite")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqPaginator")
+    @Styles.Render("~/content/css/bootstrap-select")
+    @Scripts.Render("~/bundles/bootstrap-select")
+}

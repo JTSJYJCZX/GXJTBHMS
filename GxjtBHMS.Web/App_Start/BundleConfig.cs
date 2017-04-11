@@ -112,6 +112,13 @@ namespace GxjtBHMS.Web
             //异常阈值保存脚本
             bundles.Add(new ScriptBundle("~/bundles/AbnormalThresholdValueSetting").Include(
                      "~/Scripts/AbnormalThresholdValueSetting/listAbnormalThresholdValueMessage-website.js"));
+
+
+            //安全阈值详情查询脚本
+            bundles.Add(new ScriptBundle("~/bundles/SafetyPreWarningDetailSearchPartialwebsite").Include(
+                     "~/Scripts/SafetyPreWarningDetail/SafetyPreWarningDetailSearchPartialwebsite.js"));
+
+
         }
     }
 }

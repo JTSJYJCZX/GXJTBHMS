@@ -7,10 +7,10 @@ namespace GxjtBHMS.Models.SafetyPreWarningTable
         public DateTime Time { get; set; }
         public double MonitoringData { get; set; }
         public double ThresholdValue { get; set; }//阈值
-        public string SafetyPreWarningState { get; set; }//预警状况       
-        public string Suggestion { get; set; }//建议        
         public int PointsNumberId { get; set; }
         public virtual MonitoringPointsNumber PointsNumber { get; set; }
-        
+        public int ThresholdGradeId { get; set; }
+        public virtual ThresholdGradeTable ThresholdGrade { get; set; }
+
     }
 }

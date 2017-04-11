@@ -32,8 +32,8 @@ namespace GxjtBHMS.Service.Implementations
                 result.MonitoringData = item.MonitoringData;
                 result.Unit = item.PointsNumber.PointsPosition.TestType.Unit;
                 result.ThresholdValue = item.ThresholdValue;
-                result.SafetyPreWarningState = item.SafetyPreWarningState;
-                result.Suggestion = item.Suggestion;
+                result.SafetyPreWarningState = item.ThresholdGrade.ThresholdGrade;
+                result.Suggestion = item.ThresholdGrade.Suggest;
                 datas.Add(result);
             }
             return datas;

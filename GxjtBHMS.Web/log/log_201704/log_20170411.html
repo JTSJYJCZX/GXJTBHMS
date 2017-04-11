@@ -1,0 +1,88 @@
+2017-04-11 10:24:22,827 INFO  BHMSLogger  - A specified Include path is not valid. The EntityType 'GxjtBHMS.SqlServerDAL.ThresholdGradeTable' does not declare a navigation property with the name 'ThresholdGrade'.
+2017-04-11 10:24:22,834 INFO  BHMSLogger  -    在 System.Data.Entity.Core.Objects.Internal.ObjectFullSpanRewriter.ConvertSpanPath(SpanPathInfo parentInfo, List`1 navPropNames, Int32 pos)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectFullSpanRewriter.ConvertSpanPath(SpanPathInfo parentInfo, List`1 navPropNames, Int32 pos)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectFullSpanRewriter..ctor(DbCommandTree tree, DbExpression toRewrite, Span span, AliasGenerator aliasGenerator)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectSpanRewriter.TryRewrite(DbQueryCommandTree tree, Span span, MergeOption mergeOption, AliasGenerator aliasGenerator, DbExpression& newQuery, SpanIndex& spanInfo)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlanFactory.Prepare(ObjectContext context, DbQueryCommandTree tree, Type elementType, MergeOption mergeOption, Boolean streaming, Span span, IEnumerable`1 compiledQueryParameters, AliasGenerator aliasGenerator)
+   在 System.Data.Entity.Core.Objects.EntitySqlQueryState.GetExecutionPlan(Nullable`1 forMergeOption)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   在 System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   在 System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   在 System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   在 System.Linq.Enumerable.WhereEnumerableIterator`1.MoveNext()
+   在 System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   在 System.Linq.OrderedEnumerable`1.<GetEnumerator>d__1.MoveNext()
+   在 System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   在 System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   在 GxjtBHMS.SqlServerDAL.SafetyPreWarningDAL.SafetyPreWarningDAL.FindBy(IList`1 ps, String[] navigationProperties) 位置 G:\软件开发学习资料\系统开发\20170318GXJTMHBS\GXJTBHMS\GxjtBHMS.SqlServerDAL\SafetyPreWarningDAL\SafetyPreWarningDAL.cs:行号 22
+   在 GxjtBHMS.Service.SafetyPreWarningQueryService.SafetyPreWarningQueryServiceBase`1.QuerySafetyPreWarningByTime(GetSafetyWarningDetailRequest req) 位置 G:\软件开发学习资料\系统开发\20170318GXJTMHBS\GXJTBHMS\GxjtBHMS.Service\SafetyPreWarningQueryService\SafetyPreWarningQueryServiceBase.cs:行号 71
+   在 GxjtBHMS.Service.SafetyPreWarningQueryService.SafetyPreWarningQueryServiceBase`1.GetSafetyPreWarningDetailBy(GetSafetyWarningDetailRequest req) 位置 G:\软件开发学习资料\系统开发\20170318GXJTMHBS\GXJTBHMS\GxjtBHMS.Service\SafetyPreWarningQueryService\SafetyPreWarningQueryServiceBase.cs:行号 28
+2017-04-11 10:26:12,182 INFO  BHMSLogger  - A specified Include path is not valid. The EntityType 'GxjtBHMS.SqlServerDAL.ThresholdGradeTable' does not declare a navigation property with the name 'ThresholdGrade'.
+2017-04-11 10:26:12,182 INFO  BHMSLogger  -    在 System.Data.Entity.Core.Objects.Internal.ObjectFullSpanRewriter.ConvertSpanPath(SpanPathInfo parentInfo, List`1 navPropNames, Int32 pos)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectFullSpanRewriter.ConvertSpanPath(SpanPathInfo parentInfo, List`1 navPropNames, Int32 pos)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectFullSpanRewriter..ctor(DbCommandTree tree, DbExpression toRewrite, Span span, AliasGenerator aliasGenerator)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectSpanRewriter.TryRewrite(DbQueryCommandTree tree, Span span, MergeOption mergeOption, AliasGenerator aliasGenerator, DbExpression& newQuery, SpanIndex& spanInfo)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlanFactory.Prepare(ObjectContext context, DbQueryCommandTree tree, Type elementType, MergeOption mergeOption, Boolean streaming, Span span, IEnumerable`1 compiledQueryParameters, AliasGenerator aliasGenerator)
+   在 System.Data.Entity.Core.Objects.EntitySqlQueryState.GetExecutionPlan(Nullable`1 forMergeOption)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   在 System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   在 System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   在 System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   在 System.Linq.Enumerable.WhereEnumerableIterator`1.MoveNext()
+   在 System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   在 System.Linq.OrderedEnumerable`1.<GetEnumerator>d__1.MoveNext()
+   在 System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   在 System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   在 GxjtBHMS.SqlServerDAL.SafetyPreWarningDAL.SafetyPreWarningDAL.FindBy(IList`1 ps, String[] navigationProperties) 位置 G:\软件开发学习资料\系统开发\20170318GXJTMHBS\GXJTBHMS\GxjtBHMS.SqlServerDAL\SafetyPreWarningDAL\SafetyPreWarningDAL.cs:行号 22
+   在 GxjtBHMS.Service.SafetyPreWarningQueryService.SafetyPreWarningQueryServiceBase`1.QuerySafetyPreWarningByTime(GetSafetyWarningDetailRequest req) 位置 G:\软件开发学习资料\系统开发\20170318GXJTMHBS\GXJTBHMS\GxjtBHMS.Service\SafetyPreWarningQueryService\SafetyPreWarningQueryServiceBase.cs:行号 71
+   在 GxjtBHMS.Service.SafetyPreWarningQueryService.SafetyPreWarningQueryServiceBase`1.GetSafetyPreWarningDetailBy(GetSafetyWarningDetailRequest req) 位置 G:\软件开发学习资料\系统开发\20170318GXJTMHBS\GXJTBHMS\GxjtBHMS.Service\SafetyPreWarningQueryService\SafetyPreWarningQueryServiceBase.cs:行号 28
+2017-04-11 10:26:23,088 INFO  BHMSLogger  - A specified Include path is not valid. The EntityType 'GxjtBHMS.SqlServerDAL.ThresholdGradeTable' does not declare a navigation property with the name 'ThresholdGrade'.
+2017-04-11 10:26:23,088 INFO  BHMSLogger  -    在 System.Data.Entity.Core.Objects.Internal.ObjectFullSpanRewriter.ConvertSpanPath(SpanPathInfo parentInfo, List`1 navPropNames, Int32 pos)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectFullSpanRewriter.ConvertSpanPath(SpanPathInfo parentInfo, List`1 navPropNames, Int32 pos)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectFullSpanRewriter..ctor(DbCommandTree tree, DbExpression toRewrite, Span span, AliasGenerator aliasGenerator)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectSpanRewriter.TryRewrite(DbQueryCommandTree tree, Span span, MergeOption mergeOption, AliasGenerator aliasGenerator, DbExpression& newQuery, SpanIndex& spanInfo)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlanFactory.Prepare(ObjectContext context, DbQueryCommandTree tree, Type elementType, MergeOption mergeOption, Boolean streaming, Span span, IEnumerable`1 compiledQueryParameters, AliasGenerator aliasGenerator)
+   在 System.Data.Entity.Core.Objects.EntitySqlQueryState.GetExecutionPlan(Nullable`1 forMergeOption)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   在 System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   在 System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   在 System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   在 System.Linq.Enumerable.WhereEnumerableIterator`1.MoveNext()
+   在 System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   在 System.Linq.OrderedEnumerable`1.<GetEnumerator>d__1.MoveNext()
+   在 System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   在 System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   在 GxjtBHMS.SqlServerDAL.SafetyPreWarningDAL.SafetyPreWarningDAL.FindBy(IList`1 ps, String[] navigationProperties) 位置 G:\软件开发学习资料\系统开发\20170318GXJTMHBS\GXJTBHMS\GxjtBHMS.SqlServerDAL\SafetyPreWarningDAL\SafetyPreWarningDAL.cs:行号 22
+   在 GxjtBHMS.Service.SafetyPreWarningQueryService.SafetyPreWarningQueryServiceBase`1.QuerySafetyPreWarningByTime(GetSafetyWarningDetailRequest req) 位置 G:\软件开发学习资料\系统开发\20170318GXJTMHBS\GXJTBHMS\GxjtBHMS.Service\SafetyPreWarningQueryService\SafetyPreWarningQueryServiceBase.cs:行号 71
+   在 GxjtBHMS.Service.SafetyPreWarningQueryService.SafetyPreWarningQueryServiceBase`1.GetSafetyPreWarningDetailBy(GetSafetyWarningDetailRequest req) 位置 G:\软件开发学习资料\系统开发\20170318GXJTMHBS\GXJTBHMS\GxjtBHMS.Service\SafetyPreWarningQueryService\SafetyPreWarningQueryServiceBase.cs:行号 28
+2017-04-11 10:27:59,775 INFO  BHMSLogger  - A specified Include path is not valid. The EntityType 'GxjtBHMS.SqlServerDAL.ThresholdGradeTable' does not declare a navigation property with the name 'ThresholdGrade'.
+2017-04-11 10:27:59,775 INFO  BHMSLogger  -    在 System.Data.Entity.Core.Objects.Internal.ObjectFullSpanRewriter.ConvertSpanPath(SpanPathInfo parentInfo, List`1 navPropNames, Int32 pos)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectFullSpanRewriter.ConvertSpanPath(SpanPathInfo parentInfo, List`1 navPropNames, Int32 pos)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectFullSpanRewriter..ctor(DbCommandTree tree, DbExpression toRewrite, Span span, AliasGenerator aliasGenerator)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectSpanRewriter.TryRewrite(DbQueryCommandTree tree, Span span, MergeOption mergeOption, AliasGenerator aliasGenerator, DbExpression& newQuery, SpanIndex& spanInfo)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlanFactory.Prepare(ObjectContext context, DbQueryCommandTree tree, Type elementType, MergeOption mergeOption, Boolean streaming, Span span, IEnumerable`1 compiledQueryParameters, AliasGenerator aliasGenerator)
+   在 System.Data.Entity.Core.Objects.EntitySqlQueryState.GetExecutionPlan(Nullable`1 forMergeOption)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   在 System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   在 System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   在 System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   在 System.Linq.Enumerable.WhereEnumerableIterator`1.MoveNext()
+   在 System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   在 System.Linq.OrderedEnumerable`1.<GetEnumerator>d__1.MoveNext()
+   在 System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   在 System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   在 GxjtBHMS.SqlServerDAL.SafetyPreWarningDAL.SafetyPreWarningDAL.FindBy(IList`1 ps, String[] navigationProperties) 位置 G:\软件开发学习资料\系统开发\20170318GXJTMHBS\GXJTBHMS\GxjtBHMS.SqlServerDAL\SafetyPreWarningDAL\SafetyPreWarningDAL.cs:行号 22
+   在 GxjtBHMS.Service.SafetyPreWarningQueryService.SafetyPreWarningQueryServiceBase`1.QuerySafetyPreWarningByTime(GetSafetyWarningDetailRequest req) 位置 G:\软件开发学习资料\系统开发\20170318GXJTMHBS\GXJTBHMS\GxjtBHMS.Service\SafetyPreWarningQueryService\SafetyPreWarningQueryServiceBase.cs:行号 71
+   在 GxjtBHMS.Service.SafetyPreWarningQueryService.SafetyPreWarningQueryServiceBase`1.GetSafetyPreWarningDetailBy(GetSafetyWarningDetailRequest req) 位置 G:\软件开发学习资料\系统开发\20170318GXJTMHBS\GXJTBHMS\GxjtBHMS.Service\SafetyPreWarningQueryService\SafetyPreWarningQueryServiceBase.cs:行号 28

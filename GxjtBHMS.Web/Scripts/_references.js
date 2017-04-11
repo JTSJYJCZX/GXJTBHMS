@@ -60,6 +60,7 @@
 /// <reference path="modernizr-2.8.3.js" />
 /// <reference path="respond.matchmedia.addlistener.js" />
 /// <reference path="respond.min.js" />
+/// <reference path="safetyprewarningdetail/safetyprewarningdetailsearchpartialwebsite.js" />
 /// <reference path="straindatapushing.website.js" />
 /// <reference path="system.js" />
 /// <reference path="thresholdvaluesetting/listthresholdvaluemessage-website.js" />
