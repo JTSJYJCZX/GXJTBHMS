@@ -87,6 +87,7 @@
     <Compile Include="RealTimeDatasMonitoringDAL\SteelArchStrainRealTimeDatasDAL.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="MonitoringDatasDAL\ConcreteStrainDatasEigenvalueDAL.cs" />
+    <Compile Include="SafetyPreWarningDAL\SafetyPreWarningDAL.cs" />
     <Compile Include="ThresholdValueDatasSettingDAL\SteelLatticeStrainThresholdValueSettingDAL.cs" />
     <Compile Include="ThresholdValueDatasSettingDAL\DisplacementThresholdValueSettingDAL.cs" />
     <Compile Include="ThresholdValueDatasSettingDAL\CableForceThresholdValueSettingDAL.cs" />
