@@ -91,6 +91,7 @@
     <Compile Include="RealTimeDatasMonitoringDAL\RealTimeTemperatureDatasDAL.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="MonitoringDatasDAL\ConcreteStrainDatasEigenvalueDAL.cs" />
+    <Compile Include="SafetyPreWarningDAL\SafetyPreWarningDAL.cs" />
     <Compile Include="ThresholdValueDatasDAL\CableForceThresholdValueGettingDAL.cs" />
     <Compile Include="ThresholdValueDatasDAL\DisplaymentThresholdValueGettingDAL.cs" />
     <Compile Include="ThresholdValueDatasDAL\HumidityThresholdValueGettingDAL.cs" />

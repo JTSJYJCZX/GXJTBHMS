@@ -145,6 +145,10 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="NPOI, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Bin\NPOI.dll</HintPath>
+    </Reference>
     <Reference Include="OfficeApi, Version=1.7.3.0, Culture=neutral, PublicKeyToken=7c1c3e9d16cace88, processorArchitecture=MSIL">
       <HintPath>..\packages\NetOffice.Core.1.7.3.0\lib\net45\OfficeApi.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
@@ -243,6 +247,7 @@
     <Compile Include="Controllers\RealTimeMonitoring\DisplacementDataRealTimeMonitoringController.cs" />
     <Compile Include="Controllers\RealTimeMonitoring\HumidityDataRealTimeMonitoringController.cs" />
     <Compile Include="Controllers\RealTimeMonitoring\TemperatureDataRealTimeMonitoringController.cs" />
+    <Compile Include="Controllers\SafetyPreWarning\SafetyPreWarningController.cs" />
     <Compile Include="Controllers\StateEvaluation\ThresholdValueSettingController.cs" />
     <Compile Include="Controllers\RealTimeMonitoring\StrainDataRealTimeMonitoringController.cs" />
     <Compile Include="Controllers\SystemInformationController.cs" />
@@ -630,6 +635,8 @@
     <Content Include="Views\AbnormalThresholdValueSetting\AbnormalThresholdValueListPartial.cshtml" />
     <Content Include="Views\AbnormalThresholdValueSetting\AbnormalThresholdValuePartial.cshtml" />
     <Content Include="Views\AbnormalThresholdValueSetting\AbnormalThresholdValueSetting.cshtml" />
+    <Content Include="Views\SafetyPreWarning\SafetyPreWarning.cshtml" />
+    <Content Include="Views\SafetyPreWarning\GetSafetyWarningSearchContentPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -332,7 +332,63 @@ namespace GxjtBHMS.SqlServerDAL
             CreateHumidityThresholdValues(context);
             CreateWindloadThresholdValues(context);
             CreateAbnormalThresholdValue(context);
+            CreateSafetyPreWarning_CableFrces(context);
         }
+
+        /// <summary>
+        /// 初始化索力安全预警值，安全预警表格的内容
+        /// </summary>
+        /// <param name="context"></param>
+        private void CreateSafetyPreWarning_CableFrces(BHMSContext context)
+        {
+            InitialSafetyPreWarning_CableFrces(context);
+        }
+
+
+        private void InitialSafetyPreWarning_CableFrces(BHMSContext context)
+        {
+            var random = new Random();
+
+            int intlTime = -5;
+
+            for (int i = 0; i < 5; i++)
+            {
+                DateTime time = DateTime.Now.AddMonths(intlTime + i);
+                //钢拱肋应变初始值初始化
+                for (int j = 0; j < tmpNumbers26.Length; j++)
+                {
+                    var SafetyPreWarning_CableFrces = new SafetyPreWarning_CableFrceTable { PointsNumber = tmpNumbers26[j], Time = time, MonitoringData = random.Next(2100, 2500),ThresholdValue=2000,SafetyPreWarningState="黄色预警",Suggestion="加强监测"};
+                    context.SafetyPreWarning_CableFrces.Add(SafetyPreWarning_CableFrces);
+                }
+            }
+
+            for (int i = 0; i < 5; i++)
+            {
+                DateTime time = DateTime.Now.AddMonths(intlTime + i);
+                //钢拱肋应变初始值初始化
+                for (int j = 0; j < tmpNumbers27.Length; j++)
+                {
+                    var SafetyPreWarning_CableFrces = new SafetyPreWarning_CableFrceTable { PointsNumber = tmpNumbers27[j], Time = time, MonitoringData = random.Next(2100, 2500), ThresholdValue = 2000, SafetyPreWarningState = "黄色预警", Suggestion = "加强监测" };
+                    context.SafetyPreWarning_CableFrces.Add(SafetyPreWarning_CableFrces);
+                }
+            }
+
+
+            for (int i = 0; i < 5; i++)
+            {
+                DateTime time = DateTime.Now.AddMonths(intlTime + i);
+                //钢拱肋应变初始值初始化
+                for (int j = 0; j < tmpNumbers28.Length; j++)
+                {
+                    var SafetyPreWarning_CableFrces = new SafetyPreWarning_CableFrceTable { PointsNumber = tmpNumbers28[j], Time = time, MonitoringData = random.Next(2100, 2500), ThresholdValue = 2000, SafetyPreWarningState = "黄色预警", Suggestion = "加强监测" };
+                    context.SafetyPreWarning_CableFrces.Add(SafetyPreWarning_CableFrces);
+                }
+            }
+
+        }
+
+
+
 
         /// <summary>
         /// 风速阈值设置

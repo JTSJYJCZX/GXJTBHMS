@@ -13,6 +13,8 @@ using GxjtBHMS.SqlServerDAL.ThresholdValueDatasDAL;
 using GxjtBHMS.Models.ThresholdValueSetting;
 using GxjtBHMS.Service.Interfaces.MonitoringDatasQueryServiceInerfaces;
 using GxjtBHMS.SqlServerDAL.AbnormalThresholdValueSettingDAL;
+using GxjtBHMS.SqlServerDAL.SafetyPreWarningDAL;
+using GxjtBHMS.Service.Interfaces.SafetyPreWarningQueryServiceInerfaces;
 
 namespace GxjtBHMS.Service
 {
@@ -93,6 +95,9 @@ namespace GxjtBHMS.Service
 
             _ninjectKernel.Bind<IAbnormalThresholdValueSettingDAL>().To<AbnormalThresholdValueSettingDAL>();
 
+            _ninjectKernel.Bind<ISafetyPreWarningDetailDAL<SafetyPreWarning_CableFrceTable>>().To<SafetyPreWarningDAL>();
+
+      
 
         }
     }

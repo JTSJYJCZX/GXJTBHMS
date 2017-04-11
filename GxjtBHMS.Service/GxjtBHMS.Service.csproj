@@ -97,12 +97,16 @@
     <Compile Include="Implementations\OriginalValueDownloadServiceBase\MonitorDatasOringinalValueDownloadServiceBase.cs" />
     <Compile Include="Implementations\OriginalValueFileSystemService\ConcreteStrainMonitorDatasOriginalValueDownloadFileSystemService.cs" />
     <Compile Include="Implementations\OriginalValueFileSystemService\WindLoadDatasOriginalValueDownloadFileSystemService.cs" />
+    <Compile Include="Implementations\SafetyPreWarningQueryService\SafetyPreWarningQueryService.cs" />
     <Compile Include="Implementations\ThresholdValueService\ThresholdValueSettingServiceBase.cs" />
     <Compile Include="Implementations\ThresholdValueService\GetThresholdValueSettingListBySearchBarService.cs" />
     <Compile Include="Implementations\ThresholdValueService\WithoutNegativeThresholdValueSettingServiceBase.cs" />
     <Compile Include="Interfaces\IFileConverter.cs" />
+    <Compile Include="Interfaces\SafetyPreWarningQueryServiceInerfaces\ISafetyPreWarningQueryChartService.cs" />
     <Compile Include="Messaging\AbnormalThresholdValueSetting\AbnormalThresholdValueResponse.cs" />
     <Compile Include="Messaging\AbnormalThresholdValueSetting\AbnormalThresholdValueSettingRequest.cs" />
+    <Compile Include="Messaging\SafetyPreWarning\GetSafetyWarningDetailRequest.cs" />
+    <Compile Include="Messaging\SafetyPreWarning\SafetyWarningDetailResponse.cs" />
     <Compile Include="Messaging\ThresholdValueSetting\GetThresholdValueByPointsNumberSearchBarRequest.cs" />
     <Compile Include="Messaging\ThresholdValueSetting\GetThresholdValueByPointsPositionSearchRequest.cs" />
     <Compile Include="Messaging\ThresholdValueSetting\GetPointsPositionByContainPointsNumberResponse.cs" />
@@ -111,6 +115,7 @@
     <Compile Include="Messaging\ThresholdValueSetting\ThresholdValueContainNegativeModel.cs" />
     <Compile Include="Messaging\ThresholdValueSetting\ThresholdValueWithoutNegativeModel.cs" />
     <Compile Include="Messaging\ThresholdValueSetting\ThresholdValueWithoutNegativeResponse.cs" />
+    <Compile Include="SafetyPreWarningQueryService\SafetyPreWarningQueryServiceBase.cs" />
     <Compile Include="ServiceFactory\MonitoringDatasOriginalValueDownLoadServiceFactory.cs" />
     <Compile Include="ExtensionMethods\AdminUser\UserServiceExtension.cs" />
     <Compile Include="ExtensionMethods\GetEnumDescription\EnumUnit.cs" />
@@ -184,6 +189,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceBase.cs" />
     <Compile Include="ServiceConstant.cs" />
+    <Compile Include="ServiceFactory\SafetyWarningDetailFactory.cs" />
     <Compile Include="ServiceFactory\ThresholdValueSettingServiceFactory.cs" />
     <Compile Include="Implementations\ThresholdValueService\ContainNegativeThresholdValueSettingServiceBase.cs" />
     <Compile Include="ViewModels\DataQueryResult\CableForceDatasModel.cs" />
@@ -197,6 +203,7 @@
     <Compile Include="ViewModels\MonitoringDatas\MonitoringPointsNumber\MonitoringPointsNumberViewModel.cs" />
     <Compile Include="ViewModels\MonitoringDatas\MonitoringPointsPosition\MonitoringPointsPositionViewModel.cs" />
     <Compile Include="ViewModels\MonitoringDatas\TestType\MonitoringTestTypeViewModel.cs" />
+    <Compile Include="ViewModels\SafetyPreWarning\SafetyPreWarningDataModel.cs" />
     <Compile Include="ViewModels\SelectListItemModel.cs" />
     <Compile Include="ViewModels\RealTimeDatasDisplay\IncludeSectionWarningColorDataModel.cs" />
     <Compile Include="ViewModels\RealTimeDatasDisplay\RealTimeDataModel.cs" />

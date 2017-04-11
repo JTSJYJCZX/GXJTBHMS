@@ -63,6 +63,7 @@
     <Compile Include="IMonitoringPointsPositionDAL.cs" />
     <Compile Include="IMonitoringTestTypeDAL.cs" />
     <Compile Include="ITemperatureThresholdValueGettingDAL.cs" />
+    <Compile Include="SafetyPreWarning\ISafetyPreWarningDetailDAL.cs" />
     <Compile Include="ThresholdValueSetting\IThresholdValueSettingDAL.cs" />
     <Compile Include="IUser.cs" />
     <Compile Include="OriginalValueDownLoad\ICableForceDatasOriginalValueDAL.cs" />
