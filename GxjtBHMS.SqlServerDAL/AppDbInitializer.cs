@@ -315,19 +315,19 @@ namespace GxjtBHMS.SqlServerDAL
         ThresholdGradeTable ThresholdGrade1 = new ThresholdGradeTable
         {
             ThresholdGrade = "正常",
-            Suggest="无"
+            Suggest="无",
             ThresholdColor = "Green"
         };
         ThresholdGradeTable ThresholdGrade2 = new ThresholdGradeTable
         {
             ThresholdGrade = "黄色预警",
-            Suggest="加强观测"
+            Suggest="加强观测",
             ThresholdColor = "Gold"
         };
         ThresholdGradeTable ThresholdGrade3 = new ThresholdGradeTable
         {
             ThresholdGrade = "红色预警",
-            Suggest="进行专项检查"
+            Suggest="进行专项检查",
             ThresholdColor = "Red"
         };
 
