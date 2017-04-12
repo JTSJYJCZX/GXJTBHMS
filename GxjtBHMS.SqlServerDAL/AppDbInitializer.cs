@@ -315,17 +315,17 @@ namespace GxjtBHMS.SqlServerDAL
         ThresholdGradeTable ThresholdGrade1 = new ThresholdGradeTable
         {
             ThresholdGrade = "正常",
-            ThresholdColor = "绿色"
+            ThresholdColor = "Green"
         };
         ThresholdGradeTable ThresholdGrade2 = new ThresholdGradeTable
         {
             ThresholdGrade = "黄色预警",
-            ThresholdColor = "黄色"
+            ThresholdColor = "Gold"
         };
         ThresholdGradeTable ThresholdGrade3 = new ThresholdGradeTable
         {
             ThresholdGrade = "红色预警",
-            ThresholdColor = "红色"
+            ThresholdColor = "Red"
         };
 
 
@@ -362,7 +362,7 @@ namespace GxjtBHMS.SqlServerDAL
         /// <param name="context"></param>
         private void CreateThresholdGradeValue(BHMSContext context)
         {
-            
+
             context.ThresholdGradeModel.Add(ThresholdGrade1);
             context.ThresholdGradeModel.Add(ThresholdGrade2);
             context.ThresholdGradeModel.Add(ThresholdGrade3);
@@ -1057,61 +1057,61 @@ namespace GxjtBHMS.SqlServerDAL
                 //钢格构应变初始值初始化
                 for (int j = 0; j < tmpNumbers8.Length; j++)
                 {
-                    var steelLatticeStrainOriginalvalue = new SteelLatticeStrainTable { PointsNumber = tmpNumbers8[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70) };
+                    var steelLatticeStrainOriginalvalue = new SteelLatticeStrainTable { PointsNumber = tmpNumbers8[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
                     context.SteelLatticeStrains.Add(steelLatticeStrainOriginalvalue);
                 }
 
                 for (int j = 0; j < tmpNumbers9.Length; j++)
                 {
-                    var steelLatticeStrainOriginalvalue = new SteelLatticeStrainTable { PointsNumber = tmpNumbers9[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70) };
+                    var steelLatticeStrainOriginalvalue = new SteelLatticeStrainTable { PointsNumber = tmpNumbers9[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade2 };
                     context.SteelLatticeStrains.Add(steelLatticeStrainOriginalvalue);
                 }
 
                 for (int j = 0; j < tmpNumbers10.Length; j++)
                 {
-                    var steelLatticeStrainOriginalvalue = new SteelLatticeStrainTable { PointsNumber = tmpNumbers10[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70) };
+                    var steelLatticeStrainOriginalvalue = new SteelLatticeStrainTable { PointsNumber = tmpNumbers10[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade3 };
                     context.SteelLatticeStrains.Add(steelLatticeStrainOriginalvalue);
                 }
 
                 for (int j = 0; j < tmpNumbers11.Length; j++)
                 {
-                    var steelLatticeStrainOriginalvalue = new SteelLatticeStrainTable { PointsNumber = tmpNumbers11[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70) };
+                    var steelLatticeStrainOriginalvalue = new SteelLatticeStrainTable { PointsNumber = tmpNumbers11[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
                     context.SteelLatticeStrains.Add(steelLatticeStrainOriginalvalue);
                 }
 
                 for (int j = 0; j < tmpNumbers12.Length; j++)
                 {
-                    var steelLatticeStrainOriginalvalue = new SteelLatticeStrainTable { PointsNumber = tmpNumbers12[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70) };
+                    var steelLatticeStrainOriginalvalue = new SteelLatticeStrainTable { PointsNumber = tmpNumbers12[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
                     context.SteelLatticeStrains.Add(steelLatticeStrainOriginalvalue);
                 }
 
                 for (int j = 0; j < tmpNumbers13.Length; j++)
                 {
-                    var steelLatticeStrainOriginalvalue = new SteelLatticeStrainTable { PointsNumber = tmpNumbers13[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70) };
+                    var steelLatticeStrainOriginalvalue = new SteelLatticeStrainTable { PointsNumber = tmpNumbers13[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
                     context.SteelLatticeStrains.Add(steelLatticeStrainOriginalvalue);
                 }
 
                 for (int j = 0; j < tmpNumbers14.Length; j++)
                 {
-                    var steelLatticeStrainOriginalvalue = new SteelLatticeStrainTable { PointsNumber = tmpNumbers14[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70) };
+                    var steelLatticeStrainOriginalvalue = new SteelLatticeStrainTable { PointsNumber = tmpNumbers14[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
                     context.SteelLatticeStrains.Add(steelLatticeStrainOriginalvalue);
                 }
 
                 for (int j = 0; j < tmpNumbers15.Length; j++)
                 {
-                    var steelLatticeStrainOriginalvalue = new SteelLatticeStrainTable { PointsNumber = tmpNumbers15[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70) };
+                    var steelLatticeStrainOriginalvalue = new SteelLatticeStrainTable { PointsNumber = tmpNumbers15[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
                     context.SteelLatticeStrains.Add(steelLatticeStrainOriginalvalue);
                 }
 
                 //混凝土应变原始数据初始化
                 for (int j = 0; j < tmpNumbers16.Length; j++)
                 {
-                    var concreteStrain = new ConcreteStrainTable { PointsNumber = tmpNumbers16[j], Time = time, Strain = random.Next(10, 40), Temperature = random.Next(5, 60) };
+                    var concreteStrain = new ConcreteStrainTable { PointsNumber = tmpNumbers16[j], Time = time, Strain = random.Next(10, 40), Temperature = random.Next(5, 60), ThresholdGrade = ThresholdGrade1 };
                     context.ConcreteStrains.Add(concreteStrain);
                 }
                 for (int j = 0; j < tmpNumbers17.Length; j++)
                 {
-                    var concreteStrain = new ConcreteStrainTable { PointsNumber = tmpNumbers17[j], Time = time, Strain = random.Next(10, 40), Temperature = random.Next(5, 60) };
+                    var concreteStrain = new ConcreteStrainTable { PointsNumber = tmpNumbers17[j], Time = time, Strain = random.Next(10, 40), Temperature = random.Next(5, 60), ThresholdGrade = ThresholdGrade2 };
                     context.ConcreteStrains.Add(concreteStrain);
                 }
 

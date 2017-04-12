@@ -97,10 +97,14 @@
     <Compile Include="Implementations\OriginalValueDownloadServiceBase\MonitorDatasOringinalValueDownloadServiceBase.cs" />
     <Compile Include="Implementations\OriginalValueFileSystemService\ConcreteStrainMonitorDatasOriginalValueDownloadFileSystemService.cs" />
     <Compile Include="Implementations\OriginalValueFileSystemService\WindLoadDatasOriginalValueDownloadFileSystemService.cs" />
+    <Compile Include="Implementations\RealTimeDatasService\ConcreteStrainRealTimeDatasService.cs" />
+    <Compile Include="Implementations\RealTimeDatasService\SteelLatticeStrainRealTimeDatasService.cs" />
     <Compile Include="Implementations\ThresholdValueService\ThresholdValueSettingServiceBase.cs" />
     <Compile Include="Implementations\ThresholdValueService\GetThresholdValueSettingListBySearchBarService.cs" />
     <Compile Include="Implementations\ThresholdValueService\WithoutNegativeThresholdValueSettingServiceBase.cs" />
     <Compile Include="Interfaces\IFileConverter.cs" />
+    <Compile Include="Interfaces\RealTimeDatasServiceInerfaces\IConcreteStrainRealTimeDatasService.cs" />
+    <Compile Include="Interfaces\RealTimeDatasServiceInerfaces\ISteelLatticeStrainRealTimeDatasService.cs" />
     <Compile Include="Messaging\AbnormalThresholdValueSetting\AbnormalThresholdValueResponse.cs" />
     <Compile Include="Messaging\AbnormalThresholdValueSetting\AbnormalThresholdValueSettingRequest.cs" />
     <Compile Include="Messaging\ThresholdValueSetting\GetThresholdValueByPointsNumberSearchBarRequest.cs" />
