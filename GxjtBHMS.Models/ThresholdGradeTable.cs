@@ -8,5 +8,6 @@ namespace GxjtBHMS.Models
     {
         public string ThresholdGrade { get; set; }
         public string ThresholdColor { get; set; }
+        public string Suggest { get; set; }
     }
 }

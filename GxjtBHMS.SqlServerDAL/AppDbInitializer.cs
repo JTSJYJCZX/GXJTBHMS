@@ -315,16 +315,19 @@ namespace GxjtBHMS.SqlServerDAL
         ThresholdGradeTable ThresholdGrade1 = new ThresholdGradeTable
         {
             ThresholdGrade = "正常",
+            Suggest="无"
             ThresholdColor = "Green"
         };
         ThresholdGradeTable ThresholdGrade2 = new ThresholdGradeTable
         {
             ThresholdGrade = "黄色预警",
+            Suggest="加强观测"
             ThresholdColor = "Gold"
         };
         ThresholdGradeTable ThresholdGrade3 = new ThresholdGradeTable
         {
             ThresholdGrade = "红色预警",
+            Suggest="进行专项检查"
             ThresholdColor = "Red"
         };
 
@@ -353,9 +356,123 @@ namespace GxjtBHMS.SqlServerDAL
             CreateHumidityThresholdValues(context);
             CreateWindloadThresholdValues(context);
             CreateAbnormalThresholdValue(context);
+            CreateSafetyPreWarning(context);
             CreateThresholdGradeValue(context);
         }
 
+        /// <summary>
+        /// 初始化索力安全预警值，安全预警表格的内容
+        /// </summary>
+        /// <param name="context"></param>
+        private void CreateSafetyPreWarning(BHMSContext context)
+        {
+            InitialSafetyPreWarning(context);
+        }
+
+        private void InitialSafetyPreWarning(BHMSContext context)
+        {
+            var random = new Random();
+            int intlTime = -5;
+            for (int i = 0; i < 5; i++)
+            {
+                DateTime time = DateTime.Now.AddMonths(intlTime + i);      
+                for (int j = 0; j < tmpNumbers26.Length; j++)
+                {
+                    var SafetyPreWarning_CableFrces = new SafetyPreWarning_CableFrceTable { PointsNumber = tmpNumbers26[j], Time = time, MonitoringData = random.Next(2100, 2500),ThresholdValue=2000,ThresholdGrade=ThresholdGrade2};
+                    context.SafetyPreWarning_CableFrces.Add(SafetyPreWarning_CableFrces);
+                }
+            }
+
+            for (int i = 0; i < 5; i++)
+            {
+                DateTime time = DateTime.Now.AddMonths(intlTime + i);
+                for (int j = 0; j < tmpNumbers27.Length; j++)
+                {
+                    var SafetyPreWarning_CableFrces = new SafetyPreWarning_CableFrceTable { PointsNumber = tmpNumbers27[j], Time = time, MonitoringData = random.Next(2210, 2500), ThresholdValue = 2200, ThresholdGrade = ThresholdGrade3 };
+                    context.SafetyPreWarning_CableFrces.Add(SafetyPreWarning_CableFrces);
+                }
+            }
+
+            for (int i = 0; i < 5; i++)
+            {
+                DateTime time = DateTime.Now.AddMonths(intlTime + i);
+                for (int j = 0; j < tmpNumbers28.Length; j++)
+                {
+                    var SafetyPreWarning_CableFrces = new SafetyPreWarning_CableFrceTable { PointsNumber = tmpNumbers28[j], Time = time, MonitoringData = random.Next(1500, 1900), ThresholdValue = 2000, ThresholdGrade = ThresholdGrade1 };
+                    context.SafetyPreWarning_CableFrces.Add(SafetyPreWarning_CableFrces);
+                }
+            }
+            //温度安全预警表格
+            for (int i = 0; i < 5; i++)
+            {
+                DateTime time = DateTime.Now.AddMonths(intlTime + i);
+                for (int j = 0; j < tmpNumbers24.Length; j++)
+                {
+                    var SafetyPreWarning_Temperatures = new SafetyPreWarning_TemperatureTable { PointsNumber = tmpNumbers24[j], Time = time, MonitoringData = random.Next(30, 40), ThresholdValue = 30, ThresholdGrade = ThresholdGrade2 };
+                    context.SafetyPreWarning_Temperatures.Add(SafetyPreWarning_Temperatures);
+                }
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                DateTime time = DateTime.Now.AddMonths(intlTime + i);
+                for (int j = 0; j < tmpNumbers25.Length; j++)
+                {
+                    var SafetyPreWarning_Temperatures = new SafetyPreWarning_TemperatureTable { PointsNumber = tmpNumbers25[j], Time = time, MonitoringData = random.Next(30, 40), ThresholdValue = 30, ThresholdGrade = ThresholdGrade2 };
+                    context.SafetyPreWarning_Temperatures.Add(SafetyPreWarning_Temperatures);
+                }
+            }
+            //风速
+            for (int i = 0; i < 5; i++)
+            {
+                DateTime time = DateTime.Now.AddMonths(intlTime + i);
+                for (int j = 0; j < tmpNumbers29.Length; j++)
+                {
+                    var SafetyPreWarning_windloads = new SafetyPreWarning_WindLoadTable { PointsNumber = tmpNumbers29[j], Time = time, MonitoringData = random.Next(5, 8), ThresholdValue = 5, ThresholdGrade = ThresholdGrade2 };
+                    context.SafetyPreWarning_WindLoads.Add(SafetyPreWarning_windloads);
+                }
+            }
+            //位移
+            for (int i = 0; i < 5; i++)
+            {
+                DateTime time = DateTime.Now.AddMonths(intlTime + i);
+                for (int j = 0; j < tmpNumbers18.Length; j++)
+                {
+                    var SafetyPreWarning_Displacements = new SafetyPreWarning_DisplacementTable { PointsNumber = tmpNumbers18[j], Time = time, MonitoringData = random.Next(3, 5), ThresholdValue = 3, ThresholdGrade = ThresholdGrade2 };
+                    context.SafetyPreWarning_Displacements.Add(SafetyPreWarning_Displacements);
+                }
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                DateTime time = DateTime.Now.AddMonths(intlTime + i);
+                for (int j = 0; j < tmpNumbers19.Length; j++)
+                {
+                    var SafetyPreWarning_Displacements = new SafetyPreWarning_DisplacementTable { PointsNumber = tmpNumbers19[j], Time = time, MonitoringData = random.Next(5, 8), ThresholdValue = 5, ThresholdGrade = ThresholdGrade3 };
+                    context.SafetyPreWarning_Displacements.Add(SafetyPreWarning_Displacements);
+                }
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                DateTime time = DateTime.Now.AddMonths(intlTime + i);
+                for (int j = 0; j < tmpNumbers20.Length; j++)
+                {
+                    var SafetyPreWarning_Displacements = new SafetyPreWarning_DisplacementTable { PointsNumber = tmpNumbers20[j], Time = time, MonitoringData = random.Next(3, 5), ThresholdValue = 3, ThresholdGrade = ThresholdGrade2 };
+                    context.SafetyPreWarning_Displacements.Add(SafetyPreWarning_Displacements);
+                }
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                DateTime time = DateTime.Now.AddMonths(intlTime + i);
+                for (int j = 0; j < tmpNumbers21.Length; j++)
+                {
+                    var SafetyPreWarning_Displacements = new SafetyPreWarning_DisplacementTable { PointsNumber = tmpNumbers21[j], Time = time, MonitoringData = random.Next(3, 5), ThresholdValue = 3, ThresholdGrade = ThresholdGrade2 };
+                    context.SafetyPreWarning_Displacements.Add(SafetyPreWarning_Displacements);
+                }
+            }
+
+
+
+
+        }
         /// <summary>
         /// 预警等级初始化
         /// </summary>
@@ -367,6 +484,8 @@ namespace GxjtBHMS.SqlServerDAL
             context.ThresholdGradeModel.Add(ThresholdGrade2);
             context.ThresholdGradeModel.Add(ThresholdGrade3);
         }
+
+
 
         /// <summary>
         /// 风速阈值设置

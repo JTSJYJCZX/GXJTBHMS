@@ -1,0 +1,46 @@
+﻿@model GxjtBHMS.Web.ViewModels.ThresholdValueSetting.QueryPointsNumberConditonView
+
+
+<div>
+    <label class="control-label"> 桥梁当前安全预警状况：</label>
+    <input type="text" readonly value="正常" style="color:black;background-color:green;text-align:center;border-radius:200%">
+</div>
+<hr />
+<div>
+    <label class="control-label" > 桥梁当前风速预警状况：</label>
+    <input type="text" readonly value="正常" style="color:black;background-color:green;text-align:center">
+    <label class="control-label"> 黄色报警次数：</label>
+    <input type="text" readonly value="0" style="text-align:center">
+    <label class="control-label"> 红色报警次数：</label>
+    <input type="text" readonly value="0" style="text-align:center">
+    <input type="button" value="详情" id="WindLoadWarningDetail">
+</div>
+
+<div>
+    <label class="control-label"> 桥梁当前温度预警状况：</label>
+    <input type="text" readonly value="正常" style="color:black;background-color:green;text-align:center">
+    <label class="control-label"> 黄色报警次数：</label>
+    <input type="text" readonly value="0" style="text-align:center">
+    <label class="control-label"> 红色报警次数：</label>
+    <input type="text" readonly value="0" style="text-align:center">
+    <input type="button" value="详情" id="TemperatureWarningDetail">
+</div>
+
+<div>
+    <label class="control-label"> 桥梁当前索力预警状况：</label>
+    <input type="text" readonly value="正常" style="color:black;background-color:green;text-align:center">
+    <label class="control-label"> 黄色报警次数：</label>
+    <input type="text" readonly value="0" style="text-align:center">
+    <label class="control-label"> 红色报警次数：</label>
+    <input type="text" readonly value="0" style="text-align:center">
+    <input type="button" value="详情" id="CableForceWarningDetail">
+</div>
+<div>
+    <label class="control-label"> 桥梁当前位移预警状况：</label>
+    <input type="text" readonly value="正常" style="color:black;background-color:green;text-align:center">
+    <label class="control-label"> 黄色报警次数：</label>
+    <input type="text" readonly value="0" style="text-align:center">
+    <label class="control-label"> 红色报警次数：</label>
+    <input type="text" readonly value="0" style="text-align:center">
+    <input type="button" value="详情" id="DisplacementWarningDetail">
+</div>

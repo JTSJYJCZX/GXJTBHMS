@@ -145,6 +145,10 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="NPOI, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Bin\NPOI.dll</HintPath>
+    </Reference>
     <Reference Include="OfficeApi, Version=1.7.3.0, Culture=neutral, PublicKeyToken=7c1c3e9d16cace88, processorArchitecture=MSIL">
       <HintPath>..\packages\NetOffice.Core.1.7.3.0\lib\net45\OfficeApi.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
@@ -239,6 +243,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MonitoringDatasComparingQueryController.cs" />
     <Compile Include="Controllers\MonitoringDatasController.cs" />
+    <Compile Include="Controllers\SafetyPreWarning\SafetyPreWarningController.cs" />
     <Compile Include="Controllers\StateEvaluation\ThresholdValueSettingController.cs" />
     <Compile Include="Controllers\RealTimeMonitoring\RealTimeMonitoringController.cs" />
     <Compile Include="Controllers\SystemInformationController.cs" />
@@ -285,6 +290,9 @@
     <Compile Include="ViewModels\MonitoringDatasComparing\MornitoringDataComparingSearchBarView.cs" />
     <Compile Include="ViewModels\MonitoringDatas\MornitoringDataSearchBarBaseView.cs" />
     <Compile Include="ViewModels\PaginatorModel.cs" />
+    <Compile Include="ViewModels\SafetyPreWarning\QuerySafetyPreWarningConditonView.cs" />
+    <Compile Include="ViewModels\SafetyPreWarning\SafetyPreWarningViewModel.cs" />
+    <Compile Include="ViewModels\SafetyPreWarning\SafetyPreWarningModels.cs" />
     <Compile Include="ViewModels\Shared\SimplePagedViewModel.cs" />
     <Compile Include="ViewModels\ThresholdValueSetting\ThresholdValueSearchBarBaseView.cs" />
     <Compile Include="ViewModels\ThresholdValueSetting\QueryPointsNumberConditonView.cs" />
@@ -567,6 +575,7 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\SafetyPreWarningDetail\SafetyPreWarningDetailSearchPartialwebsite.js" />
     <Content Include="Scripts\strainDataPushing.website.js" />
     <Content Include="Scripts\system.js" />
     <Content Include="Scripts\thresholdValueSetting\ThresholdValueSearchPartial.website.js" />
@@ -628,6 +637,10 @@
     <Content Include="Views\AbnormalThresholdValueSetting\AbnormalThresholdValueSetting.cshtml" />
     <Content Include="Views\RealTimeMonitoring\SteelLatticeStrainDatasRealTimeMonitoring.cshtml" />
     <Content Include="Views\RealTimeMonitoring\ConcreteStrainStrainDatasRealTimeMonitoring.cshtml" />
+    <Content Include="Views\SafetyPreWarning\SafetyPreWarning.cshtml" />
+    <Content Include="Views\SafetyPreWarning\GetSafetyWarningSearchContentPartial.cshtml" />
+    <Content Include="Views\SafetyPreWarning\SafetyPreWarningDetailListPartial.cshtml" />
+    <Content Include="Views\SafetyPreWarning\SafetyPreWarningPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -13,6 +13,8 @@ using GxjtBHMS.SqlServerDAL.ThresholdValueDatasDAL;
 using GxjtBHMS.Models.ThresholdValueSetting;
 using GxjtBHMS.Service.Interfaces.MonitoringDatasQueryServiceInerfaces;
 using GxjtBHMS.SqlServerDAL.AbnormalThresholdValueSettingDAL;
+using GxjtBHMS.SqlServerDAL.SafetyPreWarningDAL;
+using GxjtBHMS.Service.Interfaces.SafetyPreWarningQueryServiceInerfaces;
 
 namespace GxjtBHMS.Service
 {
@@ -92,6 +94,12 @@ namespace GxjtBHMS.Service
             _ninjectKernel.Bind<IThresholdValueSettingDAL<TemperatureThresholdValueTable>>().To<TemperatureThresholdValueSettingDAL>();
 
             _ninjectKernel.Bind<IAbnormalThresholdValueSettingDAL>().To<AbnormalThresholdValueSettingDAL>();
+
+            _ninjectKernel.Bind<ISafetyPreWarningDetailDAL<SafetyPreWarning_CableFrceTable>>().To<SafetyPreWarning_CableFrceTableDAL>();
+            _ninjectKernel.Bind<ISafetyPreWarningDetailDAL<SafetyPreWarning_DisplacementTable>>().To<SafetyPreWarning_DisplacementTableDAL>();
+            _ninjectKernel.Bind<ISafetyPreWarningDetailDAL<SafetyPreWarning_TemperatureTable>>().To<SafetyPreWarning_TemperatureTableDAL>();
+            _ninjectKernel.Bind<ISafetyPreWarningDetailDAL<SafetyPreWarning_WindLoadTable>>().To<SafetyPreWarning_WindLoadTableDAL>();
+
 
 
         }
