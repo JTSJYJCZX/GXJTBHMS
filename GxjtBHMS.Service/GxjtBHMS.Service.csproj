@@ -199,6 +199,7 @@
     <Compile Include="ViewModels\MonitoringDatas\MonitoringPointsNumber\MonitoringPointsNumberViewModel.cs" />
     <Compile Include="ViewModels\MonitoringDatas\MonitoringPointsPosition\MonitoringPointsPositionViewModel.cs" />
     <Compile Include="ViewModels\MonitoringDatas\TestType\MonitoringTestTypeViewModel.cs" />
+    <Compile Include="ViewModels\SafetyPreWarning\AllSafetyPreWarningStateDataModel.cs" />
     <Compile Include="ViewModels\SafetyPreWarning\SafetyPreWarningDataModel.cs" />
     <Compile Include="ViewModels\SafetyPreWarning\SafetyPreWarningStateAndTotalTimesModel.cs" />
     <Compile Include="ViewModels\SelectListItemModel.cs" />
