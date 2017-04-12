@@ -42,44 +42,44 @@ img.info-icon {
 
 #hotspotContainer1 .info-icon1 {
     position: absolute;
-    top: 21%;
-    left: 15%;
+    top: 57%;
+    left: 20%;
 }
 
 #hotspotContainer1 .info-icon2 {
     position: absolute;
-    top: 60%;
-    left: 22%;
+    top: 57%;
+    left: 32%;
 }
 
 #hotspotContainer1 .info-icon3 {
     position: absolute;
-    top: 60%;
-    left: 31%;
+    top: 17%;
+    left: 48%;
 }
 
 #hotspotContainer1 .info-icon4 {
     position: absolute;
-    top: 20%;
-    left: 37%;
+    top: 57%;
+    left: 64%;
 }
 
 #hotspotContainer1 .info-icon5 {
     position: absolute;
-    top: 15%;
-    left: 47%;
+    top: 57%;
+    left: 76%;
 }
 
 #hotspotContainer1 .info-icon6 {
     position: absolute;
-    top: 21%;
-    left: 58%;
+    top: 23%;
+    left: 37%;
 }
 
 #hotspotContainer1 .info-icon7 {
     position: absolute;
-    top: 60%;
-    left: 66%;
+    top: 23%;
+    left: 58%;
 }
 
 #hotspotContainer1 .info-icon8 {
@@ -828,7 +828,7 @@ img.info-icon {
         color: #000000;
         position: absolute;
         left: 14%;
-        margin-top: 2%;
+        margin-top: 4%;
         z-index: 2;
         font-weight: bold;
         font-size: 2.5ex;
@@ -837,8 +837,8 @@ img.info-icon {
     .img-container .A2 {
         color: #000000;
         position: absolute;
-        left: 30%;
-        margin-top: 2%;
+        left: 29%;
+        margin-top: 4%;
         z-index: 2;
         font-weight: bold;
         font-size: 2.5ex;
@@ -848,7 +848,7 @@ img.info-icon {
         color: #000000;
         position: absolute;
         left: 14%;
-        margin-top: 18%;
+        margin-top: 20%;
         z-index: 2;
         font-weight: bold;
         font-size: 2.5ex;
@@ -857,8 +857,8 @@ img.info-icon {
     .img-container .A4 {
         color: #000000;
         position: absolute;
-        left: 30%;
-        margin-top: 18%;
+        left: 29%;
+        margin-top: 20%;
         z-index: 2;
         font-weight: bold;
         font-size: 2.5ex;
@@ -867,8 +867,8 @@ img.info-icon {
     .img-container .A5 {
         color: #000000;
         position: absolute;
-        left: 60%;
-        margin-top: 2%;
+        left: 58%;
+        margin-top: 4%;
         z-index: 2;
         font-weight: bold;
         font-size: 2.5ex;
@@ -877,8 +877,8 @@ img.info-icon {
     .img-container .A6 {
         color: #000000;
         position: absolute;
-        left: 76%;
-        margin-top: 2%;
+        left: 73%;
+        margin-top: 4%;
         z-index: 2;
         font-weight: bold;
         font-size: 2.5ex;
@@ -887,8 +887,8 @@ img.info-icon {
     .img-container .A7 {
         color: #000000;
         position: absolute;
-        left: 60%;
-        margin-top: 18%;
+        left: 58%;
+        margin-top: 20%;
         z-index: 2;
         font-weight: bold;
         font-size: 2.5ex;
@@ -897,8 +897,8 @@ img.info-icon {
     .img-container .A8 {
         color: #000000;
         position: absolute;
-        left: 76%;
-        margin-top: 18%;
+        left: 73%;
+        margin-top: 20%;
         z-index: 2;
         font-weight: bold;
         font-size: 2.5ex;
@@ -909,6 +909,46 @@ img.info-icon {
         position: absolute;
         left: 5%;
         margin-top: 21%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+    .img-container .HA1 {
+        color: #000000;
+        position: absolute;
+        left: 52%;
+        margin-top: 5%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+    .img-container .HA2 {
+        color: #000000;
+        position: absolute;
+        left: 65%;
+        margin-top: 5%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+    .img-container .HA3 {
+        color: #000000;
+        position: absolute;
+        left: 52%;
+        margin-top: 20%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+    .img-container .HA4 {
+        color: #000000;
+        position: absolute;
+        left: 65%;
+        margin-top: 20%;
         z-index: 2;
         font-weight: bold;
         font-size: 2.5ex;

@@ -50,6 +50,10 @@ namespace GxjtBHMS.DependencyInjection
 
             _ninjectKernel.Bind<ISteelArchStrainRealTimeDatasService>().To<SteelArchStrainRealTimeDatasService>();
             _ninjectKernel.Bind<ISteelArchStrainRealTimeDatasDAL >().To<SteelArchStrainRealTimeDatasDAL>();
+            _ninjectKernel.Bind<ISteelLatticeStrainRealTimeDatasService>().To<SteelLatticeStrainRealTimeDatasService>();
+            _ninjectKernel.Bind<ISteelLatticeStrainRealTimeDatasDAL>().To<SteelLatticeStrainRealTimeDatasDAL>();
+            _ninjectKernel.Bind<IConcreteStrainRealTimeDatasService>().To<ConcreteStrainRealTimeDatasService>();
+            _ninjectKernel.Bind<IConcreteStrainRealTimeDatasDAL>().To<ConcreteStrainRealTimeDatasDAL>();
 
             _ninjectKernel.Bind<IFileConverter>().To<ExcelFileConverter>();
 

@@ -266,6 +266,8 @@
     <Compile Include="Models\StrainDatasHandler.cs" />
     <Compile Include="Models\ThresholdValuesConvert.cs" />
     <Compile Include="Models\ThresholdValueGroup.cs" />
+    <Compile Include="RealTimeMonitoringHub\ConcreteStrainDatasRealTimeMonitoringHub.cs" />
+    <Compile Include="RealTimeMonitoringHub\SteelLatticeStrainDatasRealTimeMonitoringHub.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="RealTimeMonitoringHub\SteelArchStrainDatasRealTimeMonitoringHub.cs" />
     <Compile Include="Validations\StrainThresholdValuesValidationAttribute.cs" />
@@ -313,13 +315,15 @@
     <Content Include="Content\Images\logo.jpg" />
     <Content Include="Content\Images\titleBackgound.jpg" />
     <Content Include="Content\Images\吊杆.png" />
-    <Content Include="Content\Images\应变截面示意图.png" />
-    <Content Include="Content\Images\断面图.png" />
+    <Content Include="Content\Images\拱肋横撑A截面.png" />
+    <Content Include="Content\Images\拱肋横撑B截面.png" />
     <Content Include="Content\Images\桥型图.png" />
     <Content Include="Content\Images\温度.png" />
     <Content Include="Content\Images\湿度.png" />
     <Content Include="Content\Images\系统说明.png" />
     <Content Include="Content\Images\西江四桥.jpg" />
+    <Content Include="Content\Images\钢拱肋应变断面图.png" />
+    <Content Include="Content\Images\钢拱肋应变立面图.png" />
     <Content Include="Content\jquery.datetimepicker.css" />
     <Content Include="Content\jquery.hotspot.css" />
     <Content Include="Content\system.css" />

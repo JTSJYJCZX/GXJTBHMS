@@ -8,14 +8,14 @@ using GxjtBHMS.Models.MonitoringDatasTable;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    public class SteelArchStrainRealTimeDatasService : ServiceBase, ISteelArchStrainRealTimeDatasService
+    public class ConcreteStrainRealTimeDatasService : ServiceBase, IConcreteStrainRealTimeDatasService
     {
-        ISteelArchStrainRealTimeDatasDAL  _sasdDAL;
+        IConcreteStrainRealTimeDatasDAL _csdDAL;
         IMonitoringPointsNumberDAL _mpnDAL;
         IMonitoringPointsPositionDAL _mppDAL;
-        public SteelArchStrainRealTimeDatasService(ISteelArchStrainRealTimeDatasDAL  sasdDAL, IMonitoringPointsNumberDAL mpnDAL, IMonitoringPointsPositionDAL mppDAL)
+        public ConcreteStrainRealTimeDatasService(IConcreteStrainRealTimeDatasDAL csdDAL, IMonitoringPointsNumberDAL mpnDAL, IMonitoringPointsPositionDAL mppDAL)
         {
-            _sasdDAL = sasdDAL;
+            _csdDAL = csdDAL;
             _mpnDAL = mpnDAL;
             _mppDAL = mppDAL;
 
@@ -30,7 +30,7 @@ namespace GxjtBHMS.Service.Implementations
                 foreach (var item in sectionIds)
                 {
                     IncludeSectionWarningColorDataModel resultOfOneSection = new IncludeSectionWarningColorDataModel();
-                    var source = _sasdDAL.GetRealTimeStrains(item).ToArray();
+                    var source = _csdDAL.GetRealTimeStrains(item).ToArray();
                     resultOfOneSection.WarningRealTimeData = GetResultsOfOneSection(source);
                     var maxGrade = resultOfOneSection.WarningRealTimeData.Select(m=>m.WarningGrade).Max();
                     resultOfOneSection.SectionWarningColor = resultOfOneSection.WarningRealTimeData.Where(m=>m.WarningGrade== maxGrade).Select(m=>m.WarningColor).First();
@@ -44,7 +44,7 @@ namespace GxjtBHMS.Service.Implementations
             return resultOfAllSection;
         }
 
-        private List<RealTimeWarningDataModel> GetResultsOfOneSection(SteelArchStrainTable[] source)
+        private List<RealTimeWarningDataModel> GetResultsOfOneSection(ConcreteStrainTable[] source)
         {
             List<RealTimeWarningDataModel> sectionModel = new List<RealTimeWarningDataModel>();
             for (int i = 0; i < source.Length; i++)

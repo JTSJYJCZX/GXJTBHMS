@@ -50,6 +50,8 @@
     <Compile Include="OriginalValueDownLoad\IHumidityDatasOriginalValueDAL.cs" />
     <Compile Include="OriginalValueDownLoad\ITemperatureDatasOriginalValueDAL.cs" />
     <Compile Include="IThresholdValueDAL.cs" />
+    <Compile Include="RealTimeDatas\IConcreteStrainRealTimeDatasDAL.cs" />
+    <Compile Include="RealTimeDatas\ISteelLatticeStrainRealTimeDatasDAL.cs" />
     <Compile Include="RealTimeDatas\ISteelArchStrainRealTimeDatasDAL.cs" />
     <Compile Include="IMonitoringPointsNumberDAL.cs" />
     <Compile Include="IMonitoringPointsPositionDAL.cs" />
