@@ -1,8 +1,9 @@
 ﻿namespace GxjtBHMS.Service.ViewModels.SafetyPreWarning
 {
-    public class SafetyPreWarningStateAndTotalTimesModel
+    public class SafetyPreWarningStateAndTotalTimesModel: SafetyStateModel
     {
-        public string SafetyPreWarningState { get; set; }
+        public int TestTypeId { get; set; }
+        public int GradeId { get; set; }
         public int WarningGrade2Times { get; set; }
         public int WarningGrade3Times { get; set; }
     }

@@ -2,9 +2,8 @@
 
 namespace GxjtBHMS.Service.ViewModels.SafetyPreWarning
 {
-    public class AllSafetyPreWarningStateDataModel
+    public class AllSafetyPreWarningStateDataModel: SafetyStateModel
     {
-        public string BridgeCurrentSafetyPreWarningState { get; set; }
         public IEnumerable<SafetyPreWarningStateAndTotalTimesModel> SafetyPreWarningStateData { get; set; }
     }
 }

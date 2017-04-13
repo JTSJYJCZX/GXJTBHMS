@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NPOI">
+      <HintPath>..\GxjtBHMS.Web\Bin\NPOI.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -57,6 +60,7 @@
     <Compile Include="IMonitoringPointsPositionDAL.cs" />
     <Compile Include="IMonitoringTestTypeDAL.cs" />
     <Compile Include="SafetyPreWarning\ISafetyPreWarningDetailDAL.cs" />
+    <Compile Include="SafetyPreWarning\ISafetyPreWarningRealTimePushDAL.cs" />
     <Compile Include="ThresholdValueSetting\IThresholdValueSettingDAL.cs" />
     <Compile Include="IUser.cs" />
     <Compile Include="OriginalValueDownLoad\ICableForceDatasOriginalValueDAL.cs" />

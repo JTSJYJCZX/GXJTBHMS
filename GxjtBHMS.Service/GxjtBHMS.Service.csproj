@@ -107,6 +107,8 @@
     <Compile Include="Interfaces\SafetyPreWarningQueryServiceInerfaces\ISafetyPreWarningQueryChartService.cs" />
     <Compile Include="Interfaces\RealTimeDatasServiceInerfaces\IConcreteStrainRealTimeDatasService.cs" />
     <Compile Include="Interfaces\RealTimeDatasServiceInerfaces\ISteelLatticeStrainRealTimeDatasService.cs" />
+    <Compile Include="Interfaces\SafetyPreWarningRealTimePushServiceInterfaces\IGetOneTypeSafetyPreWarningRealTimePushServiceBase.cs" />
+    <Compile Include="Interfaces\SafetyPreWarningRealTimePushServiceInterfaces\ISafetyPreWarningRealTimePushService.cs" />
     <Compile Include="Messaging\AbnormalThresholdValueSetting\AbnormalThresholdValueResponse.cs" />
     <Compile Include="Messaging\AbnormalThresholdValueSetting\AbnormalThresholdValueSettingRequest.cs" />
     <Compile Include="Messaging\SafetyPreWarning\GetSafetyWarningDetailRequest.cs" />
@@ -120,6 +122,12 @@
     <Compile Include="Messaging\ThresholdValueSetting\ThresholdValueWithoutNegativeModel.cs" />
     <Compile Include="Messaging\ThresholdValueSetting\ThresholdValueWithoutNegativeResponse.cs" />
     <Compile Include="SafetyPreWarningQueryService\SafetyPreWarningQueryServiceBase.cs" />
+    <Compile Include="SafetyPreWarningRealTimeHubService\CableForce_SafetyPreWarningRealTimePushService.cs" />
+    <Compile Include="SafetyPreWarningRealTimeHubService\Displacement_SafetyPreWarningRealTimePushService.cs" />
+    <Compile Include="SafetyPreWarningRealTimeHubService\GetOneTypeSafetyPreWarningRealTimePushService.cs" />
+    <Compile Include="SafetyPreWarningRealTimeHubService\SafetyPreWarningRealTimePushService.cs" />
+    <Compile Include="SafetyPreWarningRealTimeHubService\Temperature_SafetyPreWarningRealTimePushService.cs" />
+    <Compile Include="SafetyPreWarningRealTimeHubService\WindLoad_SafetyPreWarningRealTimePushService.cs" />
     <Compile Include="ServiceFactory\MonitoringDatasOriginalValueDownLoadServiceFactory.cs" />
     <Compile Include="ExtensionMethods\AdminUser\UserServiceExtension.cs" />
     <Compile Include="ExtensionMethods\GetEnumDescription\EnumUnit.cs" />
@@ -202,6 +210,7 @@
     <Compile Include="ViewModels\SafetyPreWarning\AllSafetyPreWarningStateDataModel.cs" />
     <Compile Include="ViewModels\SafetyPreWarning\SafetyPreWarningDataModel.cs" />
     <Compile Include="ViewModels\SafetyPreWarning\SafetyPreWarningStateAndTotalTimesModel.cs" />
+    <Compile Include="ViewModels\SafetyPreWarning\SafetyStateModel.cs" />
     <Compile Include="ViewModels\SelectListItemModel.cs" />
     <Compile Include="ViewModels\RealTimeDatasDisplay\IncludeSectionWarningColorDataModel.cs" />
     <Compile Include="ViewModels\RealTimeDatasDisplay\RealTimeWarningDataModel.cs" />

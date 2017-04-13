@@ -3,44 +3,74 @@
 
 <div>
     <label class="control-label"> 桥梁当前安全预警状况：</label>
-    <input type="text" readonly value="正常" style="color:black;background-color:green;text-align:center;border-radius:200%">
+    <span id="bridgeState">桥梁安全状态</span>
+    @*<input type="text" readonly value="正常" style="color:black;background-color:green;text-align:center;border-radius:200%">*@
 </div>
 <hr />
 <div>
-    <label class="control-label" > 桥梁当前风速预警状况：</label>
-    <input type="text" readonly value="正常" style="color:black;background-color:green;text-align:center">
+    <label class="control-label"> 桥梁当前索力预警状况：</label>
+    <span id="testType1"></span>
     <label class="control-label"> 黄色报警次数：</label>
-    <input type="text" readonly value="0" style="text-align:center">
+    <span id="grade2Times_testType1"></span>
     <label class="control-label"> 红色报警次数：</label>
-    <input type="text" readonly value="0" style="text-align:center">
+    <span id="grade3Times_testType1"></span>
+    <input type="button" value="详情" id="CableForceWarningDetail">
+</div>
+<div>
+    <label class="control-label"> 桥梁当前位移预警状况：</label>
+    <span id="testType2"></span>
+    <label class="control-label"> 黄色报警次数：</label>
+    <span id="grade2Times_testType2"></span>
+    <label class="control-label"> 红色报警次数：</label>
+    <span id="grade3Times_testType2"></span>
+    <input type="button" value="详情" id="DisplacementWarningDetail">
+</div>
+<div>
+    <label class="control-label"> 桥梁当前风速预警状况：</label>
+    <span id="testType3"></span>
+    <label class="control-label" > 黄色报警次数：</label>
+    <span id="grade2Times_testType3"></span>
+    <label class="control-label"> 红色报警次数：</label>
+    <span id="grade3Times_testType3"></span>
     <input type="button" value="详情" id="WindLoadWarningDetail">
 </div>
 
 <div>
     <label class="control-label"> 桥梁当前温度预警状况：</label>
-    <input type="text" readonly value="正常" style="color:black;background-color:green;text-align:center">
+    <span id="testType4"></span>
     <label class="control-label"> 黄色报警次数：</label>
-    <input type="text" readonly value="0" style="text-align:center">
+    <span id="grade2Times_testType4"></span>
     <label class="control-label"> 红色报警次数：</label>
-    <input type="text" readonly value="0" style="text-align:center">
+    <span id="grade3Times_testType4"></span>
     <input type="button" value="详情" id="TemperatureWarningDetail">
 </div>
 
-<div>
-    <label class="control-label"> 桥梁当前索力预警状况：</label>
-    <input type="text" readonly value="正常" style="color:black;background-color:green;text-align:center">
-    <label class="control-label"> 黄色报警次数：</label>
-    <input type="text" readonly value="0" style="text-align:center">
-    <label class="control-label"> 红色报警次数：</label>
-    <input type="text" readonly value="0" style="text-align:center">
-    <input type="button" value="详情" id="CableForceWarningDetail">
-</div>
-<div>
-    <label class="control-label"> 桥梁当前位移预警状况：</label>
-    <input type="text" readonly value="正常" style="color:black;background-color:green;text-align:center">
-    <label class="control-label"> 黄色报警次数：</label>
-    <input type="text" readonly value="0" style="text-align:center">
-    <label class="control-label"> 红色报警次数：</label>
-    <input type="text" readonly value="0" style="text-align:center">
-    <input type="button" value="详情" id="DisplacementWarningDetail">
-</div>
+
+<script>
+    $(function () {
+        var numHub = $.connection.safetyPreWarningHub;
+        numHub.client.safetyWarningStateRealTimePushDatas = function (models)
+        {
+            $("#bridgeState").html(models.SafetyPreWarningState);
+            $("#bridgeState").css("background-color", models.SafetyPreWarningColor);
+            $.each(models.SafetyPreWarningStateData, function (i, model) {
+                $("#" + "testType" + model.TestTypeId).html(model.SafetyPreWarningState);
+                $("#" + "testType" + model.TestTypeId).css("background-color", model.SafetyPreWarningColor);
+                $("#" + "grade2Times_testType" + model.TestTypeId).html(model.WarningGrade2Times);
+                $("#" + "grade3Times_testType" + model.TestTypeId).html(model.WarningGrade3Times);
+            });
+        }
+        $.connection.hub.start().done(function () {
+            numHub.server.bridgeSafetyPreWarningStateDisplay();
+        })
+    });
+</script>
+
+
+@*@section scripts{
+    <script src="~/Scripts/jquery.signalR-2.2.1.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+}*@
+
+@Styles.Render("~/content/hotspotcss")
+@Scripts.Render("~/bundles/hotspot")
