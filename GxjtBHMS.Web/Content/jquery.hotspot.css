@@ -94,6 +94,66 @@ img.info-icon {
     left: 82%;
 }
 
+#hotspotContainer1 .info-iconCA1 {
+    position: absolute;
+    top: 60%;
+    left: 31%;
+}
+
+#hotspotContainer1 .info-iconCA2 {
+    position: absolute;
+    top: 60%;
+    left: 64%;
+}
+
+#hotspotContainer1 .info-iconSLS1 {
+    position: absolute;
+    top: 33%;
+    left: 29%;
+}
+
+#hotspotContainer1 .info-iconSLS2 {
+    position: absolute;
+    top: 33%;
+    left: 66%;
+}
+
+#hotspotContainer1 .info-iconSLS3 {
+    position: absolute;
+    top: 57%;
+    left: 35%;
+}
+
+#hotspotContainer1 .info-iconSLS4 {
+    position: absolute;
+    top: 57%;
+    left: 59%;
+}
+
+#hotspotContainer1 .info-iconSLS5 {
+    position: absolute;
+    top: 52%;
+    left: 33%;
+}
+
+#hotspotContainer1 .info-iconSLS6 {
+    position: absolute;
+    top: 52%;
+    left: 61%;
+}
+
+#hotspotContainer1 .info-iconSLS7 {
+    position: absolute;
+    top: 52%;
+    left: 11%;
+}
+
+#hotspotContainer1 .info-iconSLS8 {
+    position: absolute;
+    top: 52%;
+    left: 83.5%;
+}
+
 .popover1 {
     position: absolute;
     z-index: 1010;
@@ -1085,3 +1145,233 @@ img.info-icon {
         font-weight: bold;
         font-size: 2.5ex;
     }
+
+    .img-container .CAAL1 {
+        color: #ff0000;
+        position: absolute;
+        left: 10%;
+        margin-top: 4.5%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+    .img-container .CAAL2 {
+        color: #ff0000;
+        position: absolute;
+        left: 27%;
+        margin-top: 4.5%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+    .img-container .CAAL3 {
+        color: #ff0000;
+        position: absolute;
+        left: 10%;
+        margin-top: 28%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CAAL4 {
+        color: #ff0000;
+        position: absolute;
+        left: 27%;
+        margin-top: 28%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CAAL5 {
+        color: #ff0000;
+        position: absolute;
+        left: 59%;
+        margin-top: 4.5%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CAAL6 {
+        color: #ff0000;
+        position: absolute;
+        left: 77%;
+        margin-top: 4.5%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CAAL7 {
+        color: #ff0000;
+        position: absolute;
+        left: 59%;
+        margin-top: 27.5%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CAAL8 {
+        color: #ff0000;
+        position: absolute;
+        left: 77%;
+        margin-top: 27.5%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .SITB1 {
+        color: #ff0000;
+        position: absolute;
+        left: 37%;
+        margin-top: 3%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .SITB2 {
+        color: #ff0000;
+        position: absolute;
+        left: 50%;
+        margin-top: 3%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    } 
+
+     .img-container .SUSCB1 {
+        color: #ff0000;
+        position: absolute;
+        left: 36%;
+        margin-top: 26%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    } 
+
+     .img-container .SUSCB2 {
+        color: #ff0000;
+        position: absolute;
+        left: 48%;
+        margin-top: 26%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    } 
+
+     .img-container .SUSLB1 {
+        color: #ff0000;
+        position: absolute;
+        left: 30%;
+        margin-top: 22%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    } 
+
+     .img-container .SUSLB2 {
+        color: #ff0000;
+        position: absolute;
+        left: 44%;
+        margin-top: 22%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    } 
+
+     .img-container .SUSLB3 {
+        color: #ff0000;
+        position: absolute;
+        left: 58%;
+        margin-top: 22%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    } 
+
+     .img-container .SRTB1 {
+        color: #ff0000;
+        position: absolute;
+        left: 13%;
+        margin-top: 6%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    } 
+
+     .img-container .SRTB2 {
+        color: #ff0000;
+        position: absolute;
+        left: 28%;
+        margin-top: 6%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    } 
+
+     .img-container .SRTB3 {
+        color: #ff0000;
+        position: absolute;
+        left: 13%;
+        margin-top: 24%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    } 
+
+     .img-container .SRTB4 {
+        color: #ff0000;
+        position: absolute;
+        left: 28%;
+        margin-top: 24%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    } 
+
+     .img-container .SRTB5 {
+        color: #ff0000;
+        position: absolute;
+        left: 61%;
+        margin-top: 6%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    } 
+
+     .img-container .SRTB6 {
+        color: #ff0000;
+        position: absolute;
+        left: 76%;
+        margin-top: 6%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    } 
+
+     .img-container .SRTB7 {
+        color: #ff0000;
+        position: absolute;
+        left: 61%;
+        margin-top: 24%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    } 
+
+     .img-container .SRTB8 {
+        color: #ff0000;
+        position: absolute;
+        left: 76%;
+        margin-top: 24%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    } 

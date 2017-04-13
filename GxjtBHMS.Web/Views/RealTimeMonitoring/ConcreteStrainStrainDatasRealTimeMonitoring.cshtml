@@ -4,15 +4,15 @@
         <div class="popover-inner">
             <h3 class="popover-title">混凝土拱肋A截面应变数据实时显示</h3>
             <div class="img-container">
-                <img src="~/Content/Images/断面图.png" class="section img-responsive carousel-inner img-rounded" />
-                <span id="S-CA-AL1" class="A1">A1</span>
-                <span id="S-CA-AL2" class="A2">A2</span>
-                <span id="S-CA-AL3" class="A3">A3</span>
-                <span id="S-CA-AL4" class="A4">A4</span>
-                <span id="S-CA-AR1" class="A5">A5</span>
-                <span id="S-CA-AR2" class="A6">A6</span>
-                <span id="S-CA-AR3" class="A7">A7</span>
-                <span id="S-CA-AR4" class="A8">A8</span>
+                <img src="~/Content/Images/混凝土拱肋应变断面图.png" class="section img-responsive carousel-inner img-rounded" />
+                <span id="S-CA-AL1" class="CAAL1">A1</span>
+                <span id="S-CA-AL2" class="CAAL2">A2</span>
+                <span id="S-CA-AL3" class="CAAL3">A3</span>
+                <span id="S-CA-AL4" class="CAAL4">A4</span>
+                <span id="S-CA-AR1" class="CAAL5">A5</span>
+                <span id="S-CA-AR2" class="CAAL6">A6</span>
+                <span id="S-CA-AR3" class="CAAL7">A7</span>
+                <span id="S-CA-AR4" class="CAAL8">A8</span>
             </div>
         </div>
     </div>
@@ -21,24 +21,24 @@
         <div class="popover-inner">
             <h3 class="popover-title">混凝土拱肋B截面应变数据实时显示</h3>
             <div class="img-container">
-                <img src="~/Content/Images/断面图.png" class="section img-responsive carousel-inner  img-rounded" />
-                <span id="S-CA-BL1" class="A1">S-CA-BL1</span>
-                <span id="S-CA-BL2" class="A2">S-CA-BL2</span>
-                <span id="S-CA-BL3" class="A3">S-CA-BL3</span>
-                <span id="S-CA-BL4" class="A4">S-CA-BL4</span>
-                <span id="S-CA-BR1" class="A5">S-CA-BR1</span>
-                <span id="S-CA-BR2" class="A6">S-CA-BR2</span>
-                <span id="S-CA-BR3" class="A7">S-CA-BR3</span>
-                <span id="S-CA-BR4" class="A8">S-CA-BR4</span>
+                <img src="~/Content/Images/混凝土拱肋应变断面图.png" class="section img-responsive carousel-inner  img-rounded" />
+                <span id="S-CA-BL1" class="CAAL1">S-CA-BL1</span>
+                <span id="S-CA-BL2" class="CAAL2">S-CA-BL2</span>
+                <span id="S-CA-BL3" class="CAAL3">S-CA-BL3</span>
+                <span id="S-CA-BL4" class="CAAL4">S-CA-BL4</span>
+                <span id="S-CA-BR1" class="CAAL5">S-CA-BR1</span>
+                <span id="S-CA-BR2" class="CAAL6">S-CA-BR2</span>
+                <span id="S-CA-BR3" class="CAAL7">S-CA-BR3</span>
+                <span id="S-CA-BR4" class="CAAL8">S-CA-BR4</span>
             </div>
         </div>
     </div>
 
 
-    <span class="info-icon info-icon1" id="section0" data-target="pop1"> 混凝土拱肋A截面 </span>
-    <span class="info-icon info-icon2 " id="section1" data-target="pop2"> 混凝土拱肋B截面 </span>
+    <span class="info-icon info-iconCA1" id="section0" data-target="pop1"> 混凝土拱肋A截面 </span>
+    <span class="info-icon info-iconCA2 " id="section1" data-target="pop2"> 混凝土拱肋B截面 </span>
 
-    <img src="~/Content/Images/应变截面示意图.png" alt="" class="largeimage" id="image2" />
+    <img src="~/Content/Images/混凝土拱肋应变立面图.png" alt="" class="largeimage" id="image2" />
 </div>
 
 
@@ -62,7 +62,7 @@
         numHub.client.realTimeDisplayDatas = function (models) {
             $.each(models, function (i, model) {
                 $.each(model.WarningRealTimeData, function (j, strainData) {
-                    $("#" + strainData.PointsNumber).html(strainData.CurrentData);
+                    $("#" + strainData.PointsNumber).html(strainData.PointsNumber + ":&nbsp&nbsp" + strainData.CurrentData + "με");
                     $("#" + strainData.PointsNumber).css("color", strainData.WarningColor);
                 });
                 $("#" + "section" + i).css("color", model.SectionWarningColor);
