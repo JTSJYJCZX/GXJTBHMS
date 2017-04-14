@@ -39,5 +39,10 @@ namespace GxjtBHMS.Web.Controllers.RealTimeMonitoring
         {
             return View();
         }
+
+        public ActionResult WindLoadDatasRealTimeMonitoring()
+        {
+            return View();
+        }
     }
 }

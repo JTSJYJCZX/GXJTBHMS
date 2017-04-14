@@ -1,4 +1,6 @@
-﻿namespace GxjtBHMS.Models.MonitoringDatasTable
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace GxjtBHMS.Models.MonitoringDatasTable
 {
     public class SteelArchStrainTable:MonitorDatasQueryConditionsModel
     {

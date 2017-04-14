@@ -8,23 +8,23 @@ using System.Collections.Generic;
 
 namespace GxjtBHMS.Web.RealTimeMonitoringHub
 {
-    public class ConcreteStrainDatasRealTimeMonitoringHub : Hub
+    public class TemperatureDatasRealTimeMonitoringHub : Hub
     {
-        IConcreteStrainRealTimeDatasService _realTimeDatasService;
+        ITemperatureRealTimeDatasService _realTimeDatasService;
 
-        public ConcreteStrainDatasRealTimeMonitoringHub()
+        public TemperatureDatasRealTimeMonitoringHub()
         {
-            _realTimeDatasService = new NinjectControllerFactory().GetInstance<IConcreteStrainRealTimeDatasService>();
+            _realTimeDatasService = new NinjectControllerFactory().GetInstance<ITemperatureRealTimeDatasService>();
 
         }
 
-        public void DisplayWarningConcreteStrainDatas(int testTypeId)
+        public void DisplayWarningTemperatureDatas(int testTypeId)
         {
             var sectionIds = _realTimeDatasService.GetSectionIdsBy(testTypeId).ToArray();
             
             while (true == true)
             {
-                var models = _realTimeDatasService.GetWarningStrainDatasBy(sectionIds);
+                var models = _realTimeDatasService.GetWarningTemperatureDatasBy(sectionIds);
                 Clients.All.RealTimeDisplayDatas(models);
                 Thread.Sleep(5000);
             }

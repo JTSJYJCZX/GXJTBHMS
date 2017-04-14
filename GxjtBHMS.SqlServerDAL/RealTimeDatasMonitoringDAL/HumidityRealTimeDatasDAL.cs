@@ -1,21 +1,22 @@
 ﻿using GxjtBHMS.IDAL;
+using GxjtBHMS.Models;
 using GxjtBHMS.Models.MonitoringDatasTable;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL.RealTimeDatasMonitoringDAL
 {
-    public class SteelLatticeStrainRealTimeDatasDAL : Repository<SteelLatticeStrainTable, int>,ISteelLatticeStrainRealTimeDatasDAL
+    public class HumidityRealTimeDatasDAL : Repository<HumidityTable, int>, IHumidityRealTimeDatasDAL
     {
-        public IEnumerable<SteelLatticeStrainTable> GetRealTimeStrains(int pointPositionId)
+        public IEnumerable<HumidityTable> GetRealTimeHumidity(int pointPositionId)
         {
-            List<SteelLatticeStrainTable> result = GetRealTimeDataByPositionId(pointPositionId);
+            List<HumidityTable> result = GetRealTimeDataByPositionId(pointPositionId);
             return result;
         }
 
-        List<SteelLatticeStrainTable> GetRealTimeDataByPositionId(int pointPositionId)
+        List<HumidityTable> GetRealTimeDataByPositionId(int pointPositionId)
         {
-            List<SteelLatticeStrainTable> result = new List<SteelLatticeStrainTable>();
+            List<HumidityTable> result = new List<HumidityTable>();
             var pointsNumberId = GetPointsNumberIdByPointsPositionId(pointPositionId);
             foreach (var item in pointsNumberId)
             {
@@ -32,5 +33,6 @@ namespace GxjtBHMS.SqlServerDAL.RealTimeDatasMonitoringDAL
             return mpnDAL.FindBy(m => m.PointsPositionId == pointPositionId).Select(m => m.Id).ToArray();
         }
 
+       
     }
 }

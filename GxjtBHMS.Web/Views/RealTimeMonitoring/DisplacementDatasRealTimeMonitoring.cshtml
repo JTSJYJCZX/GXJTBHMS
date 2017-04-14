@@ -3,59 +3,34 @@
     ViewBag.Title = "DisplacementDatasRealTimeMonitoring";
 }
 
-<div class="hotspotContainer" id="hotspotContainer1">
-    <div class="popover1" data-easein="cardInTop" data-easeout="cardOutTop" id="pop1">
-        <div class="popover-inner">
-            <h3 class="popover-title">A截面位移数据实时显示</h3>
-            <div class="img-container">
-                <img src="~/Content/Images/断面图.png" class="section img-responsive carousel-inner img-rounded" />
-                <span id="DI-A1" class="A1">A1</span>
-                <span id="DI-A2" class="A2">A2</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="popover1" data-easein="cardInTop" data-easeout="cardOutTop" id="pop2">
-        <div class="popover-inner">
-            <h3 class="popover-title">B截面位移数据实时显示</h3>
-            <div class="img-container">
-                <img src="~/Content/Images/断面图.png" class="section img-responsive carousel-inner  img-rounded" />
-                <span id="DI-B1" class="A1">B1</span>
-                <span id="DI-B2" class="A2">B2</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="popover1" data-easein="cardInTop" data-easeout="cardOutTop" id="pop3">
-        <div class="popover-inner">
-            <h3 class="popover-title">C截面位移数据实时显示</h3>
-            <div class="img-container">
-                <img src="~/Content/Images/断面图.png" class="section img-responsive carousel-inner img-rounded" />
-                <span id="DI-C1" class="A1">C1</span>
-                <span id="DI-C2" class="A2">C2</span>
-            </div>
-        </div>
-    </div>
-
-
-
-    <div class="popover1" data-easein="cardInTop" data-easeout="cardOutTop" id="pop6">
-        <div class="popover-inner">
-            <h3 class="popover-title">F截面位移数据实时显示</h3>
-            <div class="img-container">
-                <img src="~/Content/Images/断面图.png" class="section img-responsive carousel-inner img-rounded" />
-                <span id="DI-F1" class="A1">F1</span>
-                <span id="DI-F2" class="A2">F2</span>
-            </div>
-        </div>
-    </div>
-
-    <span class="info-icon info-icon1" id="section0" data-target="pop1"> A截面 </span>
-    <span class="info-icon info-icon2 " id="section1" data-target="pop2"> B截面 </span>
-    <span class="info-icon info-icon3 " id="section2" data-target="pop3"> C截面 </span>
-    <span class="info-icon info-icon6 " id="section3" data-target="pop6"> F截面 </span>
-
-    <img src="~/Content/Images/应变截面示意图.png" alt="" class="largeimage" id="image2" />
+<div class="img-container">
+    <img src="~/Content/Images/位移实时监测.png" class="section img-responsive carousel-inner img-rounded" />
+    <span id="D-SA-1x" class="DSA1X">T-E-1</span>
+    <span id="D-SA-2x" class="DSA2X">T-SA-L1</span>
+    <span id="D-SA-3x" class="DSA3X">T-SA-L2</span>
+    <span id="D-SA-4x" class="DSA4X">T-SA-L3</span>
+    <span id="D-SA-1y" class="DSA1Y">T-SA-L4</span>
+    <span id="D-SA-2y" class="DSA2Y">T-SA-R1</span>
+    <span id="D-SA-3y" class="DSA3Y">T-SA-R2</span>
+    <span id="D-SA-4y" class="DSA4Y">T-SA-R3</span>
+    <span id="D-SA-1z" class="DSA1Z">T-SA-R4</span>
+    <span id="D-SA-2z" class="DSA2Z">T-E-1</span>
+    <span id="D-SA-3z" class="DSA3Z">T-SA-L1</span>
+    <span id="D-SA-4z" class="DSA4Z">T-SA-L2</span>
+    <span id="D-BD-1" class="DBD1">T-SA-L3</span>
+    <span id="D-BD-2" class="DBD2">T-SA-L4</span>
+    <span id="D-BD-3" class="DBD3">T-SA-R1</span>
+    <span id="D-BD-4" class="DBD4">T-SA-R2</span>
+    <span id="D-BD-5" class="DBD5">T-SA-R3</span>
+    <span id="D-BD-6" class="DBD6">T-SA-R4</span>
+    <span id="D-SP-1" class="DSP1">T-SA-R4</span>
+    <span id="D-SP-2" class="DSP2">T-SA-R4</span>
+    <span id="D-SP-3" class="DSP3">T-SA-R4</span>
+    <span id="D-SP-4" class="DSP4">T-SA-R4</span>
+    <span id="D-E-1" class="DE1">T-SA-R4</span>
+    <span id="D-E-2" class="DE2">T-SA-R4</span>
+    <span id="D-E-3" class="DE3">T-SA-R4</span>
+    <span id="D-E-4" class="DE4">T-SA-R4</span>
 </div>
 
 
@@ -78,15 +53,14 @@
         var numHub = $.connection.displacementDatasRealTimeMonitoringHub;
         numHub.client.realTimeDisplayDatas = function (models) {
             $.each(models, function (i, model) {
-                $.each(model.WarningRealTimeData, function (j, DisplaymentData) {
-                    $("#" + DisplaymentData.PointsNumber).html(DisplaymentData.CurrentData);
-                    $("#" + DisplaymentData.PointsNumber).css("color", DisplaymentData.WarningColor);
+                $.each(model.WarningRealTimeData, function (j, DisplacementData) {
+                    $("#" + DisplacementData.PointsNumber).html(DisplacementData.PointsNumber + ":&nbsp&nbsp" + DisplacementData.CurrentData);
+                    $("#" + DisplacementData.PointsNumber).css("color", DisplacementData.WarningColor);
                 });
-                $("#" + "section" + i).css("color", model.SectionWarningColor);
             });
         }
         $.connection.hub.start().done(function () {
-            numHub.server.displayWarningDisplaymentDatas(2);
+            numHub.server.displayWarningDisplacementDatas(4);
         })
     });
 </script>

@@ -84,6 +84,11 @@
     <Compile Include="MonitoringPointsPositionDAL.cs" />
     <Compile Include="MonitoringTestTypeDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RealTimeDatasMonitoringDAL\WindLoadRealTimeDatasDAL.cs" />
+    <Compile Include="RealTimeDatasMonitoringDAL\TemperatureRealTimeDatasDAL.cs" />
+    <Compile Include="RealTimeDatasMonitoringDAL\HumidityRealTimeDatasDAL.cs" />
+    <Compile Include="RealTimeDatasMonitoringDAL\DisplacementRealTimeDatasDAL.cs" />
+    <Compile Include="RealTimeDatasMonitoringDAL\CableForceRealTimeDatasDAL.cs" />
     <Compile Include="RealTimeDatasMonitoringDAL\ConcreteStrainRealTimeDatasDAL.cs" />
     <Compile Include="RealTimeDatasMonitoringDAL\SteelLatticeStrainRealTimeDatasDAL.cs" />
     <Compile Include="RealTimeDatasMonitoringDAL\SteelArchStrainRealTimeDatasDAL.cs" />

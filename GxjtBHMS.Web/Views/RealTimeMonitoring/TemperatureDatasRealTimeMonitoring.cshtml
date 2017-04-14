@@ -4,23 +4,31 @@
 }
 
 <div class="img-container">
-    <img src="~/Content/Images/温度.png" class="section img-responsive carousel-inner img-rounded" />
-    <span id="Te-BT" class="TH1">TH1</span>
-    <span id="Te-BB" class="TH2">TH2</span>
-    <span id="Te-F" class="TH3">TH3</span>
+    <img src="~/Content/Images/温湿度实时监测.png" class="section img-responsive carousel-inner img-rounded" />
+    <span id="T-E-1" class="HE1">T-E-1</span>
+    <span id="T-SA-L1" class="HSAL1">T-SA-L1</span>
+    <span id="T-SA-L2" class="HSAL2">T-SA-L2</span>
+    <span id="T-SA-L3" class="HSAL3">T-SA-L3</span>
+    <span id="T-SA-L4" class="HSAL4">T-SA-L4</span>
+    <span id="T-SA-R1" class="HSAR1">T-SA-R1</span>
+    <span id="T-SA-R2" class="HSAR2">T-SA-R2</span>
+    <span id="T-SA-R3" class="HSAR3">T-SA-R3</span>
+    <span id="T-SA-R4" class="HSAR4">T-SA-R4</span>
 </div>
 
 <script>
     $(function () {
         var numHub = $.connection.temperatureDatasRealTimeMonitoringHub;
-        numHub.client.realTimeTemperatureDatas = function (models) {
+        numHub.client.realTimeDisplayDatas = function (models) {
             $.each(models, function (i, model) {
-                $("#" + model.PointsNumber).html(model.CurrentData);
-                $("#" + model.PointsNumber).css("color", model.WarningColor);
+                $.each(model.WarningRealTimeData, function (j, TemperatureData) {
+                    $("#" + TemperatureData.PointsNumber).html(TemperatureData.PointsNumber + ":&nbsp&nbsp" + TemperatureData.CurrentData + "℃");
+                    $("#" + TemperatureData.PointsNumber).css("color", TemperatureData.WarningColor);
+                });
             });
         }
         $.connection.hub.start().done(function () {
-            numHub.server.displayWarningTemperatureDatas(3);
+            numHub.server.displayWarningTemperatureDatas(7);
         })
     });
 </script>
