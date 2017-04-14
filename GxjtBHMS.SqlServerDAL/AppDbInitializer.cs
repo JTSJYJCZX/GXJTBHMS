@@ -372,7 +372,7 @@ namespace GxjtBHMS.SqlServerDAL
         private void InitialSafetyPreWarning(BHMSContext context)
         {
             var random = new Random();
-            int intlTime = 5;
+            int intlTime = 3;
             for (int i = 0; i <= 5; i++)
             {
                 DateTime time = DateTime.Now.AddMinutes(intlTime + i);
