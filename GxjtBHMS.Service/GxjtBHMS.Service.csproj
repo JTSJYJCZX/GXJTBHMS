@@ -97,6 +97,11 @@
     <Compile Include="Implementations\OriginalValueDownloadServiceBase\MonitorDatasOringinalValueDownloadServiceBase.cs" />
     <Compile Include="Implementations\OriginalValueFileSystemService\ConcreteStrainMonitorDatasOriginalValueDownloadFileSystemService.cs" />
     <Compile Include="Implementations\OriginalValueFileSystemService\WindLoadDatasOriginalValueDownloadFileSystemService.cs" />
+    <Compile Include="Implementations\RealTimeDatasService\WindLoadRealTimeDatasService.cs" />
+    <Compile Include="Implementations\RealTimeDatasService\TemperatureRealTimeDatasService.cs" />
+    <Compile Include="Implementations\RealTimeDatasService\HumidityRealTimeDatasService.cs" />
+    <Compile Include="Implementations\RealTimeDatasService\DisplacementRealTimeDatasService.cs" />
+    <Compile Include="Implementations\RealTimeDatasService\CableForceRealTimeDatasService.cs" />
     <Compile Include="Implementations\SafetyPreWarningQueryService\SafetyPreWarningQueryService.cs" />
     <Compile Include="Implementations\RealTimeDatasService\ConcreteStrainRealTimeDatasService.cs" />
     <Compile Include="Implementations\RealTimeDatasService\SteelLatticeStrainRealTimeDatasService.cs" />
@@ -104,6 +109,11 @@
     <Compile Include="Implementations\ThresholdValueService\GetThresholdValueSettingListBySearchBarService.cs" />
     <Compile Include="Implementations\ThresholdValueService\WithoutNegativeThresholdValueSettingServiceBase.cs" />
     <Compile Include="Interfaces\IFileConverter.cs" />
+    <Compile Include="Interfaces\RealTimeDatasServiceInerfaces\IWindLoadRealTimeDatasService.cs" />
+    <Compile Include="Interfaces\RealTimeDatasServiceInerfaces\ITemperatureRealTimeDatasService.cs" />
+    <Compile Include="Interfaces\RealTimeDatasServiceInerfaces\IHumidityRealTimeDatasService.cs" />
+    <Compile Include="Interfaces\RealTimeDatasServiceInerfaces\IDisplacementRealTimeDatasService.cs" />
+    <Compile Include="Interfaces\RealTimeDatasServiceInerfaces\ICableForceRealTimeDatasService.cs" />
     <Compile Include="Interfaces\SafetyPreWarningQueryServiceInerfaces\ISafetyPreWarningQueryChartService.cs" />
     <Compile Include="Interfaces\RealTimeDatasServiceInerfaces\IConcreteStrainRealTimeDatasService.cs" />
     <Compile Include="Interfaces\RealTimeDatasServiceInerfaces\ISteelLatticeStrainRealTimeDatasService.cs" />

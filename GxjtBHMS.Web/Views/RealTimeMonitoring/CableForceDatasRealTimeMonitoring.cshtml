@@ -6,16 +6,25 @@
 
 <div class="img-container">
     <img src="~/Content/Images/吊杆.png" class="section img-responsive carousel-inner img-rounded" />
-    <span id="CA-S1" class="CAS1">CAS1</span>
-    <span id="CA-S2" class="CAS2">CAS2</span>
-    <span id="CA-S3" class="CAS3">CAS3</span>
-    <span id="CA-S4" class="CAS4">CAS4</span>
-    <span id="CA-S5" class="CAS5">CAS5</span>
-    <span id="CA-X1" class="CAX1">CAX1</span>
-    <span id="CA-X2" class="CAX2">CAX2</span>
-    <span id="CA-X3" class="CAX3">CAX3</span>
-    <span id="CA-X4" class="CAX4">CAX4</span>
-    <span id="CA-X5" class="CAX5">CAX5</span>
+    <span id="CF-UPH-L1" class="CAS1">CF-UPH-L1</span>
+    <span id="CF-UPH-L2" class="CAS2">CF-UPH-L2</span>
+    <span id="CF-UPH-L3" class="CAS3">CF-UPH-L3</span>
+    <span id="CF-UPH-L4" class="CAS4">CF-UPH-L4</span>
+    <span id="CF-UPH-L5" class="CAS5">CF-UPH-L5</span>
+    <span id="CF-UPH-L6" class="CAS2">CF-UPH-L6</span>
+    <span id="CF-UPH-L7" class="CAS3">CF-UPH-L7</span>
+    <span id="CF-UPH-L8" class="CAS4">CF-UPH-L8</span>
+    <span id="CF-UPH-L9" class="CAS5">CF-UPH-L9</span>
+    <span id="CF-UPH-R1" class="CAS1">CF-UPH-R1</span>
+    <span id="CF-UPH-R2" class="CAS2">CF-UPH-R2</span>
+    <span id="CF-UPH-R3" class="CAS3">CF-UPH-R3</span>
+    <span id="CF-UPH-R4" class="CAS4">CF-UPH-R4</span>
+    <span id="CF-UPH-R5" class="CAS5">CF-UPH-R5</span>
+    <span id="CF-UPH-R6" class="CAS2">CF-UPH-R6</span>
+    <span id="CF-UPH-R7" class="CAS3">CF-UPH-R7</span>
+    <span id="CF-UPH-R8" class="CAS4">CF-UPH-R8</span>
+    <span id="CF-UPH-R9" class="CAS5">CF-UPH-R9</span>
+    
 </div>
 
 
@@ -24,12 +33,15 @@
         var numHub = $.connection.cableForceDatasRealTimeMonitoringHub;
         numHub.client.realTimeDisplayDatas = function (models) {
             $.each(models, function (i, model) {
-                $("#" + model.PointsNumber).html(model.CurrentData);
-                $("#" + model.PointsNumber).css("color", model.WarningColor);
+                $.each(model.WarningRealTimeData, function (j, cableForceData) {
+                    $("#" + cableForceData.PointsNumber).html(cableForceData.PointsNumber + ":&nbsp&nbsp" + cableForceData.CurrentData + "KN");
+                    $("#" + cableForceData.PointsNumber).css("color", cableForceData.WarningColor);
+                });
+                $("#" + "section" + i).css("color", model.SectionWarningColor);
             });
         }
         $.connection.hub.start().done(function () {
-            numHub.server.displayWarningCableForceDatas(4);
+            numHub.server.displayWarningCableForceDatas(5);
         })
     });
 </script>

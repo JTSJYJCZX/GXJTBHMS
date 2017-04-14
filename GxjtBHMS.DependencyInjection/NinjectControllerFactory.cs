@@ -7,7 +7,6 @@ using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.Interfaces.SafetyPreWarningRealTimePushServiceInterfaces;
 using GxjtBHMS.Service.SafetyPreWarningRealTimeHubService;
 using GxjtBHMS.SqlServerDAL;
-using GxjtBHMS.SqlServerDAL.AbnormalThresholdValueSettingDAL;
 using GxjtBHMS.SqlServerDAL.RealTimeDatasMonitoringDAL;
 using GxjtBHMS.SqlServerDAL.SafetyPreWarningRealTimePushDAL;
 using GxjtBHMS.SqlServerDAL.ThresholdValueDatasDAL;
@@ -59,6 +58,16 @@ namespace GxjtBHMS.DependencyInjection
             _ninjectKernel.Bind<ISteelLatticeStrainRealTimeDatasDAL>().To<SteelLatticeStrainRealTimeDatasDAL>();
             _ninjectKernel.Bind<IConcreteStrainRealTimeDatasService>().To<ConcreteStrainRealTimeDatasService>();
             _ninjectKernel.Bind<IConcreteStrainRealTimeDatasDAL>().To<ConcreteStrainRealTimeDatasDAL>();
+            _ninjectKernel.Bind<ICableForceRealTimeDatasService>().To<CableForceRealTimeDatasService>();
+            _ninjectKernel.Bind<ICableForceRealTimeDatasDAL>().To<CableForceRealTimeDatasDAL>();
+            _ninjectKernel.Bind<IDisplacementRealTimeDatasService>().To<DisplacementRealTimeDatasService>();
+            _ninjectKernel.Bind<IDisplacementRealTimeDatasDAL>().To<DisplacementRealTimeDatasDAL>();
+            _ninjectKernel.Bind<IHumidityRealTimeDatasService>().To<HumidityRealTimeDatasService>();
+            _ninjectKernel.Bind<IHumidityRealTimeDatasDAL>().To<HumidityRealTimeDatasDAL>();
+            _ninjectKernel.Bind<ITemperatureRealTimeDatasService>().To<TemperatureRealTimeDatasService>();
+            _ninjectKernel.Bind<ITemperatureRealTimeDatasDAL>().To<TemperatureRealTimeDatasDAL>();
+            _ninjectKernel.Bind<IWindLoadRealTimeDatasService>().To<WindLoadRealTimeDatasService>();
+            _ninjectKernel.Bind<IWindLoadRealTimeDatasDAL>().To<WindLoadRealTimeDatasDAL>();
 
             _ninjectKernel.Bind<IFileConverter>().To<ExcelFileConverter>();
 

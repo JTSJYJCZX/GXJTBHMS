@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "WindLoadDatasRealTimeMonitoring";
+}
+
+<div class="img-container">
+    <img src="~/Content/Images/风速风向实时监测.png" class="section img-responsive carousel-inner img-rounded" />
+    <span id="WL-1" class="WL1">WL11</span>
+</div>
+
+<script>
+    $(function () {
+        var numHub = $.connection.windLoadDatasRealTimeMonitoringHub;
+        numHub.client.realTimeDisplayDatas = function (models) {
+            $.each(models, function (i, model) {
+                $.each(model.WarningRealTimeData, function (j, WindLoadData) {
+                    $("#" + WindLoadData.PointsNumber).html(WindLoadData.PointsNumber + ":&nbsp&nbsp" + WindLoadData.CurrentData + "m/s");
+                    $("#" + WindLoadData.PointsNumber).css("color", WindLoadData.WarningColor);
+                });
+            });
+        }
+        $.connection.hub.start().done(function () {
+            numHub.server.displayWarningWindLoadDatas(8);
+        })
+    });
+</script>
+
+
+@section scripts{
+    <script src="~/Scripts/jquery.signalR-2.2.1.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+}
+
+@Styles.Render("~/content/hotspotcss")

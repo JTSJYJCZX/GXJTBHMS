@@ -203,6 +203,9 @@ img.info-icon {
     left: 83.5%;
 }
 
+
+
+
 .popover1 {
     position: absolute;
     z-index: 1010;
@@ -1424,3 +1427,363 @@ img.info-icon {
         font-weight: bold;
         font-size: 2.5ex;
     } 
+
+     .img-container .HE1 {
+        color: #ff0000;
+        position: absolute;
+        left: 53%;
+        margin-top: 31.5%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .HSAL1 {
+        color: #ff0000;
+        position: absolute;
+        left: 18%;
+        margin-top: 28%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .HSAL2 {
+        color: #ff0000;
+        position: absolute;
+        left: 48%;
+        margin-top: 28%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .HSAL3 {
+        color: #ff0000;
+        position: absolute;
+        left: 63%;
+        margin-top: 28%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .HSAL4 {
+        color: #ff0000;
+        position: absolute;
+        left: 83%;
+        margin-top: 28%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .HSAR1 {
+        color: #ff0000;
+        position: absolute;
+        left: 18%;
+        margin-top: 34.5%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .HSAR2 {
+        color: #ff0000;
+        position: absolute;
+        left: 48%;
+        margin-top: 34.5%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .HSAR3 {
+        color: #ff0000;
+        position: absolute;
+        left: 63%;
+        margin-top: 34.5%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .HSAR4 {
+        color: #ff0000;
+        position: absolute;
+        left: 83%;
+        margin-top: 34.5%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .WL1 {
+        color: #ff0000;
+        position: absolute;
+        left: 50%;
+        margin-top: 26%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .DSA1X {
+        color: #ff0000;
+        position: absolute;
+        left: 17.5%;
+        margin-top: 26%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .DSA1Y {
+        color: #ff0000;
+        position: absolute;
+        left: 17.5%;
+        margin-top: 27%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .DSA1Z {
+        color: #ff0000;
+        position: absolute;
+        left: 17.5%;
+        margin-top: 28%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .DSA2X {
+        color: #ff0000;
+        position: absolute;
+        left: 51%;
+        margin-top: 26%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .DSA2Y {
+        color: #ff0000;
+        position: absolute;
+        left: 51%;
+        margin-top: 27%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .DSA2Z {
+        color: #ff0000;
+        position: absolute;
+        left: 51%;
+        margin-top: 28%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .DSA3X {
+        color: #ff0000;
+        position: absolute;
+        left: 79%;
+        margin-top: 27%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .DSA3Y {
+        color: #ff0000;
+        position: absolute;
+        left: 79%;
+        margin-top: 28%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .DSA3Z {
+        color: #ff0000;
+        position: absolute;
+        left: 79%;
+        margin-top: 29%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .DSA4X {
+        color: #ff0000;
+        position: absolute;
+        left: 51%;
+        margin-top: 35%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .DSA4Y {
+        color: #ff0000;
+        position: absolute;
+        left: 51%;
+        margin-top: 36%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .DSA4Z {
+        color: #ff0000;
+        position: absolute;
+        left: 51%;
+        margin-top: 37%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .DBD1 {
+        color: #ff0000;
+        position: absolute;
+        left: 11%;
+        margin-top: 29%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .DBD2 {
+        color: #ff0000;
+        position: absolute;
+        left: 45%;
+        margin-top: 29%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .DBD3 {
+        color: #ff0000;
+        position: absolute;
+        left: 86%;
+        margin-top: 29%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .DBD4 {
+        color: #ff0000;
+        position: absolute;
+        left: 11%;
+        margin-top: 34%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .DBD5 {
+        color: #ff0000;
+        position: absolute;
+        left: 45%;
+        margin-top: 34%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .DBD6 {
+        color: #ff0000;
+        position: absolute;
+        left: 86%;
+        margin-top: 34%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .DSP1 {
+        color: #ff0000;
+        position: absolute;
+        left: 28%;
+        margin-top: 28%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .DSP2 {
+        color: #ff0000;
+        position: absolute;
+        left: 71%;
+        margin-top: 28%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .DSP3 {
+        color: #ff0000;
+        position: absolute;
+        left: 28%;
+        margin-top: 35%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .DSP4 {
+        color: #ff0000;
+        position: absolute;
+        left: 71%;
+        margin-top: 35%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .DE1 {
+        color: #ff0000;
+        position: absolute;
+        left: 4%;
+        margin-top: 28.5%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .DE2 {
+        color: #ff0000;
+        position: absolute;
+        left: 93%;
+        margin-top: 28.5%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .DE3 {
+        color: #ff0000;
+        position: absolute;
+        left: 4%;
+        margin-top: 34.5%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .DE4 {
+        color: #ff0000;
+        position: absolute;
+        left: 93%;
+        margin-top: 34.5%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }

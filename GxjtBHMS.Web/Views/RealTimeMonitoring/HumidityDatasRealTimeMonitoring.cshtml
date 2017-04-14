@@ -5,23 +5,31 @@
 
 
 <div class="img-container">
-    <img src="~/Content/Images/湿度.png" class="section img-responsive carousel-inner img-rounded" />
-    <span id="hu-BT" class="TH1">TH1</span>
-    <span id="hu-BB" class="TH2">TH2</span>
-    <span id="hu-F" class="TH3">TH3</span>
+    <img src="~/Content/Images/温湿度实时监测.png" class="section img-responsive carousel-inner img-rounded" />
+    <span id="H-E-1" class="HE1">H-E-1</span>
+    <span id="H-SA-L1" class="HSAL1">H-SA-L1</span>
+    <span id="H-SA-L2" class="HSAL2">H-SA-L2</span>
+    <span id="H-SA-L3" class="HSAL3">H-SA-L3</span>
+    <span id="H-SA-L4" class="HSAL4">H-SA-L4</span>
+    <span id="H-SA-R1" class="HSAR1">H-SA-R1</span>
+    <span id="H-SA-R2" class="HSAR2">H-SA-R2</span>
+    <span id="H-SA-R3" class="HSAR3">H-SA-R3</span>
+    <span id="H-SA-R4" class="HSAR4">H-SA-R4</span>
 </div>
 
 <script>
     $(function () {
         var numHub = $.connection.humidityDatasRealTimeMonitoringHub;
-        numHub.client.realTimeHumidityDatas = function (models) {
+        numHub.client.realTimeDisplayDatas = function (models) {
             $.each(models, function (i, model) {
-                $("#" + model.PointsNumber).html(model.CurrentData);
-                $("#" + model.PointsNumber).css("color", model.WarningColor);
+                $.each(model.WarningRealTimeData, function (j, HumidityData) {
+                    $("#" + HumidityData.PointsNumber).html(HumidityData.PointsNumber + ":&nbsp&nbsp" + HumidityData.CurrentData + "%");
+                    $("#" + HumidityData.PointsNumber).css("color", HumidityData.WarningColor);
+                });
             });
         }
         $.connection.hub.start().done(function () {
-            numHub.server.displayWarningHumidityDatas(5);
+            numHub.server.displayWarningHumidityDatas(6);
         })
     });
 </script>

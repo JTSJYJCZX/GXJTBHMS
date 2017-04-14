@@ -1195,74 +1195,74 @@ namespace GxjtBHMS.SqlServerDAL
                 //位移初始值初始化
                 for (int j = 0; j < tmpNumbers18.Length; j++)
                 {
-                    var displacementOriginalValue = new DisplacementTable { PointsNumber = tmpNumbers18[j], Time = time, Displacement = random.Next(-20, 40) };
+                    var displacementOriginalValue = new DisplacementTable { PointsNumber = tmpNumbers18[j], Time = time, Displacement = random.Next(-20, 40) ,ThresholdGrade = ThresholdGrade1 };
                     context.Displacements.Add(displacementOriginalValue);
                 }
                 for (int j = 0; j < tmpNumbers19.Length; j++)
                 {
-                    var displacementOriginalValue = new DisplacementTable { PointsNumber = tmpNumbers19[j], Time = time, Displacement = random.Next(-20, 40) };
+                    var displacementOriginalValue = new DisplacementTable { PointsNumber = tmpNumbers19[j], Time = time, Displacement = random.Next(-20, 40) , ThresholdGrade = ThresholdGrade2 };
                     context.Displacements.Add(displacementOriginalValue);
                 }
                 for (int j = 0; j < tmpNumbers20.Length; j++)
                 {
-                    var displacementOriginalValue = new DisplacementTable { PointsNumber = tmpNumbers20[j], Time = time, Displacement = random.Next(-20, 40) };
+                    var displacementOriginalValue = new DisplacementTable { PointsNumber = tmpNumbers20[j], Time = time, Displacement = random.Next(-20, 40), ThresholdGrade = ThresholdGrade3 };
                     context.Displacements.Add(displacementOriginalValue);
                 }
                 for (int j = 0; j < tmpNumbers21.Length; j++)
                 {
-                    var displacementOriginalValue = new DisplacementTable { PointsNumber = tmpNumbers21[j], Time = time, Displacement = random.Next(-20, 40) };
+                    var displacementOriginalValue = new DisplacementTable { PointsNumber = tmpNumbers21[j], Time = time, Displacement = random.Next(-20, 40), ThresholdGrade = ThresholdGrade1 };
                     context.Displacements.Add(displacementOriginalValue);
                 }
 
                 //索力初始值初始化
                 for (int j = 0; j < tmpNumbers26.Length; j++)
                 {
-                    var cableForceOriginalValue = new CableForceTable { PointsNumber = tmpNumbers26[j], Time = time, CableForce = random.Next(800, 1500), Temperature = random.Next(5, 70) };
+                    var cableForceOriginalValue = new CableForceTable { PointsNumber = tmpNumbers26[j], Time = time, CableForce = random.Next(800, 1500), Temperature = random.Next(5, 70) ,ThresholdGrade = ThresholdGrade1 };
                     context.CableForces.Add(cableForceOriginalValue);
                 }
 
                 for (int j = 0; j < tmpNumbers27.Length; j++)
                 {
-                    var cableForceOriginalValue = new CableForceTable { PointsNumber = tmpNumbers27[j], Time = time, CableForce = random.Next(800, 1500), Temperature = random.Next(5, 70) };
+                    var cableForceOriginalValue = new CableForceTable { PointsNumber = tmpNumbers27[j], Time = time, CableForce = random.Next(800, 1500), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade2};
                     context.CableForces.Add(cableForceOriginalValue);
                 }
 
                 for (int j = 0; j < tmpNumbers28.Length; j++)
                 {
-                    var cableForceOriginalValue = new CableForceTable { PointsNumber = tmpNumbers28[j], Time = time, CableForce = random.Next(800, 1500), Temperature = random.Next(5, 70) };
+                    var cableForceOriginalValue = new CableForceTable { PointsNumber = tmpNumbers28[j], Time = time, CableForce = random.Next(800, 1500), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade3};
                     context.CableForces.Add(cableForceOriginalValue);
                 }
 
                 //温度初始值初始化
                 for (int j = 0; j < tmpNumbers22.Length; j++)
                 {
-                    var temperatureOriginalValue = new TemperatureTable { PointsNumber = tmpNumbers22[j], Time = time, Temperature = random.Next(5, 45) };
+                    var temperatureOriginalValue = new TemperatureTable { PointsNumber = tmpNumbers22[j], Time = time, Temperature = random.Next(5, 45), ThresholdGrade = ThresholdGrade1 };
                     context.Temperatures.Add(temperatureOriginalValue);
                 }
 
                 for (int j = 0; j < tmpNumbers23.Length; j++)
                 {
-                    var temperatureOriginalValue = new TemperatureTable { PointsNumber = tmpNumbers23[j], Time = time, Temperature = random.Next(5, 70) };
+                    var temperatureOriginalValue = new TemperatureTable { PointsNumber = tmpNumbers23[j], Time = time, Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade2 };
                     context.Temperatures.Add(temperatureOriginalValue);
                 }
 
                 //湿度初始值初始化
                 for (int j = 0; j < tmpNumbers24.Length; j++)
                 {
-                    var humidityOriginalValue = new HumidityTable { PointsNumber = tmpNumbers24[j], Time = time, Humidity = random.Next(20, 60) };
+                    var humidityOriginalValue = new HumidityTable { PointsNumber = tmpNumbers24[j], Time = time, Humidity = random.Next(20, 60), ThresholdGrade = ThresholdGrade1 };
                     context.Humiditys.Add(humidityOriginalValue);
                 }
 
                 for (int j = 0; j < tmpNumbers25.Length; j++)
                 {
-                    var humidityOriginalValue = new HumidityTable { PointsNumber = tmpNumbers25[j], Time = time, Humidity = random.Next(20, 60) };
+                    var humidityOriginalValue = new HumidityTable { PointsNumber = tmpNumbers25[j], Time = time, Humidity = random.Next(20, 60), ThresholdGrade = ThresholdGrade3 };
                     context.Humiditys.Add(humidityOriginalValue);
                 }
 
                 //风速初始值
                 for (int j = 0; j < tmpNumbers29.Length; j++)
                 {
-                    var windLoadOriginalValue = new WindLoadTable { PointsNumber = tmpNumbers29[j], Time = time, WindSpeed = random.Next(0, 10) };
+                    var windLoadOriginalValue = new WindLoadTable { PointsNumber = tmpNumbers29[j], Time = time, WindSpeed = random.Next(0, 10), ThresholdGrade = ThresholdGrade3};
                     context.WindLoads.Add(windLoadOriginalValue);
                 }
 
