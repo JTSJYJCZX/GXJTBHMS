@@ -19,7 +19,7 @@ namespace GxjtBHMS.Service.ServiceFactory
                 case 2:
                     return new SafetyPreWarningQueryServiceBase<SafetyPreWarning_TemperatureTable>();
                 case 3:
-                    return new SafetyPreWarningQueryServiceBase<SafetyPreWarning_CableFrceTable>();
+                    return new SafetyPreWarningQueryServiceBase<SafetyPreWarning_CableForceTable>();
                 case 4:
                     return new SafetyPreWarningQueryServiceBase<SafetyPreWarning_DisplacementTable>();
 

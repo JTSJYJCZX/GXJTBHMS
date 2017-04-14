@@ -2,6 +2,6 @@
 
 namespace GxjtBHMS.Models.MonitoringDatasTable
 {
-    public class SafetyPreWarning_CableFrceTable : SafetyPreWarningBaseModel
+    public class SafetyPreWarning_CableForceTable : SafetyPreWarningBaseModel
     {    }
 }

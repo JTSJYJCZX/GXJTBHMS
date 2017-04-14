@@ -55,7 +55,7 @@ namespace GxjtBHMS.SqlServerDAL
         public DbSet<ThresholdGradeTable> ThresholdGradeModel { get; set; }//预警等级
 
         //安全预警值统计结果表格
-        public DbSet<SafetyPreWarning_CableFrceTable> SafetyPreWarning_CableFrces { get; set; }//索力安全预警值
+        public DbSet<SafetyPreWarning_CableForceTable> SafetyPreWarning_CableFrces { get; set; }//索力安全预警值
         public DbSet<SafetyPreWarning_DisplacementTable> SafetyPreWarning_Displacements { get; set; }//位移安全预警值
         public DbSet<SafetyPreWarning_TemperatureTable> SafetyPreWarning_Temperatures { get; set; }//位移安全预警值
         public DbSet<SafetyPreWarning_WindLoadTable> SafetyPreWarning_WindLoads { get; set; }//位移安全预警值

@@ -273,6 +273,7 @@
     <Compile Include="RealTimeMonitoringHub\CableForceDatasRealTimeMonitoringHub.cs" />
     <Compile Include="RealTimeMonitoringHub\ConcreteStrainDatasRealTimeMonitoringHub.cs" />
     <Compile Include="RealTimeMonitoringHub\SteelLatticeStrainDatasRealTimeMonitoringHub.cs" />
+    <Compile Include="SafetyPreWarningRealTimeHub\SafetyPreWarningHub.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="RealTimeMonitoringHub\SteelArchStrainDatasRealTimeMonitoringHub.cs" />
     <Compile Include="Validations\StrainThresholdValuesValidationAttribute.cs" />
@@ -701,7 +702,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>56702</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
