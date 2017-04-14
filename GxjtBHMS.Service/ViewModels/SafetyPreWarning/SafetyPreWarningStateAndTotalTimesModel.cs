@@ -1,4 +1,6 @@
-﻿namespace GxjtBHMS.Service.ViewModels.SafetyPreWarning
+﻿using System;
+namespace GxjtBHMS.Service.ViewModels.SafetyPreWarning
+
 {
     public class SafetyPreWarningStateAndTotalTimesModel: SafetyStateModel
     {

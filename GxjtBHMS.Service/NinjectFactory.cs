@@ -113,16 +113,6 @@ _ninjectKernel.Bind<ISafetyPreWarningRealTimePushDAL<SafetyPreWarning_Displaceme
 _ninjectKernel.Bind<ISafetyPreWarningRealTimePushDAL<SafetyPreWarning_WindLoadTable>>().To<WindLoad_SafetyPreWarningRealTimePushDAL>();
 _ninjectKernel.Bind<ISafetyPreWarningRealTimePushDAL<SafetyPreWarning_TemperatureTable>>().To<Temperature_SafetyPreWarningRealTimePushDAL>();
 
-//            //获取单值安全预警数据注入
-//            _ninjectKernel.Bind<IGetOneTypeSafetyPreWarningRealTimePushService<SafetyPreWarning_CableForceTable>>().To<GetOneTypeSafetyPreWarningRealTimePushServiceBase<SafetyPreWarning_CableForceTable>>();
-//            _ninjectKernel.Bind<IGetOneTypeSafetyPreWarningRealTimePushService<SafetyPreWarning_DisplacementTable>>().To<GetOneTypeSafetyPreWarningRealTimePushServiceBase<SafetyPreWarning_DisplacementTable>>();
-//            _ninjectKernel.Bind<IGetOneTypeSafetyPreWarningRealTimePushService<SafetyPreWarning_TemperatureTable>>().To<GetOneTypeSafetyPreWarningRealTimePushServiceBase<SafetyPreWarning_TemperatureTable>>();
-//            _ninjectKernel.Bind<IGetOneTypeSafetyPreWarningRealTimePushService<SafetyPreWarning_WindLoadTable>>().To<GetOneTypeSafetyPreWarningRealTimePushServiceBase<SafetyPreWarning_WindLoadTable>>();
-
-//  //安全预警Hub服务注入
-            
-//_ninjectKernel.Bind<ISafetyPreWarningRealTimePushService>().To<SafetyPreWarningRealTimePushService>();
-
         }
     }
 }

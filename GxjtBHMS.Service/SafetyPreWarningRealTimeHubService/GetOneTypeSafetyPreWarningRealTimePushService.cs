@@ -5,6 +5,7 @@ using GxjtBHMS.Service.Messaging.SafetyPreWarning;
 using GxjtBHMS.Service.ViewModels.SafetyPreWarning;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GxjtBHMS.Service.SafetyPreWarningRealTimeHubService
 {
@@ -27,36 +28,28 @@ namespace GxjtBHMS.Service.SafetyPreWarningRealTimeHubService
         {
             var source = QuerySafetyPreWarningByTime(req);
             int thresholdGrade2Total=0,thresholdGrade3Total=0;
-            string maxPreWarningState, maxPreWarningColor;
-            int maxGradeId;
+            string maxPreWarningState= ThresholdGrade1, maxPreWarningColor= ThresholdGrade1Color;
+            int maxGradeId= 1;
             foreach (var item in source)
             {
                 if (item.ThresholdGradeId == 2)
                 {
                     thresholdGrade2Total += 1;
                 }
-                else if (item.ThresholdGradeId == 3)
+                else
                 {
                     thresholdGrade3Total += 1;
                 }
             }
-            if (thresholdGrade3Total > 0)
+            var lastTime = req.EndTime.AddMinutes(-35);
+            var systemLastTime = source.Select(m => m.Time).Max();
+
+            if (lastTime<systemLastTime)
             {
-                maxPreWarningState = ThresholdGrade3;
-                maxPreWarningColor = ThresholdGrade3Color;
-                maxGradeId = 3;
-            }
-            else if (thresholdGrade2Total > 0)
-            {
-                maxPreWarningState = ThresholdGrade2;
-                maxPreWarningColor = ThresholdGrade2Color;
-                maxGradeId = 2;
-            }
-            else
-            {
-                maxPreWarningState = ThresholdGrade1;
-                maxPreWarningColor = ThresholdGrade1Color;
-                maxGradeId = 1;
+                var GetMaxPreWarningStateGradeIdBySystemLastTime = source.Where(m => m.Time == systemLastTime).Select(m => m.ThresholdGradeId).Max();
+                maxPreWarningState = source.Where(m => m.Time == systemLastTime).Where(m=>m.ThresholdGradeId== GetMaxPreWarningStateGradeIdBySystemLastTime).Select(m => m.ThresholdGrade.ThresholdGrade).Last();
+                maxPreWarningColor = source.Where(m => m.Time == systemLastTime).Where(m => m.ThresholdGradeId == GetMaxPreWarningStateGradeIdBySystemLastTime).Select(m => m.ThresholdGrade.ThresholdColor).Last();
+                maxGradeId = source.Where(m => m.Time == systemLastTime).Where(m => m.ThresholdGradeId == GetMaxPreWarningStateGradeIdBySystemLastTime).Select(m => m.ThresholdGradeId).Last();
             }
             return new SafetyPreWarningStateAndTotalTimesModel
             {
@@ -74,7 +67,7 @@ namespace GxjtBHMS.Service.SafetyPreWarningRealTimeHubService
         /// </summary>
         /// <param name="req"></param>
         /// <returns></returns>
-        public IEnumerable<T> QuerySafetyPreWarningByTime(GetSafetyWarningDetailRequest req)
+        IEnumerable<T> QuerySafetyPreWarningByTime(GetSafetyWarningDetailRequest req)
         {
             IList<Func<T, bool>> ps = new List<Func<T, bool>>();
             DealWithDetailTime(req, ps);

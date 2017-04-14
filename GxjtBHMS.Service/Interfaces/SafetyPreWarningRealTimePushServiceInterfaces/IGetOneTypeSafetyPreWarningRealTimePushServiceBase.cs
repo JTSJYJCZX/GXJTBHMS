@@ -8,6 +8,6 @@ namespace GxjtBHMS.Service.Interfaces.SafetyPreWarningRealTimePushServiceInterfa
     public interface IGetOneTypeSafetyPreWarningRealTimePushService<T> where T: SafetyPreWarningBaseModel
     {
         SafetyPreWarningStateAndTotalTimesModel GetSafetyPreWarningStateModel(GetSafetyWarningDetailRequest req, int testTypeId) ;
-        IEnumerable<T> QuerySafetyPreWarningByTime(GetSafetyWarningDetailRequest req);
+        //IEnumerable<T> QuerySafetyPreWarningByTime(GetSafetyWarningDetailRequest req);
     }
 }

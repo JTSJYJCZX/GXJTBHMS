@@ -22,11 +22,11 @@ namespace GxjtBHMS.Web.SafetyPreWarningRealTimeHub
                 var req = new GetSafetyWarningDetailRequest
                 {
                     StartTime = new DateTime(now.Year, now.Month, 1),
-                    EndTime = now
-                };
+                    EndTime = now,
+            };
                 var model = _sfpwrtp.GetSafetyPreWarningRealTimePushModel(req);
                 Clients.All.SafetyWarningStateRealTimePushDatas(model);
-                Thread.Sleep(10000);
+                Thread.Sleep(1000);
             }
         }
     }

@@ -38,7 +38,7 @@ namespace GxjtBHMS.Service.SafetyPreWarningRealTimeHubService
         List<SafetyPreWarningStateAndTotalTimesModel> GetAllSafetyDatas(GetSafetyWarningDetailRequest req)
         {
             var cableForceData = _cfrts.GetSafetyPreWarningStateModel(req,1);
-            var displacementData = _cfrts.GetSafetyPreWarningStateModel(req,2);
+            var displacementData = _drts.GetSafetyPreWarningStateModel(req,2);
             var windLoadData = _wlrts.GetSafetyPreWarningStateModel(req,3);
             var temperatureData = _trts.GetSafetyPreWarningStateModel(req, 4);
             return new List<SafetyPreWarningStateAndTotalTimesModel>

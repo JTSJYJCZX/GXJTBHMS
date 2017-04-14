@@ -12,7 +12,6 @@ namespace GxjtBHMS.Web.Controllers.SafetyPreWarning
 {
     public class SafetyPreWarningController : Controller
     {
-        // GET: SafetyPreWarning
         public ActionResult SafetyPreWarning()
         {
             return View();
@@ -21,13 +20,6 @@ namespace GxjtBHMS.Web.Controllers.SafetyPreWarning
         [ChildActionOnly]
         public ActionResult GetSafetyWarningSearchContent()
         {
-            //DateTime now = DateTime.Now;
-            //var SearchRequestModel = new GetSafetyWarningDetailRequest
-            //{
-            //    StartTime = new DateTime(now.Year, now.Month, 1),
-            //    EndTime = now
-            //};
-
             return PartialView("GetSafetyWarningSearchContentPartial");
         }
 
