@@ -10,6 +10,55 @@ a, a:visited {
     }
 
 
+/*滑动条*/
+    .scrolltable   { 
+        border:0px; 
+        overflow:auto;
+         height:400px;
+          width: 100%; 
+          margin-bottom:2px ;}
+
+
+   /*点画线*/
+.dotline { 
+BORDER-BOTTOM-STYLE: dotted;
+ BORDER-LEFT-STYLE: dotted;
+  BORDER-RIGHT-STYLE: dotted;
+   BORDER-TOP-STYLE: dotted ;
+
+   font-size:2px; 
+   line-height:2px; 
+   padding:2px;
+    margin:2px; 
+
+
+
+} 
+
+
+
+/*圆形*/
+.circle {
+    width: 30px;
+    height: 30px;
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
+    border-radius: 30px;
+} 
+
+.circle1 {
+
+  background: black;
+  border-radius: 30px;
+  height: 30px;
+  width: 30px;
+  margin: 0;
+  /*background: -webkit-radial-gradient(10px 10px, circle, #5cabff, #000);
+  background: -moz-radial-gradient(10px 10px, circle, #5cabff, #000);
+  background: radial-gradient(10px 10px, circle, #5cabff, #000);*/
+}
+ 
+
 
 .hotspotContainer {
     position: relative;
