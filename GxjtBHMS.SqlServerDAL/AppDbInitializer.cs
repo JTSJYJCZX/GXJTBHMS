@@ -316,19 +316,19 @@ namespace GxjtBHMS.SqlServerDAL
         {
             ThresholdGrade = "正常",
             Suggest="无",
-            ThresholdColor = "Green"
+            ThresholdColor = AppConstants.SafetyPreWarningThresholdGrade1Color 
         };
         ThresholdGradeTable ThresholdGrade2 = new ThresholdGradeTable
         {
             ThresholdGrade = "黄色预警",
             Suggest="加强观测",
-            ThresholdColor = "Gold"
+            ThresholdColor = AppConstants.SafetyPreWarningThresholdGrade2Color
         };
         ThresholdGradeTable ThresholdGrade3 = new ThresholdGradeTable
         {
             ThresholdGrade = "红色预警",
             Suggest="进行专项检查",
-            ThresholdColor = "Red"
+            ThresholdColor = AppConstants.SafetyPreWarningThresholdGrade3Color
         };
 
 
@@ -372,8 +372,8 @@ namespace GxjtBHMS.SqlServerDAL
         private void InitialSafetyPreWarning(BHMSContext context)
         {
             var random = new Random();
-            int intlTime = 5;
-            for (int i = 0; i <= 15; i++)
+            int intlTime = 3;
+            for (int i = 0; i <= 5; i++)
             {
                 DateTime time = DateTime.Now.AddMinutes(intlTime + i);
                 for (int j = 0; j < tmpNumbers26.Length; j++)
