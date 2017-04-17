@@ -12,7 +12,7 @@ namespace GxjtBHMS.SqlServerDAL
         {
             using (var ctx = new BHMSContext())
             {
-                var source = DealWithNavigationPropertys(navigationProperties, ctx.SteelLatticeStrains);//处理导航属性
+                var source = DealWithNavigationPropertys(navigationProperties, ctx.Basic_SteelLatticeStrains);//处理导航属性
 
                 var result = DealWithConditions(ps.ToArray(), source);//处理条件筛选
 

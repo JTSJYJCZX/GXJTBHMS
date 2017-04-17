@@ -12,7 +12,7 @@ namespace GxjtBHMS.SqlServerDAL.MonitoringDatasDAL
         {
             using (var cxt = new BHMSContext())
             {
-                var source = DealWithNavigationPropertys(navigationProperties, cxt.Humiditys);
+                var source = DealWithNavigationPropertys(navigationProperties, cxt.Basic_Humiditys);
                 var result = DealWithConditions(ps.ToArray(), source);
                 return result
                 .OrderBy(m => m.PointsNumberId)

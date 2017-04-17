@@ -12,7 +12,7 @@ namespace GxjtBHMS.SqlServerDAL.MonitoringDatasDAL
         {
             using (var cxt =new BHMSContext())
             {
-                var source = DealWithNavigationPropertys(navigationProperties,cxt.WindLoads);
+                var source = DealWithNavigationPropertys(navigationProperties,cxt.Basic_WindLoads);
                 var result = DealWithConditions(ps,source);
                 return result.OrderBy(m => m.PointsNumberId)
                     .ThenBy(m => m.Time)

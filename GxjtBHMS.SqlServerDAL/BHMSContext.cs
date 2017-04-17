@@ -24,14 +24,29 @@ namespace GxjtBHMS.SqlServerDAL
         public DbSet<MonitoringPointsPosition> MonitoringPointsPositions { get; set; }
         public DbSet<MonitoringPointsNumber> MonitoringPointsNumbers { get; set; }
 
-        public DbSet<Basic_SteelArchStrainTable > SteelArchStrains { get; set; }//钢拱肋应变
-        public DbSet<Basic_SteelLatticeStrainTable > SteelLatticeStrains { get; set; }//钢格构应变
-        public DbSet<Basic_ConcreteStrainTable > ConcreteStrains { get; set; }//混凝土应变
-        public DbSet<Basic_DisplacementTable> Displacements { get; set; }//位移
-        public DbSet<Basic_CableForceTable> CableForces { get; set; }//索力
-        public DbSet<Basic_TemperatureTable> Temperatures { get; set; }//温度 
-        public DbSet<Basic_HumidityTable> Humiditys { get; set; }//湿度 
-        public DbSet<Basic_WindLoadTable > WindLoads { get; set; }//风载
+        /// <summary>
+        /// 原始数据表
+        /// </summary>
+        public DbSet<Original_SteelArchStrainTable> Original_SteelArchStrains { get; set; }//钢拱肋应变
+        public DbSet<Original_SteelLatticeStrainTable> Original_SteelLatticeStrains { get; set; }//钢格构应变
+        public DbSet<Original_ConcreteStrainTable> Original_ConcreteStrains { get; set; }//混凝土应变
+        public DbSet<Original_DisplacementTable> Original_Displacements { get; set; }//位移
+        public DbSet<Original_CableForceTable> Original_CableForces { get; set; }//索力
+        public DbSet<Original_TemperatureTable> Original_Temperatures { get; set; }//温度 
+        public DbSet<Original_HumidityTable> Original_Humiditys { get; set; }//湿度 
+        public DbSet<Original_WindLoadTable> Original_WindLoads { get; set; }//风载
+
+        /// <summary>
+        /// 基础数据表
+        /// </summary>
+        public DbSet<Basic_SteelArchStrainTable > Basic_SteelArchStrains { get; set; }//钢拱肋应变
+        public DbSet<Basic_SteelLatticeStrainTable > Basic_SteelLatticeStrains { get; set; }//钢格构应变
+        public DbSet<Basic_ConcreteStrainTable > Basic_ConcreteStrains { get; set; }//混凝土应变
+        public DbSet<Basic_DisplacementTable> Basic_Displacements { get; set; }//位移
+        public DbSet<Basic_CableForceTable> Basic_CableForces { get; set; }//索力
+        public DbSet<Basic_TemperatureTable> Basic_Temperatures { get; set; }//温度 
+        public DbSet<Basic_HumidityTable> Basic_Humiditys { get; set; }//湿度 
+        public DbSet<Basic_WindLoadTable > Basic_WindLoads{ get; set; }//风载
 
         public DbSet<SteelArchStrainEigenvalueTable> SteelArchStrainEigenvalues { get; set; }//钢拱肋应变特征值
         public DbSet<SteelLatticeStrainEigenvalueTable> SteelLatticeStrainEigenvalues { get; set; }//钢格构应变特征值
