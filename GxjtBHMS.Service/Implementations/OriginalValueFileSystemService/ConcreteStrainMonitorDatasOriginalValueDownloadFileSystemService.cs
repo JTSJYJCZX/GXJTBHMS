@@ -6,7 +6,7 @@ using GxjtBHMS.Models.MonitoringDatasTable;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    class ConcreteStrainMonitorDatasOriginalValueDownloadFileSystemService : MonitorDatasOriginalValueDownloadFileSystemServiceBase<ConcreteStrainTable>
+    class ConcreteStrainMonitorDatasOriginalValueDownloadFileSystemService : MonitorDatasOriginalValueDownloadFileSystemServiceBase<Basic_ConcreteStrainTable >
     {
         public ConcreteStrainMonitorDatasOriginalValueDownloadFileSystemService(IConcreteStrainDatasOriginalValueDAL strainOriginalDatasDAL):base(strainOriginalDatasDAL)
         {
@@ -19,7 +19,7 @@ namespace GxjtBHMS.Service.Implementations
             headRow.CreateCell(4).SetCellValue("温度(℃)");
         }
 
-        protected override void BuildPartialContent(IRow row, int index, IEnumerable<ConcreteStrainTable> source)
+        protected override void BuildPartialContent(IRow row, int index, IEnumerable<Basic_ConcreteStrainTable > source)
         {
             row.CreateCell(3).SetCellValue(source.ToArray()[index].Strain);
             row.CreateCell(4).SetCellValue(source.ToArray()[index].Temperature);

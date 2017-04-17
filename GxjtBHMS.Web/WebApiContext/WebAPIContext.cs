@@ -19,11 +19,11 @@ namespace GxjtBHMS.Web.WebApiContext
             ConnectionName = ApplicationSettingsFactory.GetApplicationSettings().DBConnectionName;
         }
 
-        public DbSet<ConcreteStrainTable> Strains { get; set; }//应变
-        public DbSet<DisplacementTable> Displayments { get; set; }//位移
-        public DbSet<CableForceTable> CableForces { get; set; }//索力
-        public DbSet<TemperatureTable> Temperatures { get; set; }//温度 
-        public DbSet<HumidityTable> Humiditys { get; set; }//湿度 
+        public DbSet<Basic_ConcreteStrainTable > Strains { get; set; }//应变
+        public DbSet<Basic_DisplacementTable> Displayments { get; set; }//位移
+        public DbSet<Basic_CableForceTable> CableForces { get; set; }//索力
+        public DbSet<Basic_TemperatureTable> Temperatures { get; set; }//温度 
+        public DbSet<Basic_HumidityTable> Humiditys { get; set; }//湿度 
 
     }
 }

@@ -8,7 +8,7 @@ namespace GxjtBHMS.Service.ExtensionMethods.MonitoringDatas.DatasQuery
 {
     static class StrainDatasQueryServiceExtension
     {
-        public static IEnumerable<StrainDatasModel> ConvertToStrainDatasInfoViewList(this IEnumerable<ConcreteStrainTable> source)
+        public static IEnumerable<StrainDatasModel> ConvertToStrainDatasInfoViewList(this IEnumerable<Basic_ConcreteStrainTable > source)
         {
             return source.Select(m => new StrainDatasModel
             {

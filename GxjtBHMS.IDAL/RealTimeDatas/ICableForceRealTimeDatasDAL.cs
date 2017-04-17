@@ -5,8 +5,8 @@ using System.Collections.Generic;
 
 namespace GxjtBHMS.IDAL
 {
-    public interface ICableForceRealTimeDatasDAL : IReadOnlyRepository<CableForceTable, int>
+    public interface ICableForceRealTimeDatasDAL : IReadOnlyRepository<Basic_CableForceTable, int>
     {
-        IEnumerable<CableForceTable> GetRealTimeCableForce(int pointPositionId);
+        IEnumerable<Basic_CableForceTable> GetRealTimeCableForce(int pointPositionId);
     }
 }

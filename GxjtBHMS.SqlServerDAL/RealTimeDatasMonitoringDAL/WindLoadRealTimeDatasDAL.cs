@@ -6,17 +6,17 @@ using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL.RealTimeDatasMonitoringDAL
 {
-    public class WindLoadRealTimeDatasDAL : Repository<WindLoadTable, int>, IWindLoadRealTimeDatasDAL
+    public class WindLoadRealTimeDatasDAL : Repository<Basic_WindLoadTable , int>, IWindLoadRealTimeDatasDAL
     {
-        public IEnumerable<WindLoadTable> GetRealTimeWindLoad(int pointPositionId)
+        public IEnumerable<Basic_WindLoadTable > GetRealTimeWindLoad(int pointPositionId)
         {
-            List<WindLoadTable> result = GetRealTimeDataByPositionId(pointPositionId);
+            List<Basic_WindLoadTable > result = GetRealTimeDataByPositionId(pointPositionId);
             return result;
         }
 
-        List<WindLoadTable> GetRealTimeDataByPositionId(int pointPositionId)
+        List<Basic_WindLoadTable > GetRealTimeDataByPositionId(int pointPositionId)
         {
-            List<WindLoadTable> result = new List<WindLoadTable>();
+            List<Basic_WindLoadTable > result = new List<Basic_WindLoadTable >();
             var pointsNumberId = GetPointsNumberIdByPointsPositionId(pointPositionId);
             foreach (var item in pointsNumberId)
             {

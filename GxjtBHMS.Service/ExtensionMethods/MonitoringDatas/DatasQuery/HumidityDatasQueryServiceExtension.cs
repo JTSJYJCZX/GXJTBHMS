@@ -7,7 +7,7 @@ namespace GxjtBHMS.Service.ExtensionMethods.MonitoringDatas.DatasQuery
 {
     static class HumidityDatasQueryServiceExtension
     {
-        public static IEnumerable<HumidityDatasModel> ConvertToHumidityDatasInfoViewList(this IEnumerable<HumidityTable> source)
+        public static IEnumerable<HumidityDatasModel> ConvertToHumidityDatasInfoViewList(this IEnumerable<Basic_HumidityTable> source)
         {
             return source.Select(m => new HumidityDatasModel
             {

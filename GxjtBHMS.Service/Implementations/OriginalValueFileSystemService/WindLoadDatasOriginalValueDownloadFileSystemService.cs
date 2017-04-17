@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace GxjtBHMS.Service.Implementations.OriginalValueDownLoad
 {
-    class WindLoadDatasOriginalValueDownloadFileSystemService : MonitorDatasOriginalValueDownloadFileSystemServiceBase<WindLoadTable>
+    class WindLoadDatasOriginalValueDownloadFileSystemService : MonitorDatasOriginalValueDownloadFileSystemServiceBase<Basic_WindLoadTable >
     {
         public WindLoadDatasOriginalValueDownloadFileSystemService(IWindLoadDatasOriginalValueDAL windLoadDatasOriginalValueDAL):base(windLoadDatasOriginalValueDAL)
         {
@@ -18,7 +18,7 @@ namespace GxjtBHMS.Service.Implementations.OriginalValueDownLoad
             headRow.CreateCell(3).SetCellValue("风速(m/s)");
         }
 
-        protected override void BuildPartialContent(IRow row, int index, IEnumerable<WindLoadTable> source)
+        protected override void BuildPartialContent(IRow row, int index, IEnumerable<Basic_WindLoadTable > source)
         {
             row.CreateCell(3).SetCellValue(source.ToArray()[index].WindSpeed);
         }

@@ -5,17 +5,17 @@ using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL.RealTimeDatasMonitoringDAL
 {
-    public class SteelArchStrainRealTimeDatasDAL : Repository<SteelArchStrainTable, int>, ISteelArchStrainRealTimeDatasDAL
+    public class SteelArchStrainRealTimeDatasDAL : Repository<Basic_SteelArchStrainTable , int>, ISteelArchStrainRealTimeDatasDAL
     {
-        public IEnumerable<SteelArchStrainTable> GetRealTimeStrains(int pointPositionId)
+        public IEnumerable<Basic_SteelArchStrainTable > GetRealTimeStrains(int pointPositionId)
         {
-            List<SteelArchStrainTable> result = GetRealTimeDataByPositionId(pointPositionId);
+            List<Basic_SteelArchStrainTable > result = GetRealTimeDataByPositionId(pointPositionId);
             return result;
         }
 
-        List<SteelArchStrainTable> GetRealTimeDataByPositionId(int pointPositionId)
+        List<Basic_SteelArchStrainTable > GetRealTimeDataByPositionId(int pointPositionId)
         {
-            List<SteelArchStrainTable> result = new List<SteelArchStrainTable>();
+            List<Basic_SteelArchStrainTable > result = new List<Basic_SteelArchStrainTable >();
             var pointsNumberId = GetPointsNumberIdByPointsPositionId(pointPositionId);
             foreach (var item in pointsNumberId)
             {

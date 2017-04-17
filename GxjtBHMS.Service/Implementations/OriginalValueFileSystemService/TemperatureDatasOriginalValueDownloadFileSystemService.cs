@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace GxjtBHMS.Service.Implementations.OriginalValueDownLoad
 {
-    class TemperatureDatasOriginalValueDownloadFileSystemService : MonitorDatasOriginalValueDownloadFileSystemServiceBase<TemperatureTable>
+    class TemperatureDatasOriginalValueDownloadFileSystemService : MonitorDatasOriginalValueDownloadFileSystemServiceBase<Basic_TemperatureTable>
     {
         public TemperatureDatasOriginalValueDownloadFileSystemService(ITemperatureDatasOriginalValueDAL temperatureDatasOriginalValueDAL):base(temperatureDatasOriginalValueDAL)
         {
@@ -18,7 +18,7 @@ namespace GxjtBHMS.Service.Implementations.OriginalValueDownLoad
             headRow.CreateCell(3).SetCellValue("温度(℃)");
         }
 
-        protected override void BuildPartialContent(IRow row, int index, IEnumerable<TemperatureTable> source)
+        protected override void BuildPartialContent(IRow row, int index, IEnumerable<Basic_TemperatureTable> source)
         {
             row.CreateCell(3).SetCellValue(source.ToArray()[index].Temperature);
         }

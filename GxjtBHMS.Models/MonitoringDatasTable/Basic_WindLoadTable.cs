@@ -1,6 +1,6 @@
 ﻿namespace GxjtBHMS.Models.MonitoringDatasTable
 {
-    public class WindLoadTable:MonitorDatasQueryConditionsModel
+    public class Basic_WindLoadTable :MonitorDatasQueryConditionsModel
     {
         public double WindSpeed { get; set; }
         public double WindDirection { get; set; }

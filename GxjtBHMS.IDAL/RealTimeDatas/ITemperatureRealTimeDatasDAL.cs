@@ -5,8 +5,8 @@ using System.Collections.Generic;
 
 namespace GxjtBHMS.IDAL
 {
-    public interface ITemperatureRealTimeDatasDAL : IReadOnlyRepository<TemperatureTable, int>
+    public interface ITemperatureRealTimeDatasDAL : IReadOnlyRepository<Basic_TemperatureTable, int>
     {
-        IEnumerable<TemperatureTable> GetRealTimeTemperature(int pointPositionId);
+        IEnumerable<Basic_TemperatureTable> GetRealTimeTemperature(int pointPositionId);
     }
 }

@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace GxjtBHMS.Service.Implementations.OriginalValueDownLoad
 {
-    class HumidityDatasOriginalValueDownloadFileSystemService : MonitorDatasOriginalValueDownloadFileSystemServiceBase<HumidityTable>
+    class HumidityDatasOriginalValueDownloadFileSystemService : MonitorDatasOriginalValueDownloadFileSystemServiceBase<Basic_HumidityTable>
     {
         public HumidityDatasOriginalValueDownloadFileSystemService(IHumidityDatasOriginalValueDAL humidityDatasOriginalValueDAL):base(humidityDatasOriginalValueDAL)
         {
@@ -18,7 +18,7 @@ namespace GxjtBHMS.Service.Implementations.OriginalValueDownLoad
             headRow.CreateCell(3).SetCellValue("湿度(%)");
         }
 
-        protected override void BuildPartialContent(IRow row, int index, IEnumerable<HumidityTable> source)
+        protected override void BuildPartialContent(IRow row, int index, IEnumerable<Basic_HumidityTable> source)
         {
             row.CreateCell(3).SetCellValue(source.ToArray()[index].Humidity);
         }

@@ -6,7 +6,7 @@ using GxjtBHMS.Models;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    class DisplacementMonitorDatasOriginalValueDownloadFileSystemService : MonitorDatasOriginalValueDownloadFileSystemServiceBase<DisplacementTable>
+    class DisplacementMonitorDatasOriginalValueDownloadFileSystemService : MonitorDatasOriginalValueDownloadFileSystemServiceBase<Basic_DisplacementTable>
     {
         public DisplacementMonitorDatasOriginalValueDownloadFileSystemService(IDisplacementDatasOriginalValueDAL displacementOriginalDatasDAL):base(displacementOriginalDatasDAL)
         {
@@ -18,7 +18,7 @@ namespace GxjtBHMS.Service.Implementations
             headRow.CreateCell(3).SetCellValue("位移值(mm)");
         }
 
-        protected override void BuildPartialContent(IRow row, int index, IEnumerable<DisplacementTable> source)
+        protected override void BuildPartialContent(IRow row, int index, IEnumerable<Basic_DisplacementTable> source)
         {
             row.CreateCell(3).SetCellValue(source.ToArray()[index].Displacement);
         }

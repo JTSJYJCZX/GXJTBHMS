@@ -3,7 +3,7 @@ using GxjtBHMS.Models;
 
 namespace GxjtBHMS.IDAL
 {
-    public interface ITemperatureDatasOriginalValueDAL:IReadOnlyRepository<TemperatureTable,int>
+    public interface ITemperatureDatasOriginalValueDAL:IReadOnlyRepository<Basic_TemperatureTable,int>
     {
     }
 }

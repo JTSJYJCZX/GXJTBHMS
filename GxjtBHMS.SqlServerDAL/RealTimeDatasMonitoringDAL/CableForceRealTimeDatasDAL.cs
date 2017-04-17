@@ -6,17 +6,17 @@ using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL.RealTimeDatasMonitoringDAL
 {
-    public class CableForceRealTimeDatasDAL : Repository<CableForceTable, int>, ICableForceRealTimeDatasDAL
+    public class CableForceRealTimeDatasDAL : Repository<Basic_CableForceTable, int>, ICableForceRealTimeDatasDAL
     {
-        public IEnumerable<CableForceTable> GetRealTimeCableForce(int pointPositionId)
+        public IEnumerable<Basic_CableForceTable> GetRealTimeCableForce(int pointPositionId)
         {
-            List<CableForceTable> result = GetRealTimeDataByPositionId(pointPositionId);
+            List<Basic_CableForceTable> result = GetRealTimeDataByPositionId(pointPositionId);
             return result;
         }
 
-        List<CableForceTable> GetRealTimeDataByPositionId(int pointPositionId)
+        List<Basic_CableForceTable> GetRealTimeDataByPositionId(int pointPositionId)
         {
-            List<CableForceTable> result = new List<CableForceTable>();
+            List<Basic_CableForceTable> result = new List<Basic_CableForceTable>();
             var pointsNumberId = GetPointsNumberIdByPointsPositionId(pointPositionId);
             foreach (var item in pointsNumberId)
             {

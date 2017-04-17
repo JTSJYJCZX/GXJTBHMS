@@ -2,7 +2,7 @@
 
 namespace GxjtBHMS.Models.ThresholdValueSetting
 {
-    public  class WindLoadThresholdValueTable : WithoutNegativeThresholdValueBase
+    public  class ThresholdValue_CableForceThresholdValueTable : WithoutNegativeThresholdValueBase
     {
         
     }

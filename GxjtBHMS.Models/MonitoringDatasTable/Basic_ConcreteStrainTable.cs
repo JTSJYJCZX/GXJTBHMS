@@ -1,15 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace GxjtBHMS.Models.MonitoringDatasTable
+﻿namespace GxjtBHMS.Models.MonitoringDatasTable
 {
-    public class SteelArchStrainTable:MonitorDatasQueryConditionsModel
+    public class Basic_ConcreteStrainTable :MonitorDatasQueryConditionsModel
     {
         public double Strain { get; set; }
         public double Temperature { get; set; }
+
         public int ThresholdGradeId { get; set; }
         public virtual ThresholdGradeTable ThresholdGrade { get; set; }
-
-
-
     }
 }

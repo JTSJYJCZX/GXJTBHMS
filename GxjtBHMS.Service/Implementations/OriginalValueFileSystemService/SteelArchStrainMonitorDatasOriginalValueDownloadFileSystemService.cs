@@ -6,7 +6,7 @@ using GxjtBHMS.Models.MonitoringDatasTable;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    class SteelArchStrainMonitorDatasOriginalValueDownloadFileSystemService : MonitorDatasOriginalValueDownloadFileSystemServiceBase<SteelArchStrainTable>
+    class SteelArchStrainMonitorDatasOriginalValueDownloadFileSystemService : MonitorDatasOriginalValueDownloadFileSystemServiceBase<Basic_SteelArchStrainTable >
     {
         public SteelArchStrainMonitorDatasOriginalValueDownloadFileSystemService(ISteelArchStrainDatasOriginalValueDAL steelArchStrainOriginalDatasDAL):base(steelArchStrainOriginalDatasDAL)
         {
@@ -19,7 +19,7 @@ namespace GxjtBHMS.Service.Implementations
             headRow.CreateCell(4).SetCellValue("温度(℃)");
         }
 
-        protected override void BuildPartialContent(IRow row, int index, IEnumerable<SteelArchStrainTable> source)
+        protected override void BuildPartialContent(IRow row, int index, IEnumerable<Basic_SteelArchStrainTable > source)
         {
             row.CreateCell(3).SetCellValue(source.ToArray()[index].Strain);
             row.CreateCell(4).SetCellValue(source.ToArray()[index].Temperature);

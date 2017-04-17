@@ -7,7 +7,7 @@ namespace GxjtBHMS.Service.ExtensionMethods.MonitoringDatas.DatasQuery
 {
     static class TemperatureDatasQueryServiceExtension
     {
-        public static IEnumerable<TemperatureDatasModel> ConvertToTemperatureDatasInfoViewList(this IEnumerable<TemperatureTable> source)
+        public static IEnumerable<TemperatureDatasModel> ConvertToTemperatureDatasInfoViewList(this IEnumerable<Basic_TemperatureTable> source)
         {
             return source.Select(m => new TemperatureDatasModel
             {

@@ -2,8 +2,9 @@
 
 namespace GxjtBHMS.Models.ThresholdValueSetting
 {
-    public  class TemperatureThresholdValueTable : ContainNegativeThresholdValueBase
+    public  class ThresholdValue_ConcreteStrainThresholdValueTable: ContainNegativeThresholdValueBase
     {
-        
+
+
     }
 }

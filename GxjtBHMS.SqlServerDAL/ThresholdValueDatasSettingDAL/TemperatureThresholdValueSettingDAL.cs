@@ -10,13 +10,13 @@ using GxjtBHMS.Infrastructure.Domain;
 
 namespace GxjtBHMS.SqlServerDAL.ThresholdValueDatasDAL
 {
-   public class TemperatureThresholdValueSettingDAL : Repository<TemperatureThresholdValueTable, int>,IThresholdValueSettingDAL<TemperatureThresholdValueTable>
+   public class TemperatureThresholdValueSettingDAL : Repository<ThresholdValue_TemperatureThresholdValueTable, int>,IThresholdValueSettingDAL<ThresholdValue_TemperatureThresholdValueTable>
     {
-        public override IEnumerable<TemperatureThresholdValueTable> FindAll()
+        public override IEnumerable<ThresholdValue_TemperatureThresholdValueTable> FindAll()
         {
             using (var ctx = new BHMSContext())
             {
-                return ctx.Set<TemperatureThresholdValueTable>().Include("PointsNumber").ToList();
+                return ctx.Set<ThresholdValue_TemperatureThresholdValueTable>().Include("PointsNumber").ToList();
             }
         }
     }

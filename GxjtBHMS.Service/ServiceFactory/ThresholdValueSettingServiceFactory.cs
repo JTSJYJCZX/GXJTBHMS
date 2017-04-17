@@ -13,22 +13,22 @@ namespace GxjtBHMS.Service
             switch (mornitoringTestTypeId)
             {
                 case 1:
-                    return new ContainNegativeThresholdValueSettingServiceBase<SteelArchStrainThresholdValueTable>();
+                    return new ContainNegativeThresholdValueSettingServiceBase<ThresholdValue_SteelArchStrainThresholdValueTable>();
                 case 2:
-                    return new ContainNegativeThresholdValueSettingServiceBase<SteelLatticeStrainThresholdValueTable>();
+                    return new ContainNegativeThresholdValueSettingServiceBase<ThresholdValue_SteelLatticeStrainThresholdValueTable>();
                 case 3:
 
-                    return new ContainNegativeThresholdValueSettingServiceBase<ConcreteStrainThresholdValueTable>();
+                    return new ContainNegativeThresholdValueSettingServiceBase<ThresholdValue_ConcreteStrainThresholdValueTable>();
                 case 4:
-                    return new ContainNegativeThresholdValueSettingServiceBase<DisplacementThresholdValueTable>();
+                    return new ContainNegativeThresholdValueSettingServiceBase<ThresholdValue_DisplacementThresholdValueTable>();
                 case 5:
-                    return new WithoutNegativeThresholdValueSettingServiceBase<CableForceThresholdValueTable>();
+                    return new WithoutNegativeThresholdValueSettingServiceBase<ThresholdValue_CableForceThresholdValueTable>();
                 case 6:
-                    return new WithoutNegativeThresholdValueSettingServiceBase<HumidityThresholdValueTable>();
+                    return new WithoutNegativeThresholdValueSettingServiceBase<ThresholdValue_HumidityThresholdValueTable>();
                 case 7:
-                    return new ContainNegativeThresholdValueSettingServiceBase<TemperatureThresholdValueTable>();
+                    return new ContainNegativeThresholdValueSettingServiceBase<ThresholdValue_TemperatureThresholdValueTable>();
                 case 8:
-                    return new WithoutNegativeThresholdValueSettingServiceBase<WindLoadThresholdValueTable>();
+                    return new WithoutNegativeThresholdValueSettingServiceBase<ThresholdValue_WindLoadThresholdValueTable>();
                 default:
                     throw new ApplicationException("No TestTypeId");
             }

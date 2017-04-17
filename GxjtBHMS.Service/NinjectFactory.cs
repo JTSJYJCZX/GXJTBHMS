@@ -71,14 +71,14 @@ namespace GxjtBHMS.Service
             _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryChartService<TemperatureEigenvalueTable>>().To<MonitorDatasQueryChartService<TemperatureEigenvalueTable>>();
             _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryChartService<WindLoadEigenvalueTable>>().To<MonitorDatasQueryChartService<WindLoadEigenvalueTable>>();
 
-            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<SteelArchStrainTable>>().To<SteelArchStrainMonitorDatasOriginalValueDownloadFileSystemService>();
-            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<ConcreteStrainTable>>().To<ConcreteStrainMonitorDatasOriginalValueDownloadFileSystemService>();
-            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<SteelLatticeStrainTable>>().To<SteelLatticeStrainMonitorDatasOriginalValueDownloadFileSystemService>();
-            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<DisplacementTable>>().To<DisplacementMonitorDatasOriginalValueDownloadFileSystemService>();
-            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<CableForceTable>>().To<CableForceMonitorDatasOriginalValueDownloadFileSystemService>();
-            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<TemperatureTable>>().To<TemperatureDatasOriginalValueDownloadFileSystemService>();
-            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<HumidityTable>>().To<HumidityDatasOriginalValueDownloadFileSystemService>();
-            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<WindLoadTable>>().To<WindLoadDatasOriginalValueDownloadFileSystemService>();
+            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<Basic_SteelArchStrainTable >>().To<SteelArchStrainMonitorDatasOriginalValueDownloadFileSystemService>();
+            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<Basic_ConcreteStrainTable >>().To<ConcreteStrainMonitorDatasOriginalValueDownloadFileSystemService>();
+            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<Basic_SteelLatticeStrainTable >>().To<SteelLatticeStrainMonitorDatasOriginalValueDownloadFileSystemService>();
+            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<Basic_DisplacementTable>>().To<DisplacementMonitorDatasOriginalValueDownloadFileSystemService>();
+            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<Basic_CableForceTable>>().To<CableForceMonitorDatasOriginalValueDownloadFileSystemService>();
+            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<Basic_TemperatureTable>>().To<TemperatureDatasOriginalValueDownloadFileSystemService>();
+            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<Basic_HumidityTable>>().To<HumidityDatasOriginalValueDownloadFileSystemService>();
+            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<Basic_WindLoadTable >>().To<WindLoadDatasOriginalValueDownloadFileSystemService>();
 
 
 
@@ -91,14 +91,14 @@ namespace GxjtBHMS.Service
             _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<TemperatureEigenvalueTable>>().To<MonitorDatasEigenValueQueryFileSystemService<TemperatureEigenvalueTable>>();
             _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<WindLoadEigenvalueTable>>().To<MonitorDatasEigenValueQueryFileSystemService<WindLoadEigenvalueTable>>();
 
-            _ninjectKernel.Bind<IThresholdValueSettingDAL<SteelArchStrainThresholdValueTable>>().To<SteelArchStrainThresholdValueSettingDAL>();
-            _ninjectKernel.Bind<IThresholdValueSettingDAL<SteelLatticeStrainThresholdValueTable>>().To<SteelLatticeStrainThresholdValueSettingDAL>();
-            _ninjectKernel.Bind<IThresholdValueSettingDAL<WindLoadThresholdValueTable>>().To<WindLoadThresholdValueSettingDAL>();
-            _ninjectKernel.Bind<IThresholdValueSettingDAL<ConcreteStrainThresholdValueTable>>().To<ConcreteStrainThresholdValueSettingDAL>();
-            _ninjectKernel.Bind<IThresholdValueSettingDAL<DisplacementThresholdValueTable>>().To<DisplacementThresholdValueSettingDAL>();
-            _ninjectKernel.Bind<IThresholdValueSettingDAL<CableForceThresholdValueTable>>().To<CableForceThresholdValueSettingDAL>();
-            _ninjectKernel.Bind<IThresholdValueSettingDAL<HumidityThresholdValueTable>>().To<HumidityThresholdValueSettingDAL>();
-            _ninjectKernel.Bind<IThresholdValueSettingDAL<TemperatureThresholdValueTable>>().To<TemperatureThresholdValueSettingDAL>();
+            _ninjectKernel.Bind<IThresholdValueSettingDAL<ThresholdValue_SteelArchStrainThresholdValueTable>>().To<SteelArchStrainThresholdValueSettingDAL>();
+            _ninjectKernel.Bind<IThresholdValueSettingDAL<ThresholdValue_SteelLatticeStrainThresholdValueTable>>().To<SteelLatticeStrainThresholdValueSettingDAL>();
+            _ninjectKernel.Bind<IThresholdValueSettingDAL<ThresholdValue_WindLoadThresholdValueTable>>().To<WindLoadThresholdValueSettingDAL>();
+            _ninjectKernel.Bind<IThresholdValueSettingDAL<ThresholdValue_ConcreteStrainThresholdValueTable>>().To<ConcreteStrainThresholdValueSettingDAL>();
+            _ninjectKernel.Bind<IThresholdValueSettingDAL<ThresholdValue_DisplacementThresholdValueTable>>().To<DisplacementThresholdValueSettingDAL>();
+            _ninjectKernel.Bind<IThresholdValueSettingDAL<ThresholdValue_CableForceThresholdValueTable>>().To<CableForceThresholdValueSettingDAL>();
+            _ninjectKernel.Bind<IThresholdValueSettingDAL<ThresholdValue_HumidityThresholdValueTable>>().To<HumidityThresholdValueSettingDAL>();
+            _ninjectKernel.Bind<IThresholdValueSettingDAL<ThresholdValue_TemperatureThresholdValueTable>>().To<TemperatureThresholdValueSettingDAL>();
 
             _ninjectKernel.Bind<IAbnormalThresholdValueSettingDAL>().To<AbnormalThresholdValueSettingDAL>();
 

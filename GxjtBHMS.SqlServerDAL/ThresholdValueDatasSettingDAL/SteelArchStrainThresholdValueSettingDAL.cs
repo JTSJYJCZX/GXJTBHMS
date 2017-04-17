@@ -10,13 +10,13 @@ using GxjtBHMS.Infrastructure.Domain;
 
 namespace GxjtBHMS.SqlServerDAL.ThresholdValueDatasDAL
 {
-   public class SteelArchStrainThresholdValueSettingDAL : Repository<SteelArchStrainThresholdValueTable, int>,IThresholdValueSettingDAL<SteelArchStrainThresholdValueTable>
+   public class SteelArchStrainThresholdValueSettingDAL : Repository<ThresholdValue_SteelArchStrainThresholdValueTable, int>,IThresholdValueSettingDAL<ThresholdValue_SteelArchStrainThresholdValueTable>
     {
-        public override IEnumerable<SteelArchStrainThresholdValueTable> FindAll()
+        public override IEnumerable<ThresholdValue_SteelArchStrainThresholdValueTable> FindAll()
         {
             using (var ctx = new BHMSContext())
             {
-                return ctx.Set<SteelArchStrainThresholdValueTable>().Include("PointsNumber").ToList();
+                return ctx.Set<ThresholdValue_SteelArchStrainThresholdValueTable>().Include("PointsNumber").ToList();
             }
         }
     }

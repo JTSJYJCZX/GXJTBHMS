@@ -6,9 +6,9 @@ using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL.MonitoringDatasDAL
 {
-    public class TemperatureDatasOriginalValueDAL : Repository<TemperatureTable, int>, ITemperatureDatasOriginalValueDAL
+    public class TemperatureDatasOriginalValueDAL : Repository<Basic_TemperatureTable, int>, ITemperatureDatasOriginalValueDAL
     {
-        public override IEnumerable<TemperatureTable> FindBy(IList<Func<TemperatureTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
+        public override IEnumerable<Basic_TemperatureTable> FindBy(IList<Func<Basic_TemperatureTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
         {
             using (var cxt = new BHMSContext())
             {

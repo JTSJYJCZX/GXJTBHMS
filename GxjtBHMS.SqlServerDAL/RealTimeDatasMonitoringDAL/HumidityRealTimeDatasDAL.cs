@@ -6,17 +6,17 @@ using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL.RealTimeDatasMonitoringDAL
 {
-    public class HumidityRealTimeDatasDAL : Repository<HumidityTable, int>, IHumidityRealTimeDatasDAL
+    public class HumidityRealTimeDatasDAL : Repository<Basic_HumidityTable, int>, IHumidityRealTimeDatasDAL
     {
-        public IEnumerable<HumidityTable> GetRealTimeHumidity(int pointPositionId)
+        public IEnumerable<Basic_HumidityTable> GetRealTimeHumidity(int pointPositionId)
         {
-            List<HumidityTable> result = GetRealTimeDataByPositionId(pointPositionId);
+            List<Basic_HumidityTable> result = GetRealTimeDataByPositionId(pointPositionId);
             return result;
         }
 
-        List<HumidityTable> GetRealTimeDataByPositionId(int pointPositionId)
+        List<Basic_HumidityTable> GetRealTimeDataByPositionId(int pointPositionId)
         {
-            List<HumidityTable> result = new List<HumidityTable>();
+            List<Basic_HumidityTable> result = new List<Basic_HumidityTable>();
             var pointsNumberId = GetPointsNumberIdByPointsPositionId(pointPositionId);
             foreach (var item in pointsNumberId)
             {

@@ -2,7 +2,7 @@
 
 namespace GxjtBHMS.Models.ThresholdValueSetting
 {
-    public  class HumidityThresholdValueTable : WithoutNegativeThresholdValueBase
+    public  class ThresholdValue_DisplacementThresholdValueTable : ContainNegativeThresholdValueBase
     {
         
     }

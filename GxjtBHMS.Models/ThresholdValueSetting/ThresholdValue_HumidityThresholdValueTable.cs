@@ -2,9 +2,8 @@
 
 namespace GxjtBHMS.Models.ThresholdValueSetting
 {
-    public  class ConcreteStrainThresholdValueTable: ContainNegativeThresholdValueBase
+    public  class ThresholdValue_HumidityThresholdValueTable : WithoutNegativeThresholdValueBase
     {
-
-
+        
     }
 }

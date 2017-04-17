@@ -6,9 +6,9 @@ using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL
 {
-    public class SteelLatticeStrainDatasOriginalValueDAL : Repository<SteelLatticeStrainTable, int>, ISteelLatticeStrainDatasOriginalValueDAL
+    public class SteelLatticeStrainDatasOriginalValueDAL : Repository<Basic_SteelLatticeStrainTable , int>, ISteelLatticeStrainDatasOriginalValueDAL
     {
-        public override IEnumerable<SteelLatticeStrainTable> FindBy(IList<Func<SteelLatticeStrainTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
+        public override IEnumerable<Basic_SteelLatticeStrainTable > FindBy(IList<Func<Basic_SteelLatticeStrainTable , bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
         {
             using (var ctx = new BHMSContext())
             {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GxjtBHMS.Models
 {
-  public  class CableForceTable : MonitorDatasQueryConditionsModel
+  public  class Basic_CableForceTable : MonitorDatasQueryConditionsModel
     {
         public double CableForce { get; set; }
         public double Frequency { get; set; }       

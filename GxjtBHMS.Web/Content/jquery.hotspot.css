@@ -203,6 +203,23 @@ img.info-icon {
     left: 83.5%;
 }
 
+#hotspotContainer1 .info-iconCF1 {
+    position: absolute;
+    top: 27%;
+    left: 47%;
+}
+
+#hotspotContainer1 .info-iconCF2 {
+    position: absolute;
+    top: 60%;
+    left: 37%;
+}
+
+#hotspotContainer1 .info-iconCF3 {
+    position: absolute;
+    top: 54%;
+    left: 8%;
+}
 
 
 
@@ -1783,6 +1800,387 @@ img.info-icon {
         position: absolute;
         left: 93%;
         margin-top: 34.5%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFUPHL1 {
+        color: #ff0000;
+        position: absolute;
+        left: 7%;
+        margin-top: 6%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFUPHL2 {
+        color: #ff0000;
+        position: absolute;
+        left: 13%;
+        margin-top: 6%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFUPHL3 {
+        color: #ff0000;
+        position: absolute;
+        left: 20%;
+        margin-top: 6%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFUPHL4 {
+        color: #ff0000;
+        position: absolute;
+        left: 33%;
+        margin-top: 6%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+
+     .img-container .CFUPHL5 {
+        color: #ff0000;
+        position: absolute;
+        left: 48%;
+        margin-top: 6%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFUPHL6 {
+        color: #ff0000;
+        position: absolute;
+        left: 63%;
+        margin-top: 6%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFUPHL7 {
+        color: #ff0000;
+        position: absolute;
+        left: 77%;
+        margin-top: 6%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFUPHL8 {
+        color: #ff0000;
+        position: absolute;
+        left: 83%;
+        margin-top: 6%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFUPHL9 {
+        color: #ff0000;
+        position: absolute;
+        left: 89%;
+        margin-top: 6%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFUPHR1 {
+        color: #ff0000;
+        position: absolute;
+        left: 7%;
+        margin-top: 14%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFUPHR2 {
+        color: #ff0000;
+        position: absolute;
+        left: 13%;
+        margin-top: 14%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFUPHR3 {
+        color: #ff0000;
+        position: absolute;
+        left: 20%;
+        margin-top: 14%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFUPHR4 {
+        color: #ff0000;
+        position: absolute;
+        left: 33%;
+        margin-top: 14%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFUPHR5 {
+        color: #ff0000;
+        position: absolute;
+        left: 48%;
+        margin-top: 14%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFUPHR6 {
+        color: #ff0000;
+        position: absolute;
+        left: 63%;
+        margin-top: 14%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFUPHR7 {
+        color: #ff0000;
+        position: absolute;
+        left: 77%;
+        margin-top: 14%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFUPHR8 {
+        color: #ff0000;
+        position: absolute;
+        left: 83%;
+        margin-top: 14%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFUPHR9 {
+        color: #ff0000;
+        position: absolute;
+        left: 89%;
+        margin-top: 14%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFUNHL1 {
+        color: #ff0000;
+        position: absolute;
+        left: 20%;
+        margin-top: 5%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFUNHL2 {
+        color: #ff0000;
+        position: absolute;
+        left: 31%;
+        margin-top: 5%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFUNHL3 {
+        color: #ff0000;
+        position: absolute;
+        left: 63%;
+        margin-top: 5%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFUNHL4 {
+        color: #ff0000;
+        position: absolute;
+        left: 75%;
+        margin-top: 5%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFUNHR1 {
+        color: #ff0000;
+        position: absolute;
+        left: 20%;
+        margin-top: 13%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFUNHR2 {
+        color: #ff0000;
+        position: absolute;
+        left: 31%;
+        margin-top: 13%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFUNHR3 {
+        color: #ff0000;
+        position: absolute;
+        left: 63%;
+        margin-top: 13%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFUNHR4 {
+        color: #ff0000;
+        position: absolute;
+        left: 75%;
+        margin-top: 13%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFFTBL1 {
+        color: #ff0000;
+        position: absolute;
+        left: 12%;
+        margin-top: 4%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFFTBL2 {
+        color: #ff0000;
+        position: absolute;
+        left: 11%;
+        margin-top: 7%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFFTBL3 {
+        color: #ff0000;
+        position: absolute;
+        left: 10%;
+        margin-top: 10%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFFTBL4 {
+        color: #ff0000;
+        position: absolute;
+        left: 33%;
+        margin-top: 4%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFFTBL5 {
+        color: #ff0000;
+        position: absolute;
+        left: 34%;
+        margin-top: 7%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFFTBL6 {
+        color: #ff0000;
+        position: absolute;
+        left: 35%;
+        margin-top: 10%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFFTBR1 {
+        color: #ff0000;
+        position: absolute;
+        left: 61%;
+        margin-top: 4%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFFTBR2 {
+        color: #ff0000;
+        position: absolute;
+        left: 60%;
+        margin-top: 7%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFFTBR3 {
+        color: #ff0000;
+        position: absolute;
+        left: 59%;
+        margin-top: 10%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFFTBR4 {
+        color: #ff0000;
+        position: absolute;
+        left: 83%;
+        margin-top: 4%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFFTBR5 {
+        color: #ff0000;
+        position: absolute;
+        left: 84%;
+        margin-top: 7%;
+        z-index: 2;
+        font-weight: bold;
+        font-size: 2.5ex;
+    }
+
+     .img-container .CFFTBR6 {
+        color: #ff0000;
+        position: absolute;
+        left: 85%;
+        margin-top: 10%;
         z-index: 2;
         font-weight: bold;
         font-size: 2.5ex;

@@ -6,9 +6,9 @@ using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL.MonitoringDatasDAL
 {
-    public class HumidityDatasOriginalValueDAL: Repository<HumidityTable, int>, IHumidityDatasOriginalValueDAL
+    public class HumidityDatasOriginalValueDAL: Repository<Basic_HumidityTable, int>, IHumidityDatasOriginalValueDAL
     {
-        public override IEnumerable<HumidityTable> FindBy(IList<Func<HumidityTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
+        public override IEnumerable<Basic_HumidityTable> FindBy(IList<Func<Basic_HumidityTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
         {
             using (var cxt = new BHMSContext())
             {

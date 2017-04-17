@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 namespace GxjtBHMS.IDAL
 {
-    public interface IConcreteStrainRealTimeDatasDAL : IReadOnlyRepository<ConcreteStrainTable, int>
+    public interface IConcreteStrainRealTimeDatasDAL : IReadOnlyRepository<Basic_ConcreteStrainTable , int>
     {
-        IEnumerable<ConcreteStrainTable> GetRealTimeStrains(int pointPositionId);
+        IEnumerable<Basic_ConcreteStrainTable > GetRealTimeStrains(int pointPositionId);
     }
 }

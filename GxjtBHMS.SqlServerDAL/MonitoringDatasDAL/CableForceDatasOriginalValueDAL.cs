@@ -6,9 +6,9 @@ using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL
 {
-    public class CableForceDatasOriginalValueDAL : Repository<CableForceTable, int>, ICableForceDatasOriginalValueDAL
+    public class CableForceDatasOriginalValueDAL : Repository<Basic_CableForceTable, int>, ICableForceDatasOriginalValueDAL
     {
-        public override IEnumerable<CableForceTable> FindBy(IList<Func<CableForceTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
+        public override IEnumerable<Basic_CableForceTable> FindBy(IList<Func<Basic_CableForceTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
         {
             using (var ctx = new BHMSContext())
             {

@@ -2,7 +2,7 @@
 
 namespace GxjtBHMS.Models.ThresholdValueSetting
 {
-    public  class DisplacementThresholdValueTable : ContainNegativeThresholdValueBase
+    public  class ThresholdValue_TemperatureThresholdValueTable : ContainNegativeThresholdValueBase
     {
         
     }

@@ -2,7 +2,7 @@
 
 namespace GxjtBHMS.Models.ThresholdValueSetting
 {
-    public  class SteelLatticeStrainThresholdValueTable : ContainNegativeThresholdValueBase
+    public  class ThresholdValue_WindLoadThresholdValueTable : WithoutNegativeThresholdValueBase
     {
         
     }

@@ -6,14 +6,14 @@ using System.Linq;
 
 namespace GxjtBHMS.Service.Implementations.OriginalValueDownLoad
 {
-    class CableForceMonitorDatasOriginalValueDownloadFileSystemService : MonitorDatasOriginalValueDownloadFileSystemServiceBase<CableForceTable>
+    class CableForceMonitorDatasOriginalValueDownloadFileSystemService : MonitorDatasOriginalValueDownloadFileSystemServiceBase<Basic_CableForceTable>
     {       
         public CableForceMonitorDatasOriginalValueDownloadFileSystemService(ICableForceDatasOriginalValueDAL cableForceDatasOriginalValueDAL):base(cableForceDatasOriginalValueDAL)
         {
            _sheetName= "索力原始数据查询结果";
         }
 
-        protected override void BuildPartialContent(IRow row,int index,IEnumerable<CableForceTable> source)
+        protected override void BuildPartialContent(IRow row,int index,IEnumerable<Basic_CableForceTable> source)
         {
             row.CreateCell(3).SetCellValue(source.ToArray()[index].CableForce);
             row.CreateCell(4).SetCellValue(source.ToArray()[index].Temperature);

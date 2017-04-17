@@ -45,7 +45,7 @@ namespace GxjtBHMS.Service.Implementations
             return resultOfAllSection;
         }
 
-        private List<RealTimeWarningDataModel> GetResultsOfOneSection(TemperatureTable[] source)
+        private List<RealTimeWarningDataModel> GetResultsOfOneSection(Basic_TemperatureTable[] source)
         {
             List<RealTimeWarningDataModel> sectionModel = new List<RealTimeWarningDataModel>();
             for (int i = 0; i < source.Length; i++)

@@ -18,7 +18,7 @@ namespace GxjtBHMS.Web.APIControllers
             {
                 foreach (var item in strainDatas)
                 {
-                    ConcreteStrainTable strainOfOnePoint = new ConcreteStrainTable()
+                    Basic_ConcreteStrainTable  strainOfOnePoint = new Basic_ConcreteStrainTable ()
                     {
                         PointsNumberId = item.PointsNumberId,
                         Strain = item.Strain,

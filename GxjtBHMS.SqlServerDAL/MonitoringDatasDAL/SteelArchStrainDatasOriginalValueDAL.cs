@@ -6,9 +6,9 @@ using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL
 {
-    public class SteelArchStrainDatasOriginalValueDAL : Repository<SteelArchStrainTable, int>, ISteelArchStrainDatasOriginalValueDAL
+    public class SteelArchStrainDatasOriginalValueDAL : Repository<Basic_SteelArchStrainTable , int>, ISteelArchStrainDatasOriginalValueDAL
     {
-        public override IEnumerable<SteelArchStrainTable> FindBy(IList<Func<SteelArchStrainTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
+        public override IEnumerable<Basic_SteelArchStrainTable > FindBy(IList<Func<Basic_SteelArchStrainTable , bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
         {
             using (var ctx = new BHMSContext())
             {

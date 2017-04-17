@@ -1,6 +1,6 @@
 ﻿namespace GxjtBHMS.Models.MonitoringDatasTable
 {
-    public class SteelLatticeStrainTable:MonitorDatasQueryConditionsModel
+    public class Basic_SteelLatticeStrainTable :MonitorDatasQueryConditionsModel
     {
         public double Strain { get; set; }
         public double Temperature { get; set; }

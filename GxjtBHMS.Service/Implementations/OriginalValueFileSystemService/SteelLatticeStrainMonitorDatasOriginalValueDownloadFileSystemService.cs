@@ -10,7 +10,7 @@ using GxjtBHMS.Models.MonitoringDatasTable;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    class SteelLatticeStrainMonitorDatasOriginalValueDownloadFileSystemService : MonitorDatasOriginalValueDownloadFileSystemServiceBase<SteelLatticeStrainTable>
+    class SteelLatticeStrainMonitorDatasOriginalValueDownloadFileSystemService : MonitorDatasOriginalValueDownloadFileSystemServiceBase<Basic_SteelLatticeStrainTable >
     {
         public SteelLatticeStrainMonitorDatasOriginalValueDownloadFileSystemService(ISteelLatticeStrainDatasOriginalValueDAL steelLatticeStrainOriginalDatasDAL):base(steelLatticeStrainOriginalDatasDAL)
         {
@@ -23,7 +23,7 @@ namespace GxjtBHMS.Service.Implementations
             headRow.CreateCell(4).SetCellValue("温度(℃)");
         }
 
-        protected override void BuildPartialContent(IRow row, int index, IEnumerable<SteelLatticeStrainTable> source)
+        protected override void BuildPartialContent(IRow row, int index, IEnumerable<Basic_SteelLatticeStrainTable > source)
         {
             row.CreateCell(3).SetCellValue(source.ToArray()[index].Strain);
             row.CreateCell(4).SetCellValue(source.ToArray()[index].Temperature);

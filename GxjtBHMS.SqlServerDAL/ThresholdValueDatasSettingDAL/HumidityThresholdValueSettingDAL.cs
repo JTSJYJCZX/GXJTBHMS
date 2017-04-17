@@ -10,13 +10,13 @@ using GxjtBHMS.Infrastructure.Domain;
 
 namespace GxjtBHMS.SqlServerDAL.ThresholdValueDatasDAL
 {
-   public class HumidityThresholdValueSettingDAL : Repository<HumidityThresholdValueTable, int>, IThresholdValueSettingDAL<HumidityThresholdValueTable>
+   public class HumidityThresholdValueSettingDAL : Repository<ThresholdValue_HumidityThresholdValueTable, int>, IThresholdValueSettingDAL<ThresholdValue_HumidityThresholdValueTable>
     {
-        public override IEnumerable<HumidityThresholdValueTable> FindAll()
+        public override IEnumerable<ThresholdValue_HumidityThresholdValueTable> FindAll()
         {
             using (var ctx = new BHMSContext())
             {
-                return ctx.Set<HumidityThresholdValueTable>().Include("PointsNumber").ToList();
+                return ctx.Set<ThresholdValue_HumidityThresholdValueTable>().Include("PointsNumber").ToList();
             }
         }
     }

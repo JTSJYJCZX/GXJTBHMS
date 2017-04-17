@@ -2,7 +2,7 @@
 
 namespace GxjtBHMS.Models.ThresholdValueSetting
 {
-    public  class CableForceThresholdValueTable : WithoutNegativeThresholdValueBase
+    public  class ThresholdValue_SteelLatticeStrainThresholdValueTable : ContainNegativeThresholdValueBase
     {
         
     }

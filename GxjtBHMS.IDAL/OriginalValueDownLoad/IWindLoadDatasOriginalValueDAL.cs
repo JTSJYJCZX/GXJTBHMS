@@ -3,7 +3,7 @@ using GxjtBHMS.Models.MonitoringDatasTable;
 
 namespace GxjtBHMS.IDAL
 {
-    public interface IWindLoadDatasOriginalValueDAL:IReadOnlyRepository<WindLoadTable, int>
+    public interface IWindLoadDatasOriginalValueDAL:IReadOnlyRepository<Basic_WindLoadTable , int>
     {
     }
 }

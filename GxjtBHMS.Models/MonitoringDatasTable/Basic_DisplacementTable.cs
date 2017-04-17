@@ -1,6 +1,6 @@
 ﻿namespace GxjtBHMS.Models
 {
-    public class DisplacementTable : MonitorDatasQueryConditionsModel
+    public class Basic_DisplacementTable : MonitorDatasQueryConditionsModel
     {
         public double Displacement { get; set; }
 

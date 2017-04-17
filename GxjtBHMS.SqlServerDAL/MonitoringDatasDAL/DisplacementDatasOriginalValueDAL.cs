@@ -7,9 +7,9 @@ using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL
 {
-    public class DisplacementDatasOriginalValueDAL : Repository<DisplacementTable, int>, IDisplacementDatasOriginalValueDAL
+    public class DisplacementDatasOriginalValueDAL : Repository<Basic_DisplacementTable, int>, IDisplacementDatasOriginalValueDAL
     {
-        public override IEnumerable<DisplacementTable> FindBy(IList<Func<DisplacementTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
+        public override IEnumerable<Basic_DisplacementTable> FindBy(IList<Func<Basic_DisplacementTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
         {
             using (var ctx = new BHMSContext())
             {

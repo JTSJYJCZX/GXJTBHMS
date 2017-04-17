@@ -6,9 +6,9 @@ using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL
 {
-    public class ConcreteStrainDatasOriginalValueDAL : Repository<ConcreteStrainTable, int>, IConcreteStrainDatasOriginalValueDAL
+    public class ConcreteStrainDatasOriginalValueDAL : Repository<Basic_ConcreteStrainTable , int>, IConcreteStrainDatasOriginalValueDAL
     {
-        public override IEnumerable<ConcreteStrainTable> FindBy(IList<Func<ConcreteStrainTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
+        public override IEnumerable<Basic_ConcreteStrainTable > FindBy(IList<Func<Basic_ConcreteStrainTable , bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
         {
             using (var ctx = new BHMSContext())
             {

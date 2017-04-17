@@ -3,7 +3,7 @@ using GxjtBHMS.Models;
 
 namespace GxjtBHMS.IDAL
 {
-    public interface IHumidityDatasOriginalValueDAL: IReadOnlyRepository<HumidityTable,int>
+    public interface IHumidityDatasOriginalValueDAL: IReadOnlyRepository<Basic_HumidityTable,int>
     {
     }
 }

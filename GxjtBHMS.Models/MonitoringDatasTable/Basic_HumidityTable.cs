@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace GxjtBHMS.Models
 {
-   public class TemperatureTable : MonitorDatasQueryConditionsModel
+   public class Basic_HumidityTable : MonitorDatasQueryConditionsModel
     {
-        public double Temperature { get; set; }
+        public double Humidity { get; set; }
 
         public int ThresholdGradeId { get; set; }
         public virtual ThresholdGradeTable ThresholdGrade { get; set; }

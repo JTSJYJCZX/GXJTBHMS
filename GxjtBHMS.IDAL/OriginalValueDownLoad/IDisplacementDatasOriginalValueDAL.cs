@@ -3,7 +3,7 @@ using GxjtBHMS.Models;
 
 namespace GxjtBHMS.IDAL
 {
-    public interface IDisplacementDatasOriginalValueDAL : IReadOnlyRepository<DisplacementTable, int>
+    public interface IDisplacementDatasOriginalValueDAL : IReadOnlyRepository<Basic_DisplacementTable, int>
     {
 
     }

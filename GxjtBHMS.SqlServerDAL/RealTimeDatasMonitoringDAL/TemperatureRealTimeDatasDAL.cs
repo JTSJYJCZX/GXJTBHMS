@@ -6,17 +6,17 @@ using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL.RealTimeDatasMonitoringDAL
 {
-    public class TemperatureRealTimeDatasDAL : Repository<TemperatureTable, int>, ITemperatureRealTimeDatasDAL
+    public class TemperatureRealTimeDatasDAL : Repository<Basic_TemperatureTable, int>, ITemperatureRealTimeDatasDAL
     {
-        public IEnumerable<TemperatureTable> GetRealTimeTemperature(int pointPositionId)
+        public IEnumerable<Basic_TemperatureTable> GetRealTimeTemperature(int pointPositionId)
         {
-            List<TemperatureTable> result = GetRealTimeDataByPositionId(pointPositionId);
+            List<Basic_TemperatureTable> result = GetRealTimeDataByPositionId(pointPositionId);
             return result;
         }
 
-        List<TemperatureTable> GetRealTimeDataByPositionId(int pointPositionId)
+        List<Basic_TemperatureTable> GetRealTimeDataByPositionId(int pointPositionId)
         {
-            List<TemperatureTable> result = new List<TemperatureTable>();
+            List<Basic_TemperatureTable> result = new List<Basic_TemperatureTable>();
             var pointsNumberId = GetPointsNumberIdByPointsPositionId(pointPositionId);
             foreach (var item in pointsNumberId)
             {

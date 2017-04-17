@@ -7,7 +7,7 @@ namespace GxjtBHMS.Service.ExtensionMethods.MonitoringDatas.DatasQuery
 {
     static class CableForceDatasQueryServiceExtension
     {
-        public static IEnumerable<CableForceDatasModel> ConvertToDisplaymentDatasInfoViewList(this IEnumerable<CableForceTable> source)
+        public static IEnumerable<CableForceDatasModel> ConvertToDisplaymentDatasInfoViewList(this IEnumerable<Basic_CableForceTable> source)
         {
             return source.Select(m => new CableForceDatasModel
             {

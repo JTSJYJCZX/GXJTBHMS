@@ -44,7 +44,7 @@ namespace GxjtBHMS.Service.Implementations
             return resultOfAllSection;
         }
 
-        private List<RealTimeWarningDataModel> GetResultsOfOneSection(ConcreteStrainTable[] source)
+        private List<RealTimeWarningDataModel> GetResultsOfOneSection(Basic_ConcreteStrainTable [] source)
         {
             List<RealTimeWarningDataModel> sectionModel = new List<RealTimeWarningDataModel>();
             for (int i = 0; i < source.Length; i++)

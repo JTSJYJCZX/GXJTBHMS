@@ -10,13 +10,13 @@ using GxjtBHMS.Infrastructure.Domain;
 
 namespace GxjtBHMS.SqlServerDAL.ThresholdValueDatasDAL
 {
-   public class CableForceThresholdValueSettingDAL : Repository<CableForceThresholdValueTable, int>, IThresholdValueSettingDAL<CableForceThresholdValueTable>
+   public class CableForceThresholdValueSettingDAL : Repository<ThresholdValue_CableForceThresholdValueTable, int>, IThresholdValueSettingDAL<ThresholdValue_CableForceThresholdValueTable>
     {
-        public override IEnumerable<CableForceThresholdValueTable> FindAll()
+        public override IEnumerable<ThresholdValue_CableForceThresholdValueTable> FindAll()
         {
             using (var ctx = new BHMSContext())
             {
-                return ctx.Set<CableForceThresholdValueTable>().Include("PointsNumber").ToList();
+                return ctx.Set<ThresholdValue_CableForceThresholdValueTable>().Include("PointsNumber").ToList();
             }
         }
     }

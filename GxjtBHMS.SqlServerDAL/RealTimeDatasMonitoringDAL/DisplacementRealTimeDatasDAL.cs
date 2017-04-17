@@ -6,17 +6,17 @@ using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL.RealTimeDatasMonitoringDAL
 {
-    public class DisplacementRealTimeDatasDAL : Repository<DisplacementTable, int>, IDisplacementRealTimeDatasDAL
+    public class DisplacementRealTimeDatasDAL : Repository<Basic_DisplacementTable, int>, IDisplacementRealTimeDatasDAL
     {
-        public IEnumerable<DisplacementTable> GetRealTimeDisplacement(int pointPositionId)
+        public IEnumerable<Basic_DisplacementTable> GetRealTimeDisplacement(int pointPositionId)
         {
-            List<DisplacementTable> result = GetRealTimeDataByPositionId(pointPositionId);
+            List<Basic_DisplacementTable> result = GetRealTimeDataByPositionId(pointPositionId);
             return result;
         }
 
-        List<DisplacementTable> GetRealTimeDataByPositionId(int pointPositionId)
+        List<Basic_DisplacementTable> GetRealTimeDataByPositionId(int pointPositionId)
         {
-            List<DisplacementTable> result = new List<DisplacementTable>();
+            List<Basic_DisplacementTable> result = new List<Basic_DisplacementTable>();
             var pointsNumberId = GetPointsNumberIdByPointsPositionId(pointPositionId);
             foreach (var item in pointsNumberId)
             {

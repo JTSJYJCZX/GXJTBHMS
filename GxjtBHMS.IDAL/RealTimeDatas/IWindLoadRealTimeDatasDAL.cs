@@ -5,8 +5,8 @@ using System.Collections.Generic;
 
 namespace GxjtBHMS.IDAL
 {
-    public interface IWindLoadRealTimeDatasDAL : IReadOnlyRepository<WindLoadTable, int>
+    public interface IWindLoadRealTimeDatasDAL : IReadOnlyRepository<Basic_WindLoadTable , int>
     {
-        IEnumerable<WindLoadTable> GetRealTimeWindLoad(int pointPositionId);
+        IEnumerable<Basic_WindLoadTable > GetRealTimeWindLoad(int pointPositionId);
     }
 }

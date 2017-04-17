@@ -6,9 +6,9 @@ using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL.MonitoringDatasDAL
 {
-    public class WindLoadDatasOriginalValueDAL: Repository<WindLoadTable, int>, IWindLoadDatasOriginalValueDAL
+    public class WindLoadDatasOriginalValueDAL: Repository<Basic_WindLoadTable , int>, IWindLoadDatasOriginalValueDAL
     {
-        public override IEnumerable<WindLoadTable> FindBy(IList<Func<WindLoadTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
+        public override IEnumerable<Basic_WindLoadTable > FindBy(IList<Func<Basic_WindLoadTable , bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
         {
             using (var cxt =new BHMSContext())
             {
