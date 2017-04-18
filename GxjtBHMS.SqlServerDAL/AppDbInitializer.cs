@@ -348,7 +348,7 @@ namespace GxjtBHMS.SqlServerDAL
             CreateNormalUsers(context);
             CreateSuspendedUsers(context);
             CreateMonitoringTestType(context);
-            CreateMonitoringDatas(context);
+            //CreateMonitoringDatas(context);
             CreateStrainThresholdValues(context);
             CreateDisplaymentThresholdValues(context);
             CreateCableForceThresholdValues(context);
@@ -356,7 +356,7 @@ namespace GxjtBHMS.SqlServerDAL
             CreateHumidityThresholdValues(context);
             CreateWindloadThresholdValues(context);
             CreateAbnormalThresholdValue(context);
-            CreateSafetyPreWarning(context);
+            //CreateSafetyPreWarning(context);
             CreateThresholdGradeValue(context);
         }
 
