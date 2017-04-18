@@ -8,9 +8,9 @@ using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL
 {
-    public class SteelLatticeStrainDatasEigenvalueDAL : Repository<SteelLatticeStrainEigenvalueTable, int>, IMonitoringDatasEigenvalueDAL<SteelLatticeStrainEigenvalueTable>
+    public class SteelLatticeStrainDatasEigenvalueDAL : Repository<Eigenvalue_SteelLatticeStrainEigenvalueTable, int>, IMonitoringDatasEigenvalueDAL<Eigenvalue_SteelLatticeStrainEigenvalueTable>
     {
-        public override IEnumerable<SteelLatticeStrainEigenvalueTable> FindBy(IList<Func<SteelLatticeStrainEigenvalueTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
+        public override IEnumerable<Eigenvalue_SteelLatticeStrainEigenvalueTable> FindBy(IList<Func<Eigenvalue_SteelLatticeStrainEigenvalueTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
         {
             using (var ctx = new BHMSContext())
             {

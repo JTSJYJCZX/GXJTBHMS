@@ -8,9 +8,9 @@ using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL
 {
-    public class CableForceDatasEigenvalueDAL : Repository<CableForceEigenValueTable, int>,IMonitoringDatasEigenvalueDAL<CableForceEigenValueTable>
+    public class CableForceDatasEigenvalueDAL : Repository<Eigenvalue_CableForceEigenvalueTable , int>,IMonitoringDatasEigenvalueDAL<Eigenvalue_CableForceEigenvalueTable >
     {
-        public override IEnumerable<CableForceEigenValueTable> FindBy(IList<Func<CableForceEigenValueTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
+        public override IEnumerable<Eigenvalue_CableForceEigenvalueTable > FindBy(IList<Func<Eigenvalue_CableForceEigenvalueTable , bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
         {
             using (var ctx = new BHMSContext())
             {

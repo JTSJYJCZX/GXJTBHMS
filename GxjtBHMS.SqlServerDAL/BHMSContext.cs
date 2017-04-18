@@ -48,14 +48,14 @@ namespace GxjtBHMS.SqlServerDAL
         public DbSet<Basic_HumidityTable> Basic_Humiditys { get; set; }//湿度 
         public DbSet<Basic_WindLoadTable > Basic_WindLoads{ get; set; }//风载
 
-        public DbSet<SteelArchStrainEigenvalueTable> SteelArchStrainEigenvalues { get; set; }//钢拱肋应变特征值
-        public DbSet<SteelLatticeStrainEigenvalueTable> SteelLatticeStrainEigenvalues { get; set; }//钢格构应变特征值
-        public DbSet<ConcreteStrainEigenvalueTable> ConcreteStrainEigenvalues { get; set; }//混凝土应变特征值
-        public DbSet<DisplacementEigenvalueTable> DisplacementEigenvalues { get; set; }//位移特征值
-        public DbSet<CableForceEigenValueTable> CableForceEigenvalues { get; set; }//索力特征值
-        public DbSet<TemperatureEigenvalueTable> TemperatureEigenvalues { get; set; }//温度特征值
-        public DbSet<HumidityEigenvalueTable> HumidityEigenvalues { get; set; }//湿度特征值
-        public DbSet<WindLoadEigenvalueTable> WindLoadEigenvalues { get; set; }//风载特征值
+        public DbSet<Eigenvalue_SteelArchStrainEigenvalueTable> SteelArchStrainEigenvalues { get; set; }//钢拱肋应变特征值
+        public DbSet<Eigenvalue_SteelLatticeStrainEigenvalueTable> SteelLatticeStrainEigenvalues { get; set; }//钢格构应变特征值
+        public DbSet<Eigenvalue_ConcreteStrainEigenvalueTable> ConcreteStrainEigenvalues { get; set; }//混凝土应变特征值
+        public DbSet<Eigenvalue_DisplacementEigenvalueTable> DisplacementEigenvalues { get; set; }//位移特征值
+        public DbSet<Eigenvalue_CableForceEigenvalueTable > CableForceEigenvalues { get; set; }//索力特征值
+        public DbSet<Eigenvalue_TemperatureEigenvalueTable> TemperatureEigenvalues { get; set; }//温度特征值
+        public DbSet<Eigenvalue_HumidityEigenvalueTable> HumidityEigenvalues { get; set; }//湿度特征值
+        public DbSet<Eigenvalue_WindLoadEigenvalueTable> WindLoadEigenvalues { get; set; }//风载特征值
 
         public DbSet<ThresholdValue_ConcreteStrainThresholdValueTable> ConcreteStrainThresholdValues { get; set; }//混凝土应变阈值
         public DbSet<ThresholdValue_SteelArchStrainThresholdValueTable> SteelArchStrainThresholdValues { get; set; }//钢拱肋应变阈值
@@ -66,7 +66,7 @@ namespace GxjtBHMS.SqlServerDAL
         public DbSet<ThresholdValue_HumidityThresholdValueTable> HumidityThresholdValues { get; set; }//湿度阈值
         public DbSet<ThresholdValue_WindLoadThresholdValueTable> WindLoadThresholdValues { get; set; }//风荷载阈值
 
-        public DbSet<AbnormalThresholdValueTable> AbnormalThresholdValue { get; set; }//异常阈值
+        public DbSet<Abnormal_ThresholdValueTable> AbnormalThresholdValue { get; set; }//异常阈值
         public DbSet<ThresholdGradeTable> ThresholdGradeModel { get; set; }//预警等级
 
         //安全预警值统计结果表格

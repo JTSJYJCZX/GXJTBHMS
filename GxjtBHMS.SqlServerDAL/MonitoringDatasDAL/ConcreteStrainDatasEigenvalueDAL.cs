@@ -8,9 +8,9 @@ using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL
 {
-    public class ConcreteStrainDatasEigenvalueDAL : Repository<ConcreteStrainEigenvalueTable, int>,  IMonitoringDatasEigenvalueDAL<ConcreteStrainEigenvalueTable>
+    public class ConcreteStrainDatasEigenvalueDAL : Repository<Eigenvalue_ConcreteStrainEigenvalueTable, int>,  IMonitoringDatasEigenvalueDAL<Eigenvalue_ConcreteStrainEigenvalueTable>
     {
-        public override IEnumerable<ConcreteStrainEigenvalueTable> FindBy(IList<Func<ConcreteStrainEigenvalueTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
+        public override IEnumerable<Eigenvalue_ConcreteStrainEigenvalueTable> FindBy(IList<Func<Eigenvalue_ConcreteStrainEigenvalueTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
         {
             using (var ctx = new BHMSContext())
             {

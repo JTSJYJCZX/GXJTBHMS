@@ -24,7 +24,7 @@ namespace GxjtBHMS.Service.AbnomalThresholdValueService
             var resp = new AbnormalThresholdValueResponse();
             try
             {
-              IEnumerable <AbnormalThresholdValueTable> source = _abnormalThresholdValueSettingDAL.FindAll(); ;
+              IEnumerable <Abnormal_ThresholdValueTable> source = _abnormalThresholdValueSettingDAL.FindAll(); ;
                               
                 if (HasNoSearchResult(source))
                 {
@@ -48,7 +48,7 @@ namespace GxjtBHMS.Service.AbnomalThresholdValueService
         /// </summary>
         /// <param name="thresholdValues"></param>
         /// <returns></returns>
-        protected bool HasNoSearchResult(IEnumerable<AbnormalThresholdValueTable> abnormalThresholdValues)
+        protected bool HasNoSearchResult(IEnumerable<Abnormal_ThresholdValueTable> abnormalThresholdValues)
         {
             return abnormalThresholdValues.Count() == 0;
         }
@@ -78,9 +78,9 @@ namespace GxjtBHMS.Service.AbnomalThresholdValueService
         /// </summary>
         /// <param name="req"></param>
         /// <returns></returns>
-        public AbnormalThresholdValueTable ModifyAbnormalThresholdValueByTypeId(AbnormalThresholdValueSettingRequest req)
+        public Abnormal_ThresholdValueTable ModifyAbnormalThresholdValueByTypeId(AbnormalThresholdValueSettingRequest req)
         {
-            IList<Func<AbnormalThresholdValueTable, bool>> ps = new List<Func<AbnormalThresholdValueTable, bool>>();
+            IList<Func<Abnormal_ThresholdValueTable, bool>> ps = new List<Func<Abnormal_ThresholdValueTable, bool>>();
             DealWithEqualTypeId(req, ps);
             return _abnormalThresholdValueSettingDAL.FindBy(ps).SingleOrDefault();
         }
@@ -90,7 +90,7 @@ namespace GxjtBHMS.Service.AbnomalThresholdValueService
         /// </summary>
         /// <param name="req"></param>
         /// <param name="ps"></param>
-        void DealWithEqualTypeId(AbnormalThresholdValueSettingRequest req, IList<Func<AbnormalThresholdValueTable, bool>> ps)
+        void DealWithEqualTypeId(AbnormalThresholdValueSettingRequest req, IList<Func<Abnormal_ThresholdValueTable, bool>> ps)
         {
             if (req.TypeId > 0)
             {
@@ -102,7 +102,7 @@ namespace GxjtBHMS.Service.AbnomalThresholdValueService
         /// 保存阈值
         /// </summary>
         /// <param name="AbnormalThresholdValue"></param>
-        public void SaveThresholdValueByPointsNumberId(AbnormalThresholdValueTable AbnormalThresholdValue)
+        public void SaveThresholdValueByPointsNumberId(Abnormal_ThresholdValueTable AbnormalThresholdValue)
         {
             _abnormalThresholdValueSettingDAL.Save(AbnormalThresholdValue);
         }

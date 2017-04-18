@@ -8,9 +8,9 @@ using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL
 {
-    public class WindLoadDatasEigenvalueDAL : Repository<WindLoadEigenvalueTable, int>,IMonitoringDatasEigenvalueDAL<WindLoadEigenvalueTable>
+    public class WindLoadDatasEigenvalueDAL : Repository<Eigenvalue_WindLoadEigenvalueTable, int>,IMonitoringDatasEigenvalueDAL<Eigenvalue_WindLoadEigenvalueTable>
     {
-        public override IEnumerable<WindLoadEigenvalueTable> FindBy(IList<Func<WindLoadEigenvalueTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
+        public override IEnumerable<Eigenvalue_WindLoadEigenvalueTable> FindBy(IList<Func<Eigenvalue_WindLoadEigenvalueTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
         {
             using (var ctx = new BHMSContext())
             {

@@ -12,21 +12,21 @@ namespace GxjtBHMS.Service
             switch (mornitoringTestTypeId)
             {
                 case 1:
-                    return new MonitorDatasEigenvalueQueryServiceBase<SteelArchStrainEigenvalueTable>();
+                    return new MonitorDatasEigenvalueQueryServiceBase<Eigenvalue_SteelArchStrainEigenvalueTable>();
                 case 2:
-                    return new MonitorDatasEigenvalueQueryServiceBase<SteelLatticeStrainEigenvalueTable>();
+                    return new MonitorDatasEigenvalueQueryServiceBase<Eigenvalue_SteelLatticeStrainEigenvalueTable>();
                 case 3:
-                    return new MonitorDatasEigenvalueQueryServiceBase<ConcreteStrainEigenvalueTable>();
+                    return new MonitorDatasEigenvalueQueryServiceBase<Eigenvalue_ConcreteStrainEigenvalueTable>();
                 case 4:
-                    return new MonitorDatasEigenvalueQueryServiceBase<DisplacementEigenvalueTable>();
+                    return new MonitorDatasEigenvalueQueryServiceBase<Eigenvalue_DisplacementEigenvalueTable>();
                 case 5:
-                    return new MonitorDatasEigenvalueQueryServiceBase<CableForceEigenValueTable>();
+                    return new MonitorDatasEigenvalueQueryServiceBase<Eigenvalue_CableForceEigenvalueTable >();
                 case 6:
-                    return new MonitorDatasEigenvalueQueryServiceBase<HumidityEigenvalueTable>();
+                    return new MonitorDatasEigenvalueQueryServiceBase<Eigenvalue_HumidityEigenvalueTable>();
                 case 7:
-                    return new MonitorDatasEigenvalueQueryServiceBase<TemperatureEigenvalueTable>();
+                    return new MonitorDatasEigenvalueQueryServiceBase<Eigenvalue_TemperatureEigenvalueTable>();
                 case 8:
-                    return new MonitorDatasEigenvalueQueryServiceBase<WindLoadEigenvalueTable>();
+                    return new MonitorDatasEigenvalueQueryServiceBase<Eigenvalue_WindLoadEigenvalueTable>();
                 default:
                     throw new ApplicationException("No TestTypeId");
             }

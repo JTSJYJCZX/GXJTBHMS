@@ -45,17 +45,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbnormalThresholdValueSetting\AbnormalThresholdValueTable.cs" />
+    <Compile Include="AbnormalThresholdValueSetting\Abnormal_ThresholdValueTable.cs" />
     <Compile Include="MointoringDatasEigenvalueModel.cs" />
-    <Compile Include="MonitoringDatasEigenvalueTable\CableForceEigenvalueTable.cs" />
-    <Compile Include="MonitoringDatasEigenvalueTable\ConcreteStrainEigenvalueTable.cs" />
-    <Compile Include="MonitoringDatasEigenvalueTable\DisplacementEigenvalueTable.cs" />
+    <Compile Include="MonitoringDatasEigenvalueTable\Eigenvalue_CableForceEigenvalueTable.cs" />
+    <Compile Include="MonitoringDatasEigenvalueTable\Eigenvalue_ConcreteStrainEigenvalueTable.cs" />
+    <Compile Include="MonitoringDatasEigenvalueTable\Eigenvalue_DisplacementEigenvalueTable.cs" />
     <Compile Include="MonitorDatasQueryConditionsModel.cs" />
-    <Compile Include="MonitoringDatasEigenvalueTable\HumidityEigenvalueTable.cs" />
-    <Compile Include="MonitoringDatasEigenvalueTable\SteelArchStrainEigenvalueTable.cs" />
-    <Compile Include="MonitoringDatasEigenvalueTable\SteelLatticeStrainEigenvalueTable.cs" />
-    <Compile Include="MonitoringDatasEigenvalueTable\TemperatureEigenvalueTable.cs" />
-    <Compile Include="MonitoringDatasEigenvalueTable\WindLoadEigenvalueTable.cs" />
+    <Compile Include="MonitoringDatasEigenvalueTable\Eigenvalue_HumidityEigenvalueTable.cs" />
+    <Compile Include="MonitoringDatasEigenvalueTable\Eigenvalue_SteelArchStrainEigenvalueTable.cs" />
+    <Compile Include="MonitoringDatasEigenvalueTable\Eigenvalue_SteelLatticeStrainEigenvalueTable.cs" />
+    <Compile Include="MonitoringDatasEigenvalueTable\Eigenvalue_TemperatureEigenvalueTable.cs" />
+    <Compile Include="MonitoringDatasEigenvalueTable\Eigenvalue_WindLoadEigenvalueTable.cs" />
     <Compile Include="BasicMonitoringDatasTable\Basic_CableForceTable.cs" />
     <Compile Include="BasicMonitoringDatasTable\Basic_ConcreteStrainTable.cs" />
     <Compile Include="BasicMonitoringDatasTable\Basic_DisplacementTable.cs" />

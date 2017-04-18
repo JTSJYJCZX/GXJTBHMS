@@ -8,7 +8,7 @@ namespace GxjtBHMS.Models.AbnormalThresholdValueSetting
     /// <summary>
     /// 阈值基类
     /// </summary>
-    public class AbnormalThresholdValueTable : EntityBase<int>
+    public class Abnormal_ThresholdValueTable : EntityBase<int>
     {
         
         public string TypeName { get; set; }

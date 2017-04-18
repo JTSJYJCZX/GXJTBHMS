@@ -7,9 +7,9 @@ using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL
 {
-    public class HumidityDatasEigenvalueDAL : Repository<HumidityEigenvalueTable, int>,IMonitoringDatasEigenvalueDAL<HumidityEigenvalueTable>
+    public class HumidityDatasEigenvalueDAL : Repository<Eigenvalue_HumidityEigenvalueTable, int>,IMonitoringDatasEigenvalueDAL<Eigenvalue_HumidityEigenvalueTable>
     {
-        public override IEnumerable<HumidityEigenvalueTable> FindBy(IList<Func<HumidityEigenvalueTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
+        public override IEnumerable<Eigenvalue_HumidityEigenvalueTable> FindBy(IList<Func<Eigenvalue_HumidityEigenvalueTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
         {
             using (var ctx = new BHMSContext())
             {

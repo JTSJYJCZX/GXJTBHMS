@@ -6,9 +6,9 @@ using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL
 {
-    public class TemperatureDatasEigenvalueDAL : Repository<TemperatureEigenvalueTable, int>,IMonitoringDatasEigenvalueDAL<TemperatureEigenvalueTable>
+    public class TemperatureDatasEigenvalueDAL : Repository<Eigenvalue_TemperatureEigenvalueTable, int>,IMonitoringDatasEigenvalueDAL<Eigenvalue_TemperatureEigenvalueTable>
     {
-        public override IEnumerable<TemperatureEigenvalueTable> FindBy(IList<Func<TemperatureEigenvalueTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
+        public override IEnumerable<Eigenvalue_TemperatureEigenvalueTable> FindBy(IList<Func<Eigenvalue_TemperatureEigenvalueTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
         {
             using (var ctx = new BHMSContext())
             {

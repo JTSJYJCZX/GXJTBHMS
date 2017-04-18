@@ -6,7 +6,7 @@ namespace GxjtBHMS.Service.Messaging
 {
     public class AbnormalThresholdValueResponse : ResponseBase
     {
-        public IEnumerable<AbnormalThresholdValueTable> AbnormalThresholdValue { get; set; }   
+        public IEnumerable<Abnormal_ThresholdValueTable> AbnormalThresholdValue { get; set; }   
 
     }
 }

@@ -51,25 +51,25 @@ namespace GxjtBHMS.Service
             _ninjectKernel.Bind<IHumidityDatasOriginalValueDAL>().To<HumidityDatasOriginalValueDAL>();
             _ninjectKernel.Bind<IWindLoadDatasOriginalValueDAL>().To<WindLoadDatasOriginalValueDAL>();
 
-            _ninjectKernel.Bind<IMonitoringDatasEigenvalueDAL<ConcreteStrainEigenvalueTable>>().To<ConcreteStrainDatasEigenvalueDAL>();
-            _ninjectKernel.Bind<IMonitoringDatasEigenvalueDAL<SteelArchStrainEigenvalueTable>>().To<SteelArchStrainDatasEigenvalueDAL>();
-            _ninjectKernel.Bind<IMonitoringDatasEigenvalueDAL<SteelLatticeStrainEigenvalueTable>>().To<SteelLatticeStrainDatasEigenvalueDAL>();
-            _ninjectKernel.Bind<IMonitoringDatasEigenvalueDAL<DisplacementEigenvalueTable>>().To<DisplaymentDatasEigenValueDAL>();
-            _ninjectKernel.Bind<IMonitoringDatasEigenvalueDAL<CableForceEigenValueTable>>().To<CableForceDatasEigenvalueDAL>();
-            _ninjectKernel.Bind<IMonitoringDatasEigenvalueDAL<HumidityEigenvalueTable>>().To<HumidityDatasEigenvalueDAL>();
-            _ninjectKernel.Bind<IMonitoringDatasEigenvalueDAL<TemperatureEigenvalueTable>>().To<TemperatureDatasEigenvalueDAL>();
-            _ninjectKernel.Bind<IMonitoringDatasEigenvalueDAL<WindLoadEigenvalueTable>>().To<WindLoadDatasEigenvalueDAL>();
+            _ninjectKernel.Bind<IMonitoringDatasEigenvalueDAL<Eigenvalue_ConcreteStrainEigenvalueTable>>().To<ConcreteStrainDatasEigenvalueDAL>();
+            _ninjectKernel.Bind<IMonitoringDatasEigenvalueDAL<Eigenvalue_SteelArchStrainEigenvalueTable>>().To<SteelArchStrainDatasEigenvalueDAL>();
+            _ninjectKernel.Bind<IMonitoringDatasEigenvalueDAL<Eigenvalue_SteelLatticeStrainEigenvalueTable>>().To<SteelLatticeStrainDatasEigenvalueDAL>();
+            _ninjectKernel.Bind<IMonitoringDatasEigenvalueDAL<Eigenvalue_DisplacementEigenvalueTable>>().To<DisplaymentDatasEigenValueDAL>();
+            _ninjectKernel.Bind<IMonitoringDatasEigenvalueDAL<Eigenvalue_CableForceEigenvalueTable >>().To<CableForceDatasEigenvalueDAL>();
+            _ninjectKernel.Bind<IMonitoringDatasEigenvalueDAL<Eigenvalue_HumidityEigenvalueTable>>().To<HumidityDatasEigenvalueDAL>();
+            _ninjectKernel.Bind<IMonitoringDatasEigenvalueDAL<Eigenvalue_TemperatureEigenvalueTable>>().To<TemperatureDatasEigenvalueDAL>();
+            _ninjectKernel.Bind<IMonitoringDatasEigenvalueDAL<Eigenvalue_WindLoadEigenvalueTable>>().To<WindLoadDatasEigenvalueDAL>();
 
 
 
-            _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryChartService<ConcreteStrainEigenvalueTable>>().To<MonitorDatasQueryChartService<ConcreteStrainEigenvalueTable>>();
-            _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryChartService<SteelArchStrainEigenvalueTable>>().To<MonitorDatasQueryChartService<SteelArchStrainEigenvalueTable>>();
-            _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryChartService<SteelLatticeStrainEigenvalueTable>>().To<MonitorDatasQueryChartService<SteelLatticeStrainEigenvalueTable>>();
-            _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryChartService<DisplacementEigenvalueTable>>().To<MonitorDatasQueryChartService<DisplacementEigenvalueTable>>();
-            _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryChartService<CableForceEigenValueTable>>().To<MonitorDatasQueryChartService<CableForceEigenValueTable>>();
-            _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryChartService<HumidityEigenvalueTable>>().To<MonitorDatasQueryChartService<HumidityEigenvalueTable>>();
-            _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryChartService<TemperatureEigenvalueTable>>().To<MonitorDatasQueryChartService<TemperatureEigenvalueTable>>();
-            _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryChartService<WindLoadEigenvalueTable>>().To<MonitorDatasQueryChartService<WindLoadEigenvalueTable>>();
+            _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryChartService<Eigenvalue_ConcreteStrainEigenvalueTable>>().To<MonitorDatasQueryChartService<Eigenvalue_ConcreteStrainEigenvalueTable>>();
+            _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryChartService<Eigenvalue_SteelArchStrainEigenvalueTable>>().To<MonitorDatasQueryChartService<Eigenvalue_SteelArchStrainEigenvalueTable>>();
+            _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryChartService<Eigenvalue_SteelLatticeStrainEigenvalueTable>>().To<MonitorDatasQueryChartService<Eigenvalue_SteelLatticeStrainEigenvalueTable>>();
+            _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryChartService<Eigenvalue_DisplacementEigenvalueTable>>().To<MonitorDatasQueryChartService<Eigenvalue_DisplacementEigenvalueTable>>();
+            _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryChartService<Eigenvalue_CableForceEigenvalueTable >>().To<MonitorDatasQueryChartService<Eigenvalue_CableForceEigenvalueTable >>();
+            _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryChartService<Eigenvalue_HumidityEigenvalueTable>>().To<MonitorDatasQueryChartService<Eigenvalue_HumidityEigenvalueTable>>();
+            _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryChartService<Eigenvalue_TemperatureEigenvalueTable>>().To<MonitorDatasQueryChartService<Eigenvalue_TemperatureEigenvalueTable>>();
+            _ninjectKernel.Bind<IMonitorDatasEigenvalueQueryChartService<Eigenvalue_WindLoadEigenvalueTable>>().To<MonitorDatasQueryChartService<Eigenvalue_WindLoadEigenvalueTable>>();
 
             _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<Basic_SteelArchStrainTable >>().To<SteelArchStrainMonitorDatasOriginalValueDownloadFileSystemService>();
             _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<Basic_ConcreteStrainTable >>().To<ConcreteStrainMonitorDatasOriginalValueDownloadFileSystemService>();
@@ -82,14 +82,14 @@ namespace GxjtBHMS.Service
 
 
 
-            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<ConcreteStrainEigenvalueTable>>().To<MonitorDatasEigenValueQueryFileSystemService<ConcreteStrainEigenvalueTable>>();
-            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<SteelArchStrainEigenvalueTable>>().To<MonitorDatasEigenValueQueryFileSystemService<SteelArchStrainEigenvalueTable>>();
-            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<SteelLatticeStrainEigenvalueTable>>().To<MonitorDatasEigenValueQueryFileSystemService<SteelLatticeStrainEigenvalueTable>>();
-            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<DisplacementEigenvalueTable>>().To<MonitorDatasEigenValueQueryFileSystemService<DisplacementEigenvalueTable>>();
-            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<CableForceEigenValueTable>>().To<MonitorDatasEigenValueQueryFileSystemService<CableForceEigenValueTable>>();
-            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<HumidityEigenvalueTable>>().To<MonitorDatasEigenValueQueryFileSystemService<HumidityEigenvalueTable>>();
-            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<TemperatureEigenvalueTable>>().To<MonitorDatasEigenValueQueryFileSystemService<TemperatureEigenvalueTable>>();
-            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<WindLoadEigenvalueTable>>().To<MonitorDatasEigenValueQueryFileSystemService<WindLoadEigenvalueTable>>();
+            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<Eigenvalue_ConcreteStrainEigenvalueTable>>().To<MonitorDatasEigenValueQueryFileSystemService<Eigenvalue_ConcreteStrainEigenvalueTable>>();
+            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<Eigenvalue_SteelArchStrainEigenvalueTable>>().To<MonitorDatasEigenValueQueryFileSystemService<Eigenvalue_SteelArchStrainEigenvalueTable>>();
+            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<Eigenvalue_SteelLatticeStrainEigenvalueTable>>().To<MonitorDatasEigenValueQueryFileSystemService<Eigenvalue_SteelLatticeStrainEigenvalueTable>>();
+            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<Eigenvalue_DisplacementEigenvalueTable>>().To<MonitorDatasEigenValueQueryFileSystemService<Eigenvalue_DisplacementEigenvalueTable>>();
+            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<Eigenvalue_CableForceEigenvalueTable >>().To<MonitorDatasEigenValueQueryFileSystemService<Eigenvalue_CableForceEigenvalueTable >>();
+            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<Eigenvalue_HumidityEigenvalueTable>>().To<MonitorDatasEigenValueQueryFileSystemService<Eigenvalue_HumidityEigenvalueTable>>();
+            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<Eigenvalue_TemperatureEigenvalueTable>>().To<MonitorDatasEigenValueQueryFileSystemService<Eigenvalue_TemperatureEigenvalueTable>>();
+            _ninjectKernel.Bind<IMonitorDatasQueryFileSystemService<Eigenvalue_WindLoadEigenvalueTable>>().To<MonitorDatasEigenValueQueryFileSystemService<Eigenvalue_WindLoadEigenvalueTable>>();
 
             _ninjectKernel.Bind<IThresholdValueSettingDAL<ThresholdValue_SteelArchStrainThresholdValueTable>>().To<SteelArchStrainThresholdValueSettingDAL>();
             _ninjectKernel.Bind<IThresholdValueSettingDAL<ThresholdValue_SteelLatticeStrainThresholdValueTable>>().To<SteelLatticeStrainThresholdValueSettingDAL>();

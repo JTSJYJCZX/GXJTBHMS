@@ -5,9 +5,9 @@ using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
 
 namespace GxjtBHMS.SqlServerDAL
 {
-    public class DisplaymentDatasEigenValueDAL : Repository<DisplacementEigenvalueTable, int>,IMonitoringDatasEigenvalueDAL<DisplacementEigenvalueTable>
+    public class DisplaymentDatasEigenValueDAL : Repository<Eigenvalue_DisplacementEigenvalueTable, int>,IMonitoringDatasEigenvalueDAL<Eigenvalue_DisplacementEigenvalueTable>
     {
-        public override IEnumerable<DisplacementEigenvalueTable> FindBy(IList<Func<DisplacementEigenvalueTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
+        public override IEnumerable<Eigenvalue_DisplacementEigenvalueTable> FindBy(IList<Func<Eigenvalue_DisplacementEigenvalueTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
         {
             using (var ctx = new BHMSContext())
             {
