@@ -1,6 +1,7 @@
 ﻿using GxjtBHMS.Infrastructure.Configuration;
 using GxjtBHMS.Models;
 using GxjtBHMS.Models.AbnormalThresholdValueSetting;
+using GxjtBHMS.Models.FirstLevelSafetyAssessmentTable;
 using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
 using GxjtBHMS.Models.MonitoringDatasTable;
 using GxjtBHMS.Models.ThresholdValueSetting;
@@ -75,7 +76,8 @@ namespace GxjtBHMS.SqlServerDAL
         public DbSet<SafetyPreWarning_TemperatureTable> SafetyPreWarning_Temperatures { get; set; }//位移安全预警值
         public DbSet<SafetyPreWarning_WindLoadTable> SafetyPreWarning_WindLoads { get; set; }//位移安全预警值
 
-
+        //一级安全评估报告
+        public DbSet<FirstLevelSafetyAssessmentReportTable> FirstLevelSafetyAssessmentReports { get; set; }
 
     }
 }

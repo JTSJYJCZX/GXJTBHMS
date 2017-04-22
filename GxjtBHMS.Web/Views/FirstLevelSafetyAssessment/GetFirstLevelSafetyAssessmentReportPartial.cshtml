@@ -1,0 +1,17 @@
+﻿
+@model GxjtBHMS.Web.ViewModels.FirstLevelSafetyAssessment.FirstLevelSafetyAssessmentViewModel
+
+<tr class="text-center">
+    <td>
+        <span class="text-center form-control">@Model.Id</span>
+    </td>
+    <td>
+        @Html.TextBoxFor(m => m.ReportName, new { @class = "text-center form-control" })
+    </td>
+
+    <td>
+        @Html.TextBoxFor(m =>m.ReportTime, new { @class = "text-center form-control" })
+    </td>
+</tr>
+
+@Html.AntiForgeryToken()

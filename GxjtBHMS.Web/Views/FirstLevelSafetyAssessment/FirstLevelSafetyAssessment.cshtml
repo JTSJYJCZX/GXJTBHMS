@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "一级安全评估";
+}
+
+<h1 style="text-align:center">一级安全评估</h1>
+<hr />
+
+@Html.Action("GetFirstLevelSafetyAssessmentContent")
+
+<hr />
+
+<div id="searchContent" class="scrolltable">
+    @*查询结果区域*@
+</div>
+
+
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/SafetyPreWarningDetailSearchPartialwebsite")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqPaginator")
+    @Styles.Render("~/content/css/bootstrap-select")
+    @Scripts.Render("~/bundles/bootstrap-select")
+    @Styles.Render("~/content/hotspotcss")
+@Styles.Render("~/content/css/bootstrap-select")
+@Scripts.Render("~/bundles/bootstrap-select")
+@Styles.Render("~/content/datetimepickercss")
+@Scripts.Render("~/bundles/datetimepicker")
+
+
+    <script src="~/Scripts/jquery.signalR-2.2.1.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+}
