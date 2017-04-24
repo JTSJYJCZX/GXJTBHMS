@@ -4,7 +4,7 @@ using GxjtBHMS.Models.FirstLevelSafetyAssessmentTable;
 namespace GxjtBHMS.IDAL
 
 {
-    public interface IGetFirstLevelSafetyAssessmentReportDAL : IReadOnlyRepository<FirstLevelSafetyAssessmentReportTable, int>,IRepository<FirstLevelSafetyAssessmentReportTable>
+    public interface IGetFirstLevelSafetyAssessmentReportDAL : IReadOnlyRepository<FirstAssessment_FirstLevelSafetyAssessmentReportTable, int>,IRepository<FirstAssessment_FirstLevelSafetyAssessmentReportTable>
     {
 
 

@@ -5,7 +5,7 @@ namespace GxjtBHMS.Service.Messaging
 {
     public class FirstLevelSafetyAssessmentReportResponse : PagedResponse
     {
-        public IEnumerable<FirstLevelSafetyAssessmentReportTable> FirstLevelSafetyAssessmentReport { get; set; }   
+        public IEnumerable<FirstAssessment_FirstLevelSafetyAssessmentReportTable> FirstLevelSafetyAssessmentReport { get; set; }   
 
     }
 }
