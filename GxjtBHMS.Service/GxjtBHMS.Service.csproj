@@ -82,6 +82,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FirstLevelSafetyAssessmentReportService\GetFirstLevelSafetyAssessmentReportService.cs" />
     <Compile Include="AbnormalThresholdValueService\AbnormalThresholdValueSettingService.cs" />
     <Compile Include="AutoMapper\Configuration.cs" />
     <Compile Include="Implementations\EigenvalueChartQueryService\MonitorDatasQueryChartService.cs" />
@@ -119,6 +120,8 @@
     <Compile Include="Interfaces\RealTimeDatasServiceInerfaces\ISteelLatticeStrainRealTimeDatasService.cs" />
     <Compile Include="Interfaces\SafetyPreWarningRealTimePushServiceInterfaces\IGetOneTypeSafetyPreWarningRealTimePushServiceBase.cs" />
     <Compile Include="Interfaces\SafetyPreWarningRealTimePushServiceInterfaces\ISafetyPreWarningRealTimePushService.cs" />
+    <Compile Include="Messaging\FirstLevelSafetyAssessmentReport\FirstLevelSafetyAssessmentSearchRequest.cs" />
+    <Compile Include="Messaging\FirstLevelSafetyAssessmentReport\FirstLevelSafetyAssessmentReportResponse.cs" />
     <Compile Include="Messaging\AbnormalThresholdValueSetting\AbnormalThresholdValueResponse.cs" />
     <Compile Include="Messaging\AbnormalThresholdValueSetting\AbnormalThresholdValueSettingRequest.cs" />
     <Compile Include="Messaging\SafetyPreWarning\GetSafetyWarningDetailRequest.cs" />

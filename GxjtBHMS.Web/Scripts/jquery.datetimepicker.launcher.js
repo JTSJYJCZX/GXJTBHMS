@@ -38,11 +38,8 @@ $(function () {
             lang: 'ch',
             yearStart: 2010,//设置最小年份
             yearEnd: 2020,//设置最大年份
-            todayButton: true,    //关闭选择今天按钮
-            step: 60,
             dayOfWeekStart: 0, //每周开始的时间，周日，周一等等。  
-            minDate: '-1971/01/1',//最小可选时间为一年前。
-            maxDate: new Date(),
+            timepicker: false,
         });
 
 

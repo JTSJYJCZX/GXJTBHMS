@@ -21,6 +21,8 @@ using GxjtBHMS.Service.Interfaces.SafetyPreWarningRealTimePushServiceInterfaces;
 using NPOI.SS.Formula.Functions;
 using GxjtBHMS.Service.SafetyPreWarningRealTimeHubService;
 using GxjtBHMS.Models.SafetyPreWarningTable;
+using GxjtBHMS.Models.FirstLevelSafetyAssessmentTable;
+using GxjtBHMS.SqlServerDAL.FirstLevelSafetyAssessmentReportDAL;
 
 namespace GxjtBHMS.Service
 {
@@ -112,6 +114,11 @@ _ninjectKernel.Bind<ISafetyPreWarningRealTimePushDAL<SafetyPreWarning_CableForce
 _ninjectKernel.Bind<ISafetyPreWarningRealTimePushDAL<SafetyPreWarning_DisplacementTable>>().To<Displacement_SafetyPreWarningRealTimePushDAL>();
 _ninjectKernel.Bind<ISafetyPreWarningRealTimePushDAL<SafetyPreWarning_WindLoadTable>>().To<WindLoad_SafetyPreWarningRealTimePushDAL>();
 _ninjectKernel.Bind<ISafetyPreWarningRealTimePushDAL<SafetyPreWarning_TemperatureTable>>().To<Temperature_SafetyPreWarningRealTimePushDAL>();
+
+
+
+
+_ninjectKernel.Bind<IGetFirstLevelSafetyAssessmentReportDAL>().To<GetFirstLevelSafetyAssessmentReportDAL>();
 
         }
     }

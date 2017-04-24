@@ -21,6 +21,7 @@ namespace GxjtBHMS.Web.Controllers.SafetyPreWarning
             return PartialView("GetSafetyWarningSearchContentPartial");
         }
 
+
         public ActionResult GetSafetyWarningDetail(QuerySafetyPreWarningConditonView conditons)
         {
             int i = 0;
