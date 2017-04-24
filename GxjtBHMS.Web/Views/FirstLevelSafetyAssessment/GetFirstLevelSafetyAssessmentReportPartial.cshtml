@@ -1,0 +1,25 @@
+﻿@model GxjtBHMS.Web.ViewModels.FirstLevelSafetyAssessment.FirstLevelSafetyAssessmentViewModel
+
+<tr class="text-center">
+    <td>
+        @Html.TextBoxFor(m => m.ReportName, new { @class = "text-center", @style = "border:hidden" })
+    </td>
+
+    <td>
+        @Html.TextBoxFor(m =>m.ReportTime, new { @class = "text-center", @style = "border:hidden" })
+    </td>
+    <td>
+        <input class="form-control" style="border:hidden" type="button" onclick="ViewReport(this, '/FirstLevelSafetyAssessment/ViewReport')" operate="viewReport" value="查看报告" />
+    </td>
+    <td>
+        <input class="form-control"style="border:hidden" type="button" onclick="DownloadReport(this, '/FirstLevelSafetyAssessment/DownloadReport')" operate="remove" value="下载报告" />
+    </td>
+
+
+
+
+</tr>
+
+@Html.AntiForgeryToken()
+
+

@@ -46,6 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbnormalThresholdValueSetting\Abnormal_ThresholdValueTable.cs" />
+    <Compile Include="FirstLevelSafetyAssessmentTable\FirstAssessment_FirstLevelOfSafetyAssessmentExceptionRecordTable.cs" />
+    <Compile Include="FirstLevelSafetyAssessmentTable\FirstAssessment_FirstLevelOfSafetyAssessmentResultsTable.cs" />
+    <Compile Include="FirstLevelSafetyAssessmentTable\FirstAssessment_FirstLevelSafetyAssessmentReportTable.cs" />
     <Compile Include="MointoringDatasEigenvalueModel.cs" />
     <Compile Include="MonitoringDatasEigenvalueTable\Eigenvalue_CableForceEigenvalueTable.cs" />
     <Compile Include="MonitoringDatasEigenvalueTable\Eigenvalue_ConcreteStrainEigenvalueTable.cs" />

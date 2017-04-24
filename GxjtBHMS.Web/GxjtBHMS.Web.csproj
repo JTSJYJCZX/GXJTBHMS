@@ -239,6 +239,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MonitoringDatasComparingQueryController.cs" />
     <Compile Include="Controllers\MonitoringDatasController.cs" />
+    <Compile Include="Controllers\FirstLevelSafetyAssessment\FirstLevelSafetyAssessmentController.cs" />
     <Compile Include="Controllers\SafetyPreWarning\SafetyPreWarningController.cs" />
     <Compile Include="Controllers\StateEvaluation\ThresholdValueSettingController.cs" />
     <Compile Include="Controllers\RealTimeMonitoring\RealTimeMonitoringController.cs" />
@@ -289,9 +290,11 @@
     <Compile Include="ViewModels\AdminUser\QueryUsersConditionView.cs" />
     <Compile Include="ViewModels\AdminUser\UserSeachResultView.cs" />
     <Compile Include="ViewModels\AdminUser\UsersSearchConditionView.cs" />
+    <Compile Include="ViewModels\FirstLevelSafetyAssessment\FirstLevelSafetyAssessmentViewModel.cs" />
     <Compile Include="ViewModels\MonitoringDatasComparing\MornitoringDataComparingSearchBarView.cs" />
     <Compile Include="ViewModels\MonitoringDatas\MornitoringDataSearchBarBaseView.cs" />
     <Compile Include="ViewModels\PaginatorModel.cs" />
+    <Compile Include="ViewModels\FirstLevelSafetyAssessment\FirstLevelSafetyAssessmentSearchBarBaseView.cs" />
     <Compile Include="ViewModels\SafetyPreWarning\QuerySafetyPreWarningConditonView.cs" />
     <Compile Include="ViewModels\SafetyPreWarning\SafetyPreWarningViewModel.cs" />
     <Compile Include="ViewModels\SafetyPreWarning\SafetyPreWarningModels.cs" />
@@ -423,6 +426,7 @@
     <Content Include="Scripts\dataQuery-SearchContentPartial-website.js" />
     <Content Include="Scripts\dataComparingQuerySearchPartial.website.js" />
     <Content Include="Scripts\dataQuerySearchPartial.website.js" />
+    <Content Include="Scripts\FirstLevelSafetyAssessment\FirstLevelSafetyAssessmentReportList-website.js" />
     <Content Include="Scripts\htmlencode.js" />
     <Content Include="Scripts\i18n\defaults-ar_AR.js" />
     <Content Include="Scripts\i18n\defaults-ar_AR.min.js" />
@@ -658,6 +662,10 @@
     <Content Include="Views\SafetyPreWarning\SafetyPreWarningDetailListPartial.cshtml" />
     <Content Include="Views\SafetyPreWarning\SafetyPreWarningPartial.cshtml" />
     <Content Include="Views\RealTimeMonitoring\WindLoadDatasRealTimeMonitoring.cshtml" />
+    <Content Include="Views\FirstLevelSafetyAssessment\FirstLevelSafetyAssessment.cshtml" />
+    <Content Include="Views\FirstLevelSafetyAssessment\GetFirstLevelSafetyAssessmentReportPartial.cshtml" />
+    <Content Include="Views\FirstLevelSafetyAssessment\GetFirstLevelSafetyAssessmentListPartial.cshtml" />
+    <Content Include="Views\FirstLevelSafetyAssessment\GetTimeSearchPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -29,5 +29,20 @@ $(function () {
             minDate: '-1971/01/1',//最小可选时间为一年前。
             maxDate: new Date(),
         });
+
+    //一级安全评估中月份模糊搜索
+        $('#Monthpicker').datetimepicker(
+        {
+            value: 'new Date()',
+            format: 'Y-m',
+            lang: 'ch',
+            yearStart: 2010,//设置最小年份
+            yearEnd: 2020,//设置最大年份
+            dayOfWeekStart: 0, //每周开始的时间，周日，周一等等。  
+            timepicker: false,
+        });
+
+
+
 });
 
