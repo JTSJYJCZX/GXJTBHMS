@@ -2,7 +2,7 @@
 
 namespace GxjtBHMS.Models.FirstLevelSafetyAssessmentTable
 {
-    public class FirstLevelSafetyAssessmentReportTable : EntityBase<int>
+    public class FirstAssessment_FirstLevelSafetyAssessmentReportTable : EntityBase<int>
     {
 
         //报告期数
