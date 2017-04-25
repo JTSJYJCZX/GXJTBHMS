@@ -7,6 +7,8 @@ namespace GxjtBHMS.Web.ViewModels.FirstLevelSafetyAssessment
     {
         public string ReportName { get; set; }
         public DateTime ReportTime { get; set; }
+        public string  AssessmentState { get; set; }
+        public string  AssessmentGrade { get; set; }
 
     }
 }

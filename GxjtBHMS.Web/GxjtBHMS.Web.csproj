@@ -236,6 +236,7 @@
     <Compile Include="Controllers\AbnormalThresholdValueSetting\AbnormalThresholdValueController.cs" />
     <Compile Include="Controllers\AdminUserController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\SecondLevelSafetyAssessmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MonitoringDatasComparingQueryController.cs" />
     <Compile Include="Controllers\MonitoringDatasController.cs" />
@@ -298,6 +299,8 @@
     <Compile Include="ViewModels\SafetyPreWarning\QuerySafetyPreWarningConditonView.cs" />
     <Compile Include="ViewModels\SafetyPreWarning\SafetyPreWarningViewModel.cs" />
     <Compile Include="ViewModels\SafetyPreWarning\SafetyPreWarningModels.cs" />
+    <Compile Include="ViewModels\SecondLevelSafetyAssessment\SecondLevelSafetyAssessmentConditonViewModel.cs" />
+    <Compile Include="ViewModels\SecondLevelSafetyAssessment\SecondLevelSafetyAssessmentViewModel.cs" />
     <Compile Include="ViewModels\Shared\SimplePagedViewModel.cs" />
     <Compile Include="ViewModels\ThresholdValueSetting\ThresholdValueSearchBarBaseView.cs" />
     <Compile Include="ViewModels\ThresholdValueSetting\QueryPointsNumberConditonView.cs" />
@@ -666,6 +669,10 @@
     <Content Include="Views\FirstLevelSafetyAssessment\GetFirstLevelSafetyAssessmentReportPartial.cshtml" />
     <Content Include="Views\FirstLevelSafetyAssessment\GetFirstLevelSafetyAssessmentListPartial.cshtml" />
     <Content Include="Views\FirstLevelSafetyAssessment\GetTimeSearchPartial.cshtml" />
+    <Content Include="Views\SecondLevelSafetyAssessment\SecondLevelSafetyAssessment.cshtml" />
+    <Content Include="Views\SecondLevelSafetyAssessment\GetReportListByTimeSearchPartial.cshtml" />
+    <Content Include="Views\SecondLevelSafetyAssessment\GetSecondLevelSafetyAssessmentListPartial.cshtml" />
+    <Content Include="Views\SecondLevelSafetyAssessment\GetSecondLevelSafetyAssessmentReportPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

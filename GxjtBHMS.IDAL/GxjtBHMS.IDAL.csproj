@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GetSecondLevelSafetyAssessmentReport\IGetSecondLevelSafetyAssessmentReportDAL.cs" />
     <Compile Include="GetFirstLevelSafetyAssessmentReport\IGetFirstLevelSafetyAssessmentReportDAL.cs" />
     <Compile Include="AbnormalThresholdValueSetting\IAbnormalThresholdValueSettingDAL.cs" />
     <Compile Include="IMonitoringDatasEigenvalueDAL.cs" />

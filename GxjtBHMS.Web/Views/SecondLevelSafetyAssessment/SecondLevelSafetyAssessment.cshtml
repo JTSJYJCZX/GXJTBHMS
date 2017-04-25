@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "二级安全评估报告";
+}
+
+<h1 style="text-align:center">二级安全评估报告</h1>
+<hr />
+
+<div>
+    <!--用户查询搜索栏开始-->
+    <p>@Html.Action("GetReportListByTimeSearchPartial")</p>
+    <!--用户查询搜索栏结束-->
+
+
+    <div id="message" style="color:@TempData[WebConstants.MessageColor]">@TempData[WebConstants.MessageKey]</div>
+    <div id="dataQueryList"></div>
+    <!--分页开始-->
+    <div class="pagination" id="paginationNav"></div>
+    <!--分页结束-->
+</div>
+
+<hr />
+
+
+
+
+@Html.Hidden("TotalPages", ViewData["TotalPages"])@*将总页数暂存到隐藏域中，以便给初始化分页导航脚本函数使用*@
+
+@section scripts{
+
+    @Scripts.Render("~/bundles/FirstLevelSafetyAssessmentReportList-website")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqPaginator")
+    @Styles.Render("~/content/css/bootstrap-select")
+    @Scripts.Render("~/bundles/bootstrap-select")
+    @Styles.Render("~/content/hotspotcss")
+    @Styles.Render("~/content/css/bootstrap-select")
+    @Scripts.Render("~/bundles/bootstrap-select")
+    @Styles.Render("~/content/datetimepickercss")
+    @Scripts.Render("~/bundles/datetimepicker")
+
+
+    <script src="~/Scripts/jquery.signalR-2.2.1.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+}

@@ -1,20 +1,20 @@
-﻿using GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService;
-using GxjtBHMS.Service.Messaging;
+﻿using GxjtBHMS.Service.Messaging;
+using GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService;
 using GxjtBHMS.Web.Models;
 using GxjtBHMS.Web.ViewModels.FirstLevelSafetyAssessment;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
-namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
+namespace GxjtBHMS.Web.Controllers
 {
-    public class FirstLevelSafetyAssessmentController : Controller
+    public class SecondLevelSafetyAssessmentController : Controller
     {
 
-        public ActionResult FirstLevelSafetyAssessment()
+        public ActionResult SecondLevelSafetyAssessment()
         {
-            var GetFirstLevelSafetyAssessmentReportListService = new GetFirstLevelSafetyAssessmentReportService();
-            var resp = GetFirstLevelSafetyAssessmentReportListService.GetTotalPages();
+            var GetSecondLevelSafetyAssessmentReportListService = new GetSecondLevelSafetyAssessmentReportService();
+            var resp = GetSecondLevelSafetyAssessmentReportListService.GetTotalPages();
             if (resp.Succeed)
             {
                 ViewData["TotalPages"] = resp.TotalPages;
@@ -28,14 +28,15 @@ namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
         }
 
         [ChildActionOnly]
-        public ActionResult GetTimeSearchPartial()
+        public ActionResult GetReportListByTimeSearchPartial()
         {
-            return PartialView("GetTimeSearchPartial");
+            return PartialView("GetReportListByTimeSearchPartial");
         }
 
-        public ActionResult GetFirstLevelSafetyAssessmentReportList(FirstLevelSafetyAssessmentSearchBarBaseView conditions)
+
+        public ActionResult GetSecondLevelSafetyAssessmentReportList(FirstLevelSafetyAssessmentSearchBarBaseView conditions)
         {
-            var req = new FirstLevelSafetyAssessmentSearchRequest()
+            var req = new SecondLevelSafetyAssessmentSearchRequest()
             {
                 CurrentPageIndex = conditions.CurrentPageIndex,
             };
@@ -44,17 +45,19 @@ namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
                req.StartTime =new DateTime(conditions.Time.Year,conditions.Time.Month,1);
                req.EndTime = req.StartTime.AddMonths(1);
             };
-            var GetFirstLevelSafetyAssessmentReportListService = new GetFirstLevelSafetyAssessmentReportService();
-            var resp = GetFirstLevelSafetyAssessmentReportListService.GetFirstLevelSafetyAssessmentReportList(req);
+            var GetSecondLevelSafetyAssessmentReportListService = new GetSecondLevelSafetyAssessmentReportService();
+            var resp = GetSecondLevelSafetyAssessmentReportListService.GetFirstLevelSafetyAssessmentReportList(req);
             var models = new List<FirstLevelSafetyAssessmentViewModel>();
             var resultView = new FirstLevelSafetyAssessmentSearchBarBaseView();
             if (resp.Succeed)
             {
-                foreach (var item in resp.FirstLevelSafetyAssessmentReport)
+                foreach (var item in resp.SecondLevelSafetyAssessmentReport)
                 {
                     var resultItem = new FirstLevelSafetyAssessmentViewModel();
                     resultItem.ReportName = item.ReportPeriods;
                     resultItem.ReportTime = item.ReportTime;
+                    resultItem.AssessmentGrade = item.AssessmentResultState.AssessmentGrade;
+                    resultItem.AssessmentState = item.AssessmentResultState.AssessmentState;
                     models.Add(resultItem);
                 }
                 resultView.FirstLevelSafetyAssessmentViewModels = models;
@@ -64,7 +67,7 @@ namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
             {
                 return Json(new { Color = StyleConstants.RedColor, message = resp.Message }, JsonRequestBehavior.AllowGet);
             }
-            return PartialView("GetFirstLevelSafetyAssessmentListPartial", resultView);
+            return PartialView("GetSecondLevelSafetyAssessmentListPartial", resultView);
         }
 
         /// <summary>

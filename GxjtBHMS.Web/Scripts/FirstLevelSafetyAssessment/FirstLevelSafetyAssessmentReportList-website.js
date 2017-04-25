@@ -6,7 +6,6 @@
 });
 //分页导航回调函数
 function accessResource(n) {
-    var time = $("#Monthpicker").val();
     var url = "/FirstLevelSafetyAssessment/GetFirstLevelSafetyAssessmentReportList";
     $.ajax({
         url: url,//URL请求命令
@@ -15,7 +14,6 @@ function accessResource(n) {
         dataType: "html",
         contentType: "application/x-www-form-urlencoded",//默认设置， 窗体数据被编码为名称/值对
         data: {
-            Time:time,
             CurrentPageIndex: n
         },
         success: function (datas) {
@@ -59,3 +57,31 @@ $("#bttnquery").click(function () {
         }
     });
 });
+
+
+$(function () {
+    $("#FirstLevelSafetyAssessmentReportDownLoad").click(function () {
+        var reportName = $("#FirstLevelSafetyAssessmentReportDownLoad").prev().prev().prev().val();
+        var url = "/FirstLevelSafetyAssessment/DownloadFirstLevelSafetyAssessmentReport";
+        $.ajax({
+            url: url,//URL请求命令
+            traditional: true,　//jQuery需要调用jQuery.param序列化参数，默认的话，traditional为false，即jquery会深度序列化参数对象，以适应如PHP和Ruby on Rails框架， 我们可以通过设置traditional 为true阻止深度序列化。
+            type: "get",
+            beforeSend: function () {
+                $('body').chardinJs('start');
+            },
+            complete: function (data) {
+                $('body').chardinJs('stop');
+            },
+            data: {
+                ReportName: reportName
+            },
+            success: function (data) {              
+                document.location.href = "/MonitoringDatas/OriginCode?guid=" + data + "&pointsPositionId=" + testPointPositionId + "&dataType=" + monitoringDataType;
+            },
+            error: function (result) {
+                alert(result.responseText);
+            }
+        });
+    });
+})

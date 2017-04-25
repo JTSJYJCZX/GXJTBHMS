@@ -1,0 +1,41 @@
+﻿@model GxjtBHMS.Web.ViewModels.FirstLevelSafetyAssessment.FirstLevelSafetyAssessmentSearchBarBaseView
+
+
+<div class="table-responsive">
+    <div id="message"></div>
+    <table class="table table-striped">
+        <thead>
+            <tr class="text-center">
+                <td>报告名称</td>
+                <td>报告生成时间</td>
+                <td>评定等级</td>
+                <td>评定状态</td>
+                <td>查看</td>
+                <td>下载</td>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model.FirstLevelSafetyAssessmentViewModels)
+        {
+            @Html.Partial("GetFirstLevelSafetyAssessmentReportPartial", item);
+        }
+    </table>
+
+
+    <script>
+        jqPaginatorSetting('#paginationNav',@Model.PaginatorModel.TotalPages,@Model.PaginatorModel.CurrentPageIndex);
+    </script>
+
+
+
+</div>
+
+@Html.AntiForgeryToken()
+
+
+
+
+
+
+@Styles.Render("~/content/hotspotcss")
+@Scripts.Render("~/bundles/hotspot")

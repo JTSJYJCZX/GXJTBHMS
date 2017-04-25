@@ -19,16 +19,6 @@ namespace GxjtBHMS.Service.Implementations.OriginalValueDownLoad
             row.CreateCell(4).SetCellValue(source.ToArray()[index].Temperature);
         }
 
-        //protected override HSSFWorkbook CreateWorkBook()
-        //{
-        //    _sheetName = "索力原始数据查询结果";
-        //    var workbook = base.CreateWorkBook() as HSSFWorkbook;
-        //    var sheet = workbook.GetSheet(_sheetName);
-        //    var headRow = sheet.GetRow(0);
-        //    //PartialHeadRow(headRow);
-        //    return workbook;
-        //}
-
         protected override void PartialHeadRow(IRow headRow)
         {
             _sheetName = "索力原始数据查询结果";

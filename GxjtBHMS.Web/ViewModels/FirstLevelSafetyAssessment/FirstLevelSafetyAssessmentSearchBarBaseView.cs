@@ -13,7 +13,6 @@ namespace GxjtBHMS.Web.ViewModels.FirstLevelSafetyAssessment
         {
             CurrentPageIndex = WebConstants.FirstPageIndex;
             FirstLevelSafetyAssessmentViewModels = new List<FirstLevelSafetyAssessmentViewModel>();
-
         }
         public List<FirstLevelSafetyAssessmentViewModel> FirstLevelSafetyAssessmentViewModels { get; set; }
 

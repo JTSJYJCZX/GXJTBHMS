@@ -2,15 +2,13 @@
 using System;
 using System.Collections.Generic;
 using GxjtBHMS.Service.Messaging;
-using System.Text;
-using System.Threading.Tasks;
 using GxjtBHMS.Models.AbnormalThresholdValueSetting;
 using System.Linq;
 using GxjtBHMS.Service.Messaging.AbnomalThresholdValueSetting;
 
 namespace GxjtBHMS.Service.AbnomalThresholdValueService
 {
-   public class AbnormalThresholdValueSettingService: ServiceBase
+    public class AbnormalThresholdValueSettingService: ServiceBase
     {
         IAbnormalThresholdValueSettingDAL _abnormalThresholdValueSettingDAL;
         public AbnormalThresholdValueSettingService()

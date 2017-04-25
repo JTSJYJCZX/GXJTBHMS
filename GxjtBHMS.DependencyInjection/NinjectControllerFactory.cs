@@ -1,7 +1,6 @@
 ﻿using GxjtBHMS.IDAL;
 using GxjtBHMS.IDAL.SafetyPreWarning;
 using GxjtBHMS.Models.MonitoringDatasTable;
-using GxjtBHMS.Models.ThresholdValueSetting;
 using GxjtBHMS.Service.Implementations;
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.Interfaces.SafetyPreWarningRealTimePushServiceInterfaces;
@@ -9,7 +8,6 @@ using GxjtBHMS.Service.SafetyPreWarningRealTimeHubService;
 using GxjtBHMS.SqlServerDAL;
 using GxjtBHMS.SqlServerDAL.RealTimeDatasMonitoringDAL;
 using GxjtBHMS.SqlServerDAL.SafetyPreWarningRealTimePushDAL;
-using GxjtBHMS.SqlServerDAL.ThresholdValueDatasDAL;
 using Ninject;
 using System;
 using System.Web.Mvc;

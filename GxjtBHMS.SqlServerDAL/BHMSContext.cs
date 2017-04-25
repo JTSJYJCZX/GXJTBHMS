@@ -4,6 +4,7 @@ using GxjtBHMS.Models.AbnormalThresholdValueSetting;
 using GxjtBHMS.Models.FirstLevelSafetyAssessmentTable;
 using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
 using GxjtBHMS.Models.MonitoringDatasTable;
+using GxjtBHMS.Models.SecondLevelSafetyAssessmentTable;
 using GxjtBHMS.Models.ThresholdValueSetting;
 using System.Data.Entity;
 
@@ -82,5 +83,7 @@ namespace GxjtBHMS.SqlServerDAL
         public DbSet<FirstAssessment_FirstLevelOfSafetyAssessmentExceptionRecordTable> FirstLevelOfSafetyAssessmentExceptionRecords { get; set; }
 
 
+        public DbSet<SecondAssessment_SecondLevelSafetyAssessmentReportTable> SecondAssessment_SecondLevelSafetyAssessmentReports { get; set; }
+        public DbSet<SecondAssessment_SecondLevelSafetyAssessmentStateTable> SecondAssessment_SecondLevelSafetyAssessmentStates { get; set; }
     }
 }

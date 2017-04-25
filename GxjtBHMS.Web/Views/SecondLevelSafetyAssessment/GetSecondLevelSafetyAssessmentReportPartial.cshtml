@@ -8,9 +8,14 @@
     <td>
         @Html.TextBoxFor(m =>m.ReportTime, new { @class = "text-center", @style = "border:hidden" })
     </td>
+
     <td>
-        <input class="form-control" style="border:hidden" type="button" onclick="ViewReport(this, '/FirstLevelSafetyAssessment/ViewReport')" operate="viewReport" value="查看报告" />
+        @Html.TextBoxFor(m => m.AssessmentGrade, new { @class = "text-center", @style = "border:hidden" })
     </td>
+    <td>
+        @Html.TextBoxFor(m => m.AssessmentState, new { @class = "text-center", @style = "border:hidden" })
+    </td>
+
     <td>
         <input class="form-control"style="border:hidden" type="button" id="FirstLevelSafetyAssessmentReportDownLoad" value="下载报告" />
     </td>
