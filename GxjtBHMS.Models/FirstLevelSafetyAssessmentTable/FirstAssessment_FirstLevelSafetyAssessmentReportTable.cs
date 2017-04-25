@@ -10,6 +10,8 @@ namespace GxjtBHMS.Models.FirstLevelSafetyAssessmentTable
         //报告生成时间
         public DateTime ReportTime { get; set; }
         //评估原因
-        public string AssessmentReasons { get; set; }
+        public virtual FirstAssessment_FirstLevelSafetyAssessmentReasonsTable AssessmentReasons { get; set; }
+        public int AssessmentReasonsId { get; set; }
+
     }
 }

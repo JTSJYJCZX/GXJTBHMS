@@ -80,7 +80,7 @@ namespace GxjtBHMS.SqlServerDAL
         public DbSet<FirstAssessment_FirstLevelSafetyAssessmentReportTable> FirstLevelSafetyAssessmentReports { get; set; }
         public DbSet<FirstAssessment_FirstLevelOfSafetyAssessmentResultsTable> FirstLevelOfSafetyAssessmentResults { get; set; }
         public DbSet<FirstAssessment_FirstLevelOfSafetyAssessmentExceptionRecordTable> FirstLevelOfSafetyAssessmentExceptionRecords { get; set; }
-
+        public DbSet<FirstAssessment_FirstLevelSafetyAssessmentReasonsTable> FirstLevelSafetyAssessmentReasons { get; set; }
 
     }
 }

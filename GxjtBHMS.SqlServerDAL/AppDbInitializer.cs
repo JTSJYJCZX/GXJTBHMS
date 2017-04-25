@@ -8,6 +8,7 @@ using GxjtBHMS.Models.ThresholdValueSetting;
 using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
 using GxjtBHMS.Models.MonitoringDatasTable;
 using GxjtBHMS.Models.AbnormalThresholdValueSetting;
+using GxjtBHMS.Models.FirstLevelSafetyAssessmentTable;
 
 namespace GxjtBHMS.SqlServerDAL
 {
@@ -331,6 +332,22 @@ namespace GxjtBHMS.SqlServerDAL
             ThresholdColor = AppConstants.SafetyPreWarningThresholdGrade3Color
         };
 
+        /// <summary>
+        /// 一级安全评估原因
+        /// </summary>
+        /// <param name="context"></param>
+        FirstAssessment_FirstLevelSafetyAssessmentReasonsTable Reasons1 = new FirstAssessment_FirstLevelSafetyAssessmentReasonsTable
+        {
+            AssessmentReasons= "首次评估"
+        };
+        FirstAssessment_FirstLevelSafetyAssessmentReasonsTable Reasons2 = new FirstAssessment_FirstLevelSafetyAssessmentReasonsTable
+        {
+            AssessmentReasons = "红色预警触发评估"
+        };
+        FirstAssessment_FirstLevelSafetyAssessmentReasonsTable Reasons3 = new FirstAssessment_FirstLevelSafetyAssessmentReasonsTable
+        {
+            AssessmentReasons = "常规月报"
+        };
 
         protected override void Seed(BHMSContext context)
         {
@@ -358,6 +375,7 @@ namespace GxjtBHMS.SqlServerDAL
             CreateAbnormalThresholdValue(context);
             //CreateSafetyPreWarning(context);
             CreateThresholdGradeValue(context);
+            CreateFirstLevelSafetyAssessmentReasonsValue(context);
         }
 
         /// <summary>
@@ -443,7 +461,17 @@ namespace GxjtBHMS.SqlServerDAL
             context.ThresholdGradeModel.Add(ThresholdGrade3);
         }
 
+        /// <summary>
+        /// 一级安全评估原因初始化
+        /// </summary>
+        /// <param name="context"></param>
+        private void CreateFirstLevelSafetyAssessmentReasonsValue(BHMSContext context)
+        {
 
+            context.FirstLevelSafetyAssessmentReasons.Add(Reasons1);
+            context.FirstLevelSafetyAssessmentReasons.Add(Reasons2);
+            context.FirstLevelSafetyAssessmentReasons.Add(Reasons3);
+        }
 
         /// <summary>
         /// 风速阈值设置
