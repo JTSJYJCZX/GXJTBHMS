@@ -1,0 +1,9 @@
+﻿@model GxjtBHMS.Web.ViewModels.FirstLevelSafetyAssessment.FirstLevelSafetyAssessmentSearchBarBaseView
+
+<div>
+    <label for="Monthpicker" class="control-label">
+        报告生成月份：
+        @Html.TextBoxFor(m => m.Time, new { style = "width:220px", id = "Monthpicker", @class = "selectpicker" })
+    </label>
+    <input type="button" id="bttnquery" value="查询" class="btn btn-default col-md-offset-1" />
+</div>

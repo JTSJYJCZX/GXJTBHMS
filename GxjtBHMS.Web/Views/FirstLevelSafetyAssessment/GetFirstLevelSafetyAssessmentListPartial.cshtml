@@ -1,19 +1,11 @@
 ﻿@model GxjtBHMS.Web.ViewModels.FirstLevelSafetyAssessment.FirstLevelSafetyAssessmentSearchBarBaseView
 
-<div class="form-group searchContent">
-    <label for="datetimepickerStart" class="control-label">
-        开始时间：
-        @Html.TextBoxFor(m => m.Time , new { style = "width:220px", id = "Monthpicker", @class = "selectpicker" })
-    </label>
-    <input type="button" id="bttnquery" value="查询" class="btn btn-default col-md-offset-1" />
-</div>
 
 <div class="table-responsive">
     <div id="message"></div>
     <table class="table table-striped">
         <thead>
             <tr class="text-center">
-                <td>序号</td>
                 <td>报告名称</td>
                 <td>报告生成时间</td>
                 <td>查看</td>
@@ -26,19 +18,17 @@
             @Html.Partial("GetFirstLevelSafetyAssessmentReportPartial", item);
         }
     </table>
+
+
+    <script>
+        jqPaginatorSetting('#paginationNav',@Model.PaginatorModel.TotalPages,@Model.PaginatorModel.CurrentPageIndex);
+    </script>
+
+
+
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
+@Html.AntiForgeryToken()
 
 
 

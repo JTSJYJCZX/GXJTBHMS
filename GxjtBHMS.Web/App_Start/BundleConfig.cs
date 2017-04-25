@@ -119,6 +119,12 @@ namespace GxjtBHMS.Web
                      "~/Scripts/SafetyPreWarningDetail/SafetyPreWarningDetailSearchPartialwebsite.js"));
 
 
+            //一级安全评估查询脚本
+            bundles.Add(new ScriptBundle("~/bundles/FirstLevelSafetyAssessmentReportList-website").Include(
+                     "~/Scripts/FirstLevelSafetyAssessment/FirstLevelSafetyAssessmentReportList-website.js"));
+
+
+
         }
     }
 }
