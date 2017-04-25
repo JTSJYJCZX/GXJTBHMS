@@ -75,6 +75,7 @@ namespace GxjtBHMS.SqlServerDAL
         public DbSet<SafetyPreWarning_DisplacementTable> SafetyPreWarning_Displacements { get; set; }//位移安全预警值
         public DbSet<SafetyPreWarning_TemperatureTable> SafetyPreWarning_Temperatures { get; set; }//位移安全预警值
         public DbSet<SafetyPreWarning_WindLoadTable> SafetyPreWarning_WindLoads { get; set; }//位移安全预警值
+        public DbSet<SafetyPreWarning_StrainTable> SafetyPreWarning_Strains { get; set; }//应变安全预警值
 
         //一级安全评估报告
         public DbSet<FirstAssessment_FirstLevelSafetyAssessmentReportTable> FirstLevelSafetyAssessmentReports { get; set; }
