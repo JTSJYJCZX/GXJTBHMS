@@ -48,6 +48,7 @@
     <Compile Include="AbnormalThresholdValueSetting\Abnormal_ThresholdValueTable.cs" />
     <Compile Include="FirstLevelSafetyAssessmentTable\FirstAssessment_FirstLevelOfSafetyAssessmentExceptionRecordTable.cs" />
     <Compile Include="FirstLevelSafetyAssessmentTable\FirstAssessment_FirstLevelOfSafetyAssessmentResultsTable.cs" />
+    <Compile Include="FirstLevelSafetyAssessmentTable\FirstAssessment_FirstLevelSafetyAssessmentReasonsTable.cs" />
     <Compile Include="FirstLevelSafetyAssessmentTable\FirstAssessment_FirstLevelSafetyAssessmentReportTable.cs" />
     <Compile Include="MointoringDatasEigenvalueModel.cs" />
     <Compile Include="MonitoringDatasEigenvalueTable\Eigenvalue_CableForceEigenvalueTable.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="BasicMonitoringDatasTable\Basic_TemperatureTable.cs" />
     <Compile Include="SafetyPreWarningTable\SafetyPreWarningBaseModel.cs" />
     <Compile Include="SafetyPreWarningTable\SafetyPreWarning_CableForceTable.cs" />
+    <Compile Include="SafetyPreWarningTable\SafetyPreWarning_StrainTable.cs" />
     <Compile Include="SafetyPreWarningTable\SafetyPreWarning_TemperatureTable.cs" />
     <Compile Include="SafetyPreWarningTable\SafetyPreWarning_DisplacementTable.cs" />
     <Compile Include="SafetyPreWarningTable\SafetyPreWarning_WindLoadTable.cs" />
