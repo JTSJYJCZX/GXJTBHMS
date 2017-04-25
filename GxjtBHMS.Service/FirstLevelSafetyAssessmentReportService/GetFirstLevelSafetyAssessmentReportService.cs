@@ -20,7 +20,7 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
         public FirstLevelSafetyAssessmentReportResponse GetFirstLevelSafetyAssessmentReportList(FirstLevelSafetyAssessmentSearchRequest req)
         {
             var resp = new FirstLevelSafetyAssessmentReportResponse();
-            IList<Func<FirstLevelSafetyAssessmentReportTable, bool>> ps = new List<Func<FirstLevelSafetyAssessmentReportTable, bool>>();
+            IList<Func<FirstAssessment_FirstLevelSafetyAssessmentReportTable, bool>> ps = new List<Func<FirstAssessment_FirstLevelSafetyAssessmentReportTable, bool>>();
             try
             {
                 DealWithContainsTime(req,ps);
@@ -46,7 +46,7 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
             return resp;
         }
 
-        void DealWithContainsTime(FirstLevelSafetyAssessmentSearchRequest req, IList<Func<FirstLevelSafetyAssessmentReportTable, bool>> ps)
+        void DealWithContainsTime(FirstLevelSafetyAssessmentSearchRequest req, IList<Func<FirstAssessment_FirstLevelSafetyAssessmentReportTable, bool>> ps)
         {
             if (req.StartTime.Year != 1)
             {
@@ -60,13 +60,13 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
         /// </summary>
         /// <param name="FirstLevelSafetyAssessmentReports"></param>
         /// <returns></returns>
-        protected bool HasNoSearchResult(IEnumerable<FirstLevelSafetyAssessmentReportTable> FirstLevelSafetyAssessmentReports)
+        protected bool HasNoSearchResult(IEnumerable<FirstAssessment_FirstLevelSafetyAssessmentReportTable> FirstLevelSafetyAssessmentReports)
         {
             return FirstLevelSafetyAssessmentReports.Count() == 0;
         }
         public PagedResponse GetTotalPages()
         {
-            IEnumerable<FirstLevelSafetyAssessmentReportTable> source = _getFirstLevelSafetyAssessmentReportDAL.FindAll();
+            IEnumerable<FirstAssessment_FirstLevelSafetyAssessmentReportTable> source = _getFirstLevelSafetyAssessmentReportDAL.FindAll();
             PagedResponse resp = new PagedResponse();
             try
             {                 

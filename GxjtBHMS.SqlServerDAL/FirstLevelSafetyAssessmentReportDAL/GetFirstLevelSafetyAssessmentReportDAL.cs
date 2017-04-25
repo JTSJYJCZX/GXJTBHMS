@@ -3,7 +3,7 @@ using GxjtBHMS.Models.FirstLevelSafetyAssessmentTable;
 
 namespace GxjtBHMS.SqlServerDAL.FirstLevelSafetyAssessmentReportDAL
 {
-    public class GetFirstLevelSafetyAssessmentReportDAL : Repository<FirstLevelSafetyAssessmentReportTable, int>, IGetFirstLevelSafetyAssessmentReportDAL
+    public class GetFirstLevelSafetyAssessmentReportDAL : Repository<FirstAssessment_FirstLevelSafetyAssessmentReportTable, int>, IGetFirstLevelSafetyAssessmentReportDAL
     {
         
     }
