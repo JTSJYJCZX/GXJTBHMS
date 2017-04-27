@@ -5,12 +5,18 @@ using GxjtBHMS.Web.ViewModels.SafetyAssessmentReportView;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using GxjtBHMS.Service.Interfaces;
+using GxjtBHMS.Service.Implementations;
 
 namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
 {
     public class FirstLevelSafetyAssessmentController : Controller
     {
-
+        IFileConverter _fileConverter;
+        public FirstLevelSafetyAssessmentController()
+        {
+            _fileConverter = new WordFileConvert();
+        }
         public ActionResult FirstLevelSafetyAssessment()
         {
             var GetFirstLevelSafetyAssessmentReportListService = new GetFirstLevelSafetyAssessmentReportService();
@@ -39,10 +45,10 @@ namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
             {
                 CurrentPageIndex = conditions.CurrentPageIndex,
             };
-            if (conditions.Time.Year!=1)
+            if (conditions.Time.Year != 1)
             {
-               req.StartTime =new DateTime(conditions.Time.Year,conditions.Time.Month,1);
-               req.EndTime = req.StartTime.AddMonths(1);
+                req.StartTime = new DateTime(conditions.Time.Year, conditions.Time.Month, 1);
+                req.EndTime = req.StartTime.AddMonths(1);
             };
             var GetFirstLevelSafetyAssessmentReportListService = new GetFirstLevelSafetyAssessmentReportService();
             var resp = GetFirstLevelSafetyAssessmentReportListService.GetFirstLevelSafetyAssessmentReportList(req);
@@ -78,7 +84,6 @@ namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
 
             return null;
         }
-
 
     }
 }

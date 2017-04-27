@@ -82,9 +82,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FirstLevelSafetyAssessmentReportService\CreateReportTable.cs" />
+    <Compile Include="AlarmDatasManagementService\AlarmDatasManagementServiceBase.cs" />
     <Compile Include="FirstLevelSafetyAssessmentReportService\GetFirstLevelSafetyAssessmentReportService.cs" />
     <Compile Include="AbnormalThresholdValueService\AbnormalThresholdValueSettingService.cs" />
     <Compile Include="AutoMapper\Configuration.cs" />
+    <Compile Include="Implementations\AlarmDatasManagement\AlarmDatasQueryService.cs" />
+    <Compile Include="Implementations\AlarmDatasManagement\AlarmDatasFileSystemService.cs" />
     <Compile Include="Implementations\EigenvalueChartQueryService\MonitorDatasQueryChartService.cs" />
     <Compile Include="Implementations\EigenvalueDownLoadService\MonitorDatasEigenValueQueryFileSystemService.cs" />
     <Compile Include="Implementations\ExcelFileConverter.cs" />
@@ -109,6 +113,9 @@
     <Compile Include="Implementations\ThresholdValueService\ThresholdValueSettingServiceBase.cs" />
     <Compile Include="Implementations\ThresholdValueService\GetThresholdValueSettingListBySearchBarService.cs" />
     <Compile Include="Implementations\ThresholdValueService\WithoutNegativeThresholdValueSettingServiceBase.cs" />
+    <Compile Include="Interfaces\AlarmDatasQueryChartServiceInerfaces\IAlarmDatasQueryService.cs" />
+    <Compile Include="Interfaces\AlarmDatasQueryChartServiceInerfaces\IAlarmDatasFileSystemService.cs" />
+    <Compile Include="Implementations\WordFileConvert.cs" />
     <Compile Include="Interfaces\IFileConverter.cs" />
     <Compile Include="Interfaces\RealTimeDatasServiceInerfaces\IWindLoadRealTimeDatasService.cs" />
     <Compile Include="Interfaces\RealTimeDatasServiceInerfaces\ITemperatureRealTimeDatasService.cs" />
@@ -120,6 +127,8 @@
     <Compile Include="Interfaces\RealTimeDatasServiceInerfaces\ISteelLatticeStrainRealTimeDatasService.cs" />
     <Compile Include="Interfaces\SafetyPreWarningRealTimePushServiceInterfaces\IGetOneTypeSafetyPreWarningRealTimePushServiceBase.cs" />
     <Compile Include="Interfaces\SafetyPreWarningRealTimePushServiceInterfaces\ISafetyPreWarningRealTimePushService.cs" />
+    <Compile Include="Messaging\AlarmDatas\AlarmDatasResponse.cs" />
+    <Compile Include="Messaging\AlarmDatas\GetAlarmDatasRequest.cs" />
     <Compile Include="Messaging\SecondLevelSafetyAssessmentReport\SecondLevelSafetyAssessmentReportDownloadResponse.cs" />
     <Compile Include="Messaging\SecondLevelSafetyAssessmentReport\SecondLevelSafetyAssessmentReportResponse.cs" />
     <Compile Include="Messaging\SecondLevelSafetyAssessmentReport\SecondLevelSafetyAssementReportUploadRequest.cs" />
@@ -145,7 +154,6 @@
     <Compile Include="SafetyPreWarningRealTimeHubService\SafetyPreWarningRealTimePushService.cs" />
     <Compile Include="SafetyPreWarningRealTimeHubService\Temperature_SafetyPreWarningRealTimePushService.cs" />
     <Compile Include="SafetyPreWarningRealTimeHubService\WindLoad_SafetyPreWarningRealTimePushService.cs" />
-    <Compile Include="SecondLevelSafetyAssessmentReportService\GetSecondLevelSafetyAssessmentReportService.cs" />
     <Compile Include="ServiceFactory\MonitoringDatasOriginalValueDownLoadServiceFactory.cs" />
     <Compile Include="ExtensionMethods\AdminUser\UserServiceExtension.cs" />
     <Compile Include="ExtensionMethods\GetEnumDescription\EnumUnit.cs" />
@@ -214,6 +222,7 @@
     <Compile Include="ServiceFactory\SafetyWarningDetailFactory.cs" />
     <Compile Include="ServiceFactory\ThresholdValueSettingServiceFactory.cs" />
     <Compile Include="Implementations\ThresholdValueService\ContainNegativeThresholdValueSettingServiceBase.cs" />
+    <Compile Include="ViewModels\AlarmDatasModel\AlarmDatasModel.cs" />
     <Compile Include="ViewModels\DataQueryResult\CableForceDatasModel.cs" />
     <Compile Include="ViewModels\DataQueryResult\TemperatureDatasMode.cs" />
     <Compile Include="ViewModels\DataQueryResult\ResultStatisticsModel.cs" />

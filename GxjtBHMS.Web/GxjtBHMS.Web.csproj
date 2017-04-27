@@ -235,6 +235,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AbnormalThresholdValueSetting\AbnormalThresholdValueController.cs" />
     <Compile Include="Controllers\AdminUserController.cs" />
+    <Compile Include="Controllers\AlarmDatasManagementController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\SecondLevelSafetyAssessmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -417,6 +418,7 @@
     <None Include="Properties\PublishProfiles\jtjc - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\jtjc - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\jtjc - Web Deploy.pubxml" />
+    <Content Include="Scripts\AlarmDatas\AlarmDatasQuery-SearchContentPartial-website.js" />
     <Content Include="Scripts\ajaxfileupload.js" />
     <Content Include="Scripts\bootstrap-select.js" />
     <Content Include="Scripts\bootstrap-select.js.map" />
@@ -599,6 +601,7 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\AlarmDatas\AlermDatasQuerySearchPartial.website.js" />
     <Content Include="Scripts\SafetyPreWarningDetail\SafetyPreWarningDetailSearchPartialwebsite.js" />
     <Content Include="Scripts\strainDataPushing.website.js" />
     <Content Include="Scripts\system.js" />
@@ -670,10 +673,6 @@
     <Content Include="Views\FirstLevelSafetyAssessment\GetFirstLevelSafetyAssessmentReportPartial.cshtml" />
     <Content Include="Views\FirstLevelSafetyAssessment\GetFirstLevelSafetyAssessmentListPartial.cshtml" />
     <Content Include="Views\FirstLevelSafetyAssessment\GetTimeSearchPartial.cshtml" />
-    <Content Include="Views\SecondLevelSafetyAssessment\SecondLevelSafetyAssessment.cshtml" />
-    <Content Include="Views\SecondLevelSafetyAssessment\GetReportListByTimeSearchPartial.cshtml" />
-    <Content Include="Views\SecondLevelSafetyAssessment\GetSecondLevelSafetyAssessmentListPartial.cshtml" />
-    <Content Include="Views\SecondLevelSafetyAssessment\GetSecondLevelSafetyAssessmentReportPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
