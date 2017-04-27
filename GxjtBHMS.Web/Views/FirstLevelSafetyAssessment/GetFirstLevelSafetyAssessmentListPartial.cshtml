@@ -1,5 +1,4 @@
-﻿@model GxjtBHMS.Web.ViewModels.FirstLevelSafetyAssessment.FirstLevelSafetyAssessmentSearchBarBaseView
-
+﻿@model GxjtBHMS.Web.ViewModels.SafetyAssessmentReportView.SafetyAssessmentReportSearchBaseView
 
 <div class="table-responsive">
     <div id="message"></div>
@@ -13,7 +12,7 @@
             </tr>
         </thead>
 
-        @foreach (var item in Model.FirstLevelSafetyAssessmentViewModels)
+        @foreach (var item in Model.SafetyAssessmentReportViewModels)
         {
             @Html.Partial("GetFirstLevelSafetyAssessmentReportPartial", item);
         }

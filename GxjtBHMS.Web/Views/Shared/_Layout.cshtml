@@ -18,12 +18,19 @@
 
     <script>
         var userName = "@Session[WebConstants.UserNickNameKey].ToString()";
+    </script>
+    <script>
         $(function () {
             if (userName != "admin") {
                 $("li.adminli").css("display", "none");
+                $("input.adminInput").css("display", "none");
+                $("td.admintd").css("display", "none");
             }
         })
     </script>
+
+
+
 
 </head>
 

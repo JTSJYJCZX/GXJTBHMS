@@ -1,7 +1,7 @@
 ﻿using GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService;
 using GxjtBHMS.Service.Messaging;
 using GxjtBHMS.Web.Models;
-using GxjtBHMS.Web.ViewModels.FirstLevelSafetyAssessment;
+using GxjtBHMS.Web.ViewModels.SafetyAssessmentReportView;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -33,7 +33,7 @@ namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
             return PartialView("GetTimeSearchPartial");
         }
 
-        public ActionResult GetFirstLevelSafetyAssessmentReportList(FirstLevelSafetyAssessmentSearchBarBaseView conditions)
+        public ActionResult GetFirstLevelSafetyAssessmentReportList(SafetyAssessmentReportSearchBaseView conditions)
         {
             var req = new FirstLevelSafetyAssessmentSearchRequest()
             {
@@ -46,18 +46,18 @@ namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
             };
             var GetFirstLevelSafetyAssessmentReportListService = new GetFirstLevelSafetyAssessmentReportService();
             var resp = GetFirstLevelSafetyAssessmentReportListService.GetFirstLevelSafetyAssessmentReportList(req);
-            var models = new List<FirstLevelSafetyAssessmentViewModel>();
-            var resultView = new FirstLevelSafetyAssessmentSearchBarBaseView();
+            var models = new List<SafetyAssessmentReportViewModel>();
+            var resultView = new SafetyAssessmentReportSearchBaseView();
             if (resp.Succeed)
             {
                 foreach (var item in resp.FirstLevelSafetyAssessmentReport)
                 {
-                    var resultItem = new FirstLevelSafetyAssessmentViewModel();
+                    var resultItem = new SafetyAssessmentReportViewModel();
                     resultItem.ReportName = item.ReportPeriods;
                     resultItem.ReportTime = item.ReportTime;
                     models.Add(resultItem);
                 }
-                resultView.FirstLevelSafetyAssessmentViewModels = models;
+                resultView.SafetyAssessmentReportViewModels = models;
                 resultView.PaginatorModel = new ViewModels.PaginatorModel { TotalPages = resp.TotalPages, CurrentPageIndex = conditions.CurrentPageIndex };            
             }
             else
@@ -72,7 +72,7 @@ namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
         /// </summary>
         /// <param name="conditions"></param>
         /// <returns></returns>
-        public ActionResult DownloadFirstLevelSafetyAssessmentReport(FirstLevelSafetyAssessmentViewModel conditions)
+        public ActionResult DownloadFirstLevelSafetyAssessmentReport(SafetyAssessmentReportViewModel conditions)
         {
 
 

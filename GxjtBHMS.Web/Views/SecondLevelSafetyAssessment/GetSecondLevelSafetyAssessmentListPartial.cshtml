@@ -1,7 +1,9 @@
-﻿@model GxjtBHMS.Web.ViewModels.FirstLevelSafetyAssessment.FirstLevelSafetyAssessmentSearchBarBaseView
+﻿@model GxjtBHMS.Web.ViewModels.SafetyAssessmentReportView.SafetyAssessmentReportSearchBaseView
 
+<div id="message" style="color:@TempData[WebConstants.MessageColor]">@TempData[WebConstants.MessageKey]</div>
 
 <div class="table-responsive">
+    <div id="datasMessage"> </div>
     <div id="message"></div>
     <table class="table table-striped">
         <thead>
@@ -10,32 +12,33 @@
                 <td>报告生成时间</td>
                 <td>评定等级</td>
                 <td>评定状态</td>
-                <td>查看</td>
                 <td>下载</td>
+                <td class="admintd">删除</td>
             </tr>
         </thead>
 
-        @foreach (var item in Model.FirstLevelSafetyAssessmentViewModels)
+        @foreach (var item in Model.SafetyAssessmentReportViewModels)
         {
-            @Html.Partial("GetFirstLevelSafetyAssessmentReportPartial", item);
+            @Html.Partial("GetSecondLevelSafetyAssessmentReportPartial", item);
         }
     </table>
-
 
     <script>
         jqPaginatorSetting('#paginationNav',@Model.PaginatorModel.TotalPages,@Model.PaginatorModel.CurrentPageIndex);
     </script>
-
-
-
+    <script>
+        $(function () {
+            if (userName != "admin") {
+                $("td.admintd").css("display", "none");
+            }
+        })
+    </script>
 </div>
 
 @Html.AntiForgeryToken()
 
-
-
-
-
-
 @Styles.Render("~/content/hotspotcss")
 @Scripts.Render("~/bundles/hotspot")
+
+
+ 

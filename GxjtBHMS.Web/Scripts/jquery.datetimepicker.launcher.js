@@ -30,7 +30,7 @@ $(function () {
             maxDate: new Date(),
         });
 
-    //一级安全评估中月份模糊搜索
+    //安全评估中月份模糊搜索
         $('#Monthpicker').datetimepicker(
         {
             value: 'new Date()',

@@ -120,7 +120,9 @@
     <Compile Include="Interfaces\RealTimeDatasServiceInerfaces\ISteelLatticeStrainRealTimeDatasService.cs" />
     <Compile Include="Interfaces\SafetyPreWarningRealTimePushServiceInterfaces\IGetOneTypeSafetyPreWarningRealTimePushServiceBase.cs" />
     <Compile Include="Interfaces\SafetyPreWarningRealTimePushServiceInterfaces\ISafetyPreWarningRealTimePushService.cs" />
+    <Compile Include="Messaging\SecondLevelSafetyAssessmentReport\SecondLevelSafetyAssessmentReportDownloadResponse.cs" />
     <Compile Include="Messaging\SecondLevelSafetyAssessmentReport\SecondLevelSafetyAssessmentReportResponse.cs" />
+    <Compile Include="Messaging\SecondLevelSafetyAssessmentReport\SecondLevelSafetyAssementReportUploadRequest.cs" />
     <Compile Include="Messaging\SecondLevelSafetyAssessmentReport\SecondLevelSafetyAssessmentSearchRequest.cs" />
     <Compile Include="Messaging\FirstLevelSafetyAssessmentReport\FirstLevelSafetyAssessmentSearchRequest.cs" />
     <Compile Include="Messaging\FirstLevelSafetyAssessmentReport\FirstLevelSafetyAssessmentReportResponse.cs" />

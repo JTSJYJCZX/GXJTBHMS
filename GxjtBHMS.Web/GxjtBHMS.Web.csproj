@@ -291,16 +291,15 @@
     <Compile Include="ViewModels\AdminUser\QueryUsersConditionView.cs" />
     <Compile Include="ViewModels\AdminUser\UserSeachResultView.cs" />
     <Compile Include="ViewModels\AdminUser\UsersSearchConditionView.cs" />
-    <Compile Include="ViewModels\FirstLevelSafetyAssessment\FirstLevelSafetyAssessmentViewModel.cs" />
+    <Compile Include="ViewModels\SafetyAssessmentReportView\SafetyAssessmentReportViewModel.cs" />
     <Compile Include="ViewModels\MonitoringDatasComparing\MornitoringDataComparingSearchBarView.cs" />
     <Compile Include="ViewModels\MonitoringDatas\MornitoringDataSearchBarBaseView.cs" />
     <Compile Include="ViewModels\PaginatorModel.cs" />
-    <Compile Include="ViewModels\FirstLevelSafetyAssessment\FirstLevelSafetyAssessmentSearchBarBaseView.cs" />
+    <Compile Include="ViewModels\SafetyAssessmentReportView\SafetyAssessmentReportSearchBaseView.cs" />
     <Compile Include="ViewModels\SafetyPreWarning\QuerySafetyPreWarningConditonView.cs" />
     <Compile Include="ViewModels\SafetyPreWarning\SafetyPreWarningViewModel.cs" />
     <Compile Include="ViewModels\SafetyPreWarning\SafetyPreWarningModels.cs" />
     <Compile Include="ViewModels\SecondLevelSafetyAssessment\SecondLevelSafetyAssessmentConditonViewModel.cs" />
-    <Compile Include="ViewModels\SecondLevelSafetyAssessment\SecondLevelSafetyAssessmentViewModel.cs" />
     <Compile Include="ViewModels\Shared\SimplePagedViewModel.cs" />
     <Compile Include="ViewModels\ThresholdValueSetting\ThresholdValueSearchBarBaseView.cs" />
     <Compile Include="ViewModels\ThresholdValueSetting\QueryPointsNumberConditonView.cs" />
@@ -418,6 +417,7 @@
     <None Include="Properties\PublishProfiles\jtjc - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\jtjc - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\jtjc - Web Deploy.pubxml" />
+    <Content Include="Scripts\ajaxfileupload.js" />
     <Content Include="Scripts\bootstrap-select.js" />
     <Content Include="Scripts\bootstrap-select.js.map" />
     <Content Include="Scripts\bootstrap-select.min.js" />
@@ -429,7 +429,8 @@
     <Content Include="Scripts\dataQuery-SearchContentPartial-website.js" />
     <Content Include="Scripts\dataComparingQuerySearchPartial.website.js" />
     <Content Include="Scripts\dataQuerySearchPartial.website.js" />
-    <Content Include="Scripts\FirstLevelSafetyAssessment\FirstLevelSafetyAssessmentReportList-website.js" />
+    <Content Include="Scripts\SafetyAssessmentReport\SecondLevelSafetyAssessmentReportList-website.js" />
+    <Content Include="Scripts\SafetyAssessmentReport\FirstLevelSafetyAssessmentReportList-website.js" />
     <Content Include="Scripts\htmlencode.js" />
     <Content Include="Scripts\i18n\defaults-ar_AR.js" />
     <Content Include="Scripts\i18n\defaults-ar_AR.min.js" />
