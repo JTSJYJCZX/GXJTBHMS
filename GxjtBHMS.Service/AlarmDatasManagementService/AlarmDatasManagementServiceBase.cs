@@ -1,4 +1,5 @@
 ﻿using GxjtBHMS.Models;
+using GxjtBHMS.Models.SafetyPreWarningTable;
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.Interfaces.AlarmDatasQueryServiceInerfaces;
 using GxjtBHMS.Service.Messaging.AlarmDatas;
@@ -10,14 +11,14 @@ using System.Linq;
 
 namespace GxjtBHMS.Service.MonitoringDatasQueryService
 {
-    public class AlarmDatasManagementServiceBase<T>:ServiceBase where T : MonitorDatasQueryConditionsModel
+    public class AlarmDatasManagementServiceBase<T>:ServiceBase where T : SafetyPreWarningBaseModel
     {
         readonly protected IAlarmDatasQueryService<T> _alarmDatasQueryService;
-        //readonly protected IAlarmDatasFileSystemService<T> _fileSystemService;
+        readonly protected IAlarmDatasFileSystemService<T> _fileSystemService;
         public AlarmDatasManagementServiceBase()
         {
             _alarmDatasQueryService = new NinjectFactory().GetInstance<IAlarmDatasQueryService<T>>();
-            //_fileSystemService = new NinjectFactory().GetInstance<IAlarmDatasFileSystemService<T>>();
+            _fileSystemService = new NinjectFactory().GetInstance<IAlarmDatasFileSystemService<T>>();
         }
         protected const string NoRecordsMessage = "无记录！";
 
@@ -60,23 +61,23 @@ namespace GxjtBHMS.Service.MonitoringDatasQueryService
             return result;
         }
 
-        //public DownLoadDatasResponse SaveAs(DatasQueryResultRequestBase req)
-        //{
-        //    var resp = new DownLoadDatasResponse();
-        //    IList<Func<T, bool>> ps = new List<Func<T, bool>>();
-        //    try
-        //    {
-        //        DealWithConditions(req, ps);
-        //        resp.Datas = _fileSystemService.ConvertToDocument(ps);
-        //        resp.Succeed = true;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        resp.Message = "无法下载数据";
-        //        Log(ex);
-        //    }
-        //    return resp;
-        //}
+        public DownLoadDatasResponse SaveAs(DatasQueryResultRequestBase req)
+        {
+            var resp = new DownLoadDatasResponse();
+            IList<Func<T, bool>> ps = new List<Func<T, bool>>();
+            try
+            {
+                DealWithConditions(req, ps);
+                resp.Datas = _fileSystemService.ConvertToDocument(ps);
+                resp.Succeed = true;
+            }
+            catch (Exception ex)
+            {
+                resp.Message = "无法下载数据";
+                Log(ex);
+            }
+            return resp;
+        }
 
         void DealWithEqualPointsPosition(DatasQueryResultRequestBase req, IList<Func<T, bool>> ps)
         {

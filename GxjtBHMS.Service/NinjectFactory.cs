@@ -117,7 +117,8 @@ namespace GxjtBHMS.Service
                       
             _ninjectKernel.Bind<IAlarmDatasQueryService<SafetyPreWarning_CableForceTable>>().To<AlarmDatasQueryService<SafetyPreWarning_CableForceTable>>();
             _ninjectKernel.Bind<IAlarmDatasQueryDAL<SafetyPreWarning_CableForceTable>>().To<CableForceAlarmDatasDAL>();
-            //_ninjectKernel.Bind<IAlarmDatasFileSystemService<SafetyPreWarning_CableForceTable>>().To<AlarmDatasQueryService<SafetyPreWarning_CableForceTable>>();
+
+            _ninjectKernel.Bind<IAlarmDatasFileSystemService<SafetyPreWarning_CableForceTable>>().To<AlarmDatasFileSystemService<SafetyPreWarning_CableForceTable>>();
         }
     }
 }

@@ -160,7 +160,7 @@ namespace GxjtBHMS.Web.Controllers
         }
 
         /// <summary>
-        /// 原始数据下载，另存为EXCEL文档
+        /// 报警数据下载，另存为EXCEL文档
         /// </summary>
         /// <returns></returns>
         public ActionResult AlarmDatasDownloadSearchResult(MornitoringDataSearchBarBaseView conditions)
@@ -172,8 +172,8 @@ namespace GxjtBHMS.Web.Controllers
                 EndTime = conditions.EndTime,
                 PointsPositionId = conditions.MornitoringPointsPositionId
             };
-            var monitoringDatasQueryService = MonitoringDatasOriginalValueDownloadServiceFactory.GetQueryServiceFrom(conditions.MornitoringTestTypeId);
-            var resp = monitoringDatasQueryService.SaveAs(req);
+            var alarmDatasQueryService = AlarmDatasManagementServiceFactory.GetQueryServiceFrom(conditions.MornitoringTestTypeId);
+            var resp = alarmDatasQueryService.SaveAs(req);
             var guid = "";
             guid = Guid.NewGuid().ToString();
             CacheHelper.SetCache(guid, resp.Datas);

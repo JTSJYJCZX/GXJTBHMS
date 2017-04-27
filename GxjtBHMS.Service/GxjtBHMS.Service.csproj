@@ -88,6 +88,7 @@
     <Compile Include="AbnormalThresholdValueService\AbnormalThresholdValueSettingService.cs" />
     <Compile Include="AutoMapper\Configuration.cs" />
     <Compile Include="Implementations\AlarmDatasManagement\AlarmDatasQueryService.cs" />
+    <Compile Include="Implementations\AlarmDatasManagement\AlarmDatasFileSystemService.cs" />
     <Compile Include="Implementations\EigenvalueChartQueryService\MonitorDatasQueryChartService.cs" />
     <Compile Include="Implementations\EigenvalueDownLoadService\MonitorDatasEigenValueQueryFileSystemService.cs" />
     <Compile Include="Implementations\ExcelFileConverter.cs" />
