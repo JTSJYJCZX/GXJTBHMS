@@ -82,6 +82,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FirstLevelSafetyAssessmentReportService\CreateReportTable.cs" />
     <Compile Include="FirstLevelSafetyAssessmentReportService\GetFirstLevelSafetyAssessmentReportService.cs" />
     <Compile Include="AbnormalThresholdValueService\AbnormalThresholdValueSettingService.cs" />
     <Compile Include="AutoMapper\Configuration.cs" />
@@ -109,6 +110,7 @@
     <Compile Include="Implementations\ThresholdValueService\ThresholdValueSettingServiceBase.cs" />
     <Compile Include="Implementations\ThresholdValueService\GetThresholdValueSettingListBySearchBarService.cs" />
     <Compile Include="Implementations\ThresholdValueService\WithoutNegativeThresholdValueSettingServiceBase.cs" />
+    <Compile Include="Implementations\WordFileConvert.cs" />
     <Compile Include="Interfaces\IFileConverter.cs" />
     <Compile Include="Interfaces\RealTimeDatasServiceInerfaces\IWindLoadRealTimeDatasService.cs" />
     <Compile Include="Interfaces\RealTimeDatasServiceInerfaces\ITemperatureRealTimeDatasService.cs" />
@@ -254,17 +256,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <COMReference Include="Microsoft.Office.Core">
-      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
-      <VersionMajor>2</VersionMajor>
-      <VersionMinor>4</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

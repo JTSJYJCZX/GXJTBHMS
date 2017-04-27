@@ -12,7 +12,7 @@ namespace GxjtBHMS.Models.FirstLevelSafetyAssessmentTable
         //测点位置
         public string MonitoringPointsPositions { get; set; }
         //异常次数
-        public string ExceptionNumber { get; set; }
+        public int ExceptionNumber { get; set; }
         //报告编号外键
         public virtual FirstAssessment_FirstLevelSafetyAssessmentReportTable AssessmentReport { get; set; }
         public int AssessmentReportId { get; set; }

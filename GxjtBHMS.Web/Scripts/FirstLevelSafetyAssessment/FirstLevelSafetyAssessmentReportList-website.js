@@ -59,3 +59,30 @@ $("#bttnquery").click(function () {
         }
     });
 });
+
+function downloadReport(sender,url) {
+    var $sender = $(sender);
+    var op = $sender.attr('operate');
+    if (op === 'download') {
+        $.ajax({
+            url: url,//URL请求命令
+            traditional: true,　//jQuery需要调用jQuery.param序列化参数，默认的话，traditional为false，即jquery会深度序列化参数对象，以适应如PHP和Ruby on Rails框架， 我们可以通过设置traditional 为true阻止深度序列化。
+            type: "get",
+            beforeSend: function () {
+                $('body').chardinJs('start');
+            },
+            complete: function (data) {
+                $('body').chardinJs('stop');
+            },
+            data: {
+                reportId: 1
+            },
+            success: function (data) {
+                document.location.href = "/FirstLevelSafetyAssessment/OriginCode?guid=" + data;
+            },
+            error: function (result) {
+                alert(result.responseText);
+            }
+        });
+    }
+}
