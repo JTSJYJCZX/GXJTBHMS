@@ -69,8 +69,6 @@ $(function () {
                 alert(result.responseText);
             }
         });
-
-
     });
 
     $("#monitorTestPointsPositionSelect").change(function () {
