@@ -9,12 +9,18 @@ using GxjtBHMS.Web.ViewModels.SafetyPreWarning;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using GxjtBHMS.Service.Interfaces;
+using GxjtBHMS.Service.Implementations;
 
 namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
 {
     public class FirstLevelSafetyAssessmentController : Controller
     {
-
+        IFileConverter _fileConverter;
+        public FirstLevelSafetyAssessmentController()
+        {
+            _fileConverter = new WordFileConvert();
+        }
         public ActionResult FirstLevelSafetyAssessment()
         {
             var GetFirstLevelSafetyAssessmentReportListService = new GetFirstLevelSafetyAssessmentReportService();
@@ -52,10 +58,10 @@ namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
             {
                 CurrentPageIndex = conditions.CurrentPageIndex,
             };
-            if (conditions.Time.Year!=1)
+            if (conditions.Time.Year != 1)
             {
-               req.StartTime =new DateTime(conditions.Time.Year,conditions.Time.Month,1);
-               req.EndTime = req.StartTime.AddMonths(1);
+                req.StartTime = new DateTime(conditions.Time.Year, conditions.Time.Month, 1);
+                req.EndTime = req.StartTime.AddMonths(1);
             };
             var GetFirstLevelSafetyAssessmentReportListService = new GetFirstLevelSafetyAssessmentReportService();
             var resp = GetFirstLevelSafetyAssessmentReportListService.GetFirstLevelSafetyAssessmentReportList(req);
@@ -71,7 +77,7 @@ namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
                     models.Add(resultItem);
                 }
                 resultView.FirstLevelSafetyAssessmentViewModels = models;
-                resultView.PaginatorModel = new ViewModels.PaginatorModel { TotalPages = resp.TotalPages, CurrentPageIndex = conditions.CurrentPageIndex };            
+                resultView.PaginatorModel = new ViewModels.PaginatorModel { TotalPages = resp.TotalPages, CurrentPageIndex = conditions.CurrentPageIndex };
             }
             else
             {
@@ -80,5 +86,33 @@ namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
             return PartialView("GetFirstLevelSafetyAssessmentListPartial", resultView);
         }
 
+        /// <summary>
+        /// 报告下载，另存为Word文档
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult DownloadReport(int reportId = 0)
+        {
+            var report = new CreateReportTable();
+            var file = report.CreateTable(5);
+            var guid = "";
+            guid = Guid.NewGuid().ToString();
+            CacheHelper.SetCache(guid, file);
+            return Json(guid, JsonRequestBehavior.AllowGet);
+        }
+
+        public void OriginCode(string guid)
+        {
+            object obj = CacheHelper.GetCache(guid);
+            if (obj == null)
+            {
+                throw new ApplicationException("guid invalid");
+            }
+            var ms = _fileConverter.GetStream(obj);
+            string preFileName = "一级安全评估报告";
+            Response.AddHeader("Content-Disposition", string.Format("attachment; filename={0}.docx", preFileName));
+            Response.BinaryWrite(ms.ToArray());
+            ms.Close();
+            ms.Dispose();
+        }
     }
 }

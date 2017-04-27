@@ -40,22 +40,20 @@ function saveThresholdValue(saveSender, url) {
         TestTypeId:testTypeId,
         PointsNumber: pointsNumberVal,
         PointsNumberId: pointsNumberId
-    };         
+    };
+    var thresholdValues = [];
+   
     if (!isRemoveOP) {
-        var thresholdValues = [];
         $textboxArray.each(function (i) {
             thresholdValues.push($(this).val());
         });
-        params['ThresholdValues'] = thresholdValues;
     }
-    if (isRemoveOP) {
-        clearCurrentThresholdValues($saveSender);
-        var thresholdValues = [];
+    else {
         $textboxArray.each(function (i) {
             thresholdValues.push("");
-        })
-        params['ThresholdValues'] = thresholdValues;
+        });
     }
+    params['ThresholdValues'] = thresholdValues;
     ajaxHandler(url, headers, params);
 }
 
