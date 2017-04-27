@@ -4,7 +4,7 @@ using GxjtBHMS.Service.Messaging.AlarmDatas;
 using GxjtBHMS.Service.Messaging.MonitoringDatas;
 using GxjtBHMS.Web.ExtensionMehtods.MonitoringDatas;
 using GxjtBHMS.Web.Models;
-using GxjtBHMS.Web.ViewModels.MonitoringDatas;
+using GxjtBHMS.Web.ViewModels.AlarmDatas;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,7 +43,7 @@ namespace GxjtBHMS.Web.Controllers
         /// </summary>
         /// <param name="conditions">查询条件</param>
         /// <returns>数据查询内容分布视图</returns>
-        public ActionResult AlarmDatasQuery(MornitoringDataSearchBarBaseView conditions)
+        public ActionResult AlarmDatasQuery(AlarmDatasSearchBarView conditions)
         {
             if (conditions.EndTime < conditions.StartTime)
             {
@@ -51,25 +51,31 @@ namespace GxjtBHMS.Web.Controllers
             }
             var req = new DatasQueryResultRequest
             {
+                CurrentPageIndex = conditions.CurrentPageIndex,
                 StartTime = conditions.StartTime,
                 EndTime = conditions.EndTime,
                 PointsNumberIds = conditions.MornitoringPointsNumberIds,
                 PointsPositionId = conditions.MornitoringPointsPositionId
             };
             var monitoringDatasQueryService = AlarmDatasManagementServiceFactory.GetQueryServiceFrom(conditions.MornitoringTestTypeId);
-            var result = monitoringDatasQueryService.HasQueryResult(req);
-            if (result)
+            var result = monitoringDatasQueryService.GetTotalPagesBy(req);
+            if (result.TotalPages > 0)
             {
+                ViewData["TotalPages"] = result.TotalPages;
                 return PartialView("DataQuerySearchContentPartial");
             }
             return Content("<span style='color:red'>无记录</span>");
         }
+        
+
+
         //获取报警数据
-        public ActionResult GetAlarmDatas(MornitoringDataSearchBarBaseView conditions)
+        public ActionResult GetAlarmDatas(AlarmDatasSearchBarView conditions)
         {
             var resp = new AlarmDatasResponse();
             var req = new GetAlarmDatasRequest
             {
+                CurrentPageIndex = conditions.CurrentPageIndex,
                 StartTime = conditions.StartTime,
                 EndTime = conditions.EndTime,
                 PointsNumberIds = conditions.MornitoringPointsNumberIds,
@@ -77,7 +83,11 @@ namespace GxjtBHMS.Web.Controllers
             };
             var monitoringDatasQueryService = AlarmDatasManagementServiceFactory.GetQueryServiceFrom(conditions.MornitoringTestTypeId);
             resp = monitoringDatasQueryService.GetAlarmDatasBy(req);
-            return PartialView("AlarmDatasQueryListViewPartial",resp.Datas);
+            var resultView = new AlarmDatasSeachResultView();
+            resultView.Datas = resp.Datas;
+            resultView.PaginatorModel = new ViewModels.PaginatorModel { TotalPages = resp.TotalPages, CurrentPageIndex = conditions.CurrentPageIndex };
+
+            return PartialView("AlarmDatasQueryListViewPartial", resultView);
         }
 
         [ChildActionOnly]
@@ -96,7 +106,7 @@ namespace GxjtBHMS.Web.Controllers
         void SaveMonitoringTestTypesSelectListItemsToViewData(out int firstTestTypeId)
         {
             firstTestTypeId = 1;
-            var resp = _mtts.GetAllTestType().Datas.Where(m=>m.Name=="索力"|| m.Name == "位移" || m.Name == "温度" || m.Name == "湿度");
+            var resp = _mtts.GetAllTestType().Datas.Where(m => m.Name == "索力" || m.Name == "位移" || m.Name == "温度" || m.Name == "湿度");
             if (resp.Any())
             {
                 firstTestTypeId = Convert.ToInt32(resp.First().Id);
@@ -163,7 +173,7 @@ namespace GxjtBHMS.Web.Controllers
         /// 报警数据下载，另存为EXCEL文档
         /// </summary>
         /// <returns></returns>
-        public ActionResult AlarmDatasDownloadSearchResult(MornitoringDataSearchBarBaseView conditions)
+        public ActionResult AlarmDatasDownloadSearchResult(AlarmDatasSearchBarView conditions)
         {
             var req = new DatasQueryResultRequestBase
             {
@@ -200,6 +210,6 @@ namespace GxjtBHMS.Web.Controllers
         {
             return _mpps.CreateDownloadFileMixedName(pointsPositionId, dataType);
         }
-        
+
     }
 }
