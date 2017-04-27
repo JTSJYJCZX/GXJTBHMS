@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlarmDatasManagementDAL\CableForceAlarmDatasDAL.cs" />
     <Compile Include="FirstLevelSafetyAssessmentReportDAL\GetFirstLevelSafetyAssessmentReportDAL.cs" />
     <Compile Include="AbnormalThresholdValueSettingDAL\AbnormalThresholdValueSettingDAL.cs" />
     <Compile Include="AppDbInitializer.cs" />

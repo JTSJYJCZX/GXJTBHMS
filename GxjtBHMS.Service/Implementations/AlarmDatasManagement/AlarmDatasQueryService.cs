@@ -1,0 +1,49 @@
+﻿using GxjtBHMS.Infrastructure.Helpers;
+using GxjtBHMS.Models;
+using GxjtBHMS.Models.SafetyPreWarningTable;
+using GxjtBHMS.Service.Interfaces.AlarmDatasQueryServiceInerfaces;
+using GxjtBHMS.Service.ViewModels.AlarmDatasModel;
+using GxjtBHMS.SqlServerDAL;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace GxjtBHMS.Service.Implementations.AlarmDatasManagement
+{
+    public class AlarmDatasQueryService<T> : IAlarmDatasQueryService<T> where T : SafetyPreWarningBaseModel
+    {
+        readonly IAlarmDatasQueryDAL<T> _alarmDatasQueryDAL;
+        public AlarmDatasQueryService(IAlarmDatasQueryDAL<T> alarmDatasQueryDAL)
+        {
+            _alarmDatasQueryDAL = alarmDatasQueryDAL;
+        }
+
+        public IEnumerable<AlarmDatasModel> GetAlarmDatasSourceBy(IList<Func<T, bool>> ps)
+        {
+            string[] navigationProperties = { ServiceConstant.PointsNumberPointsPositionNavigationProperty, ServiceConstant.ThresholdGradeNavigationProperty };
+            var source = _alarmDatasQueryDAL.FindBy(ps, navigationProperties);
+            //var groupDatas = source.GroupBy(m => m.PointsNumber.Name);
+            var datas = new List<AlarmDatasModel>();
+            var models = source.OrderBy(m => m.Time).Select(m => new AlarmDatasModel { Time = DateTimeHelper.FormatDateTime(m.Time), TestType = m.PointsNumber.PointsPosition.TestType.Name, PointsNumber = m.PointsNumber.Name, MonitoringData = m.MonitoringData, ThresholdValue = m.ThresholdValue, ThresholdGrade = m.ThresholdGrade.ThresholdGrade, });
+            datas = models.ToList();
+
+            //foreach (var group in groupDatas)
+            //{
+            //    var models = group.OrderBy(m => m.Time).Select(m => new AlarmDatasModel {Time = DateTimeHelper.FormatDateTime(m.Time), TestType = m.PointsNumber.PointsPosition.TestType.Name, PointsNumber = m.PointsNumber.Name, MonitoringData =m.MonitoringData, ThresholdValue=m.ThresholdValue, ThresholdGrade=m.ThresholdGrade.ThresholdGrade, });
+            //    //var unit = group.FirstOrDefault().PointsNumber.PointsPosition.TestType.Unit;
+            //    datas.Add(new AlarmDatasModel { Models = models});
+            //}
+            return datas;
+        }
+
+        public long GetTotalResultCountBy(IList<Func<T, bool>> ps)
+        {
+            return _alarmDatasQueryDAL.GetCountByContains(ps, ServiceConstant.PointsNumberPointsPositionNavigationProperty);
+        }
+
+
+    }
+}
+

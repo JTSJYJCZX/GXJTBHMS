@@ -1,0 +1,25 @@
+﻿@model PaginatorModel
+<div id="message"><span style='color:@TempData[WebConstants.MessageColor]'>@TempData[WebConstants.MessageKey]</span></div>
+<!--图标显示开始-->
+
+<div id="AlarmDatasDataQuery" >
+    <input type="button" id="AlarmDatasSaveAs" value="原始数据下载" class="btn btn-default" />
+</div>
+<hr />
+
+
+<div id="AlarmDatasTable"></div>
+
+<hr/>
+
+
+
+<script>
+    $(function(){
+        getTable();
+    });
+</script>
+
+
+<script src="~/Scripts/AlarmDatas/AlarmDatasQuery-SearchContentPartial-website.js"></script>
+<script src="~/Scripts/AlarmDatas/AlermDatasQuerySearchPartial.website.js"></script>
