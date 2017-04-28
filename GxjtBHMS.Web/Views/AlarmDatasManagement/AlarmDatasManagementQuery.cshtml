@@ -8,18 +8,21 @@
     @*查询结果区域*@
 </div>
 
+
+<!--分页开始-->
+<div class="pagination" id="paginationNav"></div>
+<!--分页结束-->
+
+
 @section scripts{
     @Scripts.Render("~/bundles/AlarmDatasQuerySearchContentPartial-website")
-    @Scripts.Render("~/bundles/monitoringDatasSearchBar")
+    @Scripts.Render("~/bundles/AlermDatasQuerySearchPartial")
     @Scripts.Render("~/bundles/jqueryunobtrusiveajax")
     @Styles.Render("~/content/css/bootstrap-select")
     @Scripts.Render("~/bundles/bootstrap-select")
     @Styles.Render("~/content/datetimepickercss")
     @Scripts.Render("~/bundles/datetimepicker")
     @Scripts.Render("~/bundles/jqPaginator")
-    @Styles.Render("~/content/jqplotcss")
-    @Scripts.Render("~/bundles/jqplot")
-    @Scripts.Render("~/bundles/jqplot/plugins")
 }
 
 

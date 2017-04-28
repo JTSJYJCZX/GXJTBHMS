@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace GxjtBHMS.Service.Messaging.AlarmDatas
 {
-    public class AlarmDatasResponse: ResponseBase
+    public class AlarmDatasResponse: PagedResponse
     {
         public IEnumerable<AlarmDatasModel> Datas { get; set; }
+        
     }
 }

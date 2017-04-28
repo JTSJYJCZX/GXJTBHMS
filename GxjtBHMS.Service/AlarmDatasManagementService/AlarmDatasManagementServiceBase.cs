@@ -1,7 +1,9 @@
-﻿using GxjtBHMS.Models;
+﻿using GxjtBHMS.Infrastructure.Configuration;
+using GxjtBHMS.Models;
 using GxjtBHMS.Models.SafetyPreWarningTable;
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.Interfaces.AlarmDatasQueryServiceInerfaces;
+using GxjtBHMS.Service.Messaging;
 using GxjtBHMS.Service.Messaging.AlarmDatas;
 using GxjtBHMS.Service.Messaging.MonitoringDatas;
 using GxjtBHMS.Service.Messaging.MonitoringDatasDownLoad;
@@ -11,7 +13,7 @@ using System.Linq;
 
 namespace GxjtBHMS.Service.MonitoringDatasQueryService
 {
-    public class AlarmDatasManagementServiceBase<T>:ServiceBase where T : SafetyPreWarningBaseModel
+    public class AlarmDatasManagementServiceBase<T> : ServiceBase where T : SafetyPreWarningBaseModel
     {
         readonly protected IAlarmDatasQueryService<T> _alarmDatasQueryService;
         readonly protected IAlarmDatasFileSystemService<T> _fileSystemService;
@@ -30,7 +32,9 @@ namespace GxjtBHMS.Service.MonitoringDatasQueryService
             try
             {
                 DealWithConditions(req, ps);
-                resp.Datas = _alarmDatasQueryService.GetAlarmDatasSourceBy(ps);
+                var numberOfResultsPrePage = ApplicationSettingsFactory.GetApplicationSettings().NumberOfResultsPrePage;//获取每页记录数
+                resp.Datas = _alarmDatasQueryService.GetAlarmDatasSourceBy(ps,req.CurrentPageIndex, numberOfResultsPrePage);
+                resp.TotalResultCount = _alarmDatasQueryService.GetTotalResultCountBy(ps);
                 resp.Succeed = true;
             }
             catch (Exception ex)
@@ -41,25 +45,30 @@ namespace GxjtBHMS.Service.MonitoringDatasQueryService
             return resp;
         }
 
-        public  bool HasQueryResult(DatasQueryResultRequest req)
+        public PagedResponse GetTotalPagesBy(DatasQueryResultRequest req)
         {
-            var result = false;
             IList<Func<T, bool>> ps = new List<Func<T, bool>>();
+            DealWithConditions(req, ps);
+            PagedResponse resp = new PagedResponse();
             try
             {
-                DealWithConditions(req, ps);
-                var count = _alarmDatasQueryService.GetTotalResultCountBy(ps);
-                if (count > 0)
+                resp.TotalResultCount = _alarmDatasQueryService.GetTotalResultCountBy(ps);
+                if (resp.TotalResultCount <= 0)
                 {
-                    return true;
+                    resp.Message = "无记录!";
+                }
+                else
+                {
+                    resp.Succeed = true;
                 }
             }
             catch (Exception ex)
             {
                 Log(ex);
             }
-            return result;
+            return resp;
         }
+        
 
         public DownLoadDatasResponse SaveAs(DatasQueryResultRequestBase req)
         {
@@ -97,7 +106,7 @@ namespace GxjtBHMS.Service.MonitoringDatasQueryService
             if (req.PointsNumberIds != null && req.PointsNumberIds.Length > 0)
             {
                 ps.Add(m => req.PointsNumberIds.Contains(m.PointsNumberId));
-            }            
+            }
         }
 
         protected void DealWithConditions(DatasQueryResultRequestBase req, IList<Func<T, bool>> ps)

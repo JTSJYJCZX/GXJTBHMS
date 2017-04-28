@@ -278,6 +278,8 @@
     <Compile Include="Validations\StrainThresholdValuesValidationAttribute.cs" />
     <Compile Include="ViewModels\AbnormalThresholdValue\AbnormalThresholdValueSettingView.cs" />
     <Compile Include="ViewModels\AbnormalThresholdValue\AbnormalThresholdValueView.cs" />
+    <Compile Include="ViewModels\AlarmDatas\AlarmDatasSearchBarView.cs" />
+    <Compile Include="ViewModels\AlarmDatas\AlarmDatasSeachResultView.cs" />
     <Compile Include="ViewModels\CurrentStainDatas\CurrentStrainDatasView.cs" />
     <Compile Include="ViewModels\CurrentStainDatas\IncudeSectionWaringColor.cs" />
     <Compile Include="ViewModels\CurrentStainDatas\RealTimeWarningStrainDataViewModel.cs" />

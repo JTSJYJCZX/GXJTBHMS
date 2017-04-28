@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GxjtBHMS.Service.ViewModels.AlarmDatasModel.AlarmDatasModel>
+﻿@model GxjtBHMS.Web.ViewModels.AlarmDatas.AlarmDatasSeachResultView
 
 <div class="table-responsive">
     <table class="table table-striped">
@@ -13,7 +13,7 @@
             </tr>
         </thead>
 
-        @foreach (var m in Model)
+        @foreach (var m in Model.Datas)
         {
             <tr class="text-center">
                 <td>@m.Time</td>
@@ -26,6 +26,11 @@
         }
     </table>
 </div>
+
+<script>
+       jqPaginatorSetting('#paginationNav',@Model.PaginatorModel.TotalPages,@Model.PaginatorModel.CurrentPageIndex);
+</script>
+
 
 @Html.AntiForgeryToken()
 

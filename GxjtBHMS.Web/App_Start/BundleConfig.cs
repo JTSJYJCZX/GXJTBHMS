@@ -125,12 +125,13 @@ namespace GxjtBHMS.Web
 
             //报警数据查询
             bundles.Add(new ScriptBundle("~/bundles/AlarmDatasQuerySearchContentPartial-website").Include(
-                     "~/Scripts/AlarmDatas/AlarmDatasQuery-SearchContentPartial-website.js").Include(
-                     "~/Scripts/AlarmDatas/AlermDatasQuerySearchPartial.website.js"));
+                     "~/Scripts/AlarmDatas/AlarmDatasQuery-SearchContentPartial-website.js"));
+            bundles.Add(new ScriptBundle("~/bundles/AlermDatasQuerySearchPartial").Include(
+                    "~/Scripts/AlarmDatas/AlermDatasQuerySearchPartial.website.js"));
+                     
             //二级安全评估查询脚本
             bundles.Add(new ScriptBundle("~/bundles/SecondLevelSafetyAssessmentReportList-website").Include(
                      "~/Scripts/SafetyAssessmentReport/SecondLevelSafetyAssessmentReportList-website.js"));
-
 
         }
     }
