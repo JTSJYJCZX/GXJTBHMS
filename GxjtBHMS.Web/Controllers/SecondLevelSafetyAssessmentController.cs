@@ -52,6 +52,7 @@ namespace GxjtBHMS.Web.Controllers
             return PartialView("GetReportListByTimeSearchPartial",models);
         }
 
+
         /// <summary>
         /// 获得状态等级的下拉菜单列表
         /// </summary>
