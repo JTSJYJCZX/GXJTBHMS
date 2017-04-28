@@ -10,6 +10,7 @@ namespace GxjtBHMS.Infrastructure.Domain
         IEnumerable<T> FindBy(IList<Func<T, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties);
         IEnumerable<T> FindBy(IList<Func<T, bool>> ps, params string[] navigationProperties);
         IEnumerable<T> FindBy(Func<T, bool> p, int currentPageIndex, int pageSize, params string[] navigationProperties);
+        IEnumerable<T> FindBy(params string[] navigationProperties);
         int GetCountByContains(IList<Func<T, bool>> ps,params string[] navigationProperties);
         int GetCountByContains(params string[] navigationProperties);
         IEnumerable<T> FindAll();

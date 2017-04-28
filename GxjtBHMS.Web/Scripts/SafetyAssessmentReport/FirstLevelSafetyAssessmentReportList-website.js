@@ -89,6 +89,7 @@ $(function () {
 function downloadReport(sender,url) {
     var $sender = $(sender);
     var op = $sender.attr('operate');
+    var reportId = $sender.prev().val();
     if (op === 'download') {
         $.ajax({
             url: url,//URL请求命令
@@ -101,7 +102,7 @@ function downloadReport(sender,url) {
                 $('body').chardinJs('stop');
             },
             data: {
-                reportId: 1
+                reportId: reportId
             },
             success: function (data) {
                 document.location.href = "/FirstLevelSafetyAssessment/OriginCode?guid=" + data;
