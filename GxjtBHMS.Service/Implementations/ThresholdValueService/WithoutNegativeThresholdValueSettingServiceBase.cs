@@ -1,13 +1,9 @@
 ﻿using GxjtBHMS.IDAL;
 using GxjtBHMS.Models.ThresholdValueSetting;
-using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.Messaging;
 using GxjtBHMS.Service.Messaging.ThresholdValueSetting;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GxjtBHMS.Service
 {

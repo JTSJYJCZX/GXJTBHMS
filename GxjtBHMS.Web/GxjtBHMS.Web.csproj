@@ -235,7 +235,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AbnormalThresholdValueSetting\AbnormalThresholdValueController.cs" />
     <Compile Include="Controllers\AdminUserController.cs" />
+    <Compile Include="Controllers\AlarmDatasManagementController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\SecondLevelSafetyAssessmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MonitoringDatasComparingQueryController.cs" />
     <Compile Include="Controllers\MonitoringDatasController.cs" />
@@ -276,6 +278,8 @@
     <Compile Include="Validations\StrainThresholdValuesValidationAttribute.cs" />
     <Compile Include="ViewModels\AbnormalThresholdValue\AbnormalThresholdValueSettingView.cs" />
     <Compile Include="ViewModels\AbnormalThresholdValue\AbnormalThresholdValueView.cs" />
+    <Compile Include="ViewModels\AlarmDatas\AlarmDatasSearchBarView.cs" />
+    <Compile Include="ViewModels\AlarmDatas\AlarmDatasSeachResultView.cs" />
     <Compile Include="ViewModels\CurrentStainDatas\CurrentStrainDatasView.cs" />
     <Compile Include="ViewModels\CurrentStainDatas\IncudeSectionWaringColor.cs" />
     <Compile Include="ViewModels\CurrentStainDatas\RealTimeWarningStrainDataViewModel.cs" />
@@ -290,14 +294,15 @@
     <Compile Include="ViewModels\AdminUser\QueryUsersConditionView.cs" />
     <Compile Include="ViewModels\AdminUser\UserSeachResultView.cs" />
     <Compile Include="ViewModels\AdminUser\UsersSearchConditionView.cs" />
-    <Compile Include="ViewModels\FirstLevelSafetyAssessment\FirstLevelSafetyAssessmentViewModel.cs" />
+    <Compile Include="ViewModels\SafetyAssessmentReportView\SafetyAssessmentReportViewModel.cs" />
     <Compile Include="ViewModels\MonitoringDatasComparing\MornitoringDataComparingSearchBarView.cs" />
     <Compile Include="ViewModels\MonitoringDatas\MornitoringDataSearchBarBaseView.cs" />
     <Compile Include="ViewModels\PaginatorModel.cs" />
-    <Compile Include="ViewModels\FirstLevelSafetyAssessment\FirstLevelSafetyAssessmentSearchBarBaseView.cs" />
+    <Compile Include="ViewModels\SafetyAssessmentReportView\SafetyAssessmentReportSearchBaseView.cs" />
     <Compile Include="ViewModels\SafetyPreWarning\QuerySafetyPreWarningConditonView.cs" />
     <Compile Include="ViewModels\SafetyPreWarning\SafetyPreWarningViewModel.cs" />
     <Compile Include="ViewModels\SafetyPreWarning\SafetyPreWarningModels.cs" />
+    <Compile Include="ViewModels\SecondLevelSafetyAssessment\SecondLevelSafetyAssessmentConditonViewModel.cs" />
     <Compile Include="ViewModels\Shared\SimplePagedViewModel.cs" />
     <Compile Include="ViewModels\ThresholdValueSetting\ThresholdValueSearchBarBaseView.cs" />
     <Compile Include="ViewModels\ThresholdValueSetting\QueryPointsNumberConditonView.cs" />
@@ -415,6 +420,8 @@
     <None Include="Properties\PublishProfiles\jtjc - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\jtjc - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\jtjc - Web Deploy.pubxml" />
+    <Content Include="Scripts\AlarmDatas\AlarmDatasQuery-SearchContentPartial-website.js" />
+    <Content Include="Scripts\ajaxfileupload.js" />
     <Content Include="Scripts\bootstrap-select.js" />
     <Content Include="Scripts\bootstrap-select.js.map" />
     <Content Include="Scripts\bootstrap-select.min.js" />
@@ -426,7 +433,8 @@
     <Content Include="Scripts\dataQuery-SearchContentPartial-website.js" />
     <Content Include="Scripts\dataComparingQuerySearchPartial.website.js" />
     <Content Include="Scripts\dataQuerySearchPartial.website.js" />
-    <Content Include="Scripts\FirstLevelSafetyAssessment\FirstLevelSafetyAssessmentReportList-website.js" />
+    <Content Include="Scripts\SafetyAssessmentReport\SecondLevelSafetyAssessmentReportList-website.js" />
+    <Content Include="Scripts\SafetyAssessmentReport\FirstLevelSafetyAssessmentReportList-website.js" />
     <Content Include="Scripts\htmlencode.js" />
     <Content Include="Scripts\i18n\defaults-ar_AR.js" />
     <Content Include="Scripts\i18n\defaults-ar_AR.min.js" />
@@ -595,6 +603,7 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\AlarmDatas\AlermDatasQuerySearchPartial.website.js" />
     <Content Include="Scripts\SafetyPreWarningDetail\SafetyPreWarningDetailSearchPartialwebsite.js" />
     <Content Include="Scripts\strainDataPushing.website.js" />
     <Content Include="Scripts\system.js" />
@@ -666,9 +675,18 @@
     <Content Include="Views\FirstLevelSafetyAssessment\GetFirstLevelSafetyAssessmentReportPartial.cshtml" />
     <Content Include="Views\FirstLevelSafetyAssessment\GetFirstLevelSafetyAssessmentListPartial.cshtml" />
     <Content Include="Views\FirstLevelSafetyAssessment\GetTimeSearchPartial.cshtml" />
+    <Content Include="Views\AlarmDatasManagement\AlarmDataQuerySearchPartial.cshtml" />
+    <Content Include="Views\AlarmDatasManagement\AlarmDatasManagementQuery.cshtml" />
+    <Content Include="Views\AlarmDatasManagement\AlarmDatasQueryListViewPartial.cshtml" />
+    <Content Include="Views\AlarmDatasManagement\DataQuerySearchContentPartial.cshtml" />
+    <Content Include="Views\SecondLevelSafetyAssessment\GetReportListByTimeSearchPartial.cshtml" />
+    <Content Include="Views\SecondLevelSafetyAssessment\GetSecondLevelSafetyAssessmentListPartial.cshtml" />
+    <Content Include="Views\SecondLevelSafetyAssessment\GetSecondLevelSafetyAssessmentReportPartial.cshtml" />
+    <Content Include="Views\SecondLevelSafetyAssessment\SecondLevelSafetyAssessment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\SecondLevelSafetyAssessmentReport\" />
     <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>

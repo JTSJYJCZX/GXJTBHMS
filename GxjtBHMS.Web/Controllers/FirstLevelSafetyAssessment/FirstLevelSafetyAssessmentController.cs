@@ -1,10 +1,7 @@
 ﻿using GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService;
 using GxjtBHMS.Service.Messaging;
-using GxjtBHMS.Service.Messaging.SafetyPreWarning;
-using GxjtBHMS.Service.ServiceFactory;
-using GxjtBHMS.Service.ViewModels.MonitoringDatas.SafetyPreWarning;
 using GxjtBHMS.Web.Models;
-using GxjtBHMS.Web.ViewModels.FirstLevelSafetyAssessment;
+using GxjtBHMS.Web.ViewModels.SafetyAssessmentReportView;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -45,16 +42,7 @@ namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
             return PartialView("GetTimeSearchPartial");
         }
 
-
-
-        [ChildActionOnly]
-        public ActionResult GetFirstLevelSafetyAssessmentContent()
-        {
-            return PartialView("GetFirstLevelSafetyAssessmentContentPartial");
-        }
-
-
-        public ActionResult GetFirstLevelSafetyAssessmentReportList(FirstLevelSafetyAssessmentSearchBarBaseView conditions)
+        public ActionResult GetFirstLevelSafetyAssessmentReportList(SafetyAssessmentReportSearchBaseView conditions)
         {
             var req = new FirstLevelSafetyAssessmentSearchRequest()
             {
@@ -67,20 +55,20 @@ namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
             };
             var GetFirstLevelSafetyAssessmentReportListService = new GetFirstLevelSafetyAssessmentReportService();
             var resp = GetFirstLevelSafetyAssessmentReportListService.GetFirstLevelSafetyAssessmentReportList(req);
-            var models = new List<FirstLevelSafetyAssessmentViewModel>();
-            var resultView = new FirstLevelSafetyAssessmentSearchBarBaseView();
+            var models = new List<SafetyAssessmentReportViewModel>();
+            var resultView = new SafetyAssessmentReportSearchBaseView();
             if (resp.Succeed)
             {
                 foreach (var item in resp.FirstLevelSafetyAssessmentReport)
                 {
-                    var resultItem = new FirstLevelSafetyAssessmentViewModel();
+                    var resultItem = new SafetyAssessmentReportViewModel();
                     resultItem.ReportName = item.ReportPeriods;
                     resultItem.ReportTime = item.ReportTime;
                     resultItem.ReportId = item.Id;
                     models.Add(resultItem);
                 }
-                resultView.FirstLevelSafetyAssessmentViewModels = models;
-                resultView.PaginatorModel = new ViewModels.PaginatorModel { TotalPages = resp.TotalPages, CurrentPageIndex = conditions.CurrentPageIndex };
+                resultView.SafetyAssessmentReportViewModels = models;
+                resultView.PaginatorModel = new ViewModels.PaginatorModel { TotalPages = resp.TotalPages, CurrentPageIndex = conditions.CurrentPageIndex };            
             }
             else
             {
@@ -104,19 +92,5 @@ namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
             return Json(guid, JsonRequestBehavior.AllowGet);
         }
 
-        public void OriginCode(string guid)
-        {
-            object obj = CacheHelper.GetCache(guid);
-            if (obj == null)
-            {
-                throw new ApplicationException("guid invalid");
-            }
-            var ms = _fileConverter.GetStream(obj);
-            string preFileName = "一级安全评估报告";
-            Response.AddHeader("Content-Disposition", string.Format("attachment; filename={0}.docx", preFileName));
-            Response.BinaryWrite(ms.ToArray());
-            ms.Close();
-            ms.Dispose();
-        }
     }
 }

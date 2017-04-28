@@ -22,5 +22,8 @@
         public const int FirstPageIndex = 1;
         public const string StrainResultKey = "StrainResult";
         public const string SessionState = "SessionState";
+
+
+        public const string SecondLevelAssessmentStateKey = "SecondLevelAssessmentState";
     }
 }

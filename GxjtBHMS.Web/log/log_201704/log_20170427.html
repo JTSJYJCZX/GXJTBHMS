@@ -1,0 +1,71 @@
+2017-04-27 00:44:54,202 INFO  BHMSLogger  - The ObjectContext instance has been disposed and can no longer be used for operations that require a connection.
+2017-04-27 00:44:54,211 INFO  BHMSLogger  -    在 System.Data.Entity.Core.Objects.ObjectContext.get_Connection()
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.Execute(MergeOption mergeOption)
+   在 System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Load(MergeOption mergeOption)
+   在 System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.DeferredLoad()
+   在 System.Data.Entity.Core.Objects.Internal.LazyLoadBehavior.LoadProperty[TItem](TItem propertyValue, String relationshipName, String targetRoleName, Boolean mustBeNull, Object wrapperObject)
+   在 System.Data.Entity.Core.Objects.Internal.LazyLoadBehavior.<>c__DisplayClass7`2.<GetInterceptorDelegate>b__2(TProxy proxy, TItem item)
+   在 System.Data.Entity.DynamicProxies.SafetyPreWarning_Cab_335CA926B0DF9DD84CB448815238052C0D21D8CFB3679B2179AAC308BB03954C.get_ThresholdGrade()
+   在 GxjtBHMS.Service.Implementations.AlarmDatasManagement.AlarmDatasQueryService`1.<>c.<GetAlarmDatasSourceBy>b__2_1(T m) 位置 C:\Users\Administrator\Desktop\jtsjyjczx\GxjtBHMS.Service\Implementations\AlarmDatasManagement\AlarmDatasQueryService.cs:行号 28
+   在 System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   在 System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   在 System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   在 GxjtBHMS.Service.Implementations.AlarmDatasManagement.AlarmDatasQueryService`1.GetAlarmDatasSourceBy(IList`1 ps) 位置 C:\Users\Administrator\Desktop\jtsjyjczx\GxjtBHMS.Service\Implementations\AlarmDatasManagement\AlarmDatasQueryService.cs:行号 29
+   在 GxjtBHMS.Service.MonitoringDatasQueryService.AlarmDatasManagementServiceBase`1.GetAlarmDatasBy(GetAlarmDatasRequest req) 位置 C:\Users\Administrator\Desktop\jtsjyjczx\GxjtBHMS.Service\AlarmDatasManagementService\AlarmDatasManagementServiceBase.cs:行号 32
+2017-04-27 01:09:38,319 INFO  BHMSLogger  - A specified Include path is not valid. The EntityType 'GxjtBHMS.SqlServerDAL.ThresholdGradeTable' does not declare a navigation property with the name 'ThresholdGrade'.
+2017-04-27 01:09:38,330 INFO  BHMSLogger  -    在 System.Data.Entity.Core.Objects.Internal.ObjectFullSpanRewriter.ConvertSpanPath(SpanPathInfo parentInfo, List`1 navPropNames, Int32 pos)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectFullSpanRewriter.ConvertSpanPath(SpanPathInfo parentInfo, List`1 navPropNames, Int32 pos)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectFullSpanRewriter..ctor(DbCommandTree tree, DbExpression toRewrite, Span span, AliasGenerator aliasGenerator)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectSpanRewriter.TryRewrite(DbQueryCommandTree tree, Span span, MergeOption mergeOption, AliasGenerator aliasGenerator, DbExpression& newQuery, SpanIndex& spanInfo)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlanFactory.Prepare(ObjectContext context, DbQueryCommandTree tree, Type elementType, MergeOption mergeOption, Boolean streaming, Span span, IEnumerable`1 compiledQueryParameters, AliasGenerator aliasGenerator)
+   在 System.Data.Entity.Core.Objects.EntitySqlQueryState.GetExecutionPlan(Nullable`1 forMergeOption)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   在 System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   在 System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   在 System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   在 System.Linq.Enumerable.WhereEnumerableIterator`1.MoveNext()
+   在 System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   在 System.Linq.OrderedEnumerable`1.<GetEnumerator>d__1.MoveNext()
+   在 System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   在 System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   在 GxjtBHMS.SqlServerDAL.Repository`2.FindBy(IList`1 ps, String[] navigationProperties) 位置 C:\Users\Administrator\Desktop\jtsjyjczx\GxjtBHMS.SqlServerDAL\Repository.cs:行号 126
+   在 GxjtBHMS.Service.Implementations.AlarmDatasManagement.AlarmDatasQueryService`1.GetAlarmDatasSourceBy(IList`1 ps) 位置 C:\Users\Administrator\Desktop\jtsjyjczx\GxjtBHMS.Service\Implementations\AlarmDatasManagement\AlarmDatasQueryService.cs:行号 26
+   在 GxjtBHMS.Service.MonitoringDatasQueryService.AlarmDatasManagementServiceBase`1.GetAlarmDatasBy(GetAlarmDatasRequest req) 位置 C:\Users\Administrator\Desktop\jtsjyjczx\GxjtBHMS.Service\AlarmDatasManagementService\AlarmDatasManagementServiceBase.cs:行号 32
+2017-04-27 01:11:43,886 INFO  BHMSLogger  - A specified Include path is not valid. The EntityType 'GxjtBHMS.SqlServerDAL.ThresholdGradeTable' does not declare a navigation property with the name 'ThresholdGrade'.
+2017-04-27 01:11:43,897 INFO  BHMSLogger  -    在 System.Data.Entity.Core.Objects.Internal.ObjectFullSpanRewriter.ConvertSpanPath(SpanPathInfo parentInfo, List`1 navPropNames, Int32 pos)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectFullSpanRewriter.ConvertSpanPath(SpanPathInfo parentInfo, List`1 navPropNames, Int32 pos)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectFullSpanRewriter..ctor(DbCommandTree tree, DbExpression toRewrite, Span span, AliasGenerator aliasGenerator)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectSpanRewriter.TryRewrite(DbQueryCommandTree tree, Span span, MergeOption mergeOption, AliasGenerator aliasGenerator, DbExpression& newQuery, SpanIndex& spanInfo)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlanFactory.Prepare(ObjectContext context, DbQueryCommandTree tree, Type elementType, MergeOption mergeOption, Boolean streaming, Span span, IEnumerable`1 compiledQueryParameters, AliasGenerator aliasGenerator)
+   在 System.Data.Entity.Core.Objects.EntitySqlQueryState.GetExecutionPlan(Nullable`1 forMergeOption)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   在 System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   在 System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   在 System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   在 System.Linq.Enumerable.WhereEnumerableIterator`1.MoveNext()
+   在 System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   在 System.Linq.OrderedEnumerable`1.<GetEnumerator>d__1.MoveNext()
+   在 System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   在 System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   在 GxjtBHMS.SqlServerDAL.Repository`2.FindBy(IList`1 ps, String[] navigationProperties) 位置 C:\Users\Administrator\Desktop\jtsjyjczx\GxjtBHMS.SqlServerDAL\Repository.cs:行号 126
+   在 GxjtBHMS.Service.Implementations.AlarmDatasManagement.AlarmDatasQueryService`1.GetAlarmDatasSourceBy(IList`1 ps) 位置 C:\Users\Administrator\Desktop\jtsjyjczx\GxjtBHMS.Service\Implementations\AlarmDatasManagement\AlarmDatasQueryService.cs:行号 26
+   在 GxjtBHMS.Service.MonitoringDatasQueryService.AlarmDatasManagementServiceBase`1.GetAlarmDatasBy(GetAlarmDatasRequest req) 位置 C:\Users\Administrator\Desktop\jtsjyjczx\GxjtBHMS.Service\AlarmDatasManagementService\AlarmDatasManagementServiceBase.cs:行号 32
+2017-04-27 15:48:44,854 INFO  BHMSLogger  - 值不能为 null。
+参数名: entity
+2017-04-27 15:48:44,862 INFO  BHMSLogger  -    在 System.Data.Entity.Utilities.Check.NotNull[T](T value, String parameterName)
+   在 System.Data.Entity.DbContext.Entry[TEntity](TEntity entity)
+   在 GxjtBHMS.SqlServerDAL.Repository`2.Remove(T entity) 位置 G:\软件开发学习资料\系统开发\20170318GXJTMHBS\GXJTBHMS\GxjtBHMS.SqlServerDAL\Repository.cs:行号 88
+   在 GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService.GetSecondLevelSafetyAssessmentReportService.DeleteSecondLevelSafetyAssessmentReport(SecondLevelSafetyAssementReportUploadAndDownloadRequest req) 位置 G:\软件开发学习资料\系统开发\20170318GXJTMHBS\GXJTBHMS\GxjtBHMS.Service\SecondLevelSafetyAssessmentReportService\GetSecondLevelSafetyAssessmentReportService.cs:行号 152
+2017-04-27 17:00:47,588 INFO  BHMSLogger  - 值不能为 null。
+参数名: entity
+2017-04-27 17:00:47,596 INFO  BHMSLogger  -    在 System.Data.Entity.Utilities.Check.NotNull[T](T value, String parameterName)
+   在 System.Data.Entity.DbContext.Entry[TEntity](TEntity entity)
+   在 GxjtBHMS.SqlServerDAL.Repository`2.Remove(T entity) 位置 G:\软件开发学习资料\系统开发\20170318GXJTMHBS\GXJTBHMS\GxjtBHMS.SqlServerDAL\Repository.cs:行号 88
+   在 GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService.GetSecondLevelSafetyAssessmentReportService.DeleteSecondLevelSafetyAssessmentReport(SecondLevelSafetyAssementReportUploadAndDownloadRequest req) 位置 G:\软件开发学习资料\系统开发\20170318GXJTMHBS\GXJTBHMS\GxjtBHMS.Service\SecondLevelSafetyAssessmentReportService\GetSecondLevelSafetyAssessmentReportService.cs:行号 152

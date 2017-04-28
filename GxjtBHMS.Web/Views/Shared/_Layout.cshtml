@@ -18,12 +18,19 @@
 
     <script>
         var userName = "@Session[WebConstants.UserNickNameKey].ToString()";
+    </script>
+    <script>
         $(function () {
             if (userName != "admin") {
                 $("li.adminli").css("display", "none");
+                $("input.adminInput").css("display", "none");
+                $("td.admintd").css("display", "none");
             }
         })
     </script>
+
+
+
 
 </head>
 
@@ -128,8 +135,7 @@
                         <ul id="systemSetting3" class="nav nav-list collapse secondmenu" style="height: 0px;">
                             <li><a href="/MonitoringDatas/DataQuery"><i class="glyphicon glyphicon-eye-open"></i>&nbsp数据查询</a></li>
                             <li><a href="/MonitoringDatasComparingQuery/DataComparingQuery"><i class="glyphicon glyphicon-fullscreen"></i>&nbsp对比查询</a></li>
-                            <li><a href="#"><i class="glyphicon glyphicon-asterisk"></i>&nbsp车载统计</a></li>
-                            <li><a href="#"><i class="glyphicon glyphicon-edit"></i>&nbsp报警数据管理</a></li>
+                            <li><a href="/AlarmDatasManagement/AlarmDatasManagementQuery"><i class="glyphicon glyphicon-edit"></i>&nbsp报警数据管理</a></li>
                             <li><a href="#"><i class="glyphicon glyphicon-eye-open"></i>&nbsp异常事件管理</a></li>
                         </ul>
                     </li>
@@ -144,7 +150,7 @@
                             <li><a href="/SafetyPreWarning/SafetyPreWarning"><i class="glyphicon glyphicon-th-list"></i>&nbsp安全预警</a></li>
                             <li><a href="#"><i class="glyphicon glyphicon-user"></i>&nbsp人工巡检</a></li>
                             <li><a href="/FirstLevelSafetyAssessment/FirstLevelSafetyAssessment"><i class="glyphicon glyphicon-asterisk"></i>&nbsp一级安全评估</a></li>
-                            <li><a href="#"><i class="glyphicon glyphicon-asterisk"></i>&nbsp二级安全评估</a></li>
+                            <li><a href="/SecondLevelSafetyAssessment/SecondLevelSafetyAssessment"><i class="glyphicon glyphicon-asterisk"></i>&nbsp二级安全评估</a></li>
                             <li><a href="#"><i class="glyphicon glyphicon-asterisk"></i>&nbsp专项评估</a></li>
                         </ul>
                     </li>

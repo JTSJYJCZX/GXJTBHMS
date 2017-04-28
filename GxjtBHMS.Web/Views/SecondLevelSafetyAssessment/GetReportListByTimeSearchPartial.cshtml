@@ -1,0 +1,64 @@
+﻿@model GxjtBHMS.Web.ViewModels.SecondLevelSafetyAssessment.SecondLevelSafetyAssessmentConditonViewModel
+
+
+    <label for="Monthpicker" class="control-label">
+        报告生成月份：
+        @Html.TextBoxFor(m => m.UpLoadReportTime, new { style = "width:220px", id = "Monthpicker", @class = "selectpicker" })
+    </label>
+    <input type="button" id="bttnquery" value="查询" class="btn btn-default col-md-offset-1" />
+
+    <input type="button" value="上传二级评估报告" class="adminInput btn btn-default col-md-offset-1" onclick="openShutManager(this, 'unfold')" />
+
+<hr />
+
+<div id="unfold" style="display:none">
+    <label class="control-label">
+        上传报告路径：
+        <input type='text' name='textfield' id='textfield' class='txt' />
+        <input type="file" name="fileField" accept=".doc,.docx" class="file" id="fileField" size="28" onchange="document.getElementById('textfield').value=this.value" />       
+    </label>
+    <div>
+        <label class="control-label">
+            评估等级：
+            @Html.DropDownListFor(m => m.UpLoadAssessmentState, (IEnumerable<SelectListItem>)ViewData[WebConstants.SecondLevelAssessmentStateKey],new { id = "SecondLevelAssessmentStateSelect", @class = "selectpicker" })
+        </label>
+    </div>
+    @Html.HiddenFor(m => m.wordFileSize, new { id = "wordFileSize" })
+    <input type="button" id="SecondLevelSafetyAssessmentReportUpLoad" class="btn" value="上传" />
+</div>
+
+
+
+
+<script type="text/javascript">
+    //===========================点击展开关闭效果====================================
+function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
+var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
+var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
+var openTip = oOpenTip || "";
+var shutTip = oShutTip || "";
+if(targetObj.style.display!="none"){
+ if(shutAble) return;
+ targetObj.style.display="none";
+  if(openTip  &&  shutTip){
+    sourceObj.innerHTML = shutTip;
+  }
+} else {
+   targetObj.style.display="block";
+   if(openTip  &&  shutTip){
+   sourceObj.innerHTML = openTip;
+   }
+}
+}
+</script>
+
+
+<script>
+        $(function () {
+            if (userName != "admin") {
+                $("li.adminli").css("display", "none");
+                $("input.adminInput").css("display", "none");
+                $("td.admintd").css("display", "none");
+            }
+        })
+</script>

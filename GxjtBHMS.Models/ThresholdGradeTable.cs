@@ -1,8 +1,4 @@
-﻿using GxjtBHMS.Models.MonitoringDatasTable;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
-namespace GxjtBHMS.Models
+﻿namespace GxjtBHMS.Models
 {
     public class ThresholdGradeTable:EntityBase<int>
     {

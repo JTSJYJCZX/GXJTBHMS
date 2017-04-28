@@ -1,7 +1,5 @@
 ﻿using GxjtBHMS.IDAL;
 using GxjtBHMS.Models;
-using GxjtBHMS.Models.ThresholdValueSetting;
-using GxjtBHMS.Service.Messaging;
 using GxjtBHMS.Service.Messaging.ThresholdValueSetting;
 using System;
 using System.Collections.Generic;

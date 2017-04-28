@@ -1,0 +1,28 @@
+﻿@*@model PaginatorModel*@
+<div id="message"><span style='color:@TempData[WebConstants.MessageColor]'>@TempData[WebConstants.MessageKey]</span></div>
+<div id="AlarmDatasDataQuery">
+    <input type="button" id="AlarmDatasSaveAs" value="原始数据下载" class="btn btn-default" />
+</div>
+
+<!--表格显示开始-->
+<div id="AlarmDatasTable"></div>
+
+
+<!--分页开始-->
+<div class="pagination" id="paginationNav"></div>
+<!--分页结束-->
+
+@Html.Hidden("TotalPages", ViewData["TotalPages"])@*将总页数暂存到隐藏域中，以便给初始化分页导航脚本函数使用*@
+
+<script>
+    $(function(){
+        getTable();
+    });
+</script>
+
+
+
+
+
+<script src="~/Scripts/AlarmDatas/AlarmDatasQuery-SearchContentPartial-website.js"></script>
+<script src="~/Scripts/AlarmDatas/AlermDatasQuerySearchPartial.website.js"></script>

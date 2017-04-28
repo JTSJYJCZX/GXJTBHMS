@@ -9,6 +9,7 @@ using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
 using GxjtBHMS.Models.MonitoringDatasTable;
 using GxjtBHMS.Models.AbnormalThresholdValueSetting;
 using GxjtBHMS.Models.FirstLevelSafetyAssessmentTable;
+using GxjtBHMS.Models.SecondLevelSafetyAssessmentTable;
 
 namespace GxjtBHMS.SqlServerDAL
 {
@@ -349,6 +350,36 @@ namespace GxjtBHMS.SqlServerDAL
             AssessmentReasons = "常规月报"
         };
 
+        /// <summary>
+        /// 二级安全评估等级
+        /// </summary>
+        SecondAssessment_SecondLevelSafetyAssessmentStateTable AssessmentGrade1 = new SecondAssessment_SecondLevelSafetyAssessmentStateTable
+        {
+            AssessmentGrade = "1类",
+            AssessmentState="完好状态"
+        };
+        SecondAssessment_SecondLevelSafetyAssessmentStateTable AssessmentGrade2 = new SecondAssessment_SecondLevelSafetyAssessmentStateTable
+        {
+            AssessmentGrade = "2类",
+            AssessmentState = "较好状态"
+        };
+        SecondAssessment_SecondLevelSafetyAssessmentStateTable AssessmentGrade3 = new SecondAssessment_SecondLevelSafetyAssessmentStateTable
+        {
+            AssessmentGrade = "3类",
+            AssessmentState = "中等损伤状态"
+        };
+        SecondAssessment_SecondLevelSafetyAssessmentStateTable AssessmentGrade4 = new SecondAssessment_SecondLevelSafetyAssessmentStateTable
+        {
+            AssessmentGrade = "4类",
+            AssessmentState = "严重损伤状态"
+        };
+        SecondAssessment_SecondLevelSafetyAssessmentStateTable AssessmentGrade5 = new SecondAssessment_SecondLevelSafetyAssessmentStateTable
+        {
+            AssessmentGrade = "5类",
+            AssessmentState = "危险状态"
+        };
+
+
         protected override void Seed(BHMSContext context)
         {
             InitDbDatas(context);
@@ -373,9 +404,10 @@ namespace GxjtBHMS.SqlServerDAL
             CreateHumidityThresholdValues(context);
             CreateWindloadThresholdValues(context);
             CreateAbnormalThresholdValue(context);
-            //CreateSafetyPreWarning(context);
+            CreateSafetyPreWarning(context);
             CreateThresholdGradeValue(context);
             CreateFirstLevelSafetyAssessmentReasonsValue(context);
+            CreateSecondLevelSafetyAssessmentReasonsValue(context);
         }
 
         /// <summary>
@@ -410,14 +442,14 @@ namespace GxjtBHMS.SqlServerDAL
                     context.SafetyPreWarning_CableFrces.Add(SafetyPreWarning_CableFrces);
                 }
                 //温度安全预警表格
-                for (int j = 0; j < tmpNumbers24.Length; j++)
+                for (int j = 0; j < tmpNumbers22.Length; j++)
                 {
-                    var SafetyPreWarning_Temperatures = new SafetyPreWarning_TemperatureTable { PointsNumber = tmpNumbers24[j], Time = time, MonitoringData = random.Next(30, 40), ThresholdValue = 30, ThresholdGrade = ThresholdGrade2 };
+                    var SafetyPreWarning_Temperatures = new SafetyPreWarning_TemperatureTable { PointsNumber = tmpNumbers22[j], Time = time, MonitoringData = random.Next(30, 40), ThresholdValue = 30, ThresholdGrade = ThresholdGrade2 };
                     context.SafetyPreWarning_Temperatures.Add(SafetyPreWarning_Temperatures);
                 }
-                for (int j = 0; j < tmpNumbers25.Length; j++)
+                for (int j = 0; j < tmpNumbers23.Length; j++)
                 {
-                    var SafetyPreWarning_Temperatures = new SafetyPreWarning_TemperatureTable { PointsNumber = tmpNumbers25[j], Time = time, MonitoringData = random.Next(30, 40), ThresholdValue = 30, ThresholdGrade = ThresholdGrade2 };
+                    var SafetyPreWarning_Temperatures = new SafetyPreWarning_TemperatureTable { PointsNumber = tmpNumbers23[j], Time = time, MonitoringData = random.Next(30, 40), ThresholdValue = 30, ThresholdGrade = ThresholdGrade2 };
                     context.SafetyPreWarning_Temperatures.Add(SafetyPreWarning_Temperatures);
                 }
                 //风速
@@ -472,6 +504,22 @@ namespace GxjtBHMS.SqlServerDAL
             context.FirstLevelSafetyAssessmentReasons.Add(Reasons2);
             context.FirstLevelSafetyAssessmentReasons.Add(Reasons3);
         }
+        /// <summary>
+        /// 二级安全评估状态等级初始化
+        /// </summary>
+        /// <param name="context"></param>
+        private void CreateSecondLevelSafetyAssessmentReasonsValue(BHMSContext context)
+        {
+
+            context.SecondAssessment_SecondLevelSafetyAssessmentStates.Add(AssessmentGrade1);
+            context.SecondAssessment_SecondLevelSafetyAssessmentStates.Add(AssessmentGrade2);
+            context.SecondAssessment_SecondLevelSafetyAssessmentStates.Add(AssessmentGrade3);
+            context.SecondAssessment_SecondLevelSafetyAssessmentStates.Add(AssessmentGrade4);
+            context.SecondAssessment_SecondLevelSafetyAssessmentStates.Add(AssessmentGrade5);
+        }
+
+
+        
 
         /// <summary>
         /// 风速阈值设置

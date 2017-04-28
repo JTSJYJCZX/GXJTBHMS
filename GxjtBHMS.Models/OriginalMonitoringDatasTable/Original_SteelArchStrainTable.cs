@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace GxjtBHMS.Models.MonitoringDatasTable
+﻿namespace GxjtBHMS.Models.MonitoringDatasTable
 {
     public class Original_SteelArchStrainTable :MonitorDatasQueryConditionsModel
     {

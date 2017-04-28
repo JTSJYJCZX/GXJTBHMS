@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using GxjtBHMS.Models;
-using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.ViewModels.MonitoringDatas.MonitoringDatasCharts;
 using GxjtBHMS.SqlServerDAL;
 using System.Linq;
 using GxjtBHMS.Infrastructure.Helpers;
-using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
 using GxjtBHMS.Service.Interfaces.MonitoringDatasQueryServiceInerfaces;
 
 namespace GxjtBHMS.Service.Implementations

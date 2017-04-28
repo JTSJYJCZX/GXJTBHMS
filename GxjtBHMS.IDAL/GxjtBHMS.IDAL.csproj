@@ -49,6 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GetFirstLevelSafetyAssessmentReport\IFirstLevelAssessmentDAL.cs" />
+    <Compile Include="AlarmDatasManagement\IAlarmDatasQueryDAL.cs" />
+    <Compile Include="GetSecondLevelSafetyAssessmentReport\IGetSecondLevelSafetyAssessmentStateDAL.cs" />
+    <Compile Include="GetSecondLevelSafetyAssessmentReport\IGetSecondLevelSafetyAssessmentReportDAL.cs" />
     <Compile Include="GetFirstLevelSafetyAssessmentReport\IGetFirstLevelSafetyAssessmentReportDAL.cs" />
     <Compile Include="AbnormalThresholdValueSetting\IAbnormalThresholdValueSettingDAL.cs" />
     <Compile Include="IMonitoringDatasEigenvalueDAL.cs" />
@@ -91,6 +94,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

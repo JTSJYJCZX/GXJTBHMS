@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace GxjtBHMS.Service.Implementations
 {
-   public  class MonitorDatasEigenValueQueryFileSystemService<T>:IMonitorDatasQueryFileSystemService<T> where T: MonitoringDatasEigenvalueModel
+    public  class MonitorDatasEigenValueQueryFileSystemService<T>:IMonitorDatasQueryFileSystemService<T> where T: MonitoringDatasEigenvalueModel
     {
         readonly IMonitoringDatasEigenvalueDAL<T> _monitoringDatasDAL;
         public MonitorDatasEigenValueQueryFileSystemService(IMonitoringDatasEigenvalueDAL<T> monitoringDatasDAL)

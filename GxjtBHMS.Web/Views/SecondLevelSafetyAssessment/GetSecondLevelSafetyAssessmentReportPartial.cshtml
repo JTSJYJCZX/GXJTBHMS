@@ -1,0 +1,45 @@
+﻿@model GxjtBHMS.Web.ViewModels.SafetyAssessmentReportView.SafetyAssessmentReportViewModel
+
+<tr class="text-center">
+    <td>
+        @Html.TextBoxFor(m => m.ReportName, new { @class = "text-center", @style = "border:hidden" })
+    </td>
+
+    <td>
+        @Html.TextBoxFor(m =>m.ReportTime, new { @class = "text-center", @style = "border:hidden" })
+    </td>
+
+    <td>
+        @Html.TextBoxFor(m => m.AssessmentGrade, new { @class = "text-center", @style = "border:hidden" })
+    </td>
+    <td>
+        @Html.TextBoxFor(m => m.AssessmentState, new { @class = "text-center", @style = "border:hidden" })
+    </td>
+
+    <td>
+        @Html.HiddenFor(m=>m.ReportName)
+        @Html.HiddenFor(m=>m.ReporePath)
+        <input class="form-control" style="border:hidden"type="button" onclick="SecondLevelSafetyAssessmentReportDownLoad(this, '/SecondLevelSafetyAssessment/DownloadSecondLevelSafetyAssessmentReport')" value="下载报告" />
+    </td>
+    <td class="admintd">
+        @Html.HiddenFor(m => m.ReportTime)
+        @Html.HiddenFor(m => m.ReporePath)      
+        <input class="form-control" style="border:hidden" type="button" onclick="SecondLevelSafetyAssessmentReportDelete(this, '/SecondLevelSafetyAssessment/DeleteSecondLevelSafetyAssessmentReport')" value="删除报告" />
+    </td>
+
+</tr>
+
+@Html.AntiForgeryToken()
+
+
+
+<script>
+        $(function () {
+            if (userName != "admin") {
+                $("li.adminli").css("display", "none");
+                $("input.adminInput").css("display", "none");
+                $("td.admintd").css("display", "none");
+            }
+        })
+</script>
+

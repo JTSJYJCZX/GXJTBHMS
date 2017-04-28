@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using GxjtBHMS.Service.ViewModels.MonitoringDatas.MonitoringDatasCharts;
 using GxjtBHMS.SqlServerDAL;
-using System.Linq;
-using GxjtBHMS.Infrastructure.Helpers;
 using GxjtBHMS.Service.Interfaces.SafetyPreWarningQueryServiceInerfaces;
 using GxjtBHMS.Models.SafetyPreWarningTable;
 using GxjtBHMS.Service.ViewModels.MonitoringDatas.SafetyPreWarning;
