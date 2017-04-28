@@ -88,6 +88,11 @@
     <Compile Include="FirstLevelSafetyAssessmentReportService\GetFirstLevelSafetyAssessmentReportService.cs" />
     <Compile Include="AbnormalThresholdValueService\AbnormalThresholdValueSettingService.cs" />
     <Compile Include="AutoMapper\Configuration.cs" />
+    <Compile Include="ManualInspectionSafetyAssessmentReportService\GetManualInspectionSafetyAssessmentReportService.cs" />
+    <Compile Include="Messaging\ManualInspectionSafetyAssessmentReport\ManualInspectionSafetyAssementReportUploadRequest.cs" />
+    <Compile Include="Messaging\ManualInspectionSafetyAssessmentReport\ManualInspectionSafetyAssessmentReportDownloadResponse.cs" />
+    <Compile Include="Messaging\ManualInspectionSafetyAssessmentReport\ManualInspectionSafetyAssessmentReportResponse.cs" />
+    <Compile Include="Messaging\ManualInspectionSafetyAssessmentReport\ManualInspectionSafetyAssessmentSearchRequest.cs" />
     <Compile Include="SecondLevelSafetyAssessmentReportService\GetSecondLevelSafetyAssessmentReportService.cs" />
     <Compile Include="Implementations\AlarmDatasManagement\AlarmDatasQueryService.cs" />
     <Compile Include="Implementations\AlarmDatasManagement\AlarmDatasFileSystemService.cs" />

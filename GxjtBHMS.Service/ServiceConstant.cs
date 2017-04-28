@@ -8,9 +8,6 @@
         public const string ResultsAssessmentReport = "AssessmentReport";
         public const int FirstExceptionRecordRowNumber=7;
         public const string ThresholdGradeNavigationProperty = "ThresholdGrade";
-
-
         public const string AssessmentResultStateNavigationProperty = "AssessmentResultState";
-
     }
 }

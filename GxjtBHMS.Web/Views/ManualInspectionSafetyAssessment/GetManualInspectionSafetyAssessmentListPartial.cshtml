@@ -1,4 +1,5 @@
-﻿@model GxjtBHMS.Web.ViewModels.SafetyAssessmentReportView.SafetyAssessmentReportSearchBaseView
+﻿
+@model GxjtBHMS.Web.ViewModels.SafetyAssessmentReportView.SafetyAssessmentReportSearchBaseView
 
 
 <div class="table-responsive">
@@ -16,7 +17,7 @@
 
         @foreach (var item in Model.SafetyAssessmentReportViewModels)
         {
-            @Html.Partial("GetSecondLevelSafetyAssessmentReportPartial", item);
+            @Html.Partial("GetManualInspectionSafetyAssessmentReportPartial", item);
         }
     </table>
 
@@ -38,4 +39,3 @@
 @Scripts.Render("~/bundles/hotspot")
 
 
- 

@@ -4,30 +4,31 @@ using System.Collections.Generic;
 using GxjtBHMS.Service.Messaging;
 using System.Linq;
 using GxjtBHMS.Infrastructure.Configuration;
-using GxjtBHMS.Models.SecondLevelSafetyAssessmentTable;
 using GxjtBHMS.Service.Messaging.SecondLevelSafetyAssessmentReport;
+using GxjtBHMS.Service.Messaging.ManualInspectionSafetyAssessmentReport;
+using GxjtBHMS.Models.ManualInspectionSafetyAssessmentTable;
 
-namespace GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService
+namespace GxjtBHMS.Service.ManualInspectionSafetyAssessmentReportService
 {
-    public class GetSecondLevelSafetyAssessmentReportService : ServiceBase
+    public class GetManualInspectionSafetyAssessmentReportService : ServiceBase
     {
-        IGetSecondLevelSafetyAssessmentReportDAL _getSecondLevelSafetyAssessmentReportDAL;
-        IGetSecondLevelSafetyAssessmentStateDAL _getSecondLevelSafetyAssessmentStateDAL;
-        public GetSecondLevelSafetyAssessmentReportService()
+        IGetManualInspectionSafetyAssessmentReportDAL _getManualInspectionSafetyAssessmentReportDAL;
+        IGetManualInspectionSafetyAssessmentStateDAL _getManualInspectionSafetyAssessmentStateDAL;
+        public GetManualInspectionSafetyAssessmentReportService()
         {
-            _getSecondLevelSafetyAssessmentReportDAL = new NinjectFactory().GetInstance<IGetSecondLevelSafetyAssessmentReportDAL>();
-            _getSecondLevelSafetyAssessmentStateDAL = new NinjectFactory().GetInstance<IGetSecondLevelSafetyAssessmentStateDAL>();
+            _getManualInspectionSafetyAssessmentReportDAL = new NinjectFactory().GetInstance<IGetManualInspectionSafetyAssessmentReportDAL>();
+            _getManualInspectionSafetyAssessmentStateDAL = new NinjectFactory().GetInstance<IGetManualInspectionSafetyAssessmentStateDAL>();
         }
 
-        public SecondLevelSafetyAssessmentReportResponse GetSecondLevelSafetyAssessmentReportList(SecondLevelSafetyAssessmentSearchRequest req)
+        public ManualInspectionSafetyAssessmentReportResponse GetManualInspectionSafetyAssessmentReportList(ManualInspectionSafetyAssessmentSearchRequest req)
         {
-            var resp = new SecondLevelSafetyAssessmentReportResponse();
-            IList<Func<SecondAssessment_SecondLevelSafetyAssessmentReportTable, bool>> ps = new List<Func<SecondAssessment_SecondLevelSafetyAssessmentReportTable, bool>>();
+            var resp = new ManualInspectionSafetyAssessmentReportResponse();
+            IList<Func<ManualInspectionSafetyAssessmentReportTable, bool>> ps = new List<Func<ManualInspectionSafetyAssessmentReportTable, bool>>();
             try
             {
                 DealWithContainsTime(req, ps);
                 var numberOfResultsPrePage = ApplicationSettingsFactory.GetApplicationSettings().NumberOfResultsPrePage;//获取每页记录数
-                var source = _getSecondLevelSafetyAssessmentReportDAL.FindBy(ps, req.CurrentPageIndex, numberOfResultsPrePage, ServiceConstant.AssessmentResultStateNavigationProperty);
+                var source = _getManualInspectionSafetyAssessmentReportDAL.FindBy(ps, req.CurrentPageIndex, numberOfResultsPrePage, ServiceConstant.AssessmentResultStateNavigationProperty);
 
                 if (HasNoSearchResult(source))
                 {
@@ -35,25 +36,25 @@ namespace GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService
                 }
                 else
                 {
-                    resp.TotalResultCount = _getSecondLevelSafetyAssessmentReportDAL.GetCountByContains(ps);
-                    resp.SecondLevelSafetyAssessmentReport = source;
+                    resp.TotalResultCount = _getManualInspectionSafetyAssessmentReportDAL.GetCountByContains(ps);
+                    resp.ManualInspectionSafetyAssessmentReport = source;
                     resp.Succeed = true;
                 }
             }
             catch (Exception ex)
             {
-                resp.Message = "搜索二级安全评估报告发生错误！";
+                resp.Message = "搜索人工巡检安全评估报告发生错误！";
                 Log(ex);
             }
             return resp;
         }
 
-        public IEnumerable<SecondAssessment_SecondLevelSafetyAssessmentStateTable> GetAllTestType()
+        public IEnumerable<ManualInspectionSafetyAssessmentStateTable> GetAllTestType()
         {
-          return _getSecondLevelSafetyAssessmentStateDAL.FindAll();
+          return _getManualInspectionSafetyAssessmentStateDAL.FindAll();
         }
 
-        void DealWithContainsTime(SecondLevelSafetyAssessmentSearchRequest req, IList<Func<SecondAssessment_SecondLevelSafetyAssessmentReportTable, bool>> ps)
+        void DealWithContainsTime(ManualInspectionSafetyAssessmentSearchRequest req, IList<Func<ManualInspectionSafetyAssessmentReportTable, bool>> ps)
         {
             if (req.StartTime.Year != 1)
             {
@@ -67,13 +68,13 @@ namespace GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService
         /// </summary>
         /// <param name="SecondLevelSafetyAssessmentReports"></param>
         /// <returns></returns>
-        protected bool HasNoSearchResult(IEnumerable<SecondAssessment_SecondLevelSafetyAssessmentReportTable> SecondLevelSafetyAssessmentReports)
+        protected bool HasNoSearchResult(IEnumerable<ManualInspectionSafetyAssessmentReportTable> SecondLevelSafetyAssessmentReports)
         {
             return SecondLevelSafetyAssessmentReports.Count() == 0;
         }
         public PagedResponse GetTotalPages()
         {
-            IEnumerable<SecondAssessment_SecondLevelSafetyAssessmentReportTable> source = _getSecondLevelSafetyAssessmentReportDAL.FindAll();
+            IEnumerable<ManualInspectionSafetyAssessmentReportTable> source = _getManualInspectionSafetyAssessmentReportDAL.FindAll();
             PagedResponse resp = new PagedResponse();
             try
             {
@@ -94,12 +95,12 @@ namespace GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService
             return resp;
         }
 
-        public ResponseBase UploadSecondlevelSafetyAssessmentReport(SecondLevelSafetyAssementReportUploadRequest req)
+        public ResponseBase UploadSecondlevelSafetyAssessmentReport(ManualInspectionSafetyAssementReportUploadRequest req)
         {
             ResponseBase resp = new ResponseBase();
             try
             {
-                var uploadReport = new SecondAssessment_SecondLevelSafetyAssessmentReportTable()
+                var uploadReport = new ManualInspectionSafetyAssessmentReportTable()
                 {
                     AssessmentResultStateId =req.ReportGradeId,
                     ReportPeriods = req.ReportName,
@@ -107,7 +108,7 @@ namespace GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService
                     ReprotPath = req.ReportPath,
 
                 };
-                _getSecondLevelSafetyAssessmentReportDAL.Add(uploadReport);
+                _getManualInspectionSafetyAssessmentReportDAL.Add(uploadReport);
                 resp.Succeed = true;
                 resp.Message = "文件上传成功！";
             }
@@ -126,7 +127,7 @@ namespace GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService
             var resp = new SecondLevelSafetyAssessmentReportDownloadResponse();
             try
             {
-                resp.ReprotPath = _getSecondLevelSafetyAssessmentReportDAL.FindBy(m => m.ReprotPath == req.ReportPath).SingleOrDefault().ReprotPath;
+                resp.ReprotPath = _getManualInspectionSafetyAssessmentReportDAL.FindBy(m => m.ReprotPath == req.ReportPath).SingleOrDefault().ReprotPath;
                 resp.Message = "下载成功！";
                 resp.Succeed = true;
             }
@@ -141,7 +142,7 @@ namespace GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService
 
         public bool GetReportNameIsNotHas(string reportName)
         {
-           var reportNameCount= _getSecondLevelSafetyAssessmentReportDAL.FindBy(m => m.ReportPeriods == reportName).Count();
+           var reportNameCount= _getManualInspectionSafetyAssessmentReportDAL.FindBy(m => m.ReportPeriods == reportName).Count();
             if (reportNameCount>0)
             {
                 return false;
@@ -149,16 +150,16 @@ namespace GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService
             return true;
         }
 
-        public ResponseBase DeleteSecondLevelSafetyAssessmentReport(SecondLevelSafetyAssementReportUploadRequest req)
+        public ResponseBase DeleteSecondLevelSafetyAssessmentReport(ManualInspectionSafetyAssementReportUploadRequest req)
         {
             ResponseBase resp = new ResponseBase();
-            IList<Func<SecondAssessment_SecondLevelSafetyAssessmentReportTable, bool>> ps = new List<Func<SecondAssessment_SecondLevelSafetyAssessmentReportTable, bool>>();
+            IList<Func<ManualInspectionSafetyAssessmentReportTable, bool>> ps = new List<Func<ManualInspectionSafetyAssessmentReportTable, bool>>();
             DealWithDeleteConditon(req, ps);
             
             try
             {
-                var source = _getSecondLevelSafetyAssessmentReportDAL.FindBy(ps).SingleOrDefault();
-                _getSecondLevelSafetyAssessmentReportDAL.Remove(source);
+                var source = _getManualInspectionSafetyAssessmentReportDAL.FindBy(ps).SingleOrDefault();
+                _getManualInspectionSafetyAssessmentReportDAL.Remove(source);
                 resp.Succeed = true;
                 resp.Message = "删除报告成功";
             }
@@ -172,7 +173,7 @@ namespace GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService
         }
 
 
-        void DealWithDeleteConditon(SecondLevelSafetyAssementReportUploadRequest req, IList<Func<SecondAssessment_SecondLevelSafetyAssessmentReportTable, bool>> ps)
+        void DealWithDeleteConditon(ManualInspectionSafetyAssementReportUploadRequest req, IList<Func<ManualInspectionSafetyAssessmentReportTable, bool>> ps)
         {
             ps.Add(m => m.ReprotPath == req.ReportPath);
         }

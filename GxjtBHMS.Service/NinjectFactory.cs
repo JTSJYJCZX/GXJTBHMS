@@ -21,6 +21,7 @@ using GxjtBHMS.SqlServerDAL.FirstLevelSafetyAssessmentReportDAL;
 using GxjtBHMS.Service.Interfaces.AlarmDatasQueryServiceInerfaces;
 using GxjtBHMS.Service.Implementations.AlarmDatasManagement;
 using GxjtBHMS.SqlServerDAL.SecondLevelSafetyAssessmentReportDAL;
+using GxjtBHMS.SqlServerDAL.ManualInspectionSafetyAssessmentReportDAL;
 
 namespace GxjtBHMS.Service
 {
@@ -139,6 +140,10 @@ namespace GxjtBHMS.Service
             //二级安全评估绑定
             _ninjectKernel.Bind<IGetSecondLevelSafetyAssessmentReportDAL>().To<GetSecondLevelSafetyAssessmentReportDAL>();
             _ninjectKernel.Bind<IGetSecondLevelSafetyAssessmentStateDAL>().To<GetSecondLevelSafetyAssessmentStateDAL>();
+
+            _ninjectKernel.Bind<IGetManualInspectionSafetyAssessmentReportDAL>().To<GetManualInspectionSafetyAssessmentReportDAL>();
+            _ninjectKernel.Bind<IGetManualInspectionSafetyAssessmentStateDAL>().To<GetManualInspectionSafetyAssessmentStateDAL>();
+
 
         }
     }
