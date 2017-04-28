@@ -17,6 +17,7 @@ using GxjtBHMS.SqlServerDAL.SafetyPreWarningDAL;
 using GxjtBHMS.IDAL.SafetyPreWarning;
 using GxjtBHMS.SqlServerDAL.SafetyPreWarningRealTimePushDAL;
 using GxjtBHMS.SqlServerDAL.FirstLevelSafetyAssessmentReportDAL;
+using GxjtBHMS.SqlServerDAL.SecondLevelSafetyAssessmentReportDAL;
 
 namespace GxjtBHMS.Service
 {
@@ -30,7 +31,7 @@ namespace GxjtBHMS.Service
         }
         public T GetInstance<T>()
         {
-            return _ninjectKernel.Get<T>();
+             return _ninjectKernel.Get<T>();
         }
         void AddBinding()
         {
@@ -110,10 +111,12 @@ namespace GxjtBHMS.Service
             _ninjectKernel.Bind<ISafetyPreWarningRealTimePushDAL<SafetyPreWarning_TemperatureTable>>().To<Temperature_SafetyPreWarningRealTimePushDAL>();
 
 
+            //一级安全评估
+             _ninjectKernel.Bind<IGetFirstLevelSafetyAssessmentReportDAL>().To<GetFirstLevelSafetyAssessmentReportDAL>();
+            //二级安全评估
 
-
-_ninjectKernel.Bind<IGetFirstLevelSafetyAssessmentReportDAL>().To<GetFirstLevelSafetyAssessmentReportDAL>();
-
+            _ninjectKernel.Bind<IGetSecondLevelSafetyAssessmentReportDAL>().To<GetSecondLevelSafetyAssessmentReportDAL>();
+            _ninjectKernel.Bind<IGetSecondLevelSafetyAssessmentStateDAL>().To<GetSecondLevelSafetyAssessmentStateDAL>();
         }
     }
 }

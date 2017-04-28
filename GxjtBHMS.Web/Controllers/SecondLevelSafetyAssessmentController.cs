@@ -119,8 +119,8 @@ namespace GxjtBHMS.Web.Controllers
             }
             HttpPostedFile fileSave = files[0];//转换文件类型
             string ReportName = fileSave.FileName; //获得服务端上传文件的文件名
-            string path = StyleConstants.SecondLevelSafetyAssessmentReportUploasPath;
-            string ReprotPath = string.Concat(path, ReportName);//拼接上传文件的绝对路径
+            string path = System.Web.HttpContext.Current.Server.MapPath(StyleConstants.SecondLevelSafetyAssessmentReportUploasPath);   
+            string ReprotPath = string.Concat(path, ReportName);//拼接上传文件的保存路径
             files[0].SaveAs(ReprotPath); //保存文件
             DateTime uploadDate = DateTime.Now;
             var req = new SecondLevelSafetyAssementReportUploadAndDownloadRequest()

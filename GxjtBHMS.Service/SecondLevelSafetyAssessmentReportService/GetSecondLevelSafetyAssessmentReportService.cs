@@ -15,8 +15,7 @@ namespace GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService
         IGetSecondLevelSafetyAssessmentStateDAL _getSecondLevelSafetyAssessmentStateDAL;
         public GetSecondLevelSafetyAssessmentReportService()
         {
-            _getSecondLevelSafetyAssessmentReportDAL = new NinjectFactory()
-                 .GetInstance<IGetSecondLevelSafetyAssessmentReportDAL>();
+            _getSecondLevelSafetyAssessmentReportDAL = new NinjectFactory().GetInstance<IGetSecondLevelSafetyAssessmentReportDAL>();
             _getSecondLevelSafetyAssessmentStateDAL = new NinjectFactory().GetInstance<IGetSecondLevelSafetyAssessmentStateDAL>();
         }
 

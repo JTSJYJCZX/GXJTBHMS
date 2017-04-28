@@ -7,6 +7,7 @@
         public const string GreenColor = "green";
         public const string RedColor = "red";
         public const string StylePropertyKey = "style";
-        public const string SecondLevelSafetyAssessmentReportUploasPath = "D:\\迅雷下载\\二级安全评估\\";
+        //二级安全评估上传到服务器的目录位置
+        public const string SecondLevelSafetyAssessmentReportUploasPath = "~/";
     }
 }
