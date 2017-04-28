@@ -122,6 +122,18 @@ namespace GxjtBHMS.Service
             _ninjectKernel.Bind<IAlarmDatasQueryDAL<SafetyPreWarning_CableForceTable>>().To<CableForceAlarmDatasDAL>();
             _ninjectKernel.Bind<IAlarmDatasFileSystemService<SafetyPreWarning_CableForceTable>>().To<AlarmDatasFileSystemService<SafetyPreWarning_CableForceTable>>();
 
+            _ninjectKernel.Bind<IAlarmDatasQueryService<SafetyPreWarning_DisplacementTable>>().To<AlarmDatasQueryService<SafetyPreWarning_DisplacementTable>>();
+            _ninjectKernel.Bind<IAlarmDatasQueryDAL<SafetyPreWarning_DisplacementTable>>().To<DisplacementAlarmDatasDAL>();
+            _ninjectKernel.Bind<IAlarmDatasFileSystemService<SafetyPreWarning_DisplacementTable>>().To<AlarmDatasFileSystemService<SafetyPreWarning_DisplacementTable>>();
+
+            _ninjectKernel.Bind<IAlarmDatasQueryService<SafetyPreWarning_TemperatureTable>>().To<AlarmDatasQueryService<SafetyPreWarning_TemperatureTable>>();
+            _ninjectKernel.Bind<IAlarmDatasQueryDAL<SafetyPreWarning_TemperatureTable>>().To<TemperatureAlarmDatasDAL>();
+            _ninjectKernel.Bind<IAlarmDatasFileSystemService<SafetyPreWarning_TemperatureTable>>().To<AlarmDatasFileSystemService<SafetyPreWarning_TemperatureTable>>();
+
+            _ninjectKernel.Bind<IAlarmDatasQueryService<SafetyPreWarning_WindLoadTable>>().To<AlarmDatasQueryService<SafetyPreWarning_WindLoadTable>>();
+            _ninjectKernel.Bind<IAlarmDatasQueryDAL<SafetyPreWarning_WindLoadTable>>().To<WindLoadAlarmDatasDAL>();
+            _ninjectKernel.Bind<IAlarmDatasFileSystemService<SafetyPreWarning_WindLoadTable>>().To<AlarmDatasFileSystemService<SafetyPreWarning_WindLoadTable>>();
+
             //二级安全评估绑定
             _ninjectKernel.Bind<IGetSecondLevelSafetyAssessmentReportDAL>().To<GetSecondLevelSafetyAssessmentReportDAL>();
             _ninjectKernel.Bind<IGetSecondLevelSafetyAssessmentStateDAL>().To<GetSecondLevelSafetyAssessmentStateDAL>();

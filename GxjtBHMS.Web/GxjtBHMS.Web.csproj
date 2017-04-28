@@ -675,6 +675,10 @@
     <Content Include="Views\FirstLevelSafetyAssessment\GetFirstLevelSafetyAssessmentReportPartial.cshtml" />
     <Content Include="Views\FirstLevelSafetyAssessment\GetFirstLevelSafetyAssessmentListPartial.cshtml" />
     <Content Include="Views\FirstLevelSafetyAssessment\GetTimeSearchPartial.cshtml" />
+    <Content Include="Views\AlarmDatasManagement\AlarmDataQuerySearchPartial.cshtml" />
+    <Content Include="Views\AlarmDatasManagement\AlarmDatasManagementQuery.cshtml" />
+    <Content Include="Views\AlarmDatasManagement\AlarmDatasQueryListViewPartial.cshtml" />
+    <Content Include="Views\AlarmDatasManagement\DataQuerySearchContentPartial.cshtml" />
     <Content Include="Views\SecondLevelSafetyAssessment\GetReportListByTimeSearchPartial.cshtml" />
     <Content Include="Views\SecondLevelSafetyAssessment\GetSecondLevelSafetyAssessmentListPartial.cshtml" />
     <Content Include="Views\SecondLevelSafetyAssessment\GetSecondLevelSafetyAssessmentReportPartial.cshtml" />
