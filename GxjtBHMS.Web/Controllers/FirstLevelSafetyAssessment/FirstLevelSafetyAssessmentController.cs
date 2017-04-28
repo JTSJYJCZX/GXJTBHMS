@@ -92,5 +92,20 @@ namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
             return Json(guid, JsonRequestBehavior.AllowGet);
         }
 
+        public void OriginCode(string guid)
+        {
+            object obj = CacheHelper.GetCache(guid);
+            if (obj == null)
+            {
+                throw new ApplicationException("guid invalid");
+            }
+            var ms = _fileConverter.GetStream(obj);
+            string preFileName = "一级安全评估报告";
+            Response.AddHeader("Content-Disposition", string.Format("attachment; filename={0}.docx", preFileName));
+            Response.BinaryWrite(ms.ToArray());
+            ms.Close();
+            ms.Dispose();
+            CacheHelper.RemoveAllCache(guid);
+        }
     }
 }
