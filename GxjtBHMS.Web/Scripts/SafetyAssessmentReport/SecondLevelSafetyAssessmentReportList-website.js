@@ -61,23 +61,30 @@ $("#bttnquery").click(function () {
 $(function () {
     $("#SecondLevelSafetyAssessmentReportUpLoad").click(function () {
         var reportGrade = $("#SecondLevelAssessmentStateSelect").val()
+        var wordFileSize = $("#wordFileSize").val()
         var url = "/secondlevelsafetyassessment/UploadSecondLevelSafetyAssessmentReport";
-        $.ajaxFileUpload({
-            url: url,//url请求命令
-            fileElementId: 'fileField',
-            dataType: 'HTML', //返回值类型 一般设置为json
-            Type:"POST",
-            data: { reportGradeId: reportGrade },
-            success: function (datas) {
-                $("#datasMessage").html(datas);
-                $("#dusj1").div();
-             
-            },
-            error: function (result) {
-                alert(result.responsetext);
-            }
-        });
-    });
+        var file = document.getElementById("fileField").files;
+        if (file[0].size > wordFileSize) {
+            $("#datasMessage").html("上传文件不能超过10M");
+            $("#datasMessage").css("color", "red");
+        }
+        else
+        {
+            $.ajaxFileUpload({
+                url: url,//url请求命令
+                fileElementId: 'fileField',
+                dataType: 'HTML', //返回值类型 一般设置为json
+                Type:"POST",
+                data: { reportGradeId: reportGrade },
+                success: function (datas) {
+                    $("#datasMessage").html(datas);
+                    $("#dusj1").div();             
+                },
+                error: function (result) {
+                    alert(result.responsetext);
+                }
+            });
+        }});    
 })
 
 function SecondLevelSafetyAssessmentReportDownLoad(saveSender, url) {

@@ -139,6 +139,16 @@ namespace GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService
             return resp;
         }
 
+        public bool GetReportNameIsNotHas(string reportName)
+        {
+           var reportNameCount= _getSecondLevelSafetyAssessmentReportDAL.FindBy(m => m.ReportPeriods == reportName).Count();
+            if (reportNameCount>0)
+            {
+                return false;
+            }
+            return true;
+        }
+
         public ResponseBase DeleteSecondLevelSafetyAssessmentReport(SecondLevelSafetyAssementReportUploadAndDownloadRequest req)
         {
             ResponseBase resp = new ResponseBase();

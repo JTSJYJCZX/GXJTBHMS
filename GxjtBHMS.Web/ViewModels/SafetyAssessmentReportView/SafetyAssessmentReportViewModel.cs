@@ -16,5 +16,7 @@ namespace GxjtBHMS.Web.ViewModels.SafetyAssessmentReportView
         //评定等级，二级安全评估用
         public string  AssessmentGrade { get; set; }
 
+
+
     }
 }

@@ -15,5 +15,7 @@ namespace GxjtBHMS.Web.ViewModels.SecondLevelSafetyAssessment
         public int UpLoadAssessmentResultGrade { get; set; }
         //评估状态
         public string UpLoadAssessmentState { get; set; }
+        //上传文件的大小，供上传文件脚本判断大小用。
+        public int  wordFileSize { get; set; }
     }
 }

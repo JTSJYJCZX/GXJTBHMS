@@ -23,6 +23,7 @@
             @Html.DropDownListFor(m => m.UpLoadAssessmentState, (IEnumerable<SelectListItem>)ViewData[WebConstants.SecondLevelAssessmentStateKey],new { id = "SecondLevelAssessmentStateSelect", @class = "selectpicker" })
         </label>
     </div>
+    @Html.HiddenFor(m => m.wordFileSize, new { id = "wordFileSize" })
     <input type="button" id="SecondLevelSafetyAssessmentReportUpLoad" class="btn" value="上传" />
 </div>
 
@@ -31,17 +32,6 @@
 
 <script type="text/javascript">
     //===========================点击展开关闭效果====================================
-
-    function obj()
-    {
-
-
-
-    }
-
-
-
-
 function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
 var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
 var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
