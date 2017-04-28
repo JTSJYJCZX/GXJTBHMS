@@ -17,10 +17,6 @@ using GxjtBHMS.SqlServerDAL.SafetyPreWarningDAL;
 using GxjtBHMS.IDAL.SafetyPreWarning;
 using GxjtBHMS.SqlServerDAL.SafetyPreWarningRealTimePushDAL;
 using GxjtBHMS.SqlServerDAL.FirstLevelSafetyAssessmentReportDAL;
-using GxjtBHMS.Service.Interfaces.AlarmDatasQueryServiceInerfaces;
-using GxjtBHMS.Service.Implementations.AlarmDatasManagement;
-using GxjtBHMS.SqlServerDAL.SecondLevelSafetyAssessmentReportDAL;
-using GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService;
 
 namespace GxjtBHMS.Service
 {

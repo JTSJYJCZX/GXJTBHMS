@@ -1,5 +1,4 @@
-﻿using GxjtBHMS.Infrastructure.Helpers;
-using GxjtBHMS.Service.Interfaces;
+﻿using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.Messaging;
 using GxjtBHMS.Service.Messaging.SecondLevelSafetyAssessmentReport;
 using GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService;
