@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace GxjtBHMS.Service.Messaging.SecondLevelSafetyAssessmentReport
+namespace GxjtBHMS.Service.Messaging.ManualInspectionSafetyAssessmentReport
 {
-    public class SecondLevelSafetyAssementReportUploadRequest
+    public class ManualInspectionSafetyAssementReportUploadRequest
     {
         public string ReportPath { get; set; }
         public DateTime uploadDate { get; set; }

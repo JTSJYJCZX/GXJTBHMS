@@ -2,6 +2,7 @@
 using GxjtBHMS.Models;
 using GxjtBHMS.Models.AbnormalThresholdValueSetting;
 using GxjtBHMS.Models.FirstLevelSafetyAssessmentTable;
+using GxjtBHMS.Models.ManualInspectionSafetyAssessmentTable;
 using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
 using GxjtBHMS.Models.MonitoringDatasTable;
 using GxjtBHMS.Models.SecondLevelSafetyAssessmentTable;
@@ -86,5 +87,10 @@ namespace GxjtBHMS.SqlServerDAL
 
         public DbSet<SecondAssessment_SecondLevelSafetyAssessmentReportTable> SecondAssessment_SecondLevelSafetyAssessmentReports { get; set; }
         public DbSet<SecondAssessment_SecondLevelSafetyAssessmentStateTable> SecondAssessment_SecondLevelSafetyAssessmentStates { get; set; }
+
+        //人工巡检报告
+        public DbSet<ManualInspectionSafetyAssessmentReportTable> ManualInspectionSafetyAssessmentReports { get; set; }
+        public DbSet<ManualInspectionSafetyAssessmentStateTable> ManualInspectionSafetyAssessmentStates { get; set; }
+
     }
 }

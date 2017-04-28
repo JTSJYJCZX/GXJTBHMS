@@ -1,5 +1,7 @@
 ﻿using GxjtBHMS.Service.Interfaces;
+using GxjtBHMS.Service.ManualInspectionSafetyAssessmentReportService;
 using GxjtBHMS.Service.Messaging;
+using GxjtBHMS.Service.Messaging.ManualInspectionSafetyAssessmentReport;
 using GxjtBHMS.Service.Messaging.SecondLevelSafetyAssessmentReport;
 using GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService;
 using GxjtBHMS.Services.ViewModels;
@@ -15,18 +17,21 @@ using System.Web.Mvc;
 
 namespace GxjtBHMS.Web.Controllers
 {
-    public class SecondLevelSafetyAssessmentController : BaseController
+    /// <summary>
+    /// 人工巡检报告上传
+    /// </summary>
+    public class ManualInspectionSafetyAssessmentController : BaseController
     {      
         IFileConverter _fileConverter;       
-        public SecondLevelSafetyAssessmentController(IFileConverter fileConverter)
+        public ManualInspectionSafetyAssessmentController(IFileConverter fileConverter)
         {
             _fileConverter = fileConverter;
         }
 
-        public ActionResult SecondLevelSafetyAssessment()
+        public ActionResult ManualInspectionSafetyAssessment()
         {
-            var GetSecondLevelSafetyAssessmentReportListService = new GetSecondLevelSafetyAssessmentReportService();
-            var resp = GetSecondLevelSafetyAssessmentReportListService.GetTotalPages();
+            var GetManualInspectionSafetyAssessmentReportListService = new GetManualInspectionSafetyAssessmentReportService();
+            var resp = GetManualInspectionSafetyAssessmentReportListService.GetTotalPages();
             if (resp.Succeed)
             {
                 ViewData["TotalPages"] = resp.TotalPages;
@@ -40,26 +45,26 @@ namespace GxjtBHMS.Web.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult GetReportListByTimeSearchPartial()
+        public ActionResult GetManualInspectionReportListByTimeSearchPartial()
         {
             //获得状态等级的下拉菜单列表
             int firstGradeId;
-            SaveSencondLevelAssessmentGradeSelectListItemsToViewData(out firstGradeId);
+            SaveManualInspectionAssessmentGradeSelectListItemsToViewData(out firstGradeId);
             var models = new SecondLevelSafetyAssessmentConditonViewModel()
             {
                 wordFileSize = StyleConstants.wordFileSize,
             };
-            return PartialView("GetReportListByTimeSearchPartial",models);
+            return PartialView("GetManualInspectionReportListByTimeSearchPartial", models);
         }
 
         /// <summary>
         /// 获得状态等级的下拉菜单列表
         /// </summary>
-        void SaveSencondLevelAssessmentGradeSelectListItemsToViewData(out int firstGradeId)
+        void SaveManualInspectionAssessmentGradeSelectListItemsToViewData(out int firstGradeId)
         {
             firstGradeId = 1;
-            var GetSecondLevelSafetyAssessmentReportListService = new GetSecondLevelSafetyAssessmentReportService();
-            var source = GetSecondLevelSafetyAssessmentReportListService.GetAllTestType();
+            var GetManualInspectionSafetyAssessmentReportService = new GetManualInspectionSafetyAssessmentReportService();
+            var source = GetManualInspectionSafetyAssessmentReportService.GetAllTestType();
             if (source.Any())
             {
                 firstGradeId = Convert.ToInt32(source.First().Id);
@@ -73,9 +78,9 @@ namespace GxjtBHMS.Web.Controllers
         /// </summary>
         /// <param name="conditions"></param>
         /// <returns></returns>
-        public ActionResult GetSecondLevelSafetyAssessmentReportList(SafetyAssessmentReportSearchBaseView conditions)
+        public ActionResult GetManualInspectionSafetyAssessmentReportList(SafetyAssessmentReportSearchBaseView conditions)
         {
-            var req = new SecondLevelSafetyAssessmentSearchRequest()
+            var req = new ManualInspectionSafetyAssessmentSearchRequest()
             {
                 CurrentPageIndex = conditions.CurrentPageIndex,
             };
@@ -84,13 +89,13 @@ namespace GxjtBHMS.Web.Controllers
                 req.StartTime = new DateTime(conditions.Time.Year, conditions.Time.Month, 1);
                 req.EndTime = req.StartTime.AddMonths(1);
             };
-            var GetSecondLevelSafetyAssessmentReportListService = new GetSecondLevelSafetyAssessmentReportService();
-            var resp = GetSecondLevelSafetyAssessmentReportListService.GetSecondLevelSafetyAssessmentReportList(req);
+            var GetManualInspectionSafetyAssessmentReportService = new GetManualInspectionSafetyAssessmentReportService();
+            var resp = GetManualInspectionSafetyAssessmentReportService.GetManualInspectionSafetyAssessmentReportList(req);
             var models = new List<SafetyAssessmentReportViewModel>();
             var resultView = new SafetyAssessmentReportSearchBaseView();
             if (resp.Succeed)
             {
-                foreach (var item in resp.SecondLevelSafetyAssessmentReport)
+                foreach (var item in resp.ManualInspectionSafetyAssessmentReport)
                 {
                     var resultItem = new SafetyAssessmentReportViewModel();
                     resultItem.ReportName = item.ReportPeriods;
@@ -107,7 +112,7 @@ namespace GxjtBHMS.Web.Controllers
             {
                 return Json(new { Color = StyleConstants.RedColor, message = resp.Message }, JsonRequestBehavior.AllowGet);
             }
-            return PartialView("GetSecondLevelSafetyAssessmentListPartial", resultView);
+            return PartialView("GetManualInspectionSafetyAssessmentListPartial", resultView);
         }
 
         /// <summary>
@@ -115,7 +120,7 @@ namespace GxjtBHMS.Web.Controllers
         /// </summary>
         /// <param name="conditions"></param>
         /// <returns></returns>
-        public ActionResult UploadSecondLevelSafetyAssessmentReport(int reportGradeId)
+        public ActionResult UploadManualInspectionSafetyAssessmentReport(int reportGradeId)
         {           
             HttpFileCollection files = System.Web.HttpContext.Current.Request.Files;
             if (files.Count == 0)
@@ -126,20 +131,20 @@ namespace GxjtBHMS.Web.Controllers
             string ReportName = fileSave.FileName; //获得服务端上传文件的文件名
             string path = System.Web.HttpContext.Current.Server.MapPath(StyleConstants.SecondLevelSafetyAssessmentReportUploasPath);   
             string ReprotPath = string.Concat(path, ReportName);//拼接上传文件的保存路径
-            var GetSecondLevelSafetyAssessmentReportListService = new GetSecondLevelSafetyAssessmentReportService();
-            bool reportresp = GetSecondLevelSafetyAssessmentReportListService.GetReportNameIsNotHas(ReportName);
+            var GetManualInspectionSafetyAssessmentReportService = new GetManualInspectionSafetyAssessmentReportService();
+            bool reportresp = GetManualInspectionSafetyAssessmentReportService.GetReportNameIsNotHas(ReportName);
             if (reportresp==true)
             {
                 files[0].SaveAs(ReprotPath); //保存文件
                 DateTime uploadDate = DateTime.Now;
-                var req = new SecondLevelSafetyAssementReportUploadRequest()
+                var req = new ManualInspectionSafetyAssementReportUploadRequest()
                 {
                     ReportGradeId = reportGradeId,
                     ReportPath = ReprotPath,
                     uploadDate = uploadDate,
                     ReportName = ReportName,            
                 };
-                var resp = GetSecondLevelSafetyAssessmentReportListService.UploadSecondlevelSafetyAssessmentReport(req);
+                var resp = GetManualInspectionSafetyAssessmentReportService.UploadSecondlevelSafetyAssessmentReport(req);
                 return Json(resp.Message, JsonRequestBehavior.AllowGet);
             }
             else
@@ -154,9 +159,9 @@ namespace GxjtBHMS.Web.Controllers
         /// <param name="ReportPath">本地上传报告的路径</param>
         /// <param name="ReportName">报告名字</param>
         /// <returns></returns>
-        public ActionResult DownloadSecondLevelSafetyAssessmentReport(string ReportPath,string ReportName)
+        public ActionResult DownloadManualInspectionSafetyAssessmentReport(string ReportPath,string ReportName)
         {
-            var req = new SecondLevelSafetyAssementReportUploadRequest()
+            var req = new ManualInspectionSafetyAssementReportUploadRequest()
             {
                 ReportPath = ReportPath,
                 ReportName=ReportName
@@ -194,15 +199,14 @@ namespace GxjtBHMS.Web.Controllers
             Response.Close();
         }
 
-        public ActionResult DeleteSecondLevelSafetyAssessmentReport(string ReportPath)
+        public ActionResult DeleteManualInspectionSafetyAssessmentReport(string ReportPath)
         {
-            var req = new SecondLevelSafetyAssementReportUploadRequest()
+            var req = new ManualInspectionSafetyAssementReportUploadRequest()
             {
                 ReportPath = ReportPath,
             };
-
-            var GetSecondLevelSafetyAssessmentReportListService = new GetSecondLevelSafetyAssessmentReportService();
-            var resp = GetSecondLevelSafetyAssessmentReportListService.DeleteSecondLevelSafetyAssessmentReport(req);
+            var GetManualInspectionSafetyAssessmentReportService = new GetManualInspectionSafetyAssessmentReportService();
+            var resp = GetManualInspectionSafetyAssessmentReportService.DeleteSecondLevelSafetyAssessmentReport(req);
             if (resp.Succeed==true)
             {
                 System.IO.File.Delete(ReportPath);
