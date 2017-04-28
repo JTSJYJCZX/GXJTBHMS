@@ -17,6 +17,9 @@ using GxjtBHMS.SqlServerDAL.SafetyPreWarningDAL;
 using GxjtBHMS.IDAL.SafetyPreWarning;
 using GxjtBHMS.SqlServerDAL.SafetyPreWarningRealTimePushDAL;
 using GxjtBHMS.SqlServerDAL.FirstLevelSafetyAssessmentReportDAL;
+using GxjtBHMS.Service.Interfaces.AlarmDatasQueryServiceInerfaces;
+using GxjtBHMS.Service.Implementations.AlarmDatasManagement;
+using GxjtBHMS.SqlServerDAL.SecondLevelSafetyAssessmentReportDAL;
 
 namespace GxjtBHMS.Service
 {
@@ -111,8 +114,16 @@ namespace GxjtBHMS.Service
 
 
 
+            _ninjectKernel.Bind<IGetFirstLevelSafetyAssessmentReportDAL>().To<GetFirstLevelSafetyAssessmentReportDAL>();
 
-_ninjectKernel.Bind<IGetFirstLevelSafetyAssessmentReportDAL>().To<GetFirstLevelSafetyAssessmentReportDAL>();
+            //报警数据绑定
+            _ninjectKernel.Bind<IAlarmDatasQueryService<SafetyPreWarning_CableForceTable>>().To<AlarmDatasQueryService<SafetyPreWarning_CableForceTable>>();
+            _ninjectKernel.Bind<IAlarmDatasQueryDAL<SafetyPreWarning_CableForceTable>>().To<CableForceAlarmDatasDAL>();
+            _ninjectKernel.Bind<IAlarmDatasFileSystemService<SafetyPreWarning_CableForceTable>>().To<AlarmDatasFileSystemService<SafetyPreWarning_CableForceTable>>();
+
+            //二级安全评估绑定
+            _ninjectKernel.Bind<IGetSecondLevelSafetyAssessmentReportDAL>().To<GetSecondLevelSafetyAssessmentReportDAL>();
+            _ninjectKernel.Bind<IGetSecondLevelSafetyAssessmentStateDAL>().To<GetSecondLevelSafetyAssessmentStateDAL>();
 
         }
     }
