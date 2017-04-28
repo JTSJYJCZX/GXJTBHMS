@@ -76,6 +76,7 @@ namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
                     var resultItem = new FirstLevelSafetyAssessmentViewModel();
                     resultItem.ReportName = item.ReportPeriods;
                     resultItem.ReportTime = item.ReportTime;
+                    resultItem.ReportId = item.Id;
                     models.Add(resultItem);
                 }
                 resultView.FirstLevelSafetyAssessmentViewModels = models;
@@ -92,7 +93,7 @@ namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
         /// 报告下载，另存为Word文档
         /// </summary>
         /// <returns></returns>
-        public ActionResult DownloadReport(int reportId =4)
+        public ActionResult DownloadReport(int reportId)
         {
             //var report = new CreateReportTable();
             //var file = report.CreateTable(5);
