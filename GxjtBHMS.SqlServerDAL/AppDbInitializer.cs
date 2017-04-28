@@ -410,14 +410,14 @@ namespace GxjtBHMS.SqlServerDAL
                     context.SafetyPreWarning_CableFrces.Add(SafetyPreWarning_CableFrces);
                 }
                 //温度安全预警表格
-                for (int j = 0; j < tmpNumbers24.Length; j++)
+                for (int j = 0; j < tmpNumbers22.Length; j++)
                 {
-                    var SafetyPreWarning_Temperatures = new SafetyPreWarning_TemperatureTable { PointsNumber = tmpNumbers24[j], Time = time, MonitoringData = random.Next(30, 40), ThresholdValue = 30, ThresholdGrade = ThresholdGrade2 };
+                    var SafetyPreWarning_Temperatures = new SafetyPreWarning_TemperatureTable { PointsNumber = tmpNumbers22[j], Time = time, MonitoringData = random.Next(30, 40), ThresholdValue = 30, ThresholdGrade = ThresholdGrade2 };
                     context.SafetyPreWarning_Temperatures.Add(SafetyPreWarning_Temperatures);
                 }
-                for (int j = 0; j < tmpNumbers25.Length; j++)
+                for (int j = 0; j < tmpNumbers23.Length; j++)
                 {
-                    var SafetyPreWarning_Temperatures = new SafetyPreWarning_TemperatureTable { PointsNumber = tmpNumbers25[j], Time = time, MonitoringData = random.Next(30, 40), ThresholdValue = 30, ThresholdGrade = ThresholdGrade2 };
+                    var SafetyPreWarning_Temperatures = new SafetyPreWarning_TemperatureTable { PointsNumber = tmpNumbers23[j], Time = time, MonitoringData = random.Next(30, 40), ThresholdValue = 30, ThresholdGrade = ThresholdGrade2 };
                     context.SafetyPreWarning_Temperatures.Add(SafetyPreWarning_Temperatures);
                 }
                 //风速

@@ -106,7 +106,7 @@ namespace GxjtBHMS.Web.Controllers
         void SaveMonitoringTestTypesSelectListItemsToViewData(out int firstTestTypeId)
         {
             firstTestTypeId = 1;
-            var resp = _mtts.GetAllTestType().Datas.Where(m => m.Name == "索力" || m.Name == "位移" || m.Name == "温度" || m.Name == "湿度");
+            var resp = _mtts.GetAllTestType().Datas.Where(m => m.Name == "索力" || m.Name == "位移" || m.Name == "风速" || m.Name == "温度");
             if (resp.Any())
             {
                 firstTestTypeId = Convert.ToInt32(resp.First().Id);
