@@ -87,6 +87,7 @@
     <Compile Include="FirstLevelSafetyAssessmentReportService\GetFirstLevelSafetyAssessmentReportService.cs" />
     <Compile Include="AbnormalThresholdValueService\AbnormalThresholdValueSettingService.cs" />
     <Compile Include="AutoMapper\Configuration.cs" />
+    <Compile Include="SecondLevelSafetyAssessmentReportService\GetSecondLevelSafetyAssessmentReportService.cs" />
     <Compile Include="Implementations\AlarmDatasManagement\AlarmDatasQueryService.cs" />
     <Compile Include="Implementations\AlarmDatasManagement\AlarmDatasFileSystemService.cs" />
     <Compile Include="Implementations\EigenvalueChartQueryService\MonitorDatasQueryChartService.cs" />
@@ -154,6 +155,7 @@
     <Compile Include="SafetyPreWarningRealTimeHubService\SafetyPreWarningRealTimePushService.cs" />
     <Compile Include="SafetyPreWarningRealTimeHubService\Temperature_SafetyPreWarningRealTimePushService.cs" />
     <Compile Include="SafetyPreWarningRealTimeHubService\WindLoad_SafetyPreWarningRealTimePushService.cs" />
+    <Compile Include="ServiceFactory\AlarmDatasManagementServiceFactory.cs" />
     <Compile Include="ServiceFactory\MonitoringDatasOriginalValueDownLoadServiceFactory.cs" />
     <Compile Include="ExtensionMethods\AdminUser\UserServiceExtension.cs" />
     <Compile Include="ExtensionMethods\GetEnumDescription\EnumUnit.cs" />
