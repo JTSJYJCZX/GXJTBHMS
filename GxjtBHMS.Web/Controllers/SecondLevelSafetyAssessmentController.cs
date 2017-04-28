@@ -200,7 +200,6 @@ namespace GxjtBHMS.Web.Controllers
             {
                 ReportPath = ReportPath,
             };
-
             var GetSecondLevelSafetyAssessmentReportListService = new GetSecondLevelSafetyAssessmentReportService();
             var resp = GetSecondLevelSafetyAssessmentReportListService.DeleteSecondLevelSafetyAssessmentReport(req);
             if (resp.Succeed==true)
