@@ -5,20 +5,22 @@ using GxjtBHMS.Service.ServiceFactory;
 using GxjtBHMS.Service.ViewModels.MonitoringDatas.SafetyPreWarning;
 using GxjtBHMS.Web.Models;
 using GxjtBHMS.Web.ViewModels.FirstLevelSafetyAssessment;
-using GxjtBHMS.Web.ViewModels.SafetyPreWarning;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.Implementations;
+using GxjtBHMS.Service.Interfaces.FirstLevelAssessmInerfaces;
 
 namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
 {
     public class FirstLevelSafetyAssessmentController : Controller
     {
         IFileConverter _fileConverter;
-        public FirstLevelSafetyAssessmentController()
+        IFirstLevelAssessmReportDownloadFileInerfaces _reportDownloadFile;
+        public FirstLevelSafetyAssessmentController(IFirstLevelAssessmReportDownloadFileInerfaces reportDownloadFile)
         {
+            _reportDownloadFile = reportDownloadFile;
             _fileConverter = new WordFileConvert();
         }
         public ActionResult FirstLevelSafetyAssessment()
@@ -90,10 +92,11 @@ namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
         /// 报告下载，另存为Word文档
         /// </summary>
         /// <returns></returns>
-        public ActionResult DownloadReport(int reportId = 0)
+        public ActionResult DownloadReport(int reportId =4)
         {
-            var report = new CreateReportTable();
-            var file = report.CreateTable(5);
+            //var report = new CreateReportTable();
+            //var file = report.CreateTable(5);
+            var file = _reportDownloadFile.GetDownloadDatas(reportId).Report;
             var guid = "";
             guid = Guid.NewGuid().ToString();
             CacheHelper.SetCache(guid, file);

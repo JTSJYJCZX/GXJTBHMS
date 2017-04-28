@@ -83,9 +83,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FirstLevelSafetyAssessmentReportService\CreateReportTable.cs" />
+    <Compile Include="FirstLevelSafetyAssessmentReportService\FirstLevelAssessmReportDownloadFileService.cs" />
     <Compile Include="FirstLevelSafetyAssessmentReportService\GetFirstLevelSafetyAssessmentReportService.cs" />
     <Compile Include="AbnormalThresholdValueService\AbnormalThresholdValueSettingService.cs" />
     <Compile Include="AutoMapper\Configuration.cs" />
+    <Compile Include="FirstLevelSafetyAssessmentReportService\ReportDownloadModel.cs" />
+    <Compile Include="FirstLevelSafetyAssessmentReportService\SetReportTableValue.cs" />
     <Compile Include="Implementations\EigenvalueChartQueryService\MonitorDatasQueryChartService.cs" />
     <Compile Include="Implementations\EigenvalueDownLoadService\MonitorDatasEigenValueQueryFileSystemService.cs" />
     <Compile Include="Implementations\ExcelFileConverter.cs" />
@@ -111,6 +114,7 @@
     <Compile Include="Implementations\ThresholdValueService\GetThresholdValueSettingListBySearchBarService.cs" />
     <Compile Include="Implementations\ThresholdValueService\WithoutNegativeThresholdValueSettingServiceBase.cs" />
     <Compile Include="Implementations\WordFileConvert.cs" />
+    <Compile Include="Interfaces\FirstLevelAssessmInerfaces\IFirstLevelAssessmReportDownloadFileInerfaces.cs" />
     <Compile Include="Interfaces\IFileConverter.cs" />
     <Compile Include="Interfaces\RealTimeDatasServiceInerfaces\IWindLoadRealTimeDatasService.cs" />
     <Compile Include="Interfaces\RealTimeDatasServiceInerfaces\ITemperatureRealTimeDatasService.cs" />
@@ -122,6 +126,7 @@
     <Compile Include="Interfaces\RealTimeDatasServiceInerfaces\ISteelLatticeStrainRealTimeDatasService.cs" />
     <Compile Include="Interfaces\SafetyPreWarningRealTimePushServiceInterfaces\IGetOneTypeSafetyPreWarningRealTimePushServiceBase.cs" />
     <Compile Include="Interfaces\SafetyPreWarningRealTimePushServiceInterfaces\ISafetyPreWarningRealTimePushService.cs" />
+    <Compile Include="Messaging\FirstLevelSafetyAssessmentReport\FirstLevelSafetyAssessmentReportDownloadResponse.cs" />
     <Compile Include="Messaging\FirstLevelSafetyAssessmentReport\FirstLevelSafetyAssessmentSearchRequest.cs" />
     <Compile Include="Messaging\FirstLevelSafetyAssessmentReport\FirstLevelSafetyAssessmentReportResponse.cs" />
     <Compile Include="Messaging\AbnormalThresholdValueSetting\AbnormalThresholdValueResponse.cs" />

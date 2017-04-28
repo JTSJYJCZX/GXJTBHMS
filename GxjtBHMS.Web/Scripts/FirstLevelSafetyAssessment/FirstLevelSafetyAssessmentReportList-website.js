@@ -75,7 +75,7 @@ function downloadReport(sender,url) {
                 $('body').chardinJs('stop');
             },
             data: {
-                reportId: 1
+                reportId: 4
             },
             success: function (data) {
                 document.location.href = "/FirstLevelSafetyAssessment/OriginCode?guid=" + data;

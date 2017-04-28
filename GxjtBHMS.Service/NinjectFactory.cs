@@ -14,7 +14,7 @@ using GxjtBHMS.Models.ThresholdValueSetting;
 using GxjtBHMS.Service.Interfaces.MonitoringDatasQueryServiceInerfaces;
 using GxjtBHMS.SqlServerDAL.AbnormalThresholdValueSettingDAL;
 using GxjtBHMS.SqlServerDAL.SafetyPreWarningDAL;
-using GxjtBHMS.Service.Interfaces.SafetyPreWarningQueryServiceInerfaces;
+using GxjtBHMS.IDAL.GetFirstLevelSafetyAssessmentReport;
 using GxjtBHMS.IDAL.SafetyPreWarning;
 using GxjtBHMS.SqlServerDAL.SafetyPreWarningRealTimePushDAL;
 using GxjtBHMS.Service.Interfaces.SafetyPreWarningRealTimePushServiceInterfaces;
@@ -23,6 +23,7 @@ using GxjtBHMS.Service.SafetyPreWarningRealTimeHubService;
 using GxjtBHMS.Models.SafetyPreWarningTable;
 using GxjtBHMS.Models.FirstLevelSafetyAssessmentTable;
 using GxjtBHMS.SqlServerDAL.FirstLevelSafetyAssessmentReportDAL;
+
 
 namespace GxjtBHMS.Service
 {
@@ -117,8 +118,10 @@ _ninjectKernel.Bind<ISafetyPreWarningRealTimePushDAL<SafetyPreWarning_Temperatur
 
 
 
+            //一级安全评估
+            _ninjectKernel.Bind<IGetFirstLevelSafetyAssessmentReportDAL>().To<GetFirstLevelSafetyAssessmentReportDAL>();
 
-_ninjectKernel.Bind<IGetFirstLevelSafetyAssessmentReportDAL>().To<GetFirstLevelSafetyAssessmentReportDAL>();
+
 
         }
     }

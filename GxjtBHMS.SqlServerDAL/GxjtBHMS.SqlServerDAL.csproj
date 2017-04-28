@@ -61,6 +61,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FirstLevelSafetyAssessmentReportDAL\FirstLevelOfSafetyAssessmentExceptionRecordDAL.cs" />
+    <Compile Include="FirstLevelSafetyAssessmentReportDAL\FirstLevelOfSafetyAssessmentResultsDAL.cs" />
+    <Compile Include="FirstLevelSafetyAssessmentReportDAL\FirstLevelSafetyAssessmentReportDAL.cs" />
     <Compile Include="FirstLevelSafetyAssessmentReportDAL\GetFirstLevelSafetyAssessmentReportDAL.cs" />
     <Compile Include="AbnormalThresholdValueSettingDAL\AbnormalThresholdValueSettingDAL.cs" />
     <Compile Include="AppDbInitializer.cs" />

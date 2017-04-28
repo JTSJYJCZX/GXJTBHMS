@@ -13,6 +13,11 @@ using GxjtBHMS.SqlServerDAL.ThresholdValueDatasDAL;
 using Ninject;
 using System;
 using System.Web.Mvc;
+using GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService;
+using GxjtBHMS.Service.Interfaces.FirstLevelAssessmInerfaces;
+using GxjtBHMS.Models.FirstLevelSafetyAssessmentTable;
+using GxjtBHMS.SqlServerDAL.FirstLevelSafetyAssessmentReportDAL;
+using GxjtBHMS.IDAL.GetFirstLevelSafetyAssessmentReport;
 
 namespace GxjtBHMS.DependencyInjection
 {
@@ -85,6 +90,13 @@ namespace GxjtBHMS.DependencyInjection
             _ninjectKernel.Bind<ISafetyPreWarningRealTimePushDAL<SafetyPreWarning_WindLoadTable>>().To<WindLoad_SafetyPreWarningRealTimePushDAL>();
             _ninjectKernel.Bind<ISafetyPreWarningRealTimePushDAL<SafetyPreWarning_TemperatureTable>>().To<Temperature_SafetyPreWarningRealTimePushDAL>();
 
+
+            //一级安全评估报告下载
+            _ninjectKernel.Bind<IFirstLevelAssessmReportDownloadFileInerfaces>().To<FirstLevelAssessmReportDownloadFileService>();
+           
+            _ninjectKernel.Bind<IFirstLevelAssessmentDAL<FirstAssessment_FirstLevelOfSafetyAssessmentExceptionRecordTable>>().To<FirstLevelOfSafetyAssessmentExceptionRecordDAL>();
+            _ninjectKernel.Bind<IFirstLevelAssessmentDAL<FirstAssessment_FirstLevelOfSafetyAssessmentResultsTable>>().To<FirstLevelOfSafetyAssessmentResultsDAL>();
+            _ninjectKernel.Bind<IFirstLevelAssessmentDAL<FirstAssessment_FirstLevelSafetyAssessmentReportTable>>().To<FirstLevelSafetyAssessmentReportDAL>();
         }
     }
 }

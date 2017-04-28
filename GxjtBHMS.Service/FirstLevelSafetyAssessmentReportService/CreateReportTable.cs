@@ -1,18 +1,21 @@
 ﻿using NPOI.XWPF.UserModel;
-using System.IO;
 using NPOI.OpenXmlFormats.Wordprocessing;
+using GxjtBHMS.Infrastructure.Helpers;
 
 namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
 {
     public class CreateReportTable
     {
-        public dynamic CreateTable(int exceptionNumber)
+      
+     
+        public dynamic CreateTable(ReportDownloadModel Datas)
         {
             var m_Docx = new XWPFDocument();
             XWPFTable table = m_Docx.CreateTable(2, 5);//创建6行4列表,表头
-            
+         
             table.GetRow(0).GetCell(0).SetText("报告名称");
             SetAlign(table.GetRow(0).GetCell(0));//居中设置
+            table.GetRow(0).GetCell(1).SetText("梧州西江四桥安全一级评估报告");
             SetAlign(table.GetRow(0).GetCell(1));
             table.GetRow(0).GetCell(3).SetText("报告编号");
             SetAlign(table.GetRow(0).GetCell(3));
@@ -126,7 +129,7 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
             SetAlign(cell);
 
             //
-            for (int i = 1; i <= exceptionNumber; i++)
+            for (int i = 1; i <= Datas.ExceptionRecordNumber; i++)
             {
                 m_NewRow = new CT_Row();
                 m_Row = new XWPFTableRow(m_NewRow, table);
@@ -136,7 +139,7 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
                 ctPr = cttc.AddNewTcPr();
                 ctPr.AddNewVMerge().val = ST_Merge.@continue;//合并行
                 //横向创建4个单元格
-                for (int j = 1; j < 5; j++)
+                for (int k = 1; k < 5; k++)
                 {
                     cell = m_Row.CreateCell();
                     SetAlign(cell);
@@ -150,6 +153,30 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
             table.GetRow(3).MergeCells(2, 3);
             table.GetRow(4).MergeCells(2, 3);
             table.GetRow(5).MergeCells(2, 3);
+            
+
+            //给报告模板赋值
+            table.GetRow(0).GetCell(3).SetText(Datas.ReportModel.ReportPeriods);
+            table.GetRow(1).GetCell(1).SetText(Datas.ReportModel.AssessmentReasons.AssessmentReasons);
+            table.GetRow(1).GetCell(3).SetText(DateTimeHelper.FormatDate(Datas.ReportModel.ReportTime));
+            //评估结果
+            table.GetRow(3).GetCell(2).SetText(Datas.ResultsModel.DisplacementAssessmentResult);
+            table.GetRow(3).GetCell(3).SetText(Datas.ResultsModel.DisplacementAssessmentSuggestion);
+            table.GetRow(4).GetCell(2).SetText(Datas.ResultsModel.StrainAssessmentResult);
+            table.GetRow(4).GetCell(3).SetText(Datas.ResultsModel.StrainAssessmentSuggestion);
+            table.GetRow(5).GetCell(2).SetText(Datas.ResultsModel.CableForceAssessmentResult);
+            table.GetRow(5).GetCell(3).SetText(Datas.ResultsModel.CableForceAssessmentSuggestion);
+            //异常记录
+
+            int j = ServiceConstant.FirstExceptionRecordRowNumber;
+            foreach (var item in Datas.ExceptionRecordModels)
+            {
+                table.GetRow(j).GetCell(1).SetText(item.TestType);
+                table.GetRow(j).GetCell(2).SetText(item.MonitoringPointsNumbers);
+                table.GetRow(j).GetCell(3).SetText(item.MonitoringPointsPositions);
+                table.GetRow(j).GetCell(4).SetText(item.ExceptionNumber.ToString());
+                j++;
+            }
             return m_Docx;
         }
 
