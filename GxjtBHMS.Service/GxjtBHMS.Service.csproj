@@ -87,6 +87,10 @@
     <Compile Include="FirstLevelSafetyAssessmentReportService\GetFirstLevelSafetyAssessmentReportService.cs" />
     <Compile Include="AbnormalThresholdValueService\AbnormalThresholdValueSettingService.cs" />
     <Compile Include="AutoMapper\Configuration.cs" />
+    <Compile Include="Messaging\SpecialSafetyAssessmentReport\SpecialSafetyAssessmentReportDownloadResponse.cs" />
+    <Compile Include="Messaging\SpecialSafetyAssessmentReport\SpecialSafetyAssementReportUploadRequest.cs" />
+    <Compile Include="Messaging\SpecialSafetyAssessmentReport\SpecialSafetyAssessmentSearchRequest.cs" />
+    <Compile Include="Messaging\SpecialSafetyAssessmentReport\SpecialSafetyAssessmentReportResponse.cs" />
     <Compile Include="SecondLevelSafetyAssessmentReportService\GetSecondLevelSafetyAssessmentReportService.cs" />
     <Compile Include="Implementations\AlarmDatasManagement\AlarmDatasQueryService.cs" />
     <Compile Include="Implementations\AlarmDatasManagement\AlarmDatasFileSystemService.cs" />
@@ -224,6 +228,7 @@
     <Compile Include="ServiceFactory\SafetyWarningDetailFactory.cs" />
     <Compile Include="ServiceFactory\ThresholdValueSettingServiceFactory.cs" />
     <Compile Include="Implementations\ThresholdValueService\ContainNegativeThresholdValueSettingServiceBase.cs" />
+    <Compile Include="SpecialSafetyAssessmentReportService\GetSpecialSafetyAssessmentReportService.cs" />
     <Compile Include="ViewModels\AlarmDatasModel\AlarmDatasModel.cs" />
     <Compile Include="ViewModels\DataQueryResult\CableForceDatasModel.cs" />
     <Compile Include="ViewModels\DataQueryResult\TemperatureDatasMode.cs" />

@@ -109,6 +109,7 @@
     <Compile Include="SafetyPreWarningDAL\SafetyPreWarning_TemperatureTableDAL.cs" />
     <Compile Include="SafetyPreWarningDAL\SafetyPreWarning_WindLoadTableDAL.cs" />
     <Compile Include="SafetyPreWarningDAL\SafetyPreWarning_CableFrceTableDAL.cs" />
+    <Compile Include="SpecialSafetyAssessmentReportDAL\GetSpecialSafetyAssessmentReportDAL.cs" />
     <Compile Include="ThresholdValueDatasSettingDAL\SteelLatticeStrainThresholdValueSettingDAL.cs" />
     <Compile Include="ThresholdValueDatasSettingDAL\DisplacementThresholdValueSettingDAL.cs" />
     <Compile Include="ThresholdValueDatasSettingDAL\CableForceThresholdValueSettingDAL.cs" />

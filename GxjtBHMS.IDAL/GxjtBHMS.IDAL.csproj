@@ -53,6 +53,7 @@
     <Compile Include="GetSecondLevelSafetyAssessmentReport\IGetSecondLevelSafetyAssessmentReportDAL.cs" />
     <Compile Include="GetFirstLevelSafetyAssessmentReport\IGetFirstLevelSafetyAssessmentReportDAL.cs" />
     <Compile Include="AbnormalThresholdValueSetting\IAbnormalThresholdValueSettingDAL.cs" />
+    <Compile Include="GetSpecialSafetyAssessmentReport\IGetSpecialSafetyAssessmentReportDAL.cs" />
     <Compile Include="IMonitoringDatasEigenvalueDAL.cs" />
     <Compile Include="OriginalValueDownLoad\IWindLoadDatasOriginalValueDAL.cs" />
     <Compile Include="OriginalValueDownLoad\IHumidityDatasOriginalValueDAL.cs" />

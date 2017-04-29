@@ -237,6 +237,7 @@
     <Compile Include="Controllers\AdminUserController.cs" />
     <Compile Include="Controllers\AlarmDatasManagementController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\SpecialSafetyAssessmentController.cs" />
     <Compile Include="Controllers\SecondLevelSafetyAssessmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MonitoringDatasComparingQueryController.cs" />
@@ -304,6 +305,7 @@
     <Compile Include="ViewModels\SafetyPreWarning\SafetyPreWarningModels.cs" />
     <Compile Include="ViewModels\SecondLevelSafetyAssessment\SecondLevelSafetyAssessmentConditonViewModel.cs" />
     <Compile Include="ViewModels\Shared\SimplePagedViewModel.cs" />
+    <Compile Include="ViewModels\SpecialSafetyAssessment\SpecialSafetyAssessmentConditonViewModel.cs" />
     <Compile Include="ViewModels\ThresholdValueSetting\ThresholdValueSearchBarBaseView.cs" />
     <Compile Include="ViewModels\ThresholdValueSetting\QueryPointsNumberConditonView.cs" />
     <Compile Include="ViewModels\ThresholdValueSetting\ThresholdValueView.cs" />
@@ -433,6 +435,7 @@
     <Content Include="Scripts\dataQuery-SearchContentPartial-website.js" />
     <Content Include="Scripts\dataComparingQuerySearchPartial.website.js" />
     <Content Include="Scripts\dataQuerySearchPartial.website.js" />
+    <Content Include="Scripts\SafetyAssessmentReport\SpecialSafetyAssessmentReportList-website.js" />
     <Content Include="Scripts\SafetyAssessmentReport\SecondLevelSafetyAssessmentReportList-website.js" />
     <Content Include="Scripts\SafetyAssessmentReport\FirstLevelSafetyAssessmentReportList-website.js" />
     <Content Include="Scripts\htmlencode.js" />
@@ -683,6 +686,10 @@
     <Content Include="Views\SecondLevelSafetyAssessment\GetSecondLevelSafetyAssessmentListPartial.cshtml" />
     <Content Include="Views\SecondLevelSafetyAssessment\GetSecondLevelSafetyAssessmentReportPartial.cshtml" />
     <Content Include="Views\SecondLevelSafetyAssessment\SecondLevelSafetyAssessment.cshtml" />
+    <Content Include="Views\SpecialSafetyAssessment\SpecialSafetyAssessment.cshtml" />
+    <Content Include="Views\SpecialSafetyAssessment\GetSpecialReportListByTimeSearchPartial.cshtml" />
+    <Content Include="Views\SpecialSafetyAssessment\GetSpecialSafetyAssessmentListPartial.cshtml" />
+    <Content Include="Views\SpecialSafetyAssessment\GetSpecialSafetyAssessmentReportPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

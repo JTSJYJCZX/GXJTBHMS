@@ -117,9 +117,6 @@ function SecondLevelSafetyAssessmentReportDownLoad(saveSender, url) {
     });
 }
 
-
-
-
 function SecondLevelSafetyAssessmentReportDelete(saveSender, url) {
     if (!confirm('是否操作?')) return;
     var $saveSender = $(saveSender);
@@ -139,7 +136,6 @@ function SecondLevelSafetyAssessmentReportDelete(saveSender, url) {
         },
         data: {
             ReportPath: reportPath,
-            ReportTime: reportTime
         },
         success: function (datas) {
                $("#datasMessage").html(datas);

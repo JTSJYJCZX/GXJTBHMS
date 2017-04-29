@@ -157,11 +157,7 @@ namespace GxjtBHMS.Web.Controllers
         /// <returns></returns>
         public ActionResult DownloadSecondLevelSafetyAssessmentReport(string ReportPath,string ReportName)
         {
-            var req = new SecondLevelSafetyAssementReportUploadAndDownloadRequest()
-            {
-                ReportPath = ReportPath,
-                ReportName=ReportName
-            };     
+   
             FileStream fileStream = new FileStream(ReportPath, FileMode.Open);           
             var guid = "";
             guid = Guid.NewGuid().ToString();
@@ -195,14 +191,12 @@ namespace GxjtBHMS.Web.Controllers
             Response.Close();
         }
 
-        public ActionResult DeleteSecondLevelSafetyAssessmentReport(string ReportPath, DateTime ReportTime)
+        public ActionResult DeleteSecondLevelSafetyAssessmentReport(string ReportPath)
         {
             var req = new SecondLevelSafetyAssementReportUploadAndDownloadRequest()
             {
                 ReportPath = ReportPath,
-                uploadDate = ReportTime
             };
-
             var GetSecondLevelSafetyAssessmentReportListService = new GetSecondLevelSafetyAssessmentReportService();
             var resp = GetSecondLevelSafetyAssessmentReportListService.DeleteSecondLevelSafetyAssessmentReport(req);
             if (resp.Succeed==true)

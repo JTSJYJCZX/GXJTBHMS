@@ -174,10 +174,6 @@ namespace GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService
 
         void DealWithDeleteConditon(SecondLevelSafetyAssementReportUploadAndDownloadRequest req, IList<Func<SecondAssessment_SecondLevelSafetyAssessmentReportTable, bool>> ps)
         {
-            ps.Add(m => m.ReportTime.Second== req.uploadDate.Second);
-            ps.Add(m => m.ReportTime.Minute == req.uploadDate.Minute);
-            ps.Add(m => m.ReportTime.Hour == req.uploadDate.Hour);
-            ps.Add(m => m.ReportTime.Date == req.uploadDate.Date);
             ps.Add(m => m.ReprotPath == req.ReportPath);
         }
 

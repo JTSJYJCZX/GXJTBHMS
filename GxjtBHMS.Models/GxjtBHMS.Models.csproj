@@ -94,6 +94,7 @@
     <Compile Include="SafetyPreWarningTable\SafetyPreWarning_WindLoadTable.cs" />
     <Compile Include="SecondLevelSafetyAssessmentTable\SecondAssessment_SecondLevelSafetyAssessmentStateTable.cs" />
     <Compile Include="SecondLevelSafetyAssessmentTable\SecondAssessment_SecondLevelSafetyAssessmentReportTable.cs" />
+    <Compile Include="SpecialSafetyAssessmentTable\SpecialAssessment_SpecialSafetyAssessmentReportTable.cs" />
     <Compile Include="ThresholdGradeTable.cs" />
     <Compile Include="ThresholdValueSetting\ThresholdValue_DisplacementThresholdValueTable.cs" />
     <Compile Include="ThresholdValueSetting\ThresholdValue_CableForceThresholdValueTable.cs" />

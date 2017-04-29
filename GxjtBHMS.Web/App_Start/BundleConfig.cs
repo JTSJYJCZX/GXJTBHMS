@@ -133,6 +133,10 @@ namespace GxjtBHMS.Web
             bundles.Add(new ScriptBundle("~/bundles/SecondLevelSafetyAssessmentReportList-website").Include(
                      "~/Scripts/SafetyAssessmentReport/SecondLevelSafetyAssessmentReportList-website.js"));
 
+            //专项安全评估查询脚本
+            bundles.Add(new ScriptBundle("~/bundles/SpecialSafetyAssessmentReportList-website").Include(
+                     "~/Scripts/SafetyAssessmentReport/SpecialSafetyAssessmentReportList-website.js"));
+
         }
     }
 }
