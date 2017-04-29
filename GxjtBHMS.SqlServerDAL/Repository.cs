@@ -129,6 +129,16 @@ namespace GxjtBHMS.SqlServerDAL
             }
         }
 
+        public virtual IEnumerable<T> FindBy( params string[] navigationProperties)
+        {
+            using (var ctx = new BHMSContext())
+            {
+                var source = DealWithNavigationPropertys(navigationProperties, ctx.Set<T>());//处理导航属性
+                return source
+                    .OrderBy(m => m.Id)
+                    .ToList(); //排序、分页
+            }
+        }
 
         public virtual IEnumerable<T> FindBy(Func<T, bool> p = null, params string[] navigationProperties)
         {

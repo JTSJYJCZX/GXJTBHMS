@@ -92,6 +92,8 @@
     <Compile Include="SafetyPreWarningTable\SafetyPreWarning_TemperatureTable.cs" />
     <Compile Include="SafetyPreWarningTable\SafetyPreWarning_DisplacementTable.cs" />
     <Compile Include="SafetyPreWarningTable\SafetyPreWarning_WindLoadTable.cs" />
+    <Compile Include="ManualInspectionSafetyAssessmentTable\ManualInspectionSafetyAssessmentReportTable.cs" />
+    <Compile Include="ManualInspectionSafetyAssessmentTable\ManualInspectionSafetyAssessmentStateTable.cs" />
     <Compile Include="SecondLevelSafetyAssessmentTable\SecondAssessment_SecondLevelSafetyAssessmentStateTable.cs" />
     <Compile Include="SecondLevelSafetyAssessmentTable\SecondAssessment_SecondLevelSafetyAssessmentReportTable.cs" />
     <Compile Include="SpecialSafetyAssessmentTable\SpecialAssessment_SpecialSafetyAssessmentReportTable.cs" />

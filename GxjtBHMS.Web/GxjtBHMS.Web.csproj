@@ -237,6 +237,7 @@
     <Compile Include="Controllers\AdminUserController.cs" />
     <Compile Include="Controllers\AlarmDatasManagementController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ManualInspectionSafetyAssessmentController.cs" />
     <Compile Include="Controllers\SpecialSafetyAssessmentController.cs" />
     <Compile Include="Controllers\SecondLevelSafetyAssessmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -435,6 +436,7 @@
     <Content Include="Scripts\dataQuery-SearchContentPartial-website.js" />
     <Content Include="Scripts\dataComparingQuerySearchPartial.website.js" />
     <Content Include="Scripts\dataQuerySearchPartial.website.js" />
+    <Content Include="Scripts\SafetyAssessmentReport\ManualInspectionSafetyAssessmentReportList-website.js" />
     <Content Include="Scripts\SafetyAssessmentReport\SpecialSafetyAssessmentReportList-website.js" />
     <Content Include="Scripts\SafetyAssessmentReport\SecondLevelSafetyAssessmentReportList-website.js" />
     <Content Include="Scripts\SafetyAssessmentReport\FirstLevelSafetyAssessmentReportList-website.js" />
@@ -686,6 +688,10 @@
     <Content Include="Views\SecondLevelSafetyAssessment\GetSecondLevelSafetyAssessmentListPartial.cshtml" />
     <Content Include="Views\SecondLevelSafetyAssessment\GetSecondLevelSafetyAssessmentReportPartial.cshtml" />
     <Content Include="Views\SecondLevelSafetyAssessment\SecondLevelSafetyAssessment.cshtml" />
+    <Content Include="Views\ManualInspectionSafetyAssessment\ManualInspectionSafetyAssessment.cshtml" />
+    <Content Include="Views\ManualInspectionSafetyAssessment\GetManualInspectionReportListByTimeSearchPartial.cshtml" />
+    <Content Include="Views\ManualInspectionSafetyAssessment\GetManualInspectionSafetyAssessmentListPartial.cshtml" />
+    <Content Include="Views\ManualInspectionSafetyAssessment\GetManualInspectionSafetyAssessmentReportPartial.cshtml" />
     <Content Include="Views\SpecialSafetyAssessment\SpecialSafetyAssessment.cshtml" />
     <Content Include="Views\SpecialSafetyAssessment\GetSpecialReportListByTimeSearchPartial.cshtml" />
     <Content Include="Views\SpecialSafetyAssessment\GetSpecialSafetyAssessmentListPartial.cshtml" />

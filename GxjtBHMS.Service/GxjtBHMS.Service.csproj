@@ -83,10 +83,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FirstLevelSafetyAssessmentReportService\CreateReportTable.cs" />
+    <Compile Include="FirstLevelSafetyAssessmentReportService\FirstLevelAssessmReportDownloadFileService.cs" />
     <Compile Include="AlarmDatasManagementService\AlarmDatasManagementServiceBase.cs" />
     <Compile Include="FirstLevelSafetyAssessmentReportService\GetFirstLevelSafetyAssessmentReportService.cs" />
     <Compile Include="AbnormalThresholdValueService\AbnormalThresholdValueSettingService.cs" />
     <Compile Include="AutoMapper\Configuration.cs" />
+    <Compile Include="ManualInspectionSafetyAssessmentReportService\GetManualInspectionSafetyAssessmentReportService.cs" />
+    <Compile Include="Messaging\ManualInspectionSafetyAssessmentReport\ManualInspectionSafetyAssementReportUploadRequest.cs" />
+    <Compile Include="Messaging\ManualInspectionSafetyAssessmentReport\ManualInspectionSafetyAssessmentReportDownloadResponse.cs" />
+    <Compile Include="Messaging\ManualInspectionSafetyAssessmentReport\ManualInspectionSafetyAssessmentReportResponse.cs" />
+    <Compile Include="Messaging\ManualInspectionSafetyAssessmentReport\ManualInspectionSafetyAssessmentSearchRequest.cs" />
     <Compile Include="Messaging\SpecialSafetyAssessmentReport\SpecialSafetyAssessmentReportDownloadResponse.cs" />
     <Compile Include="Messaging\SpecialSafetyAssessmentReport\SpecialSafetyAssementReportUploadRequest.cs" />
     <Compile Include="Messaging\SpecialSafetyAssessmentReport\SpecialSafetyAssessmentSearchRequest.cs" />
@@ -94,6 +100,8 @@
     <Compile Include="SecondLevelSafetyAssessmentReportService\GetSecondLevelSafetyAssessmentReportService.cs" />
     <Compile Include="Implementations\AlarmDatasManagement\AlarmDatasQueryService.cs" />
     <Compile Include="Implementations\AlarmDatasManagement\AlarmDatasFileSystemService.cs" />
+    <Compile Include="FirstLevelSafetyAssessmentReportService\ReportDownloadModel.cs" />
+    <Compile Include="FirstLevelSafetyAssessmentReportService\SetReportTableValue.cs" />
     <Compile Include="Implementations\EigenvalueChartQueryService\MonitorDatasQueryChartService.cs" />
     <Compile Include="Implementations\EigenvalueDownLoadService\MonitorDatasEigenValueQueryFileSystemService.cs" />
     <Compile Include="Implementations\ExcelFileConverter.cs" />
@@ -121,6 +129,7 @@
     <Compile Include="Interfaces\AlarmDatasQueryChartServiceInerfaces\IAlarmDatasQueryService.cs" />
     <Compile Include="Interfaces\AlarmDatasQueryChartServiceInerfaces\IAlarmDatasFileSystemService.cs" />
     <Compile Include="Implementations\WordFileConvert.cs" />
+    <Compile Include="Interfaces\FirstLevelAssessmInerfaces\IFirstLevelAssessmReportDownloadFileInerfaces.cs" />
     <Compile Include="Interfaces\IFileConverter.cs" />
     <Compile Include="Interfaces\RealTimeDatasServiceInerfaces\IWindLoadRealTimeDatasService.cs" />
     <Compile Include="Interfaces\RealTimeDatasServiceInerfaces\ITemperatureRealTimeDatasService.cs" />
@@ -138,6 +147,7 @@
     <Compile Include="Messaging\SecondLevelSafetyAssessmentReport\SecondLevelSafetyAssessmentReportResponse.cs" />
     <Compile Include="Messaging\SecondLevelSafetyAssessmentReport\SecondLevelSafetyAssementReportUploadRequest.cs" />
     <Compile Include="Messaging\SecondLevelSafetyAssessmentReport\SecondLevelSafetyAssessmentSearchRequest.cs" />
+    <Compile Include="Messaging\FirstLevelSafetyAssessmentReport\FirstLevelSafetyAssessmentReportDownloadResponse.cs" />
     <Compile Include="Messaging\FirstLevelSafetyAssessmentReport\FirstLevelSafetyAssessmentSearchRequest.cs" />
     <Compile Include="Messaging\FirstLevelSafetyAssessmentReport\FirstLevelSafetyAssessmentReportResponse.cs" />
     <Compile Include="Messaging\AbnormalThresholdValueSetting\AbnormalThresholdValueResponse.cs" />

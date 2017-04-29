@@ -5,6 +5,7 @@ namespace GxjtBHMS.Web.ViewModels.SafetyAssessmentReportView
 {
     public class SafetyAssessmentReportViewModel
     {
+        public int ReportId { get; set; }
         //报告名称，报告期数+报告名字
         public string ReportName { get; set; }
         //报告生成时间

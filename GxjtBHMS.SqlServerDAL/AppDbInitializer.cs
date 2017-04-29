@@ -10,6 +10,7 @@ using GxjtBHMS.Models.MonitoringDatasTable;
 using GxjtBHMS.Models.AbnormalThresholdValueSetting;
 using GxjtBHMS.Models.FirstLevelSafetyAssessmentTable;
 using GxjtBHMS.Models.SecondLevelSafetyAssessmentTable;
+using GxjtBHMS.Models.ManualInspectionSafetyAssessmentTable;
 
 namespace GxjtBHMS.SqlServerDAL
 {
@@ -379,6 +380,36 @@ namespace GxjtBHMS.SqlServerDAL
             AssessmentState = "危险状态"
         };
 
+        /// <summary>
+        /// 二级安全评估等级
+        /// </summary>
+        ManualInspectionSafetyAssessmentStateTable ManualInspectionAssessmentGrade1 = new ManualInspectionSafetyAssessmentStateTable
+        {
+            AssessmentGrade = "1类",
+            AssessmentState = "完好状态"
+        };
+        ManualInspectionSafetyAssessmentStateTable ManualInspectionAssessmentGrade2 = new ManualInspectionSafetyAssessmentStateTable
+        {
+            AssessmentGrade = "2类",
+            AssessmentState = "较好状态"
+        };
+        ManualInspectionSafetyAssessmentStateTable ManualInspectionAssessmentGrade3 = new ManualInspectionSafetyAssessmentStateTable
+        {
+            AssessmentGrade = "3类",
+            AssessmentState = "中等损伤状态"
+        };
+        ManualInspectionSafetyAssessmentStateTable ManualInspectionAssessmentGrade4 = new ManualInspectionSafetyAssessmentStateTable
+        {
+            AssessmentGrade = "4类",
+            AssessmentState = "严重损伤状态"
+        };
+        ManualInspectionSafetyAssessmentStateTable ManualInspectionAssessmentGrade5 = new ManualInspectionSafetyAssessmentStateTable
+        {
+            AssessmentGrade = "5类",
+            AssessmentState = "危险状态"
+        };
+
+
 
         protected override void Seed(BHMSContext context)
         {
@@ -408,6 +439,16 @@ namespace GxjtBHMS.SqlServerDAL
             CreateThresholdGradeValue(context);
             CreateFirstLevelSafetyAssessmentReasonsValue(context);
             CreateSecondLevelSafetyAssessmentReasonsValue(context);
+            CreateManualInspectionSafetyAssessmentReasonsValue(context);
+        }
+
+        private void CreateManualInspectionSafetyAssessmentReasonsValue(BHMSContext context)
+        {
+            context.ManualInspectionSafetyAssessmentStates.Add(ManualInspectionAssessmentGrade1);
+            context.ManualInspectionSafetyAssessmentStates.Add(ManualInspectionAssessmentGrade2);
+            context.ManualInspectionSafetyAssessmentStates.Add(ManualInspectionAssessmentGrade3);
+            context.ManualInspectionSafetyAssessmentStates.Add(ManualInspectionAssessmentGrade4);
+            context.ManualInspectionSafetyAssessmentStates.Add(ManualInspectionAssessmentGrade5);
         }
 
         /// <summary>

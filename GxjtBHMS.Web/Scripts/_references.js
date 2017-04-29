@@ -64,6 +64,7 @@
 /// <reference path="respond.matchmedia.addlistener.js" />
 /// <reference path="respond.min.js" />
 /// <reference path="safetyassessmentreport/firstlevelsafetyassessmentreportlist-website.js" />
+/// <reference path="safetyassessmentreport/manualinspectionsafetyassessmentreportlist-website.js" />
 /// <reference path="safetyassessmentreport/secondlevelsafetyassessmentreportlist-website.js" />
 /// <reference path="safetyassessmentreport/specialsafetyassessmentreportlist-website.js" />
 /// <reference path="safetyprewarningdetail/safetyprewarningdetailsearchpartialwebsite.js" />

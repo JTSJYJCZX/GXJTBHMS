@@ -52,7 +52,6 @@ namespace GxjtBHMS.Web.Controllers
             return PartialView("GetReportListByTimeSearchPartial",models);
         }
 
-
         /// <summary>
         /// 获得状态等级的下拉菜单列表
         /// </summary>
@@ -133,7 +132,7 @@ namespace GxjtBHMS.Web.Controllers
             {
                 files[0].SaveAs(ReprotPath); //保存文件
                 DateTime uploadDate = DateTime.Now;
-                var req = new SecondLevelSafetyAssementReportUploadAndDownloadRequest()
+                var req = new SecondLevelSafetyAssementReportUploadRequest()
                 {
                     ReportGradeId = reportGradeId,
                     ReportPath = ReprotPath,
@@ -157,7 +156,11 @@ namespace GxjtBHMS.Web.Controllers
         /// <returns></returns>
         public ActionResult DownloadSecondLevelSafetyAssessmentReport(string ReportPath,string ReportName)
         {
-   
+            var req = new SecondLevelSafetyAssementReportUploadRequest()
+            {
+                ReportPath = ReportPath,
+                ReportName=ReportName
+            };     
             FileStream fileStream = new FileStream(ReportPath, FileMode.Open);           
             var guid = "";
             guid = Guid.NewGuid().ToString();
@@ -193,7 +196,7 @@ namespace GxjtBHMS.Web.Controllers
 
         public ActionResult DeleteSecondLevelSafetyAssessmentReport(string ReportPath)
         {
-            var req = new SecondLevelSafetyAssementReportUploadAndDownloadRequest()
+            var req = new SecondLevelSafetyAssementReportUploadRequest()
             {
                 ReportPath = ReportPath,
             };

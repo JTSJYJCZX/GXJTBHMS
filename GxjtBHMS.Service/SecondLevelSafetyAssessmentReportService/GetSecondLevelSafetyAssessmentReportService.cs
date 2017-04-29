@@ -94,7 +94,7 @@ namespace GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService
             return resp;
         }
 
-        public ResponseBase UploadSecondlevelSafetyAssessmentReport(SecondLevelSafetyAssementReportUploadAndDownloadRequest req)
+        public ResponseBase UploadSecondlevelSafetyAssessmentReport(SecondLevelSafetyAssementReportUploadRequest req)
         {
             ResponseBase resp = new ResponseBase();
             try
@@ -121,7 +121,7 @@ namespace GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService
 
         }
 
-        public SecondLevelSafetyAssessmentReportDownloadResponse GetSecondLevelSafetyAssessmentReportByReportName(SecondLevelSafetyAssementReportUploadAndDownloadRequest req)
+        public SecondLevelSafetyAssessmentReportDownloadResponse GetSecondLevelSafetyAssessmentReportByReportName(SecondLevelSafetyAssementReportUploadRequest req)
         {
             var resp = new SecondLevelSafetyAssessmentReportDownloadResponse();
             try
@@ -149,7 +149,7 @@ namespace GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService
             return true;
         }
 
-        public ResponseBase DeleteSecondLevelSafetyAssessmentReport(SecondLevelSafetyAssementReportUploadAndDownloadRequest req)
+        public ResponseBase DeleteSecondLevelSafetyAssessmentReport(SecondLevelSafetyAssementReportUploadRequest req)
         {
             ResponseBase resp = new ResponseBase();
             IList<Func<SecondAssessment_SecondLevelSafetyAssessmentReportTable, bool>> ps = new List<Func<SecondAssessment_SecondLevelSafetyAssessmentReportTable, bool>>();
@@ -172,7 +172,7 @@ namespace GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService
         }
 
 
-        void DealWithDeleteConditon(SecondLevelSafetyAssementReportUploadAndDownloadRequest req, IList<Func<SecondAssessment_SecondLevelSafetyAssessmentReportTable, bool>> ps)
+        void DealWithDeleteConditon(SecondLevelSafetyAssementReportUploadRequest req, IList<Func<SecondAssessment_SecondLevelSafetyAssessmentReportTable, bool>> ps)
         {
             ps.Add(m => m.ReprotPath == req.ReportPath);
         }

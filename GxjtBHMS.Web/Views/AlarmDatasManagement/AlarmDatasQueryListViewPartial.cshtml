@@ -1,5 +1,4 @@
 ﻿@model GxjtBHMS.Web.ViewModels.AlarmDatas.AlarmDatasSeachResultView
-
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>
@@ -13,7 +12,6 @@
                 <td>预警等级</td>
             </tr>
         </thead>
-
         @foreach (var m in Model.Datas)
         {
             <tr class="text-center">
@@ -28,13 +26,9 @@
         }
     </table>
 </div>
-
-
-
 <script>
        jqPaginatorSetting('#paginationNav',@Model.PaginatorModel.TotalPages,@Model.PaginatorModel.CurrentPageIndex);
 </script>
-
 
 @Html.AntiForgeryToken()
 

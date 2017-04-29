@@ -14,12 +14,14 @@ using GxjtBHMS.Models.ThresholdValueSetting;
 using GxjtBHMS.Service.Interfaces.MonitoringDatasQueryServiceInerfaces;
 using GxjtBHMS.SqlServerDAL.AbnormalThresholdValueSettingDAL;
 using GxjtBHMS.SqlServerDAL.SafetyPreWarningDAL;
+using GxjtBHMS.IDAL.GetFirstLevelSafetyAssessmentReport;
 using GxjtBHMS.IDAL.SafetyPreWarning;
 using GxjtBHMS.SqlServerDAL.SafetyPreWarningRealTimePushDAL;
 using GxjtBHMS.SqlServerDAL.FirstLevelSafetyAssessmentReportDAL;
 using GxjtBHMS.Service.Interfaces.AlarmDatasQueryServiceInerfaces;
 using GxjtBHMS.Service.Implementations.AlarmDatasManagement;
 using GxjtBHMS.SqlServerDAL.SecondLevelSafetyAssessmentReportDAL;
+using GxjtBHMS.SqlServerDAL.ManualInspectionSafetyAssessmentReportDAL;
 using GxjtBHMS.SqlServerDAL.SpecialSafetyAssessmentReportDAL;
 
 namespace GxjtBHMS.Service
@@ -38,7 +40,7 @@ namespace GxjtBHMS.Service
         }
         void AddBinding()
         {
-
+            
             _ninjectKernel.Bind<IMonitoringPointsNumberDAL>().To<MonitoringPointsNumberDAL>();
             _ninjectKernel.Bind<IMonitoringPointsPositionDAL>().To<MonitoringPointsPositionDAL>();
 
@@ -114,14 +116,15 @@ namespace GxjtBHMS.Service
             _ninjectKernel.Bind<ISafetyPreWarningRealTimePushDAL<SafetyPreWarning_TemperatureTable>>().To<Temperature_SafetyPreWarningRealTimePushDAL>();
 
 
-            //一级安全评估
-             _ninjectKernel.Bind<IGetFirstLevelSafetyAssessmentReportDAL>().To<GetFirstLevelSafetyAssessmentReportDAL>();
 
 
             //报警数据绑定
             _ninjectKernel.Bind<IAlarmDatasQueryService<SafetyPreWarning_CableForceTable>>().To<AlarmDatasQueryService<SafetyPreWarning_CableForceTable>>();
             _ninjectKernel.Bind<IAlarmDatasQueryDAL<SafetyPreWarning_CableForceTable>>().To<CableForceAlarmDatasDAL>();
             _ninjectKernel.Bind<IAlarmDatasFileSystemService<SafetyPreWarning_CableForceTable>>().To<AlarmDatasFileSystemService<SafetyPreWarning_CableForceTable>>();
+
+            //一级安全评估
+            _ninjectKernel.Bind<IGetFirstLevelSafetyAssessmentReportDAL>().To<GetFirstLevelSafetyAssessmentReportDAL>();
 
             _ninjectKernel.Bind<IAlarmDatasQueryService<SafetyPreWarning_DisplacementTable>>().To<AlarmDatasQueryService<SafetyPreWarning_DisplacementTable>>();
             _ninjectKernel.Bind<IAlarmDatasQueryDAL<SafetyPreWarning_DisplacementTable>>().To<DisplacementAlarmDatasDAL>();
@@ -141,6 +144,10 @@ namespace GxjtBHMS.Service
 
             //专项安全评估绑定
             _ninjectKernel.Bind<IGetSpecialSafetyAssessmentReportDAL>().To<GetSpecialSafetyAssessmentReportDAL>();
+
+
+            _ninjectKernel.Bind<IGetManualInspectionSafetyAssessmentReportDAL>().To<GetManualInspectionSafetyAssessmentReportDAL>();
+            _ninjectKernel.Bind<IGetManualInspectionSafetyAssessmentStateDAL>().To<GetManualInspectionSafetyAssessmentStateDAL>();
 
 
         }

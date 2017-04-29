@@ -7,14 +7,17 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.Implementations;
+using GxjtBHMS.Service.Interfaces.FirstLevelAssessmInerfaces;
 
 namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
 {
     public class FirstLevelSafetyAssessmentController : Controller
     {
         IFileConverter _fileConverter;
-        public FirstLevelSafetyAssessmentController()
+        IFirstLevelAssessmReportDownloadFileInerfaces _reportDownloadFile;
+        public FirstLevelSafetyAssessmentController(IFirstLevelAssessmReportDownloadFileInerfaces reportDownloadFile)
         {
+            _reportDownloadFile = reportDownloadFile;
             _fileConverter = new WordFileConvert();
         }
         public ActionResult FirstLevelSafetyAssessment()
@@ -61,6 +64,7 @@ namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
                     var resultItem = new SafetyAssessmentReportViewModel();
                     resultItem.ReportName = item.ReportPeriods;
                     resultItem.ReportTime = item.ReportTime;
+                    resultItem.ReportId = item.Id;
                     models.Add(resultItem);
                 }
                 resultView.SafetyAssessmentReportViewModels = models;
@@ -74,16 +78,34 @@ namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
         }
 
         /// <summary>
-        /// 下载评估报告
+        /// 报告下载，另存为Word文档
         /// </summary>
-        /// <param name="conditions"></param>
         /// <returns></returns>
-        public ActionResult DownloadFirstLevelSafetyAssessmentReport(SafetyAssessmentReportViewModel conditions)
+        public ActionResult DownloadReport(int reportId)
         {
-
-
-            return null;
+            //var report = new CreateReportTable();
+            //var file = report.CreateTable(5);
+            var file = _reportDownloadFile.GetDownloadDatas(reportId).Report;
+            var guid = "";
+            guid = Guid.NewGuid().ToString();
+            CacheHelper.SetCache(guid, file);
+            return Json(guid, JsonRequestBehavior.AllowGet);
         }
 
+        public void OriginCode(string guid)
+        {
+            object obj = CacheHelper.GetCache(guid);
+            if (obj == null)
+            {
+                throw new ApplicationException("guid invalid");
+            }
+            var ms = _fileConverter.GetStream(obj);
+            string preFileName = "一级安全评估报告";
+            Response.AddHeader("Content-Disposition", string.Format("attachment; filename={0}.docx", preFileName));
+            Response.BinaryWrite(ms.ToArray());
+            ms.Close();
+            ms.Dispose();
+            CacheHelper.RemoveAllCache(guid);
+        }
     }
 }
