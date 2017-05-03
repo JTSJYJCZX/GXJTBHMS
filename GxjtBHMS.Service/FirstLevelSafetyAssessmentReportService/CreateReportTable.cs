@@ -6,13 +6,13 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
 {
     public class CreateReportTable
     {
-      
-     
+
+
         public dynamic CreateTable(ReportDownloadModel Datas)
         {
             var m_Docx = new XWPFDocument();
             XWPFTable table = m_Docx.CreateTable(2, 5);//创建6行4列表,表头
-         
+
             table.GetRow(0).GetCell(0).SetText("报告名称");
             SetAlign(table.GetRow(0).GetCell(0));//居中设置
             table.GetRow(0).GetCell(1).SetText("梧州西江四桥安全一级评估报告");
@@ -27,18 +27,14 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
             SetAlign(table.GetRow(1).GetCell(3));
             SetAlign(table.GetRow(1).GetCell(4));
 
-            //评估结果
             var m_NewRow = new CT_Row();
             var m_Row = new XWPFTableRow(m_NewRow, table);
-            table.AddRow(m_Row);
-            var cell = m_Row.CreateCell();
-            var cttc = cell.GetCTTc();
-            var ctPr = cttc.AddNewTcPr();
-            ctPr.AddNewVMerge().val = ST_Merge.restart;//合并行
-            ctPr.AddNewVAlign().val = ST_VerticalJc.center;//垂直居中
-
-            cttc.GetPList()[0].AddNewPPr().AddNewJc().val = ST_Jc.center;
-            cttc.GetPList()[0].AddNewR().AddNewT().Value = "评估结果";
+            XWPFTableCell cell;
+            CT_Tc cttc;
+            CT_TcPr ctPr;
+            //评估结果
+            DealWithMergeCell(table, out m_NewRow, out m_Row, out cell, out cttc, out ctPr);
+            StartMergeRow(cttc, ctPr, "评估结果");
             cell = m_Row.CreateCell();
             cell.SetText("评估项目");
             SetAlign(cell);
@@ -53,29 +49,19 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
             SetAlign(cell);
 
             //
-            m_NewRow = new CT_Row();
-            m_Row = new XWPFTableRow(m_NewRow, table);
-            table.AddRow(m_Row);
-            cell = m_Row.CreateCell();
-            cttc = cell.GetCTTc();
-            ctPr = cttc.AddNewTcPr();
+            DealWithMergeCell(table, out m_NewRow, out m_Row, out cell, out cttc, out ctPr);
             ctPr.AddNewVMerge().val = ST_Merge.@continue;//合并行
             cell = m_Row.CreateCell();
             cell.SetText("变形评估");
             SetAlign(cell);
-            for(int i = 1; i < 4; i++)
+            for (int i = 1; i < 4; i++)
             {
                 cell = m_Row.CreateCell();
                 SetAlign(cell);
             }
 
             //
-            m_NewRow = new CT_Row();
-            m_Row = new XWPFTableRow(m_NewRow, table);
-            table.AddRow(m_Row);
-            cell = m_Row.CreateCell();
-            cttc = cell.GetCTTc();
-            ctPr = cttc.AddNewTcPr();
+            DealWithMergeCell(table, out m_NewRow, out m_Row, out cell, out cttc, out ctPr);
             ctPr.AddNewVMerge().val = ST_Merge.@continue;//合并行
             cell = m_Row.CreateCell();
             cell.SetText("应力评估");
@@ -87,12 +73,7 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
             }
 
             //
-            m_NewRow = new CT_Row();
-            m_Row = new XWPFTableRow(m_NewRow, table);
-            table.AddRow(m_Row);
-            cell = m_Row.CreateCell();
-            cttc = cell.GetCTTc();
-            ctPr = cttc.AddNewTcPr();
+            DealWithMergeCell(table, out m_NewRow, out m_Row, out cell, out cttc, out ctPr);
             ctPr.AddNewVMerge().val = ST_Merge.@continue;//合并行
             cell = m_Row.CreateCell();
             cell.SetText("吊杆及系杆索力评估");
@@ -104,17 +85,8 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
             }
 
             //异常记录
-            m_NewRow = new CT_Row();
-            m_Row = new XWPFTableRow(m_NewRow, table);
-            table.AddRow(m_Row);
-            cell = m_Row.CreateCell();
-            cttc = cell.GetCTTc();
-            ctPr = cttc.AddNewTcPr();
-            ctPr.AddNewVMerge().val = ST_Merge.restart;//合并行
-            ctPr.AddNewVAlign().val = ST_VerticalJc.center;//垂直居中
-
-            cttc.GetPList()[0].AddNewPPr().AddNewJc().val = ST_Jc.center;
-            cttc.GetPList()[0].AddNewR().AddNewT().Value = "异常记录";
+            DealWithMergeCell(table, out m_NewRow, out m_Row, out cell, out cttc, out ctPr);
+            StartMergeRow(cttc, ctPr, "异常记录");
             cell = m_Row.CreateCell();
             cell.SetText("检测类型");
             SetAlign(cell);
@@ -153,7 +125,7 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
             table.GetRow(3).MergeCells(2, 3);
             table.GetRow(4).MergeCells(2, 3);
             table.GetRow(5).MergeCells(2, 3);
-            
+
 
             //给报告模板赋值
             table.GetRow(0).GetCell(3).SetText(Datas.ReportModel.ReportPeriods);
@@ -180,57 +152,49 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
             return m_Docx;
         }
 
-
         /// <summary>
-        /// 设置单元格跨行，合并行
+        /// 对合并单元格的首单元格进行设置，并居中对齐
         /// </summary>
-        /// <param name="cell"></param>
-        /// <param name="stmerge"></param>
-        void MergeRow(XWPFTableCell cell, ST_Merge stmerge)
+        /// <param name="cttc"></param>
+        /// <param name="ctPr"></param>
+        /// <param name="mergeCellValue"></param>
+        static void StartMergeRow(CT_Tc cttc, CT_TcPr ctPr,string mergeCellValue)
         {
-            var cttc = cell.GetCTTc();
-            var ctPr = cttc.AddNewTcPr();
-            ctPr.AddNewVMerge().val = stmerge;
+            ctPr.AddNewVMerge().val = ST_Merge.restart;//合并行
+            ctPr.AddNewVAlign().val = ST_VerticalJc.center;//垂直居中
+            cttc.GetPList()[0].AddNewPPr().AddNewJc().val = ST_Jc.center;
+            cttc.GetPList()[0].AddNewR().AddNewT().Value = mergeCellValue;
         }
 
-        XWPFTableRow AddRow(XWPFTable table)
+        /// <summary>
+        /// 对合并单元格进行前处理
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="m_NewRow"></param>
+        /// <param name="m_Row"></param>
+        /// <param name="cell"></param>
+        /// <param name="cttc"></param>
+        /// <param name="ctPr"></param>
+        static void DealWithMergeCell(XWPFTable table, out CT_Row m_NewRow, out XWPFTableRow m_Row, out XWPFTableCell cell, out CT_Tc cttc, out CT_TcPr ctPr)
         {
-            var m_Row = table.CreateRow();//创建一行
-            var m_NewRow = new CT_Row();
+            m_NewRow = new CT_Row();
             m_Row = new XWPFTableRow(m_NewRow, table);
-            table.AddRow(m_Row); //必须要！！
-            return m_Row;
+            table.AddRow(m_Row);
+            cell = m_Row.CreateCell();
+            cttc = cell.GetCTTc();
+            ctPr = cttc.AddNewTcPr();
         }
 
         /// <summary>
-        /// 设置单元格跨列，合并列
+        /// 单元格居中对齐
         /// </summary>
         /// <param name="cell"></param>
-        /// <param name="spanCount"></param>
-        void SetGridSpan(XWPFTableCell cell, int spanCount)
-        {
-            var cttc = cell.GetCTTc();
-            var ctPr = cttc.AddNewTcPr();
-            ctPr.gridSpan = new CT_DecimalNumber();
-            ctPr.gridSpan.val = spanCount.ToString();
-        }
-
         void SetAlign(XWPFTableCell cell)
         {
             var cttc = cell.GetCTTc();
-
             var ctPr = cttc.AddNewTcPr();
-
             ctPr.AddNewVAlign().val = ST_VerticalJc.center;//垂直居中
-
             cttc.GetPList()[0].AddNewPPr().AddNewJc().val = ST_Jc.center;
-
-        }
-
-        void SetText(XWPFTableCell cell, string value)
-        {
-            var cttc = cell.GetCTTc();
-            cttc.GetPList()[0].AddNewR().AddNewT().Value = value;
         }
 
     }
