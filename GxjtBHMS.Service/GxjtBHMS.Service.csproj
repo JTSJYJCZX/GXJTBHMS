@@ -82,7 +82,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FirstLevelSafetyAssessmentReportService\CreateReportTable.cs" />
+    <Compile Include="FirstLevelSafetyAssessmentReportService\AbstractFirstLevelSafetyReport.cs" />
+    <Compile Include="FirstLevelSafetyAssessmentReportService\NPOIReportProcessor.cs" />
     <Compile Include="FirstLevelSafetyAssessmentReportService\FirstLevelAssessmReportDownloadFileService.cs" />
     <Compile Include="AlarmDatasManagementService\AlarmDatasManagementServiceBase.cs" />
     <Compile Include="FirstLevelSafetyAssessmentReportService\GetFirstLevelSafetyAssessmentReportService.cs" />
