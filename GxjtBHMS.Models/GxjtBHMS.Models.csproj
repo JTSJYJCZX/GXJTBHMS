@@ -46,6 +46,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbnormalThresholdValueSetting\Abnormal_ThresholdValueTable.cs" />
+    <Compile Include="AnomalousEventTable\AnomalousEvent_SteelArchStrainTable.cs" />
+    <Compile Include="AnomalousEventTable\AnomalousEventReasonTable.cs" />
+    <Compile Include="AnomalousEventTable\AnomalousEvent_SteelLatticeStrainTable.cs" />
+    <Compile Include="AnomalousEventTable\AnomalousEvent_ConcreteStrainTable.cs" />
+    <Compile Include="AnomalousEventTable\AnomalousEvent_CableForceTable.cs" />
+    <Compile Include="AnomalousEventTable\AnomalousEvent_DisplacementTable.cs" />
+    <Compile Include="AnomalousEventTable\AnomalousEvent_HumidityTable.cs" />
+    <Compile Include="AnomalousEventTable\AnomalousEvent_TemperatureTable.cs" />
+    <Compile Include="AnomalousEventTable\AnomalousEvent_WindLoadTable.cs" />
     <Compile Include="FirstLevelSafetyAssessmentTable\FirstAssessment_FirstLevelOfSafetyAssessmentExceptionRecordTable.cs" />
     <Compile Include="FirstLevelSafetyAssessmentTable\FirstAssessment_FirstLevelOfSafetyAssessmentResultsTable.cs" />
     <Compile Include="FirstLevelSafetyAssessmentTable\FirstAssessment_FirstLevelSafetyAssessmentReasonsTable.cs" />
