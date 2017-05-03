@@ -10,16 +10,18 @@ using GxjtBHMS.Service.Messaging.FirstLevelSafetyAssessmentReport;
 
 namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
 {
-   public class FirstLevelAssessmReportDownloadFileService: ServiceBase,IFirstLevelAssessmReportDownloadFileInerfaces
+    public class FirstLevelAssessmReportDownloadFileService : ServiceBase, IFirstLevelAssessmReportDownloadFileInerfaces
     {
         readonly IFirstLevelAssessmentDAL<FirstAssessment_FirstLevelOfSafetyAssessmentExceptionRecordTable> _exceptionRecordDAL;
         readonly IFirstLevelAssessmentDAL<FirstAssessment_FirstLevelOfSafetyAssessmentResultsTable> _resultDAL;
         readonly IFirstLevelAssessmentDAL<FirstAssessment_FirstLevelSafetyAssessmentReportTable> _reportDAL;
-        public FirstLevelAssessmReportDownloadFileService(IFirstLevelAssessmentDAL<FirstAssessment_FirstLevelOfSafetyAssessmentExceptionRecordTable> exceptionRecordDAL, IFirstLevelAssessmentDAL<FirstAssessment_FirstLevelOfSafetyAssessmentResultsTable> resultDAL, IFirstLevelAssessmentDAL<FirstAssessment_FirstLevelSafetyAssessmentReportTable> reportDA)
+        readonly AbstractFirstLevelSafetyReport _reportProcessor;
+        public FirstLevelAssessmReportDownloadFileService(IFirstLevelAssessmentDAL<FirstAssessment_FirstLevelOfSafetyAssessmentExceptionRecordTable> exceptionRecordDAL, IFirstLevelAssessmentDAL<FirstAssessment_FirstLevelOfSafetyAssessmentResultsTable> resultDAL, IFirstLevelAssessmentDAL<FirstAssessment_FirstLevelSafetyAssessmentReportTable> reportDAL, AbstractFirstLevelSafetyReport reportProcessor)
         {
             _exceptionRecordDAL = exceptionRecordDAL;
-            _reportDAL = reportDA;
+            _reportDAL = reportDAL;
             _resultDAL = resultDAL;
+            _reportProcessor = reportProcessor;
         }
 
         /// <summary>
@@ -43,13 +45,10 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
                 var reportModel = _reportDAL.FindBy(reportPs, ServiceConstant.ReportAssessmentReasons).SingleOrDefault();
                 var reportDownloadModel = new ReportDownloadModel(exceptionRecordModels, resultsModel, reportModel);
                 //创建报告模板
-                var reportService = new CreateReportTable();
-                var report = reportService.CreateTable(reportDownloadModel);
-
-                resp.Report = report;
+                resp.Report = _reportProcessor.CreateReport(reportDownloadModel);
                 resp.Succeed = true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 resp.Message = "报告下载出错！";
                 Log(ex);
@@ -65,7 +64,7 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
         /// <param name="ps"></param>
         void DealWithExceptionRecordReportId(int reportId, IList<Func<FirstAssessment_FirstLevelOfSafetyAssessmentExceptionRecordTable, bool>> ps)
         {
-            ps.Add(m=>m.AssessmentReportId==reportId);
+            ps.Add(m => m.AssessmentReportId == reportId);
         }
         void DealWithResultsReportId(int reportId, IList<Func<FirstAssessment_FirstLevelOfSafetyAssessmentResultsTable, bool>> ps)
         {

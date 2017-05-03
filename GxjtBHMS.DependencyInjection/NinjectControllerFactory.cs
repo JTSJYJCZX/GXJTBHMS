@@ -95,6 +95,9 @@ namespace GxjtBHMS.DependencyInjection
             _ninjectKernel.Bind<IFirstLevelAssessmentDAL<FirstAssessment_FirstLevelOfSafetyAssessmentExceptionRecordTable>>().To<FirstLevelOfSafetyAssessmentExceptionRecordDAL>();
             _ninjectKernel.Bind<IFirstLevelAssessmentDAL<FirstAssessment_FirstLevelOfSafetyAssessmentResultsTable>>().To<FirstLevelOfSafetyAssessmentResultsDAL>();
             _ninjectKernel.Bind<IFirstLevelAssessmentDAL<FirstAssessment_FirstLevelSafetyAssessmentReportTable>>().To<FirstLevelSafetyAssessmentReportDAL>();
+
+            _ninjectKernel.Bind<AbstractFirstLevelSafetyReport>().To<NPOIReportProcessor>();
+
             //报警数据管理注入
             _ninjectKernel.Bind<IAlarmDatasQueryDAL<SafetyPreWarning_CableForceTable>>().To<CableForceAlarmDatasDAL>();            
 
