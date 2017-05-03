@@ -7,6 +7,7 @@ using GxjtBHMS.Infrastructure.Configuration;
 using GxjtBHMS.Service.Messaging.SecondLevelSafetyAssessmentReport;
 using GxjtBHMS.Service.Messaging.ManualInspectionSafetyAssessmentReport;
 using GxjtBHMS.Models.ManualInspectionSafetyAssessmentTable;
+using GxjtBHMS.Service.Messaging.Home;
 
 namespace GxjtBHMS.Service.ManualInspectionSafetyAssessmentReportService
 {
@@ -47,6 +48,17 @@ namespace GxjtBHMS.Service.ManualInspectionSafetyAssessmentReportService
                 Log(ex);
             }
             return resp;
+        }
+
+        public SafetyAssessmentResultSearchResponse GetManualInspectionSafetyAssessmentReportResult()
+        {
+
+            var source = _getManualInspectionSafetyAssessmentReportDAL.FindBy(ServiceConstant.AssessmentResultStateNavigationProperty).OrderBy(m => m.ReportTime).Last();
+            var result = new SafetyAssessmentResultSearchResponse()
+            {
+                ManualInspectionSafetyAssessmentResult = source.AssessmentResultState.AssessmentGrade
+            };
+            return result;
         }
 
         public IEnumerable<ManualInspectionSafetyAssessmentStateTable> GetAllTestType()

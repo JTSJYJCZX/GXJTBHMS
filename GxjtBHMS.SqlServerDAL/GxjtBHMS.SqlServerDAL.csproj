@@ -68,6 +68,7 @@
     <Compile Include="AlarmDatasManagementDAL\WindLoadAlarmDatasDAL.cs" />
     <Compile Include="AlarmDatasManagementDAL\DisplacementAlarmDatasDAL.cs" />
     <Compile Include="AlarmDatasManagementDAL\CableForceAlarmDatasDAL.cs" />
+    <Compile Include="Home\GetFirstLevelSafetyAssessmentReportDisplacementResultDAL.cs" />
     <Compile Include="ManualInspectionSafetyAssessmentReportDAL\GetManualInspectionSafetyAssessmentReportDAL.cs" />
     <Compile Include="ManualInspectionSafetyAssessmentReportDAL\GetManualInspectionSafetyAssessmentStateDAL.cs" />
     <Compile Include="SecondLevelSafetyAssessmentReportDAL\GetSecondLevelSafetyAssessmentStateDAL.cs" />

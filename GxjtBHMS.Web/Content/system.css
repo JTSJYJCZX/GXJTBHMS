@@ -216,3 +216,18 @@ span {
                 height: 18px;
                 border: 1px solid #1138b7;
             }
+
+
+
+        /************DIV  ************/
+
+/*div边框*/
+
+#divborder{
+color:black;
+width:40%;
+height:500px;
+border-color:#0000FF;
+border: 2px  groove;
+
+}

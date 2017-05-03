@@ -1,33 +1,58 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-<div class="jumbotron" style="background:none;height:280px;">
-    <h2>欢迎进入梧州西江四桥健康监测系统</h2>
-    <img src="~/Content/Images/西江四桥.jpg" alt="西江四桥" content="width=device-width, initial-scale=1.0"/>
+
+
+<div class="jumbotron" style="background:none;height:20px;">
+    <h2 style="color:black">欢迎进入梧州西江四桥健康监测系统</h2>
+    @*<img src="~/Content/Images/西江四桥.jpg" alt="西江四桥" content="width=device-width, initial-scale=1.0"/>*@
     @*<p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>*@
 </div>
 
-
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>   </h2>
-        @*<p>
-            欢迎进入梧州西江四桥健康监测系统
-        </p>*@
-        @*<p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>*@
+<div class="row" >
+    <div class="col-md-5" id="divborder">
+        <h3 style="color:black">安全预警信息</h3>
+        @*window.open="http://localhost:56702/SafetyPreWarning/SafetyPreWarning";*@
+        
+        <div id="safetyPreWarning" style="height:300px">
+        @*当前安全预警灯的指示*@
+            @Html.Action("GetSafetyWarningSearchContent")
+        </div>
+        <p><a href="http://localhost:56702/SafetyPreWarning/SafetyPreWarning" class="btn btn-primary btn-lg" style="color:white" >查看详情 &raquo;</a></p>
     </div>
-    <div class="col-md-4">
-        @*<h2>欢迎进入梧州西江四桥健康监测系统</h2>*@
-        @*<p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>*@
-    </div>
-    <div class="col-md-4">
-        @*<h2>欢迎进入梧州西江四桥健康监测系统</h2>*@
-        @*<p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>*@
-    </div>
+    <div class="col-md-1" style="width:1px">&nbsp</div>
+    <div class="col-md-5" id="divborder">
+            <h3 style="color:black">状况评估结果</h3>
+        @Html.Action("GetSafetyAssessmentResult")
+      </div>
 </div>
 
+<div>&nbsp</div>
+
+<div class="row">
+     <div class="col-md-5" id="divborder">
+            <h3 style="color:black">异常事件</h3>
+         <div id="safetyPreWarning" style="height:380px">这里放的是异常事件的结果 </div>
+
+
+         <p><a href="http://localhost:56702/SafetyPreWarning/SafetyPreWarning" class="btn btn-primary btn-lg" style="object-position:right">查看详情 &raquo;</a></p>
+     </div>
+     <div class="col-md-1" style="width:1px">&nbsp</div>
+     <div class="col-md-5" id="divborder">
+            <h2 style="color:black">工作建议</h2>
+         <div id="safetyPreWarning" style="height:380px">这里放的是工作建议 </div>
+
+
+         <p><a href="http://localhost:56702/SafetyPreWarning/SafetyPreWarning" class="btn btn-primary btn-lg" style="object-position:right">查看详情 &raquo;</a></p>
+     </div>
+</div>
+
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/SafetyPreWarningDetailSearchPartialwebsite")
+    <script src="~/Scripts/jquery.signalR-2.2.1.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+}
 
 

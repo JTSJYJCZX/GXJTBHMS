@@ -1,8 +1,6 @@
-﻿using GxjtBHMS.Models;
-using GxjtBHMS.Models.MonitoringDatasTable;
+﻿using GxjtBHMS.Models.MonitoringDatasTable;
 using GxjtBHMS.Web.Models.ReceiveDatasModel;
 using GxjtBHMS.Web.WebApiContext;
-using System;
 using System.Collections.Generic;
 using System.Web.Http;
 

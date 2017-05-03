@@ -57,6 +57,7 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
             return resp;
         }
 
+
         /// <summary>
         /// 处理包含报告id的条件
         /// </summary>
@@ -87,6 +88,16 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
             return reportTable;
         }
 
+        
+
+
+
+
+
+
+
+
+
         ///// <summary>
         ///// 判断是否有记录
         ///// </summary>
@@ -104,5 +115,10 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
         //{
         //    return exceptionRecords.Count() == 0;
         //}
+
+        
+
+
+
     }
 }

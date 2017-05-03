@@ -5,16 +5,21 @@ using GxjtBHMS.Service.Messaging;
 using System.Linq;
 using GxjtBHMS.Models.FirstLevelSafetyAssessmentTable;
 using GxjtBHMS.Infrastructure.Configuration;
+using GxjtBHMS.Service.Messaging.Home;
+using GxjtBHMS.IDAL.Home;
 
 namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
 {
     public class GetFirstLevelSafetyAssessmentReportService : ServiceBase
     {
         IGetFirstLevelSafetyAssessmentReportDAL _getFirstLevelSafetyAssessmentReportDAL;
+        IGetFirstLevelSafetyAssessmentReportDisplacementResultDAL _getFirstLevelSafetyAssessmentReportResultDAL;
         public GetFirstLevelSafetyAssessmentReportService()
         {
             _getFirstLevelSafetyAssessmentReportDAL = new NinjectFactory()
                  .GetInstance<IGetFirstLevelSafetyAssessmentReportDAL>();
+            _getFirstLevelSafetyAssessmentReportResultDAL = new NinjectFactory().GetInstance<IGetFirstLevelSafetyAssessmentReportDisplacementResultDAL>();
+
         }
 
         public FirstLevelSafetyAssessmentReportResponse GetFirstLevelSafetyAssessmentReportList(FirstLevelSafetyAssessmentSearchRequest req)
@@ -45,6 +50,31 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
             }
             return resp;
         }
+
+        /// <summary>
+        /// 获得最近一次一级安全评估结果变形评估的结论
+        /// </summary>
+        /// <returns></returns>
+        public SafetyAssessmentResultSearchResponse GetFirstSafetyAssessmentResult()
+        {
+            var source = _getFirstLevelSafetyAssessmentReportResultDAL.FindBy().OrderBy(m=>m.AssessmentReportId).Last();
+            var result = new SafetyAssessmentResultSearchResponse()
+            {
+                FirstSafetyAssessmentResult_Displacement = source.DisplacementAssessmentResult,
+                FirstSafetyAssessmentResult_CableForce=source.CableForceAssessmentResult,
+                FirstSafetyAssessmentResult_Stress=source.StrainAssessmentResult
+            };
+            return result;
+        }
+
+  
+
+        /// <summary>
+        /// 获得最近一次二级安全评估结果的结论
+        /// </summary>
+        /// <returns></returns>
+
+
 
         void DealWithContainsTime(FirstLevelSafetyAssessmentSearchRequest req, IList<Func<FirstAssessment_FirstLevelSafetyAssessmentReportTable, bool>> ps)
         {

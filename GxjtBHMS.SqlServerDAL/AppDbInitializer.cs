@@ -435,11 +435,11 @@ namespace GxjtBHMS.SqlServerDAL
             CreateHumidityThresholdValues(context);
             CreateWindloadThresholdValues(context);
             CreateAbnormalThresholdValue(context);
-            CreateSafetyPreWarning(context);
-            CreateThresholdGradeValue(context);
-            CreateFirstLevelSafetyAssessmentReasonsValue(context);
-            CreateSecondLevelSafetyAssessmentReasonsValue(context);
-            CreateManualInspectionSafetyAssessmentReasonsValue(context);
+            //CreateSafetyPreWarning(context);
+            CreateThresholdGradeValue(context);//创建阈值等级表格
+            CreateFirstLevelSafetyAssessmentReasonsValue(context);//一级安全评估表格
+            CreateSecondLevelSafetyAssessmentReasonsValue(context);//二级安全评估表格
+            CreateManualInspectionSafetyAssessmentReasonsValue(context);//人工巡检安全评估表格
         }
 
         private void CreateManualInspectionSafetyAssessmentReasonsValue(BHMSContext context)

@@ -296,6 +296,8 @@
     <Compile Include="ViewModels\AdminUser\QueryUsersConditionView.cs" />
     <Compile Include="ViewModels\AdminUser\UserSeachResultView.cs" />
     <Compile Include="ViewModels\AdminUser\UsersSearchConditionView.cs" />
+    <Compile Include="ViewModels\Home\SafetyAssessmentModels.cs" />
+    <Compile Include="ViewModels\Home\SafetyAssessmentModelsViewModel.cs" />
     <Compile Include="ViewModels\SafetyAssessmentReportView\SafetyAssessmentReportViewModel.cs" />
     <Compile Include="ViewModels\MonitoringDatasComparing\MornitoringDataComparingSearchBarView.cs" />
     <Compile Include="ViewModels\MonitoringDatas\MornitoringDataSearchBarBaseView.cs" />
@@ -642,7 +644,6 @@
     <Content Include="Views\SystemInformation\SystemDescription.cshtml" />
     <Content Include="Views\SystemInformation\SystemFunctionIntroduction.cshtml" />
     <Content Include="Views\SystemInformation\MonitoringPointsPositionAndNumber.cshtml" />
-    <Content Include="Views\Home\StrainDataPushing.cshtml" />
     <Content Include="Views\AdminUser\ListUserMessagePartial.cshtml" />
     <Content Include="Views\MonitoringDatas\DataQuerySearchContentPartial.cshtml" />
     <Content Include="Views\MonitoringDatas\StrainDataQueryListViewPartial.cshtml" />
@@ -696,6 +697,8 @@
     <Content Include="Views\SpecialSafetyAssessment\GetSpecialReportListByTimeSearchPartial.cshtml" />
     <Content Include="Views\SpecialSafetyAssessment\GetSpecialSafetyAssessmentListPartial.cshtml" />
     <Content Include="Views\SpecialSafetyAssessment\GetSpecialSafetyAssessmentReportPartial.cshtml" />
+    <Content Include="Views\Home\GetSafetyWarningContentPartial.cshtml" />
+    <Content Include="Views\Home\GetSafetyAssessmentResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

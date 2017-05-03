@@ -6,6 +6,7 @@ using System.Linq;
 using GxjtBHMS.Infrastructure.Configuration;
 using GxjtBHMS.Models.SecondLevelSafetyAssessmentTable;
 using GxjtBHMS.Service.Messaging.SecondLevelSafetyAssessmentReport;
+using GxjtBHMS.Service.Messaging.Home;
 
 namespace GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService
 {
@@ -46,6 +47,20 @@ namespace GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService
                 Log(ex);
             }
             return resp;
+        }
+
+        /// <summary>
+        /// 获取最新二级安全评估结果
+        /// </summary>
+        /// <returns></returns>
+        public SafetyAssessmentResultSearchResponse GetSecondLevelSafetyAssessmentResult()
+        {
+            var source = _getSecondLevelSafetyAssessmentReportDAL.FindBy(ServiceConstant.AssessmentResultStateNavigationProperty).OrderBy(m => m.ReportTime).Last();
+            var result = new SafetyAssessmentResultSearchResponse()
+            {
+                SecondSafetyAssessmentResult=source.AssessmentResultState.AssessmentGrade
+            };
+            return result;
         }
 
         public IEnumerable<SecondAssessment_SecondLevelSafetyAssessmentStateTable> GetAllTestType()
