@@ -435,7 +435,7 @@ namespace GxjtBHMS.SqlServerDAL
             CreateHumidityThresholdValues(context);
             CreateWindloadThresholdValues(context);
             CreateAbnormalThresholdValue(context);
-            CreateSafetyPreWarning(context);
+            //CreateSafetyPreWarning(context);
             CreateThresholdGradeValue(context);
             CreateFirstLevelSafetyAssessmentReasonsValue(context);
             CreateSecondLevelSafetyAssessmentReasonsValue(context);
