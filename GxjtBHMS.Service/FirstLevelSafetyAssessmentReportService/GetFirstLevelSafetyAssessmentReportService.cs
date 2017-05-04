@@ -72,9 +72,9 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
             {
                  result = new SafetyAssessmentResultSearchResponse()
                 {
-                    FirstSafetyAssessmentResult_Displacement = "未评估",
-                    FirstSafetyAssessmentResult_CableForce = "未评估",
-                    FirstSafetyAssessmentResult_Stress = "未评估"
+                    FirstSafetyAssessmentResult_Displacement = ServiceConstant.NotEvaluated,
+                    FirstSafetyAssessmentResult_CableForce = ServiceConstant.NotEvaluated,
+                    FirstSafetyAssessmentResult_Stress = ServiceConstant.NotEvaluated
                  };              
             }
             return result;

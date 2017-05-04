@@ -9,5 +9,6 @@
         public const int FirstExceptionRecordRowNumber=7;
         public const string ThresholdGradeNavigationProperty = "ThresholdGrade";
         public const string AssessmentResultStateNavigationProperty = "AssessmentResultState";
+        public const string NotEvaluated= "未评估";
     }
 }

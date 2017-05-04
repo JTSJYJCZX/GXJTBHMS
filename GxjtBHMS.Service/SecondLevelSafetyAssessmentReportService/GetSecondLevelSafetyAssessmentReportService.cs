@@ -68,7 +68,7 @@ namespace GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService
             {
                 result = new SafetyAssessmentResultSearchResponse()
                 {
-                    SecondSafetyAssessmentResult = "未评估",
+                    SecondSafetyAssessmentResult = ServiceConstant.NotEvaluated,
 
                 };
             }

@@ -69,7 +69,7 @@ namespace GxjtBHMS.Service.ManualInspectionSafetyAssessmentReportService
             {
                 result = new SafetyAssessmentResultSearchResponse()
                 {
-                    ManualInspectionSafetyAssessmentResult = "未评估"
+                    ManualInspectionSafetyAssessmentResult = ServiceConstant.NotEvaluated
                 };
             }
 
