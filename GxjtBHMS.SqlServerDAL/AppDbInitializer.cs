@@ -11,6 +11,7 @@ using GxjtBHMS.Models.AbnormalThresholdValueSetting;
 using GxjtBHMS.Models.FirstLevelSafetyAssessmentTable;
 using GxjtBHMS.Models.SecondLevelSafetyAssessmentTable;
 using GxjtBHMS.Models.ManualInspectionSafetyAssessmentTable;
+using GxjtBHMS.Models.AnomalousEventTable;
 
 namespace GxjtBHMS.SqlServerDAL
 {
@@ -409,6 +410,17 @@ namespace GxjtBHMS.SqlServerDAL
             AssessmentState = "危险状态"
         };
 
+        /// <summary>
+        /// 异常事件原因
+        /// </summary>
+        AnomalousEventReasonTable AnomalousEventReason1 = new AnomalousEventReasonTable
+        {
+            AnomalousEventReason="数据超过合理范围"
+        };
+        AnomalousEventReasonTable AnomalousEventReason2 = new AnomalousEventReasonTable
+        {
+            AnomalousEventReason = "数据中断"
+        };
 
 
         protected override void Seed(BHMSContext context)
@@ -440,6 +452,13 @@ namespace GxjtBHMS.SqlServerDAL
             CreateFirstLevelSafetyAssessmentReasonsValue(context);
             CreateSecondLevelSafetyAssessmentReasonsValue(context);
             CreateManualInspectionSafetyAssessmentReasonsValue(context);
+            CreateAnomalousEventReasonsValue(context);
+        }
+
+        private void CreateAnomalousEventReasonsValue(BHMSContext context)
+        {
+            context.AnomalousEventReasons.Add(AnomalousEventReason1);
+            context.AnomalousEventReasons.Add(AnomalousEventReason2);
         }
 
         private void CreateManualInspectionSafetyAssessmentReasonsValue(BHMSContext context)
@@ -1391,20 +1410,20 @@ namespace GxjtBHMS.SqlServerDAL
         /// <param name="context"></param>
         void CreateAbnormalThresholdValue(BHMSContext context)
         {
-            var steelStrainThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "钢结构应变", MaxLevelThresholdValue = 1000, MinLevelThresholdValue = -1000, };
-            var concreteStrainThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "混凝土结构应变", MaxLevelThresholdValue = 1000, MinLevelThresholdValue = -1000, };
-            var upperHangerCableForceThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "上层吊杆索力", MaxLevelThresholdValue = 1000, MinLevelThresholdValue = -1000, };
-            var underHangerCableForceThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "下层吊杆索力", MaxLevelThresholdValue = 1000, MinLevelThresholdValue = -1000, };
-            var flexibleTiedBarCableForceThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "柔性系杆", MaxLevelThresholdValue = 1000, MinLevelThresholdValue = -1000, };
-            var tempThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "温度", MaxLevelThresholdValue = 1000, MinLevelThresholdValue = -1000, };
-            var humThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "湿度", MaxLevelThresholdValue = 1000, MinLevelThresholdValue = -1000, };
-            var windLoadThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "风速", MaxLevelThresholdValue = 1000, MinLevelThresholdValue = -1000, };
+            var steelStrainThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "钢结构应变", MaxLevelThresholdValue = 2000, MinLevelThresholdValue = -2000, };
+            var concreteStrainThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "混凝土结构应变", MaxLevelThresholdValue = 900, MinLevelThresholdValue = -900, };
+            var upperHangerCableForceThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "上层吊杆索力", MaxLevelThresholdValue = 3000, MinLevelThresholdValue = 0, };
+            var underHangerCableForceThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "下层吊杆索力", MaxLevelThresholdValue = 2000, MinLevelThresholdValue = 0, };
+            var flexibleTiedBarCableForceThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "柔性系杆", MaxLevelThresholdValue = 3000, MinLevelThresholdValue = 0, };
+            var tempThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "温度", MaxLevelThresholdValue = 100, MinLevelThresholdValue = -10, };
+            var humThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "湿度", MaxLevelThresholdValue = 100, MinLevelThresholdValue = 0, };
+            var windLoadThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "风速", MaxLevelThresholdValue = 60, MinLevelThresholdValue = 0, };
             var steelArchXDisThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "钢拱肋X方向位移", MaxLevelThresholdValue = 1000, MinLevelThresholdValue = -1000, };
-            var steelArchYDisThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "钢拱肋Y方向位移", MaxLevelThresholdValue = 1000, MinLevelThresholdValue = -1000, };
-            var steelArchZDisThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "钢拱肋Z方向位移", MaxLevelThresholdValue = 1000, MinLevelThresholdValue = -1000, };
+            var steelArchYDisThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "钢拱肋Y方向位移", MaxLevelThresholdValue = 500, MinLevelThresholdValue = -500, };
+            var steelArchZDisThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "钢拱肋Z方向位移", MaxLevelThresholdValue = 500, MinLevelThresholdValue = -500, };
             var bridgeDeckDisThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "桥面挠度", MaxLevelThresholdValue = 1000, MinLevelThresholdValue = -1000, };
-            var transitionPierDisThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "过渡墩变形", MaxLevelThresholdValue = 1000, MinLevelThresholdValue = -1000, };
-            var expansionDisThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "伸缩缝变形", MaxLevelThresholdValue = 1000, MinLevelThresholdValue = -1000, };
+            var transitionPierDisThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "过渡墩变形", MaxLevelThresholdValue = 500, MinLevelThresholdValue = -500, };
+            var expansionDisThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "伸缩缝变形", MaxLevelThresholdValue = 500, MinLevelThresholdValue = -500, };
             context.AbnormalThresholdValue.Add(steelStrainThresholdValue);
             context.AbnormalThresholdValue.Add(concreteStrainThresholdValue);
             context.AbnormalThresholdValue.Add(upperHangerCableForceThresholdValue);
