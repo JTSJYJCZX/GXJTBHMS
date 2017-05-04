@@ -696,6 +696,7 @@
     <Content Include="Views\SpecialSafetyAssessment\GetSpecialReportListByTimeSearchPartial.cshtml" />
     <Content Include="Views\SpecialSafetyAssessment\GetSpecialSafetyAssessmentListPartial.cshtml" />
     <Content Include="Views\SpecialSafetyAssessment\GetSpecialSafetyAssessmentReportPartial.cshtml" />
+    <Content Include="Views\AbnormalEventManagement\AbnormalEventManagementQuery.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
