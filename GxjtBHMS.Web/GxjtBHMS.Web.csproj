@@ -296,6 +296,7 @@
     <Compile Include="ViewModels\AdminUser\QueryUsersConditionView.cs" />
     <Compile Include="ViewModels\AdminUser\UserSeachResultView.cs" />
     <Compile Include="ViewModels\AdminUser\UsersSearchConditionView.cs" />
+    <Compile Include="ViewModels\Home\SafetyAssessmentSuggestionModelsViewModel.cs" />
     <Compile Include="ViewModels\Home\SafetyAssessmentModels.cs" />
     <Compile Include="ViewModels\Home\SafetyAssessmentModelsViewModel.cs" />
     <Compile Include="ViewModels\SafetyAssessmentReportView\SafetyAssessmentReportViewModel.cs" />
@@ -700,6 +701,7 @@
     <Content Include="Views\Home\GetSafetyWarningContentPartial.cshtml" />
     <Content Include="Views\Home\GetSafetyAssessmentResult.cshtml" />
     <Content Include="Views\AbnormalEventManagement\AbnormalEventManagementQuery.cshtml" />
+    <Content Include="Views\Home\GetSafetyAssessmentSuggestion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

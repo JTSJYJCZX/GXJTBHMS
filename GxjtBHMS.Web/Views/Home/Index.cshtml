@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "主页";
 }
 
 
@@ -13,7 +13,8 @@
     <div class="col-md-5" id="divborder">
         <h3 style="color:black">安全预警信息</h3>
         @*window.open="http://localhost:56702/SafetyPreWarning/SafetyPreWarning";*@
-        
+        &nbsp;
+        &nbsp;
         <div id="safetyPreWarning" style="height:300px">
         @*当前安全预警灯的指示*@
             @Html.Action("GetSafetyWarningSearchContent")
@@ -23,6 +24,8 @@
     <div class="col-md-1" style="width:1px">&nbsp</div>
     <div class="col-md-5" id="divborder">
             <h3 style="color:black">状况评估结果</h3>
+        &nbsp;
+        &nbsp;
         @Html.Action("GetSafetyAssessmentResult")
       </div>
 </div>
@@ -39,11 +42,11 @@
      </div>
      <div class="col-md-1" style="width:1px">&nbsp</div>
      <div class="col-md-5" id="divborder">
-            <h2 style="color:black">工作建议</h2>
-         <div id="safetyPreWarning" style="height:380px">这里放的是工作建议 </div>
-
-
-         <p><a href="http://localhost:56702/SafetyPreWarning/SafetyPreWarning" class="btn btn-primary btn-lg" style="object-position:right">查看详情 &raquo;</a></p>
+            <h3 style="color:black">工作建议</h3>
+         &nbsp;
+         &nbsp;
+             @Html.Action("GetAssessmentSuggestion")
+         <p><a href="http://localhost:56702/FirstLevelSafetyAssessment/FirstLevelSafetyAssessment" class="btn btn-primary btn-lg" style="object-position:right">查看详情 &raquo;</a></p>
      </div>
 </div>
 

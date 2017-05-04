@@ -52,7 +52,7 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
         }
 
         /// <summary>
-        /// 获得最近一次一级安全评估结果变形评估的结论
+        /// 获得最近一次一级安全评估结果的结论
         /// </summary>
         /// <returns></returns>
         public SafetyAssessmentResultSearchResponse GetFirstSafetyAssessmentResult()
@@ -80,13 +80,35 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
             return result;
 
         }
-
-  
-
         /// <summary>
-        /// 获得最近一次二级安全评估结果的结论
+        /// 获得最近一次一级安全评估建议
         /// </summary>
         /// <returns></returns>
+        public SafetyAssessmentSuggestionSearchResponse GetFirstSafetyAssessmentSuggestion()
+        {
+            var result = new SafetyAssessmentSuggestionSearchResponse ();
+            try
+            {
+                var source = _getFirstLevelSafetyAssessmentReportResultDAL.FindBy().OrderBy(m => m.AssessmentReportId).Last();
+                result = new SafetyAssessmentSuggestionSearchResponse()
+                {
+                    FirstSafetyAssessmentSuggestion_CableForce = source.CableForceAssessmentSuggestion,
+                    FirstSafetyAssessmentSuggestion_Displacement = source.DisplacementAssessmentSuggestion,
+                    FirstSafetyAssessmentSuggestion_Stress = source.StrainAssessmentSuggestion
+                };
+            }
+            catch
+            {
+                result = new SafetyAssessmentSuggestionSearchResponse()
+                {
+                    FirstSafetyAssessmentSuggestion_CableForce = ServiceConstant.NotEvaluated,
+                    FirstSafetyAssessmentSuggestion_Displacement= ServiceConstant.NotEvaluated,
+                    FirstSafetyAssessmentSuggestion_Stress = ServiceConstant.NotEvaluated
+                };
+            }
+            return result;
+
+        }
 
 
 

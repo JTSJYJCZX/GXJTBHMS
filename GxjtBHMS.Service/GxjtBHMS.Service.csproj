@@ -90,6 +90,7 @@
     <Compile Include="AbnormalThresholdValueService\AbnormalThresholdValueSettingService.cs" />
     <Compile Include="AutoMapper\Configuration.cs" />
     <Compile Include="ManualInspectionSafetyAssessmentReportService\GetManualInspectionSafetyAssessmentReportService.cs" />
+    <Compile Include="Messaging\Home\SafetyAssessmentSuggestionSearchResponse .cs" />
     <Compile Include="Messaging\Home\SafetyAssessmentResultSearchResponse.cs" />
     <Compile Include="Messaging\ManualInspectionSafetyAssessmentReport\ManualInspectionSafetyAssementReportUploadRequest.cs" />
     <Compile Include="Messaging\ManualInspectionSafetyAssessmentReport\ManualInspectionSafetyAssessmentReportDownloadResponse.cs" />

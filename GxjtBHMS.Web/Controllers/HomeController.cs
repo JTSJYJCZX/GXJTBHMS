@@ -75,8 +75,29 @@ namespace GxjtBHMS.Web.Controllers
             };
             return PartialView("GetSafetyAssessmentResult", model);
 
+        }
+        /// <summary>
+        /// 获得工作建议的列表
+        /// </summary>
+        /// <returns></returns>
+
+        [ChildActionOnly]
+        public ActionResult GetAssessmentSuggestion()
+        {
+            //查询工作建议结果
+            var GetAssessmentSuggestion = new GetFirstLevelSafetyAssessmentReportService();
+            var FirstSafetyAssessmentSuggestion= GetAssessmentSuggestion.GetFirstSafetyAssessmentSuggestion();
+            var model = new SafetyAssessmentSuggestionModelsViewModel()
+            {
+                FirstSafetyAssessmentSuggestion_CableForce = FirstSafetyAssessmentSuggestion.FirstSafetyAssessmentSuggestion_CableForce,
+                FirstSafetyAssessmentSuggestion_Displacement = FirstSafetyAssessmentSuggestion.FirstSafetyAssessmentSuggestion_Displacement,
+                FirstSafetyAssessmentSuggestion_Stress = FirstSafetyAssessmentSuggestion.FirstSafetyAssessmentSuggestion_Stress,
+              
+            };
+            return PartialView("GetSafetyAssessmentSuggestion", model);
 
         }
+
 
 
 
