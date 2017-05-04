@@ -104,10 +104,5 @@ namespace GxjtBHMS.Service.MonitoringDatasQueryService
             DealWithSearchTimeRange(req, ps);
             DealWithContainsPointsNumber(req, ps);
         }
-        protected bool HasNoSearchResult(IEnumerable<T> source)
-        {
-            return source.Count() == 0;
-        }
-
     }
 }

@@ -1,8 +1,6 @@
 ﻿using GxjtBHMS.Models.SafetyPreWarningTable;
-using GxjtBHMS.Service.Interfaces.SafetyPreWarningQueryServiceInerfaces;
 using GxjtBHMS.Service.Messaging.SafetyPreWarning;
 using GxjtBHMS.Service.ViewModels.MonitoringDatas.SafetyPreWarning;
-using GxjtBHMS.Service.ViewModels.SafetyPreWarning;
 using GxjtBHMS.SqlServerDAL;
 using System;
 using System.Collections.Generic;
@@ -21,14 +19,17 @@ namespace GxjtBHMS.Service.SafetyPreWarningQueryService
         }
         protected const string NoRecordsMessage = "无记录！";
 
-        public IEnumerable<SafetyPreWarningDetailQueryModel>  GetSafetyPreWarningDetailBy(GetSafetyWarningDetailRequest req)
+
+        public SafetyWarningDetailResponse GetSafetyPreWarningDetailBy(GetSafetyWarningDetailRequest req)
         {
-                var source = QuerySafetyPreWarningByTime(req);
+            var resp = new SafetyWarningDetailResponse();
+           var source = QuerySafetyPreWarningByTime(req);
+            if (HasQueryResult(req))
+            {
                 var result = new List<SafetyPreWarningDetailQueryModel>();
                 foreach (var item in source)
                 {
                     var resultItem = new SafetyPreWarningDetailQueryModel();
-                    //resultItem.Id = item.Id;
                     resultItem.PointsNumber = item.PointsNumber.Name;
                     resultItem.Time = item.Time;
                     resultItem.MonitoringData = item.MonitoringData;
@@ -37,9 +38,57 @@ namespace GxjtBHMS.Service.SafetyPreWarningQueryService
                     resultItem.SafetyPreWarningState = item.ThresholdGrade.ThresholdGrade;
                     resultItem.Suggestion = item.ThresholdGrade.Suggest;
                     result.Add(resultItem);
-                }               
+                }
+                resp.Datas = result;
+                resp.Succeed = true;
+            }
+            else
+            {
+                resp.Succeed = false;
+                resp.Message = NoRecordsMessage;
+            }
+            return resp;
+        }
+
+        public bool HasQueryResult(GetSafetyWarningDetailRequest req)
+        {
+            var result = false;
+            IList<Func<T, bool>> ps = new List<Func<T, bool>>();
+            try
+            {               
+                var count = QuerySafetyPreWarningByTime(req).Count();
+                if (count > 0)
+                {
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Log(ex);
+            }
             return result;
         }
+
+
+        //public IEnumerable<SafetyPreWarningDetailQueryModel>  GetSafetyPreWarningDetail(GetSafetyWarningDetailRequest req)
+        //{
+        //        var source = QuerySafetyPreWarningByTime(req);
+        //        var result = new List<SafetyPreWarningDetailQueryModel>();
+        //        foreach (var item in source)
+        //        {
+        //            var resultItem = new SafetyPreWarningDetailQueryModel();
+        //            //resultItem.Id = item.Id;
+        //            resultItem.PointsNumber = item.PointsNumber.Name;
+        //            resultItem.Time = item.Time;
+        //            resultItem.MonitoringData = item.MonitoringData;
+        //            resultItem.Unit = item.PointsNumber.PointsPosition.TestType.Unit;
+        //            resultItem.ThresholdValue = item.ThresholdValue;
+        //            resultItem.SafetyPreWarningState = item.ThresholdGrade.ThresholdGrade;
+        //            resultItem.Suggestion = item.ThresholdGrade.Suggest;
+        //            result.Add(resultItem);
+        //        }               
+        //    return result;
+        //}
 
         /// <summary>
         /// 通过时间范围查询安全预警结果

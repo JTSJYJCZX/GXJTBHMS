@@ -25,29 +25,38 @@ namespace GxjtBHMS.Web.Controllers.SafetyPreWarning
         public ActionResult GetSafetyWarningDetail(QuerySafetyPreWarningConditonView conditons)
         {
             int i = 0;
-            var resultCondition = GetSafetyWarningDetailResultBy(conditons);
+            var source = GetSafetyWarningDetailResultBy(conditons);  
             var resultView = new SafetyPreWarningModels();
-            var models = new List<SafetyPreWarningViewModel>();          
-            foreach (var item in resultCondition)
-            {               
-                var resultItem = new SafetyPreWarningViewModel();
-                resultItem.Id = i+1;
-                resultItem.PointsNumber = item.PointsNumber;
-                resultItem.Time=item.Time;
-                resultItem.MonitoringData = item.MonitoringData;
-                resultItem.Unit = item.Unit;
-                resultItem.ThresholdValue = item.ThresholdValue;
-                resultItem.SafetyPreWarningState = item.SafetyPreWarningState;
-                resultItem.Suggestion = item.Suggestion;
-                models.Add(resultItem);
-                i++;
+            if (source.Succeed==true)
+            {
+                var models = new List<SafetyPreWarningViewModel>();
+                foreach (var item in source.Datas)
+                {
+                    var resultItem = new SafetyPreWarningViewModel();
+                    resultItem.Id = i + 1;
+                    resultItem.PointsNumber = item.PointsNumber;
+                    resultItem.Time = item.Time;
+                    resultItem.MonitoringData = item.MonitoringData;
+                    resultItem.Unit = item.Unit;
+                    resultItem.ThresholdValue = item.ThresholdValue;
+                    resultItem.SafetyPreWarningState = item.SafetyPreWarningState;
+                    resultItem.Suggestion = item.Suggestion;
+                    models.Add(resultItem);
+                    i++;
+                }
+                resultView.SafetyPreWarnings = models;
+                return PartialView("SafetyPreWarningDetailListPartial", resultView);
             }
-            resultView.SafetyPreWarnings = models;
-            return PartialView("SafetyPreWarningDetailListPartial", resultView);
+            else
+            {
+                return Content("<span style='color:red'>无记录</span>");
+            }
+
         }
 
-        private static IEnumerable<SafetyPreWarningDetailQueryModel> GetSafetyWarningDetailResultBy(QuerySafetyPreWarningConditonView conditons)
+        private static SafetyWarningDetailResponse GetSafetyWarningDetailResultBy(QuerySafetyPreWarningConditonView conditons)
         {
+            
             DateTime now = DateTime.Now;
             var req = new GetSafetyWarningDetailRequest
             {
@@ -57,6 +66,9 @@ namespace GxjtBHMS.Web.Controllers.SafetyPreWarning
             var SafetyWarningDetailQueryService = SafetyWarningDetailFactory.GetSafetyWarningDetailServiceFrom(conditons.testTypeId);
             return SafetyWarningDetailQueryService.GetSafetyPreWarningDetailBy(req);
         }
+
+
+
 
         public ActionResult DisplaySafetyPreWarningStateAndTotalTimesby()
         {
