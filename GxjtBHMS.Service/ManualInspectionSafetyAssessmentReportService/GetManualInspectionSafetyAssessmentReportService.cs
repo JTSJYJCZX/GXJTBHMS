@@ -50,20 +50,35 @@ namespace GxjtBHMS.Service.ManualInspectionSafetyAssessmentReportService
             return resp;
         }
 
+        /// <summary>
+        /// 主页获取最新人工巡检评估结果
+        /// </summary>
+        /// <returns></returns>
         public SafetyAssessmentResultSearchResponse GetManualInspectionSafetyAssessmentReportResult()
         {
-
-            var source = _getManualInspectionSafetyAssessmentReportDAL.FindBy(ServiceConstant.AssessmentResultStateNavigationProperty).OrderBy(m => m.ReportTime).Last();
-            var result = new SafetyAssessmentResultSearchResponse()
+            var result = new SafetyAssessmentResultSearchResponse();
+            try
             {
-                ManualInspectionSafetyAssessmentResult = source.AssessmentResultState.AssessmentGrade
-            };
+                var source = _getManualInspectionSafetyAssessmentReportDAL.FindBy(ServiceConstant.AssessmentResultStateNavigationProperty).OrderBy(m => m.ReportTime).Last();
+                result = new SafetyAssessmentResultSearchResponse()
+                {
+                    ManualInspectionSafetyAssessmentResult = source.AssessmentResultState.AssessmentGrade
+                };
+            }
+            catch
+            {
+                result = new SafetyAssessmentResultSearchResponse()
+                {
+                    ManualInspectionSafetyAssessmentResult = "未评估"
+                };
+            }
+
             return result;
         }
 
         public IEnumerable<ManualInspectionSafetyAssessmentStateTable> GetAllTestType()
         {
-          return _getManualInspectionSafetyAssessmentStateDAL.FindAll();
+            return _getManualInspectionSafetyAssessmentStateDAL.FindAll();
         }
 
         void DealWithContainsTime(ManualInspectionSafetyAssessmentSearchRequest req, IList<Func<ManualInspectionSafetyAssessmentReportTable, bool>> ps)
@@ -114,7 +129,7 @@ namespace GxjtBHMS.Service.ManualInspectionSafetyAssessmentReportService
             {
                 var uploadReport = new ManualInspectionSafetyAssessmentReportTable()
                 {
-                    AssessmentResultStateId =req.ReportGradeId,
+                    AssessmentResultStateId = req.ReportGradeId,
                     ReportPeriods = req.ReportName,
                     ReportTime = req.uploadDate,
                     ReprotPath = req.ReportPath,
@@ -154,8 +169,8 @@ namespace GxjtBHMS.Service.ManualInspectionSafetyAssessmentReportService
 
         public bool GetReportNameIsNotHas(string reportName)
         {
-           var reportNameCount= _getManualInspectionSafetyAssessmentReportDAL.FindBy(m => m.ReportPeriods == reportName).Count();
-            if (reportNameCount>0)
+            var reportNameCount = _getManualInspectionSafetyAssessmentReportDAL.FindBy(m => m.ReportPeriods == reportName).Count();
+            if (reportNameCount > 0)
             {
                 return false;
             }
@@ -167,7 +182,7 @@ namespace GxjtBHMS.Service.ManualInspectionSafetyAssessmentReportService
             ResponseBase resp = new ResponseBase();
             IList<Func<ManualInspectionSafetyAssessmentReportTable, bool>> ps = new List<Func<ManualInspectionSafetyAssessmentReportTable, bool>>();
             DealWithDeleteConditon(req, ps);
-            
+
             try
             {
                 var source = _getManualInspectionSafetyAssessmentReportDAL.FindBy(ps).SingleOrDefault();

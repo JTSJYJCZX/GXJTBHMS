@@ -57,14 +57,28 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
         /// <returns></returns>
         public SafetyAssessmentResultSearchResponse GetFirstSafetyAssessmentResult()
         {
-            var source = _getFirstLevelSafetyAssessmentReportResultDAL.FindBy().OrderBy(m=>m.AssessmentReportId).Last();
-            var result = new SafetyAssessmentResultSearchResponse()
+            var result = new SafetyAssessmentResultSearchResponse();
+            try
             {
-                FirstSafetyAssessmentResult_Displacement = source.DisplacementAssessmentResult,
-                FirstSafetyAssessmentResult_CableForce=source.CableForceAssessmentResult,
-                FirstSafetyAssessmentResult_Stress=source.StrainAssessmentResult
-            };
+                var source = _getFirstLevelSafetyAssessmentReportResultDAL.FindBy().OrderBy(m => m.AssessmentReportId).Last();
+                 result = new SafetyAssessmentResultSearchResponse()
+                {
+                    FirstSafetyAssessmentResult_Displacement = source.DisplacementAssessmentResult,
+                    FirstSafetyAssessmentResult_CableForce = source.CableForceAssessmentResult,
+                    FirstSafetyAssessmentResult_Stress = source.StrainAssessmentResult
+                };
+            }
+            catch
+            {
+                 result = new SafetyAssessmentResultSearchResponse()
+                {
+                    FirstSafetyAssessmentResult_Displacement = "未评估",
+                    FirstSafetyAssessmentResult_CableForce = "未评估",
+                    FirstSafetyAssessmentResult_Stress = "未评估"
+                 };              
+            }
             return result;
+
         }
 
   
