@@ -135,8 +135,8 @@ namespace GxjtBHMS.Web
             //异常事件管理脚本
             bundles.Add(new ScriptBundle("~/bundles/AnomalousEventManagementSearchPartial").Include(
                      "~/Scripts/AnomalousEventManagement/AnomalousEventManagementSearchPartial.website.js"));
-            bundles.Add(new ScriptBundle("~/bundles/AnomalousEventManagement-SearchContentPartial").Include(
-         "~/Scripts/AnomalousEventManagement/AnomalousEventManagement-SearchContentPartial-website.js"));
+            bundles.Add(new ScriptBundle("~/bundles/AnomalousEventManagement-Download").Include(
+         "~/Scripts/AnomalousEventManagement/AnomalousEventManagement-download-website.js"));
 
         }
     }
