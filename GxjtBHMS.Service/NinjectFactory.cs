@@ -22,6 +22,8 @@ using GxjtBHMS.Service.Implementations.AlarmDatasManagement;
 using GxjtBHMS.SqlServerDAL.SecondLevelSafetyAssessmentReportDAL;
 using GxjtBHMS.SqlServerDAL.ManualInspectionSafetyAssessmentReportDAL;
 using GxjtBHMS.SqlServerDAL.SpecialSafetyAssessmentReportDAL;
+using GxjtBHMS.IDAL.Home;
+using GxjtBHMS.SqlServerDAL.Home;
 using GxjtBHMS.IDAL.AlarmDatasManagement;
 using GxjtBHMS.Models.AnomalousEventTable;
 using GxjtBHMS.IDAL.AnomalousEventIDAL;
@@ -180,6 +182,9 @@ namespace GxjtBHMS.Service
             _ninjectKernel.Bind<IAnomalousEventDAL<AnomalousEvent_HumidityTable>>().To<HumidityAnomalousDAL>();
             _ninjectKernel.Bind<IAnomalousEventDAL<AnomalousEvent_TemperatureTable>>().To<TemperatureAnomalousDAL>();
             _ninjectKernel.Bind<IAnomalousEventDAL<AnomalousEvent_WindLoadTable>>().To<WindLoadAnomalousDAL>();
+
+            //主页中安全状态评估结果查询绑定
+            _ninjectKernel.Bind<IGetFirstLevelSafetyAssessmentReportDisplacementResultDAL>().To<GetFirstLevelSafetyAssessmentReportDisplacementResultDAL>();
 
         }
     }

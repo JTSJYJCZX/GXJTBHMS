@@ -112,29 +112,22 @@ namespace GxjtBHMS.Web
             //异常阈值保存脚本
             bundles.Add(new ScriptBundle("~/bundles/AbnormalThresholdValueSetting").Include(
                      "~/Scripts/AbnormalThresholdValueSetting/listAbnormalThresholdValueMessage-website.js"));
-
-
             //安全阈值详情查询脚本
             bundles.Add(new ScriptBundle("~/bundles/SafetyPreWarningDetailSearchPartialwebsite").Include(
                      "~/Scripts/SafetyPreWarningDetail/SafetyPreWarningDetailSearchPartialwebsite.js"));
-
-
             //一级安全评估查询脚本
             bundles.Add(new ScriptBundle("~/bundles/FirstLevelSafetyAssessmentReportList-website").Include(
                      "~/Scripts/SafetyAssessmentReport/FirstLevelSafetyAssessmentReportList-website.js"));
-
             //报警数据查询
             bundles.Add(new ScriptBundle("~/bundles/AlarmDatasQuerySearchContentPartial-website").Include(
                      "~/Scripts/AlarmDatas/AlarmDatasQuery-SearchContentPartial-website.js"));
             bundles.Add(new ScriptBundle("~/bundles/AlermDatasQuerySearchPartial").Include(
                     "~/Scripts/AlarmDatas/AlermDatasQuerySearchPartial.website.js"));
-
             //二级安全评估查询脚本
             bundles.Add(new ScriptBundle("~/bundles/SecondLevelSafetyAssessmentReportList-website").Include(
                      "~/Scripts/SafetyAssessmentReport/SecondLevelSafetyAssessmentReportList-website.js"));
             //人工巡检安全评估查询脚本
             bundles.Add(new ScriptBundle("~/bundles/ManualInspectionSafetyAssessmentReportList-website").Include("~/Scripts/SafetyAssessmentReport/ManualInspectionSafetyAssessmentReportList-website.js"));
-
             //专项安全评估查询脚本
             bundles.Add(new ScriptBundle("~/bundles/SpecialSafetyAssessmentReportList-website").Include(
                      "~/Scripts/SafetyAssessmentReport/SpecialSafetyAssessmentReportList-website.js"));

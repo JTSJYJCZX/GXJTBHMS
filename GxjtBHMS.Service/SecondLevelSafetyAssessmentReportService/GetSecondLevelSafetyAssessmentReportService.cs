@@ -6,6 +6,7 @@ using System.Linq;
 using GxjtBHMS.Infrastructure.Configuration;
 using GxjtBHMS.Models.SecondLevelSafetyAssessmentTable;
 using GxjtBHMS.Service.Messaging.SecondLevelSafetyAssessmentReport;
+using GxjtBHMS.Service.Messaging.Home;
 
 namespace GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService
 {
@@ -48,9 +49,36 @@ namespace GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService
             return resp;
         }
 
+        /// <summary>
+        /// 获取最新二级安全评估结果
+        /// </summary>
+        /// <returns></returns>
+        public SafetyAssessmentResultSearchResponse GetSecondLevelSafetyAssessmentResult()
+        {
+            var result = new SafetyAssessmentResultSearchResponse();
+            try
+            {
+                var source = _getSecondLevelSafetyAssessmentReportDAL.FindBy(ServiceConstant.AssessmentResultStateNavigationProperty).OrderBy(m => m.ReportTime).Last();
+                result = new SafetyAssessmentResultSearchResponse()
+                {
+                    SecondSafetyAssessmentResult = source.AssessmentResultState.AssessmentGrade
+                };
+            }
+            catch
+            {
+                result = new SafetyAssessmentResultSearchResponse()
+                {
+                    SecondSafetyAssessmentResult = ServiceConstant.NotEvaluated,
+
+                };
+            }
+            return result;
+
+        }
+
         public IEnumerable<SecondAssessment_SecondLevelSafetyAssessmentStateTable> GetAllTestType()
         {
-          return _getSecondLevelSafetyAssessmentStateDAL.FindAll();
+            return _getSecondLevelSafetyAssessmentStateDAL.FindAll();
         }
 
         void DealWithContainsTime(SecondLevelSafetyAssessmentSearchRequest req, IList<Func<SecondAssessment_SecondLevelSafetyAssessmentReportTable, bool>> ps)
@@ -101,7 +129,7 @@ namespace GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService
             {
                 var uploadReport = new SecondAssessment_SecondLevelSafetyAssessmentReportTable()
                 {
-                    AssessmentResultStateId =req.ReportGradeId,
+                    AssessmentResultStateId = req.ReportGradeId,
                     ReportPeriods = req.ReportName,
                     ReportTime = req.uploadDate,
                     ReprotPath = req.ReportPath,
@@ -141,8 +169,8 @@ namespace GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService
 
         public bool GetReportNameIsNotHas(string reportName)
         {
-           var reportNameCount= _getSecondLevelSafetyAssessmentReportDAL.FindBy(m => m.ReportPeriods == reportName).Count();
-            if (reportNameCount>0)
+            var reportNameCount = _getSecondLevelSafetyAssessmentReportDAL.FindBy(m => m.ReportPeriods == reportName).Count();
+            if (reportNameCount > 0)
             {
                 return false;
             }
@@ -154,7 +182,7 @@ namespace GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService
             ResponseBase resp = new ResponseBase();
             IList<Func<SecondAssessment_SecondLevelSafetyAssessmentReportTable, bool>> ps = new List<Func<SecondAssessment_SecondLevelSafetyAssessmentReportTable, bool>>();
             DealWithDeleteConditon(req, ps);
-            
+
             try
             {
                 var source = _getSecondLevelSafetyAssessmentReportDAL.FindBy(ps).SingleOrDefault();

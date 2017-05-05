@@ -10,5 +10,6 @@
         public const string ThresholdGradeNavigationProperty = "ThresholdGrade";
         public const string AssessmentResultStateNavigationProperty = "AssessmentResultState";
         public const string AnomalousEventReasonNavigationProperty = "AnomalousEventReason";
+        public const string NotEvaluated= "未评估";
     }
 }

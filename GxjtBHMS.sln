@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GxjtBHMS.Tests.ControllerTests", "GxjtBHMS.Tests\GxjtBHMS.Tests.ControllerTests.csproj", "{36DB7802-FCB5-40D2-BFFD-AB4F73275CCD}"
 EndProject
@@ -72,41 +72,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 11
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = http://jtjc.chinacloudapp.cn:8888/tfs/defaultcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = GxjtBHMS.DependencyInjection\\GxjtBHMS.DependencyInjection.csproj
-		SccProjectName1 = GxjtBHMS.DependencyInjection
-		SccLocalPath1 = GxjtBHMS.DependencyInjection
-		SccProjectUniqueName2 = GxjtBHMS.IDAL\\GxjtBHMS.IDAL.csproj
-		SccProjectName2 = GxjtBHMS.IDAL
-		SccLocalPath2 = GxjtBHMS.IDAL
-		SccProjectUniqueName3 = GxjtBHMS.Infrastructure\\GxjtBHMS.Infrastructure.csproj
-		SccProjectName3 = GxjtBHMS.Infrastructure
-		SccLocalPath3 = GxjtBHMS.Infrastructure
-		SccProjectUniqueName4 = GxjtBHMS.Models\\GxjtBHMS.Models.csproj
-		SccProjectName4 = GxjtBHMS.Models
-		SccLocalPath4 = GxjtBHMS.Models
-		SccProjectUniqueName5 = GxjtBHMS.Service\\GxjtBHMS.Service.csproj
-		SccProjectName5 = GxjtBHMS.Service
-		SccLocalPath5 = GxjtBHMS.Service
-		SccProjectUniqueName6 = GxjtBHMS.SqlServerDAL\\GxjtBHMS.SqlServerDAL.csproj
-		SccProjectName6 = GxjtBHMS.SqlServerDAL
-		SccLocalPath6 = GxjtBHMS.SqlServerDAL
-		SccProjectUniqueName7 = GxjtBHMS.Tests.IntegrationTests\\GxjtBHMS.Tests.IntegrationTests.csproj
-		SccProjectName7 = GxjtBHMS.Tests.IntegrationTests
-		SccLocalPath7 = GxjtBHMS.Tests.IntegrationTests
-		SccProjectUniqueName8 = GxjtBHMS.Tests.UnitTests\\GxjtBHMS.Tests.UnitTests.csproj
-		SccProjectName8 = GxjtBHMS.Tests.UnitTests
-		SccLocalPath8 = GxjtBHMS.Tests.UnitTests
-		SccProjectUniqueName9 = GxjtBHMS.Tests\\GxjtBHMS.Tests.ControllerTests.csproj
-		SccProjectName9 = GxjtBHMS.Tests
-		SccLocalPath9 = GxjtBHMS.Tests
-		SccProjectUniqueName10 = GxjtBHMS.Web\\GxjtBHMS.Web.csproj
-		SccProjectName10 = GxjtBHMS.Web
-		SccLocalPath10 = GxjtBHMS.Web
 	EndGlobalSection
 EndGlobal

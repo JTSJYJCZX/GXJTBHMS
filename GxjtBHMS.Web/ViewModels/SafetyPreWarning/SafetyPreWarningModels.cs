@@ -1,11 +1,12 @@
-﻿using System;
+﻿using GxjtBHMS.Service.Messaging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 namespace GxjtBHMS.Web.ViewModels.SafetyPreWarning
 {
-    public class SafetyPreWarningModels
+    public class SafetyPreWarningModels:ResponseBase
     {
         public SafetyPreWarningModels()
         {

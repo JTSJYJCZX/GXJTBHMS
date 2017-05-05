@@ -68,7 +68,7 @@ namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
                     models.Add(resultItem);
                 }
                 resultView.SafetyAssessmentReportViewModels = models;
-                resultView.PaginatorModel = new ViewModels.PaginatorModel { TotalPages = resp.TotalPages, CurrentPageIndex = conditions.CurrentPageIndex };            
+                resultView.PaginatorModel = new ViewModels.PaginatorModel {TotalPages = resp.TotalPages, CurrentPageIndex = conditions.CurrentPageIndex};            
             }
             else
             {

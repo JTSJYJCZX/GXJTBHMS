@@ -1,0 +1,33 @@
+﻿@model GxjtBHMS.Web.ViewModels.Home.SafetyAssessmentModelsViewModel
+<div class="table-responsive">
+    <div id="message"></div>
+    <table class="table table-condensed">
+        <tr class="text-center" >           
+             <td colspan="2" >安全评估项目 </td>
+            <td>评估结果</td>
+        </tr>
+        <tr class="text-center" >
+            <td rowspan="3" style="vertical-align:middle">一级安全评估 </td>
+            <td>变形评估</td>
+            <td>@Html.TextBoxFor(m=>m.FirstSafetyAssessmentResult_Displacement, new { @class = "text-center", @style = "border:hidden", @readonly = true })</td>
+        </tr>
+        <tr class="text-center" >         
+            <td>应力评估</td>
+            <td>@Html.TextBoxFor(m=>m.FirstSafetyAssessmentResult_Stress, new { @class = "text-center", @style = "border:hidden" , @readonly = true })</td>
+        </tr>
+        <tr class="text-center" >
+            <td>吊杆及系杆索力评估</td>
+            <td>@Html.TextBoxFor(m=>m.FirstSafetyAssessmentResult_CableForce, new { @class = "text-center", @style = "border:hidden", @readonly = true })</td>
+        </tr>
+        <tr class="text-center" >
+            <td colspan="2">二级安全评估 </td>
+            <td>@Html.TextBoxFor(m=>m.SecondSafetyAssessmentResult, new { @class = "text-center", @style = "border:hidden",@readonly = true })</td>
+        </tr>
+        <tr class="text-center" >
+            <td colspan="2">人工巡检安全评估 </td>
+            <td>@Html.TextBoxFor(m=>m.ManualInspectionSafetyAssessmentResult, new { @class = "text-center", @style = "border:hidden" ,@readonly = true })</td>
+        </tr>
+    </table>
+    <hr />
+</div>
+

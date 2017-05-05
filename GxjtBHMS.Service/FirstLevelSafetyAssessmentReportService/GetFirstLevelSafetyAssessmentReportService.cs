@@ -5,16 +5,21 @@ using GxjtBHMS.Service.Messaging;
 using System.Linq;
 using GxjtBHMS.Models.FirstLevelSafetyAssessmentTable;
 using GxjtBHMS.Infrastructure.Configuration;
+using GxjtBHMS.Service.Messaging.Home;
+using GxjtBHMS.IDAL.Home;
 
 namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
 {
     public class GetFirstLevelSafetyAssessmentReportService : ServiceBase
     {
         IGetFirstLevelSafetyAssessmentReportDAL _getFirstLevelSafetyAssessmentReportDAL;
+        IGetFirstLevelSafetyAssessmentReportDisplacementResultDAL _getFirstLevelSafetyAssessmentReportResultDAL;
         public GetFirstLevelSafetyAssessmentReportService()
         {
             _getFirstLevelSafetyAssessmentReportDAL = new NinjectFactory()
                  .GetInstance<IGetFirstLevelSafetyAssessmentReportDAL>();
+            _getFirstLevelSafetyAssessmentReportResultDAL = new NinjectFactory().GetInstance<IGetFirstLevelSafetyAssessmentReportDisplacementResultDAL>();
+
         }
 
         public FirstLevelSafetyAssessmentReportResponse GetFirstLevelSafetyAssessmentReportList(FirstLevelSafetyAssessmentSearchRequest req)
@@ -45,6 +50,67 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
             }
             return resp;
         }
+
+        /// <summary>
+        /// 获得最近一次一级安全评估结果的结论
+        /// </summary>
+        /// <returns></returns>
+        public SafetyAssessmentResultSearchResponse GetFirstSafetyAssessmentResult()
+        {
+            var result = new SafetyAssessmentResultSearchResponse();
+            try
+            {
+                var source = _getFirstLevelSafetyAssessmentReportResultDAL.FindBy().OrderBy(m => m.AssessmentReportId).Last();
+                 result = new SafetyAssessmentResultSearchResponse()
+                {
+                    FirstSafetyAssessmentResult_Displacement = source.DisplacementAssessmentResult,
+                    FirstSafetyAssessmentResult_CableForce = source.CableForceAssessmentResult,
+                    FirstSafetyAssessmentResult_Stress = source.StrainAssessmentResult
+                };
+            }
+            catch
+            {
+                 result = new SafetyAssessmentResultSearchResponse()
+                {
+                    FirstSafetyAssessmentResult_Displacement = ServiceConstant.NotEvaluated,
+                    FirstSafetyAssessmentResult_CableForce = ServiceConstant.NotEvaluated,
+                    FirstSafetyAssessmentResult_Stress = ServiceConstant.NotEvaluated
+                 };              
+            }
+            return result;
+
+        }
+        /// <summary>
+        /// 获得最近一次一级安全评估建议
+        /// </summary>
+        /// <returns></returns>
+        public SafetyAssessmentSuggestionSearchResponse GetFirstSafetyAssessmentSuggestion()
+        {
+            var result = new SafetyAssessmentSuggestionSearchResponse ();
+            try
+            {
+                var source = _getFirstLevelSafetyAssessmentReportResultDAL.FindBy().OrderBy(m => m.AssessmentReportId).Last();
+                result = new SafetyAssessmentSuggestionSearchResponse()
+                {
+                    FirstSafetyAssessmentSuggestion_CableForce = source.CableForceAssessmentSuggestion,
+                    FirstSafetyAssessmentSuggestion_Displacement = source.DisplacementAssessmentSuggestion,
+                    FirstSafetyAssessmentSuggestion_Stress = source.StrainAssessmentSuggestion
+                };
+            }
+            catch
+            {
+                result = new SafetyAssessmentSuggestionSearchResponse()
+                {
+                    FirstSafetyAssessmentSuggestion_CableForce = ServiceConstant.NotEvaluated,
+                    FirstSafetyAssessmentSuggestion_Displacement= ServiceConstant.NotEvaluated,
+                    FirstSafetyAssessmentSuggestion_Stress = ServiceConstant.NotEvaluated
+                };
+            }
+            return result;
+
+        }
+
+
 
         void DealWithContainsTime(FirstLevelSafetyAssessmentSearchRequest req, IList<Func<FirstAssessment_FirstLevelSafetyAssessmentReportTable, bool>> ps)
         {

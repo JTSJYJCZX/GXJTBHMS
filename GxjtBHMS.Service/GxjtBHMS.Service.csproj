@@ -96,6 +96,8 @@
     <Compile Include="Interfaces\AnomalousEventManagementQueryServiceInterfaces\IAnomalousEventManagementQueryService.cs" />
     <Compile Include="ManualInspectionSafetyAssessmentReportService\GetManualInspectionSafetyAssessmentReportService.cs" />
     <Compile Include="Messaging\AnomalousEventManagement\AnomalousEventManagementResponse.cs" />
+    <Compile Include="Messaging\Home\SafetyAssessmentSuggestionSearchResponse .cs" />
+    <Compile Include="Messaging\Home\SafetyAssessmentResultSearchResponse.cs" />
     <Compile Include="Messaging\ManualInspectionSafetyAssessmentReport\ManualInspectionSafetyAssementReportUploadRequest.cs" />
     <Compile Include="Messaging\ManualInspectionSafetyAssessmentReport\ManualInspectionSafetyAssessmentReportDownloadResponse.cs" />
     <Compile Include="Messaging\ManualInspectionSafetyAssessmentReport\ManualInspectionSafetyAssessmentReportResponse.cs" />

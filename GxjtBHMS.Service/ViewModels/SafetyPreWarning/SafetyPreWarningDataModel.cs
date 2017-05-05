@@ -5,7 +5,6 @@ namespace GxjtBHMS.Service.ViewModels.MonitoringDatas.SafetyPreWarning
 {
     public class SafetyPreWarningDetailQueryModel:EntityBase<int>
     {
-        //public int Id { get; set; }
         public string  PointsNumber { get; set; }
         public DateTime Time { get; set; }
         public double MonitoringData { get; set; }
