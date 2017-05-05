@@ -16,7 +16,6 @@
         &nbsp;
         &nbsp;
         <div id="safetyPreWarning" style="height:300px">
-        @*当前安全预警灯的指示*@
             @Html.Action("GetSafetyWarningSearchContent")
         </div>
         <p><a href="http://localhost:56702/SafetyPreWarning/SafetyPreWarning" class="btn btn-primary btn-lg" style="color:white" >查看详情 &raquo;</a></p>
@@ -54,6 +53,7 @@
 
 @section scripts{
     @Scripts.Render("~/bundles/SafetyPreWarningDetailSearchPartialwebsite")
+
     <script src="~/Scripts/jquery.signalR-2.2.1.min.js"></script>
     <script src="~/signalr/hubs"></script>
 }
