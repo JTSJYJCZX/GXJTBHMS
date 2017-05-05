@@ -46,6 +46,31 @@ namespace GxjtBHMS.Service.AnomalousEventManagementQueryService
             return resp;
         }
 
+        /// <summary>
+        /// 获得所有查询数据
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
+        public AnomalousEventManagementResponse GetAllAnomalousEventManagementDatasBy(DatasQueryResultRequestBase req)
+        {
+
+            var resp = new AnomalousEventManagementResponse();
+            IList<Func<T, bool>> ps = new List<Func<T, bool>>();
+            try
+            {
+                DealWithConditions(req, ps);
+                resp.Datas = _anomalousEventManagementQueryService.GetAllAnomalousEventManagementsSourceBy(ps);
+                resp.TotalResultCount = _anomalousEventManagementQueryService.GetTotalResultCountBy(ps);
+                resp.Succeed = true;
+            }
+            catch (Exception ex)
+            {
+                resp.Message = ex.Message;
+                Log(ex);
+            }
+            return resp;
+        }
+
         public PagedResponse GetTotalPagesBy(DatasQueryResultRequest req)
         {
             IList<Func<T, bool>> ps = new List<Func<T, bool>>();

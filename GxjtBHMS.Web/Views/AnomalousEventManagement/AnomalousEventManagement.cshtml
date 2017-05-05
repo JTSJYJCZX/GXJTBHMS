@@ -2,16 +2,22 @@
     ViewBag.Title = "异常事件管理";
 }
 
-@Html.Action("GetDataQuerySearchBar") @*搜索栏*@
-
-<div id="AnomalousEventManagementSearchContent">
-    @*查询结果区域*@
+<div>
+    <!--用户查询搜索栏开始-->
+    <p>@Html.Action("GetDataQuerySearchBar")</p>
+    <!--用户查询搜索栏结束-->
+    <div id="message" style="color:@TempData[WebConstants.MessageColor]">@TempData[WebConstants.MessageKey]</div>
+    <div id="AnomalousEventManagementSearchContent"></div>
+    <!--分页开始-->
+    <div class="pagination" id="paginationNav"></div>
+    <!--分页结束-->
 </div>
 
+@Html.Hidden("TotalPages", ViewData["TotalPages"])@*将总页数暂存到隐藏域中，以便给初始化分页导航脚本函数使用*@
 
 @section scripts{
-    @*@Scripts.Render("~/bundles/AnomalousEventManagement-SearchContentPartial")
-    @Scripts.Render("~/bundles/AnomalousEventManagementSearchPartial")*@
+    @Scripts.Render("~/bundles/AnomalousEventManagement-Download")
+    @Scripts.Render("~/bundles/AnomalousEventManagementSearchPartial")
     @Scripts.Render("~/bundles/jqueryunobtrusiveajax")
     @Styles.Render("~/content/css/bootstrap-select")
     @Scripts.Render("~/bundles/bootstrap-select")
@@ -19,5 +25,3 @@
     @Scripts.Render("~/bundles/datetimepicker")
     @Scripts.Render("~/bundles/jqPaginator")
 }
-<script src="~/Scripts/AnomalousEventManagement/AnomalousEventManagementSearchAllPartial.website.js"></script>
-<script src="~/Scripts/AnomalousEventManagement/AnomalousEventManagement-download-website.js"></script>

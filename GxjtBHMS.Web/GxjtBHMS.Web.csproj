@@ -285,6 +285,8 @@
     <Compile Include="ViewModels\AlarmDatas\AlarmDatasSeachResultView.cs" />
     <Compile Include="ViewModels\AnomalousEventManagement\AnomalousEventManagementResponseViewModel.cs" />
     <Compile Include="ViewModels\AnomalousEventManagement\AnomalousEventManagementViewModel.cs" />
+    <Compile Include="ViewModels\AnomalousEventManagement\AnomalousEventsQueryRequest.cs" />
+    <Compile Include="ViewModels\AnomalousEventManagement\AnomalousEventsQueryConditionView.cs" />
     <Compile Include="ViewModels\CurrentStainDatas\CurrentStrainDatasView.cs" />
     <Compile Include="ViewModels\CurrentStainDatas\IncudeSectionWaringColor.cs" />
     <Compile Include="ViewModels\CurrentStainDatas\RealTimeWarningStrainDataViewModel.cs" />
@@ -711,13 +713,11 @@
     <Content Include="Views\AnomalousEventManagement\ListAnomalousEventsPartial.cshtml" />
     <Content Include="Views\Home\GetSafetyWarningContentPartial.cshtml" />
     <Content Include="Views\Home\GetSafetyAssessmentResult.cshtml" />
-    <Content Include="Views\AbnormalEventManagement\AbnormalEventManagementQuery.cshtml" />
     <Content Include="Views\Home\GetSafetyAssessmentSuggestion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\SecondLevelSafetyAssessmentReport\" />
-    <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
