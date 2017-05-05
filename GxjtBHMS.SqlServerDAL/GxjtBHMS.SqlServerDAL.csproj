@@ -61,6 +61,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnomalousEventDAL\HumidityAnomalousDAL.cs" />
+    <Compile Include="AnomalousEventDAL\SteelArchStrainAnomalousDAL.cs" />
+    <Compile Include="AnomalousEventDAL\SteelLatticeStrainAnomalousDAL.cs" />
+    <Compile Include="AnomalousEventDAL\TemperatureAnomalousDAL.cs" />
+    <Compile Include="AnomalousEventDAL\WindLoadAnomalousDAL.cs" />
+    <Compile Include="AnomalousEventDAL\ConcreteStrainAnomalousDAL.cs" />
+    <Compile Include="AnomalousEventDAL\DisplacementAnomalousDAL.cs" />
+    <Compile Include="AnomalousEventDAL\CableForceAnomalousDAL.cs" />
     <Compile Include="FirstLevelSafetyAssessmentReportDAL\FirstLevelOfSafetyAssessmentExceptionRecordDAL.cs" />
     <Compile Include="FirstLevelSafetyAssessmentReportDAL\FirstLevelOfSafetyAssessmentResultsDAL.cs" />
     <Compile Include="FirstLevelSafetyAssessmentReportDAL\FirstLevelSafetyAssessmentReportDAL.cs" />

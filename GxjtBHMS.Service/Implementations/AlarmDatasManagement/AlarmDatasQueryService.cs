@@ -1,14 +1,11 @@
-﻿using GxjtBHMS.Infrastructure.Helpers;
-using GxjtBHMS.Models;
+﻿using GxjtBHMS.IDAL.AlarmDatasManagement;
+using GxjtBHMS.Infrastructure.Helpers;
 using GxjtBHMS.Models.SafetyPreWarningTable;
 using GxjtBHMS.Service.Interfaces.AlarmDatasQueryServiceInerfaces;
 using GxjtBHMS.Service.ViewModels.AlarmDatasModel;
-using GxjtBHMS.SqlServerDAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GxjtBHMS.Service.Implementations.AlarmDatasManagement
 {

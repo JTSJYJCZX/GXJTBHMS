@@ -1,0 +1,19 @@
+﻿@model PaginatorModel
+<div id="message"><span style='color:@TempData[WebConstants.MessageColor]'>@TempData[WebConstants.MessageKey]</span></div>
+
+<!--表格显示开始-->
+<div id="AlarmDatasTable"></div>
+
+
+
+
+
+<script>
+    $(function(){
+        getTable();
+    });
+</script>
+
+
+<script src="~/Scripts/AlarmDatas/AlarmDatasQuery-SearchContentPartial-website.js"></script>
+<script src="~/Scripts/AlarmDatas/AlermDatasQuerySearchPartial.website.js"></script>

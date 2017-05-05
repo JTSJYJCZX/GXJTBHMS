@@ -1,10 +1,7 @@
 ﻿namespace GxjtBHMS.Models.AnomalousEventTable
 {
-    public class AnomalousEvent_TemperatureTable : MonitorDatasQueryConditionsModel
+    public class AnomalousEvent_TemperatureTable : AnomalousEventBase
     {
-        public double Temperature { get; set; }
-        public int AnomalousEventReasonId { get; set; }
-        public virtual AnomalousEventReasonTable AnomalousEventReason { get; set; }
     }
     
 }

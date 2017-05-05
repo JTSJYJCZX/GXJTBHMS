@@ -1,6 +1,7 @@
 ﻿using NPOI.XWPF.UserModel;
 using NPOI.OpenXmlFormats.Wordprocessing;
 using GxjtBHMS.Infrastructure.Helpers;
+using System;
 
 namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
 {
@@ -259,6 +260,15 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
             ctPr.AddNewVAlign().val = ST_VerticalJc.center;//垂直居中
             cttc.GetPList()[0].AddNewPPr().AddNewJc().val = ST_Jc.center;
         }
-      
+
+        protected override void BuildHeader()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void BuildContent()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

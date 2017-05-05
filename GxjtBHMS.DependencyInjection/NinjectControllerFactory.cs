@@ -16,6 +16,7 @@ using GxjtBHMS.Service.Interfaces.FirstLevelAssessmInerfaces;
 using GxjtBHMS.Models.FirstLevelSafetyAssessmentTable;
 using GxjtBHMS.SqlServerDAL.FirstLevelSafetyAssessmentReportDAL;
 using GxjtBHMS.IDAL.GetFirstLevelSafetyAssessmentReport;
+using GxjtBHMS.IDAL.AlarmDatasManagement;
 
 namespace GxjtBHMS.DependencyInjection
 {

@@ -1,8 +1,5 @@
-﻿using GxjtBHMS.IDAL;
-using GxjtBHMS.Models;
-using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
+﻿using GxjtBHMS.IDAL.AlarmDatasManagement;
 using GxjtBHMS.Models.MonitoringDatasTable;
-using GxjtBHMS.SqlServerDAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;

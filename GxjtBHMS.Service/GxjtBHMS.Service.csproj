@@ -82,6 +82,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnomalousEventManagementQueryService\AnomalousEventManagementQueryServiceBase.cs" />
     <Compile Include="FirstLevelSafetyAssessmentReportService\AbstractFirstLevelSafetyReport.cs" />
     <Compile Include="FirstLevelSafetyAssessmentReportService\NPOIReportProcessor.cs" />
     <Compile Include="FirstLevelSafetyAssessmentReportService\FirstLevelAssessmReportDownloadFileService.cs" />
@@ -89,7 +90,12 @@
     <Compile Include="FirstLevelSafetyAssessmentReportService\GetFirstLevelSafetyAssessmentReportService.cs" />
     <Compile Include="AbnormalThresholdValueService\AbnormalThresholdValueSettingService.cs" />
     <Compile Include="AutoMapper\Configuration.cs" />
+    <Compile Include="Implementations\AnomalousEventManagement\AnomalousEventFileSystemService.cs" />
+    <Compile Include="Implementations\AnomalousEventManagement\AnomalousEventQueryService.cs" />
+    <Compile Include="Interfaces\AnomalousEventManagementQueryServiceInterfaces\IAnomalousEventManagementsFileSystemService.cs" />
+    <Compile Include="Interfaces\AnomalousEventManagementQueryServiceInterfaces\IAnomalousEventManagementQueryService.cs" />
     <Compile Include="ManualInspectionSafetyAssessmentReportService\GetManualInspectionSafetyAssessmentReportService.cs" />
+    <Compile Include="Messaging\AnomalousEventManagement\AnomalousEventManagementResponse.cs" />
     <Compile Include="Messaging\Home\SafetyAssessmentSuggestionSearchResponse .cs" />
     <Compile Include="Messaging\Home\SafetyAssessmentResultSearchResponse.cs" />
     <Compile Include="Messaging\ManualInspectionSafetyAssessmentReport\ManualInspectionSafetyAssementReportUploadRequest.cs" />
@@ -173,6 +179,7 @@
     <Compile Include="SafetyPreWarningRealTimeHubService\Temperature_SafetyPreWarningRealTimePushService.cs" />
     <Compile Include="SafetyPreWarningRealTimeHubService\WindLoad_SafetyPreWarningRealTimePushService.cs" />
     <Compile Include="ServiceFactory\AlarmDatasManagementServiceFactory.cs" />
+    <Compile Include="ServiceFactory\AnomalousEventManagementFactory.cs" />
     <Compile Include="ServiceFactory\MonitoringDatasOriginalValueDownLoadServiceFactory.cs" />
     <Compile Include="ExtensionMethods\AdminUser\UserServiceExtension.cs" />
     <Compile Include="ExtensionMethods\GetEnumDescription\EnumUnit.cs" />
@@ -243,6 +250,7 @@
     <Compile Include="Implementations\ThresholdValueService\ContainNegativeThresholdValueSettingServiceBase.cs" />
     <Compile Include="SpecialSafetyAssessmentReportService\GetSpecialSafetyAssessmentReportService.cs" />
     <Compile Include="ViewModels\AlarmDatasModel\AlarmDatasModel.cs" />
+    <Compile Include="ViewModels\AnomalousEventManagement\AnomalousEventManagementModel.cs" />
     <Compile Include="ViewModels\DataQueryResult\CableForceDatasModel.cs" />
     <Compile Include="ViewModels\DataQueryResult\TemperatureDatasMode.cs" />
     <Compile Include="ViewModels\DataQueryResult\ResultStatisticsModel.cs" />

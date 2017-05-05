@@ -1,6 +1,4 @@
-﻿using GxjtBHMS.Models;
-using GxjtBHMS.Models.SafetyPreWarningTable;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace GxjtBHMS.Service.Interfaces

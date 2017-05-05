@@ -1,4 +1,5 @@
-﻿using GxjtBHMS.Infrastructure.Helpers;
+﻿using GxjtBHMS.IDAL.AlarmDatasManagement;
+using GxjtBHMS.Infrastructure.Helpers;
 using GxjtBHMS.Models;
 using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
 using GxjtBHMS.Models.SafetyPreWarningTable;
