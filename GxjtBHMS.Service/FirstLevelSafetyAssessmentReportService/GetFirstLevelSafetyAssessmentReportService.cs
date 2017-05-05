@@ -65,7 +65,9 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
                 {
                     FirstSafetyAssessmentResult_Displacement = source.DisplacementAssessmentResult,
                     FirstSafetyAssessmentResult_CableForce = source.CableForceAssessmentResult,
-                    FirstSafetyAssessmentResult_Stress = source.StrainAssessmentResult
+                    FirstSafetyAssessmentResult_Stress = source.StrainAssessmentResult,
+                    FirstSafetyAssessmentReportTime=source.AssessmentReport.ReportTime.ToString()          
+                   
                 };
             }
             catch
@@ -74,7 +76,8 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
                 {
                     FirstSafetyAssessmentResult_Displacement = ServiceConstant.NotEvaluated,
                     FirstSafetyAssessmentResult_CableForce = ServiceConstant.NotEvaluated,
-                    FirstSafetyAssessmentResult_Stress = ServiceConstant.NotEvaluated
+                    FirstSafetyAssessmentResult_Stress = ServiceConstant.NotEvaluated,
+                    FirstSafetyAssessmentReportTime= ServiceConstant.NotEvaluated,
                  };              
             }
             return result;

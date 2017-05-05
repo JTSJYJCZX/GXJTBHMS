@@ -62,14 +62,16 @@ namespace GxjtBHMS.Service.ManualInspectionSafetyAssessmentReportService
                 var source = _getManualInspectionSafetyAssessmentReportDAL.FindBy(ServiceConstant.AssessmentResultStateNavigationProperty).OrderBy(m => m.ReportTime).Last();
                 result = new SafetyAssessmentResultSearchResponse()
                 {
-                    ManualInspectionSafetyAssessmentResult = source.AssessmentResultState.AssessmentGrade
+                    ManualInspectionSafetyAssessmentResult = source.AssessmentResultState.AssessmentGrade,
+                    ManualInspectionSafetyAssessmentReportTime = source.ReportTime.ToString()
                 };
             }
             catch
             {
                 result = new SafetyAssessmentResultSearchResponse()
                 {
-                    ManualInspectionSafetyAssessmentResult = ServiceConstant.NotEvaluated
+                    ManualInspectionSafetyAssessmentResult = ServiceConstant.NotEvaluated,
+                    ManualInspectionSafetyAssessmentReportTime = ServiceConstant.NotEvaluated
                 };
             }
 

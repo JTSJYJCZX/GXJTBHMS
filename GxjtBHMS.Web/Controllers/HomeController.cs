@@ -69,8 +69,12 @@ namespace GxjtBHMS.Web.Controllers
                 FirstSafetyAssessmentResult_CableForce = FirstSafetyAssessmentResult.FirstSafetyAssessmentResult_CableForce,
                 FirstSafetyAssessmentResult_Displacement = FirstSafetyAssessmentResult.FirstSafetyAssessmentResult_Displacement,
                 FirstSafetyAssessmentResult_Stress = FirstSafetyAssessmentResult.FirstSafetyAssessmentResult_Stress,
-                SecondSafetyAssessmentResult =SecondLevelSafetyAssessmentResult.SecondSafetyAssessmentResult,
-                ManualInspectionSafetyAssessmentResult = ManualInspectionSafetyAssessmentResult.ManualInspectionSafetyAssessmentResult
+                FirstSafetyAssessmentReportTime = FirstSafetyAssessmentResult.FirstSafetyAssessmentReportTime,
+                SecondSafetyAssessmentResult = SecondLevelSafetyAssessmentResult.SecondSafetyAssessmentResult,
+                SecondSafetyAssessmentReportTime = SecondLevelSafetyAssessmentResult.SecondSafetyAssessmentReportTime,
+                ManualInspectionSafetyAssessmentResult = ManualInspectionSafetyAssessmentResult.ManualInspectionSafetyAssessmentResult,
+                ManualInspectionSafetyAssessmentReportTime = ManualInspectionSafetyAssessmentResult.ManualInspectionSafetyAssessmentReportTime
+
 
             };
             return PartialView("GetSafetyAssessmentResult", model);
@@ -86,13 +90,13 @@ namespace GxjtBHMS.Web.Controllers
         {
             //查询工作建议结果
             var GetAssessmentSuggestion = new GetFirstLevelSafetyAssessmentReportService();
-            var FirstSafetyAssessmentSuggestion= GetAssessmentSuggestion.GetFirstSafetyAssessmentSuggestion();
+            var FirstSafetyAssessmentSuggestion = GetAssessmentSuggestion.GetFirstSafetyAssessmentSuggestion();
             var model = new SafetyAssessmentSuggestionModelsViewModel()
             {
                 FirstSafetyAssessmentSuggestion_CableForce = FirstSafetyAssessmentSuggestion.FirstSafetyAssessmentSuggestion_CableForce,
                 FirstSafetyAssessmentSuggestion_Displacement = FirstSafetyAssessmentSuggestion.FirstSafetyAssessmentSuggestion_Displacement,
                 FirstSafetyAssessmentSuggestion_Stress = FirstSafetyAssessmentSuggestion.FirstSafetyAssessmentSuggestion_Stress,
-              
+
             };
             return PartialView("GetSafetyAssessmentSuggestion", model);
 

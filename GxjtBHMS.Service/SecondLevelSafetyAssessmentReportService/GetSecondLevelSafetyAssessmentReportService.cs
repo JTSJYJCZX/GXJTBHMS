@@ -61,7 +61,9 @@ namespace GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService
                 var source = _getSecondLevelSafetyAssessmentReportDAL.FindBy(ServiceConstant.AssessmentResultStateNavigationProperty).OrderBy(m => m.ReportTime).Last();
                 result = new SafetyAssessmentResultSearchResponse()
                 {
-                    SecondSafetyAssessmentResult = source.AssessmentResultState.AssessmentGrade
+                    SecondSafetyAssessmentResult = source.AssessmentResultState.AssessmentGrade,
+                    SecondSafetyAssessmentReportTime=source.ReportTime.ToString()
+
                 };
             }
             catch
@@ -69,6 +71,7 @@ namespace GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService
                 result = new SafetyAssessmentResultSearchResponse()
                 {
                     SecondSafetyAssessmentResult = ServiceConstant.NotEvaluated,
+                    SecondSafetyAssessmentReportTime=ServiceConstant.NotEvaluated
 
                 };
             }
