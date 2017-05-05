@@ -1,0 +1,36 @@
+﻿@model GxjtBHMS.Web.ViewModels.AnomalousEventManagement.AnomalousEventManagementResponseViewModel
+<div id="message"><span style='color:@TempData[WebConstants.MessageColor]'>@TempData[WebConstants.MessageKey]</span></div>
+
+<!--表格显示开始-->
+<div class="table-responsive">
+    <div id="message"></div>
+    <table class="table table-striped">
+        <thead>
+            <tr class="text-center">
+                <td>监测时间</td>
+                <td>测试类型</td>
+                <td>测点位置</td>
+                <td>测点编号</td>
+                <td>异常类型</td>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model.Datas)
+        {
+            @Html.Partial("ListAnomalousEventsPartial", item);
+        }
+    </table>
+</div>
+
+<!--分页开始-->
+<div class="pagination" id="paginationNav"></div>
+<!--分页结束-->
+
+@Html.Hidden("TotalPages", ViewData["TotalPages"])@*将总页数暂存到隐藏域中，以便给初始化分页导航脚本函数使用*@
+
+<script>
+        jqPaginatorSetting('#paginationNav',@Model.TotalPages,@Model.CurrentPage);
+</script>
+
+@*<script src="~/Scripts/AnomalousEventManagement/AnomalousEventManagementSearchAllPartial.website.js"></script>
+<script src="~/Scripts/AnomalousEventManagement/AnomalousEventManagement-download-website.js"></script>*@

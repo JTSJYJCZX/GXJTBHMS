@@ -236,6 +236,7 @@
     <Compile Include="Controllers\AbnormalThresholdValueSetting\AbnormalThresholdValueController.cs" />
     <Compile Include="Controllers\AdminUserController.cs" />
     <Compile Include="Controllers\AlarmDatasManagementController.cs" />
+    <Compile Include="Controllers\AnomalousEventManagement\AnomalousEventManagementController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ManualInspectionSafetyAssessmentController.cs" />
     <Compile Include="Controllers\SpecialSafetyAssessmentController.cs" />
@@ -282,6 +283,8 @@
     <Compile Include="ViewModels\AbnormalThresholdValue\AbnormalThresholdValueView.cs" />
     <Compile Include="ViewModels\AlarmDatas\AlarmDatasSearchBarView.cs" />
     <Compile Include="ViewModels\AlarmDatas\AlarmDatasSeachResultView.cs" />
+    <Compile Include="ViewModels\AnomalousEventManagement\AnomalousEventManagementResponseViewModel.cs" />
+    <Compile Include="ViewModels\AnomalousEventManagement\AnomalousEventManagementViewModel.cs" />
     <Compile Include="ViewModels\CurrentStainDatas\CurrentStrainDatasView.cs" />
     <Compile Include="ViewModels\CurrentStainDatas\IncudeSectionWaringColor.cs" />
     <Compile Include="ViewModels\CurrentStainDatas\RealTimeWarningStrainDataViewModel.cs" />
@@ -425,6 +428,9 @@
     <None Include="Properties\PublishProfiles\jtjc - Web Deploy.pubxml" />
     <Content Include="Scripts\AlarmDatas\AlarmDatasQuery-SearchContentPartial-website.js" />
     <Content Include="Scripts\ajaxfileupload.js" />
+    <Content Include="Scripts\AnomalousEventManagement\AnomalousEventManagement-download-website.js" />
+    <Content Include="Scripts\AnomalousEventManagement\AnomalousEventManagementSearchAllPartial.website.js" />
+    <Content Include="Scripts\AnomalousEventManagement\AnomalousEventManagementSearchPartial.website.js" />
     <Content Include="Scripts\bootstrap-select.js" />
     <Content Include="Scripts\bootstrap-select.js.map" />
     <Content Include="Scripts\bootstrap-select.min.js" />
@@ -696,7 +702,11 @@
     <Content Include="Views\SpecialSafetyAssessment\GetSpecialReportListByTimeSearchPartial.cshtml" />
     <Content Include="Views\SpecialSafetyAssessment\GetSpecialSafetyAssessmentListPartial.cshtml" />
     <Content Include="Views\SpecialSafetyAssessment\GetSpecialSafetyAssessmentReportPartial.cshtml" />
-    <Content Include="Views\AbnormalEventManagement\AbnormalEventManagementQuery.cshtml" />
+    <Content Include="Views\AnomalousEventManagement\AnomalousEventManagement.cshtml" />
+    <Content Include="Views\AnomalousEventManagement\AnomalousEventDataQuerySearchPartial.cshtml" />
+    <Content Include="Views\AnomalousEventManagement\AnomalousEventManagementSearchContentPartial.cshtml" />
+    <Content Include="Views\AnomalousEventManagement\AnomalousEventManagementSearchAllContentPartial.cshtml" />
+    <Content Include="Views\AnomalousEventManagement\ListAnomalousEventsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

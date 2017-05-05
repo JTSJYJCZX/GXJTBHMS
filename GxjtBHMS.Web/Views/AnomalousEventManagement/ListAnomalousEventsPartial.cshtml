@@ -1,0 +1,25 @@
+﻿@model GxjtBHMS.Web.ViewModels.AnomalousEventManagement.AnomalousEventManagementViewModel
+
+<tr class="text-center">
+    <td>
+        @Html.TextBoxFor(m => m.Time, new { @class = "text-center", @style = "border:hidden" })
+    </td>
+
+    <td>
+        @Html.TextBoxFor(m =>m.TestType, new { @class = "text-center", @style = "border:hidden" })
+    </td>
+    <td>
+        @Html.TextBoxFor(m => m.PointsPosition, new { @class = "text-center", @style = "border:hidden" })
+    </td>
+    <td>
+        @Html.TextBoxFor(m => m.PointsNumber, new { @class = "text-center", @style = "border:hidden" })
+    </td>
+    <td>
+        @Html.TextBoxFor(m => m.AnomalousEventReason, new { @class = "text-center", @style = "border:hidden" })
+    </td>
+
+</tr>
+
+@Html.AntiForgeryToken()
+
+

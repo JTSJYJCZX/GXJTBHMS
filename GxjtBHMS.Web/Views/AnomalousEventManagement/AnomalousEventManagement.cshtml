@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "异常事件管理";
+}
+
+@Html.Action("GetDataQuerySearchBar") @*搜索栏*@
+
+<div id="AnomalousEventManagementSearchContent">
+    @*查询结果区域*@
+</div>
+
+
+@section scripts{
+    @*@Scripts.Render("~/bundles/AnomalousEventManagement-SearchContentPartial")
+    @Scripts.Render("~/bundles/AnomalousEventManagementSearchPartial")*@
+    @Scripts.Render("~/bundles/jqueryunobtrusiveajax")
+    @Styles.Render("~/content/css/bootstrap-select")
+    @Scripts.Render("~/bundles/bootstrap-select")
+    @Styles.Render("~/content/datetimepickercss")
+    @Scripts.Render("~/bundles/datetimepicker")
+    @Scripts.Render("~/bundles/jqPaginator")
+}
+<script src="~/Scripts/AnomalousEventManagement/AnomalousEventManagementSearchAllPartial.website.js"></script>
+<script src="~/Scripts/AnomalousEventManagement/AnomalousEventManagement-download-website.js"></script>

@@ -139,6 +139,12 @@ namespace GxjtBHMS.Web
             bundles.Add(new ScriptBundle("~/bundles/SpecialSafetyAssessmentReportList-website").Include(
                      "~/Scripts/SafetyAssessmentReport/SpecialSafetyAssessmentReportList-website.js"));
 
+            //异常事件管理脚本
+            bundles.Add(new ScriptBundle("~/bundles/AnomalousEventManagementSearchPartial").Include(
+                     "~/Scripts/AnomalousEventManagement/AnomalousEventManagementSearchPartial.website.js"));
+            bundles.Add(new ScriptBundle("~/bundles/AnomalousEventManagement-SearchContentPartial").Include(
+         "~/Scripts/AnomalousEventManagement/AnomalousEventManagement-SearchContentPartial-website.js"));
+
         }
     }
 }

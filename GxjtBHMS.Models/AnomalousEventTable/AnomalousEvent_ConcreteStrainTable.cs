@@ -1,9 +1,6 @@
 ﻿namespace GxjtBHMS.Models.AnomalousEventTable
 {
-    public class AnomalousEvent_ConcreteStrainTable : MonitorDatasQueryConditionsModel
+    public class AnomalousEvent_ConcreteStrainTable : AnomalousEventBase
     {
-        public double Strain { get; set; }
-        public int AnomalousEventReasonId { get; set; }
-        public virtual AnomalousEventReasonTable AnomalousEventReason { get; set; }
     }
 }

@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbnormalThresholdValueSetting\Abnormal_ThresholdValueTable.cs" />
+    <Compile Include="AnomalousEventTable\AnomalousEventBase.cs" />
     <Compile Include="AnomalousEventTable\AnomalousEvent_SteelArchStrainTable.cs" />
     <Compile Include="AnomalousEventTable\AnomalousEventReasonTable.cs" />
     <Compile Include="AnomalousEventTable\AnomalousEvent_SteelLatticeStrainTable.cs" />
