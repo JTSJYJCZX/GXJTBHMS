@@ -98,15 +98,7 @@ namespace GxjtBHMS.SqlServerDAL
         public DbSet<SpecialAssessment_SpecialSafetyAssessmentReportTable> SpecialAssessment_SpecialSafetyAssessmentReportStates { get; set; }
 
         //异常事件
-        public DbSet<AnomalousEvent_SteelArchStrainTable> AnomalousEvent_SteelArchStrains { get; set; }//钢拱肋应变
-        public DbSet<AnomalousEvent_SteelLatticeStrainTable> AnomalousEvent_SteelLatticeStrains { get; set; }//钢格构应变
-        public DbSet<AnomalousEvent_ConcreteStrainTable> AnomalousEvent_ConcreteStrains { get; set; }//混凝土应变
-        public DbSet<AnomalousEvent_DisplacementTable> AnomalousEvent_Displacements { get; set; }//位移
-        public DbSet<AnomalousEvent_CableForceTable> AnomalousEvent_CableForces { get; set; }//索力
-        public DbSet<AnomalousEvent_TemperatureTable> AnomalousEvent_Temperatures { get; set; }//温度 
-        public DbSet<AnomalousEvent_HumidityTable> AnomalousEvent_Humiditys { get; set; }//湿度 
-        public DbSet<AnomalousEvent_WindLoadTable> AnomalousEvent_WindLoads { get; set; }//风载
         public DbSet<AnomalousEventReasonTable> AnomalousEventReasons { get; set; }//异常事件原因
-        public DbSet<AnomalousEventTable> AnomalousEvent { get; set; }//异常事件
+        public DbSet<AnomalousEvent_AnomalousEventTable> AnomalousEvent { get; set; }//异常事件
     }
 }

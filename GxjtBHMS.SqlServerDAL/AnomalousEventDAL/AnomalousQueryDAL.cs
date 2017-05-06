@@ -6,13 +6,13 @@ using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL.AnomalousEventDAL
 {
-    public class SteelArchStrainAnomalousDAL : Repository<AnomalousEvent_SteelArchStrainTable, int>,IAnomalousEventDAL<AnomalousEvent_SteelArchStrainTable>
+    public class AnomalousQueryDAL : Repository<AnomalousEvent_AnomalousEventTable, int>, IAnomalousEventQueryDAL
     {
-        public override IEnumerable<AnomalousEvent_SteelArchStrainTable> FindBy(IList<Func<AnomalousEvent_SteelArchStrainTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
+        public override IEnumerable<AnomalousEvent_AnomalousEventTable> FindBy(IList<Func<AnomalousEvent_AnomalousEventTable, bool>> ps, int currentPageIndex, int pageSize, params string[] navigationProperties)
         {
             using (var ctx = new BHMSContext())
             {
-                var source = DealWithNavigationPropertys(navigationProperties, ctx.AnomalousEvent_SteelArchStrains);//处理导航属性
+                var source = DealWithNavigationPropertys(navigationProperties, ctx.AnomalousEvent);//处理导航属性
 
                 var result = DealWithConditions(ps.ToArray(), source);//处理条件筛选
 

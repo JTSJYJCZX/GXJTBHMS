@@ -1,13 +1,14 @@
-﻿using GxjtBHMS.Service.ViewModels.AnomalousEventManagement;
-using System;
-using System.Collections.Generic;
+﻿using GxjtBHMS.Service.Messaging;
+using GxjtBHMS.Service.Messaging.AnomalousEventManagement;
+using GxjtBHMS.Service.Messaging.MonitoringDatas;
+using GxjtBHMS.Service.Messaging.MonitoringDatasDownLoad;
 
 namespace GxjtBHMS.Service.Interfaces.AlarmDatasQueryServiceInerfaces
 {
-    public interface IAnomalousEventManagementQueryService<T>
+    public interface IAnomalousEventManagementQueryService
     {
-        IEnumerable<AnomalousEventManagementModel> GetAnomalousEventManagementsSourceBy(IList<Func<T, bool>> ps, int currentPageIndex, int pageSize);
-        IEnumerable<AnomalousEventManagementModel> GetAllAnomalousEventManagementsSourceBy(IList<Func<T, bool>> ps);
-        long GetTotalResultCountBy(IList<Func<T, bool>> ps);
+        AnomalousEventManagementResponse GetAnomalousEventManagementDatasBy(DatasQueryResultRequestBase req);
+        DownLoadDatasResponse SaveAs(DatasQueryResultRequestBase req);
+        PagedResponse GetTotalPagesBy(DatasQueryResultRequest req);
     }
 }

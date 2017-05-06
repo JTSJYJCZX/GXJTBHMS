@@ -1,26 +1,26 @@
 ﻿using GxjtBHMS.IDAL.AnomalousEventIDAL;
 using GxjtBHMS.Infrastructure.Helpers;
-using GxjtBHMS.Models.AnomalousEventTable;
 using GxjtBHMS.Service.Interfaces;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using GxjtBHMS.Models.AnomalousEventTable;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    public class AnomalousEventFileSystemService<T> : IAnomalousEventManagementsFileSystemService<T> where T : AnomalousEventTable
+    public class AnomalousEventFileSystemService : IAnomalousEventManagementsFileSystemService
     {
-        readonly IAnomalousEventDAL<T> _anomalousEventDAL;
-        public AnomalousEventFileSystemService(IAnomalousEventDAL<T> anomalousEventDAL)
+        readonly IAnomalousEventQueryDAL _anomalousEventDAL;
+        public AnomalousEventFileSystemService(IAnomalousEventQueryDAL anomalousEventDAL)
         {
             _anomalousEventDAL = anomalousEventDAL;
         }
-        public object ConvertToDocument(IList<Func<T, bool>> ps)
+        public object ConvertToDocument(IList<Func<AnomalousEvent_AnomalousEventTable, bool>> ps)
         {
             string[] navigationProperties = { ServiceConstant.PointsNumberPointsPositionNavigationProperty, ServiceConstant.AnomalousEventReasonNavigationProperty };
-            IEnumerable<T> monitwringDatasExcludePaging = new List<T>();
+            IEnumerable<AnomalousEvent_AnomalousEventTable> monitwringDatasExcludePaging = new List<AnomalousEvent_AnomalousEventTable>();
             monitwringDatasExcludePaging = _anomalousEventDAL.FindBy(ps, navigationProperties);//获取不分页的查询结果
             HSSFWorkbook workbook = new HSSFWorkbook();
             ISheet sheet = workbook.CreateSheet("异常事件查询结果");

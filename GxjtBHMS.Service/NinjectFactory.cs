@@ -25,9 +25,6 @@ using GxjtBHMS.SqlServerDAL.SpecialSafetyAssessmentReportDAL;
 using GxjtBHMS.IDAL.Home;
 using GxjtBHMS.SqlServerDAL.Home;
 using GxjtBHMS.IDAL.AlarmDatasManagement;
-using GxjtBHMS.Models.AnomalousEventTable;
-using GxjtBHMS.IDAL.AnomalousEventIDAL;
-using GxjtBHMS.SqlServerDAL.AnomalousEventDAL;
 
 namespace GxjtBHMS.Service
 {
@@ -154,34 +151,7 @@ namespace GxjtBHMS.Service
             _ninjectKernel.Bind<IGetManualInspectionSafetyAssessmentReportDAL>().To<GetManualInspectionSafetyAssessmentReportDAL>();
             _ninjectKernel.Bind<IGetManualInspectionSafetyAssessmentStateDAL>().To<GetManualInspectionSafetyAssessmentStateDAL>();
 
-            //异常事件管理
-            _ninjectKernel.Bind<IAnomalousEventManagementQueryService<AnomalousEvent_CableForceTable>>().To<AnomalousEventQueryService<AnomalousEvent_CableForceTable>>();
-            _ninjectKernel.Bind<IAnomalousEventManagementQueryService<AnomalousEvent_ConcreteStrainTable>>().To<AnomalousEventQueryService<AnomalousEvent_ConcreteStrainTable>>();
-            _ninjectKernel.Bind<IAnomalousEventManagementQueryService<AnomalousEvent_SteelArchStrainTable>>().To<AnomalousEventQueryService<AnomalousEvent_SteelArchStrainTable>>();
-            _ninjectKernel.Bind<IAnomalousEventManagementQueryService<AnomalousEvent_SteelLatticeStrainTable>>().To<AnomalousEventQueryService<AnomalousEvent_SteelLatticeStrainTable>>();
-            _ninjectKernel.Bind<IAnomalousEventManagementQueryService<AnomalousEvent_DisplacementTable>>().To<AnomalousEventQueryService<AnomalousEvent_DisplacementTable>>();
-            _ninjectKernel.Bind<IAnomalousEventManagementQueryService<AnomalousEvent_HumidityTable>>().To<AnomalousEventQueryService<AnomalousEvent_HumidityTable>>();
-            _ninjectKernel.Bind<IAnomalousEventManagementQueryService<AnomalousEvent_TemperatureTable>>().To<AnomalousEventQueryService<AnomalousEvent_TemperatureTable>>();
-            _ninjectKernel.Bind<IAnomalousEventManagementQueryService<AnomalousEvent_WindLoadTable>>().To<AnomalousEventQueryService<AnomalousEvent_WindLoadTable>>();
 
-
-            _ninjectKernel.Bind<IAnomalousEventManagementsFileSystemService<AnomalousEvent_CableForceTable>>().To<AnomalousEventFileSystemService<AnomalousEvent_CableForceTable>>();
-            _ninjectKernel.Bind<IAnomalousEventManagementsFileSystemService<AnomalousEvent_ConcreteStrainTable>>().To<AnomalousEventFileSystemService<AnomalousEvent_ConcreteStrainTable>>();
-            _ninjectKernel.Bind<IAnomalousEventManagementsFileSystemService<AnomalousEvent_SteelArchStrainTable>>().To<AnomalousEventFileSystemService<AnomalousEvent_SteelArchStrainTable>>();
-            _ninjectKernel.Bind<IAnomalousEventManagementsFileSystemService<AnomalousEvent_SteelLatticeStrainTable>>().To<AnomalousEventFileSystemService<AnomalousEvent_SteelLatticeStrainTable>>();
-            _ninjectKernel.Bind<IAnomalousEventManagementsFileSystemService<AnomalousEvent_DisplacementTable>>().To<AnomalousEventFileSystemService<AnomalousEvent_DisplacementTable>>();
-            _ninjectKernel.Bind<IAnomalousEventManagementsFileSystemService<AnomalousEvent_HumidityTable>>().To<AnomalousEventFileSystemService<AnomalousEvent_HumidityTable>>();
-            _ninjectKernel.Bind<IAnomalousEventManagementsFileSystemService<AnomalousEvent_TemperatureTable>>().To<AnomalousEventFileSystemService<AnomalousEvent_TemperatureTable>>();
-            _ninjectKernel.Bind<IAnomalousEventManagementsFileSystemService<AnomalousEvent_WindLoadTable>>().To<AnomalousEventFileSystemService<AnomalousEvent_WindLoadTable>>();
-
-            _ninjectKernel.Bind< IAnomalousEventDAL<AnomalousEvent_CableForceTable>>().To<CableForceAnomalousDAL>();
-            _ninjectKernel.Bind<IAnomalousEventDAL<AnomalousEvent_ConcreteStrainTable>>().To<ConcreteStrainAnomalousDAL>();
-            _ninjectKernel.Bind<IAnomalousEventDAL<AnomalousEvent_SteelArchStrainTable>>().To<SteelArchStrainAnomalousDAL>();
-            _ninjectKernel.Bind<IAnomalousEventDAL<AnomalousEvent_SteelLatticeStrainTable>>().To<SteelLatticeStrainAnomalousDAL>();
-            _ninjectKernel.Bind<IAnomalousEventDAL<AnomalousEvent_DisplacementTable>>().To<DisplacementAnomalousDAL>();
-            _ninjectKernel.Bind<IAnomalousEventDAL<AnomalousEvent_HumidityTable>>().To<HumidityAnomalousDAL>();
-            _ninjectKernel.Bind<IAnomalousEventDAL<AnomalousEvent_TemperatureTable>>().To<TemperatureAnomalousDAL>();
-            _ninjectKernel.Bind<IAnomalousEventDAL<AnomalousEvent_WindLoadTable>>().To<WindLoadAnomalousDAL>();
 
             //主页中安全状态评估结果查询绑定
             _ninjectKernel.Bind<IGetFirstLevelSafetyAssessmentReportDisplacementResultDAL>().To<GetFirstLevelSafetyAssessmentReportDisplacementResultDAL>();

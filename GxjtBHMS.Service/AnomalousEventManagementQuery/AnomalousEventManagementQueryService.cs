@@ -1,10 +1,9 @@
 ﻿using GxjtBHMS.Infrastructure.Configuration;
 using GxjtBHMS.Models;
+using GxjtBHMS.Models.AnomalousEventTable;
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.Interfaces.AlarmDatasQueryServiceInerfaces;
-using GxjtBHMS.Service.Interfaces.MonitoringDatasQueryServiceInerfaces;
 using GxjtBHMS.Service.Messaging;
-using GxjtBHMS.Service.Messaging.AlarmDatas;
 using GxjtBHMS.Service.Messaging.AnomalousEventManagement;
 using GxjtBHMS.Service.Messaging.MonitoringDatas;
 using GxjtBHMS.Service.Messaging.MonitoringDatasDownLoad;
@@ -12,16 +11,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace GxjtBHMS.Service.AnomalousEventManagementQueryService
+namespace GxjtBHMS.Service.AnomalousEventManagementQuery
 {
-    public class AnomalousEventManagementQueryServiceBase<T> : ServiceBase where T : MonitorDatasQueryConditionsModel
+    public class AnomalousEventManagementQueryService : ServiceBase, IAnomalousEventManagementQueryService
     {
-        readonly protected IAnomalousEventManagementQueryService<T> _anomalousEventManagementQueryService;
-        readonly protected IAnomalousEventManagementsFileSystemService<T> _fileSystemService;
-        public AnomalousEventManagementQueryServiceBase()
+        readonly protected IAnomalousEventManagementService _anomalousEventManagementQueryService;
+        readonly protected IAnomalousEventManagementsFileSystemService _fileSystemService;
+        public AnomalousEventManagementQueryService(IAnomalousEventManagementService anomalousEventManagementQueryService, IAnomalousEventManagementsFileSystemService fileSystemService)
         {
-            _anomalousEventManagementQueryService = new NinjectFactory().GetInstance<IAnomalousEventManagementQueryService<T>>();
-            _fileSystemService = new NinjectFactory().GetInstance<IAnomalousEventManagementsFileSystemService<T>>();
+            _anomalousEventManagementQueryService = anomalousEventManagementQueryService;
+            _fileSystemService = fileSystemService;
         }
         protected const string NoRecordsMessage = "无记录！";
 
@@ -29,12 +28,12 @@ namespace GxjtBHMS.Service.AnomalousEventManagementQueryService
         {
 
             var resp = new AnomalousEventManagementResponse();
-            IList<Func<T, bool>> ps = new List<Func<T, bool>>();
+            IList<Func<AnomalousEvent_AnomalousEventTable, bool>> ps = new List<Func<AnomalousEvent_AnomalousEventTable, bool>>();
             try
             {
                 DealWithConditions(req, ps);
                 var numberOfResultsPrePage = ApplicationSettingsFactory.GetApplicationSettings().NumberOfResultsPrePage;//获取每页记录数
-                resp.Datas = _anomalousEventManagementQueryService.GetAnomalousEventManagementsSourceBy(ps, req.CurrentPageIndex, numberOfResultsPrePage);
+                resp.Datas = _anomalousEventManagementQueryService.GetAnomalousEventManagementsSourceBy(ps,req.CurrentPageIndex,numberOfResultsPrePage);
                 resp.TotalResultCount = _anomalousEventManagementQueryService.GetTotalResultCountBy(ps);
                 resp.Succeed = true;
             }
@@ -46,34 +45,10 @@ namespace GxjtBHMS.Service.AnomalousEventManagementQueryService
             return resp;
         }
 
-        /// <summary>
-        /// 获得所有查询数据
-        /// </summary>
-        /// <param name="req"></param>
-        /// <returns></returns>
-        public AnomalousEventManagementResponse GetAllAnomalousEventManagementDatasBy(DatasQueryResultRequestBase req)
-        {
-
-            var resp = new AnomalousEventManagementResponse();
-            IList<Func<T, bool>> ps = new List<Func<T, bool>>();
-            try
-            {
-                DealWithConditions(req, ps);
-                resp.Datas = _anomalousEventManagementQueryService.GetAllAnomalousEventManagementsSourceBy(ps);
-                resp.TotalResultCount = _anomalousEventManagementQueryService.GetTotalResultCountBy(ps);
-                resp.Succeed = true;
-            }
-            catch (Exception ex)
-            {
-                resp.Message = ex.Message;
-                Log(ex);
-            }
-            return resp;
-        }
 
         public PagedResponse GetTotalPagesBy(DatasQueryResultRequest req)
         {
-            IList<Func<T, bool>> ps = new List<Func<T, bool>>();
+            IList<Func<AnomalousEvent_AnomalousEventTable, bool>> ps = new List<Func<AnomalousEvent_AnomalousEventTable, bool>>();
             DealWithConditions(req, ps);
             PagedResponse resp = new PagedResponse();
             try
@@ -99,7 +74,7 @@ namespace GxjtBHMS.Service.AnomalousEventManagementQueryService
         public DownLoadDatasResponse SaveAs(DatasQueryResultRequestBase req)
         {
             var resp = new DownLoadDatasResponse();
-            IList<Func<T, bool>> ps = new List<Func<T, bool>>();
+            IList<Func<AnomalousEvent_AnomalousEventTable, bool>> ps = new List<Func<AnomalousEvent_AnomalousEventTable, bool>>();
             try
             {
                 DealWithConditions(req, ps);
@@ -114,14 +89,14 @@ namespace GxjtBHMS.Service.AnomalousEventManagementQueryService
             return resp;
         }
 
-        void DealWithEqualPointsPosition(DatasQueryResultRequestBase req, IList<Func<T, bool>> ps)
+        void DealWithEqualPointsPosition(DatasQueryResultRequestBase req, IList<Func<AnomalousEvent_AnomalousEventTable, bool>> ps)
         {
             if (req.PointsPositionId > 0)
             {
                 ps.Add(m => m.PointsNumber.PointsPositionId == req.PointsPositionId);
             }
         }
-        void DealWithSearchTimeRange(DatasQueryResultRequestBase req, IList<Func<T, bool>> ps)
+        void DealWithSearchTimeRange(DatasQueryResultRequestBase req, IList<Func<AnomalousEvent_AnomalousEventTable, bool>> ps)
         {
             if (req.StartTime.Year != 1)
             {
@@ -132,13 +107,13 @@ namespace GxjtBHMS.Service.AnomalousEventManagementQueryService
         }
 
 
-        protected void DealWithConditions(DatasQueryResultRequestBase req, IList<Func<T, bool>> ps)
+        protected void DealWithConditions(DatasQueryResultRequestBase req, IList<Func<AnomalousEvent_AnomalousEventTable, bool>> ps)
         {
             DealWithEqualPointsPosition(req, ps);
             DealWithSearchTimeRange(req, ps);
         }
 
-        protected bool HasNoSearchResult(IEnumerable<T> source)
+        protected bool HasNoSearchResult(IEnumerable<AnomalousEvent_AnomalousEventTable> source)
         {
             return source.Count() == 0;
         }

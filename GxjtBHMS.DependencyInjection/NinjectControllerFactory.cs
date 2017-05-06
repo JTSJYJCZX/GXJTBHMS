@@ -17,6 +17,11 @@ using GxjtBHMS.Models.FirstLevelSafetyAssessmentTable;
 using GxjtBHMS.SqlServerDAL.FirstLevelSafetyAssessmentReportDAL;
 using GxjtBHMS.IDAL.GetFirstLevelSafetyAssessmentReport;
 using GxjtBHMS.IDAL.AlarmDatasManagement;
+using GxjtBHMS.Service.Interfaces.AlarmDatasQueryServiceInerfaces;
+using GxjtBHMS.Service.Implementations.AlarmDatasManagement;
+using GxjtBHMS.Service.AnomalousEventManagementQuery;
+using GxjtBHMS.IDAL.AnomalousEventIDAL;
+using GxjtBHMS.SqlServerDAL.AnomalousEventDAL;
 
 namespace GxjtBHMS.DependencyInjection
 {
@@ -100,8 +105,13 @@ namespace GxjtBHMS.DependencyInjection
             _ninjectKernel.Bind<AbstractFirstLevelSafetyReport>().To<NPOIReportProcessor>();
 
             //报警数据管理注入
-            _ninjectKernel.Bind<IAlarmDatasQueryDAL<SafetyPreWarning_CableForceTable>>().To<CableForceAlarmDatasDAL>();            
+            _ninjectKernel.Bind<IAlarmDatasQueryDAL<SafetyPreWarning_CableForceTable>>().To<CableForceAlarmDatasDAL>();
+            //异常事件管理
+            _ninjectKernel.Bind<IAnomalousEventManagementsFileSystemService>().To<AnomalousEventFileSystemService>();
 
+            _ninjectKernel.Bind<IAnomalousEventManagementService>().To<AnomalousEventQueryService>();
+            _ninjectKernel.Bind<IAnomalousEventManagementQueryService>().To<AnomalousEventManagementQueryService>();
+            _ninjectKernel.Bind<IAnomalousEventQueryDAL>().To<AnomalousQueryDAL>();
         }
     }
 }
