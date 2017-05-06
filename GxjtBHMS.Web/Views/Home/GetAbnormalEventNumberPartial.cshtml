@@ -1,43 +1,16 @@
-﻿@model GxjtBHMS.Web.ViewModels.Home.AbnormalEventNumberViewModel
-<div class="table-responsive">
-    <div id="message"></div>
-    <table style="table-layout:fixed;vertical-align:middle" class="table table-bordered">
+﻿@model GxjtBHMS.Web.ViewModels.Home.AbnormalEventNumberViewListModels
+
+    <table class="table-bordered table-responsive" style="table-layout:fixed;margin:auto">
+
         <tr class="text-center">
-            <td >测试类型</td>
-            <td >异常事件数量</td>
+            <td width="150" >测试类型</td>
+            <td width="150">异常事件数量</td>
         </tr>
-        <tr class="text-center">
-            <td>钢拱肋应变</td>
-            <td>@Html.TextBoxFor(m => m.AbnormalEventNumber_SteelArchStrains, new { @style = "border:hidden;width:150px;text-align:center", @readonly = true })</td>
-        </tr>
-        <tr class="text-center">
-            <td>钢格构应变</td>
-            <td>@Html.TextBoxFor(m => m.AbnormalEventNumber_SteelLatticeStrains, new { @style = "border:hidden;width:150px;text-align:center", @readonly = true })</td>
-        </tr>
-        <tr class="text-center">
-            <td>混凝土应变</td>
-            <td>@Html.TextBoxFor(m => m.AbnormalEventNumber_ConcreteStrains, new { @style = "border:hidden;width:150px;text-align:center", @readonly = true })</td>
-        </tr>
-        <tr class="text-center">
-            <td>位移</td>
-            <td>@Html.TextBoxFor(m => m.AbnormalEventNumber_Displacements, new { @style = "border:hidden;width:150px;text-align:center", @readonly = true })</td>
-        </tr>
-        <tr class="text-center">
-            <td>索力</td>
-            <td>@Html.TextBoxFor(m => m.AbnormalEventNumber_CableForces, new { @style = "border:hidden;width:150px;text-align:center", @readonly = true })</td>
-        </tr>
-        <tr class="text-center">
-            <td>温度</td>
-            <td>@Html.TextBoxFor(m => m.AbnormalEventNumber_Temperatures, new { @style = "border:hidden;width:150px;text-align:center", @readonly = true })</td>
-        </tr>
-        <tr class="text-center">
-            <td>湿度</td>
-            <td>@Html.TextBoxFor(m => m.AbnormalEventNumber_Humiditys, new { @style = "border:hidden;width:150px;text-align:center", @readonly = true })</td>
-        </tr>
-        <tr class="text-center">
-            <td>风速</td>
-            <td>@Html.TextBoxFor(m => m.AbnormalEventNumber_WindLoads, new { @style = "border:hidden;width:150px;text-align:center", @readonly = true })</td>
-        </tr>
+        @foreach (var item in Model.AbnormalEventNumberViewModels)
+        {
+
+            @Html.Partial("GetAbnormalEventNumberListPartial", item);
+        }
 </table>
-</div>
+
 
