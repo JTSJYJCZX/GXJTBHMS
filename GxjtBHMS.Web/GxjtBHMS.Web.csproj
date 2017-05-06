@@ -435,7 +435,7 @@
     <Content Include="Scripts\AlarmDatas\AlarmDatasQuery-SearchContentPartial-website.js" />
     <Content Include="Scripts\ajaxfileupload.js" />
     <Content Include="Scripts\AnomalousEventManagement\AnomalousEventManagement-download-website.js" />
-    <Content Include="Scripts\AnomalousEventManagement\AnomalousEventManagementSearchAllPartial.website.js" />
+    <Content Include="Scripts\AnomalousEventManagement\AnomalousEventManagementPagination.website.js" />
     <Content Include="Scripts\AnomalousEventManagement\AnomalousEventManagementSearchPartial.website.js" />
     <Content Include="Scripts\bootstrap-select.js" />
     <Content Include="Scripts\bootstrap-select.js.map" />
@@ -709,13 +709,13 @@
     <Content Include="Views\SpecialSafetyAssessment\GetSpecialSafetyAssessmentReportPartial.cshtml" />
     <Content Include="Views\AnomalousEventManagement\AnomalousEventManagement.cshtml" />
     <Content Include="Views\AnomalousEventManagement\AnomalousEventDataQuerySearchPartial.cshtml" />
-    <Content Include="Views\AnomalousEventManagement\AnomalousEventManagementSearchContentPartial.cshtml" />
-    <Content Include="Views\AnomalousEventManagement\AnomalousEventManagementSearchAllContentPartial.cshtml" />
+    <Content Include="Views\AnomalousEventManagement\AnomalousEventManagementContentPartial.cshtml" />
     <Content Include="Views\AnomalousEventManagement\ListAnomalousEventsPartial.cshtml" />
     <Content Include="Views\Home\GetSafetyWarningContentPartial.cshtml" />
     <Content Include="Views\Home\GetSafetyAssessmentResult.cshtml" />
     <Content Include="Views\Home\GetSafetyAssessmentSuggestion.cshtml" />
     <Content Include="Views\Home\GetAbnormalEventNumberPartial.cshtml" />
+    <Content Include="Views\AnomalousEventManagement\NoAnomalousEventManagementContentPartial.cshtml" />
     <Content Include="Views\Home\GetAbnormalEventNumberListPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
