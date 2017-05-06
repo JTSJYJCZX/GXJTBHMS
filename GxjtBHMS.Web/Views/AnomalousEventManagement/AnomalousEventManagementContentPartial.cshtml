@@ -1,5 +1,4 @@
 ﻿@model GxjtBHMS.Web.ViewModels.AnomalousEventManagement.AnomalousEventManagementResponseViewModel
-<div id="message"><span style='color:@TempData[WebConstants.MessageColor]'>@TempData[WebConstants.MessageKey]</span></div>
 
 <!--表格显示开始-->
 <div class="table-responsive">
@@ -24,6 +23,8 @@
 
 
 <script>
-        jqPaginatorSetting('#paginationNav',@Model.TotalPages,@Model.CurrentPage);
+    jqPaginatorSetting('#paginationNav',@Model.TotalPages,@Model.CurrentPage);
 </script>
+
+
 

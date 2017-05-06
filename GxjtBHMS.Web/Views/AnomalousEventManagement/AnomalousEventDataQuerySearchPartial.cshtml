@@ -22,7 +22,12 @@
     </label>
     <input type="button" id="btnquery" value="查询" class="btn btn-default col-md-offset-1" />
 </div>
-
+<div id="dataQuery">
+    <input type="button" id="AnomalousEventSaveAs" value="异常事件数据下载" class="btn btn-default" />
+</div>
 <hr />
 
+@section scripts{
+    @Scripts.Render("~/bundles/AnomalousEventManagement-Download")
 
+}

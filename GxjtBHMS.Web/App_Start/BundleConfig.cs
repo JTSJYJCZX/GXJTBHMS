@@ -137,6 +137,8 @@ namespace GxjtBHMS.Web
                      "~/Scripts/AnomalousEventManagement/AnomalousEventManagementSearchPartial.website.js"));
             bundles.Add(new ScriptBundle("~/bundles/AnomalousEventManagement-Download").Include(
          "~/Scripts/AnomalousEventManagement/AnomalousEventManagement-download-website.js"));
+            bundles.Add(new ScriptBundle("~/bundles/AnomalousEventManagementPagination").Include(
+"~/Scripts/AnomalousEventManagement/AnomalousEventManagementPagination.website.js"));
 
         }
     }
