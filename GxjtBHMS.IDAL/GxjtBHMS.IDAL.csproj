@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnomalousEventIDAL\IAnomalousEventQueryDAL.cs" />
     <Compile Include="AnomalousEventIDAL\IAnomalousEventDAL.cs" />
     <Compile Include="GetFirstLevelSafetyAssessmentReport\IFirstLevelAssessmentDAL.cs" />
     <Compile Include="AlarmDatasManagement\IAlarmDatasQueryDAL.cs" />

@@ -1,10 +1,11 @@
-﻿using System;
+﻿using GxjtBHMS.Models.AnomalousEventTable;
+using System;
 using System.Collections.Generic;
 
 namespace GxjtBHMS.Service.Interfaces
 {
-    public interface IAnomalousEventManagementsFileSystemService<T> 
+    public interface IAnomalousEventManagementsFileSystemService
     {
-        object ConvertToDocument(IList<Func<T, bool>> ps);
+        object ConvertToDocument(IList<Func<AnomalousEvent_AnomalousEventTable, bool>> ps);
     }
 }

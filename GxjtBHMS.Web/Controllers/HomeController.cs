@@ -4,7 +4,6 @@ using GxjtBHMS.Web.ViewModels.Home;
 using GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService;
 using GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService;
 using GxjtBHMS.Service.ManualInspectionSafetyAssessmentReportService;
-using GxjtBHMS.Service.AnomalousEventManagementQueryService;
 
 namespace GxjtBHMS.Web.Controllers
 {

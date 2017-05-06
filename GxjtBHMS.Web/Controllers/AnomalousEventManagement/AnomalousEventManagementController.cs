@@ -6,9 +6,8 @@ using GxjtBHMS.Service.Interfaces;
 using System.Linq;
 using GxjtBHMS.Web.ExtensionMehtods.MonitoringDatas;
 using GxjtBHMS.Service.Messaging.MonitoringDatas;
-using GxjtBHMS.Service.ServiceFactory;
 using GxjtBHMS.Web.ViewModels.AnomalousEventManagement;
-using GxjtBHMS.Infrastructure.Configuration;
+using GxjtBHMS.Service.Interfaces.AlarmDatasQueryServiceInerfaces;
 
 namespace GxjtBHMS.Web.Controllers.AnomalousEventManagement
 {
@@ -17,13 +16,16 @@ namespace GxjtBHMS.Web.Controllers.AnomalousEventManagement
     {
         IMonitoringTestTypeService _mtts;
         readonly IMonitoringPointsPositionService _mpps;
+        IAnomalousEventManagementQueryService _anomalousEventManagementService;
         public AnomalousEventManagementController
            (IMonitoringTestTypeService mtts,
-           IMonitoringPointsPositionService mpps
+           IMonitoringPointsPositionService mpps,
+           IAnomalousEventManagementQueryService anomalousEventManagementService
            )
         {
             _mtts = mtts;
             _mpps = mpps;
+            _anomalousEventManagementService = anomalousEventManagementService;
         }
 
 
@@ -34,8 +36,7 @@ namespace GxjtBHMS.Web.Controllers.AnomalousEventManagement
             long resultCount = 0;
             for (int i = 1; i <= testTypes; i++)
             {
-                var AnomalousEventQueryService = AnomalousEventManagementFactory.GetQueryServiceFrom(i);
-                var result = AnomalousEventQueryService.GetAnomalousEventManagementDatasBy(req);
+                var result = _anomalousEventManagementService.GetAnomalousEventManagementDatasBy(req);
                 if (result.Succeed)
                 {
                     resultCount += result.TotalResultCount;
@@ -121,15 +122,24 @@ namespace GxjtBHMS.Web.Controllers.AnomalousEventManagement
             var models = new List<AnomalousEventManagementViewModel>();
             var sours=new List<AnomalousEventManagementViewModel>();
             long resultCount = 0;
+                var result = _anomalousEventManagementService.GetAnomalousEventManagementDatasBy(req);
+                if (result.Succeed)
+                {
+                    foreach (var item in result.Datas)
+                    {
+                        var model = new AnomalousEventManagementViewModel()
+                        {
+                            Time = item.Time,
+                            TestType = item.TestType,
+                            PointsPosition = item.PointsPosition,
+                            PointsNumber = item.PointsNumber,
+                            AnomalousEventReason = item.AnomalousEventReason
+                        };
+                        models.Add(model);
+                    }
+                    resultCount = result.TotalResultCount;
+                }
 
-            if (condition.TestTypeId == 0)
-            {
-                models = GetAllAnomalousDatas(req, sours, ref resultCount);
-            }
-            else
-            {
-                resultCount = GetAnomalousByTestTypeId(condition, req, models, resultCount);
-            }
             var resp = new AnomalousEventManagementResponseViewModel();
             resp.Datas = models;
             resp.TotalResultCount = resultCount;
@@ -147,63 +157,43 @@ namespace GxjtBHMS.Web.Controllers.AnomalousEventManagement
             return PartialView("AnomalousEventManagementSearchAllContentPartial", resp);
         }
 
-        private static long GetAnomalousByTestTypeId(AnomalousEventsQueryConditionView condition, AnomalousEventsQueryRequest req, List<AnomalousEventManagementViewModel> models, long resultCount)
-        {
-            var AnomalousEventQueryService = AnomalousEventManagementFactory.GetQueryServiceFrom(condition.TestTypeId);
-            var result = AnomalousEventQueryService.GetAnomalousEventManagementDatasBy(req);
-            if (result.Succeed)
-            {
-                SetDatasToViewModel(models, result);
-                resultCount = result.TotalResultCount;
-            }
+        //long GetAnomalousByTestTypeId( AnomalousEventsQueryRequest req, List<AnomalousEventManagementViewModel> models, long resultCount)
+        //{
+        //    var result = _anomalousEventManagementService.GetAnomalousEventManagementDatasBy(req);
+        //    if (result.Succeed)
+        //    {
+        //        foreach (var item in result.Datas)
+        //        {
+        //            var model = new AnomalousEventManagementViewModel()
+        //            {
+        //                Time = item.Time,
+        //                TestType = item.TestType,
+        //                PointsPosition = item.PointsPosition,
+        //                PointsNumber = item.PointsNumber,
+        //                AnomalousEventReason = item.AnomalousEventReason
+        //            };
+        //            models.Add(model);
+        //        }
+        //        resultCount = result.TotalResultCount;
+        //    }
 
-            return resultCount;
-        }
+        //    return resultCount;
+        //}
 
-        static void SetDatasToViewModel(List<AnomalousEventManagementViewModel> models, dynamic result)
-        {
-            foreach (var item in result.Datas)
-            {
-                var model = new AnomalousEventManagementViewModel()
-                {
-                    Time = item.Time,
-                    TestType = item.TestType,
-                    PointsPosition = item.PointsPosition,
-                    PointsNumber = item.PointsNumber,
-                    AnomalousEventReason = item.AnomalousEventReason
-                };
-                models.Add(model);
-            }
-        }
-
-        /// <summary>
-        /// 获得8种类型的所有数据
-        /// </summary>
-        /// <param name="req"></param>
-        /// <param name="sours"></param>
-        /// <param name="resultCount"></param>
-        /// <returns></returns>
-        List<AnomalousEventManagementViewModel> GetAllAnomalousDatas(AnomalousEventsQueryRequest req, List<AnomalousEventManagementViewModel> sours, ref long resultCount)
-        {
-            List<AnomalousEventManagementViewModel> models;
-            var testTypes = _mtts.GetAllTestType().Datas.Count();
-            for (int i = 1; i <= testTypes; i++)
-            {
-                var AnomalousEventQueryService = AnomalousEventManagementFactory.GetQueryServiceFrom(i);
-                var result = AnomalousEventQueryService.GetAllAnomalousEventManagementDatasBy(req);
-                if (result.Succeed)
-                {
-                    SetDatasToViewModel(sours, result);
-                    resultCount += result.TotalResultCount;
-                }
-            }
-            //对所有数据重新分页！
-            var numberOfResultsPrePage = ApplicationSettingsFactory.GetApplicationSettings().NumberOfResultsPrePage;//获取每页记录数
-            models = sours.OrderBy(m => m.Time).
-                 Skip((req.CurrentPageIndex - 1) * numberOfResultsPrePage).
-                 Take(numberOfResultsPrePage).
-                 ToList();
-            return models;
-        }
+        //static void SetDatasToViewModel(List<AnomalousEventManagementViewModel> models, dynamic result)
+        //{
+        //    foreach (var item in result.Datas)
+        //    {
+        //        var model = new AnomalousEventManagementViewModel()
+        //        {
+        //            Time = item.Time,
+        //            TestType = item.TestType,
+        //            PointsPosition = item.PointsPosition,
+        //            PointsNumber = item.PointsNumber,
+        //            AnomalousEventReason = item.AnomalousEventReason
+        //        };
+        //        models.Add(model);
+        //    }
+        //}
     }
 }
