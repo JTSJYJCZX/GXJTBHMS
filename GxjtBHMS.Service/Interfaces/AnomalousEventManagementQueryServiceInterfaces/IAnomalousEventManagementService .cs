@@ -8,6 +8,8 @@ namespace GxjtBHMS.Service.Interfaces.AlarmDatasQueryServiceInerfaces
     public interface IAnomalousEventManagementService
     {
         IEnumerable<AnomalousEventManagementModel> GetAnomalousEventManagementsSourceBy(IList<Func<AnomalousEvent_AnomalousEventTable, bool>> ps, int currentPageIndex, int pageSize);
+        IEnumerable<AnomalousEventManagementModel> GetAnomalousEventSourceBy(IList<Func<AnomalousEvent_AnomalousEventTable, bool>> ps);
+
         long GetTotalResultCountBy(IList<Func<AnomalousEvent_AnomalousEventTable, bool>> ps);
     }
 }

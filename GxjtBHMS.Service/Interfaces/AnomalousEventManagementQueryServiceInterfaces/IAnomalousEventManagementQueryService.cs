@@ -8,6 +8,7 @@ namespace GxjtBHMS.Service.Interfaces.AlarmDatasQueryServiceInerfaces
     public interface IAnomalousEventManagementQueryService
     {
         AnomalousEventManagementResponse GetAnomalousEventManagementDatasBy(DatasQueryResultRequestBase req);
+        AnomalousEventManagementResponse GetAnomalousEventByTime(DatasQueryResultRequestBase req);
         DownLoadDatasResponse SaveAs(DatasQueryResultRequestBase req);
         PagedResponse GetTotalPagesBy(DatasQueryResultRequest req);
     }

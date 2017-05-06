@@ -37,7 +37,7 @@ BORDER-BOTTOM-STYLE: dotted;
 
 
 
-/*圆形*/
+/*安全预警中的圆形*/
 .circle {
     width: 30px;
     height: 30px;
@@ -46,6 +46,16 @@ BORDER-BOTTOM-STYLE: dotted;
     border-radius: 30px;
 } 
 
+/*主页中的圆形*/
+.HomeCircle {
+    width: 20px;
+    height: 20px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+} 
+
+
 .circle1 {
 
   background: black;
@@ -53,9 +63,6 @@ BORDER-BOTTOM-STYLE: dotted;
   height: 30px;
   width: 30px;
   margin: 0;
-  /*background: -webkit-radial-gradient(10px 10px, circle, #5cabff, #000);
-  background: -moz-radial-gradient(10px 10px, circle, #5cabff, #000);
-  background: radial-gradient(10px 10px, circle, #5cabff, #000);*/
 }
  
 

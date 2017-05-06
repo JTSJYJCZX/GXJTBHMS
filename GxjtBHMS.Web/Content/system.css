@@ -248,3 +248,11 @@ color:white;
 font-size:12px;
 font-family:微软雅黑;
 }
+
+ /************主页查看详情P标签格式************/
+#p{ 
+    margin:0px auto; 
+    padding-top:5px; 
+    overflow:hidden; 
+    text-align:right; 
+ } 

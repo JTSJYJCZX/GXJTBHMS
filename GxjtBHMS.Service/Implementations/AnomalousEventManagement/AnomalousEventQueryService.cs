@@ -28,9 +28,27 @@ namespace GxjtBHMS.Service.Implementations.AlarmDatasManagement
             return datas;
         }
 
+
+
         public long GetTotalResultCountBy(IList<Func<AnomalousEvent_AnomalousEventTable, bool>> ps)
         {
             return _anomalousEventDAL.GetCountByContains(ps, ServiceConstant.PointsNumberPointsPositionNavigationProperty);
+        }
+
+
+        /// <summary>
+        /// 主页查询数量用
+        /// </summary>
+        /// <param name="ps"></param>
+        /// <returns></returns>
+        public IEnumerable<AnomalousEventManagementModel> GetAnomalousEventSourceBy(IList<Func<AnomalousEvent_AnomalousEventTable, bool>> ps)
+        {
+            string[] navigationProperties = { ServiceConstant.PointsNumberPointsPositionNavigationProperty, ServiceConstant.AnomalousEventReasonNavigationProperty };
+            var source = _anomalousEventDAL.FindBy(ps,navigationProperties).ToList();
+            var datas = new List<AnomalousEventManagementModel>();
+            var models = source.Select(m => new AnomalousEventManagementModel {TestType = m.PointsNumber.PointsPosition.TestType.Name});
+            datas = models.ToList();
+            return datas;
         }
 
 

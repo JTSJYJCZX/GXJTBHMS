@@ -26,7 +26,6 @@ namespace GxjtBHMS.Service.AnomalousEventManagementQuery
 
         public AnomalousEventManagementResponse GetAnomalousEventManagementDatasBy(DatasQueryResultRequestBase req)
         {
-
             var resp = new AnomalousEventManagementResponse();
             IList<Func<AnomalousEvent_AnomalousEventTable, bool>> ps = new List<Func<AnomalousEvent_AnomalousEventTable, bool>>();
             try
@@ -118,5 +117,24 @@ namespace GxjtBHMS.Service.AnomalousEventManagementQuery
             return source.Count() == 0;
         }
 
+
+        public AnomalousEventManagementResponse GetAnomalousEventByTime(DatasQueryResultRequestBase req)
+        {
+            var resp = new AnomalousEventManagementResponse();
+            IList<Func<AnomalousEvent_AnomalousEventTable, bool>> ps = new List<Func<AnomalousEvent_AnomalousEventTable, bool>>();
+            DealWithSearchTime(req, ps);               
+            resp.Datas = _anomalousEventManagementQueryService.GetAnomalousEventSourceBy(ps);
+            return resp;
+        }
+
+        /// <summary>
+        /// 主页搜索数量用的时间条件
+        /// </summary>
+        /// <param name="req"></param>
+        /// <param name="ps"></param>
+        void DealWithSearchTime(DatasQueryResultRequestBase req, IList<Func<AnomalousEvent_AnomalousEventTable, bool>> ps)
+        {
+                ps.Add(m => m.Time >=req.StartTime);
+        }
     }
 }

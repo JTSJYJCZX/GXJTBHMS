@@ -4,13 +4,12 @@ using GxjtBHMS.Web.ViewModels.Home;
 using GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService;
 using GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService;
 using GxjtBHMS.Service.ManualInspectionSafetyAssessmentReportService;
-using GxjtBHMS.Service.AnomalousEventManagementQueryService;
 using GxjtBHMS.Service.Interfaces;
-using GxjtBHMS.Service.ViewModels.MonitoringDatas.TestType;
 using System.Linq;
 using System;
 using System.Collections.Generic;
-using GxjtBHMS.Models;
+using GxjtBHMS.Service.AnomalousEventManagementQuery;
+using GxjtBHMS.Service.Interfaces.AlarmDatasQueryServiceInerfaces;
 using GxjtBHMS.Service.Messaging.MonitoringDatas;
 
 namespace GxjtBHMS.Web.Controllers
@@ -18,9 +17,11 @@ namespace GxjtBHMS.Web.Controllers
     public class HomeController : Controller
     {
         IMonitoringTestTypeService _mtts;
-        public HomeController(IMonitoringTestTypeService mtts)
+        IAnomalousEventManagementQueryService _anomalousEventManagementService;
+        public HomeController(IMonitoringTestTypeService mtts, IAnomalousEventManagementQueryService anomalousEventManagementService)
         {
             _mtts = mtts;
+            _anomalousEventManagementService = anomalousEventManagementService;
         }
 
 
@@ -124,17 +125,24 @@ namespace GxjtBHMS.Web.Controllers
         /// <returns></returns>
         public ActionResult GetAbnormalEventNumber()
         {
+            var req = new DatasQueryResultRequestBase()
+            {
+                StartTime = DateTime.Now.Date,
+            };
             DateTime AbnormalEventSearchTime=DateTime.Now.Date;
+            var GetAbnormalEventResult = _anomalousEventManagementService.GetAnomalousEventByTime(req);
+
+
             var model = new AbnormalEventNumberViewListModels();
             var result = new List<AbnormalEventNumberViewModel>();
-         
+            
             var testTypes = _mtts.GetAllTestType().Datas.Count();
             for (int i = 1; i <= testTypes; i++)
             {
             var source = _mtts.GetAllTestType().Datas.Where(m=>(int)m.Id==i).SingleOrDefault();
                 var item = new AbnormalEventNumberViewModel();
                 item.TestTypeName = source.Name;
-                item.AbnormalEventNumber = 5;
+                item.AbnormalEventNumber = GetAbnormalEventResult.Datas.Where(m => m.TestType == source.Name).Count();
              result.Add(item);
             }
             model.AbnormalEventNumberViewModels=result;
