@@ -1,6 +1,6 @@
 ﻿namespace GxjtBHMS.Models.AnomalousEventTable
 {
-    public class AnomalousEvent_DisplacementTable : AnomalousEventBase
+    public class AnomalousEvent_DisplacementTable : AnomalousEventTable
     {
     }
 }

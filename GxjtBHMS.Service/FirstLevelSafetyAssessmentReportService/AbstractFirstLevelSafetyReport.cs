@@ -7,11 +7,9 @@
         /// <summary>
         /// 创建报告
         /// </summary>
-        public abstract dynamic CreateReport(ReportDownloadModel Datas);
-
-        public dynamic Create(ReportDownloadModel Datas)
+        public dynamic Create(ReportDownloadModel datas)
         {
-            _source = Datas;
+            _source = datas;
             BuildHeader();
             BuildContent();
             return _result;

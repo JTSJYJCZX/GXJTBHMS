@@ -1,43 +1,13 @@
 ﻿using NPOI.XWPF.UserModel;
 using NPOI.OpenXmlFormats.Wordprocessing;
 using GxjtBHMS.Infrastructure.Helpers;
-using System;
 
 namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
 {
     public class NPOIReportProcessor: AbstractFirstLevelSafetyReport
     {
-        public override dynamic CreateReport(ReportDownloadModel Datas)
-        {
-            var m_Docx = new XWPFDocument();
-            XWPFTable table = m_Docx.CreateTable(2, 5);//创建6行4列表,表头
-
-            SetReportTableHeaderValue(table);
-
-            var m_NewRow = new CT_Row();
-            var m_Row = new XWPFTableRow(m_NewRow, table);
-            XWPFTableCell cell;
-            CT_Tc cttc;
-            CT_TcPr ctPr;
-            //评估结果
-            CreateAssessmentResultsCell(table, out m_NewRow, out m_Row, out cell, out cttc, out ctPr);
-
-            //异常记录
-            CreateExceptionRecordsCell(Datas, table, out m_NewRow, out m_Row, out cell, out cttc, out ctPr);
-
-            //合并单元格
-            MergeUnnecessaryCell(table);
-
-
-            //给报告模板赋值
-            SetReportHeaderValue(Datas, table);
-            //评估结果
-            SetAssessmentResultsValue(Datas, table);
-            //异常记录
-
-            SetExceptionRecordsValue(Datas, table);
-            return m_Docx;
-        }
+        XWPFDocument _docx = new XWPFDocument();
+        XWPFTable _table;//创建6行4列表,表头
 
         static void SetExceptionRecordsValue(ReportDownloadModel Datas, XWPFTable table)
         {
@@ -263,12 +233,37 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
 
         protected override void BuildHeader()
         {
-            throw new NotImplementedException();
+            _table = _docx.CreateTable(2, 5);
+            SetReportTableHeaderValue(_table);
+            //给报告表头赋值
+            SetReportHeaderValue(_source, _table);
         }
 
         protected override void BuildContent()
         {
-            throw new NotImplementedException();
+            var m_NewRow = new CT_Row();
+            var m_Row = new XWPFTableRow(m_NewRow, _table);
+
+            XWPFTableCell cell;
+            CT_Tc cttc;
+            CT_TcPr ctPr;
+            //评估结果
+            CreateAssessmentResultsCell(_table, out m_NewRow, out m_Row, out cell, out cttc, out ctPr);
+
+            //异常记录
+            CreateExceptionRecordsCell(_source, _table, out m_NewRow, out m_Row, out cell, out cttc, out ctPr);
+
+            //合并单元格
+            MergeUnnecessaryCell(_table);
+
+
+            //评估结果赋值
+            SetAssessmentResultsValue(_source, _table);
+            //异常记录赋值
+
+            SetExceptionRecordsValue(_source, _table);
+
+            _result = _docx;
         }
     }
 }

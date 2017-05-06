@@ -45,7 +45,7 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
                 var reportModel = _reportDAL.FindBy(reportPs, ServiceConstant.ReportAssessmentReasons).SingleOrDefault();
                 var reportDownloadModel = new ReportDownloadModel(exceptionRecordModels, resultsModel, reportModel);
                 //创建报告模板
-                resp.Report = _reportProcessor.CreateReport(reportDownloadModel);
+                resp.Report = _reportProcessor.Create(reportDownloadModel);
                 resp.Succeed = true;
             }
             catch (Exception ex)
