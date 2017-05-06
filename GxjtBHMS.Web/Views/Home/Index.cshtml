@@ -17,17 +17,13 @@
         <p class="btn btn-primary btn-lg" style="color:white" >
                @Html.ActionLink("查看详情", "SafetyPreWarning", "SafetyPreWarning", "", new { style = "color:white" }) &raquo;</p>
     </div>
+
     <div class="col-md-1" style="width:1px">&nbsp</div>
 
     <div class="col-md-5" id="UpDivborder">
         <h3 style="color:black">异常事件</h3>
-        <div id="safetyPreWarning" style="height:380px">这里放的是异常事件的结果 </div>
-
+        @Html.Action("GetAbnormalEventNumber")
     </div>
-
-
-   
-
 
 </div>
 
@@ -40,7 +36,9 @@
         &nbsp;
         @Html.Action("GetSafetyAssessmentResult")
     </div>
+
      <div class="col-md-1" style="width:1px">&nbsp</div>
+
      <div class="col-md-5" id="DownDivborder">
             <h3 style="color:black">工作建议</h3>
          &nbsp;

@@ -4,6 +4,7 @@ using GxjtBHMS.Web.ViewModels.Home;
 using GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService;
 using GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService;
 using GxjtBHMS.Service.ManualInspectionSafetyAssessmentReportService;
+using GxjtBHMS.Service.AnomalousEventManagementQueryService;
 
 namespace GxjtBHMS.Web.Controllers
 {
@@ -100,6 +101,24 @@ namespace GxjtBHMS.Web.Controllers
             };
             return PartialView("GetSafetyAssessmentSuggestion", model);
 
+        }
+
+        /// <summary>
+        /// 获得当天各个测试类型异常事件的数量
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult GetAbnormalEventNumber()
+        {
+            //var GetAbnormalEventNumber = new AnomalousEventManagementQueryServiceBase();
+            //var AbnormalEventNumber = GetAbnormalEventNumber.GetAllAbnormalEventNumber();
+            //var model = new AbnormalEventNumberViewModel()
+            //{
+            //    AbnormalEventNumber_CableForces=
+
+
+            //};
+ 
+            return PartialView("GetAbnormalEventNumberPartial");
         }
 
 
