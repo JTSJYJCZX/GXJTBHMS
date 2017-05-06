@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace GxjtBHMS.Service.Implementations.AlarmDatasManagement
 {
-    public class AnomalousEventQueryService<T> : IAnomalousEventManagementQueryService<T> where T : AnomalousEventBase
+    public class AnomalousEventQueryService<T> : IAnomalousEventManagementQueryService<T> where T : AnomalousEventTable
     {
         readonly IAnomalousEventDAL<T> _anomalousEventDAL;
         public AnomalousEventQueryService(IAnomalousEventDAL<T> anomalousEventDAL)

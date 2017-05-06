@@ -1,15 +1,10 @@
 ﻿using GxjtBHMS.Models.AnomalousEventTable;
 using GxjtBHMS.Service.AnomalousEventManagementQueryService;
-using GxjtBHMS.Service.MonitoringDatasQueryService;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GxjtBHMS.Service.ServiceFactory
 {
-   public class AnomalousEventManagementFactory
+    public class AnomalousEventManagementFactory
     {
         public static dynamic GetQueryServiceFrom(int mornitoringTestTypeId)
         {

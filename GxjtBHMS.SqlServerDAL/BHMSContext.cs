@@ -107,5 +107,6 @@ namespace GxjtBHMS.SqlServerDAL
         public DbSet<AnomalousEvent_HumidityTable> AnomalousEvent_Humiditys { get; set; }//湿度 
         public DbSet<AnomalousEvent_WindLoadTable> AnomalousEvent_WindLoads { get; set; }//风载
         public DbSet<AnomalousEventReasonTable> AnomalousEventReasons { get; set; }//异常事件原因
+        public DbSet<AnomalousEventTable> AnomalousEvent { get; set; }//异常事件
     }
 }

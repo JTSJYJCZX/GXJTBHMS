@@ -1,6 +1,6 @@
 ﻿namespace GxjtBHMS.Models.AnomalousEventTable
 {
-    public class AnomalousEvent_ConcreteStrainTable : AnomalousEventBase
+    public class AnomalousEvent_ConcreteStrainTable : AnomalousEventTable
     {
     }
 }

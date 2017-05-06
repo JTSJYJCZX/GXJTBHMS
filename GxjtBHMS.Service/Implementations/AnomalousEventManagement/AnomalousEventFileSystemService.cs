@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    public class AnomalousEventFileSystemService<T> : IAnomalousEventManagementsFileSystemService<T> where T : AnomalousEventBase
+    public class AnomalousEventFileSystemService<T> : IAnomalousEventManagementsFileSystemService<T> where T : AnomalousEventTable
     {
         readonly IAnomalousEventDAL<T> _anomalousEventDAL;
         public AnomalousEventFileSystemService(IAnomalousEventDAL<T> anomalousEventDAL)

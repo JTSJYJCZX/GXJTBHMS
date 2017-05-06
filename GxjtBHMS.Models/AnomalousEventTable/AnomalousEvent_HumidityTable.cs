@@ -1,6 +1,6 @@
 ﻿namespace GxjtBHMS.Models.AnomalousEventTable
 {
-    public class AnomalousEvent_HumidityTable : AnomalousEventBase
+    public class AnomalousEvent_HumidityTable : AnomalousEventTable
     {
     }
     
