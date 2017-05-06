@@ -1,43 +1,41 @@
 ﻿@model GxjtBHMS.Web.ViewModels.Home.SafetyAssessmentModelsViewModel
-<div class="table-responsive">
-    <div id="message"></div>
-    <table style="table-layout:fixed;vertical-align:middle" class="table table-bordered">
-        <tr class="text-center">           
-            <td width="100" colspan="2" >安全评估项目 </td>
-            <td width="80">评估时间</td>
-            <td width="50">评估结果</td>
-        </tr>
+<table class="table-bordered table-responsive" style="table-layout:fixed;margin:auto">
+    <tr class="text-center" style="height:40px">
+        <td width="250" colspan="2">安全评估项目 </td>
+        <td width="80">评估时间</td>
+        <td width="80">评估结果</td>
+    </tr>
 
-        <tr class="text-center" >
-            <td  width="50" rowspan="3" style="vertical-align:middle">一级安全评估 </td>
-            <td  width="50">变形评估</td>
-            <td width="80" rowspan="3" style="vertical-align:middle">@Html.TextBoxFor(m => m.FirstSafetyAssessmentReportTime, new { @style = "border:hidden;width:150px;text-align:center", @readonly = true })
-            </td>
-            <td width="50">@Html.TextBoxFor(m=>m.FirstSafetyAssessmentResult_Displacement, new { @style = "border:hidden;width:80px;text-align:center", @readonly = true })</td>
-        </tr>
-        <tr class="text-center" >         
-            <td width="80">应力评估</td>
-            <td  width="80">@Html.TextBoxFor(m=>m.FirstSafetyAssessmentResult_Stress, new { @style = "border:hidden;width:80px;text-align:center", @readonly = true })</td>
-        </tr>
-        <tr class="text-center" >
-            <td width="80">吊杆及系杆索力评估</td>
-            <td  width="50" >@Html.TextBoxFor(m=>m.FirstSafetyAssessmentResult_CableForce, new { @style = "border:hidden;width:80px;text-align:center", @readonly = true })</td>
-        </tr>
-        <tr class="text-center" >
-            <td width="150" colspan="2">二级安全评估 </td>
-            <td  width="80" class="text-center" >
-                @Html.TextBoxFor(m => m.SecondSafetyAssessmentReportTime, new { @style = "border:hidden;width:150px;text-align:center", @readonly = true })
-            </td>
-            <td width="50" class="text-center" >@Html.TextBoxFor(m=>m.SecondSafetyAssessmentResult, new { @style = "border:hidden;width:80px;text-align:center", @readonly = true })</td>
-        </tr>
-        <tr class="text-center" >
-            <td width="150" colspan="2">人工巡检安全评估 </td>
-            <td width="80" class="text-center" >
-                @Html.TextBoxFor(m => m.ManualInspectionSafetyAssessmentReportTime, new { @style = "border:hidden;width:150px;text-align:center", @readonly = true })
-            </td>
-            <td width="50" class="text-center" >@Html.TextBoxFor(m=>m.ManualInspectionSafetyAssessmentResult, new { @style = "border:hidden;width:80px;text-align:center", @readonly = true })</td>
-        </tr>
-    </table>
-    <hr />
-</div>
+    <tr class="text-center"style="height:30px">
+        <td width="100" rowspan="3" style="vertical-align:middle">一级安全评估 </td>
+        <td width="150">变形评估</td>
+        <td width="80" rowspan="3" style="vertical-align:middle">
+            @Html.TextBoxFor(m => m.FirstSafetyAssessmentReportTime, new { @style = "border:hidden;width:150px;text-align:center", @readonly = true })
+    </td>
+    <td width="80">@Html.TextBoxFor(m => m.FirstSafetyAssessmentResult_Displacement, new { @style = "border:hidden;width:80px;text-align:center", @readonly = true })</td>
+</tr>
+<tr class="text-center"style="height:30px">
+    <td width="150">应力评估</td>
+    <td width="80">@Html.TextBoxFor(m => m.FirstSafetyAssessmentResult_Stress, new { @style = "border:hidden;width:80px;text-align:center", @readonly = true })</td>
+</tr>
+<tr class="text-center"style="height:30px">
+    <td width="150">吊杆及系杆索力评估</td>
+    <td width="80">@Html.TextBoxFor(m => m.FirstSafetyAssessmentResult_CableForce, new { @style = "border:hidden;width:80px;text-align:center", @readonly = true })</td>
+</tr>
+<tr class="text-center"style="height:30px">
+    <td width="250" colspan="2">二级安全评估 </td>
+    <td width="80" class="text-center">
+        @Html.TextBoxFor(m => m.SecondSafetyAssessmentReportTime, new { @style = "border:hidden;width:150px;text-align:center", @readonly = true })
+    </td>
+    <td width="80" class="text-center">@Html.TextBoxFor(m => m.SecondSafetyAssessmentResult, new { @style = "border:hidden;width:80px;text-align:center", @readonly = true })</td>
+</tr>
+<tr class="text-center"style="height:30px">
+    <td width="250" colspan="2">人工巡检安全评估 </td>
+    <td width="80" class="text-center">
+        @Html.TextBoxFor(m => m.ManualInspectionSafetyAssessmentReportTime, new { @style = "border:hidden;width:150px;text-align:center", @readonly = true })
+    </td>
+    <td width="80" class="text-center">@Html.TextBoxFor(m => m.ManualInspectionSafetyAssessmentResult, new { @style = "border:hidden;width:80px;text-align:center", @readonly = true })</td>
+</tr>
+</table>
+
 

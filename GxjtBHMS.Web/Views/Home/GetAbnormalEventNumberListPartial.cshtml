@@ -1,0 +1,9 @@
+﻿@model GxjtBHMS.Web.ViewModels.Home.AbnormalEventNumberViewModel
+
+        <tr class="text-center" >
+            <td width="150">@Html.TextBoxFor(m => m.TestTypeName, new { @style = "border:hidden;text-align:center", @readonly = true })</td>
+            <td width="150">@Html.TextBoxFor(m => m.AbnormalEventNumber, new { @style = "border:hidden;text-align:center", @readonly = true })</td>
+        </tr>
+
+@Html.AntiForgeryToken()
+
