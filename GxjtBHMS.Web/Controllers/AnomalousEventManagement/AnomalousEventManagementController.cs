@@ -156,9 +156,9 @@ namespace GxjtBHMS.Web.Controllers.AnomalousEventManagement
             }
             else
             {
+                //resp.Message = result.Message;
                 TempData[WebConstants.MessageColor] = StyleConstants.RedColor;
                 TempData[WebConstants.Message] = "无记录！";
-                resp.Succeed = false;
                 partialView = "NoAnomalousEventManagementContentPartial";
             }
             return PartialView(partialView, resp);

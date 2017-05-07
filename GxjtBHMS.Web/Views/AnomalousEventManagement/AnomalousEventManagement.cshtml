@@ -7,13 +7,16 @@
     <p>@Html.Action("GetDataQuerySearchBar")</p>
     <!--用户查询搜索栏结束-->
     <div id="message" style="color:@TempData[WebConstants.MessageColor]">@TempData[WebConstants.MessageKey]</div>
-    <div id="AnomalousEventManagementSearchContent"></div>
+    <div id="AnomalousEventManagementSearchContent">
+       @*存放返回信息的地方*@
+    </div>
     <!--分页开始-->
     <div class="pagination" id="paginationNav"></div>
     <!--分页结束-->
 
 </div>
 @Html.Hidden("TotalPages", ViewData["TotalPages"]) @*将总页数暂存到隐藏域中，以便给初始化分页导航脚本函数使用*@
+
 
 @section scripts{
     @Scripts.Render("~/bundles/AnomalousEventManagementSearchPartial")

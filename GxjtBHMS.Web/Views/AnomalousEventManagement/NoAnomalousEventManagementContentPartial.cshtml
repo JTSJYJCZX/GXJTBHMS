@@ -1,3 +1,11 @@
-﻿<div id="message"><span style='color:@TempData[WebConstants.MessageColor]'>@TempData[WebConstants.MessageKey]</span></div>
+﻿<div id="Nomessage"><span style='color:@TempData[WebConstants.MessageColor]'>@TempData[WebConstants.MessageKey]</span></div>
 
-
+<script>
+   $( function(){
+       if ($("#Nomessage").length>=0) {
+           $("#message").css("display", "none")
+           $("#paginationNav").css("display", "none")
+           $("#dataQuery").css("display", "none")
+       } 
+    })
+</script>

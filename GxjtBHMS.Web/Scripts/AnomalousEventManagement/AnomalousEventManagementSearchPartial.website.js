@@ -81,11 +81,10 @@ $(function () {
                 StartTime: beginTime,
                 EndTime: endTime,
             },
-            success: function (datas) {
-                
+            success: function (datas) {                
                 resetLoadDataFlags();
                 $("#AnomalousEventManagementSearchContent").html(datas);
-           
+                $("#dataQuery").css("display", "block")
             }
         });
     })  

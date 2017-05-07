@@ -36,10 +36,9 @@ namespace GxjtBHMS.Service.AnomalousEventManagementQuery
                 resp.TotalResultCount = _anomalousEventManagementQueryService.GetTotalResultCountBy(ps);
                 resp.Succeed = true;
             }
-            catch (Exception ex)
+            catch 
             {
-                resp.Message = ex.Message;
-                Log(ex);
+                resp.Message = NoRecordsMessage;
             }
             return resp;
         }
