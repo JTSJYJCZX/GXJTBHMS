@@ -18,7 +18,7 @@ function accessResource(n) {
         },
         success: function (datas) {
             $("#dataQueryList").html(datas);
-            $("#paginationNav").css("display","block");
+            $("#paginationNav").css("display", "block");
         },
         error: function (result) {
             alert(result.responseText);
@@ -45,7 +45,7 @@ $("#bttnquery").click(function () {
         success: function (datas) {
             if (datas.message) {
                 $("#dataQueryList").html("");
-                $("#datasMessage").html("");
+                //$("#datasMessage").html("");
                 $("#paginationNav").css("display", "none");
                 $("#unfold").css("display", "none");
                 $("#message").html(datas.message);
@@ -53,7 +53,7 @@ $("#bttnquery").click(function () {
             }
             else {
                 $("#message").html("");
-                $("#datasMessage").html("");
+                //$("#datasMessage").html("");
                 $("#dataQueryList").html(datas);
                 $("#unfold").css("display", "none");
                 $("#paginationNav").css("display", "block");
@@ -64,32 +64,51 @@ $("#bttnquery").click(function () {
 
 $(function () {
     $("#SpecialSafetyAssessmentReportUpLoad").click(function () {
+        var time = $("#Monthpicker").val();
         var wordFileSize = $("#wordFileSize").val()
         var url = "/SpecialSafetyAssessment/UploadSpecialSafetyAssessmentReport";
         var file = document.getElementById("fileField").files;
-        if (file[0].size > wordFileSize) {
-            $("#message").html("");
-            $("#datasMessage").html("上传文件不能超过10M");
-            $("#datasMessage").css("color", "red");
+        var name = document.getElementById('textfield').value;
+        var fileName = name.substring(name.lastIndexOf(".") + 1).toLowerCase();
+        //验证文件上传是否为空
+        if (name == "" || name == null) {
+            $("#message").html("请选择上传文件");
+            $("#message").css("color", "red");
         }
-        else
-        {
+        //验证文件的格式
+        else if (fileName != "doc" && fileName != "docx") {
+            $("#message").html("请选择word格式文件上传");
+            $("#message").css("color", "red");
+            clearFilePath();
+        }
+        //验证文件的大小
+        else if (file[0].size > wordFileSize) {
+            $("#message").html("上传文件不能超过10M");
+            $("#message").css("color", "red");
+            clearFilePath();
+        }
+        else {
             $.ajaxFileUpload({
                 url: url,//url请求命令
                 fileElementId: 'fileField',
-                dataType: 'HTML', //返回值类型 一般设置为json
-                Type:"POST",
+                dataType: "json",
+                contentType: "application/json",
+
+                Type: "POST",
                 data: {},
                 success: function (datas) {
-                    $("#message").html("");
-                    $("#datasMessage").html(datas);
-                    $("#dusj1").div();
+                    clearFilePath();
+                    //提示信息
+                    $("#message").html(datas);
+                    //重刷新查询结果
+                    dataQuery();
                 },
                 error: function (result) {
                     alert(result.responsetext);
                 }
             });
-        }});    
+        }
+    });
 })
 
 function SpecialSafetyAssessmentReportDownLoad(saveSender, url) {
@@ -111,7 +130,7 @@ function SpecialSafetyAssessmentReportDownLoad(saveSender, url) {
         },
         data: {
             ReportPath: reportPath,
-            ReportName:reportName
+            ReportName: reportName
         },
         success: function (data) {
             document.location.href = "/SpecialSafetyAssessment/OriginCode?guid=" + data + "&ReportName=" + reportName;
@@ -142,14 +161,61 @@ function SpecialSafetyAssessmentReportDelete(saveSender, url) {
             ReportPath: reportPath,
         },
         success: function (datas) {
-
-            $("#datasMessage").html(datas);
-
+            $("#message").html(datas);
+            dataQuery();
         },
         error: function (result) {
             alert(result.responseText);
         }
     });
 }
+
+
+//刷新重新查询数据列表
+function dataQuery() {
+    var time = $("#Monthpicker").val();
+    var url = "/SpecialSafetyAssessment/GetSpecialSafetyAssessmentReportList";
+    $.ajax({
+        type: 'get',
+        url: url,
+        data: {
+            Time: time,
+        },
+        beforeSend: function () {
+            $('body').chardinJs('start')
+        },
+        complete: function () {
+            $('body').chardinJs('stop')
+        },
+        success: function (datas) {
+            if (datas.message) {
+                $("#dataQueryList").html("");
+                $("#paginationNav").css("display", "none");
+                $("#unfold").css("display", "none");
+                $("#message").html(datas.message);
+                $("#message").css("color", datas.color);
+            }
+            else {
+
+                $("#dataQueryList").html(datas);
+                $("#unfold").css("display", "none");
+                $("#paginationNav").css("display", "block");
+            }
+        }
+    });
+};
+
+//清楚上传报告路径文本框内容、清楚文件选择器的文本内容
+function clearFilePath() {
+    $("#textfield").val(""); //清楚上传报告路径文本框内容
+    //清楚文件选择器的文本内容
+    var file = $("#fileField")
+    file.after(file.clone().val(""));
+    file.remove();
+};
+
+
+
+
 
 

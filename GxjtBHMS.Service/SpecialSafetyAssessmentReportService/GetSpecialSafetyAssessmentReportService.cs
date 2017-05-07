@@ -33,7 +33,7 @@ namespace GxjtBHMS.Service.SpecialSafetyAssessmentReportService
 
                 if (HasNoSearchResult(source))
                 {
-                    resp.Message = "无记录！";
+                    resp.Message = "无记录";
                 }
                 else
                 {
@@ -82,7 +82,7 @@ namespace GxjtBHMS.Service.SpecialSafetyAssessmentReportService
                 resp.TotalResultCount = source.Count();
                 if (resp.TotalResultCount <= 0)
                 {
-                    resp.Message = "无记录!";
+                    resp.Message = "无记录";
                 }
                 else
                 {
@@ -110,12 +110,12 @@ namespace GxjtBHMS.Service.SpecialSafetyAssessmentReportService
                 };
                 _getSpecialSafetyAssessmentReportDAL.Add(uploadReport);
                 resp.Succeed = true;
-                resp.Message = "文件上传成功！";
+                resp.Message = "文件上传成功";
             }
             catch (Exception ex)
             {
                 resp.Succeed = false;
-                resp.Message = "文件上传失败！";
+                resp.Message = "文件上传失败";
                 Log(ex);
             }
             return resp;
@@ -128,13 +128,13 @@ namespace GxjtBHMS.Service.SpecialSafetyAssessmentReportService
             try
             {
                 resp.ReprotPath = _getSpecialSafetyAssessmentReportDAL.FindBy(m => m.ReprotPath == req.ReportPath).SingleOrDefault().ReprotPath;
-                resp.Message = "下载成功！";
+                resp.Message = "下载成功";
                 resp.Succeed = true;
             }
             catch (Exception ex)
             {
                 resp.Succeed = false;
-                resp.Message = "下载失败！";
+                resp.Message = "下载失败";
                 Log(ex);
             }
             return resp;
@@ -166,7 +166,7 @@ namespace GxjtBHMS.Service.SpecialSafetyAssessmentReportService
             catch (Exception ex)
             {
                 resp.Succeed = false;
-                resp.Message = "删除报告失败！";
+                resp.Message = "删除报告失败";
                 Log(ex);
             }
             return resp;

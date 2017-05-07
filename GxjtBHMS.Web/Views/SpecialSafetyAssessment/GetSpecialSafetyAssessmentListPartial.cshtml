@@ -1,6 +1,5 @@
 ﻿@model GxjtBHMS.Web.ViewModels.SafetyAssessmentReportView.SafetyAssessmentReportSearchBaseView
 
-@*<div id="message" style="color:@TempData[WebConstants.MessageColor]">@TempData[WebConstants.MessageKey]</div>*@
 <div id="datasMessage"> </div>
 <div class="table-responsive">
     <table class="table table-striped">
@@ -22,6 +21,7 @@
     <script>
         jqPaginatorSetting('#paginationNav',@Model.PaginatorModel.TotalPages,@Model.PaginatorModel.CurrentPageIndex);
     </script>
+
     <script>
         $(function () {
             if (userName != "admin") {
