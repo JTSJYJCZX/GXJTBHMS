@@ -48,7 +48,6 @@ namespace GxjtBHMS.Web.Controllers
             return PartialView("GetSpecialReportListByTimeSearchPartial", models);
         }
 
-
         /// <summary>
         /// 获得专项安全评估报告列表
         /// </summary>
