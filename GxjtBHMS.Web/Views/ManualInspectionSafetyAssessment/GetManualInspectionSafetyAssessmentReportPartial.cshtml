@@ -19,12 +19,12 @@
     <td>
         @Html.HiddenFor(m=>m.ReportName)
         @Html.HiddenFor(m=>m.ReporePath)
-        <input class="form-control" style="border:hidden"type="button" onclick="ManualInspectionSafetyAssessmentReportDownLoad(this, '/ManualInspectionSafetyAssessment/DownloadManualInspectionSafetyAssessmentReport')" value="下载报告" />
+        <input class="btn btn-primary btn-sm" style="border:hidden"type="button" onclick="ManualInspectionSafetyAssessmentReportDownLoad(this, '/ManualInspectionSafetyAssessment/DownloadManualInspectionSafetyAssessmentReport')" value="下载报告" />
     </td>
     <td class="admintd">
         @Html.HiddenFor(m => m.ReportTime)
         @Html.HiddenFor(m => m.ReporePath)      
-        <input class="form-control" style="border:hidden" type="button" onclick="ManualInspectionSafetyAssessmentReportDelete(this, '/ManualInspectionSafetyAssessment/DeleteManualInspectionSafetyAssessmentReport')" value="删除报告" />
+        <input class="btn btn-primary btn-sm" style="border:hidden" type="button" onclick="ManualInspectionSafetyAssessmentReportDelete(this, '/ManualInspectionSafetyAssessment/DeleteManualInspectionSafetyAssessmentReport')" value="删除报告" />
     </td>
 
 </tr>

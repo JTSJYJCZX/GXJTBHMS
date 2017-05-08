@@ -12,12 +12,12 @@
     <td>
         @Html.HiddenFor(m=>m.ReportName)
         @Html.HiddenFor(m=>m.ReporePath)
-        <input class="form-control" style="border:hidden"type="button" onclick="SpecialSafetyAssessmentReportDownLoad(this, '/SpecialSafetyAssessment/DownloadSpecialSafetyAssessmentReport')" value="下载报告" />
+        <input class="btn btn-primary btn-sm" style="border:hidden"type="button" onclick="SpecialSafetyAssessmentReportDownLoad(this, '/SpecialSafetyAssessment/DownloadSpecialSafetyAssessmentReport')" value="下载报告" />
     </td>
     <td class="admintd">
 
         @Html.HiddenFor(m => m.ReporePath)      
-        <input class="form-control" style="border:hidden" type="button" onclick="SpecialSafetyAssessmentReportDelete(this, '/SpecialSafetyAssessment/DeleteSpecialSafetyAssessmentReport')" value="删除报告" />
+        <input class="btn btn-primary btn-sm" style="border:hidden" type="button" onclick="SpecialSafetyAssessmentReportDelete(this, '/SpecialSafetyAssessment/DeleteSpecialSafetyAssessmentReport')" value="删除报告" />
     </td>
 
 </tr>

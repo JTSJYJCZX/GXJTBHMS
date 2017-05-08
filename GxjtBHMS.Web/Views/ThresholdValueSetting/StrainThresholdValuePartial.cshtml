@@ -21,13 +21,13 @@
         @Html.HiddenFor(m => m.TestTypeId)
         @Html.HiddenFor(m => m.PointsNumberId)
         @Html.HiddenFor(m => m.PointsNumber)
-        <input class="form-control" type="button" onclick="saveThresholdValue(this, '/ThresholdValueSetting/SaveThresholdValue')" operate="save" value="保存" />
+        <input class="btn btn-primary btn-sm" type="button" onclick="saveThresholdValue(this, '/ThresholdValueSetting/SaveThresholdValue')" operate="save" value="保存" />
     </td>
     <td>
         @Html.HiddenFor(m => m.TestTypeId)
         @Html.HiddenFor(m => m.PointsNumberId)
         @Html.HiddenFor(m => m.PointsNumber)
-        <input class="form-control" type="button" onclick="saveThresholdValue(this, '/ThresholdValueSetting/SaveThresholdValue')" operate="remove" value="一键清空" />
+        <input class="btn btn-primary btn-sm" type="button" onclick="saveThresholdValue(this, '/ThresholdValueSetting/SaveThresholdValue')" operate="remove" value="一键清空" />
     </td>
 </tr>
 

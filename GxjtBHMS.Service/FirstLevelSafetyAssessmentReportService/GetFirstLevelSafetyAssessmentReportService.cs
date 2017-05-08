@@ -58,7 +58,7 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
         public SafetyAssessmentResultSearchResponse GetFirstSafetyAssessmentResult()
         {
             var result = new SafetyAssessmentResultSearchResponse();
-            var ReportCount = _getFirstLevelSafetyAssessmentReportResultDAL.FindBy().Count();
+            var ReportCount = _getFirstLevelSafetyAssessmentReportDAL.FindBy().Count();
             if (ReportCount > 0)
             {
                 var source = _getFirstLevelSafetyAssessmentReportResultDAL.FindBy(ServiceConstant.ResultsAssessmentReport).OrderBy(m => m.AssessmentReportId).Last();
@@ -84,27 +84,21 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
         public SafetyAssessmentSuggestionSearchResponse GetFirstSafetyAssessmentSuggestion()
         {
             var result = new SafetyAssessmentSuggestionSearchResponse ();
-            try
+            var ReportCount = _getFirstLevelSafetyAssessmentReportResultDAL.FindBy().Count();
+            if (ReportCount>0)
             {
-                var source = _getFirstLevelSafetyAssessmentReportResultDAL.FindBy().OrderBy(m => m.AssessmentReportId).Last();
-                result = new SafetyAssessmentSuggestionSearchResponse()
-                {
-                    FirstSafetyAssessmentSuggestion_CableForce = source.CableForceAssessmentSuggestion,
-                    FirstSafetyAssessmentSuggestion_Displacement = source.DisplacementAssessmentSuggestion,
-                    FirstSafetyAssessmentSuggestion_Stress = source.StrainAssessmentSuggestion
-                };
+                var source = _getFirstLevelSafetyAssessmentReportResultDAL.FindBy(ServiceConstant.ResultsAssessmentReport).OrderBy(m => m.AssessmentReportId).Last();
+                result.FirstSafetyAssessmentSuggestion_CableForce = source.CableForceAssessmentSuggestion;
+                result.FirstSafetyAssessmentSuggestion_Displacement = source.DisplacementAssessmentSuggestion;
+                result.FirstSafetyAssessmentSuggestion_Stress = source.StrainAssessmentSuggestion;
             }
-            catch
+            else
             {
-                result = new SafetyAssessmentSuggestionSearchResponse()
-                {
-                    FirstSafetyAssessmentSuggestion_CableForce = ServiceConstant.NotEvaluated,
-                    FirstSafetyAssessmentSuggestion_Displacement= ServiceConstant.NotEvaluated,
-                    FirstSafetyAssessmentSuggestion_Stress = ServiceConstant.NotEvaluated
-                };
+                result.FirstSafetyAssessmentSuggestion_CableForce = ServiceConstant.NotEvaluated;
+                result.FirstSafetyAssessmentSuggestion_Displacement = ServiceConstant.NotEvaluated;
+                result.FirstSafetyAssessmentSuggestion_Stress = ServiceConstant.NotEvaluated;
             }
             return result;
-
         }
 
 

@@ -2,6 +2,6 @@
 <tr>
     <td>@Model.UserName</td>
     <td>@Html.DropDownListFor(m => m.UserStateId, (IEnumerable<SelectListItem>)ViewData[WebConstants.AllUserStateSelectedListKey])</td>
-    <td><input type="button" id="btnSave" name="btnSave" onclick="saveOperate(this,'/AdminUser/Edit',@Model.UserId)" value="保存"/></td>    
-    <td><input type="button" name="btnReset" onclick="RetPwd('/AdminUser/ResetPwd', @Model.UserId)" value="重置密码" /></td>
+    <td><input type="button" id="btnSave" name="btnSave" class="btn btn-primary btn-sm" onclick="saveOperate(this,'/AdminUser/Edit',@Model.UserId)" value="保存"/></td>    
+    <td><input type="button" name="btnReset" class="btn btn-primary btn-sm" onclick="RetPwd('/AdminUser/ResetPwd', @Model.UserId)" value="重置密码" /></td>
 </tr>

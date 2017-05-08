@@ -56,25 +56,18 @@ namespace GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService
         public SafetyAssessmentResultSearchResponse GetSecondLevelSafetyAssessmentResult()
         {
             var result = new SafetyAssessmentResultSearchResponse();
-            try
+            var ReportCount = _getSecondLevelSafetyAssessmentReportDAL.FindBy(ServiceConstant.AssessmentResultStateNavigationProperty).Count();
+            if (ReportCount > 0)
             {
                 var source = _getSecondLevelSafetyAssessmentReportDAL.FindBy(ServiceConstant.AssessmentResultStateNavigationProperty).OrderBy(m => m.ReportTime).Last();
-                result = new SafetyAssessmentResultSearchResponse()
-                {
-                    SecondSafetyAssessmentResult = source.AssessmentResultState.AssessmentGrade,
-                    SecondSafetyAssessmentReportTime=source.ReportTime.ToString()
-
-                };
+                result.SecondSafetyAssessmentReportTime = source.ReportTime.ToString();
+                result.SecondSafetyAssessmentResult = source.AssessmentResultState.AssessmentGrade;
             }
-            catch
+            else
             {
-                result = new SafetyAssessmentResultSearchResponse()
-                {
-                    SecondSafetyAssessmentResult = ServiceConstant.NotEvaluated,
-                    SecondSafetyAssessmentReportTime=ServiceConstant.NotEvaluated
-
-                };
-            }
+                result.SecondSafetyAssessmentResult = ServiceConstant.NotEvaluated;
+                result.SecondSafetyAssessmentReportTime = ServiceConstant.NotEvaluated;
+            }           
             return result;
 
         }
