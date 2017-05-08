@@ -9,9 +9,7 @@
         @Html.TextBoxFor(m =>m.ReportTime, new { @class = "text-center", @style = "border:hidden" })
     </td>
     <td>
-        <input class="form-control" style="border:hidden" type="button" onclick="viewReport(this, '/FirstLevelSafetyAssessment/ViewReport')" operate="view" value="查看报告" />
-    </td>
-    <td>
+        @Html.HiddenFor(m => m.ReportName)
         @Html.HiddenFor(m => m.ReportId )
         <input class="form-control"style="border:hidden" type="button" onclick="downloadReport(this, '/FirstLevelSafetyAssessment/DownloadReport')" operate="download" value="下载报告" />
     </td>

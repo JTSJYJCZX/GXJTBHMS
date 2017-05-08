@@ -92,7 +92,7 @@ namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
             return Json(guid, JsonRequestBehavior.AllowGet);
         }
 
-        public void OriginCode(string guid)
+        public void OriginCode(string guid, string ReportName)
         {
             object obj = CacheHelper.GetCache(guid);
             if (obj == null)
@@ -101,7 +101,8 @@ namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
             }
             var ms = _fileConverter.GetStream(obj);
             string preFileName = "一级安全评估报告";
-            Response.AddHeader("Content-Disposition", string.Format("attachment; filename={0}.docx", preFileName));
+            string DownloadName= string.Concat(ReportName, preFileName);
+            Response.AddHeader("Content-Disposition", string.Format("attachment; filename={0}.docx", DownloadName));
             Response.BinaryWrite(ms.ToArray());
             ms.Close();
             ms.Dispose();
