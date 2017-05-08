@@ -1,7 +1,6 @@
 ﻿using GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService;
 using GxjtBHMS.Service.Messaging.SafetyPreWarning;
 using GxjtBHMS.Service.ServiceFactory;
-using GxjtBHMS.Service.ViewModels.MonitoringDatas.SafetyPreWarning;
 using GxjtBHMS.Web.ViewModels.SafetyPreWarning;
 using System;
 using System.Collections.Generic;
