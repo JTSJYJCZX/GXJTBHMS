@@ -47,11 +47,13 @@ $("#bttnquery").click(function () {
                 $("#dataQueryList").html("");
                 $("#paginationNav").css("display", "none");
                 $("#message").html(datas.message);
+                $("#unfold").css("display", "none");
                 $("#message").css("color", datas.color);
             }
             else {
                 $("#message").html("");
                 $("#dataQueryList").html(datas);
+                $("#unfold").css("display", "none");
                 $("#paginationNav").css("display", "block");
             }
         }
@@ -64,21 +66,37 @@ $(function () {
         var wordFileSize = $("#ManualInspectionwordFileSize").val()
         var url = "/ManualInspectionSafetyAssessment/UploadManualInspectionSafetyAssessmentReport";
         var file = document.getElementById("fileField").files;
-        if (file[0].size > wordFileSize) {
-            $("#datasMessage").html("上传文件不能超过10M");
-            $("#datasMessage").css("color", "red");
+        var name = document.getElementById('textfield').value;
+        var fileName = name.substring(name.lastIndexOf(".") + 1).toLowerCase();
+        //验证文件上传是否为空
+        if (name == "" || name == null) {
+            $("#message").html("请选择上传文件");
+            $("#message").css("color", "red");
+        }
+            //验证文件的格式
+        else if (fileName != "doc" && fileName != "docx") {
+            $("#message").html("请选择word格式文件上传");
+            $("#message").css("color", "red");
+            clearFilePath();
+        }
+            //验证文件的大小
+        else if (file[0].size > wordFileSize) {
+            $("#message").html("上传文件不能超过10M");
+            $("#message").css("color", "red");
+            clearFilePath();
         }
         else
         {
             $.ajaxFileUpload({
                 url: url,//url请求命令
                 fileElementId: 'fileField',
-                dataType: 'HTML', //返回值类型 一般设置为json
+                dataType: "json",
+                contentType: "application/json",
                 Type:"POST",
                 data: { reportGradeId: reportGrade },
                 success: function (datas) {
-                    $("#datasMessage").html(datas);
-                    $("#dusj1").div();             
+                    $("#message").html(datas);
+                    dataQuery();
                 },
                 error: function (result) {
                     alert(result.responsetext);
@@ -142,12 +160,56 @@ function ManualInspectionSafetyAssessmentReportDelete(saveSender, url) {
             ReportTime: reportTime
         },
         success: function (datas) {
-               $("#datasMessage").html(datas);
+            $("#message").html(datas);
+            dataQuery();
         },
         error: function (result) {
             alert(result.responseText);
         }
     });
 }
+
+//刷新重新查询数据列表
+function dataQuery() {
+    var time = $("#Monthpicker").val();
+    var url = "/ManualInspectionSafetyAssessment/GetManualInspectionSafetyAssessmentReportList";
+    $.ajax({
+        type: 'get',
+        url: url,
+        data: {
+            Time: time,
+        },
+        beforeSend: function () {
+            $('body').chardinJs('start')
+        },
+        complete: function () {
+            $('body').chardinJs('stop')
+        },
+        success: function (datas) {
+            if (datas.message) {
+                $("#dataQueryList").html("");
+                $("#paginationNav").css("display", "none");
+                $("#unfold").css("display", "none");
+                $("#message").html(datas.message);
+                $("#message").css("color", datas.color);
+            }
+            else {
+
+                $("#dataQueryList").html(datas);
+                $("#unfold").css("display", "none");
+                $("#paginationNav").css("display", "block");
+            }
+        }
+    });
+};
+
+//清楚上传报告路径文本框内容、清楚文件选择器的文本内容
+function clearFilePath() {
+    $("#textfield").val(""); //清楚上传报告路径文本框内容
+    //清楚文件选择器的文本内容
+    var file = $("#fileField")
+    file.after(file.clone().val(""));
+    file.remove();
+};
 
 
