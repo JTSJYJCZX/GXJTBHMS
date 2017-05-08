@@ -45,6 +45,7 @@ function initChart() {
         seriesDefaults: {
             show: true,
             lineWidth: 1,
+            showMarker: true, //是否强调显示图中的数据节点 
             pointLabels: {
                 show: false,
                 formatString: "%.0f",
@@ -52,9 +53,9 @@ function initChart() {
                 ypadding: 1,
             },
             markerOptions: {
-                show: false,
+                show: true,
                 lineWidth: 1,
-                size: 12
+                size: 5
             },
             rendererOptions: {
                 smooth: true
@@ -63,20 +64,22 @@ function initChart() {
         series: [
              {
                  label: chartDatas1.seriesParams,
-                 lineWidth: 3,
+                 lineWidth: 1,
                  yaxis: 'yaxis',
                  markerOptions:
                  {
+                     show: true,
                      formatString: '%.2f',
                      fontSize: '10pt'
                  }
              },
              {
                  label: chartDatas2.seriesParams,
-                 lineWidth: 3,
+                 lineWidth: 1,
                  yaxis: 'y2axis',
                  markerOptions:
                  {
+                     show: true,
                      formatString: '%.2f',
                      fontSize: '10pt'
                  }
@@ -181,7 +184,7 @@ function initChart() {
         markerOptions: {
             show: false,
             lineWidth: 1,
-            size: 12
+            size: 5
         },
         rendererOptions: {
             smooth: true
@@ -190,20 +193,22 @@ function initChart() {
     series: [
          {
              label: chartDatas1.seriesParams,
-             lineWidth: 3,
+             lineWidth: 1,
              yaxis: 'yaxis',
              markerOptions:
              {
+                 show: true,
                  formatString: '%.2f',
                  fontSize: '10pt'
              }
          },
          {
              label: chartDatas2.seriesParams,
-             lineWidth: 3,
+             lineWidth: 1,
              yaxis: 'y2axis',
              markerOptions:
              {
+                 show: true,
                  formatString: '%.2f',
                  fontSize: '10pt'
              }
@@ -306,9 +311,9 @@ function initChart() {
             ypadding: 1,
         },
         markerOptions: {
-            show: false,
+            show: true,
             lineWidth: 1,
-            size: 12
+            size: 5
         },
         rendererOptions: {
             smooth: true
@@ -317,20 +322,22 @@ function initChart() {
     series: [
          {
              label: chartDatas1.seriesParams,
-             lineWidth: 3,
+             lineWidth: 1,
              yaxis: 'yaxis',
              markerOptions:
              {
+                 show: true,
                  formatString: '%.2f',
                  fontSize: '10pt'
              }
          },
          {
              label: chartDatas2.seriesParams,
-             lineWidth: 3,
+             lineWidth: 1,
              yaxis: 'y2axis',
              markerOptions:
              {
+                 show: true,
                  formatString: '%.2f',
                  fontSize: '10pt'
              }

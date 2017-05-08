@@ -1,9 +1,11 @@
-﻿using GxjtBHMS.Service.Messaging.SafetyPreWarning;
+﻿using GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService;
+using GxjtBHMS.Service.Messaging.SafetyPreWarning;
 using GxjtBHMS.Service.ServiceFactory;
 using GxjtBHMS.Service.ViewModels.MonitoringDatas.SafetyPreWarning;
 using GxjtBHMS.Web.ViewModels.SafetyPreWarning;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Web.Mvc;
 
 namespace GxjtBHMS.Web.Controllers.SafetyPreWarning
@@ -18,9 +20,18 @@ namespace GxjtBHMS.Web.Controllers.SafetyPreWarning
         [ChildActionOnly]
         public ActionResult GetSafetyWarningSearchContent()
         {
+            var LastReportTime = GetLastReportTime();
+            ViewData["LastReportTime"] = LastReportTime;
             return PartialView("GetSafetyWarningSearchContentPartial");
         }
 
+        static String GetLastReportTime()
+        {
+            var GetFirstLevelSafetyAssessmentReportListService = new GetFirstLevelSafetyAssessmentReportService();
+            var LastReportResult = GetFirstLevelSafetyAssessmentReportListService.GetFirstSafetyAssessmentResult();
+            var LastReportTime = LastReportResult.FirstSafetyAssessmentReportTime;
+            return LastReportTime;
+        }
 
         public ActionResult GetSafetyWarningDetail(QuerySafetyPreWarningConditonView conditons)
         {
@@ -56,11 +67,12 @@ namespace GxjtBHMS.Web.Controllers.SafetyPreWarning
 
         private static SafetyWarningDetailResponse GetSafetyWarningDetailResultBy(QuerySafetyPreWarningConditonView conditons)
         {
-            
+            CultureInfo provider = CultureInfo.InvariantCulture;
+            DateTime LastReportTime =DateTime.ParseExact(GetLastReportTime(), "yyyy-MM-dd HH:mm:ss", provider) ;
             DateTime now = DateTime.Now;
             var req = new GetSafetyWarningDetailRequest
             {
-                StartTime = new DateTime(now.Year, now.Month, 1),
+                StartTime = LastReportTime,
                 EndTime = now
             };
             var SafetyWarningDetailQueryService = SafetyWarningDetailFactory.GetSafetyWarningDetailServiceFrom(conditons.testTypeId);

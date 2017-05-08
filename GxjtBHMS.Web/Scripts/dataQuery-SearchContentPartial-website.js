@@ -99,7 +99,7 @@ function initChart() {
             show: true,               //设置是否渲染整个图表区域（即显示图表中内容）
             xaxis: 'xaxis', // either 'xaxis' or 'x2axis'.    
             yaxis: 'yaxis', // either 'yaxis' or 'y2axis'.    
-            lineWidth: 2,
+            lineWidth: 1,
             showLine: true, //是否显示图表中的折线
             showMarker: true, //是否强调显示图中的数据节点 
             //renderer: $.jqplot.PieRenderer,  // 利用渲染器（这里是利用饼图PieRenderer）渲染现有图表，从而转换成所需图表 
@@ -111,8 +111,8 @@ function initChart() {
                 show: true,             // 是否在图中显示数据点    
                 style: 'filledCircle',  // 各个数据点在图中显示的方式，默认是"filledCircle"(实心圆点),    
                 //其他几种方式circle，diamond, square, filledCircle,filledDiamond or filledSquare.    
-                lineWidth: 0.1,       // 数据点各个的边的宽度（如果设置过大，各个边会重复，会显示的类似于实心点）    
-                size: 8,            // 数据点的大小    
+                lineWidth: 1,       // 数据点各个的边的宽度（如果设置过大，各个边会重复，会显示的类似于实心点）    
+                size: 5,            // 数据点的大小    
                 color: '',    // 数据点的颜色    
                 shadow: false,       // 是否为数据点显示阴影区（增加立体效果）    
             },
@@ -239,8 +239,8 @@ function initChart() {
                 show: true,             // 是否在图中显示数据点    
                 style: 'filledCircle',  // 各个数据点在图中显示的方式，默认是"filledCircle"(实心圆点),    
                 //其他几种方式circle，diamond, square, filledCircle,filledDiamond or filledSquare.    
-                lineWidth: 0.1,       // 数据点各个的边的宽度（如果设置过大，各个边会重复，会显示的类似于实心点）    
-                size: 8,            // 数据点的大小    
+                lineWidth: 1,       // 数据点各个的边的宽度（如果设置过大，各个边会重复，会显示的类似于实心点）    
+                size: 5,            // 数据点的大小    
                 color: '',    // 数据点的颜色    
                 shadow: false,       // 是否为数据点显示阴影区（增加立体效果）    
             },
@@ -373,8 +373,8 @@ function initChart() {
             show: true,             // 是否在图中显示数据点    
             style: 'filledCircle',  // 各个数据点在图中显示的方式，默认是"filledCircle"(实心圆点),    
             //其他几种方式circle，diamond, square, filledCircle,filledDiamond or filledSquare.    
-            lineWidth: 0.1,       // 数据点各个的边的宽度（如果设置过大，各个边会重复，会显示的类似于实心点）    
-            size: 8,            // 数据点的大小    
+            lineWidth: 1,       // 数据点各个的边的宽度（如果设置过大，各个边会重复，会显示的类似于实心点）    
+            size: 5,            // 数据点的大小    
             color: '',    // 数据点的颜色    
             shadow: false,       // 是否为数据点显示阴影区（增加立体效果）    
         },
@@ -631,9 +631,10 @@ function fillChartSeriesParams(source) {
         var obj =
                   {
                       label: item.CategoryName,
-                      lineWidth: 3,
+                      lineWidth: 1,
                       markerOptions:
                           {
+                              show:true,
                               formatString: '%.2f',
                               fontSize: '10pt'
                           }

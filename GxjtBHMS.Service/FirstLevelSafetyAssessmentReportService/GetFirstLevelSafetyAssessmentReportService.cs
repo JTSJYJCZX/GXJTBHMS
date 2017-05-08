@@ -58,28 +58,22 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
         public SafetyAssessmentResultSearchResponse GetFirstSafetyAssessmentResult()
         {
             var result = new SafetyAssessmentResultSearchResponse();
-            try
+            var ReportCount = _getFirstLevelSafetyAssessmentReportResultDAL.FindBy().Count();
+            if (ReportCount > 0)
             {
-                var source = _getFirstLevelSafetyAssessmentReportResultDAL.FindBy().OrderBy(m => m.AssessmentReportId).Last();
-                 result = new SafetyAssessmentResultSearchResponse()
-                {
-                    FirstSafetyAssessmentResult_Displacement = source.DisplacementAssessmentResult,
-                    FirstSafetyAssessmentResult_CableForce = source.CableForceAssessmentResult,
-                    FirstSafetyAssessmentResult_Stress = source.StrainAssessmentResult,
-                    FirstSafetyAssessmentReportTime=source.AssessmentReport.ReportTime.ToString()          
-                   
-                };
+                var source = _getFirstLevelSafetyAssessmentReportResultDAL.FindBy(ServiceConstant.ResultsAssessmentReport).OrderBy(m => m.AssessmentReportId).Last();
+                result.FirstSafetyAssessmentResult_Displacement = source.DisplacementAssessmentResult;
+                result.FirstSafetyAssessmentResult_CableForce = source.CableForceAssessmentResult;
+                result.FirstSafetyAssessmentResult_Stress = source.StrainAssessmentResult;
+                result.FirstSafetyAssessmentReportTime = source.AssessmentReport.ReportTime.ToString("yyyy-MM-dd HH:mm:ss");               
             }
-            catch
+            else
             {
-                 result = new SafetyAssessmentResultSearchResponse()
-                {
-                    FirstSafetyAssessmentResult_Displacement = ServiceConstant.NotEvaluated,
-                    FirstSafetyAssessmentResult_CableForce = ServiceConstant.NotEvaluated,
-                    FirstSafetyAssessmentResult_Stress = ServiceConstant.NotEvaluated,
-                    FirstSafetyAssessmentReportTime= ServiceConstant.NotEvaluated,
-                 };              
-            }
+                result.FirstSafetyAssessmentResult_Displacement = ServiceConstant.NotEvaluated;
+                result.FirstSafetyAssessmentResult_CableForce = ServiceConstant.NotEvaluated;
+                result.FirstSafetyAssessmentResult_Stress = ServiceConstant.NotEvaluated;
+                result.FirstSafetyAssessmentReportTime = ServiceConstant.NotEvaluated;
+            }          
             return result;
 
         }
