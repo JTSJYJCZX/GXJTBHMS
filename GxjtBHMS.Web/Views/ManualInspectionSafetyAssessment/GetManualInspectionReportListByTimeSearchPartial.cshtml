@@ -27,40 +27,44 @@
     <input type="button" id="ManualInspectionSafetyAssessmentReportUpLoad" class="btn btn-primary btn-sm" value="上传" />
 </div>
 
-<div id="message" style="color:@TempData[WebConstants.MessageColor]">@TempData[WebConstants.MessageKey]</div>
-<div id="datasMessage"> </div>
 
 
 
 <script type="text/javascript">
     //===========================点击展开关闭效果====================================
-function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
-var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
-var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
-var openTip = oOpenTip || "";
-var shutTip = oShutTip || "";
-if(targetObj.style.display!="none"){
- if(shutAble) return;
- targetObj.style.display="none";
-  if(openTip  &&  shutTip){
-    sourceObj.innerHTML = shutTip;
-  }
-} else {
-   targetObj.style.display="block";
-   if(openTip  &&  shutTip){
-   sourceObj.innerHTML = openTip;
-   }
-}
-}
+    function openShutManager(oSourceObj, oTargetObj, shutAble, oOpenTip, oShutTip) {
+        $("#message").html("");
+        var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
+        var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
+        var openTip = oOpenTip || "";
+        var shutTip = oShutTip || "";
+        if (targetObj.style.display != "none") {
+            if (shutAble) return;
+            targetObj.style.display = "none";
+            if (openTip && shutTip) {
+                sourceObj.innerHTML = shutTip;
+            }
+        } else {
+            $("#textfield").val(""); //清楚上传报告路径文本框内容
+            //清楚文件选择器的文本内容
+            var file = $("#fileField")
+            file.after(file.clone().val(""));
+            file.remove();
+            targetObj.style.display = "block";
+            if (openTip && shutTip) {
+                sourceObj.innerHTML = openTip;
+            }
+        }
+    }
 </script>
 
 
 <script>
-        $(function () {
-            if (userName != "admin") {
-                $("li.adminli").css("display", "none");
-                $("input.adminInput").css("display", "none");
-                $("td.admintd").css("display", "none");
-            }
-        })
+    $(function () {
+        if (userName != "admin") {
+            $("li.adminli").css("display", "none");
+            $("input.adminInput").css("display", "none");
+            $("td.admintd").css("display", "none");
+        }
+    })
 </script>
