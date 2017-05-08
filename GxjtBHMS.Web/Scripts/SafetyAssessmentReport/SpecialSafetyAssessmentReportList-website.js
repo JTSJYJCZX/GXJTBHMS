@@ -170,7 +170,6 @@ function SpecialSafetyAssessmentReportDelete(saveSender, url) {
     });
 }
 
-
 //刷新重新查询数据列表
 function dataQuery() {
     var time = $("#Monthpicker").val();
