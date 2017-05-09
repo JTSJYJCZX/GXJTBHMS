@@ -1,34 +1,37 @@
 ﻿@model GxjtBHMS.Web.ViewModels.SecondLevelSafetyAssessment.SecondLevelSafetyAssessmentConditonViewModel
 
+<form class="form-horizontal" role="form">
+    <fieldset>
+        <legend style="font-size:medium"><label class="glyphicon glyphicon-search"> 查询条件&raquo</label></legend>
+        <div class="form-group form-inline">
+            &nbsp;&nbsp;&nbsp;<label for="Monthpicker">报告生成月份:</label>
+            @Html.TextBoxFor(m => m.UpLoadReportTime, new { style = "width:220px", id = "Monthpicker", @class = "form-control" })
+            <input type="button" id="bttnquery" value="查询" class="btn btn-primary btn-sm col-md-offset-1" />
+            <input type="button" value="点击上传人工巡检报告" class="adminInput btn btn-primary btn-sm col-md-offset-1" onclick="openShutManager(this, 'unfold')" />
+        </div>
+    </fieldset>
+</form>
 
-<label for="Monthpicker" class="control-label">
-    报告生成月份：
-    @Html.TextBoxFor(m => m.UpLoadReportTime, new { style = "width:220px", id = "Monthpicker", @class = "selectpicker" })
-</label>
-<input type="button" id="bttnquery" value="查询" class="btn btn-primary btn-sm col-md-offset-1" />
-
-<input type="button" value="上传人工巡检报告" class="adminInput btn btn-primary btn-sm col-md-offset-1" onclick="openShutManager(this, 'unfold')" />
-
-<hr />
-
-<div id="unfold" style="display:none">
-    <label class="control-label">
-        上传报告路径：
-        <input type='text' name='textfield' id='textfield' class='txt' />
-        <input type="file" name="fileField" accept=".doc,.docx" class="file" id="fileField" size="28" onchange="document.getElementById('textfield').value=this.value" />
-    </label>
-    <div>
-        <label class="control-label">
-            评估等级：
-            @Html.DropDownListFor(m => m.UpLoadAssessmentState, (IEnumerable<SelectListItem>)ViewData[WebConstants.SecondLevelAssessmentStateKey], new { id = "ManualInspectionAssessmentStateSelect", @class = "selectpicker" })
-        </label>
+<form id="unfold" style="display:none" class="form-inline" role="form">
+    <div class="form-group searchContent">
+        <div class="form-group">
+            <label class="control-label">上传报告路径:</label>
+            <input type='text' name='textfield' id='textfield' class='txt' style="width:220px" />
+        </div>
+        <div class="form-group">
+            <input type="file" name="fileField" accept=".doc,.docx" class="file" id="fileField" size="28" onchange="document.getElementById('textfield').value=this.value" />
+        </div>
     </div>
-    @Html.HiddenFor(m => m.wordFileSize, new { id = "ManualInspectionwordFileSize" })
-    <input type="button" id="ManualInspectionSafetyAssessmentReportUpLoad" class="btn btn-primary btn-sm" value="上传" />
-</div>
-
-
-
+    <div class="form-group searchContent">
+        <label class="control-label">评估等级：</label>
+        @Html.DropDownListFor(m => m.UpLoadAssessmentState, (IEnumerable<SelectListItem>)ViewData[WebConstants.SecondLevelAssessmentStateKey], new { id = "ManualInspectionAssessmentStateSelect" })
+    </div>
+    <div class="form-group col-lg-offset-1">
+        @Html.HiddenFor(m => m.wordFileSize, new { id = "ManualInspectionwordFileSize" })
+        <input type="button" id="ManualInspectionSafetyAssessmentReportUpLoad" class="btn btn-primary btn-sm " value="上传" />
+    </div>
+</form>
+<hr />
 
 <script type="text/javascript">
     //===========================点击展开关闭效果====================================
