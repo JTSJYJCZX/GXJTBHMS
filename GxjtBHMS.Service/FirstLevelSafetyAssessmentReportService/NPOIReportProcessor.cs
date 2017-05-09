@@ -1,8 +1,6 @@
 ﻿using NPOI.XWPF.UserModel;
 using NPOI.OpenXmlFormats.Wordprocessing;
 using GxjtBHMS.Infrastructure.Helpers;
-using static NPOI.XWPF.UserModel.XWPFTable;
-using NPOI.OpenXmlFormats.Wordprocessing;
 
 namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
 {
@@ -16,8 +14,6 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
             XWPFParagraph p0 = _docx.CreateParagraph();
             p0.Alignment = ParagraphAlignment.CENTER;
             XWPFRun r0 = p0.CreateRun();
-            //CT_RPr rpr = r0.GetCTR().AddNewRPr();
-            //CT_Fonts rfonts = rpr.AddNewRFonts();
             r0.SetText("一级安全评估报告");
             r0.SetTextPosition(1);
             r0.FontFamily = "宋体";
@@ -208,7 +204,7 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
         }
 
         /// <summary>
-        /// 对“评估结果”动态赋值
+        /// 对“评估结果”动态赋值，若测试类型为异常，则“评估结果”内容为红色字体
         /// </summary>
         /// <param name="Datas"></param>
         /// <param name="table"></param>
