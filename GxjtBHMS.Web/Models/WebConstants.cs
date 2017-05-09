@@ -24,7 +24,7 @@
         public const string SessionState = "SessionState";
 
 
-        public const string SecondLevelAssessmentStateKey = "SecondLevelAssessmentState";
+        public const string AssessmentStateKey = "AssessmentState";
 
         
     }

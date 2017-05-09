@@ -75,7 +75,7 @@ namespace GxjtBHMS.Web.Controllers
                     var resultItem = new SafetyAssessmentReportViewModel();
                     resultItem.ReportName = item.ReportPeriods;
                     resultItem.ReporePath = item.ReprotPath;
-                    resultItem.ReportTime = item.ReportTime;
+                    resultItem.ReportTime = item.ReportTime.ToShortDateString();
                     models.Add(resultItem);
                 }
                 resultView.SafetyAssessmentReportViewModels = models;

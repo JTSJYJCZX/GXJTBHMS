@@ -70,7 +70,7 @@ namespace GxjtBHMS.Web.Controllers
                 firstGradeId = Convert.ToInt32(source.First().Id);
             }
             var model = source.Select(m => new SelectListItemModel() { Id = m.Id, Name = m.AssessmentGrade });
-            SaveSelectListItemCollectionToViewData(model, WebConstants.SecondLevelAssessmentStateKey, false);
+            SaveSelectListItemCollectionToViewData(model, WebConstants.AssessmentStateKey, false);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace GxjtBHMS.Web.Controllers
                     var resultItem = new SafetyAssessmentReportViewModel();
                     resultItem.ReportName = item.ReportPeriods;
                     resultItem.ReporePath = item.ReprotPath;
-                    resultItem.ReportTime = item.ReportTime;
+                    resultItem.ReportTime = item.ReportTime.ToShortDateString();
                     resultItem.AssessmentGrade = item.AssessmentResultState.AssessmentGrade;
                     resultItem.AssessmentState = item.AssessmentResultState.AssessmentState;
                     models.Add(resultItem);

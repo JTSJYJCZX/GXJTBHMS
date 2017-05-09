@@ -63,7 +63,7 @@ namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
                 {
                     var resultItem = new SafetyAssessmentReportViewModel();
                     resultItem.ReportName = item.ReportPeriods;
-                    resultItem.ReportTime = item.ReportTime;
+                    resultItem.ReportTime = item.ReportTime.ToShortDateString();
                     resultItem.ReportId = item.Id;
                     models.Add(resultItem);
                 }

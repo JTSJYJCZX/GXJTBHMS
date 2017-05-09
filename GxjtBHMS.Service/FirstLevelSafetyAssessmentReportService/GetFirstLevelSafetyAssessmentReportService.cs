@@ -62,10 +62,10 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
             if (ReportCount > 0)
             {
                 var source = _getFirstLevelSafetyAssessmentReportResultDAL.FindBy(ServiceConstant.ResultsAssessmentReport).OrderBy(m => m.AssessmentReportId).Last();
-                result.FirstSafetyAssessmentResult_Displacement = source.DisplacementAssessmentResult;
-                result.FirstSafetyAssessmentResult_CableForce = source.CableForceAssessmentResult;
-                result.FirstSafetyAssessmentResult_Stress = source.StrainAssessmentResult;
-                result.FirstSafetyAssessmentReportTime = source.AssessmentReport.ReportTime.ToString("yyyy-MM-dd HH:mm:ss");               
+                result.FirstSafetyAssessmentResult_Displacement = source.DisplacementAssessmentResult.Substring(0,2);
+                result.FirstSafetyAssessmentResult_CableForce = source.CableForceAssessmentResult.Substring(0,2);
+                result.FirstSafetyAssessmentResult_Stress = source.StrainAssessmentResult.Substring(0,2);
+                result.FirstSafetyAssessmentReportTime = source.AssessmentReport.ReportTime.ToShortDateString();               
             }
             else
             {

@@ -62,7 +62,7 @@ namespace GxjtBHMS.Service.ManualInspectionSafetyAssessmentReportService
             {
                 var source = _getManualInspectionSafetyAssessmentReportDAL.FindBy(ServiceConstant.AssessmentResultStateNavigationProperty).OrderBy(m => m.ReportTime).Last();
                 result.ManualInspectionSafetyAssessmentResult = source.AssessmentResultState.AssessmentGrade;
-                result.ManualInspectionSafetyAssessmentReportTime = source.ReportTime.ToString();
+                result.ManualInspectionSafetyAssessmentReportTime = source.ReportTime.ToShortDateString();
             }
             else
             {

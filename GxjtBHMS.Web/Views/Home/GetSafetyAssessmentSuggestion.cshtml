@@ -9,18 +9,17 @@
         <tr class="text-center" >
             <td rowspan="3" style="vertical-align:middle">一级安全评估建议 </td>
             <td>变形评估建议</td>
-            <td>@Html.TextBoxFor(m=>m.FirstSafetyAssessmentSuggestion_Displacement, new { @class = "text-center", @style = "border:hidden", @readonly = true })</td>
+            <td>@Model.FirstSafetyAssessmentSuggestion_Displacement</td>
         </tr>
-        <tr class="text-center" >         
+        <tr class="text-center">         
             <td>应力评估建议</td>
-            <td>@Html.TextBoxFor(m=>m.FirstSafetyAssessmentSuggestion_Stress, new { @class = "text-center", @style = "border:hidden" , @readonly = true })</td>
+            <td>@Model.FirstSafetyAssessmentSuggestion_Stress</td>
         </tr>
         <tr class="text-center" >
             <td>吊杆及系杆索力评估建议</td>
-            <td>@Html.TextBoxFor(m=>m.FirstSafetyAssessmentSuggestion_CableForce, new { @class = "text-center", @style = "border:hidden", @readonly = true })</td>
+            <td>@Model.FirstSafetyAssessmentSuggestion_CableForce</td>
         </tr>
     
     </table>
-    <hr />
 </div>
 
