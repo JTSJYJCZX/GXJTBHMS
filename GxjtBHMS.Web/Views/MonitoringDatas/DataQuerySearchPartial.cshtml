@@ -1,31 +1,35 @@
 ﻿@model MornitoringDataSearchBarBaseView
 
-<div class="form-group searchContent">
-    <label for="mornitorTestTypeSelect" class="control-label"> 测试类型：</label>
-    @Html.DropDownListFor(m => m.MornitoringTestTypeId, (IEnumerable<SelectListItem>)ViewData[WebConstants.MonitoringTestTypesKey],
+<form class="form-horizontal" role="form">
+    <fieldset>
+        <legend style="font-size:medium"><label class="glyphicon glyphicon-search"> 查询条件&raquo</label></legend>
+        <div class="form-group">
+            &nbsp;&nbsp;&nbsp;<label for="mornitorTestTypeSelect" class="control-label ">测试类型:</label>
+                @Html.DropDownListFor(m => m.MornitoringTestTypeId, (IEnumerable<SelectListItem>)ViewData[WebConstants.MonitoringTestTypesKey],
             new { id = "mornitorTestTypeSelect", @class = "selectpicker" })
-
-    <label for="monitorTestPointsPositionSelect" class="control-label  col-md-offset-1">        测点位置：    </label>
-    @Html.DropDownListFor(m => m.MornitoringPointsPositionId, (IEnumerable<SelectListItem>)ViewData[WebConstants.MonitoringPointsPositionKey],
+        
+            <label for="monitorTestPointsPositionSelect" class="control-label  col-md-offset-1">测点位置:</label>
+                @Html.DropDownListFor(m => m.MornitoringPointsPositionId, (IEnumerable<SelectListItem>)ViewData[WebConstants.MonitoringPointsPositionKey],
       new { id = "monitorTestPointsPositionSelect", @class = "selectpicker" })
+          
+            <label for="monitorTestPointsNumberSelect" class="control-label  col-md-offset-1">测点编号:</label>    
+             @Html.DropDownListFor(m => m.MornitoringPointsNumberIds, (IEnumerable<SelectListItem>)ViewData[WebConstants.MonitoringPointsNumberKey],
+      new { id = "monitorTestPointsNumberSelect", @class = "selectpicker", multiple = "multiple" })         
+        </div>
 
-    <label for="monitorTestPointsNumberSelect" class="control-label  col-md-offset-1">        测点编号：    </label>
-    @Html.DropDownListFor(m => m.MornitoringPointsNumberIds, (IEnumerable<SelectListItem>)ViewData[WebConstants.MonitoringPointsNumberKey],
-      new { id = "monitorTestPointsNumberSelect", @class = "selectpicker", multiple = "multiple" })
-</div>
+        <div class="form-group form-inline">
+            &nbsp;&nbsp;&nbsp;<label for="datetimepickerStart">开始时间:</label>  
+          @Html.TextBoxFor(m => m.StartTime, new { style = "width:220px", id = "datetimepickerStart", @class = "form-control" })
+            <label for="datetimepickerEnd" class="col-md-offset-1">结束时间:</label>
+                @Html.TextBoxFor(m => m.EndTime, new { style = "width:220px", id = "datetimepickerEnd", @class = "form-control" })         
+            <input type="button" id="bttnquery" value="查询" class="btn btn-primary btn-sm col-md-offset-1" />
+        </div>
+    </fieldset>
+    <hr />
+</form>
 
-<div class="form-group searchContent">
-    <label for="datetimepickerStart" class="control-label">
-        开始时间：
-        @Html.TextBoxFor(m => m.StartTime, new { style = "width:220px", id = "datetimepickerStart", @class = "selectpicker" })
-    </label>
-    <label for="datetimepickerEnd" class="control-label col-md-offset-1">
-        结束时间:
-        @Html.TextBoxFor(m => m.EndTime, new { style = "width:220px", id = "datetimepickerEnd", @class = "selectpicker" })
-    </label>
-    <input type="button" id="bttnquery" value="查询" class="btn btn-default col-md-offset-1" />
-</div>
 
-<hr />
+
+
 
 

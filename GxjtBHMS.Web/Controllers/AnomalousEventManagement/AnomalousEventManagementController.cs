@@ -112,7 +112,6 @@ namespace GxjtBHMS.Web.Controllers.AnomalousEventManagement
             return Json(selectListItemCollection, JsonRequestBehavior.AllowGet);
         }
 
-        [ValidateAntiForgeryToken]
         public ActionResult GetAnomalousEvents(AnomalousEventsQueryConditionView condition)
         {
             var req = new AnomalousEventsQueryRequest()

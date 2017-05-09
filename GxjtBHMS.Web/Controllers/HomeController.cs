@@ -73,14 +73,14 @@ namespace GxjtBHMS.Web.Controllers
         public ActionResult GetSafetyAssessmentResult()
         {
             //查询一级安全评估结果
-
             var GetFirstSafetyAssessmentResult = new GetFirstLevelSafetyAssessmentReportService();
             var FirstSafetyAssessmentResult = GetFirstSafetyAssessmentResult.GetFirstSafetyAssessmentResult();
+            //查询二级安全评估结果
             var GetSecondLevelSafetyAssessmentResult = new GetSecondLevelSafetyAssessmentReportService();
             var SecondLevelSafetyAssessmentResult = GetSecondLevelSafetyAssessmentResult.GetSecondLevelSafetyAssessmentResult();
+            //查询人工巡检安全评估结果
             var GetManualInspectionSafetyAssessmentResult = new GetManualInspectionSafetyAssessmentReportService();
             var ManualInspectionSafetyAssessmentResult = GetManualInspectionSafetyAssessmentResult.GetManualInspectionSafetyAssessmentReportResult();
-
             var model = new SafetyAssessmentModelsViewModel()
             {
                 FirstSafetyAssessmentResult_CableForce = FirstSafetyAssessmentResult.FirstSafetyAssessmentResult_CableForce,
@@ -91,8 +91,6 @@ namespace GxjtBHMS.Web.Controllers
                 SecondSafetyAssessmentReportTime = SecondLevelSafetyAssessmentResult.SecondSafetyAssessmentReportTime,
                 ManualInspectionSafetyAssessmentResult = ManualInspectionSafetyAssessmentResult.ManualInspectionSafetyAssessmentResult,
                 ManualInspectionSafetyAssessmentReportTime = ManualInspectionSafetyAssessmentResult.ManualInspectionSafetyAssessmentReportTime
-
-
             };
             return PartialView("GetSafetyAssessmentResult", model);
 

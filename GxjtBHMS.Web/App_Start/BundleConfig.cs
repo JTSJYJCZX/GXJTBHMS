@@ -27,12 +27,14 @@ namespace GxjtBHMS.Web
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                     "~/Scripts/bootstrap.js",
                     "~/Scripts/respond.js"));
-
-            //bootstrap-select js css
+          
             bundles.Add(new ScriptBundle("~/bundles/bootstrap-select").Include(
                       "~/Scripts/bootstrap-select.min.js"));
+
             bundles.Add(new StyleBundle("~/content/css/bootstrap-select").Include(
                   "~/Content/bootstrap-select.min.css"));
+
+
             bundles.Add(new ScriptBundle("~/bundles/listThresholdValueMessage-website").Include(
                          "~/Scripts/thresholdValueSetting/listThresholdValueMessage-website.js"));
             //jqPlot图表插件脚本和样式

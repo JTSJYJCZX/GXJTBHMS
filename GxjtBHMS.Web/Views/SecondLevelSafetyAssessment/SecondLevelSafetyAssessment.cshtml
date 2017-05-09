@@ -4,13 +4,11 @@
 }
 
 <h1 style="text-align:center">二级安全评估报告</h1>
-<hr />
 
 <div>
     <!--用户查询搜索栏开始-->
     <p>@Html.Action("GetReportListByTimeSearchPartial")</p>
     <!--用户查询搜索栏结束-->
-<hr />
     <div id="message" style="color:@TempData[WebConstants.MessageColor]">@TempData[WebConstants.MessageKey]</div>
     <div id="dataQueryList"></div>
     <!--分页开始-->
@@ -18,7 +16,6 @@
     <!--分页结束-->
 </div>
 
-<hr />
 
 
 
