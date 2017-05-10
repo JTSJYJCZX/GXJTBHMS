@@ -11,6 +11,6 @@
 @using (Html.BeginForm("Reg", "AdminUser"))
 {
     @Html.AntiForgeryToken()
-    <input type="submit" value="点击注册" class="btn btn-primary btn-sm" />
+    <input type="submit" value="点击注册" class="btn btn-primary" />
     <span style='color:@TempData["MessageColor"]'>@TempData["Message"]</span>
 }

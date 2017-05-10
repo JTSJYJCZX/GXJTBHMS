@@ -1,31 +1,26 @@
 ﻿@model MornitoringDataSearchBarBaseView
 
-<form class="form-horizontal" role="form">
-    <div class="row">
-        <div class="col-mg-9">
-            <div class="form-group">
-                &nbsp;&nbsp;&nbsp;<label for="mornitorTestTypeSelect" class="control-label ">测试类型:</label>
-                @Html.DropDownListFor(m => m.MornitoringTestTypeId, (IEnumerable<SelectListItem>)ViewData[WebConstants.MonitoringTestTypesKey],
-            new { id = "mornitorTestTypeSelect", @class = "selectpicker" })
-                <label for="monitorTestPointsPositionSelect" class="control-label  col-md-offset-1">测点位置:</label>
-                @Html.DropDownListFor(m => m.MornitoringPointsPositionId, (IEnumerable<SelectListItem>)ViewData[WebConstants.MonitoringPointsPositionKey],
-      new { id = "monitorTestPointsPositionSelect", @class = "selectpicker" })
-            </div>
 
-            <div class="form-group form-inline">
-                &nbsp;&nbsp;&nbsp;<label for="datetimepickerStart">开始时间:</label>
-                @Html.TextBoxFor(m => m.StartTime, new { style = "width:220px", id = "datetimepickerStart", @class = "form-control" })
-                <label for="datetimepickerEnd" class="col-md-offset-1">结束时间:</label>
-                @Html.TextBoxFor(m => m.EndTime, new { style = "width:220px", id = "datetimepickerEnd", @class = "form-control" })
-                <input type="button" id="btnquery" value="查询" class="btn btn-primary btn-sm col-md-offset-1" />
-            </div>
-        </div>
-        <div id="dataQuery" class="col-mg-4">
-            <input type="button" id="AllAnomalousEventSaveAs" value="全部异常事件数据下载" class="btn btn-primary btn-sm" />
-            <input type="button" id="QueryAnomalousEventSaveAs" value="查询条件异常事件数据下载" class="btn btn-primary btn-sm" />
-        </div>
+<div class="form-group">
+    &nbsp;&nbsp;&nbsp;<label for="mornitorTestTypeSelect" class="control-label ">测试类型:</label>
+    @Html.DropDownListFor(m => m.MornitoringTestTypeId, (IEnumerable<SelectListItem>)ViewData[WebConstants.MonitoringTestTypesKey],
+            new { id = "mornitorTestTypeSelect", @class = "selectpicker" })
+    <label for="monitorTestPointsPositionSelect" class="control-label  col-md-offset-1">测点位置:</label>
+    @Html.DropDownListFor(m => m.MornitoringPointsPositionId, (IEnumerable<SelectListItem>)ViewData[WebConstants.MonitoringPointsPositionKey],
+      new { id = "monitorTestPointsPositionSelect", @class = "selectpicker" })
+</div>
+<div class="form-group form-inline">
+    &nbsp;&nbsp;&nbsp;<label for="datetimepickerStart">开始时间:</label>
+    @Html.TextBoxFor(m => m.StartTime, new { style = "width:220px", id = "datetimepickerStart", @class = "form-control" })
+    <label for="datetimepickerEnd" class="control-label  col-md-offset-1">结束时间:</label>
+    @Html.TextBoxFor(m => m.EndTime, new { style = "width:220px", id = "datetimepickerEnd", @class = "form-control" })
+    <input type="button" id="btnquery" value="查询" class="btn btn-primary" />
+    <div class="form-group " id="dataQuery" style="float:right">
+        <input type="button" id="AllAnomalousEventSaveAs" value="全部数据下载" class="btn btn-primary" />
+        <input type="button" id="QueryAnomalousEventSaveAs" value="查询条件数据下载" class="btn btn-primary" />
     </div>
-    <hr />
-</form>
+</div>
+<hr />
+
 
 @Html.AntiForgeryToken()
