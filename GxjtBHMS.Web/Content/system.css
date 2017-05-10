@@ -3,6 +3,18 @@
     margin-left: 1px;
 }
 
+
+/*字体常规格式设置*/
+/*常规正文*/
+.textFont{ 
+    font-size:14px;
+    color:#333333;
+    line-height:22px;
+}
+/*常规正文*/
+
+
+
     #main-nav.nav-tabs.nav-stacked > li > a {
         padding: 10px 8px;
         font-size: 12px;
@@ -25,18 +37,19 @@
             color: #4A515B;
         }
 
+        /*左侧导航条被鼠标滑动样式*/
         #main-nav.nav-tabs.nav-stacked > li.active > a, #main-nav.nav-tabs.nav-stacked > li > a:hover {
             color: #FFF;
-            background: #1138b7;
-            background: -moz-linear-gradient(top, #1138b7 0%,#1138b7 100%);
-            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1138b7), color-stop(100%,#1138b7));
-            background: -webkit-linear-gradient(top, #1138b7 0%,#1138b7 100%);
-            background: -o-linear-gradient(top,#1138b7 0%,#1138b7 100%);
-            background: -ms-linear-gradient(top, #1138b7 0%,#1138b7 100%);
-            background: linear-gradient(top, #1138b7 0%,#1138b7 100%);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1138b7', endColorstr='#1138b7');
-            -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#1138b7', endColorstr='#1138b7')";
-            border-color: #1138b7;
+            background: #448CBB;
+            background: -moz-linear-gradient(top, #448CBB 0%,#448CBB 100%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#448CBB), color-stop(100%,#448CBB));
+            background: -webkit-linear-gradient(top, #448CBB 0%,#448CBB 100%);
+            background: -o-linear-gradient(top,#448CBB 0%,#448CBB 100%);
+            background: -ms-linear-gradient(top, #448CBB 0%,#448CBB 100%);
+            background: linear-gradient(top, #448CBB 0%,#448CBB 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#448CBB', endColorstr='#448CBB');
+            -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#448CBB', endColorstr='#448CBB')";
+            border-color: #448CBB;
         }
 #top-title {
         color:#fff;
@@ -78,8 +91,9 @@
     margin-left: 15px;
 }
 
+/*定义标题(梧州西江四桥运营期健康监测系统)样式*/
 .navbar-static-top {
-    background-color: #1138b7;
+    background-color: #448CBB;
     margin-bottom: 5px;
 }
 
