@@ -19,12 +19,12 @@ namespace GxjtBHMS.Web.Controllers.SafetyPreWarning
         [ChildActionOnly]
         public ActionResult GetSafetyWarningSearchContent()
         {
-            var LastReportTime = GetLastReportTime();
+            var LastReportTime = GetLastReportTime_String();
             ViewData["LastReportTime"] = LastReportTime;
             return PartialView("GetSafetyWarningSearchContentPartial");
         }
 
-        static String GetLastReportTime()
+        static String GetLastReportTime_String()
         {
             var GetFirstLevelSafetyAssessmentReportListService = new GetFirstLevelSafetyAssessmentReportService();
             var LastReportResult = GetFirstLevelSafetyAssessmentReportListService.GetFirstSafetyAssessmentResult();
@@ -66,19 +66,17 @@ namespace GxjtBHMS.Web.Controllers.SafetyPreWarning
 
         private static SafetyWarningDetailResponse GetSafetyWarningDetailResultBy(QuerySafetyPreWarningConditonView conditons)
         {
-            CultureInfo provider = CultureInfo.InvariantCulture;
-            DateTime LastReportTime =DateTime.ParseExact(GetLastReportTime(), "yyyy-MM-dd HH:mm:ss", provider) ;
-            DateTime now = DateTime.Now;
+            var GetFirstLevelSafetyAssessmentReportListService = new GetFirstLevelSafetyAssessmentReportService();
+            var LastReportResult = GetFirstLevelSafetyAssessmentReportListService.GetFirstSafetyAssessmentResult();
+            var LastReportTime = GetFirstLevelSafetyAssessmentReportListService.GetFirstSafetyAssessmentResult().FirstSafetyAssessmentReportTime_DateTime;
             var req = new GetSafetyWarningDetailRequest
             {
                 StartTime = LastReportTime,
-                EndTime = now
+                EndTime = DateTime.Now
             };
             var SafetyWarningDetailQueryService = SafetyWarningDetailFactory.GetSafetyWarningDetailServiceFrom(conditons.testTypeId);
             return SafetyWarningDetailQueryService.GetSafetyPreWarningDetailBy(req);
         }
-
-
 
 
         public ActionResult DisplaySafetyPreWarningStateAndTotalTimesby()

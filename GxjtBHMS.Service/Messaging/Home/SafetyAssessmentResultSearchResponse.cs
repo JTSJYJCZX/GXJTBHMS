@@ -13,6 +13,7 @@ namespace GxjtBHMS.Service.Messaging.Home
         public string ManualInspectionSafetyAssessmentResult { get; set; }//人工巡检评估结果
 
         public string FirstSafetyAssessmentReportTime { get; set; }//一级安全评估-变形评估
+        public DateTime FirstSafetyAssessmentReportTime_DateTime { get; set; }//一级安全评估-变形评估
         public string SecondSafetyAssessmentReportTime { get; set; }//二级安全评估结果
         public string ManualInspectionSafetyAssessmentReportTime { get; set; }//人工巡检评估结果
         
