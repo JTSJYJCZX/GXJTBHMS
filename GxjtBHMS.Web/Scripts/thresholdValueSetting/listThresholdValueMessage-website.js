@@ -1,5 +1,6 @@
 ﻿$(function () {
 
+
     $("#btnQuery").click(function () {        
         var url = "/ThresholdValueSetting/GetThresholdValueSettingList";
         $.ajax({

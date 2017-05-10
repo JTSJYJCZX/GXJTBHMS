@@ -6,36 +6,32 @@
         <td width="80">评估结果</td>
     </tr>
 
-    <tr class="text-center"style="height:30px">
+    <tr class="text-center" style="height:30px">
         <td width="100" rowspan="3" style="vertical-align:middle">一级安全评估 </td>
         <td width="150">变形评估</td>
         <td width="80" rowspan="3" style="vertical-align:middle">
-            @Html.TextBoxFor(m => m.FirstSafetyAssessmentReportTime, new { @style = "border:hidden;width:150px;text-align:center", @readonly = true })
-    </td>
-    <td width="80">@Html.TextBoxFor(m => m.FirstSafetyAssessmentResult_Displacement, new { @style = "border:hidden;width:80px;text-align:center", @readonly = true })</td>
-</tr>
-<tr class="text-center"style="height:30px">
-    <td width="150">应力评估</td>
-    <td width="80">@Html.TextBoxFor(m => m.FirstSafetyAssessmentResult_Stress, new { @style = "border:hidden;width:80px;text-align:center", @readonly = true })</td>
-</tr>
-<tr class="text-center"style="height:30px">
-    <td width="150">吊杆及系杆索力评估</td>
-    <td width="80">@Html.TextBoxFor(m => m.FirstSafetyAssessmentResult_CableForce, new { @style = "border:hidden;width:80px;text-align:center", @readonly = true })</td>
-</tr>
-<tr class="text-center"style="height:30px">
-    <td width="250" colspan="2">二级安全评估 </td>
-    <td width="80" class="text-center">
-        @Html.TextBoxFor(m => m.SecondSafetyAssessmentReportTime, new { @style = "border:hidden;width:150px;text-align:center", @readonly = true })
-    </td>
-    <td width="80" class="text-center">@Html.TextBoxFor(m => m.SecondSafetyAssessmentResult, new { @style = "border:hidden;width:80px;text-align:center", @readonly = true })</td>
-</tr>
-<tr class="text-center"style="height:30px">
-    <td width="250" colspan="2">人工巡检安全评估 </td>
-    <td width="80" class="text-center">
-        @Html.TextBoxFor(m => m.ManualInspectionSafetyAssessmentReportTime, new { @style = "border:hidden;width:150px;text-align:center", @readonly = true })
-    </td>
-    <td width="80" class="text-center">@Html.TextBoxFor(m => m.ManualInspectionSafetyAssessmentResult, new { @style = "border:hidden;width:80px;text-align:center", @readonly = true })</td>
-</tr>
+            @Model.FirstSafetyAssessmentReportTime
+        </td>
+        <td width="80">@Model.FirstSafetyAssessmentResult_Displacement</td>
+    </tr>
+    <tr class="text-center" style="height:30px">
+        <td width="150">应力评估</td>
+        <td width="80">@Model.FirstSafetyAssessmentResult_Stress</td>
+    </tr>
+    <tr class="text-center" style="height:30px">
+        <td width="150">吊杆及系杆索力评估</td>
+        <td width="80">@Model.FirstSafetyAssessmentResult_CableForce</td>
+    </tr>
+    <tr class="text-center" style="height:30px">
+        <td width="250" colspan="2">二级安全评估 </td>
+        <td width="80" class="text-center">@Model.SecondSafetyAssessmentReportTime </td>
+        <td width="80" class="text-center">@Model.SecondSafetyAssessmentResult</td>
+    </tr>
+    <tr class="text-center" style="height:30px">
+        <td width="250" colspan="2">人工巡检安全评估 </td>
+        <td width="80" class="text-center">@Model.ManualInspectionSafetyAssessmentReportTime</td>
+        <td width="80" class="text-center">@Model.ManualInspectionSafetyAssessmentResult</td>
+    </tr>
 </table>
 
 

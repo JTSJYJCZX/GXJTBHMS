@@ -9,7 +9,7 @@ namespace GxjtBHMS.Web.ViewModels.SafetyAssessmentReportView
         //报告名称，报告期数+报告名字
         public string ReportName { get; set; }
         //报告生成时间
-        public DateTime ReportTime { get; set; }
+        public string ReportTime { get; set; }
         //报告在服务器保存的路径
         public string  ReporePath { get; set; }
         //评定状态，二级安全评估用

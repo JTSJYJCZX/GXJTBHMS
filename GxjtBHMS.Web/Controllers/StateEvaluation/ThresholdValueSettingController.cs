@@ -42,6 +42,7 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
 
             var req = new GetThresholdValueByPointsPositionSearchRequest
             {
+              
                PointsPositionId=conditions.MornitoringPointsPositionId
             };
             var thresholdValueSettingService = ThresholdValueSettingServiceFactory.GetThresholdValueServiceFrom(conditions.MornitoringTestTypeId);
@@ -134,9 +135,14 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
         /// <returns></returns>
         public IEnumerable<ThresholdValueQueryConditionModel> GetThresholdValueSearchConditionByConditonPointsNumber(QueryPointsNumberConditonView conditions)
         {
-            var req = new PointsNumberSearchRequest
-            {//自动去除前导空格
-                PointNumber = conditions.ContainsPointsNumber.Trim()
+            var req = new PointsNumberSearchRequest();
+            if (!string.IsNullOrEmpty(conditions.ContainsPointsNumber))
+            {
+                req.PointNumber = conditions.ContainsPointsNumber.Trim();//自动去除前导空格
+            }
+            else
+            {
+                req.PointNumber = null;
             };
             var thresholdValueSettingService = new GetThresholdValueSettingListBySearchBarService();
             return thresholdValueSettingService.GetPointsPositionsByContainPointsNumber(req.PointNumber);

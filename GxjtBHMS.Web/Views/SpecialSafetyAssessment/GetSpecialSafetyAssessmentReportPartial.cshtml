@@ -2,13 +2,12 @@
 
 <tr class="text-center">
     <td>
-        @Html.TextBoxFor(m => m.ReportName, new { @class = "text-center", @style = "border:hidden" })
+        @Model.ReportName
     </td>
 
     <td>
-        @Html.TextBoxFor(m =>m.ReportTime, new { @class = "text-center", @style = "border:hidden" })
+        @Model.ReportTime
     </td>
-
     <td>
         @Html.HiddenFor(m=>m.ReportName)
         @Html.HiddenFor(m=>m.ReporePath)

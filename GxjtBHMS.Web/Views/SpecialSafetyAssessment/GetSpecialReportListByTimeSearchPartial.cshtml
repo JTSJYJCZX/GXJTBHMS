@@ -1,27 +1,34 @@
 ﻿@model GxjtBHMS.Web.ViewModels.SpecialSafetyAssessment.SpecialSafetyAssessmentConditonViewModel
 
 
-<label for="Monthpicker" class="control-label">
-    报告生成月份：
-    @Html.TextBoxFor(m => m.UpLoadReportTime, new { style = "width:220px", id = "Monthpicker", @class = "selectpicker" })
-</label>
-<input type="button" id="bttnquery" value="查询" class="btn btn-primary btn-sm col-md-offset-1" />
+<form class="form-horizontal" role="form">
+    <fieldset>
+        <legend style="font-size:medium"><label class="glyphicon glyphicon-search"> 查询条件&raquo</label></legend>
+        <div class="form-group form-inline">
+            &nbsp;&nbsp;&nbsp;<label for="Monthpicker">报告生成月份:</label>
+            @Html.TextBoxFor(m => m.UpLoadReportTime, new { style = "width:220px", id = "Monthpicker", @class = "form-control" })
+            <input type="button" id="bttnquery" value="查询" class="btn btn-primary btn-sm col-md-offset-1" />
+            <input type="button" value="点击上传专项检测报告" class="adminInput btn btn-primary btn-sm col-md-offset-1" onclick="openShutManager(this, 'unfold')" />
+        </div>
+    </fieldset>
+</form>
 
-<input type="button" value="上传专项评估报告" class="adminInput btn btn-primary btn-sm col-md-offset-1" onclick="openShutManager(this, 'unfold')" />
-
-
-<div id="unfold" style="display:none">
-    <label class="control-label">
-        上传报告路径：
-        <input type='text' name='textfield' id='textfield' class='txt' />
-        <input type="file" name="fileField" accept=".doc,.docx" class="file" id="fileField" size="28" onchange="document.getElementById('textfield').value=this.value" />
-    </label>
-    @Html.HiddenFor(m => m.wordFileSize, new { id = "wordFileSize" })
-    <input type="button" id="SpecialSafetyAssessmentReportUpLoad" class="btn btn-primary btn-sm" value="上传" />
-</div>
-
-
-
+<form id="unfold" style="display:none" class="form-inline" role="form">
+    <div class="form-group searchContent">
+        <div class="form-group">
+            <label class="control-label">上传报告路径:</label>
+            <input type='text' name='textfield' id='textfield' class='txt' style="width:220px" />
+        </div>
+        <div class="form-group">
+            <input type="file" name="fileField" accept=".doc,.docx" class="file" id="fileField" size="28" onchange="document.getElementById('textfield').value=this.value" />
+        </div>
+    </div>
+    <div class="form-group col-lg-offset-1">
+        @Html.HiddenFor(m => m.wordFileSize, new { id = "wordFileSize" })
+        <input type="button" id="SpecialSafetyAssessmentReportUpLoad" class="btn btn-primary btn-sm " value="上传" />
+    </div>
+</form>
+<hr />
 
 <script type="text/javascript">
     //===========================点击展开关闭效果====================================

@@ -2,20 +2,18 @@
 
 <tr class="text-center">
     <td>
-        @Html.TextBoxFor(m => m.ReportName, new { @class = "text-center", @style = "border:hidden" })
+        @Model.ReportName
     </td>
 
-    <td>
-        @Html.TextBoxFor(m =>m.ReportTime, new { @class = "text-center", @style = "border:hidden" })
-    </td>
-
-    <td>
-        @Html.TextBoxFor(m => m.AssessmentGrade, new { @class = "text-center", @style = "border:hidden" })
+    <td>       
+        @Model.ReportTime
     </td>
     <td>
-        @Html.TextBoxFor(m => m.AssessmentState, new { @class = "text-center", @style = "border:hidden" })
+        @Model.AssessmentGrade
     </td>
-
+    <td>
+        @Model.AssessmentState
+    </td>
     <td>
         @Html.HiddenFor(m=>m.ReportName)
         @Html.HiddenFor(m=>m.ReporePath)
@@ -26,12 +24,8 @@
         @Html.HiddenFor(m => m.ReporePath)      
         <input class="btn btn-primary btn-sm" style="border:hidden" type="button" onclick="ManualInspectionSafetyAssessmentReportDelete(this, '/ManualInspectionSafetyAssessment/DeleteManualInspectionSafetyAssessmentReport')" value="删除报告" />
     </td>
-
 </tr>
-
 @Html.AntiForgeryToken()
-
-
 
 <script>
         $(function () {

@@ -60,7 +60,7 @@ namespace GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService
             if (ReportCount > 0)
             {
                 var source = _getSecondLevelSafetyAssessmentReportDAL.FindBy(ServiceConstant.AssessmentResultStateNavigationProperty).OrderBy(m => m.ReportTime).Last();
-                result.SecondSafetyAssessmentReportTime = source.ReportTime.ToString();
+                result.SecondSafetyAssessmentReportTime = source.ReportTime.ToShortDateString();
                 result.SecondSafetyAssessmentResult = source.AssessmentResultState.AssessmentGrade;
             }
             else

@@ -6,7 +6,7 @@
     <span id="bridgeStateColor" class="circle"></span>
 
     <label class="control-label col-lg-offset-1"  style="font-family:STSong; font-size:20px"> 上一次安全评估时间：</label>
-    @Html.TextBox("LastReportTime", ViewData["LastReportTime"], new { @class = "text-center", @style = "border:hidden;font-size:20px" })
+     @Html.TextBox("LastReportTime", ViewData["LastReportTime"], new { @class = "text-center", @style = "border:hidden;font-size:20px",@readonly=true})
 </div>
 <hr >
 <div >
