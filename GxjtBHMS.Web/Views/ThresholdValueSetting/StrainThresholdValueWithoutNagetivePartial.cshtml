@@ -1,20 +1,20 @@
 ﻿@model GxjtBHMS.Web.ViewModels.ThresholdValueSetting.ThresholdValueView
  
 <tr class="text-center">
-    <td>
-        <span class="text-center form-control">@Model.PointsNumber</span>
+    <td style="vertical-align:middle">
+        @Model.PointsNumber
     </td>
     <td>
-        @Html.TextBoxFor(m => m.PositiveFirstLevelThresholdValue, new { @class = "text-center form-control" })
+        @Html.TextBoxFor(m => m.PositiveFirstLevelThresholdValue, new { @class = "text-center" })
     </td>
     <td>
-        @Html.TextBoxFor(m => m.PositiveSecondLevelThresholdValue, new { @class = "text-center form-control" })
+        @Html.TextBoxFor(m => m.PositiveSecondLevelThresholdValue, new { @class = "text-center" })
     </td>
     <td>
-        @Html.TextBoxFor(m => m.NegativeFirstLevelThresholdValue, new { @id = "NegativeFirst", @class = "text-center form-control", @disabled = "disabled" })
+        @Html.TextBoxFor(m => m.NegativeFirstLevelThresholdValue, new { @id = "NegativeFirst", @class = "text-center", @disabled = "disabled", @style = "border:none" })
     </td>
-    <td>
-        @Html.TextBoxFor(m => m.NegativeSecondLevelThresholdValue, new { @id = "NegativeSecond", @class = "text-center form-control", @disabled = "disabled" })
+    <td >
+        @Html.TextBoxFor(m => m.NegativeSecondLevelThresholdValue, new { @id = "NegativeSecond", @class = "text-center", @disabled = "disabled", @style = "border:none" })
     </td>
     <td>
         @Html.HiddenFor(m => m.TestTypeId)
