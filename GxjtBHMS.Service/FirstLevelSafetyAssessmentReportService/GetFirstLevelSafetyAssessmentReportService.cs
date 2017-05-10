@@ -65,7 +65,8 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
                 result.FirstSafetyAssessmentResult_Displacement = source.DisplacementAssessmentResult.Substring(0,2);
                 result.FirstSafetyAssessmentResult_CableForce = source.CableForceAssessmentResult.Substring(0,2);
                 result.FirstSafetyAssessmentResult_Stress = source.StrainAssessmentResult.Substring(0,2);
-                result.FirstSafetyAssessmentReportTime = source.AssessmentReport.ReportTime.ToShortDateString();               
+                result.FirstSafetyAssessmentReportTime = source.AssessmentReport.ReportTime.ToShortDateString();
+                result.FirstSafetyAssessmentReportTime_DateTime = source.AssessmentReport.ReportTime;               
             }
             else
             {
