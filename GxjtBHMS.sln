@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GxjtBHMS.Tests.ControllerTests", "GxjtBHMS.Tests\GxjtBHMS.Tests.ControllerTests.csproj", "{36DB7802-FCB5-40D2-BFFD-AB4F73275CCD}"
 EndProject
@@ -22,8 +22,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GxjtBHMS.Web", "GxjtBHMS.Web\GxjtBHMS.Web.csproj", "{B5B5A536-6D2C-4EEA-96FF-43BC2D2EDFFF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GxjtBHMS.DependencyInjection", "GxjtBHMS.DependencyInjection\GxjtBHMS.DependencyInjection.csproj", "{483EBFB6-9E8E-46B1-BE8E-F170AD0C541E}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL-Trigger", "SQL-Trigger", "{FA963380-BE35-4DEB-BF58-74D68A5F7D7D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
