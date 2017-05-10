@@ -3,61 +3,58 @@
 }
 
  &nbsp;
-<div class="row">
+<div class="row div2">
     <div class="col-md-5 panel panel-default">
         <div class="row panel-heading">
             <div class="col-md-7">
-                <h3 class="panel-title">
+                <h3 class="panel-title glyphicon glyphicon-bell">
                     安全预警信息
                 </h3>
             </div>
-            <div class="col-md-5">
-                <label class="btn btn-primary btn-sm" style="float:right">
-                    @Html.ActionLink("查看详情", "SafetyPreWarning", "SafetyPreWarning", "", new { style = "color:white" }) &raquo;
-                </label>
-            </div>
+            <label class="btn btn-primary btn-sm" style="float:right">
+                @Html.ActionLink("查看详情", "SafetyPreWarning", "SafetyPreWarning", "", new { style = "color:white" }) &raquo;
+            </label>
         </div>
-        <div class="panel-body" style="height:230px">
+        <div class="panel-body" style="height:220px">
             @Html.Action("GetSafetyWarningSearchContent")
         </div>
     </div>
 
     <div class="col-md-1" style="width:1px">&nbsp</div>
 
-    <div class="col-md-5 panel panel-default">
+    <div class="col-md-6 panel panel-default">
         <div class="row panel-heading">
             <div class="col-md-7">
-                <h3 class="panel-title">
+                <h3 class="panel-title glyphicon glyphicon-search">
                     状况评估结果
                 </h3>
             </div>
-            <div class="col-md-5">
+           
                 <label class="btn btn-primary btn-sm" style="float:right">
                     @Html.ActionLink("查看详情", "FirstLevelSafetyAssessment", "FirstLevelSafetyAssessment", "", new { style = "color:white" }) &raquo;
                 </label>
-            </div>
+           
         </div>
-        <div class="panel-body" style="height:230px">
+        <div class="panel-body" style="height:220px">
             @Html.Action("GetSafetyAssessmentResult")
         </div>
     </div>
-
 </div>
 
-<div class="row">
+<div class="row div2">
 
     <div class="col-md-5 panel panel-default">
         <div class="row panel-heading">
             <div class="col-md-7">
-                <h3 class="panel-title">
+                <h3 class="panel-title glyphicon glyphicon-warning-sign">
                     异常事件
                 </h3>
             </div>
-            <div class="col-md-5">
+            
                 <label class="btn btn-primary btn-sm" style="float:right">
                     @Html.ActionLink("查看详情", "AnomalousEventManagement", "AnomalousEventManagement", "", new { style = "color:white" }) &raquo;
                 </label>
-            </div>
+           
         </div>
         <div class="panel-body" style="height:300px">
             @Html.Action("GetAbnormalEventNumber")
@@ -66,25 +63,22 @@
 
     <div class="col-md-1" style="width:1px">&nbsp</div>
 
-    <div class="col-md-5 panel panel-default">
-            <div class="row panel-heading">
-                <div class="col-md-7">
-                    <h3 class="panel-title">
-                        工作建议
-                    </h3>
-                </div>
-                <div class="col-md-5">
-                    <label class="btn btn-primary btn-sm" style="float:right">
-                        @Html.ActionLink("查看详情", "FirstLevelSafetyAssessment", "FirstLevelSafetyAssessment", "", new { style = "color:white" }) &raquo;
-                    </label>
-                </div>
+    <div class="col-md-6 panel panel-default">
+        <div class="row panel-heading">
+            <div class="col-md-7">
+                <h3 class="panel-title glyphicon glyphicon-comment">
+                    工作建议
+                </h3>
             </div>
-            <div class="panel-body" style="height:300px">
-                @Html.Action("GetAssessmentSuggestion")
-            </div>
+                <label class="btn btn-primary btn-sm" style="float:right">
+                    @Html.ActionLink("查看详情", "FirstLevelSafetyAssessment", "FirstLevelSafetyAssessment", "", new { style = "color:white" }) &raquo;
+                </label>       
         </div>
+        <div class="panel-body" style="height:300px">
+            @Html.Action("GetAssessmentSuggestion")
+        </div>
+    </div>
 </div>
-
 @section scripts{
     @Scripts.Render("~/bundles/SafetyPreWarningDetailSearchPartialwebsite")
 

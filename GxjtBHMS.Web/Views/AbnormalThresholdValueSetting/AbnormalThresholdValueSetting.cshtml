@@ -3,9 +3,10 @@
     ViewBag.Title = "AbnormalThresholdValueSetting";
 }
 
-<div style="background-color:#F3F7FA;height:auto;vertical-align:middle">
-    <h3 style="text-align:center;color:black;text-align:center">监测数据异常值阈值设置</h3>
+<div class="pageTitleDiv">
+    <p class="lead pageTitleFont glyphicon glyphicon-chevron-right"><strong>监测数据异常值阈值设置</strong></p>
 </div>
+<br />
 
 @Html.Action("GetAbnormalThresholdValueList") @*阈值查询*@
 <div id="message" style="color:@TempData[WebConstants.MessageColor]">@TempData[WebConstants.MessageKey]</div>

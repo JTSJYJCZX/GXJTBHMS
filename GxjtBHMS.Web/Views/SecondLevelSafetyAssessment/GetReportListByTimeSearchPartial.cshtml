@@ -2,15 +2,12 @@
 
 
 <form class="form-horizontal" role="form">
-    <fieldset>
-        <legend style="font-size:medium"><label class="glyphicon glyphicon-search"> 查询条件&raquo</label></legend>
-        <div class="form-group form-inline">
-            &nbsp;&nbsp;&nbsp;<label for="Monthpicker">报告生成月份:</label>
-            @Html.TextBoxFor(m => m.UpLoadReportTime, new { style = "width:220px", id = "Monthpicker", @class = "form-control" })
-            <input type="button" id="bttnquery" value="查询" class="btn btn-primary btn-sm col-md-offset-1" />
-            <input type="button" value="点击上传二级巡检报告" class="adminInput btn btn-primary btn-sm col-md-offset-1" onclick="openShutManager(this, 'unfold')" />
-        </div>
-    </fieldset>
+    <div class="form-group form-inline">
+        &nbsp;&nbsp;&nbsp;<label for="Monthpicker">报告生成月份:</label>
+        @Html.TextBoxFor(m => m.UpLoadReportTime, new { style = "width:220px", id = "Monthpicker", @class = "form-control" })
+        <input type="button" id="bttnquery" value="查询" class="btn btn-primary btn-sm col-md-offset-1" />
+        <input type="button" value="点击上传二级巡检报告" class="adminInput btn btn-primary btn-sm col-md-offset-1" onclick="openShutManager(this, 'unfold')" />
+    </div>
 </form>
 
 <form id="unfold" style="display:none" class="form-inline" role="form">

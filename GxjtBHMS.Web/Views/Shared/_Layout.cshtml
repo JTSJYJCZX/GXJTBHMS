@@ -28,7 +28,6 @@
             }
         })
     </script>
-
 </head>
 
 <body>
@@ -49,10 +48,10 @@
                         <a href="javascript:void($('#logoutForm').submit())" onclick="return confirm('确认注销吗？')"><span style="color:white">注销</span></a>
                     }
                 </span>
-                &nbsp;
+                @*&nbsp;
                 <span class="back">
                     @Html.ActionLink("返回主页", "Index", "Home","", new { style = "color:white" })
-                </span>
+                </span>*@
             </div>
         </div>
     </div>
@@ -61,6 +60,12 @@
         <div class="row">
             <div class="col-md-2 " id="sidebar">
                 <ul id="main-nav" class="nav nav-tabs nav-stacked" style="">
+                    <li>
+                        <a href="/Home/Index">
+                            <i class="glyphicon glyphicon-home"></i>&nbsp首页
+                        </a>
+
+                    </li>
                     <li class="active">
                         <a href="#systemSetting" class="nav-header collapsed" data-toggle="collapse">
                             <i class="glyphicon glyphicon-cog"></i>&nbsp系统介绍
@@ -135,10 +140,11 @@
                         <ul id="systemSetting3" class="nav nav-list collapse secondmenu" style="height: 0px;">
                             <li><a href="/MonitoringDatas/DataQuery"><i class="glyphicon glyphicon-eye-open"></i>&nbsp数据查询</a></li>
                             <li><a href="/MonitoringDatasComparingQuery/DataComparingQuery"><i class="glyphicon glyphicon-fullscreen"></i>&nbsp对比查询</a></li>
-                            <li><a href="/AlarmDatasManagement/AlarmDatasManagementQuery"><i class="glyphicon glyphicon-edit"></i>&nbsp报警数据管理</a></li>
+                            <li><a href="/AlarmDatasManagement/AlarmDatasManagementQuery"><i class="glyphicon glyphicon-edit"></i>&nbsp预警数据管理</a></li>
                             <li class="adminli"><a href="/AnomalousEventManagement/AnomalousEventManagement"><i class="glyphicon glyphicon-eye-open"></i>&nbsp异常事件管理</a></li>
                         </ul>
                     </li>
+
 
                     <li>
                         <a href="#systemSetting4" class="nav-header collapsed" data-toggle="collapse">
@@ -148,7 +154,7 @@
                         </a>
                         <ul id="systemSetting4" class="nav nav-list collapse secondmenu" style="height: 0px;">                          
                             <li><a href="/SafetyPreWarning/SafetyPreWarning"><i class="glyphicon glyphicon-th-list"></i>&nbsp安全预警</a></li>
-                            <li><a href="/ManualInspectionSafetyAssessment/ManualInspectionSafetyAssessment">><i class="glyphicon glyphicon-asterisk"></i>&nbsp人工巡检评估</a></li>
+                            <li><a href="/ManualInspectionSafetyAssessment/ManualInspectionSafetyAssessment"><i class="glyphicon glyphicon-asterisk"></i>&nbsp人工巡检评估</a></li>
                             <li><a href="/FirstLevelSafetyAssessment/FirstLevelSafetyAssessment"><i class="glyphicon glyphicon-asterisk"></i>&nbsp一级安全评估</a></li>
                             <li><a href="/SecondLevelSafetyAssessment/SecondLevelSafetyAssessment"><i class="glyphicon glyphicon-asterisk"></i>&nbsp二级安全评估</a></li>
                             <li><a href="/SpecialSafetyAssessment/SpecialSafetyAssessment"><i class="glyphicon glyphicon-asterisk"></i>&nbsp专项评估</a></li>
@@ -189,6 +195,11 @@
             </div>
             <div class="col-md-10">
                 @RenderBody()
+                <hr />
+                <footer style="text-align:center">
+                    <p>广西交通规划勘察设计研究院有限公司 版权所有&copy; @DateTime.Now.Year - 梧州西江四桥健康监测系统</p>
+                    <p>版本号：V1.0</p>
+                </footer>
             </div>
         </div>
     </div>
