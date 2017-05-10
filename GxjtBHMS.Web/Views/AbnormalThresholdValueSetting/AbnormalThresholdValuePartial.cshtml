@@ -1,15 +1,15 @@
 ﻿@model GxjtBHMS.Web.ViewModels.AbnormalThresholdValueSetting.AbnormalThresholdValueView
 
-<tr class="text-center">
-    <td>
-        <span class="text-center form-control">@Model.TypeName</span>
+<tr class="text-center" >
+    <td style="vertical-align:middle">
+        @Model.TypeName
     </td>
     <td>
-        @Html.TextBoxFor(m => m.MaxLevelThresholdValue, new { @class = "text-center form-control" })
+        @Html.TextBoxFor(m => m.MaxLevelThresholdValue, new { @class = "text-center" })
     </td>
 
     <td>
-        @Html.TextBoxFor(m => m.MinLevelThresholdValue, new { @class = "text-center form-control" })
+        @Html.TextBoxFor(m => m.MinLevelThresholdValue, new { @class = "text-center" })
     </td>
     
     <td>

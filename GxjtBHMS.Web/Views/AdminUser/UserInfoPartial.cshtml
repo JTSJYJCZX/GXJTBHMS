@@ -1,5 +1,5 @@
 ﻿@model EditUserView
-<tr>
+<tr class="text-center">
     <td>@Model.UserName</td>
     <td>@Html.DropDownListFor(m => m.UserStateId, (IEnumerable<SelectListItem>)ViewData[WebConstants.AllUserStateSelectedListKey])</td>
     <td><input type="button" id="btnSave" name="btnSave" class="btn btn-primary btn-sm" onclick="saveOperate(this,'/AdminUser/Edit',@Model.UserId)" value="保存"/></td>    
