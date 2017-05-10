@@ -6,6 +6,6 @@
         @Html.TextBoxFor(m => m.ContainsUserName, new { style = "width:220px", id = "ContainsUserNameID", @class = "form-control" })
         <label class="col-sm-offset-1">用户状态:</label>
         @Html.DropDownListFor(m => m.SearchUserStateId, (IEnumerable<SelectListItem>)ViewData[WebConstants.SearchBarUserStateDropDownListDataSourceKey], new { style = "width:220px", id = "UserStateID", @class = "form-control" })
-        <input type="button" id="btnQuery" value="查询" class="btn btn-primary btn-sm col-md-offset-1" />
+        <input type="button" id="btnQuery" value="查询" class="btn btn-primary col-md-offset-1" />
     </div>
 </form>
