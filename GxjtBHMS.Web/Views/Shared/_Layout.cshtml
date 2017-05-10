@@ -33,25 +33,29 @@
 <body>
     <div class="navbar navbar-duomi navbar-static-top" role="navigation">
         <div class="container-fluid">
-            <div class="navbar-header">
+            <div class="form-inline" style="vertical-align:middle">
+                <div class="left">
+                    <span id="top-title">梧州市西江四桥运营期健康监测系统</span>
+                </div>
+                <div style="float:right">
+                    <span id="loginTime" style="color:white">
+                        @DateTime.Now.ToLongDateString()&nbsp&nbsp&nbsp&nbsp&nbsp
+                    </span>
 
-                <span id="top-title">梧州市西江四桥运营期健康监测系统&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+                    <span id="help" class="glyphicon glyphicon-book" style="color:wheat"></span>
+                    @Html.ActionLink("操作手册", "OperationManual", "SystemInformation", "", new { style = "color:white" })&nbsp&nbsp&nbsp&nbsp&nbsp
 
-                <span id="welecom">
-                    欢迎您： @Html.ActionLink(Session[WebConstants.UserNickNameKey].ToString(), "EditUserInfo", "User", "", new { style = "color:white" })&nbsp&nbsp&nbsp
-                </span>
-
-                <span>
-                    @using (Html.BeginForm(actionName: "Logout", controllerName: "User", method: FormMethod.Post, htmlAttributes: new { id = "logoutForm" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <a href="javascript:void($('#logoutForm').submit())" onclick="return confirm('确认注销吗？')"><span style="color:white">注销</span></a>
-                    }
-                </span>
-                @*&nbsp;
-                <span class="back">
-                    @Html.ActionLink("返回主页", "Index", "Home","", new { style = "color:white" })
-                </span>*@
+                    <span id="welecom" class="glyphicon glyphicon-user" style="color:wheat"></span>                
+                   
+                    @Html.ActionLink(Session[WebConstants.UserNickNameKey].ToString(), "EditUserInfo", "User", "", new { style = "color:white" })&nbsp&nbsp&nbsp
+                    <span>
+                        @using (Html.BeginForm(actionName: "Logout", controllerName: "User", method: FormMethod.Post, htmlAttributes: new { id = "logoutForm" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <a href="javascript:void($('#logoutForm').submit())" onclick="return confirm('确认退出吗？')"><span style="color:white">退出</span></a>
+                        }
+                    </span>
+                </div>
             </div>
         </div>
     </div>
@@ -60,13 +64,13 @@
         <div class="row">
             <div class="col-md-2 " id="sidebar">
                 <ul id="main-nav" class="nav nav-tabs nav-stacked" style="">
-                    <li>
+                    <li class="active">
                         <a href="/Home/Index">
                             <i class="glyphicon glyphicon-home"></i>&nbsp首页
                         </a>
 
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="#systemSetting" class="nav-header collapsed" data-toggle="collapse">
                             <i class="glyphicon glyphicon-cog"></i>&nbsp系统介绍
                             <span class="pull-right glyphicon glyphicon-chevron-down"></span>

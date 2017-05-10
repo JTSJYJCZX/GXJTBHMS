@@ -22,6 +22,9 @@ namespace GxjtBHMS.Web.Controllers
         {
             return View("SystemFunctionIntroduction");
         }
-
+        public ActionResult OperationManual()
+        {
+            return View();
+        }
     }
 }

@@ -724,6 +724,7 @@
     <Content Include="Views\Home\GetAbnormalEventNumberPartial.cshtml" />
     <Content Include="Views\AnomalousEventManagement\NoAnomalousEventManagementContentPartial.cshtml" />
     <Content Include="Views\Home\GetAbnormalEventNumberListPartial.cshtml" />
+    <Content Include="Views\SystemInformation\OperationManual.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
