@@ -4,12 +4,18 @@
 }
 
 
-/*字体常规格式设置*/
-/*常规正文*/
-.textFont{ 
+
+/*页面标题设置*/
+.pageTitleFont{ 
     font-size:14px;
     color:#333333;
-    line-height:22px;
+    line-height:35px;
+    letter-spacing:1px
+    
+}
+.pageTitleDiv{ 
+    background: #E3F0F9;
+    height:40px
 }
 /*常规正文*/
 

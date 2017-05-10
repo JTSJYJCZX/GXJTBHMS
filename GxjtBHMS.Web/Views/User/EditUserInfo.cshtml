@@ -1,13 +1,15 @@
 ﻿@model GxjtBHMS.Web.ViewModels.User.ModifyPasswordView
 
+<div class="pageTitleDiv">
+    <p class="lead pageTitleFont glyphicon glyphicon-chevron-right"><strong>编辑账号</strong></p>
+</div>
+<br />
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>修改密码</h4>
-        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="form-group">

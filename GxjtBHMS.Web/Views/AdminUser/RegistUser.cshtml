@@ -3,11 +3,14 @@
     ViewBag.Title = "RegistUser";
 }
 
-<h4>注册新账号</h4>
+<div class="pageTitleDiv">
+    <p class="lead pageTitleFont glyphicon glyphicon-chevron-right"><strong>用户注册</strong></p>
+</div>
+<br />
 
 @using (Html.BeginForm("Reg", "AdminUser"))
 {
     @Html.AntiForgeryToken()
-    <input type="submit" value="注册" class="btn btn-primary btn-sm" />
+    <input type="submit" value="点击注册" class="btn btn-primary btn-sm" />
     <span style='color:@TempData["MessageColor"]'>@TempData["Message"]</span>
 }
