@@ -1,13 +1,11 @@
 ﻿@model GxjtBHMS.Web.ViewModels.ThresholdValueSetting.QueryPointsNumberConditonView
 
 <form class="form-horizontal" role="form">
-    <fieldset>
-        <legend style="font-size:medium"><label class="glyphicon glyphicon-search"> 查询条件&raquo</label></legend>
-        <div class="form-group form-inline">
-            &nbsp;&nbsp;&nbsp;<label class="control-label">测点编号:</label>
-            @Html.TextBoxFor(m => m.ContainsPointsNumber, new { style = "width:220px",@class = "form-control" })
-            <input type="button" id="btnQuery" value="按测点编号查询" class="btn btn-primary btn-sm col-md-offset-5" />
-        </div> 
-    </fieldset>
+
+    <div class="form-group form-inline">
+        &nbsp;&nbsp;&nbsp;<label class="control-label">测点编号:</label>
+        @Html.TextBoxFor(m => m.ContainsPointsNumber, new { style = "width:220px", @class = "form-control" })
+        <input type="button" id="btnQuery" value="按测点编号查询" class="btn btn-primary btn-sm col-md-offset-1" />
+    </div>
 </form>
 

@@ -1,8 +1,6 @@
 ﻿@model MornitoringDataSearchBarBaseView
 
 <form class="form-horizontal" role="form">
-    <fieldset>
-        <legend style="font-size:medium"><label class="glyphicon glyphicon-search"> 查询条件&raquo</label></legend>
         <div class="form-group">
             &nbsp;&nbsp;&nbsp;<label for="mornitorTestTypeSelect" class="control-label ">测试类型:</label>
             @Html.DropDownListFor(m => m.MornitoringTestTypeId, (IEnumerable<SelectListItem>)ViewData[WebConstants.MonitoringTestTypesKey],
@@ -25,7 +23,6 @@
             <input type="button" id="bttnAlarmDatasQuery" value="查询" class="btn btn-primary btn-sm col-md-offset-1" />
             @*<input type="button" id="AlarmDatasSaveAs" value="报警数据下载" class="btn btn-primary btn-sm col-md-offset-1" />*@
         </div>
-    </fieldset>
     <hr />
 </form>
 
