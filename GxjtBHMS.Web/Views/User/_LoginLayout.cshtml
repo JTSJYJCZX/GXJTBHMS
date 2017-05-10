@@ -20,10 +20,10 @@
 <body>
     <div class="container body-content">
         @RenderBody()
-        <footer>
-            <div class="col-md-8 col-md-offset-2">
-                <img src="~/Content/Images/logo.jpg" alt="广西壮族自治区交通规划勘察设计研究院" class="img-rounded carousel-inner img-responsive img-rounded" />
-            </div>
+        <hr />
+        <footer style="text-align:center">
+            <p>广西交通规划勘察设计研究院有限公司 版权所有&copy; @DateTime.Now.Year - 梧州西江四桥健康监测系统</p>
+            <p>版本号：V1.0</p>
         </footer>
     </div>
     @RenderSection("scripts", required: false)

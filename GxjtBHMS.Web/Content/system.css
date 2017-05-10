@@ -270,3 +270,8 @@ font-family:微软雅黑;
     overflow:hidden; 
     text-align:right; 
  } 
+
+ .div2 {
+    margin:0
+    auto;
+        }
