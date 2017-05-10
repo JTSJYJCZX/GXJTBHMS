@@ -28,12 +28,10 @@
                 <h3 class="panel-title glyphicon glyphicon-search">
                     状况评估结果
                 </h3>
-            </div>
-           
+            </div>          
                 <label class="btn btn-primary btn-sm" style="float:right">
                     @Html.ActionLink("查看详情", "FirstLevelSafetyAssessment", "FirstLevelSafetyAssessment", "", new { style = "color:white" }) &raquo;
-                </label>
-           
+                </label>          
         </div>
         <div class="panel-body" style="height:220px">
             @Html.Action("GetSafetyAssessmentResult")
@@ -49,12 +47,10 @@
                 <h3 class="panel-title glyphicon glyphicon-warning-sign">
                     异常事件
                 </h3>
-            </div>
-            
+            </div>           
                 <label class="btn btn-primary btn-sm" style="float:right">
                     @Html.ActionLink("查看详情", "AnomalousEventManagement", "AnomalousEventManagement", "", new { style = "color:white" }) &raquo;
-                </label>
-           
+                </label>           
         </div>
         <div class="panel-body" style="height:300px">
             @Html.Action("GetAbnormalEventNumber")
