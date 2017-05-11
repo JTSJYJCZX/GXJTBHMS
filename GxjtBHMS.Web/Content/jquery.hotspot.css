@@ -951,6 +951,7 @@ img.info-icon {
 /*热点内文本样式*/
 .img-container {
     position: relative;
+    background-color:aqua;
 }
 
     .img-container img {
@@ -978,68 +979,61 @@ img.info-icon {
         left: 29%;
         margin-top: 4%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .A3 {
         color: #000000;
         position: absolute;
         left: 14%;
-        margin-top: 20%;
+        margin-top: 21%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .A4 {
         color: #000000;
         position: absolute;
         left: 29%;
-        margin-top: 20%;
+        margin-top: 21%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .A5 {
         color: #000000;
         position: absolute;
-        left: 58%;
+        left: 62%;
         margin-top: 4%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .A6 {
         color: #000000;
         position: absolute;
-        left: 73%;
+        left: 77%;
         margin-top: 4%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .A7 {
         color: #000000;
         position: absolute;
-        left: 58%;
-        margin-top: 20%;
+        left: 62%;
+        margin-top: 21%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .A8 {
         color: #000000;
         position: absolute;
-        left: 73%;
-        margin-top: 20%;
+        left: 77%;
+        margin-top: 21%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .A9 {
@@ -1048,48 +1042,43 @@ img.info-icon {
         left: 5%;
         margin-top: 21%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .HA1 {
         color: #000000;
         position: absolute;
-        left: 52%;
-        margin-top: 5%;
+        left: 57%;
+        margin-top: 6%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .HA2 {
         color: #000000;
         position: absolute;
-        left: 65%;
-        margin-top: 5%;
+        left: 70%;
+        margin-top: 6%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .HA3 {
         color: #000000;
         position: absolute;
-        left: 52%;
-        margin-top: 20%;
+        left: 57%;
+        margin-top: 23%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .HA4 {
         color: #000000;
         position: absolute;
-        left: 65%;
-        margin-top: 20%;
+        left: 70%;
+        margin-top: 23%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
 

@@ -343,6 +343,7 @@
     <Content Include="Content\Images\吊杆.png" />
     <Content Include="Content\Images\拱肋横撑A截面.png" />
     <Content Include="Content\Images\拱肋横撑B截面.png" />
+    <Content Include="Content\Images\拱肋横撑截面.png" />
     <Content Include="Content\Images\桥型图.png" />
     <Content Include="Content\Images\混凝土拱肋应变断面图.png" />
     <Content Include="Content\Images\混凝土拱肋应变立面图.png" />
@@ -354,8 +355,8 @@
     <Content Include="Content\Images\索力实时监测立面图.png" />
     <Content Include="Content\Images\肋间横梁断面图.png" />
     <Content Include="Content\Images\西江四桥.jpg" />
-    <Content Include="Content\Images\钢拱肋应变断面图.png" />
     <Content Include="Content\Images\钢拱肋应变立面图.png" />
+    <Content Include="Content\Images\钢拱肋断面图.png" />
     <Content Include="Content\Images\钢格构应变实时监测立面图.png" />
     <Content Include="Content\Images\钢横梁断面图.png" />
     <Content Include="Content\Images\钢纵梁断面图.png" />
