@@ -8,7 +8,6 @@ using GxjtBHMS.Service.Interfaces;
 using System.Linq;
 using System;
 using System.Collections.Generic;
-using GxjtBHMS.Service.AnomalousEventManagementQuery;
 using GxjtBHMS.Service.Interfaces.AlarmDatasQueryServiceInerfaces;
 using GxjtBHMS.Service.Messaging.MonitoringDatas;
 
