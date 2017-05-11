@@ -345,8 +345,8 @@
     <Content Include="Content\Images\拱肋横撑B截面.png" />
     <Content Include="Content\Images\拱肋横撑截面.png" />
     <Content Include="Content\Images\桥型图.png" />
+    <Content Include="Content\Images\混凝土应变监测立面图.png" />
     <Content Include="Content\Images\混凝土拱肋应变断面图.png" />
-    <Content Include="Content\Images\混凝土拱肋应变立面图.png" />
     <Content Include="Content\Images\温度.png" />
     <Content Include="Content\Images\温湿度实时监测.png" />
     <Content Include="Content\Images\湿度.png" />
@@ -358,7 +358,7 @@
     <Content Include="Content\Images\钢拱肋应变断面图.png" />
     <Content Include="Content\Images\钢拱肋监测立面图.png" />
     <Content Include="Content\Images\钢拱肋断面图.png" />
-    <Content Include="Content\Images\钢格构应变实时监测立面图.png" />
+    <Content Include="Content\Images\钢格构监测立面图.png" />
     <Content Include="Content\Images\钢横梁断面图.png" />
     <Content Include="Content\Images\钢纵梁断面图.png" />
     <Content Include="Content\Images\风速风向实时监测.png" />
