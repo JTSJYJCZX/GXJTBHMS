@@ -23,11 +23,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GxjtBHMS.Web", "GxjtBHMS.We
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GxjtBHMS.DependencyInjection", "GxjtBHMS.DependencyInjection\GxjtBHMS.DependencyInjection.csproj", "{483EBFB6-9E8E-46B1-BE8E-F170AD0C541E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL-Trigger", "SQL-Trigger", "{FA963380-BE35-4DEB-BF58-74D68A5F7D7D}"
-	ProjectSection(SolutionItems) = preProject
-		..\sql触发器脚本\BHMSDB数据库脚本（2017.5.5汇总）.sql = ..\sql触发器脚本\BHMSDB数据库脚本（2017.5.5汇总）.sql
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

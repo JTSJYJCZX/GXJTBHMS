@@ -98,46 +98,51 @@ img.info-icon {
 
 #hotspotContainer1 .info-icon1 {
     position: absolute;
-    top: 57%;
+    top: 56%;
     left: 20%;
     font-size:12px;
-    font-family:"Times New Roman"
 }
 
 #hotspotContainer1 .info-icon2 {
     position: absolute;
-    top: 57%;
+    top: 56%;
     left: 32%;
+    font-size:12px;
 }
 
 #hotspotContainer1 .info-icon3 {
     position: absolute;
-    top: 17%;
+    top: 11%;
     left: 48%;
+    font-size:12px;
 }
 
 #hotspotContainer1 .info-icon4 {
     position: absolute;
-    top: 57%;
+    top: 56%;
     left: 64%;
+    font-size:12px;
 }
 
 #hotspotContainer1 .info-icon5 {
     position: absolute;
-    top: 57%;
+    top: 56%;
     left: 76%;
+    font-size:12px;
 }
 
 #hotspotContainer1 .info-icon6 {
     position: absolute;
-    top: 23%;
+    top: 18%;
     left: 37%;
+    font-size:12px;
 }
 
 #hotspotContainer1 .info-icon7 {
     position: absolute;
-    top: 23%;
+    top: 18%;
     left: 58%;
+    font-size:12px;
 }
 
 #hotspotContainer1 .info-icon8 {
@@ -151,6 +156,21 @@ img.info-icon {
     top: 22%;
     left: 82%;
 }
+
+#hotspotContainer1 .info-iconRS1 {
+    position: absolute;
+    top: 22%;
+    left: 3.3%;
+    font-size:12px;
+}
+
+#hotspotContainer1 .info-iconRS2 {
+    position: absolute;
+    top: 22%;
+    left: 94%;
+    font-size:12px;
+}
+
 
 #hotspotContainer1 .info-iconCA1 {
     position: absolute;
