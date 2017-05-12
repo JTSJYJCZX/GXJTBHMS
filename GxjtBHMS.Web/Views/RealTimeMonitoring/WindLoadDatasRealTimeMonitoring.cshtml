@@ -6,36 +6,36 @@
 @{
     ViewBag.Title = "WindLoadDatasRealTimeMonitoring";
 }
+<div style="height:500px">
+    <div class="img-container">
+        <img src="~/Content/Images/风速风向监测立面图及测点图.png" class="section img-responsive carousel-inner img-rounded" />
+        <span id="WL-1" class="WL1">WL11</span>
 
-<div class="img-container">
-    <img src="~/Content/Images/风速风向监测立面图及测点图.png" class="section img-responsive carousel-inner img-rounded" />
-    <span id="WL-1" class="WL1">WL11</span>
-
-    <span class="info-icon info-iconWRS1 " id="roadSign1"> 高旺路 </span>
-    <span class="info-icon info-iconWRS2 " id="roadSign2"> 新兴一路 </span>
+        <span class="info-icon info-iconWRS1 " id="roadSign1"> 高旺路 </span>
+        <span class="info-icon info-iconWRS2 " id="roadSign2"> 新兴一路 </span>
+    </div>
 </div>
-
-<script>
-    $(function () {
-        var numHub = $.connection.windLoadDatasRealTimeMonitoringHub;
-        numHub.client.realTimeDisplayDatas = function (models) {
-            $.each(models, function (i, model) {
-                $.each(model.WarningRealTimeData, function (j, WindLoadData) {
-                    $("#" + WindLoadData.PointsNumber).html(WindLoadData.PointsNumber + ":&nbsp&nbsp" + WindLoadData.CurrentData + "m/s");
-                    $("#" + WindLoadData.PointsNumber).css("color", WindLoadData.WarningColor);
+    <script>
+        $(function () {
+            var numHub = $.connection.windLoadDatasRealTimeMonitoringHub;
+            numHub.client.realTimeDisplayDatas = function (models) {
+                $.each(models, function (i, model) {
+                    $.each(model.WarningRealTimeData, function (j, WindLoadData) {
+                        $("#" + WindLoadData.PointsNumber).html(WindLoadData.PointsNumber + ":&nbsp&nbsp" + WindLoadData.CurrentData + "m/s");
+                        $("#" + WindLoadData.PointsNumber).css("color", WindLoadData.WarningColor);
+                    });
                 });
-            });
-        }
-        $.connection.hub.start().done(function () {
-            numHub.server.displayWarningWindLoadDatas(8);
-        })
-    });
-</script>
+            }
+            $.connection.hub.start().done(function () {
+                numHub.server.displayWarningWindLoadDatas(8);
+            })
+        });
+    </script>
 
 
-@section scripts{
-    <script src="~/Scripts/jquery.signalR-2.2.1.min.js"></script>
-    <script src="~/signalr/hubs"></script>
-}
+    @section scripts{
+        <script src="~/Scripts/jquery.signalR-2.2.1.min.js"></script>
+        <script src="~/signalr/hubs"></script>
+    }
 
-@Styles.Render("~/content/hotspotcss")
+    @Styles.Render("~/content/hotspotcss")
