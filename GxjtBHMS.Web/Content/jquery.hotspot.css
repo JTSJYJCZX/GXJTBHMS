@@ -1604,17 +1604,16 @@ img.info-icon {
         font-size: 1.5ex;
     }
 
-    .img-container .DSA1X {
+     .img-container .DSA1 {
         color: #ff0000;
         position: absolute;
         left: 17.5%;
-        margin-top: 26%;
+        margin-top: 23%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2.0ex;
     }
 
-    .img-container .DSA1Y {
+     /*.img-container .DSA1Y {
         color: #ff0000;
         position: absolute;
         left: 17.5%;
@@ -1632,19 +1631,18 @@ img.info-icon {
         z-index: 2;
         font-weight: bold;
         font-size: 2.5ex;
-    }
+    }*/
 
-    .img-container .DSA2X {
+     .img-container .DSA2 {
         color: #ff0000;
         position: absolute;
         left: 51%;
-        margin-top: 26%;
+        margin-top: 23%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2.0ex;
     }
 
-    .img-container .DSA2Y {
+     /*.img-container .DSA2Y {
         color: #ff0000;
         position: absolute;
         left: 51%;
@@ -1662,19 +1660,18 @@ img.info-icon {
         z-index: 2;
         font-weight: bold;
         font-size: 2.5ex;
-    }
+    }*/
 
-    .img-container .DSA3X {
+     .img-container .DSA3 {
         color: #ff0000;
         position: absolute;
-        left: 79%;
-        margin-top: 27%;
+        left: 84%;
+        margin-top: 23%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
-    .img-container .DSA3Y {
+     /*.img-container .DSA3Y {
         color: #ff0000;
         position: absolute;
         left: 79%;
@@ -1692,19 +1689,18 @@ img.info-icon {
         z-index: 2;
         font-weight: bold;
         font-size: 2.5ex;
-    }
+    }*/
 
-    .img-container .DSA4X {
+     .img-container .DSA4 {
         color: #ff0000;
         position: absolute;
         left: 51%;
-        margin-top: 35%;
+        margin-top: 33%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
-    .img-container .DSA4Y {
+     /*.img-container .DSA4Y {
         color: #ff0000;
         position: absolute;
         left: 51%;
@@ -1722,96 +1718,87 @@ img.info-icon {
         z-index: 2;
         font-weight: bold;
         font-size: 2.5ex;
-    }
+    }*/
 
     .img-container .DBD1 {
         color: #ff0000;
         position: absolute;
-        left: 11%;
-        margin-top: 29%;
+        left: 17%;
+        margin-top: 31%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .DBD2 {
         color: #ff0000;
         position: absolute;
-        left: 45%;
-        margin-top: 29%;
+        left: 43%;
+        margin-top: 30%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .DBD3 {
         color: #ff0000;
         position: absolute;
-        left: 86%;
-        margin-top: 29%;
+        left: 82%;
+        margin-top: 31%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .DBD4 {
         color: #ff0000;
         position: absolute;
-        left: 11%;
+        left: 17%;
         margin-top: 34%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .DBD5 {
         color: #ff0000;
         position: absolute;
-        left: 45%;
-        margin-top: 34%;
+        left: 43%;
+        margin-top: 33%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .DBD6 {
         color: #ff0000;
         position: absolute;
-        left: 86%;
+        left: 82%;
         margin-top: 34%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .DSP1 {
         color: #ff0000;
         position: absolute;
-        left: 28%;
-        margin-top: 28%;
+        left: 27%;
+        margin-top: 27%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .DSP2 {
         color: #ff0000;
         position: absolute;
         left: 71%;
-        margin-top: 28%;
+        margin-top: 27%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .DSP3 {
         color: #ff0000;
         position: absolute;
-        left: 28%;
+        left: 27%;
         margin-top: 35%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .DSP4 {
@@ -1820,49 +1807,45 @@ img.info-icon {
         left: 71%;
         margin-top: 35%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .DE1 {
         color: #ff0000;
         position: absolute;
         left: 4%;
-        margin-top: 28.5%;
+        margin-top: 28%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .DE2 {
         color: #ff0000;
         position: absolute;
-        left: 93%;
-        margin-top: 28.5%;
+        left: 92%;
+        margin-top:28%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .DE3 {
         color: #ff0000;
         position: absolute;
         left: 4%;
-        margin-top: 34.5%;
+        margin-top: 34%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .DE4 {
         color: #ff0000;
         position: absolute;
-        left: 93%;
-        margin-top: 34.5%;
+        left: 92%;
+        margin-top: 34%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
+
 
     .img-container .CFUPHL1 {
         color: #ff0000;
