@@ -1583,7 +1583,7 @@ img.info-icon {
         font-size: 1.7ex;
     }
 
-        .img-container .info-iconWRS1 {
+    .img-container .info-iconWRS1 {
         position: absolute;
         left: 2.9%;
         margin-top: 4.6%;
@@ -1599,7 +1599,7 @@ img.info-icon {
         font-size: 1.5ex;
     }
 
-     .img-container .DSA1 {
+    .img-container .DSA1 {
         color: #ff0000;
         position: absolute;
         left: 17.5%;
@@ -1608,7 +1608,7 @@ img.info-icon {
         font-size: 2.0ex;
     }
 
-     /*.img-container .DSA1Y {
+    /*.img-container .DSA1Y {
         color: #ff0000;
         position: absolute;
         left: 17.5%;
@@ -1628,7 +1628,7 @@ img.info-icon {
         font-size: 2.5ex;
     }*/
 
-     .img-container .DSA2 {
+    .img-container .DSA2 {
         color: #ff0000;
         position: absolute;
         left: 51%;
@@ -1637,7 +1637,7 @@ img.info-icon {
         font-size: 2.0ex;
     }
 
-     /*.img-container .DSA2Y {
+    /*.img-container .DSA2Y {
         color: #ff0000;
         position: absolute;
         left: 51%;
@@ -1657,7 +1657,7 @@ img.info-icon {
         font-size: 2.5ex;
     }*/
 
-     .img-container .DSA3 {
+    .img-container .DSA3 {
         color: #ff0000;
         position: absolute;
         left: 84%;
@@ -1666,7 +1666,7 @@ img.info-icon {
         font-size: 2ex;
     }
 
-     /*.img-container .DSA3Y {
+    /*.img-container .DSA3Y {
         color: #ff0000;
         position: absolute;
         left: 79%;
@@ -1686,7 +1686,7 @@ img.info-icon {
         font-size: 2.5ex;
     }*/
 
-     .img-container .DSA4 {
+    .img-container .DSA4 {
         color: #ff0000;
         position: absolute;
         left: 51%;
@@ -1695,7 +1695,7 @@ img.info-icon {
         font-size: 2ex;
     }
 
-     /*.img-container .DSA4Y {
+    /*.img-container .DSA4Y {
         color: #ff0000;
         position: absolute;
         left: 51%;
@@ -1818,7 +1818,7 @@ img.info-icon {
         color: #ff0000;
         position: absolute;
         left: 92%;
-        margin-top:28%;
+        margin-top: 28%;
         z-index: 2;
         font-size: 2ex;
     }
@@ -1839,6 +1839,22 @@ img.info-icon {
         margin-top: 34%;
         z-index: 2;
         font-size: 2ex;
+    }
+
+    .img-container .info-iconDRS1 {
+        position: absolute;
+        left: 2.5%;
+        margin-top: 7.6%;
+        z-index: 2;
+        font-size: 1.5ex;
+    }
+
+    .img-container .info-iconDRS2 {
+        position: absolute;
+        left: 94%;
+        margin-top: 7.6%;
+        z-index: 2;
+        font-size: 1.5ex;
     }
 
 
