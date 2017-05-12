@@ -170,80 +170,122 @@ img.info-icon {
 
 #hotspotContainer1 .info-iconCA1 {
     position: absolute;
-    top: 60%;
+    top: 64%;
     left: 31%;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconCA2 {
     position: absolute;
-    top: 60%;
-    left: 64%;
+    top: 64%;
+    left: 63.2%;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconSLS1 {
     position: absolute;
-    top: 33%;
+    top: 36%;
     left: 29%;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconSLS2 {
     position: absolute;
-    top: 33%;
+    top: 36%;
     left: 66%;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconSLS3 {
     position: absolute;
-    top: 57%;
+    top: 25%;
     left: 35%;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconSLS4 {
     position: absolute;
-    top: 57%;
+    top: 25%;
     left: 59%;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconSLS5 {
     position: absolute;
-    top: 52%;
-    left: 33%;
+    top: 30%;
+    left: 32%;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconSLS6 {
     position: absolute;
-    top: 52%;
-    left: 61%;
+    top: 30%;
+    left: 62%;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconSLS7 {
     position: absolute;
-    top: 52%;
-    left: 11%;
+    top: 36%;
+    left: 5%;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconSLS8 {
     position: absolute;
-    top: 52%;
-    left: 83.5%;
+    top: 36.5%;
+    left: 91%;
+    font-size: 12px;
+}
+
+#hotspotContainer1 .info-iconSLSRS1 {
+    position: absolute;
+    top: 27%;
+    left: 2.5%;
+    font-size: 12px;
+}
+
+#hotspotContainer1 .info-iconSLSRS2 {
+    position: absolute;
+    top: 27%;
+    left: 94.5%;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconCF1 {
     position: absolute;
-    top: 27%;
-    left: 47%;
+    top: 16%;
+    left: 50%;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconCF2 {
     position: absolute;
-    top: 60%;
-    left: 37%;
+    top: 61%;
+    left: 50%;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconCF3 {
     position: absolute;
-    top: 54%;
-    left: 8%;
+    top: 40%;
+    left: 6%;
+    font-size: 12px;
+}
+
+#hotspotContainer1 .info-iconCFRS1 {
+    position: absolute;
+    top: 27%;
+    left: 3%;
+    font-size: 12px;
+}
+
+
+#hotspotContainer1 .info-iconCFRS2 {
+    position: absolute;
+    top: 27%;
+    left: 95%;
+    font-size: 12px;
 }
 
 
@@ -1790,236 +1832,236 @@ img.info-icon {
     .img-container .CFUPHL1 {
         color: #ff0000;
         position: absolute;
-        left: 7%;
-        margin-top: 6%;
+        left: 2%;
+        margin-top: 3%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.6ex;
     }
 
     .img-container .CFUPHL2 {
         color: #ff0000;
         position: absolute;
-        left: 13%;
-        margin-top: 6%;
+        left: 9%;
+        margin-top: 3%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.6ex;
     }
 
     .img-container .CFUPHL3 {
         color: #ff0000;
         position: absolute;
-        left: 20%;
-        margin-top: 6%;
+        left: 17%;
+        margin-top: 3%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.6ex;
     }
 
     .img-container .CFUPHL4 {
         color: #ff0000;
         position: absolute;
-        left: 33%;
-        margin-top: 6%;
+        left: 31%;
+        margin-top: 3%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.6ex;
     }
 
 
     .img-container .CFUPHL5 {
         color: #ff0000;
         position: absolute;
-        left: 48%;
-        margin-top: 6%;
+        left: 49%;
+        margin-top: 3%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.6ex;
     }
 
     .img-container .CFUPHL6 {
         color: #ff0000;
         position: absolute;
-        left: 63%;
-        margin-top: 6%;
+        left: 65%;
+        margin-top: 3%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.6ex;
     }
 
     .img-container .CFUPHL7 {
         color: #ff0000;
         position: absolute;
-        left: 77%;
-        margin-top: 6%;
+        left: 80%;
+        margin-top: 3%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.6ex;
     }
 
     .img-container .CFUPHL8 {
         color: #ff0000;
         position: absolute;
-        left: 83%;
-        margin-top: 6%;
+        left: 87%;
+        margin-top: 3%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.6ex;
     }
 
     .img-container .CFUPHL9 {
         color: #ff0000;
         position: absolute;
-        left: 89%;
-        margin-top: 6%;
+        left: 93%;
+        margin-top: 3%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.6ex;
     }
 
     .img-container .CFUPHR1 {
         color: #ff0000;
         position: absolute;
-        left: 7%;
-        margin-top: 14%;
+        left: 2%;
+        margin-top: 12%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.6ex;
     }
 
     .img-container .CFUPHR2 {
         color: #ff0000;
         position: absolute;
-        left: 13%;
-        margin-top: 14%;
+        left: 9%;
+        margin-top: 12%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.6ex;
     }
 
     .img-container .CFUPHR3 {
         color: #ff0000;
         position: absolute;
-        left: 20%;
-        margin-top: 14%;
+        left: 17%;
+        margin-top: 12%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.6ex;
     }
 
     .img-container .CFUPHR4 {
         color: #ff0000;
         position: absolute;
-        left: 33%;
-        margin-top: 14%;
+        left: 31%;
+        margin-top: 12%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.6ex;
     }
 
     .img-container .CFUPHR5 {
         color: #ff0000;
         position: absolute;
-        left: 48%;
-        margin-top: 14%;
+        left: 49%;
+        margin-top: 12%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.6ex;
     }
 
     .img-container .CFUPHR6 {
         color: #ff0000;
         position: absolute;
-        left: 63%;
-        margin-top: 14%;
+        left: 65%;
+        margin-top: 12%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.6ex;
     }
 
     .img-container .CFUPHR7 {
         color: #ff0000;
         position: absolute;
-        left: 77%;
-        margin-top: 14%;
+        left: 80%;
+        margin-top: 12%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.6ex;
     }
 
     .img-container .CFUPHR8 {
         color: #ff0000;
         position: absolute;
-        left: 83%;
-        margin-top: 14%;
+        left: 87%;
+        margin-top: 12%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.6ex;
     }
 
     .img-container .CFUPHR9 {
         color: #ff0000;
         position: absolute;
-        left: 89%;
-        margin-top: 14%;
+        left: 93%;
+        margin-top: 12%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.6ex;
     }
 
     .img-container .CFUNHL1 {
         color: #ff0000;
         position: absolute;
-        left: 20%;
-        margin-top: 5%;
+        left: 16%;
+        margin-top: 2%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.6ex;
     }
 
     .img-container .CFUNHL2 {
         color: #ff0000;
         position: absolute;
-        left: 31%;
-        margin-top: 5%;
+        left: 29%;
+        margin-top: 2%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.6ex;
     }
 
     .img-container .CFUNHL3 {
         color: #ff0000;
         position: absolute;
-        left: 63%;
-        margin-top: 5%;
+        left: 66%;
+        margin-top: 2%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.6ex;
     }
 
     .img-container .CFUNHL4 {
         color: #ff0000;
         position: absolute;
-        left: 75%;
-        margin-top: 5%;
+        left: 79%;
+        margin-top: 2%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.6ex;
     }
 
     .img-container .CFUNHR1 {
         color: #ff0000;
         position: absolute;
-        left: 20%;
-        margin-top: 13%;
+        left: 16%;
+        margin-top: 12%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.6ex;
     }
 
     .img-container .CFUNHR2 {
         color: #ff0000;
         position: absolute;
-        left: 31%;
-        margin-top: 13%;
+        left: 29%;
+        margin-top: 12%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.6ex;
     }
 
     .img-container .CFUNHR3 {
         color: #ff0000;
         position: absolute;
-        left: 63%;
-        margin-top: 13%;
+        left: 66%;
+        margin-top: 12%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.6ex;
     }
 
     .img-container .CFUNHR4 {
         color: #ff0000;
         position: absolute;
-        left: 75%;
-        margin-top: 13%;
+        left: 79%;
+        margin-top: 12%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.6ex;
     }
 
     .img-container .CFFTBL1 {
