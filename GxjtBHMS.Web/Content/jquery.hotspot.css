@@ -11,29 +11,26 @@ a, a:visited {
 
 
 /*滑动条*/
-    .scrolltable   { 
-        border:0px; 
-        overflow:auto;
-         height:400px;
-          width: 100%; 
-          margin-bottom:2px ;}
+.scrolltable {
+    border: 0px;
+    overflow: auto;
+    height: 400px;
+    width: 100%;
+    margin-bottom: 2px;
+}
 
 
-   /*点画线*/
-.dotline { 
-BORDER-BOTTOM-STYLE: dotted;
- BORDER-LEFT-STYLE: dotted;
-  BORDER-RIGHT-STYLE: dotted;
-   BORDER-TOP-STYLE: dotted ;
-
-   font-size:2px; 
-   line-height:2px; 
-   padding:2px;
-    margin:2px; 
-
-
-
-} 
+/*点画线*/
+.dotline {
+    BORDER-BOTTOM-STYLE: dotted;
+    BORDER-LEFT-STYLE: dotted;
+    BORDER-RIGHT-STYLE: dotted;
+    BORDER-TOP-STYLE: dotted;
+    font-size: 2px;
+    line-height: 2px;
+    padding: 2px;
+    margin: 2px;
+}
 
 
 
@@ -44,7 +41,7 @@ BORDER-BOTTOM-STYLE: dotted;
     -moz-border-radius: 30px;
     -webkit-border-radius: 30px;
     border-radius: 30px;
-} 
+}
 
 /*主页中的圆形*/
 .HomeCircle {
@@ -53,18 +50,17 @@ BORDER-BOTTOM-STYLE: dotted;
     -moz-border-radius: 20px;
     -webkit-border-radius: 20px;
     border-radius: 20px;
-} 
+}
 
 
 .circle1 {
-
-  background: black;
-  border-radius: 30px;
-  height: 30px;
-  width: 30px;
-  margin: 0;
+    background: black;
+    border-radius: 30px;
+    height: 30px;
+    width: 30px;
+    margin: 0;
 }
- 
+
 
 
 .hotspotContainer {
@@ -100,49 +96,49 @@ img.info-icon {
     position: absolute;
     top: 56%;
     left: 20%;
-    font-size:12px;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-icon2 {
     position: absolute;
     top: 56%;
     left: 32%;
-    font-size:12px;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-icon3 {
     position: absolute;
     top: 11%;
     left: 48%;
-    font-size:12px;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-icon4 {
     position: absolute;
     top: 56%;
     left: 64%;
-    font-size:12px;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-icon5 {
     position: absolute;
     top: 56%;
     left: 76%;
-    font-size:12px;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-icon6 {
     position: absolute;
     top: 18%;
     left: 37%;
-    font-size:12px;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-icon7 {
     position: absolute;
     top: 18%;
     left: 58%;
-    font-size:12px;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-icon8 {
@@ -161,14 +157,14 @@ img.info-icon {
     position: absolute;
     top: 22%;
     left: 3.3%;
-    font-size:12px;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconRS2 {
     position: absolute;
     top: 22%;
     left: 94%;
-    font-size:12px;
+    font-size: 12px;
 }
 
 
@@ -176,102 +172,105 @@ img.info-icon {
     position: absolute;
     top: 64%;
     left: 31%;
-    font-size:12px;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconCA2 {
     position: absolute;
     top: 64%;
     left: 63.2%;
-    font-size:12px;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconSLS1 {
     position: absolute;
     top: 36%;
     left: 29%;
-    font-size:12px;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconSLS2 {
     position: absolute;
     top: 36%;
     left: 66%;
-    font-size:12px;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconSLS3 {
     position: absolute;
     top: 25%;
     left: 35%;
-    font-size:12px;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconSLS4 {
     position: absolute;
     top: 25%;
     left: 59%;
-    font-size:12px;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconSLS5 {
     position: absolute;
     top: 30%;
     left: 32%;
-    font-size:12px;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconSLS6 {
     position: absolute;
     top: 30%;
     left: 62%;
-    font-size:12px;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconSLS7 {
     position: absolute;
     top: 36%;
     left: 5%;
-    font-size:12px;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconSLS8 {
     position: absolute;
     top: 36.5%;
     left: 91%;
-    font-size:12px;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconSLSRS1 {
     position: absolute;
     top: 27%;
     left: 2.5%;
-    font-size:12px;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconSLSRS2 {
     position: absolute;
     top: 27%;
     left: 94.5%;
-    font-size:12px;
+    font-size: 12px;
 }
 
-#hotspotContainer1 .info-iconCF1 {
+#hotspotContainer1 .info-iconCF1-1 {
     position: absolute;
-    top: 27%;
-    left: 47%;
+    top: 16%;
+    left: 50%;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconCF2 {
     position: absolute;
-    top: 60%;
-    left: 37%;
+    top: 61%;
+    left: 50%;
+    font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconCF3 {
     position: absolute;
-    top: 54%;
-    left: 8%;
+    top: 40%;
+    left: 6%;
+    font-size: 12px;
 }
 
 
@@ -995,7 +994,7 @@ img.info-icon {
 /*热点内文本样式*/
 .img-container {
     position: relative;
-    background-color:aqua;
+    background-color: aqua;
 }
 
     .img-container img {
@@ -1014,7 +1013,6 @@ img.info-icon {
         margin-top: 4%;
         z-index: 2;
         font-size: 2ex;
-        
     }
 
     .img-container .A2 {
@@ -1284,7 +1282,7 @@ img.info-icon {
         font-size: 2ex;
     }
 
-     .img-container .CAAL4 {
+    .img-container .CAAL4 {
         color: #ff0000;
         position: absolute;
         left: 29%;
@@ -1293,7 +1291,7 @@ img.info-icon {
         font-size: 2ex;
     }
 
-     .img-container .CAAL5 {
+    .img-container .CAAL5 {
         color: #ff0000;
         position: absolute;
         left: 62%;
@@ -1302,7 +1300,7 @@ img.info-icon {
         font-size: 2ex;
     }
 
-     .img-container .CAAL6 {
+    .img-container .CAAL6 {
         color: #ff0000;
         position: absolute;
         left: 77%;
@@ -1311,7 +1309,7 @@ img.info-icon {
         font-size: 2ex;
     }
 
-     .img-container .CAAL7 {
+    .img-container .CAAL7 {
         color: #ff0000;
         position: absolute;
         left: 62%;
@@ -1320,7 +1318,7 @@ img.info-icon {
         font-size: 2ex;
     }
 
-     .img-container .CAAL8 {
+    .img-container .CAAL8 {
         color: #ff0000;
         position: absolute;
         left: 77%;
@@ -1329,7 +1327,7 @@ img.info-icon {
         font-size: 2ex;
     }
 
-     .img-container .SITB1 {
+    .img-container .SITB1 {
         color: #ff0000;
         position: absolute;
         left: 37%;
@@ -1338,7 +1336,7 @@ img.info-icon {
         font-size: 2ex;
     }
 
-     .img-container .SITB2 {
+    .img-container .SITB2 {
         color: #ff0000;
         position: absolute;
         left: 50%;
@@ -1346,9 +1344,9 @@ img.info-icon {
         z-index: 2;
         font-weight: bold;
         font-size: 2.5ex;
-    } 
+    }
 
-     .img-container .SUSCB1 {
+    .img-container .SUSCB1 {
         color: #ff0000;
         position: absolute;
         left: 36%;
@@ -1356,9 +1354,9 @@ img.info-icon {
         z-index: 2;
         font-weight: bold;
         font-size: 2.5ex;
-    } 
+    }
 
-     .img-container .SUSCB2 {
+    .img-container .SUSCB2 {
         color: #ff0000;
         position: absolute;
         left: 48%;
@@ -1366,9 +1364,9 @@ img.info-icon {
         z-index: 2;
         font-weight: bold;
         font-size: 2.5ex;
-    } 
+    }
 
-     .img-container .SUSLB1 {
+    .img-container .SUSLB1 {
         color: #ff0000;
         position: absolute;
         left: 30%;
@@ -1376,9 +1374,9 @@ img.info-icon {
         z-index: 2;
         font-weight: bold;
         font-size: 2.5ex;
-    } 
+    }
 
-     .img-container .SUSLB2 {
+    .img-container .SUSLB2 {
         color: #ff0000;
         position: absolute;
         left: 44%;
@@ -1386,9 +1384,9 @@ img.info-icon {
         z-index: 2;
         font-weight: bold;
         font-size: 2.5ex;
-    } 
+    }
 
-     .img-container .SUSLB3 {
+    .img-container .SUSLB3 {
         color: #ff0000;
         position: absolute;
         left: 58%;
@@ -1396,9 +1394,9 @@ img.info-icon {
         z-index: 2;
         font-weight: bold;
         font-size: 2.5ex;
-    } 
+    }
 
-     .img-container .SRTB1 {
+    .img-container .SRTB1 {
         color: #ff0000;
         position: absolute;
         left: 13%;
@@ -1406,9 +1404,9 @@ img.info-icon {
         z-index: 2;
         font-weight: bold;
         font-size: 2.5ex;
-    } 
+    }
 
-     .img-container .SRTB2 {
+    .img-container .SRTB2 {
         color: #ff0000;
         position: absolute;
         left: 28%;
@@ -1416,9 +1414,9 @@ img.info-icon {
         z-index: 2;
         font-weight: bold;
         font-size: 2.5ex;
-    } 
+    }
 
-     .img-container .SRTB3 {
+    .img-container .SRTB3 {
         color: #ff0000;
         position: absolute;
         left: 13%;
@@ -1426,9 +1424,9 @@ img.info-icon {
         z-index: 2;
         font-weight: bold;
         font-size: 2.5ex;
-    } 
+    }
 
-     .img-container .SRTB4 {
+    .img-container .SRTB4 {
         color: #ff0000;
         position: absolute;
         left: 28%;
@@ -1436,9 +1434,9 @@ img.info-icon {
         z-index: 2;
         font-weight: bold;
         font-size: 2.5ex;
-    } 
+    }
 
-     .img-container .SRTB5 {
+    .img-container .SRTB5 {
         color: #ff0000;
         position: absolute;
         left: 61%;
@@ -1446,9 +1444,9 @@ img.info-icon {
         z-index: 2;
         font-weight: bold;
         font-size: 2.5ex;
-    } 
+    }
 
-     .img-container .SRTB6 {
+    .img-container .SRTB6 {
         color: #ff0000;
         position: absolute;
         left: 76%;
@@ -1456,9 +1454,9 @@ img.info-icon {
         z-index: 2;
         font-weight: bold;
         font-size: 2.5ex;
-    } 
+    }
 
-     .img-container .SRTB7 {
+    .img-container .SRTB7 {
         color: #ff0000;
         position: absolute;
         left: 61%;
@@ -1466,9 +1464,9 @@ img.info-icon {
         z-index: 2;
         font-weight: bold;
         font-size: 2.5ex;
-    } 
+    }
 
-     .img-container .SRTB8 {
+    .img-container .SRTB8 {
         color: #ff0000;
         position: absolute;
         left: 76%;
@@ -1476,9 +1474,9 @@ img.info-icon {
         z-index: 2;
         font-weight: bold;
         font-size: 2.5ex;
-    } 
+    }
 
-     .img-container .HE1 {
+    .img-container .HE1 {
         color: #ff0000;
         position: absolute;
         left: 53%;
@@ -1488,7 +1486,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .HSAL1 {
+    .img-container .HSAL1 {
         color: #ff0000;
         position: absolute;
         left: 18%;
@@ -1498,7 +1496,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .HSAL2 {
+    .img-container .HSAL2 {
         color: #ff0000;
         position: absolute;
         left: 48%;
@@ -1508,7 +1506,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .HSAL3 {
+    .img-container .HSAL3 {
         color: #ff0000;
         position: absolute;
         left: 63%;
@@ -1518,7 +1516,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .HSAL4 {
+    .img-container .HSAL4 {
         color: #ff0000;
         position: absolute;
         left: 83%;
@@ -1528,7 +1526,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .HSAR1 {
+    .img-container .HSAR1 {
         color: #ff0000;
         position: absolute;
         left: 18%;
@@ -1538,7 +1536,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .HSAR2 {
+    .img-container .HSAR2 {
         color: #ff0000;
         position: absolute;
         left: 48%;
@@ -1548,7 +1546,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .HSAR3 {
+    .img-container .HSAR3 {
         color: #ff0000;
         position: absolute;
         left: 63%;
@@ -1558,7 +1556,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .HSAR4 {
+    .img-container .HSAR4 {
         color: #ff0000;
         position: absolute;
         left: 83%;
@@ -1568,7 +1566,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .WL1 {
+    .img-container .WL1 {
         color: #ff0000;
         position: absolute;
         left: 50%;
@@ -1578,7 +1576,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .DSA1X {
+    .img-container .DSA1X {
         color: #ff0000;
         position: absolute;
         left: 17.5%;
@@ -1588,7 +1586,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .DSA1Y {
+    .img-container .DSA1Y {
         color: #ff0000;
         position: absolute;
         left: 17.5%;
@@ -1598,7 +1596,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .DSA1Z {
+    .img-container .DSA1Z {
         color: #ff0000;
         position: absolute;
         left: 17.5%;
@@ -1608,7 +1606,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .DSA2X {
+    .img-container .DSA2X {
         color: #ff0000;
         position: absolute;
         left: 51%;
@@ -1618,7 +1616,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .DSA2Y {
+    .img-container .DSA2Y {
         color: #ff0000;
         position: absolute;
         left: 51%;
@@ -1628,7 +1626,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .DSA2Z {
+    .img-container .DSA2Z {
         color: #ff0000;
         position: absolute;
         left: 51%;
@@ -1638,7 +1636,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .DSA3X {
+    .img-container .DSA3X {
         color: #ff0000;
         position: absolute;
         left: 79%;
@@ -1648,7 +1646,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .DSA3Y {
+    .img-container .DSA3Y {
         color: #ff0000;
         position: absolute;
         left: 79%;
@@ -1658,7 +1656,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .DSA3Z {
+    .img-container .DSA3Z {
         color: #ff0000;
         position: absolute;
         left: 79%;
@@ -1668,7 +1666,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .DSA4X {
+    .img-container .DSA4X {
         color: #ff0000;
         position: absolute;
         left: 51%;
@@ -1678,7 +1676,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .DSA4Y {
+    .img-container .DSA4Y {
         color: #ff0000;
         position: absolute;
         left: 51%;
@@ -1688,7 +1686,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .DSA4Z {
+    .img-container .DSA4Z {
         color: #ff0000;
         position: absolute;
         left: 51%;
@@ -1698,7 +1696,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .DBD1 {
+    .img-container .DBD1 {
         color: #ff0000;
         position: absolute;
         left: 11%;
@@ -1708,7 +1706,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .DBD2 {
+    .img-container .DBD2 {
         color: #ff0000;
         position: absolute;
         left: 45%;
@@ -1718,7 +1716,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .DBD3 {
+    .img-container .DBD3 {
         color: #ff0000;
         position: absolute;
         left: 86%;
@@ -1728,7 +1726,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .DBD4 {
+    .img-container .DBD4 {
         color: #ff0000;
         position: absolute;
         left: 11%;
@@ -1738,7 +1736,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .DBD5 {
+    .img-container .DBD5 {
         color: #ff0000;
         position: absolute;
         left: 45%;
@@ -1748,7 +1746,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .DBD6 {
+    .img-container .DBD6 {
         color: #ff0000;
         position: absolute;
         left: 86%;
@@ -1758,7 +1756,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .DSP1 {
+    .img-container .DSP1 {
         color: #ff0000;
         position: absolute;
         left: 28%;
@@ -1768,7 +1766,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .DSP2 {
+    .img-container .DSP2 {
         color: #ff0000;
         position: absolute;
         left: 71%;
@@ -1778,7 +1776,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .DSP3 {
+    .img-container .DSP3 {
         color: #ff0000;
         position: absolute;
         left: 28%;
@@ -1788,7 +1786,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .DSP4 {
+    .img-container .DSP4 {
         color: #ff0000;
         position: absolute;
         left: 71%;
@@ -1798,7 +1796,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .DE1 {
+    .img-container .DE1 {
         color: #ff0000;
         position: absolute;
         left: 4%;
@@ -1808,7 +1806,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .DE2 {
+    .img-container .DE2 {
         color: #ff0000;
         position: absolute;
         left: 93%;
@@ -1818,7 +1816,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .DE3 {
+    .img-container .DE3 {
         color: #ff0000;
         position: absolute;
         left: 4%;
@@ -1828,7 +1826,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .DE4 {
+    .img-container .DE4 {
         color: #ff0000;
         position: absolute;
         left: 93%;
@@ -1838,268 +1836,242 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .CFUPHL1 {
+    .img-container .CFUPHL1 {
         color: #ff0000;
         position: absolute;
-        left: 7%;
-        margin-top: 6%;
+        left: 2%;
+        margin-top: 3%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 1.6ex;
     }
 
-     .img-container .CFUPHL2 {
+    .img-container .CFUPHL2 {
         color: #ff0000;
         position: absolute;
-        left: 13%;
-        margin-top: 6%;
+        left: 9%;
+        margin-top: 3%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 1.6ex;
     }
 
-     .img-container .CFUPHL3 {
+    .img-container .CFUPHL3 {
         color: #ff0000;
         position: absolute;
-        left: 20%;
-        margin-top: 6%;
+        left: 17%;
+        margin-top: 3%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 1.6ex;
     }
 
-     .img-container .CFUPHL4 {
-        color: #ff0000;
-        position: absolute;
-        left: 33%;
-        margin-top: 6%;
-        z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
-    }
-
-
-     .img-container .CFUPHL5 {
-        color: #ff0000;
-        position: absolute;
-        left: 48%;
-        margin-top: 6%;
-        z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
-    }
-
-     .img-container .CFUPHL6 {
-        color: #ff0000;
-        position: absolute;
-        left: 63%;
-        margin-top: 6%;
-        z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
-    }
-
-     .img-container .CFUPHL7 {
-        color: #ff0000;
-        position: absolute;
-        left: 77%;
-        margin-top: 6%;
-        z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
-    }
-
-     .img-container .CFUPHL8 {
-        color: #ff0000;
-        position: absolute;
-        left: 83%;
-        margin-top: 6%;
-        z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
-    }
-
-     .img-container .CFUPHL9 {
-        color: #ff0000;
-        position: absolute;
-        left: 89%;
-        margin-top: 6%;
-        z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
-    }
-
-     .img-container .CFUPHR1 {
-        color: #ff0000;
-        position: absolute;
-        left: 7%;
-        margin-top: 14%;
-        z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
-    }
-
-     .img-container .CFUPHR2 {
-        color: #ff0000;
-        position: absolute;
-        left: 13%;
-        margin-top: 14%;
-        z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
-    }
-
-     .img-container .CFUPHR3 {
-        color: #ff0000;
-        position: absolute;
-        left: 20%;
-        margin-top: 14%;
-        z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
-    }
-
-     .img-container .CFUPHR4 {
-        color: #ff0000;
-        position: absolute;
-        left: 33%;
-        margin-top: 14%;
-        z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
-    }
-
-     .img-container .CFUPHR5 {
-        color: #ff0000;
-        position: absolute;
-        left: 48%;
-        margin-top: 14%;
-        z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
-    }
-
-     .img-container .CFUPHR6 {
-        color: #ff0000;
-        position: absolute;
-        left: 63%;
-        margin-top: 14%;
-        z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
-    }
-
-     .img-container .CFUPHR7 {
-        color: #ff0000;
-        position: absolute;
-        left: 77%;
-        margin-top: 14%;
-        z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
-    }
-
-     .img-container .CFUPHR8 {
-        color: #ff0000;
-        position: absolute;
-        left: 83%;
-        margin-top: 14%;
-        z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
-    }
-
-     .img-container .CFUPHR9 {
-        color: #ff0000;
-        position: absolute;
-        left: 89%;
-        margin-top: 14%;
-        z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
-    }
-
-     .img-container .CFUNHL1 {
-        color: #ff0000;
-        position: absolute;
-        left: 20%;
-        margin-top: 5%;
-        z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
-    }
-
-     .img-container .CFUNHL2 {
+    .img-container .CFUPHL4 {
         color: #ff0000;
         position: absolute;
         left: 31%;
-        margin-top: 5%;
+        margin-top: 3%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 1.6ex;
     }
 
-     .img-container .CFUNHL3 {
+
+    .img-container .CFUPHL5 {
         color: #ff0000;
         position: absolute;
-        left: 63%;
-        margin-top: 5%;
+        left: 49%;
+        margin-top: 3%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 1.6ex;
     }
 
-     .img-container .CFUNHL4 {
+    .img-container .CFUPHL6 {
         color: #ff0000;
         position: absolute;
-        left: 75%;
-        margin-top: 5%;
+        left: 65%;
+        margin-top: 3%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 1.6ex;
     }
 
-     .img-container .CFUNHR1 {
+    .img-container .CFUPHL7 {
         color: #ff0000;
         position: absolute;
-        left: 20%;
-        margin-top: 13%;
+        left: 80%;
+        margin-top: 3%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 1.6ex;
     }
 
-     .img-container .CFUNHR2 {
+    .img-container .CFUPHL8 {
+        color: #ff0000;
+        position: absolute;
+        left: 87%;
+        margin-top: 3%;
+        z-index: 2;
+        font-size: 1.6ex;
+    }
+
+    .img-container .CFUPHL9 {
+        color: #ff0000;
+        position: absolute;
+        left: 93%;
+        margin-top: 3%;
+        z-index: 2;
+        font-size: 1.6ex;
+    }
+
+    .img-container .CFUPHR1 {
+        color: #ff0000;
+        position: absolute;
+        left: 2%;
+        margin-top: 12%;
+        z-index: 2;
+        font-size: 1.6ex;
+    }
+
+    .img-container .CFUPHR2 {
+        color: #ff0000;
+        position: absolute;
+        left: 9%;
+        margin-top: 12%;
+        z-index: 2;
+        font-size: 1.6ex;
+    }
+
+    .img-container .CFUPHR3 {
+        color: #ff0000;
+        position: absolute;
+        left: 17%;
+        margin-top: 12%;
+        z-index: 2;
+        font-size: 1.6ex;
+    }
+
+    .img-container .CFUPHR4 {
         color: #ff0000;
         position: absolute;
         left: 31%;
-        margin-top: 13%;
+        margin-top: 12%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 1.6ex;
     }
 
-     .img-container .CFUNHR3 {
+    .img-container .CFUPHR5 {
         color: #ff0000;
         position: absolute;
-        left: 63%;
-        margin-top: 13%;
+        left: 49%;
+        margin-top: 12%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 1.6ex;
     }
 
-     .img-container .CFUNHR4 {
+    .img-container .CFUPHR6 {
         color: #ff0000;
         position: absolute;
-        left: 75%;
-        margin-top: 13%;
+        left: 65%;
+        margin-top: 12%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 1.6ex;
     }
 
-     .img-container .CFFTBL1 {
+    .img-container .CFUPHR7 {
+        color: #ff0000;
+        position: absolute;
+        left: 80%;
+        margin-top: 12%;
+        z-index: 2;
+        font-size: 1.6ex;
+    }
+
+    .img-container .CFUPHR8 {
+        color: #ff0000;
+        position: absolute;
+        left: 87%;
+        margin-top: 12%;
+        z-index: 2;
+        font-size: 1.6ex;
+    }
+
+    .img-container .CFUPHR9 {
+        color: #ff0000;
+        position: absolute;
+        left: 93%;
+        margin-top: 12%;
+        z-index: 2;
+        font-size: 1.6ex;
+    }
+
+    .img-container .CFUNHL1 {
+        color: #ff0000;
+        position: absolute;
+        left: 16%;
+        margin-top: 2%;
+        z-index: 2;
+        font-size: 1.6ex;
+    }
+
+    .img-container .CFUNHL2 {
+        color: #ff0000;
+        position: absolute;
+        left: 29%;
+        margin-top: 2%;
+        z-index: 2;
+        font-size: 1.6ex;
+    }
+
+    .img-container .CFUNHL3 {
+        color: #ff0000;
+        position: absolute;
+        left: 66%;
+        margin-top: 2%;
+        z-index: 2;
+        font-size: 1.6ex;
+    }
+
+    .img-container .CFUNHL4 {
+        color: #ff0000;
+        position: absolute;
+        left: 79%;
+        margin-top: 2%;
+        z-index: 2;
+        font-size: 1.6ex;
+    }
+
+    .img-container .CFUNHR1 {
+        color: #ff0000;
+        position: absolute;
+        left: 16%;
+        margin-top: 12%;
+        z-index: 2;
+        font-size: 1.6ex;
+    }
+
+    .img-container .CFUNHR2 {
+        color: #ff0000;
+        position: absolute;
+        left: 29%;
+        margin-top: 12%;
+        z-index: 2;
+        font-size: 1.6ex;
+    }
+
+    .img-container .CFUNHR3 {
+        color: #ff0000;
+        position: absolute;
+        left: 66%;
+        margin-top: 12%;
+        z-index: 2;
+        font-size: 1.6ex;
+    }
+
+    .img-container .CFUNHR4 {
+        color: #ff0000;
+        position: absolute;
+        left: 79%;
+        margin-top: 12%;
+        z-index: 2;
+        font-size: 1.6ex;
+    }
+
+    .img-container .CFFTBL1 {
         color: #ff0000;
         position: absolute;
         left: 12%;
@@ -2109,7 +2081,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .CFFTBL2 {
+    .img-container .CFFTBL2 {
         color: #ff0000;
         position: absolute;
         left: 11%;
@@ -2119,7 +2091,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .CFFTBL3 {
+    .img-container .CFFTBL3 {
         color: #ff0000;
         position: absolute;
         left: 10%;
@@ -2129,7 +2101,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .CFFTBL4 {
+    .img-container .CFFTBL4 {
         color: #ff0000;
         position: absolute;
         left: 33%;
@@ -2139,7 +2111,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .CFFTBL5 {
+    .img-container .CFFTBL5 {
         color: #ff0000;
         position: absolute;
         left: 34%;
@@ -2149,7 +2121,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .CFFTBL6 {
+    .img-container .CFFTBL6 {
         color: #ff0000;
         position: absolute;
         left: 35%;
@@ -2159,7 +2131,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .CFFTBR1 {
+    .img-container .CFFTBR1 {
         color: #ff0000;
         position: absolute;
         left: 61%;
@@ -2169,7 +2141,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .CFFTBR2 {
+    .img-container .CFFTBR2 {
         color: #ff0000;
         position: absolute;
         left: 60%;
@@ -2179,7 +2151,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .CFFTBR3 {
+    .img-container .CFFTBR3 {
         color: #ff0000;
         position: absolute;
         left: 59%;
@@ -2189,7 +2161,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .CFFTBR4 {
+    .img-container .CFFTBR4 {
         color: #ff0000;
         position: absolute;
         left: 83%;
@@ -2199,7 +2171,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .CFFTBR5 {
+    .img-container .CFFTBR5 {
         color: #ff0000;
         position: absolute;
         left: 84%;
@@ -2209,7 +2181,7 @@ img.info-icon {
         font-size: 2.5ex;
     }
 
-     .img-container .CFFTBR6 {
+    .img-container .CFFTBR6 {
         color: #ff0000;
         position: absolute;
         left: 85%;
