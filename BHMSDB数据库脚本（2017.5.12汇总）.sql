@@ -987,10 +987,194 @@ go
 
 
 -----------------------------------------------------------------------------------------
------------------------------安全一级评估相关脚本（由特征值触发）------------------------
+-----------------------------安全一级评估相关脚本（由首期由基础数据库触发，后面的由特征值触发或按照每月）------------------------
 -----------------------------------------------------------------------------------------
+-------------------------------由索力触发一级评估报告首期--------------------------------------------
+if(OBJECT_ID('tgr_Basic_CableForceTableForAssessmentReportFirst','TR') is not null)
+drop trigger tgr_Basic_CableForceTableForAssessmentReportFirst
+go
+create trigger tgr_Basic_CableForceTableForAssessmentReportFirst
+on Basic_CableForceTable
+for insert
+as
+set nocount on
+declare @ReportPeriods nvarchar(max),@ReportTime datetime,@AssessmentReasonsId int,@ReportTimeYear int,@ReportIdDiff int
 
---由特征值索力表格触发生成一级评估报告表,3种情况,(1)首期报告;(2)红色预警触发报告;(3)常规月报
+--首期报告:基础数据库进入第一条数据，且不存在评估报告时，开始首期评估
+if (select count(*) from Basic_CableForceTable)=1 and (select count(*) from FirstAssessment_FirstLevelSafetyAssessmentReportTable)=0
+	begin
+	set @AssessmentReasonsId=1
+	select @ReportTime="Time" from inserted
+	select @ReportTimeYear=DATEPART(yyyy,@ReportTime)
+	select @ReportPeriods=convert(varchar(50),@ReportTimeYear)+'年第1期'
+	--根据参数值，向FirstAssessment_FirstLevelSafetyAssessmentReportTable添加记录 	
+	insert into FirstAssessment_FirstLevelSafetyAssessmentReportTable (ReportPeriods,ReportTime,AssessmentReasonsId)values(@ReportPeriods,@ReportTime,@AssessmentReasonsId)
+	end
+go
+
+-------------------------------由位移触发一级评估报告首期--------------------------------------------
+if(OBJECT_ID('tgr_Basic_DisplacementTableForAssessmentReportFirst','TR') is not null)
+drop trigger tgr_Basic_DisplacementTableForAssessmentReportFirst
+go
+create trigger tgr_Basic_DisplacementTableForAssessmentReportFirst
+on Basic_DisplacementTable
+for insert
+as
+set nocount on
+declare @ReportPeriods nvarchar(max),@ReportTime datetime,@AssessmentReasonsId int,@ReportTimeYear int,@ReportIdDiff int
+
+--首期报告:基础数据库进入第一条数据，且不存在评估报告时，开始首期评估
+if (select count(*) from Basic_DisplacementTable)=1 and (select count(*) from FirstAssessment_FirstLevelSafetyAssessmentReportTable)=0
+	begin
+	set @AssessmentReasonsId=1
+	select @ReportTime="Time" from inserted
+	select @ReportTimeYear=DATEPART(yyyy,@ReportTime)
+	select @ReportPeriods=convert(varchar(50),@ReportTimeYear)+'年第1期'
+	--根据参数值，向FirstAssessment_FirstLevelSafetyAssessmentReportTable添加记录 	
+	insert into FirstAssessment_FirstLevelSafetyAssessmentReportTable (ReportPeriods,ReportTime,AssessmentReasonsId)values(@ReportPeriods,@ReportTime,@AssessmentReasonsId)
+	end
+go
+
+-------------------------------由混凝土应变触发一级评估报告首期--------------------------------------------
+if(OBJECT_ID('tgr_Basic_ConcreteStrainTableForAssessmentReportFirst','TR') is not null)
+drop trigger tgr_Basic_ConcreteStrainTableForAssessmentReportFirst
+go
+create trigger tgr_Basic_ConcreteStrainTableForAssessmentReportFirst
+on Basic_ConcreteStrainTable
+for insert
+as
+set nocount on
+declare @ReportPeriods nvarchar(max),@ReportTime datetime,@AssessmentReasonsId int,@ReportTimeYear int,@ReportIdDiff int
+
+--首期报告:基础数据库进入第一条数据，且不存在评估报告时，开始首期评估
+if (select count(*) from Basic_ConcreteStrainTable)=1 and (select count(*) from FirstAssessment_FirstLevelSafetyAssessmentReportTable)=0
+	begin
+	set @AssessmentReasonsId=1
+	select @ReportTime="Time" from inserted
+	select @ReportTimeYear=DATEPART(yyyy,@ReportTime)
+	select @ReportPeriods=convert(varchar(50),@ReportTimeYear)+'年第1期'
+	--根据参数值，向FirstAssessment_FirstLevelSafetyAssessmentReportTable添加记录 	
+	insert into FirstAssessment_FirstLevelSafetyAssessmentReportTable (ReportPeriods,ReportTime,AssessmentReasonsId)values(@ReportPeriods,@ReportTime,@AssessmentReasonsId)
+	end
+go
+
+-------------------------------由钢拱肋应变触发一级评估报告首期--------------------------------------------
+if(OBJECT_ID('tgr_Basic_SteelArchStrainTableForAssessmentReportFirst','TR') is not null)
+drop trigger tgr_Basic_SteelArchStrainTableForAssessmentReportFirst
+go
+create trigger tgr_Basic_SteelArchStrainTableForAssessmentReportFirst
+on Basic_SteelArchStrainTable
+for insert
+as
+set nocount on
+declare @ReportPeriods nvarchar(max),@ReportTime datetime,@AssessmentReasonsId int,@ReportTimeYear int,@ReportIdDiff int
+
+--首期报告:基础数据库进入第一条数据，且不存在评估报告时，开始首期评估
+if (select count(*) from Basic_SteelArchStrainTable)=1 and (select count(*) from FirstAssessment_FirstLevelSafetyAssessmentReportTable)=0
+	begin
+	set @AssessmentReasonsId=1
+	select @ReportTime="Time" from inserted
+	select @ReportTimeYear=DATEPART(yyyy,@ReportTime)
+	select @ReportPeriods=convert(varchar(50),@ReportTimeYear)+'年第1期'
+	--根据参数值，向FirstAssessment_FirstLevelSafetyAssessmentReportTable添加记录 	
+	insert into FirstAssessment_FirstLevelSafetyAssessmentReportTable (ReportPeriods,ReportTime,AssessmentReasonsId)values(@ReportPeriods,@ReportTime,@AssessmentReasonsId)
+	end
+go
+
+-------------------------------由钢格构应变触发一级评估报告首期--------------------------------------------
+if(OBJECT_ID('tgr_Basic_SteelLatticeStrainTableForAssessmentReportFirst','TR') is not null)
+drop trigger tgr_Basic_SteelLatticeStrainTableForAssessmentReportFirst
+go
+create trigger tgr_Basic_SteelLatticeStrainTableForAssessmentReportFirst
+on Basic_SteelLatticeStrainTable
+for insert
+as
+set nocount on
+declare @ReportPeriods nvarchar(max),@ReportTime datetime,@AssessmentReasonsId int,@ReportTimeYear int,@ReportIdDiff int
+
+--首期报告:基础数据库进入第一条数据，且不存在评估报告时，开始首期评估
+if (select count(*) from Basic_SteelLatticeStrainTable)=1 and (select count(*) from FirstAssessment_FirstLevelSafetyAssessmentReportTable)=0
+	begin
+	set @AssessmentReasonsId=1
+	select @ReportTime="Time" from inserted
+	select @ReportTimeYear=DATEPART(yyyy,@ReportTime)
+	select @ReportPeriods=convert(varchar(50),@ReportTimeYear)+'年第1期'
+	--根据参数值，向FirstAssessment_FirstLevelSafetyAssessmentReportTable添加记录 	
+	insert into FirstAssessment_FirstLevelSafetyAssessmentReportTable (ReportPeriods,ReportTime,AssessmentReasonsId)values(@ReportPeriods,@ReportTime,@AssessmentReasonsId)
+	end
+go
+
+-------------------------------由温度触发一级评估报告首期--------------------------------------------
+if(OBJECT_ID('tgr_Basic_TemperatureTableForAssessmentReportFirst','TR') is not null)
+drop trigger tgr_Basic_TemperatureTableForAssessmentReportFirst
+go
+create trigger tgr_Basic_TemperatureTableForAssessmentReportFirst
+on Basic_TemperatureTable
+for insert
+as
+set nocount on
+declare @ReportPeriods nvarchar(max),@ReportTime datetime,@AssessmentReasonsId int,@ReportTimeYear int,@ReportIdDiff int
+
+--首期报告:基础数据库进入第一条数据，且不存在评估报告时，开始首期评估
+if (select count(*) from Basic_TemperatureTable)=1 and (select count(*) from FirstAssessment_FirstLevelSafetyAssessmentReportTable)=0
+	begin
+	set @AssessmentReasonsId=1
+	select @ReportTime="Time" from inserted
+	select @ReportTimeYear=DATEPART(yyyy,@ReportTime)
+	select @ReportPeriods=convert(varchar(50),@ReportTimeYear)+'年第1期'
+	--根据参数值，向FirstAssessment_FirstLevelSafetyAssessmentReportTable添加记录 	
+	insert into FirstAssessment_FirstLevelSafetyAssessmentReportTable (ReportPeriods,ReportTime,AssessmentReasonsId)values(@ReportPeriods,@ReportTime,@AssessmentReasonsId)
+	end
+go
+
+-------------------------------由湿度触发一级评估报告首期--------------------------------------------
+if(OBJECT_ID('tgr_Basic_HumidityTableForAssessmentReportFirst','TR') is not null)
+drop trigger tgr_Basic_HumidityTableForAssessmentReportFirst
+go
+create trigger tgr_Basic_HumidityTableForAssessmentReportFirst
+on Basic_HumidityTable
+for insert
+as
+set nocount on
+declare @ReportPeriods nvarchar(max),@ReportTime datetime,@AssessmentReasonsId int,@ReportTimeYear int,@ReportIdDiff int
+
+--首期报告:基础数据库进入第一条数据，且不存在评估报告时，开始首期评估
+if (select count(*) from Basic_HumidityTable)=1 and (select count(*) from FirstAssessment_FirstLevelSafetyAssessmentReportTable)=0
+	begin
+	set @AssessmentReasonsId=1
+	select @ReportTime="Time" from inserted
+	select @ReportTimeYear=DATEPART(yyyy,@ReportTime)
+	select @ReportPeriods=convert(varchar(50),@ReportTimeYear)+'年第1期'
+	--根据参数值，向FirstAssessment_FirstLevelSafetyAssessmentReportTable添加记录 	
+	insert into FirstAssessment_FirstLevelSafetyAssessmentReportTable (ReportPeriods,ReportTime,AssessmentReasonsId)values(@ReportPeriods,@ReportTime,@AssessmentReasonsId)
+	end
+go
+
+-------------------------------由风速触发一级评估报告首期--------------------------------------------
+if(OBJECT_ID('tgrBasic_WindLoadTableTableForAssessmentReportFirst','TR') is not null)
+drop trigger tgrBasic_WindLoadTableTableForAssessmentReportFirst
+go
+create trigger tgrBasic_WindLoadTableTableForAssessmentReportFirst
+on Basic_WindLoadTable
+for insert
+as
+set nocount on
+declare @ReportPeriods nvarchar(max),@ReportTime datetime,@AssessmentReasonsId int,@ReportTimeYear int,@ReportIdDiff int
+
+--首期报告:基础数据库进入第一条数据，且不存在评估报告时，开始首期评估
+if (select count(*) from Basic_WindLoadTable)=1 and (select count(*) from FirstAssessment_FirstLevelSafetyAssessmentReportTable)=0
+	begin
+	set @AssessmentReasonsId=1
+	select @ReportTime="Time" from inserted
+	select @ReportTimeYear=DATEPART(yyyy,@ReportTime)
+	select @ReportPeriods=convert(varchar(50),@ReportTimeYear)+'年第1期'
+	--根据参数值，向FirstAssessment_FirstLevelSafetyAssessmentReportTable添加记录 	
+	insert into FirstAssessment_FirstLevelSafetyAssessmentReportTable (ReportPeriods,ReportTime,AssessmentReasonsId)values(@ReportPeriods,@ReportTime,@AssessmentReasonsId)
+	end
+go
+
+
+----------------------------由特征值索力表格触发生成一级评估报告表,2种情况(1)红色预警触发报告;(2)常规月报----------------------------------
 if(OBJECT_ID('tgr_Eigenvalue_CableForceEigenvalueTableForAssessment','TR') is not null)
 drop trigger tgr_Eigenvalue_CableForceEigenvalueTableForAssessment
 go
@@ -1027,16 +1211,6 @@ case
 end
 select @InsertTime=dateadd(hh,1,"Time") from inserted
 
---首期报告:Eigenvalue_CableForceEigenvalueTable首条记录插入，且不存在评估报告时，开始首期评估
-if (select count(*) from Eigenvalue_CableForceEigenvalueTable)=1 and (select count(*) from FirstAssessment_FirstLevelSafetyAssessmentReportTable)=0
-	begin
-	set @AssessmentReasonsId=1
-	select @ReportTime=dateadd(hh,1,"Time") from inserted
-	select @ReportTimeYear=DATEPART(yyyy,@ReportTime)
-	select @ReportPeriods=convert(varchar(50),@ReportTimeYear)+'年第1期'
-	--根据参数值，向FirstAssessment_FirstLevelSafetyAssessmentReportTable添加记录 	
-	insert into FirstAssessment_FirstLevelSafetyAssessmentReportTable (ReportPeriods,ReportTime,AssessmentReasonsId)values(@ReportPeriods,@ReportTime,@AssessmentReasonsId)
-	end
 --预警触发一级评估报告
 if @ThresholdGradeId=3 and @InsertTime not in (select ReportTime from FirstAssessment_FirstLevelSafetyAssessmentReportTable)
 	begin
@@ -1095,7 +1269,7 @@ if @ThresholdGradeId<>3
 go
 
 -------------------------------------------------------------------------------------------------------------------------
---由特征值位移表格触发生成一级评估报告表,3种情况,(1)首期报告;(2)红色预警触发报告;(3)常规月报
+--------------------------------由特征值位移表格触发生成一级评估报告表,2种情况,(1)红色预警触发报告;(2)常规月报-------------------------------------
 if(OBJECT_ID('tgr_Eigenvalue_DisplacementEigenvalueTableForAssessment','TR') is not null)
 drop trigger tgr_Eigenvalue_DisplacementEigenvalueTableForAssessment
 go
@@ -1133,16 +1307,6 @@ case
 end
 select @InsertTime=dateadd(hh,1,"Time") from inserted
 
---首期报告:Eigenvalue_DisplacementEigenvalueTable首条记录插入，且不存在评估报告时，开始首期评估
-if (select count(*) from Eigenvalue_DisplacementEigenvalueTable)=1 and (select count(*) from FirstAssessment_FirstLevelSafetyAssessmentReportTable)=0
-	begin
-	set @AssessmentReasonsId=1
-	select @ReportTime=dateadd(hh,1,"Time") from inserted
-	select @ReportTimeYear=DATEPART(yyyy,@ReportTime)
-	select @ReportPeriods=convert(varchar(50),@ReportTimeYear)+'年第1期'
-	--根据参数值，向FirstAssessment_FirstLevelSafetyAssessmentReportTable添加记录 	
-	insert into FirstAssessment_FirstLevelSafetyAssessmentReportTable (ReportPeriods,ReportTime,AssessmentReasonsId)values(@ReportPeriods,@ReportTime,@AssessmentReasonsId)
-	end
 --预警触发一级评估报告
 if @ThresholdGradeId=3 and @InsertTime not in (select ReportTime from FirstAssessment_FirstLevelSafetyAssessmentReportTable)
 	begin
@@ -1201,7 +1365,7 @@ if @ThresholdGradeId<>3
 go
 
 -------------------------------------------------------------------------------------------------------------------------
---由特征值温度表格触发生成一级评估报告表,3种情况,(1)首期报告;(2)红色预警触发报告;(3)常规月报
+----------------------------由特征值温度表格触发生成一级评估报告表,2种情况,(1)红色预警触发报告;(2)常规月报-----------------------------------
 if(OBJECT_ID('tgr_Eigenvalue_TemperatureEigenvalueTableForAssessment','TR') is not null)
 drop trigger tgr_Eigenvalue_TemperatureEigenvalueTableForAssessment
 go
@@ -1224,16 +1388,6 @@ case
 end
 select @InsertTime=dateadd(hh,1,"Time") from inserted
 
---首期报告:Eigenvalue_TemperatureEigenvalueTable首条记录插入，且不存在评估报告时，开始首期评估
-if (select count(*) from Eigenvalue_TemperatureEigenvalueTable)=1 and (select count(*) from FirstAssessment_FirstLevelSafetyAssessmentReportTable)=0
-	begin
-	set @AssessmentReasonsId=1
-	select @ReportTime=dateadd(hh,1,"Time") from inserted
-	select @ReportTimeYear=DATEPART(yyyy,@ReportTime)
-	select @ReportPeriods=convert(varchar(50),@ReportTimeYear)+'年第1期'
-	--根据参数值，向FirstAssessment_FirstLevelSafetyAssessmentReportTable添加记录 	
-	insert into FirstAssessment_FirstLevelSafetyAssessmentReportTable (ReportPeriods,ReportTime,AssessmentReasonsId)values(@ReportPeriods,@ReportTime,@AssessmentReasonsId)
-	end
 --预警触发一级评估报告
 if @ThresholdGradeId=3 and @InsertTime not in (select ReportTime from FirstAssessment_FirstLevelSafetyAssessmentReportTable)
 	begin
@@ -1292,7 +1446,7 @@ if @ThresholdGradeId<>3
 go
 
 -------------------------------------------------------------------------------------------------------------------------
---由特征值湿度表格触发生成一级评估报告表,3种情况,(1)首期报告;(2)红色预警触发报告;(3)常规月报
+-------------------由特征值湿度表格触发生成一级评估报告表,(1)红色预警触发报告;(2)常规月报------------------------------------
 if(OBJECT_ID('tgr_Eigenvalue_HumidityEigenvalueTableForAssessment','TR') is not null)
 drop trigger tgr_Eigenvalue_HumidityEigenvalueTableForAssessment
 go
@@ -1315,16 +1469,6 @@ case
 end
 select @InsertTime=dateadd(hh,1,"Time") from inserted
 
---首期报告:Eigenvalue_HumidityEigenvalueTable首条记录插入，且不存在评估报告时，开始首期评估
-if (select count(*) from Eigenvalue_HumidityEigenvalueTable)=1 and (select count(*) from FirstAssessment_FirstLevelSafetyAssessmentReportTable)=0
-	begin
-	set @AssessmentReasonsId=1
-	select @ReportTime=dateadd(hh,1,"Time") from inserted
-	select @ReportTimeYear=DATEPART(yyyy,@ReportTime)
-	select @ReportPeriods=convert(varchar(50),@ReportTimeYear)+'年第1期'
-	--根据参数值，向FirstAssessment_FirstLevelSafetyAssessmentReportTable添加记录 	
-	insert into FirstAssessment_FirstLevelSafetyAssessmentReportTable (ReportPeriods,ReportTime,AssessmentReasonsId)values(@ReportPeriods,@ReportTime,@AssessmentReasonsId)
-	end
 --预警触发一级评估报告
 if @ThresholdGradeId=3 and @InsertTime not in (select ReportTime from FirstAssessment_FirstLevelSafetyAssessmentReportTable)
 	begin
