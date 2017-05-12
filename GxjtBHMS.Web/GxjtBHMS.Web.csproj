@@ -339,7 +339,6 @@
     <Content Include="Content\Images\上层桥面吊杆监测平面图.png" />
     <Content Include="Content\Images\下层桥面吊杆监测平面图.png" />
     <Content Include="Content\Images\位移实时监测.png" />
-    <Content Include="Content\Images\刚性系杆应变断面图.png" />
     <Content Include="Content\Images\吊杆.png" />
     <Content Include="Content\Images\拱肋横撑截面.png" />
     <Content Include="Content\Images\桥型图.png" />
@@ -353,14 +352,12 @@
     <Content Include="Content\Images\系杆断面图.png" />
     <Content Include="Content\Images\系统说明.png" />
     <Content Include="Content\Images\索力监测立面图.png" />
-    <Content Include="Content\Images\肋间横梁断面图.png" />
     <Content Include="Content\Images\西江四桥.jpg" />
-    <Content Include="Content\Images\钢拱肋应变断面图.png" />
     <Content Include="Content\Images\钢拱肋监测立面图.png" />
     <Content Include="Content\Images\钢拱肋断面图.png" />
     <Content Include="Content\Images\钢格构监测立面图.png" />
-    <Content Include="Content\Images\钢横梁断面图.png" />
-    <Content Include="Content\Images\钢纵梁断面图.png" />
+    <Content Include="Content\Images\钢横梁断面.png" />
+    <Content Include="Content\Images\钢纵梁断面.png" />
     <Content Include="Content\Images\风速风向实时监测.png" />
     <Content Include="Content\jquery.datetimepicker.css" />
     <Content Include="Content\jquery.hotspot.css" />
