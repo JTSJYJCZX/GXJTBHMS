@@ -9,7 +9,7 @@
         <div class="popover-inner">
             <h3 class="popover-title">上层吊杆实时显示</h3>
             <div class="img-container">
-                <img src="~/Content/Images/上层吊杆平面图.png" class="section img-responsive carousel-inner img-rounded" />
+                <img src="~/Content/Images/上层桥面吊杆监测平面图.png" class="section img-responsive carousel-inner img-rounded" />
                 <span id="CF-UPH-L1" class="CFUPHL1">CF-UPH-L1</span>
                 <span id="CF-UPH-L2" class="CFUPHL2">CF-UPH-L2</span>
                 <span id="CF-UPH-L3" class="CFUPHL3">CF-UPH-L3</span>
@@ -36,7 +36,7 @@
         <div class="popover-inner">
             <h3 class="popover-title">下层吊杆实时显示</h3>
             <div class="img-container">
-                <img src="~/Content/Images/下层吊杆平面图.png" class="section img-responsive carousel-inner  img-rounded" />
+                <img src="~/Content/Images/下层桥面吊杆监测平面图.png" class="section img-responsive carousel-inner  img-rounded" />
                 <span id="CF-UNH-L1" class="CFUNHL1">CF-UNH-L1</span>
                 <span id="CF-UNH-L2" class="CFUNHL2">CF-UNH-L2</span>
                 <span id="CF-UNH-L3" class="CFUNHL3">CF-UNH-L3</span>
@@ -75,7 +75,9 @@
     <span class="info-icon info-iconCF2 " id="section1" data-target="pop2"> 下层吊杆 </span>
     <span class="info-icon info-iconCF3 " id="section2" data-target="pop3"> 柔性系杆 </span>
 
-    <img src="~/Content/Images/索力实时监测立面图.png" alt="" class="largeimage" id="image2" />
+    <span class="info-icon info-iconCFRS1 " id="roadSign1"> 高旺路 </span>
+    <span class="info-icon info-iconCFRS2 " id="roadSign2"> 新兴一路 </span>
+    <img src="~/Content/Images/索力监测立面图.png" alt="" class="largeimage" id="image2" />
 </div>
 
 <script type="text/javascript">
@@ -99,7 +101,7 @@
         numHub.client.realTimeDisplayDatas = function (models) {
             $.each(models, function (i, model) {
                 $.each(model.WarningRealTimeData, function (j, cableForceData) {
-                    $("#" + cableForceData.PointsNumber).html(cableForceData.CurrentData + "KN");
+                    $("#" + cableForceData.PointsNumber).html(cableForceData.PointsNumber + ":<br/>" + cableForceData.CurrentData + "KN");
                     $("#" + cableForceData.PointsNumber).css("color", cableForceData.WarningColor);
                 });
                 $("#" + "section" + i).css("color", model.SectionWarningColor);
