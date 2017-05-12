@@ -7,44 +7,44 @@
     ViewBag.Title = "HumidityDataRealTimeMonitoring";
 }
 
+<div style="height:500px">
+    <div class="img-container">
+        <img src="~/Content/Images/温湿度监测立面图及测点图.png" class="section img-responsive carousel-inner img-rounded" />
+        <span id="H-E-1" class="HE1">H-E-1</span>
+        <span id="H-SA-L1" class="HSAL1">H-SA-L1</span>
+        <span id="H-SA-L2" class="HSAL2">H-SA-L2</span>
+        <span id="H-SA-L3" class="HSAL3">H-SA-L3</span>
+        <span id="H-SA-L4" class="HSAL4">H-SA-L4</span>
+        <span id="H-SA-R1" class="HSAR1">H-SA-R1</span>
+        <span id="H-SA-R2" class="HSAR2">H-SA-R2</span>
+        <span id="H-SA-R3" class="HSAR3">H-SA-R3</span>
+        <span id="H-SA-R4" class="HSAR4">H-SA-R4</span>
 
-<div class="img-container">
-    <img src="~/Content/Images/温湿度监测立面图及测点图.png" class="section img-responsive carousel-inner img-rounded" />
-    <span id="H-E-1" class="HE1">H-E-1</span>
-    <span id="H-SA-L1" class="HSAL1">H-SA-L1</span>
-    <span id="H-SA-L2" class="HSAL2">H-SA-L2</span>
-    <span id="H-SA-L3" class="HSAL3">H-SA-L3</span>
-    <span id="H-SA-L4" class="HSAL4">H-SA-L4</span>
-    <span id="H-SA-R1" class="HSAR1">H-SA-R1</span>
-    <span id="H-SA-R2" class="HSAR2">H-SA-R2</span>
-    <span id="H-SA-R3" class="HSAR3">H-SA-R3</span>
-    <span id="H-SA-R4" class="HSAR4">H-SA-R4</span>
-
-    <span class="info-icon info-iconTRS1 " id="roadSign1"> 高旺路 </span>
-    <span class="info-icon info-iconTRS2 " id="roadSign2"> 新兴一路 </span>
+        <span class="info-icon info-iconTRS1 " id="roadSign1"> 高旺路 </span>
+        <span class="info-icon info-iconTRS2 " id="roadSign2"> 新兴一路 </span>
+    </div>
 </div>
-
-<script>
-    $(function () {
-        var numHub = $.connection.humidityDatasRealTimeMonitoringHub;
-        numHub.client.realTimeDisplayDatas = function (models) {
-            $.each(models, function (i, model) {
-                $.each(model.WarningRealTimeData, function (j, HumidityData) {
-                    $("#" + HumidityData.PointsNumber).html(HumidityData.PointsNumber + ":&nbsp&nbsp" + HumidityData.CurrentData + "%");
-                    $("#" + HumidityData.PointsNumber).css("color", HumidityData.WarningColor);
+    <script>
+        $(function () {
+            var numHub = $.connection.humidityDatasRealTimeMonitoringHub;
+            numHub.client.realTimeDisplayDatas = function (models) {
+                $.each(models, function (i, model) {
+                    $.each(model.WarningRealTimeData, function (j, HumidityData) {
+                        $("#" + HumidityData.PointsNumber).html(HumidityData.PointsNumber + ":&nbsp&nbsp" + HumidityData.CurrentData + "%");
+                        $("#" + HumidityData.PointsNumber).css("color", HumidityData.WarningColor);
+                    });
                 });
-            });
-        }
-        $.connection.hub.start().done(function () {
-            numHub.server.displayWarningHumidityDatas(6);
-        })
-    });
-</script>
+            }
+            $.connection.hub.start().done(function () {
+                numHub.server.displayWarningHumidityDatas(6);
+            })
+        });
+    </script>
 
 
-@section scripts{
-    <script src="~/Scripts/jquery.signalR-2.2.1.min.js"></script>
-    <script src="~/signalr/hubs"></script>
-}
+    @section scripts{
+        <script src="~/Scripts/jquery.signalR-2.2.1.min.js"></script>
+        <script src="~/signalr/hubs"></script>
+    }
 
-@Styles.Render("~/content/hotspotcss")
+    @Styles.Render("~/content/hotspotcss")

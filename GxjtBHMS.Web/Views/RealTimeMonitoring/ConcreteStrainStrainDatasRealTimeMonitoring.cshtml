@@ -3,7 +3,7 @@
 </div>
 <br />
 
-<div style="height:750px">
+<div style="height:650px">
     <div class="hotspotContainer" id="hotspotContainer1">
         <div class="popover1" data-easein="cardInTop" data-easeout="cardOutTop" id="pop1">
             <div class="img-container">
@@ -41,46 +41,47 @@
         <span class="info-icon info-iconRS2 " id="roadSign2"> 新兴一路 </span>
         <img src="~/Content/Images/混凝土应变监测立面图.png" alt="" class="largeimage" id="image2" />
     </div>
+</div>
 
-    <script type="text/javascript">
-        $(document).ready(function ($) {
-            var _pop2 = $('#hotspotContainer1').hotSpot({
-                slideshow: false,
-                triggerBy: 'click',
-                autoHide: false
-            });
-            $('#image2').on('click', function (event) {
-                _pop2.hideCurrentPop();
-            });
-
+<script type="text/javascript">
+    $(document).ready(function ($) {
+        var _pop2 = $('#hotspotContainer1').hotSpot({
+            slideshow: false,
+            triggerBy: 'click',
+            autoHide: false
         });
-    </script>
+        $('#image2').on('click', function (event) {
+            _pop2.hideCurrentPop();
+        });
 
-    <script>
-        $(function () {
-            var numHub = $.connection.concreteStrainDatasRealTimeMonitoringHub;
-            numHub.client.realTimeDisplayDatas = function (models) {
-                $.each(models, function (i, model) {
-                    $.each(model.WarningRealTimeData, function (j, strainData) {
-                        $("#" + strainData.PointsNumber).html(strainData.PointsNumber + ":&nbsp&nbsp" + strainData.CurrentData + "με");
-                        $("#" + strainData.PointsNumber).css("color", strainData.WarningColor);
-                    });
-                    $("#" + "section" + i).css("color", model.SectionWarningColor);
+    });
+</script>
+
+<script>
+    $(function () {
+        var numHub = $.connection.concreteStrainDatasRealTimeMonitoringHub;
+        numHub.client.realTimeDisplayDatas = function (models) {
+            $.each(models, function (i, model) {
+                $.each(model.WarningRealTimeData, function (j, strainData) {
+                    $("#" + strainData.PointsNumber).html(strainData.PointsNumber + ":&nbsp&nbsp" + strainData.CurrentData + "με");
+                    $("#" + strainData.PointsNumber).css("color", strainData.WarningColor);
                 });
-            }
-            $.connection.hub.start().done(function () {
-                numHub.server.displayWarningConcreteStrainDatas(3);
-            })
-        });
-    </script>
+                $("#" + "section" + i).css("color", model.SectionWarningColor);
+            });
+        }
+        $.connection.hub.start().done(function () {
+            numHub.server.displayWarningConcreteStrainDatas(3);
+        })
+    });
+</script>
 
 
-    @section scripts{
-        <script src="~/Scripts/jquery.signalR-2.2.1.min.js"></script>
-        <script src="~/signalr/hubs"></script>
-    }
+@section scripts{
+    <script src="~/Scripts/jquery.signalR-2.2.1.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+}
 
-    @Styles.Render("~/content/hotspotcss")
-    @Scripts.Render("~/bundles/hotspot")
+@Styles.Render("~/content/hotspotcss")
+@Scripts.Render("~/bundles/hotspot")
 
 
