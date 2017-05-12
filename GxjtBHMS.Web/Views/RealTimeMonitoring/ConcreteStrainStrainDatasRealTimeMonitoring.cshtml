@@ -6,81 +6,81 @@
 <div style="height:750px">
     <div class="hotspotContainer" id="hotspotContainer1">
         <div class="popover1" data-easein="cardInTop" data-easeout="cardOutTop" id="pop1">
-                <div class="img-container">
-                    <img src="~/Content/Images/混凝土拱肋断面.png" class="section img-responsive carousel-inner img-rounded" />
-                    <span id="S-CA-AL1" class="CAAL1">A1</span>
-                    <span id="S-CA-AL2" class="CAAL2">A2</span>
-                    <span id="S-CA-AL3" class="CAAL3">A3</span>
-                    <span id="S-CA-AL4" class="CAAL4">A4</span>
-                    <span id="S-CA-AR1" class="CAAL5">A5</span>
-                    <span id="S-CA-AR2" class="CAAL6">A6</span>
-                    <span id="S-CA-AR3" class="CAAL7">A7</span>
-                    <span id="S-CA-AR4" class="CAAL8">A8</span>
-                </div>
+            <div class="img-container">
+                <img src="~/Content/Images/混凝土拱肋断面.png" class="section img-responsive carousel-inner img-rounded" />
+                <span id="S-CA-AL1" class="CAAL1">A1</span>
+                <span id="S-CA-AL2" class="CAAL2">A2</span>
+                <span id="S-CA-AL3" class="CAAL3">A3</span>
+                <span id="S-CA-AL4" class="CAAL4">A4</span>
+                <span id="S-CA-AR1" class="CAAL5">A5</span>
+                <span id="S-CA-AR2" class="CAAL6">A6</span>
+                <span id="S-CA-AR3" class="CAAL7">A7</span>
+                <span id="S-CA-AR4" class="CAAL8">A8</span>
+            </div>
         </div>
 
         <div class="popover1" data-easein="cardInTop" data-easeout="cardOutTop" id="pop2">
-                <div class="img-container">
-                    <img src="~/Content/Images/混凝土拱肋断面.png" class="section img-responsive carousel-inner  img-rounded" />
-                    <span id="S-CA-BL1" class="CAAL1">S-CA-BL1</span>
-                    <span id="S-CA-BL2" class="CAAL2">S-CA-BL2</span>
-                    <span id="S-CA-BL3" class="CAAL3">S-CA-BL3</span>
-                    <span id="S-CA-BL4" class="CAAL4">S-CA-BL4</span>
-                    <span id="S-CA-BR1" class="CAAL5">S-CA-BR1</span>
-                    <span id="S-CA-BR2" class="CAAL6">S-CA-BR2</span>
-                    <span id="S-CA-BR3" class="CAAL7">S-CA-BR3</span>
-                    <span id="S-CA-BR4" class="CAAL8">S-CA-BR4</span>
-                </div>
+            <div class="img-container">
+                <img src="~/Content/Images/混凝土拱肋断面.png" class="section img-responsive carousel-inner  img-rounded" />
+                <span id="S-CA-BL1" class="CAAL1">S-CA-BL1</span>
+                <span id="S-CA-BL2" class="CAAL2">S-CA-BL2</span>
+                <span id="S-CA-BL3" class="CAAL3">S-CA-BL3</span>
+                <span id="S-CA-BL4" class="CAAL4">S-CA-BL4</span>
+                <span id="S-CA-BR1" class="CAAL5">S-CA-BR1</span>
+                <span id="S-CA-BR2" class="CAAL6">S-CA-BR2</span>
+                <span id="S-CA-BR3" class="CAAL7">S-CA-BR3</span>
+                <span id="S-CA-BR4" class="CAAL8">S-CA-BR4</span>
+            </div>
         </div>
 
 
         <span class="info-icon info-iconCA1" id="section0" data-target="pop1"> 混凝土拱肋A截面 </span>
         <span class="info-icon info-iconCA2 " id="section1" data-target="pop2"> 混凝土拱肋B截面 </span>
 
-    <span class="info-icon info-iconRS1 " id="roadSign1"> 高旺路 </span>
-    <span class="info-icon info-iconRS2 " id="roadSign2"> 新兴一路 </span>
-    <img src="~/Content/Images/混凝土应变监测立面图.png" alt="" class="largeimage" id="image2" />
-</div>
+        <span class="info-icon info-iconRS1 " id="roadSign1"> 高旺路 </span>
+        <span class="info-icon info-iconRS2 " id="roadSign2"> 新兴一路 </span>
+        <img src="~/Content/Images/混凝土应变监测立面图.png" alt="" class="largeimage" id="image2" />
+    </div>
 
-<script type="text/javascript">
-    $(document).ready(function ($) {
-        var _pop2 = $('#hotspotContainer1').hotSpot({
-            slideshow: false,
-            triggerBy: 'click',
-            autoHide: false
-        });
-        $('#image2').on('click', function (event) {
-            _pop2.hideCurrentPop();
-        });
-
-    });
-</script>
-
-<script>
-    $(function () {
-        var numHub = $.connection.concreteStrainDatasRealTimeMonitoringHub;
-        numHub.client.realTimeDisplayDatas = function (models) {
-            $.each(models, function (i, model) {
-                $.each(model.WarningRealTimeData, function (j, strainData) {
-                    $("#" + strainData.PointsNumber).html(strainData.PointsNumber + ":&nbsp&nbsp" + strainData.CurrentData + "με");
-                    $("#" + strainData.PointsNumber).css("color", strainData.WarningColor);
-                });
-                $("#" + "section" + i).css("color", model.SectionWarningColor);
+    <script type="text/javascript">
+        $(document).ready(function ($) {
+            var _pop2 = $('#hotspotContainer1').hotSpot({
+                slideshow: false,
+                triggerBy: 'click',
+                autoHide: false
             });
-        }
-        $.connection.hub.start().done(function () {
-            numHub.server.displayWarningConcreteStrainDatas(3);
-        })
-    });
-</script>
+            $('#image2').on('click', function (event) {
+                _pop2.hideCurrentPop();
+            });
+
+        });
+    </script>
+
+    <script>
+        $(function () {
+            var numHub = $.connection.concreteStrainDatasRealTimeMonitoringHub;
+            numHub.client.realTimeDisplayDatas = function (models) {
+                $.each(models, function (i, model) {
+                    $.each(model.WarningRealTimeData, function (j, strainData) {
+                        $("#" + strainData.PointsNumber).html(strainData.PointsNumber + ":&nbsp&nbsp" + strainData.CurrentData + "με");
+                        $("#" + strainData.PointsNumber).css("color", strainData.WarningColor);
+                    });
+                    $("#" + "section" + i).css("color", model.SectionWarningColor);
+                });
+            }
+            $.connection.hub.start().done(function () {
+                numHub.server.displayWarningConcreteStrainDatas(3);
+            })
+        });
+    </script>
 
 
-@section scripts{
-    <script src="~/Scripts/jquery.signalR-2.2.1.min.js"></script>
-    <script src="~/signalr/hubs"></script>
-}
+    @section scripts{
+        <script src="~/Scripts/jquery.signalR-2.2.1.min.js"></script>
+        <script src="~/signalr/hubs"></script>
+    }
 
-@Styles.Render("~/content/hotspotcss")
-@Scripts.Render("~/bundles/hotspot")
+    @Styles.Render("~/content/hotspotcss")
+    @Scripts.Render("~/bundles/hotspot")
 
 
