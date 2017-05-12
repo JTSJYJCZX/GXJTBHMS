@@ -1485,101 +1485,123 @@ img.info-icon {
     .img-container .HE1 {
         color: #ff0000;
         position: absolute;
-        left: 53%;
-        margin-top: 31.5%;
+        left: 52%;
+        margin-top: 27.5%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 1.7ex;
     }
 
     .img-container .HSAL1 {
         color: #ff0000;
         position: absolute;
-        left: 18%;
-        margin-top: 28%;
+        left: 19%;
+        margin-top: 24%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 1.7ex;
     }
 
     .img-container .HSAL2 {
         color: #ff0000;
         position: absolute;
         left: 48%;
-        margin-top: 28%;
+        margin-top: 24%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 1.7ex;
     }
 
     .img-container .HSAL3 {
         color: #ff0000;
         position: absolute;
-        left: 63%;
-        margin-top: 28%;
+        left: 65%;
+        margin-top: 24%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 1.7ex;
     }
 
     .img-container .HSAL4 {
         color: #ff0000;
         position: absolute;
         left: 83%;
-        margin-top: 28%;
+        margin-top: 24%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 1.7ex;
     }
 
     .img-container .HSAR1 {
         color: #ff0000;
         position: absolute;
-        left: 18%;
-        margin-top: 34.5%;
+        left: 19%;
+        margin-top: 31.5%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 1.7ex;
     }
 
     .img-container .HSAR2 {
         color: #ff0000;
         position: absolute;
         left: 48%;
-        margin-top: 34.5%;
+        margin-top: 31.5%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 1.7ex;
     }
 
     .img-container .HSAR3 {
         color: #ff0000;
         position: absolute;
-        left: 63%;
-        margin-top: 34.5%;
+        left: 65%;
+        margin-top: 31.5%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 1.7ex;
     }
 
     .img-container .HSAR4 {
         color: #ff0000;
         position: absolute;
         left: 83%;
-        margin-top: 34.5%;
+        margin-top: 31.5%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 1.7ex;
+    }
+
+    .img-container .info-iconTRS1 {
+        position: absolute;
+        left: 2.9%;
+        margin-top: 4.5%;
+        z-index: 2;
+        font-size: 1.5ex;
+    }
+
+    .img-container .info-iconTRS2 {
+        position: absolute;
+        left: 95%;
+        margin-top: 4.5%;
+        z-index: 2;
+        font-size: 1.5ex;
     }
 
     .img-container .WL1 {
         color: #ff0000;
         position: absolute;
         left: 50%;
-        margin-top: 26%;
+        margin-top: 24.5%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 1.7ex;
+    }
+
+        .img-container .info-iconWRS1 {
+        position: absolute;
+        left: 2.9%;
+        margin-top: 4.6%;
+        z-index: 2;
+        font-size: 1.5ex;
+    }
+
+    .img-container .info-iconWRS2 {
+        position: absolute;
+        left: 95%;
+        margin-top: 4.6%;
+        z-index: 2;
+        font-size: 1.5ex;
     }
 
     .img-container .DSA1X {

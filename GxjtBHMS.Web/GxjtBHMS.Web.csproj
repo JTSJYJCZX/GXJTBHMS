@@ -347,7 +347,7 @@
     <Content Include="Content\Images\混凝土拱肋应变立面图.png" />
     <Content Include="Content\Images\混凝土拱肋断面.png" />
     <Content Include="Content\Images\温度.png" />
-    <Content Include="Content\Images\温湿度实时监测.png" />
+    <Content Include="Content\Images\温湿度监测立面图及测点图.png" />
     <Content Include="Content\Images\湿度.png" />
     <Content Include="Content\Images\系杆断面图.png" />
     <Content Include="Content\Images\系统说明.png" />
@@ -358,7 +358,7 @@
     <Content Include="Content\Images\钢格构监测立面图.png" />
     <Content Include="Content\Images\钢横梁断面.png" />
     <Content Include="Content\Images\钢纵梁断面.png" />
-    <Content Include="Content\Images\风速风向实时监测.png" />
+    <Content Include="Content\Images\风速风向监测立面图及测点图.png" />
     <Content Include="Content\jquery.datetimepicker.css" />
     <Content Include="Content\jquery.hotspot.css" />
     <Content Include="Content\system.css" />
