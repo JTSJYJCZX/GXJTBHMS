@@ -341,13 +341,13 @@
     <Content Include="Content\Images\位移实时监测.png" />
     <Content Include="Content\Images\吊杆.png" />
     <Content Include="Content\Images\拱肋横撑截面.png" />
+    <Content Include="Content\Images\柔性系杆断面.png" />
     <Content Include="Content\Images\桥型图.png" />
     <Content Include="Content\Images\混凝土拱肋应变立面图.png" />
     <Content Include="Content\Images\混凝土拱肋断面.png" />
     <Content Include="Content\Images\温度.png" />
     <Content Include="Content\Images\温湿度实时监测.png" />
     <Content Include="Content\Images\湿度.png" />
-    <Content Include="Content\Images\系杆断面图.png" />
     <Content Include="Content\Images\系统说明.png" />
     <Content Include="Content\Images\索力实时监测立面图.png" />
     <Content Include="Content\Images\西江四桥.jpg" />

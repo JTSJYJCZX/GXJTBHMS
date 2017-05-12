@@ -1321,31 +1321,28 @@ img.info-icon {
     .img-container .SUSCB1 {
         color: #ff0000;
         position: absolute;
-        left: 38.5%;
+        left: 40.5%;
         margin-top: 28%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .SUSCB2 {
         color: #ff0000;
         position: absolute;
-        left: 51%;
+        left: 52.5%;
         margin-top: 28%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .SUSLB1 {
         color: #ff0000;
         position: absolute;
-        left: 27%;
+        left: 29%;
         margin-top: 22%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .SUSLB2 {
@@ -1354,8 +1351,7 @@ img.info-icon {
         left: 45%;
         margin-top: 22%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .SUSLB3 {
@@ -1364,8 +1360,7 @@ img.info-icon {
         left: 62%;
         margin-top: 22%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .SRTB1 {
@@ -1726,8 +1721,7 @@ img.info-icon {
         left: 28%;
         margin-top: 28%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .DSP2 {
@@ -1736,8 +1730,7 @@ img.info-icon {
         left: 71%;
         margin-top: 28%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .DSP3 {
@@ -1746,8 +1739,7 @@ img.info-icon {
         left: 28%;
         margin-top: 35%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .DSP4 {
@@ -1756,8 +1748,7 @@ img.info-icon {
         left: 71%;
         margin-top: 35%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .DE1 {
@@ -1766,8 +1757,7 @@ img.info-icon {
         left: 4%;
         margin-top: 28.5%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .DE2 {
@@ -1776,8 +1766,7 @@ img.info-icon {
         left: 93%;
         margin-top: 28.5%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .DE3 {
@@ -1786,8 +1775,7 @@ img.info-icon {
         left: 4%;
         margin-top: 34.5%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .DE4 {
@@ -1796,8 +1784,7 @@ img.info-icon {
         left: 93%;
         margin-top: 34.5%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFUPHL1 {
@@ -1806,8 +1793,7 @@ img.info-icon {
         left: 7%;
         margin-top: 6%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFUPHL2 {
@@ -1816,8 +1802,7 @@ img.info-icon {
         left: 13%;
         margin-top: 6%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFUPHL3 {
@@ -1826,8 +1811,7 @@ img.info-icon {
         left: 20%;
         margin-top: 6%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFUPHL4 {
@@ -1836,8 +1820,7 @@ img.info-icon {
         left: 33%;
         margin-top: 6%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
 
@@ -1847,8 +1830,7 @@ img.info-icon {
         left: 48%;
         margin-top: 6%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFUPHL6 {
@@ -1857,8 +1839,7 @@ img.info-icon {
         left: 63%;
         margin-top: 6%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFUPHL7 {
@@ -1867,8 +1848,7 @@ img.info-icon {
         left: 77%;
         margin-top: 6%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFUPHL8 {
@@ -1877,8 +1857,7 @@ img.info-icon {
         left: 83%;
         margin-top: 6%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFUPHL9 {
@@ -1887,8 +1866,7 @@ img.info-icon {
         left: 89%;
         margin-top: 6%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFUPHR1 {
@@ -1897,8 +1875,7 @@ img.info-icon {
         left: 7%;
         margin-top: 14%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFUPHR2 {
@@ -1907,8 +1884,7 @@ img.info-icon {
         left: 13%;
         margin-top: 14%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFUPHR3 {
@@ -1917,8 +1893,7 @@ img.info-icon {
         left: 20%;
         margin-top: 14%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFUPHR4 {
@@ -1927,8 +1902,7 @@ img.info-icon {
         left: 33%;
         margin-top: 14%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFUPHR5 {
@@ -1937,8 +1911,7 @@ img.info-icon {
         left: 48%;
         margin-top: 14%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFUPHR6 {
@@ -1947,8 +1920,7 @@ img.info-icon {
         left: 63%;
         margin-top: 14%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFUPHR7 {
@@ -1957,8 +1929,7 @@ img.info-icon {
         left: 77%;
         margin-top: 14%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFUPHR8 {
@@ -1967,8 +1938,7 @@ img.info-icon {
         left: 83%;
         margin-top: 14%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFUPHR9 {
@@ -1977,8 +1947,7 @@ img.info-icon {
         left: 89%;
         margin-top: 14%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFUNHL1 {
@@ -1987,8 +1956,7 @@ img.info-icon {
         left: 20%;
         margin-top: 5%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFUNHL2 {
@@ -1997,8 +1965,7 @@ img.info-icon {
         left: 31%;
         margin-top: 5%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFUNHL3 {
@@ -2007,8 +1974,7 @@ img.info-icon {
         left: 63%;
         margin-top: 5%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFUNHL4 {
@@ -2017,8 +1983,7 @@ img.info-icon {
         left: 75%;
         margin-top: 5%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFUNHR1 {
@@ -2027,8 +1992,7 @@ img.info-icon {
         left: 20%;
         margin-top: 13%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFUNHR2 {
@@ -2037,8 +2001,7 @@ img.info-icon {
         left: 31%;
         margin-top: 13%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFUNHR3 {
@@ -2047,8 +2010,7 @@ img.info-icon {
         left: 63%;
         margin-top: 13%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFUNHR4 {
@@ -2057,126 +2019,113 @@ img.info-icon {
         left: 75%;
         margin-top: 13%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFFTBL1 {
         color: #ff0000;
         position: absolute;
-        left: 12%;
-        margin-top: 4%;
+        left: 10%;
+        margin-top: 6%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFFTBL2 {
         color: #ff0000;
         position: absolute;
-        left: 11%;
-        margin-top: 7%;
+        left: 9.5%;
+        margin-top: 9%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFFTBL3 {
         color: #ff0000;
         position: absolute;
-        left: 10%;
-        margin-top: 10%;
+        left: 9%;
+        margin-top: 11.5%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFFTBL4 {
         color: #ff0000;
         position: absolute;
-        left: 33%;
-        margin-top: 4%;
+        left: 31%;
+        margin-top: 6%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFFTBL5 {
         color: #ff0000;
         position: absolute;
-        left: 34%;
-        margin-top: 7%;
+        left: 31.5%;
+        margin-top: 9%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFFTBL6 {
         color: #ff0000;
         position: absolute;
-        left: 35%;
-        margin-top: 10%;
+        left: 32%;
+        margin-top: 11.5%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFFTBR1 {
         color: #ff0000;
         position: absolute;
-        left: 61%;
-        margin-top: 4%;
+        left: 64%;
+        margin-top: 6%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFFTBR2 {
         color: #ff0000;
         position: absolute;
-        left: 60%;
-        margin-top: 7%;
+        left: 63.5%;
+        margin-top: 9%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFFTBR3 {
         color: #ff0000;
         position: absolute;
-        left: 59%;
-        margin-top: 10%;
+        left: 63%;
+        margin-top: 11.5%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFFTBR4 {
         color: #ff0000;
         position: absolute;
-        left: 83%;
-        margin-top: 4%;
+        left: 85%;
+        margin-top: 6%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFFTBR5 {
         color: #ff0000;
         position: absolute;
-        left: 84%;
-        margin-top: 7%;
+        left: 85.5%;
+        margin-top: 9%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
 
     .img-container .CFFTBR6 {
         color: #ff0000;
         position: absolute;
-        left: 85%;
-        margin-top: 10%;
+        left: 85.5%;
+        margin-top: 11.5%;
         z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
+        font-size: 2ex;
     }
