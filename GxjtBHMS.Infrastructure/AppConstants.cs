@@ -12,7 +12,7 @@
 
         //预警颜色
         public const string SafetyPreWarningThresholdGrade1Color = "darkgreen";
-        public const string SafetyPreWarningThresholdGrade2Color = "goldenrod";
+        public const string SafetyPreWarningThresholdGrade2Color = "#FFD306";
         public const string SafetyPreWarningThresholdGrade3Color = "Red";
     }
 }
