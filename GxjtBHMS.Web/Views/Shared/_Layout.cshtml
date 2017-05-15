@@ -45,8 +45,8 @@
                     <span id="help" class="glyphicon glyphicon-book" style="color:wheat"></span>
                     @Html.ActionLink("操作手册", "OperationManual", "SystemInformation", "", new { style = "color:white" })&nbsp&nbsp&nbsp&nbsp&nbsp
 
-                    <span id="welecom" class="glyphicon glyphicon-user" style="color:wheat"></span>                
-                   
+                    <span id="welecom" class="glyphicon glyphicon-user" style="color:wheat"></span>
+
                     @Html.ActionLink(Session[WebConstants.UserNickNameKey].ToString(), "EditUserInfo", "User", "", new { style = "color:white" })&nbsp&nbsp&nbsp
                     <span>
                         @using (Html.BeginForm(actionName: "Logout", controllerName: "User", method: FormMethod.Post, htmlAttributes: new { id = "logoutForm" }))
@@ -65,7 +65,7 @@
             <div class="col-md-2 " id="sidebar">
                 <ul id="main-nav" class="nav nav-tabs nav-stacked" style="">
                     <li class="active">
-                        <a href="/Home/Index">
+                        <a href=@Url.Action("Index","Home")>
                             <i class="glyphicon glyphicon-home"></i>&nbsp首页
                         </a>
 
@@ -77,14 +77,14 @@
                         </a>
                         <ul id="systemSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
                             <li>
-                                <a href="/SystemInformation/SystemDescription"><i class="glyphicon glyphicon-align-center"></i>&nbsp系统总体说明</a>
+                                <a href=@Url.Action("SystemDescription", "SystemInformation")><i class="glyphicon glyphicon-align-center"></i>&nbsp系统总体说明</a>
                             </li>
 
                             <li>
-                                <a href="/SystemInformation/SystemFunctionIntroduction"><i class="glyphicon glyphicon-align-center"></i>&nbsp系统功能简介</a>
+                                <a href=@Url.Action("SystemFunctionIntroduction", "SystemInformation")><i class="glyphicon glyphicon-align-center"></i>&nbsp系统功能简介</a>
                             </li>
                             <li>
-                                <a href="/SystemInformation/MonitoringPointsPositionAndNumber"><i class="glyphicon glyphicon-align-center"></i>&nbsp测点布置及编号</a>
+                                <a href=@Url.Action("MonitoringPointsPositionAndNumber", "SystemInformation")><i class="glyphicon glyphicon-align-center"></i>&nbsp测点布置及编号</a>
                             </li>
                         </ul>
                     </li>
@@ -101,35 +101,35 @@
                                 <a href="#systemSecondSetting1" class="nav-header collapsed" data-toggle="collapse"><i class="glyphicon glyphicon-stats glyphicon "></i>&nbsp应变监测</a>
                                 <ul id="systemSecondSetting1" class="nav nav-list collapse thirdmenu" style="height: 0px;">
                                     <li>
-                                        <a href="/RealTimeMonitoring/SteelArchStrainDatasRealTimeMonitoring"><i class="glyphicon glyphicon-stats glyphicon "></i>&nbsp钢拱肋应变监测</a>
+                                        <a href=@Url.Action("SteelArchStrainDatasRealTimeMonitoring", "RealTimeMonitoring")><i class="glyphicon glyphicon-stats glyphicon "></i>&nbsp钢拱肋应变监测</a>
                                     </li>
                                     <li>
-                                        <a href="/RealTimeMonitoring/SteelLatticeStrainDatasRealTimeMonitoring"><i class="glyphicon glyphicon-stats glyphicon "></i>&nbsp钢格构应变监测</a>
+                                        <a href=@Url.Action("SteelLatticeStrainDatasRealTimeMonitoring", "RealTimeMonitoring")><i class="glyphicon glyphicon-stats glyphicon "></i>&nbsp钢格构应变监测</a>
                                     </li>
                                     <li>
-                                        <a href="/RealTimeMonitoring/ConcreteStrainStrainDatasRealTimeMonitoring"><i class="glyphicon glyphicon-stats glyphicon "></i>&nbsp混凝土应变监测</a>
+                                        <a href=@Url.Action("ConcreteStrainStrainDatasRealTimeMonitoring", "RealTimeMonitoring")><i class="glyphicon glyphicon-stats glyphicon "></i>&nbsp混凝土应变监测</a>
                                     </li>
                                 </ul>
                             </li>
 
                             <li>
-                                <a href="/RealTimeMonitoring/DisplacementDatasRealTimeMonitoring"><i class="glyphicon glyphicon-stats glyphicon "></i>&nbsp位移监测</a>
+                                <a href=@Url.Action("DisplacementDatasRealTimeMonitoring", "RealTimeMonitoring")><i class="glyphicon glyphicon-stats glyphicon "></i>&nbsp位移监测</a>
                             </li>
 
                             <li>
-                                <a href="/RealTimeMonitoring/TemperatureDatasRealTimeMonitoring"><i class="glyphicon glyphicon-stats glyphicon "></i>&nbsp温度监测</a>
+                                <a href=@Url.Action("TemperatureDatasRealTimeMonitoring", "RealTimeMonitoring")><i class="glyphicon glyphicon-stats glyphicon "></i>&nbsp温度监测</a>
                             </li>
 
                             <li>
-                                <a href="/RealTimeMonitoring/HumidityDatasRealTimeMonitoring"><i class="glyphicon glyphicon-stats glyphicon "></i>&nbsp湿度监测</a>
+                                <a href=@Url.Action("HumidityDatasRealTimeMonitoring", "RealTimeMonitoring")><i class="glyphicon glyphicon-stats glyphicon "></i>&nbsp湿度监测</a>
                             </li>
 
                             <li>
-                                <a href="/RealTimeMonitoring/WindLoadDatasRealTimeMonitoring"><i class="glyphicon glyphicon-stats glyphicon "></i>&nbsp风速风向监测</a>
+                                <a href=@Url.Action("WindLoadDatasRealTimeMonitoring", "RealTimeMonitoring")><i class="glyphicon glyphicon-stats glyphicon "></i>&nbsp风速风向监测</a>
                             </li>
 
                             <li>
-                                <a href="/RealTimeMonitoring/CableForceDatasRealTimeMonitoring"><i class="glyphicon glyphicon-stats glyphicon "></i>&nbsp索力监测</a>
+                                <a href=@Url.Action("CableForceDatasRealTimeMonitoring", "RealTimeMonitoring")><i class="glyphicon glyphicon-stats glyphicon "></i>&nbsp索力监测</a>
                             </li>
 
                         </ul>
@@ -142,10 +142,10 @@
                             <span class="pull-right glyphicon glyphicon-chevron-down"></span>
                         </a>
                         <ul id="systemSetting3" class="nav nav-list collapse secondmenu" style="height: 0px;">
-                            <li><a href="/MonitoringDatas/DataQuery"><i class="glyphicon glyphicon-eye-open"></i>&nbsp数据查询</a></li>
-                            <li><a href="/MonitoringDatasComparingQuery/DataComparingQuery"><i class="glyphicon glyphicon-fullscreen"></i>&nbsp对比查询</a></li>
-                            <li><a href="/AlarmDatasManagement/AlarmDatasManagementQuery"><i class="glyphicon glyphicon-edit"></i>&nbsp预警数据管理</a></li>
-                            <li class="adminli"><a href="/AnomalousEventManagement/AnomalousEventManagement"><i class="glyphicon glyphicon-eye-open"></i>&nbsp异常事件管理</a></li>
+                            <li><a href=@Url.Action("DataQuery", "MonitoringDatas")><i class="glyphicon glyphicon-eye-open"></i>&nbsp数据查询</a></li>
+                            <li><a href=@Url.Action("DataComparingQuery", "MonitoringDatasComparingQuery")><i class="glyphicon glyphicon-fullscreen"></i>&nbsp对比查询</a></li>
+                            <li><a href=@Url.Action("AlarmDatasManagementQuery", "AlarmDatasManagement")><i class="glyphicon glyphicon-edit"></i>&nbsp预警数据管理</a></li>
+                            <li class="adminli"><a href=@Url.Action("AnomalousEventManagement", "AnomalousEventManagement")><i class="glyphicon glyphicon-eye-open"></i>&nbsp异常事件管理</a></li>
                         </ul>
                     </li>
 
@@ -156,12 +156,12 @@
                             安全预警与评估
                             <span class="pull-right glyphicon glyphicon-chevron-down"></span>
                         </a>
-                        <ul id="systemSetting4" class="nav nav-list collapse secondmenu" style="height: 0px;">                          
-                            <li><a href="/SafetyPreWarning/SafetyPreWarning"><i class="glyphicon glyphicon-th-list"></i>&nbsp安全预警</a></li>
-                            <li><a href="/ManualInspectionSafetyAssessment/ManualInspectionSafetyAssessment"><i class="glyphicon glyphicon-asterisk"></i>&nbsp人工巡检评估</a></li>
-                            <li><a href="/FirstLevelSafetyAssessment/FirstLevelSafetyAssessment"><i class="glyphicon glyphicon-asterisk"></i>&nbsp一级安全评估</a></li>
-                            <li><a href="/SecondLevelSafetyAssessment/SecondLevelSafetyAssessment"><i class="glyphicon glyphicon-asterisk"></i>&nbsp二级安全评估</a></li>
-                            <li><a href="/SpecialSafetyAssessment/SpecialSafetyAssessment"><i class="glyphicon glyphicon-asterisk"></i>&nbsp专项评估</a></li>
+                        <ul id="systemSetting4" class="nav nav-list collapse secondmenu" style="height: 0px;">
+                            <li><a href=@Url.Action("SafetyPreWarning", "SafetyPreWarning")><i class="glyphicon glyphicon-th-list"></i>&nbsp安全预警</a></li>
+                            <li><a href=@Url.Action("ManualInspectionSafetyAssessment", "ManualInspectionSafetyAssessment")><i class="glyphicon glyphicon-asterisk"></i>&nbsp人工巡检评估</a></li>
+                            <li><a href=@Url.Action("FirstLevelSafetyAssessment", "FirstLevelSafetyAssessment")><i class="glyphicon glyphicon-asterisk"></i>&nbsp一级安全评估</a></li>
+                            <li><a href=@Url.Action("SecondLevelSafetyAssessment", "SecondLevelSafetyAssessment")><i class="glyphicon glyphicon-asterisk"></i>&nbsp二级安全评估</a></li>
+                            <li><a href=@Url.Action("SpecialSafetyAssessment", "SpecialSafetyAssessment")><i class="glyphicon glyphicon-asterisk"></i>&nbsp专项评估</a></li>
                         </ul>
                     </li>
 
@@ -173,13 +173,13 @@
                         </a>
                         <ul id="systemSetting5" class="nav nav-list collapse secondmenu" style="height: 0px;">
                             <li>
-                                <a href="/User/EditUserInfo"><i class="glyphicon glyphicon-list"></i>&nbsp编辑账号</a>
+                                <a href=@Url.Action("EditUserInfo", "User")><i class="glyphicon glyphicon-list"></i>&nbsp编辑账号</a>
                             </li>
                             <li class="adminli">
-                                <a href="/AdminUser/RegistUser"><i class="glyphicon glyphicon-pencil"></i>&nbsp用户注册</a>
+                                <a href=@Url.Action("RegistUser", "AdminUser")><i class="glyphicon glyphicon-pencil"></i>&nbsp用户注册</a>
                             </li>
                             <li class="adminli">
-                                <a href="/AdminUser/ListUserMessage"><i class="glyphicon glyphicon-briefcase"></i>&nbsp用户管理</a>
+                                <a href=@Url.Action("ListUserMessage", "AdminUser")><i class="glyphicon glyphicon-briefcase"></i>&nbsp用户管理</a>
                             </li>
                         </ul>
                     </li>
@@ -190,8 +190,8 @@
                             <span class="pull-right glyphicon glyphicon-chevron-down"></span>
                         </a>
                         <ul id="systemSetting6" class="nav nav-list collapse secondmenu" style="height: 0px;">
-                            <li><a href="/ThresholdValueSetting/ThresholdValueSetting"><i class="glyphicon glyphicon-align-left"></i>&nbsp预警值阈值设置</a></li>
-                            <li><a href="/AbnormalThresholdValueSetting/AbnormalThresholdValueSetting"><i class="glyphicon glyphicon-align-left"></i>&nbsp异常值阈值设置</a></li>
+                            <li><a href=@Url.Action("ThresholdValueSetting", "ThresholdValueSetting")><i class="glyphicon glyphicon-align-left"></i>&nbsp预警值阈值设置</a></li>
+                            <li><a href=@Url.Action("AbnormalThresholdValueSetting", "AbnormalThresholdValueSetting")><i class="glyphicon glyphicon-align-left"></i>&nbsp异常值阈值设置</a></li>
                         </ul>
                     </li>
 
