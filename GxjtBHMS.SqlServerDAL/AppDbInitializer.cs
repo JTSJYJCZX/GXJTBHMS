@@ -319,19 +319,19 @@ namespace GxjtBHMS.SqlServerDAL
         ThresholdGradeTable ThresholdGrade1 = new ThresholdGradeTable
         {
             ThresholdGrade = "正常",
-            Suggest="无",
-            ThresholdColor = AppConstants.SafetyPreWarningThresholdGrade1Color 
+            Suggest = "无",
+            ThresholdColor = AppConstants.SafetyPreWarningThresholdGrade1Color
         };
         ThresholdGradeTable ThresholdGrade2 = new ThresholdGradeTable
         {
             ThresholdGrade = "黄色预警",
-            Suggest="加强观测",
+            Suggest = "加强观测",
             ThresholdColor = AppConstants.SafetyPreWarningThresholdGrade2Color
         };
         ThresholdGradeTable ThresholdGrade3 = new ThresholdGradeTable
         {
             ThresholdGrade = "红色预警",
-            Suggest="进行专项检查",
+            Suggest = "进行专项检查",
             ThresholdColor = AppConstants.SafetyPreWarningThresholdGrade3Color
         };
 
@@ -341,7 +341,7 @@ namespace GxjtBHMS.SqlServerDAL
         /// <param name="context"></param>
         FirstAssessment_FirstLevelSafetyAssessmentReasonsTable Reasons1 = new FirstAssessment_FirstLevelSafetyAssessmentReasonsTable
         {
-            AssessmentReasons= "首次评估"
+            AssessmentReasons = "首次评估"
         };
         FirstAssessment_FirstLevelSafetyAssessmentReasonsTable Reasons2 = new FirstAssessment_FirstLevelSafetyAssessmentReasonsTable
         {
@@ -358,7 +358,7 @@ namespace GxjtBHMS.SqlServerDAL
         SecondAssessment_SecondLevelSafetyAssessmentStateTable AssessmentGrade1 = new SecondAssessment_SecondLevelSafetyAssessmentStateTable
         {
             AssessmentGrade = "1类",
-            AssessmentState="完好状态"
+            AssessmentState = "完好状态"
         };
         SecondAssessment_SecondLevelSafetyAssessmentStateTable AssessmentGrade2 = new SecondAssessment_SecondLevelSafetyAssessmentStateTable
         {
@@ -415,7 +415,7 @@ namespace GxjtBHMS.SqlServerDAL
         /// </summary>
         AnomalousEventReasonTable AnomalousEventReason1 = new AnomalousEventReasonTable
         {
-            AnomalousEventReason="数据超过合理范围"
+            AnomalousEventReason = "数据超过合理范围"
         };
         AnomalousEventReasonTable AnomalousEventReason2 = new AnomalousEventReasonTable
         {
@@ -580,7 +580,7 @@ namespace GxjtBHMS.SqlServerDAL
         }
 
 
-        
+
 
         /// <summary>
         /// 风速阈值设置
@@ -593,7 +593,7 @@ namespace GxjtBHMS.SqlServerDAL
 
         private void InitialWindloadThresholdValue(BHMSContext context)
         {
-            var p = 40;
+            var p = 24;
             for (int i = 0; i < tmpNumbers29.Length; i++)
             {
                 var ThresholdValue = new ThresholdValue_WindLoadThresholdValueTable
@@ -618,14 +618,15 @@ namespace GxjtBHMS.SqlServerDAL
 
         private void InitialHumidityThresholdValue(BHMSContext context)
         {
-            var p = 80;
+            var outHumidityP = 100;
+            var inHumidityP = 60;
             for (int i = 0; i < tmpNumbers24.Length; i++)
             {
                 var ThresholdValue = new ThresholdValue_HumidityThresholdValueTable
                 {
                     PointsNumber = tmpNumbers24[i],
-                    PositiveFirstLevelThresholdValue = p * 0.8,
-                    PositiveSecondLevelThresholdValue = p * 1.0,
+                    PositiveFirstLevelThresholdValue = outHumidityP * 0.8,
+                    PositiveSecondLevelThresholdValue = outHumidityP * 1.0,
                 };
                 context.HumidityThresholdValues.Add(ThresholdValue);
             }
@@ -634,8 +635,8 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_HumidityThresholdValueTable
                 {
                     PointsNumber = tmpNumbers25[i],
-                    PositiveFirstLevelThresholdValue = p * 0.8,
-                    PositiveSecondLevelThresholdValue = p * 1.0,
+                    PositiveFirstLevelThresholdValue = inHumidityP * 0.8,
+                    PositiveSecondLevelThresholdValue = inHumidityP * 1.0,
                 };
                 context.HumidityThresholdValues.Add(ThresholdValue);
             }
@@ -653,17 +654,20 @@ namespace GxjtBHMS.SqlServerDAL
 
         private void InitialTemperatureThresholdValue(BHMSContext context)
         {
-            var p = 80;
-            var n = -20;
+            var outTemperatureP = 46;
+            var outTemperatureN = -3;
+            var inTemperatureP = 60;
+            var inTemperatureN = -3;
+
             for (int i = 0; i < tmpNumbers22.Length; i++)
             {
                 var ThresholdValue = new ThresholdValue_TemperatureThresholdValueTable
                 {
                     PointsNumber = tmpNumbers22[i],
-                    PositiveFirstLevelThresholdValue = p * 0.8,
-                    PositiveSecondLevelThresholdValue = p * 1.0,
-                    NegativeFirstLevelThresholdValue = n * 0.8,
-                    NegativeSecondLevelThresholdValue = n * 1.0,
+                    PositiveFirstLevelThresholdValue = outTemperatureP * 0.8,
+                    PositiveSecondLevelThresholdValue = outTemperatureP * 1.0,
+                    NegativeFirstLevelThresholdValue = outTemperatureN * 0.8,
+                    NegativeSecondLevelThresholdValue = outTemperatureN * 1.0,
                 };
                 context.TemperatureThresholdValues.Add(ThresholdValue);
             }
@@ -672,10 +676,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_TemperatureThresholdValueTable
                 {
                     PointsNumber = tmpNumbers23[i],
-                    PositiveFirstLevelThresholdValue = p * 0.8,
-                    PositiveSecondLevelThresholdValue = p * 1.0,
-                    NegativeFirstLevelThresholdValue = n * 0.8,
-                    NegativeSecondLevelThresholdValue = n * 1.0,
+                    PositiveFirstLevelThresholdValue = inTemperatureP * 0.8,
+                    PositiveSecondLevelThresholdValue = inTemperatureP * 1.0,
+                    NegativeFirstLevelThresholdValue = inTemperatureN * 0.8,
+                    NegativeSecondLevelThresholdValue = inTemperatureN * 1.0,
                 };
                 context.TemperatureThresholdValues.Add(ThresholdValue);
             }
@@ -692,14 +696,16 @@ namespace GxjtBHMS.SqlServerDAL
 
         private void InitialCableForceThresholdValue(BHMSContext context)
         {
-            var p = 2500;
+            var cFUPH = 1946;
+            var cFUNH = 2870;
+            var cFFTB = 2087;
             for (int i = 0; i < tmpNumbers26.Length; i++)
             {
                 var ThresholdValue = new ThresholdValue_CableForceThresholdValueTable
                 {
                     PointsNumber = tmpNumbers26[i],
-                    PositiveFirstLevelThresholdValue = p * 0.8,
-                    PositiveSecondLevelThresholdValue = p * 1.0,
+                    PositiveFirstLevelThresholdValue = cFUPH * 0.8,
+                    PositiveSecondLevelThresholdValue = cFUPH * 1.0,
                 };
                 context.CableForceThresholdValues.Add(ThresholdValue);
             }
@@ -708,8 +714,8 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_CableForceThresholdValueTable
                 {
                     PointsNumber = tmpNumbers27[i],
-                    PositiveFirstLevelThresholdValue = p * 0.8,
-                    PositiveSecondLevelThresholdValue = p * 1.0,
+                    PositiveFirstLevelThresholdValue = cFUNH * 0.8,
+                    PositiveSecondLevelThresholdValue = cFUNH * 1.0,
                 };
                 context.CableForceThresholdValues.Add(ThresholdValue);
             }
@@ -718,8 +724,8 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_CableForceThresholdValueTable
                 {
                     PointsNumber = tmpNumbers28[i],
-                    PositiveFirstLevelThresholdValue = p * 0.8,
-                    PositiveSecondLevelThresholdValue = p * 1.0,
+                    PositiveFirstLevelThresholdValue = cFFTB * 0.8,
+                    PositiveSecondLevelThresholdValue = cFFTB * 1.0,
                 };
                 context.CableForceThresholdValues.Add(ThresholdValue);
             }
@@ -736,41 +742,141 @@ namespace GxjtBHMS.SqlServerDAL
 
         private void InitialDisplaymentThresholdValue(BHMSContext context)
         {
-            var p = 50;
-            var n = -50;
-            for (int i = 0; i < tmpNumbers18.Length; i++)
+            var DSAXYThresholdP = 15;
+            var DSAXYThresholdN = -15;
+            var DSAMiddleZThresholdP = 65;
+            var DSAMiddleZThresholdN = -84;
+            var DSASideZThresholdP = 6.8;
+            var DSASideZThresholdN = -24.4;
+            var DBDMiddleZThresholdP = 65;
+            var DBDMiddleZThresholdN = -115.7;
+            var DBDSideZThresholdP = 6.5;
+            var DBDSideZThresholdN = -48.1;
+            var DSPThresholdP = 150;
+            var DSPThresholdN = 0;
+            var DDEThresholdP = 100;
+            var DDEThresholdN = 0;
+
+            //拱肋位移测点阈值设置
+            for (int i = 0; i < 2 * tmpNumbers18.Length / 3; i++)
             {
                 var ThresholdValue = new ThresholdValue_DisplacementThresholdValueTable
                 {
                     PointsNumber = tmpNumbers18[i],
-                    PositiveFirstLevelThresholdValue = p * 0.8,
-                    PositiveSecondLevelThresholdValue = p * 1.0,
-                    NegativeFirstLevelThresholdValue = n * 0.8,
-                    NegativeSecondLevelThresholdValue = n * 1.0,
+                    PositiveFirstLevelThresholdValue = DSAXYThresholdP * 0.8,
+                    PositiveSecondLevelThresholdValue = DSAXYThresholdP * 1.0,
+                    NegativeFirstLevelThresholdValue = DSAXYThresholdN * 0.8,
+                    NegativeSecondLevelThresholdValue = DSAXYThresholdN * 1.0,
                 };
                 context.DisplaymentThresholdValues.Add(ThresholdValue);
             }
-            for (int i = 0; i < tmpNumbers19.Length; i++)
+
+            var ThresholdValue1 = new ThresholdValue_DisplacementThresholdValueTable
             {
-                var ThresholdValue = new ThresholdValue_DisplacementThresholdValueTable
-                {
-                    PointsNumber = tmpNumbers19[i],
-                    PositiveFirstLevelThresholdValue = p * 0.8,
-                    PositiveSecondLevelThresholdValue = p * 1.0,
-                    NegativeFirstLevelThresholdValue = n * 0.8,
-                    NegativeSecondLevelThresholdValue = n * 1.0,
-                };
-                context.DisplaymentThresholdValues.Add(ThresholdValue);
-            }
+                PointsNumber = tmpNumbers18[2 * tmpNumbers18.Length / 3],
+                PositiveFirstLevelThresholdValue = DSASideZThresholdP * 0.8,
+                PositiveSecondLevelThresholdValue = DSASideZThresholdP * 1.0,
+                NegativeFirstLevelThresholdValue = DSASideZThresholdN * 0.8,
+                NegativeSecondLevelThresholdValue = DSASideZThresholdN * 1.0,
+            };
+            context.DisplaymentThresholdValues.Add(ThresholdValue1);
+
+            ThresholdValue1 = new ThresholdValue_DisplacementThresholdValueTable
+            {
+                PointsNumber = tmpNumbers18[2 * tmpNumbers18.Length / 3 + 2],
+                PositiveFirstLevelThresholdValue = DSASideZThresholdP * 0.8,
+                PositiveSecondLevelThresholdValue = DSASideZThresholdP * 1.0,
+                NegativeFirstLevelThresholdValue = DSASideZThresholdN * 0.8,
+                NegativeSecondLevelThresholdValue = DSASideZThresholdN * 1.0,
+            };
+            context.DisplaymentThresholdValues.Add(ThresholdValue1);
+
+            ThresholdValue1 = new ThresholdValue_DisplacementThresholdValueTable
+            {
+                PointsNumber = tmpNumbers18[2 * tmpNumbers18.Length / 3 + 1],
+                PositiveFirstLevelThresholdValue = DSAMiddleZThresholdP * 0.8,
+                PositiveSecondLevelThresholdValue = DSAMiddleZThresholdP * 1.0,
+                NegativeFirstLevelThresholdValue = DSAMiddleZThresholdN * 0.8,
+                NegativeSecondLevelThresholdValue = DSAMiddleZThresholdN * 1.0,
+            };
+            context.DisplaymentThresholdValues.Add(ThresholdValue1);
+
+            ThresholdValue1 = new ThresholdValue_DisplacementThresholdValueTable
+            {
+                PointsNumber = tmpNumbers18[2 * tmpNumbers18.Length / 3 + 3],
+                PositiveFirstLevelThresholdValue = DSAMiddleZThresholdP * 0.8,
+                PositiveSecondLevelThresholdValue = DSAMiddleZThresholdP * 1.0,
+                NegativeFirstLevelThresholdValue = DSAMiddleZThresholdN * 0.8,
+                NegativeSecondLevelThresholdValue = DSAMiddleZThresholdN * 1.0,
+            };
+            context.DisplaymentThresholdValues.Add(ThresholdValue1);
+            //桥面位移测点阈值设置
+            var ThresholdValue2 = new ThresholdValue_DisplacementThresholdValueTable
+            {
+                PointsNumber = tmpNumbers19[0],
+                PositiveFirstLevelThresholdValue = DBDSideZThresholdP * 0.8,
+                PositiveSecondLevelThresholdValue = DBDSideZThresholdP * 1.0,
+                NegativeFirstLevelThresholdValue = DBDSideZThresholdN * 0.8,
+                NegativeSecondLevelThresholdValue = DBDSideZThresholdN * 1.0,
+            };
+            context.DisplaymentThresholdValues.Add(ThresholdValue2);
+            ThresholdValue2 = new ThresholdValue_DisplacementThresholdValueTable
+            {
+                PointsNumber = tmpNumbers19[2],
+                PositiveFirstLevelThresholdValue = DBDSideZThresholdP * 0.8,
+                PositiveSecondLevelThresholdValue = DBDSideZThresholdP * 1.0,
+                NegativeFirstLevelThresholdValue = DBDSideZThresholdN * 0.8,
+                NegativeSecondLevelThresholdValue = DBDSideZThresholdN * 1.0,
+            };
+            context.DisplaymentThresholdValues.Add(ThresholdValue2);
+            ThresholdValue2 = new ThresholdValue_DisplacementThresholdValueTable
+            {
+                PointsNumber = tmpNumbers19[3],
+                PositiveFirstLevelThresholdValue = DBDSideZThresholdP * 0.8,
+                PositiveSecondLevelThresholdValue = DBDSideZThresholdP * 1.0,
+                NegativeFirstLevelThresholdValue = DBDSideZThresholdN * 0.8,
+                NegativeSecondLevelThresholdValue = DBDSideZThresholdN * 1.0,
+            };
+            context.DisplaymentThresholdValues.Add(ThresholdValue2);
+            ThresholdValue2 = new ThresholdValue_DisplacementThresholdValueTable
+            {
+                PointsNumber = tmpNumbers19[5],
+                PositiveFirstLevelThresholdValue = DBDSideZThresholdP * 0.8,
+                PositiveSecondLevelThresholdValue = DBDSideZThresholdP * 1.0,
+                NegativeFirstLevelThresholdValue = DBDSideZThresholdN * 0.8,
+                NegativeSecondLevelThresholdValue = DBDSideZThresholdN * 1.0,
+            };
+            context.DisplaymentThresholdValues.Add(ThresholdValue2);
+
+            ThresholdValue2 = new ThresholdValue_DisplacementThresholdValueTable
+            {
+                PointsNumber = tmpNumbers19[1],
+                PositiveFirstLevelThresholdValue = DBDMiddleZThresholdP * 0.8,
+                PositiveSecondLevelThresholdValue = DBDMiddleZThresholdP * 1.0,
+                NegativeFirstLevelThresholdValue = DBDMiddleZThresholdN * 0.8,
+                NegativeSecondLevelThresholdValue = DBDMiddleZThresholdN * 1.0,
+            };
+            context.DisplaymentThresholdValues.Add(ThresholdValue2);
+            ThresholdValue2 = new ThresholdValue_DisplacementThresholdValueTable
+            {
+                PointsNumber = tmpNumbers19[4],
+                PositiveFirstLevelThresholdValue = DBDMiddleZThresholdP * 0.8,
+                PositiveSecondLevelThresholdValue = DBDMiddleZThresholdP * 1.0,
+                NegativeFirstLevelThresholdValue = DBDMiddleZThresholdN * 0.8,
+                NegativeSecondLevelThresholdValue = DBDMiddleZThresholdN * 1.0,
+            };
+            context.DisplaymentThresholdValues.Add(ThresholdValue2);
+
+            //伸缩缝位移测点阈值设置
             for (int i = 0; i < tmpNumbers20.Length; i++)
             {
                 var ThresholdValue = new ThresholdValue_DisplacementThresholdValueTable
                 {
                     PointsNumber = tmpNumbers20[i],
-                    PositiveFirstLevelThresholdValue = p * 0.8,
-                    PositiveSecondLevelThresholdValue = p * 1.0,
-                    NegativeFirstLevelThresholdValue = n * 0.8,
-                    NegativeSecondLevelThresholdValue = n * 1.0,
+                    PositiveFirstLevelThresholdValue = DSPThresholdP * 0.8,
+                    PositiveSecondLevelThresholdValue = DSPThresholdP * 1.0,
+                    NegativeFirstLevelThresholdValue = DSPThresholdN * 0.8,
+                    NegativeSecondLevelThresholdValue = DSPThresholdN * 1.0,
                 };
                 context.DisplaymentThresholdValues.Add(ThresholdValue);
             }
@@ -779,16 +885,14 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_DisplacementThresholdValueTable
                 {
                     PointsNumber = tmpNumbers21[i],
-                    PositiveFirstLevelThresholdValue = p * 0.8,
-                    PositiveSecondLevelThresholdValue = p * 1.0,
-                    NegativeFirstLevelThresholdValue = n * 0.8,
-                    NegativeSecondLevelThresholdValue = n * 1.0,
+                    PositiveFirstLevelThresholdValue = DDEThresholdP * 0.8,
+                    PositiveSecondLevelThresholdValue = DDEThresholdP * 1.0,
+                    NegativeFirstLevelThresholdValue = DDEThresholdN * 0.8,
+                    NegativeSecondLevelThresholdValue = DDEThresholdN * 1.0,
                 };
                 context.DisplaymentThresholdValues.Add(ThresholdValue);
             }
-
         }
-
         /// <summary>
         /// 初始化应变阈值
         /// </summary>
@@ -800,17 +904,33 @@ namespace GxjtBHMS.SqlServerDAL
         }
         private void InitialSteelStrainThresholdValue(BHMSContext context)
         {
-            var p = 350.00;
-            var n = -350.00;
+            var sideSteelArchStrainThresholdP = 80.00;
+            var sideSteelArchStrainThresholdN = -585.00;
+            var middleSteelArchStrainThresholdP = 128.00;
+            var middleSteelArchStrainThresholdN = -776.00;
+            var steelArchHCStrainThresholdP = 352.00;
+            var steelArchHCStrainThresholdN = -471.00;
+            var steelGXGUpStrainThresholdP = 620.00;
+            var steelGXGUpStrainThresholdN = -248.00;
+            var steelGXGDownStrainThresholdP = 332.00;
+            var steelGXGDownStrainThresholdN = -472.00;
+            var steelGHLStrainThresholdP = 784.00;
+            var steelGHLStrainThresholdN = -777.00;
+            var steelLJHLStrainThresholdP = 784.00;
+            var steelLJHLStrainThresholdN = -777.00;
+            var steelGZLStrainThresholdP = 445.00;
+            var steelGZLStrainThresholdN = -748.00;
+
+
             for (int i = 0; i < tmpNumbers1.Length; i++)
             {
                 var ThresholdValue = new ThresholdValue_SteelArchStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers1[i],
-                    PositiveFirstLevelThresholdValue = p * 0.8,
-                    PositiveSecondLevelThresholdValue = p * 1.0,
-                    NegativeFirstLevelThresholdValue = n * 0.8,
-                    NegativeSecondLevelThresholdValue = n * 1.0,
+                    PositiveFirstLevelThresholdValue = sideSteelArchStrainThresholdP * 0.8,
+                    PositiveSecondLevelThresholdValue = sideSteelArchStrainThresholdP * 1.0,
+                    NegativeFirstLevelThresholdValue = sideSteelArchStrainThresholdN * 0.8,
+                    NegativeSecondLevelThresholdValue = sideSteelArchStrainThresholdN * 1.0,
                 };
                 context.SteelArchStrainThresholdValues.Add(ThresholdValue);
             }
@@ -819,10 +939,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_SteelArchStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers2[i],
-                    PositiveFirstLevelThresholdValue = p * 0.8,
-                    PositiveSecondLevelThresholdValue = p * 1.0,
-                    NegativeFirstLevelThresholdValue = n * 0.8,
-                    NegativeSecondLevelThresholdValue = n * 1.0,
+                    PositiveFirstLevelThresholdValue = middleSteelArchStrainThresholdP * 0.8,
+                    PositiveSecondLevelThresholdValue = middleSteelArchStrainThresholdP * 1.0,
+                    NegativeFirstLevelThresholdValue = middleSteelArchStrainThresholdN * 0.8,
+                    NegativeSecondLevelThresholdValue = middleSteelArchStrainThresholdN * 1.0,
                 };
                 context.SteelArchStrainThresholdValues.Add(ThresholdValue);
             }
@@ -831,10 +951,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_SteelArchStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers3[i],
-                    PositiveFirstLevelThresholdValue = p * 0.8,
-                    PositiveSecondLevelThresholdValue = p * 1.0,
-                    NegativeFirstLevelThresholdValue = n * 0.8,
-                    NegativeSecondLevelThresholdValue = n * 1.0,
+                    PositiveFirstLevelThresholdValue = sideSteelArchStrainThresholdP * 0.8,
+                    PositiveSecondLevelThresholdValue = sideSteelArchStrainThresholdP * 1.0,
+                    NegativeFirstLevelThresholdValue = sideSteelArchStrainThresholdN * 0.8,
+                    NegativeSecondLevelThresholdValue = sideSteelArchStrainThresholdN * 1.0,
                 };
                 context.SteelArchStrainThresholdValues.Add(ThresholdValue);
             }
@@ -843,10 +963,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_SteelArchStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers4[i],
-                    PositiveFirstLevelThresholdValue = p * 0.8,
-                    PositiveSecondLevelThresholdValue = p * 1.0,
-                    NegativeFirstLevelThresholdValue = n * 0.8,
-                    NegativeSecondLevelThresholdValue = n * 1.0,
+                    PositiveFirstLevelThresholdValue = middleSteelArchStrainThresholdP * 0.8,
+                    PositiveSecondLevelThresholdValue = middleSteelArchStrainThresholdP * 1.0,
+                    NegativeFirstLevelThresholdValue = middleSteelArchStrainThresholdN * 0.8,
+                    NegativeSecondLevelThresholdValue = middleSteelArchStrainThresholdN * 1.0,
                 };
                 context.SteelArchStrainThresholdValues.Add(ThresholdValue);
             }
@@ -855,10 +975,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_SteelArchStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers5[i],
-                    PositiveFirstLevelThresholdValue = p * 0.8,
-                    PositiveSecondLevelThresholdValue = p * 1.0,
-                    NegativeFirstLevelThresholdValue = n * 0.8,
-                    NegativeSecondLevelThresholdValue = n * 1.0,
+                    PositiveFirstLevelThresholdValue = sideSteelArchStrainThresholdP * 0.8,
+                    PositiveSecondLevelThresholdValue = sideSteelArchStrainThresholdP * 1.0,
+                    NegativeFirstLevelThresholdValue = sideSteelArchStrainThresholdN * 0.8,
+                    NegativeSecondLevelThresholdValue = sideSteelArchStrainThresholdN * 1.0,
                 };
                 context.SteelArchStrainThresholdValues.Add(ThresholdValue);
             }
@@ -867,10 +987,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_SteelArchStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers6[i],
-                    PositiveFirstLevelThresholdValue = p * 0.8,
-                    PositiveSecondLevelThresholdValue = p * 1.0,
-                    NegativeFirstLevelThresholdValue = n * 0.8,
-                    NegativeSecondLevelThresholdValue = n * 1.0,
+                    PositiveFirstLevelThresholdValue = steelArchHCStrainThresholdP * 0.8,
+                    PositiveSecondLevelThresholdValue = steelArchHCStrainThresholdP * 1.0,
+                    NegativeFirstLevelThresholdValue = steelArchHCStrainThresholdN * 0.8,
+                    NegativeSecondLevelThresholdValue = steelArchHCStrainThresholdN * 1.0,
                 };
                 context.SteelArchStrainThresholdValues.Add(ThresholdValue);
             }
@@ -879,10 +999,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_SteelArchStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers7[i],
-                    PositiveFirstLevelThresholdValue = p * 0.8,
-                    PositiveSecondLevelThresholdValue = p * 1.0,
-                    NegativeFirstLevelThresholdValue = n * 0.8,
-                    NegativeSecondLevelThresholdValue = n * 1.0,
+                    PositiveFirstLevelThresholdValue = steelArchHCStrainThresholdP * 0.8,
+                    PositiveSecondLevelThresholdValue = steelArchHCStrainThresholdP * 1.0,
+                    NegativeFirstLevelThresholdValue = steelArchHCStrainThresholdN * 0.8,
+                    NegativeSecondLevelThresholdValue = steelArchHCStrainThresholdN * 1.0,
                 };
                 context.SteelArchStrainThresholdValues.Add(ThresholdValue);
             }
@@ -891,10 +1011,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_SteelLatticeStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers8[i],
-                    PositiveFirstLevelThresholdValue = p * 0.8,
-                    PositiveSecondLevelThresholdValue = p * 1.0,
-                    NegativeFirstLevelThresholdValue = n * 0.8,
-                    NegativeSecondLevelThresholdValue = n * 1.0,
+                    PositiveFirstLevelThresholdValue = steelLJHLStrainThresholdP * 0.8,
+                    PositiveSecondLevelThresholdValue = steelLJHLStrainThresholdP * 1.0,
+                    NegativeFirstLevelThresholdValue = steelLJHLStrainThresholdN * 0.8,
+                    NegativeSecondLevelThresholdValue = steelLJHLStrainThresholdN * 1.0,
                 };
                 context.SteelLatticeStrainThresholdValues.Add(ThresholdValue);
             }
@@ -903,10 +1023,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_SteelLatticeStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers9[i],
-                    PositiveFirstLevelThresholdValue = p * 0.8,
-                    PositiveSecondLevelThresholdValue = p * 1.0,
-                    NegativeFirstLevelThresholdValue = n * 0.8,
-                    NegativeSecondLevelThresholdValue = n * 1.0,
+                    PositiveFirstLevelThresholdValue = steelLJHLStrainThresholdP * 0.8,
+                    PositiveSecondLevelThresholdValue = steelLJHLStrainThresholdP * 1.0,
+                    NegativeFirstLevelThresholdValue = steelLJHLStrainThresholdN * 0.8,
+                    NegativeSecondLevelThresholdValue = steelLJHLStrainThresholdN * 1.0,
                 };
                 context.SteelLatticeStrainThresholdValues.Add(ThresholdValue);
             }
@@ -915,10 +1035,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_SteelLatticeStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers10[i],
-                    PositiveFirstLevelThresholdValue = p * 0.8,
-                    PositiveSecondLevelThresholdValue = p * 1.0,
-                    NegativeFirstLevelThresholdValue = n * 0.8,
-                    NegativeSecondLevelThresholdValue = n * 1.0,
+                    PositiveFirstLevelThresholdValue = steelGHLStrainThresholdP * 0.8,
+                    PositiveSecondLevelThresholdValue = steelGHLStrainThresholdP * 1.0,
+                    NegativeFirstLevelThresholdValue = steelGHLStrainThresholdN * 0.8,
+                    NegativeSecondLevelThresholdValue = steelGHLStrainThresholdN * 1.0,
                 };
                 context.SteelLatticeStrainThresholdValues.Add(ThresholdValue);
             }
@@ -927,10 +1047,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_SteelLatticeStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers11[i],
-                    PositiveFirstLevelThresholdValue = p * 0.8,
-                    PositiveSecondLevelThresholdValue = p * 1.0,
-                    NegativeFirstLevelThresholdValue = n * 0.8,
-                    NegativeSecondLevelThresholdValue = n * 1.0,
+                    PositiveFirstLevelThresholdValue = steelGHLStrainThresholdP * 0.8,
+                    PositiveSecondLevelThresholdValue = steelGHLStrainThresholdP * 1.0,
+                    NegativeFirstLevelThresholdValue = steelGHLStrainThresholdN * 0.8,
+                    NegativeSecondLevelThresholdValue = steelGHLStrainThresholdN * 1.0,
                 };
                 context.SteelLatticeStrainThresholdValues.Add(ThresholdValue);
             }
@@ -939,10 +1059,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_SteelLatticeStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers12[i],
-                    PositiveFirstLevelThresholdValue = p * 0.8,
-                    PositiveSecondLevelThresholdValue = p * 1.0,
-                    NegativeFirstLevelThresholdValue = n * 0.8,
-                    NegativeSecondLevelThresholdValue = n * 1.0,
+                    PositiveFirstLevelThresholdValue = steelGZLStrainThresholdP * 0.8,
+                    PositiveSecondLevelThresholdValue = steelGZLStrainThresholdP * 1.0,
+                    NegativeFirstLevelThresholdValue = steelGZLStrainThresholdN * 0.8,
+                    NegativeSecondLevelThresholdValue = steelGZLStrainThresholdN * 1.0,
                 };
                 context.SteelLatticeStrainThresholdValues.Add(ThresholdValue);
             }
@@ -951,63 +1071,216 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_SteelLatticeStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers13[i],
-                    PositiveFirstLevelThresholdValue = p * 0.8,
-                    PositiveSecondLevelThresholdValue = p * 1.0,
-                    NegativeFirstLevelThresholdValue = n * 0.8,
-                    NegativeSecondLevelThresholdValue = n * 1.0,
+                    PositiveFirstLevelThresholdValue = steelGZLStrainThresholdP * 0.8,
+                    PositiveSecondLevelThresholdValue = steelGZLStrainThresholdP * 1.0,
+                    NegativeFirstLevelThresholdValue = steelGZLStrainThresholdN * 0.8,
+                    NegativeSecondLevelThresholdValue = steelGZLStrainThresholdN * 1.0,
                 };
                 context.SteelLatticeStrainThresholdValues.Add(ThresholdValue);
             }
-            for (int i = 0; i < tmpNumbers14.Length; i++)
+
+            for (int i = 0; i < tmpNumbers14.Length / 4; i++)
             {
                 var ThresholdValue = new ThresholdValue_SteelLatticeStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers14[i],
-                    PositiveFirstLevelThresholdValue = p * 0.8,
-                    PositiveSecondLevelThresholdValue = p * 1.0,
-                    NegativeFirstLevelThresholdValue = n * 0.8,
-                    NegativeSecondLevelThresholdValue = n * 1.0,
+                    PositiveFirstLevelThresholdValue = steelGXGUpStrainThresholdP * 0.8,
+                    PositiveSecondLevelThresholdValue = steelGXGUpStrainThresholdP * 1.0,
+                    NegativeFirstLevelThresholdValue = steelGXGUpStrainThresholdN * 0.8,
+                    NegativeSecondLevelThresholdValue = steelGXGUpStrainThresholdN * 1.0,
                 };
                 context.SteelLatticeStrainThresholdValues.Add(ThresholdValue);
             }
-            for (int i = 0; i < tmpNumbers15.Length; i++)
+            for (int i = tmpNumbers14.Length / 4; i < tmpNumbers14.Length / 2; i++)
+            {
+                var ThresholdValue = new ThresholdValue_SteelLatticeStrainThresholdValueTable
+                {
+                    PointsNumber = tmpNumbers14[i],
+                    PositiveFirstLevelThresholdValue = steelGXGDownStrainThresholdP * 0.8,
+                    PositiveSecondLevelThresholdValue = steelGXGDownStrainThresholdP * 1.0,
+                    NegativeFirstLevelThresholdValue = steelGXGDownStrainThresholdN * 0.8,
+                    NegativeSecondLevelThresholdValue = steelGXGDownStrainThresholdN * 1.0,
+                };
+                context.SteelLatticeStrainThresholdValues.Add(ThresholdValue);
+            }
+
+            for (int i = tmpNumbers14.Length / 2; i < 3 * tmpNumbers14.Length / 4; i++)
+            {
+                var ThresholdValue = new ThresholdValue_SteelLatticeStrainThresholdValueTable
+                {
+                    PointsNumber = tmpNumbers14[i],
+                    PositiveFirstLevelThresholdValue = steelGXGUpStrainThresholdP * 0.8,
+                    PositiveSecondLevelThresholdValue = steelGXGUpStrainThresholdP * 1.0,
+                    NegativeFirstLevelThresholdValue = steelGXGUpStrainThresholdN * 0.8,
+                    NegativeSecondLevelThresholdValue = steelGXGUpStrainThresholdN * 1.0,
+                };
+                context.SteelLatticeStrainThresholdValues.Add(ThresholdValue);
+            }
+            for (int i = 3 * tmpNumbers14.Length / 4; i < tmpNumbers14.Length; i++)
+            {
+                var ThresholdValue = new ThresholdValue_SteelLatticeStrainThresholdValueTable
+                {
+                    PointsNumber = tmpNumbers14[i],
+                    PositiveFirstLevelThresholdValue = steelGXGDownStrainThresholdP * 0.8,
+                    PositiveSecondLevelThresholdValue = steelGXGDownStrainThresholdP * 1.0,
+                    NegativeFirstLevelThresholdValue = steelGXGDownStrainThresholdN * 0.8,
+                    NegativeSecondLevelThresholdValue = steelGXGDownStrainThresholdN * 1.0,
+                };
+                context.SteelLatticeStrainThresholdValues.Add(ThresholdValue);
+            }
+
+            for (int i = 0; i < tmpNumbers15.Length / 4; i++)
             {
                 var ThresholdValue = new ThresholdValue_SteelLatticeStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers15[i],
-                    PositiveFirstLevelThresholdValue = p * 0.8,
-                    PositiveSecondLevelThresholdValue = p * 1.0,
-                    NegativeFirstLevelThresholdValue = n * 0.8,
-                    NegativeSecondLevelThresholdValue = n * 1.0,
+                    PositiveFirstLevelThresholdValue = steelGXGUpStrainThresholdP * 0.8,
+                    PositiveSecondLevelThresholdValue = steelGXGUpStrainThresholdP * 1.0,
+                    NegativeFirstLevelThresholdValue = steelGXGUpStrainThresholdN * 0.8,
+                    NegativeSecondLevelThresholdValue = steelGXGUpStrainThresholdN * 1.0,
+                };
+                context.SteelLatticeStrainThresholdValues.Add(ThresholdValue);
+            }
+            for (int i = tmpNumbers15.Length / 4; i < tmpNumbers15.Length / 2; i++)
+            {
+                var ThresholdValue = new ThresholdValue_SteelLatticeStrainThresholdValueTable
+                {
+                    PointsNumber = tmpNumbers15[i],
+                    PositiveFirstLevelThresholdValue = steelGXGDownStrainThresholdP * 0.8,
+                    PositiveSecondLevelThresholdValue = steelGXGDownStrainThresholdP * 1.0,
+                    NegativeFirstLevelThresholdValue = steelGXGDownStrainThresholdN * 0.8,
+                    NegativeSecondLevelThresholdValue = steelGXGDownStrainThresholdN * 1.0,
+                };
+                context.SteelLatticeStrainThresholdValues.Add(ThresholdValue);
+            }
+            for (int i = tmpNumbers15.Length / 2; i < 3 * tmpNumbers15.Length / 4; i++)
+            {
+                var ThresholdValue = new ThresholdValue_SteelLatticeStrainThresholdValueTable
+                {
+                    PointsNumber = tmpNumbers15[i],
+                    PositiveFirstLevelThresholdValue = steelGXGUpStrainThresholdP * 0.8,
+                    PositiveSecondLevelThresholdValue = steelGXGUpStrainThresholdP * 1.0,
+                    NegativeFirstLevelThresholdValue = steelGXGUpStrainThresholdN * 0.8,
+                    NegativeSecondLevelThresholdValue = steelGXGUpStrainThresholdN * 1.0,
+                };
+                context.SteelLatticeStrainThresholdValues.Add(ThresholdValue);
+            }
+            for (int i = 3 * tmpNumbers15.Length / 4; i < tmpNumbers15.Length; i++)
+            {
+                var ThresholdValue = new ThresholdValue_SteelLatticeStrainThresholdValueTable
+                {
+                    PointsNumber = tmpNumbers15[i],
+                    PositiveFirstLevelThresholdValue = steelGXGDownStrainThresholdP * 0.8,
+                    PositiveSecondLevelThresholdValue = steelGXGDownStrainThresholdP * 1.0,
+                    NegativeFirstLevelThresholdValue = steelGXGDownStrainThresholdN * 0.8,
+                    NegativeSecondLevelThresholdValue = steelGXGDownStrainThresholdN * 1.0,
                 };
                 context.SteelLatticeStrainThresholdValues.Add(ThresholdValue);
             }
         }
+
         private void InitialConcreteStrainThresholdValue(BHMSContext context)
         {
-            var p = 100.00;
-            var n = -80.00;
-            for (int i = 0; i < tmpNumbers16.Length; i++)
+            var concreteUpStrainThresholdP = 0;
+            var concreteUpStrainThresholdN = -222.00;
+            var concreteDownStrainThresholdP = 0;
+            var concreteDownStrainThresholdN = -244.00;
+
+
+            for (int i = 0; i < tmpNumbers16.Length / 4; i++)
             {
                 var ThresholdValue = new ThresholdValue_ConcreteStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers16[i],
-                    PositiveFirstLevelThresholdValue = p * 0.8,
-                    PositiveSecondLevelThresholdValue = p * 1.0,
-                    NegativeFirstLevelThresholdValue = n * 0.8,
-                    NegativeSecondLevelThresholdValue = n * 1.0,
+                    PositiveFirstLevelThresholdValue = concreteUpStrainThresholdP * 0.8,
+                    PositiveSecondLevelThresholdValue = concreteUpStrainThresholdP * 1.0,
+                    NegativeFirstLevelThresholdValue = concreteUpStrainThresholdN * 0.8,
+                    NegativeSecondLevelThresholdValue = concreteUpStrainThresholdN * 1.0,
                 };
                 context.ConcreteStrainThresholdValues.Add(ThresholdValue);
             }
-            for (int i = 0; i < tmpNumbers17.Length; i++)
+            for (int i = tmpNumbers16.Length / 4; i < tmpNumbers16.Length / 2; i++)
+            {
+                var ThresholdValue = new ThresholdValue_ConcreteStrainThresholdValueTable
+                {
+                    PointsNumber = tmpNumbers16[i],
+                    PositiveFirstLevelThresholdValue = concreteDownStrainThresholdP * 0.8,
+                    PositiveSecondLevelThresholdValue = concreteDownStrainThresholdP * 1.0,
+                    NegativeFirstLevelThresholdValue = concreteDownStrainThresholdN * 0.8,
+                    NegativeSecondLevelThresholdValue = concreteDownStrainThresholdN * 1.0,
+                };
+                context.ConcreteStrainThresholdValues.Add(ThresholdValue);
+            }
+            for (int i = tmpNumbers16.Length / 2; i < 3 * tmpNumbers16.Length / 4; i++)
+            {
+                var ThresholdValue = new ThresholdValue_ConcreteStrainThresholdValueTable
+                {
+                    PointsNumber = tmpNumbers16[i],
+                    PositiveFirstLevelThresholdValue = concreteUpStrainThresholdP * 0.8,
+                    PositiveSecondLevelThresholdValue = concreteUpStrainThresholdP * 1.0,
+                    NegativeFirstLevelThresholdValue = concreteUpStrainThresholdN * 0.8,
+                    NegativeSecondLevelThresholdValue = concreteUpStrainThresholdN * 1.0,
+                };
+                context.ConcreteStrainThresholdValues.Add(ThresholdValue);
+            }
+            for (int i = 3 * tmpNumbers16.Length / 4; i < tmpNumbers16.Length; i++)
+            {
+                var ThresholdValue = new ThresholdValue_ConcreteStrainThresholdValueTable
+                {
+                    PointsNumber = tmpNumbers16[i],
+                    PositiveFirstLevelThresholdValue = concreteDownStrainThresholdP * 0.8,
+                    PositiveSecondLevelThresholdValue = concreteDownStrainThresholdP * 1.0,
+                    NegativeFirstLevelThresholdValue = concreteDownStrainThresholdN * 0.8,
+                    NegativeSecondLevelThresholdValue = concreteDownStrainThresholdN * 1.0,
+                };
+                context.ConcreteStrainThresholdValues.Add(ThresholdValue);
+            }
+
+            for (int i = 0; i < tmpNumbers17.Length / 4; i++)
             {
                 var ThresholdValue = new ThresholdValue_ConcreteStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers17[i],
-                    PositiveFirstLevelThresholdValue = p * 0.8,
-                    PositiveSecondLevelThresholdValue = p * 1.0,
-                    NegativeFirstLevelThresholdValue = n * 0.8,
-                    NegativeSecondLevelThresholdValue = n * 1.0,
+                    PositiveFirstLevelThresholdValue = concreteUpStrainThresholdP * 0.8,
+                    PositiveSecondLevelThresholdValue = concreteUpStrainThresholdP * 1.0,
+                    NegativeFirstLevelThresholdValue = concreteUpStrainThresholdN * 0.8,
+                    NegativeSecondLevelThresholdValue = concreteUpStrainThresholdN * 1.0,
+                };
+                context.ConcreteStrainThresholdValues.Add(ThresholdValue);
+            }
+            for (int i = tmpNumbers17.Length / 4; i < tmpNumbers17.Length / 2; i++)
+            {
+                var ThresholdValue = new ThresholdValue_ConcreteStrainThresholdValueTable
+                {
+                    PointsNumber = tmpNumbers17[i],
+                    PositiveFirstLevelThresholdValue = concreteDownStrainThresholdP * 0.8,
+                    PositiveSecondLevelThresholdValue = concreteDownStrainThresholdP * 1.0,
+                    NegativeFirstLevelThresholdValue = concreteDownStrainThresholdN * 0.8,
+                    NegativeSecondLevelThresholdValue = concreteDownStrainThresholdN * 1.0,
+                };
+                context.ConcreteStrainThresholdValues.Add(ThresholdValue);
+            }
+            for (int i = tmpNumbers17.Length / 2; i < 3 * tmpNumbers17.Length / 4; i++)
+            {
+                var ThresholdValue = new ThresholdValue_ConcreteStrainThresholdValueTable
+                {
+                    PointsNumber = tmpNumbers17[i],
+                    PositiveFirstLevelThresholdValue = concreteUpStrainThresholdP * 0.8,
+                    PositiveSecondLevelThresholdValue = concreteUpStrainThresholdP * 1.0,
+                    NegativeFirstLevelThresholdValue = concreteUpStrainThresholdN * 0.8,
+                    NegativeSecondLevelThresholdValue = concreteUpStrainThresholdN * 1.0,
+                };
+                context.ConcreteStrainThresholdValues.Add(ThresholdValue);
+            }
+            for (int i = 3 * tmpNumbers17.Length / 4; i < tmpNumbers17.Length; i++)
+            {
+                var ThresholdValue = new ThresholdValue_ConcreteStrainThresholdValueTable
+                {
+                    PointsNumber = tmpNumbers17[i],
+                    PositiveFirstLevelThresholdValue = concreteDownStrainThresholdP * 0.8,
+                    PositiveSecondLevelThresholdValue = concreteDownStrainThresholdP * 1.0,
+                    NegativeFirstLevelThresholdValue = concreteDownStrainThresholdN * 0.8,
+                    NegativeSecondLevelThresholdValue = concreteDownStrainThresholdN * 1.0,
                 };
                 context.ConcreteStrainThresholdValues.Add(ThresholdValue);
             }
@@ -1159,19 +1432,19 @@ namespace GxjtBHMS.SqlServerDAL
                 //索力特征值初始化
                 for (int j = 0; j < tmpNumbers26.Length; j++)
                 {
-                    var cableForceEigenvalue = new Eigenvalue_CableForceEigenvalueTable  { PointsNumber = tmpNumbers26[j], Time = time, Max = random.Next(1200, 1500), Min = random.Next(800, 1100), Average = random.Next(1000, 1300) };
+                    var cableForceEigenvalue = new Eigenvalue_CableForceEigenvalueTable { PointsNumber = tmpNumbers26[j], Time = time, Max = random.Next(1200, 1500), Min = random.Next(800, 1100), Average = random.Next(1000, 1300) };
                     context.CableForceEigenvalues.Add(cableForceEigenvalue);
                 }
 
                 for (int j = 0; j < tmpNumbers27.Length; j++)
                 {
-                    var cableForceEigenvalue = new Eigenvalue_CableForceEigenvalueTable  { PointsNumber = tmpNumbers27[j], Time = time, Max = random.Next(1200, 1500), Min = random.Next(800, 1100), Average = random.Next(1000, 1300) };
+                    var cableForceEigenvalue = new Eigenvalue_CableForceEigenvalueTable { PointsNumber = tmpNumbers27[j], Time = time, Max = random.Next(1200, 1500), Min = random.Next(800, 1100), Average = random.Next(1000, 1300) };
                     context.CableForceEigenvalues.Add(cableForceEigenvalue);
                 }
 
                 for (int j = 0; j < tmpNumbers28.Length; j++)
                 {
-                    var cableForceEigenvalue = new Eigenvalue_CableForceEigenvalueTable  { PointsNumber = tmpNumbers28[j], Time = time, Max = random.Next(1200, 1500), Min = random.Next(800, 1100), Average = random.Next(1000, 1300) };
+                    var cableForceEigenvalue = new Eigenvalue_CableForceEigenvalueTable { PointsNumber = tmpNumbers28[j], Time = time, Max = random.Next(1200, 1500), Min = random.Next(800, 1100), Average = random.Next(1000, 1300) };
                     context.CableForceEigenvalues.Add(cableForceEigenvalue);
                 }
 
@@ -1227,43 +1500,43 @@ namespace GxjtBHMS.SqlServerDAL
                 //钢拱肋应变初始值初始化
                 for (int j = 0; j < tmpNumbers1.Length; j++)
                 {
-                    var steelArchStrainOriginalvalue = new Basic_SteelArchStrainTable  { PointsNumber = tmpNumbers1[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
+                    var steelArchStrainOriginalvalue = new Basic_SteelArchStrainTable { PointsNumber = tmpNumbers1[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
                     context.Basic_SteelArchStrains.Add(steelArchStrainOriginalvalue);
                 }
 
                 for (int j = 0; j < tmpNumbers2.Length; j++)
                 {
-                    var steelArchStrainOriginalvalue = new Basic_SteelArchStrainTable  { PointsNumber = tmpNumbers2[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade2 };
+                    var steelArchStrainOriginalvalue = new Basic_SteelArchStrainTable { PointsNumber = tmpNumbers2[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade2 };
                     context.Basic_SteelArchStrains.Add(steelArchStrainOriginalvalue);
                 }
 
                 for (int j = 0; j < tmpNumbers3.Length; j++)
                 {
-                    var steelArchStrainOriginalvalue = new Basic_SteelArchStrainTable  { PointsNumber = tmpNumbers3[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade3 };
+                    var steelArchStrainOriginalvalue = new Basic_SteelArchStrainTable { PointsNumber = tmpNumbers3[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade3 };
                     context.Basic_SteelArchStrains.Add(steelArchStrainOriginalvalue);
                 }
 
                 for (int j = 0; j < tmpNumbers4.Length; j++)
                 {
-                    var steelArchStrainOriginalvalue = new Basic_SteelArchStrainTable  { PointsNumber = tmpNumbers4[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
+                    var steelArchStrainOriginalvalue = new Basic_SteelArchStrainTable { PointsNumber = tmpNumbers4[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
                     context.Basic_SteelArchStrains.Add(steelArchStrainOriginalvalue);
                 }
 
                 for (int j = 0; j < tmpNumbers5.Length; j++)
                 {
-                    var steelArchStrainOriginalvalue = new Basic_SteelArchStrainTable  { PointsNumber = tmpNumbers5[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
+                    var steelArchStrainOriginalvalue = new Basic_SteelArchStrainTable { PointsNumber = tmpNumbers5[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
                     context.Basic_SteelArchStrains.Add(steelArchStrainOriginalvalue);
                 }
 
                 for (int j = 0; j < tmpNumbers6.Length; j++)
                 {
-                    var steelArchStrainOriginalvalue = new Basic_SteelArchStrainTable  { PointsNumber = tmpNumbers6[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
+                    var steelArchStrainOriginalvalue = new Basic_SteelArchStrainTable { PointsNumber = tmpNumbers6[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
                     context.Basic_SteelArchStrains.Add(steelArchStrainOriginalvalue);
                 }
 
                 for (int j = 0; j < tmpNumbers7.Length; j++)
                 {
-                    var steelArchStrainOriginalvalue = new Basic_SteelArchStrainTable  { PointsNumber = tmpNumbers7[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
+                    var steelArchStrainOriginalvalue = new Basic_SteelArchStrainTable { PointsNumber = tmpNumbers7[j], Time = time, Strain = random.Next(-100, 150), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
                     context.Basic_SteelArchStrains.Add(steelArchStrainOriginalvalue);
                 }
 
@@ -1271,73 +1544,73 @@ namespace GxjtBHMS.SqlServerDAL
                 //钢格构应变初始值初始化
                 for (int j = 0; j < tmpNumbers8.Length; j++)
                 {
-                    var steelLatticeStrainOriginalvalue = new Basic_SteelLatticeStrainTable  { PointsNumber = tmpNumbers8[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
+                    var steelLatticeStrainOriginalvalue = new Basic_SteelLatticeStrainTable { PointsNumber = tmpNumbers8[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
                     context.Basic_SteelLatticeStrains.Add(steelLatticeStrainOriginalvalue);
                 }
 
                 for (int j = 0; j < tmpNumbers9.Length; j++)
                 {
-                    var steelLatticeStrainOriginalvalue = new Basic_SteelLatticeStrainTable  { PointsNumber = tmpNumbers9[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade2 };
+                    var steelLatticeStrainOriginalvalue = new Basic_SteelLatticeStrainTable { PointsNumber = tmpNumbers9[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade2 };
                     context.Basic_SteelLatticeStrains.Add(steelLatticeStrainOriginalvalue);
                 }
 
                 for (int j = 0; j < tmpNumbers10.Length; j++)
                 {
-                    var steelLatticeStrainOriginalvalue = new Basic_SteelLatticeStrainTable  { PointsNumber = tmpNumbers10[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade3 };
+                    var steelLatticeStrainOriginalvalue = new Basic_SteelLatticeStrainTable { PointsNumber = tmpNumbers10[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade3 };
                     context.Basic_SteelLatticeStrains.Add(steelLatticeStrainOriginalvalue);
                 }
 
                 for (int j = 0; j < tmpNumbers11.Length; j++)
                 {
-                    var steelLatticeStrainOriginalvalue = new Basic_SteelLatticeStrainTable  { PointsNumber = tmpNumbers11[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
+                    var steelLatticeStrainOriginalvalue = new Basic_SteelLatticeStrainTable { PointsNumber = tmpNumbers11[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
                     context.Basic_SteelLatticeStrains.Add(steelLatticeStrainOriginalvalue);
                 }
 
                 for (int j = 0; j < tmpNumbers12.Length; j++)
                 {
-                    var steelLatticeStrainOriginalvalue = new Basic_SteelLatticeStrainTable  { PointsNumber = tmpNumbers12[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
+                    var steelLatticeStrainOriginalvalue = new Basic_SteelLatticeStrainTable { PointsNumber = tmpNumbers12[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
                     context.Basic_SteelLatticeStrains.Add(steelLatticeStrainOriginalvalue);
                 }
 
                 for (int j = 0; j < tmpNumbers13.Length; j++)
                 {
-                    var steelLatticeStrainOriginalvalue = new Basic_SteelLatticeStrainTable  { PointsNumber = tmpNumbers13[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
+                    var steelLatticeStrainOriginalvalue = new Basic_SteelLatticeStrainTable { PointsNumber = tmpNumbers13[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
                     context.Basic_SteelLatticeStrains.Add(steelLatticeStrainOriginalvalue);
                 }
 
                 for (int j = 0; j < tmpNumbers14.Length; j++)
                 {
-                    var steelLatticeStrainOriginalvalue = new Basic_SteelLatticeStrainTable  { PointsNumber = tmpNumbers14[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
+                    var steelLatticeStrainOriginalvalue = new Basic_SteelLatticeStrainTable { PointsNumber = tmpNumbers14[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
                     context.Basic_SteelLatticeStrains.Add(steelLatticeStrainOriginalvalue);
                 }
 
                 for (int j = 0; j < tmpNumbers15.Length; j++)
                 {
-                    var steelLatticeStrainOriginalvalue = new Basic_SteelLatticeStrainTable  { PointsNumber = tmpNumbers15[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
+                    var steelLatticeStrainOriginalvalue = new Basic_SteelLatticeStrainTable { PointsNumber = tmpNumbers15[j], Time = time, Strain = random.Next(-100, 20), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
                     context.Basic_SteelLatticeStrains.Add(steelLatticeStrainOriginalvalue);
                 }
 
                 //混凝土应变原始数据初始化
                 for (int j = 0; j < tmpNumbers16.Length; j++)
                 {
-                    var concreteStrain = new Basic_ConcreteStrainTable  { PointsNumber = tmpNumbers16[j], Time = time, Strain = random.Next(10, 40), Temperature = random.Next(5, 60), ThresholdGrade = ThresholdGrade1 };
+                    var concreteStrain = new Basic_ConcreteStrainTable { PointsNumber = tmpNumbers16[j], Time = time, Strain = random.Next(10, 40), Temperature = random.Next(5, 60), ThresholdGrade = ThresholdGrade1 };
                     context.Basic_ConcreteStrains.Add(concreteStrain);
                 }
                 for (int j = 0; j < tmpNumbers17.Length; j++)
                 {
-                    var concreteStrain = new Basic_ConcreteStrainTable  { PointsNumber = tmpNumbers17[j], Time = time, Strain = random.Next(10, 40), Temperature = random.Next(5, 60), ThresholdGrade = ThresholdGrade2 };
+                    var concreteStrain = new Basic_ConcreteStrainTable { PointsNumber = tmpNumbers17[j], Time = time, Strain = random.Next(10, 40), Temperature = random.Next(5, 60), ThresholdGrade = ThresholdGrade2 };
                     context.Basic_ConcreteStrains.Add(concreteStrain);
                 }
 
                 //位移初始值初始化
                 for (int j = 0; j < tmpNumbers18.Length; j++)
                 {
-                    var displacementOriginalValue = new Basic_DisplacementTable { PointsNumber = tmpNumbers18[j], Time = time, Displacement = random.Next(-20, 40) ,ThresholdGrade = ThresholdGrade1 };
+                    var displacementOriginalValue = new Basic_DisplacementTable { PointsNumber = tmpNumbers18[j], Time = time, Displacement = random.Next(-20, 40), ThresholdGrade = ThresholdGrade1 };
                     context.Basic_Displacements.Add(displacementOriginalValue);
                 }
                 for (int j = 0; j < tmpNumbers19.Length; j++)
                 {
-                    var displacementOriginalValue = new Basic_DisplacementTable { PointsNumber = tmpNumbers19[j], Time = time, Displacement = random.Next(-20, 40) , ThresholdGrade = ThresholdGrade2 };
+                    var displacementOriginalValue = new Basic_DisplacementTable { PointsNumber = tmpNumbers19[j], Time = time, Displacement = random.Next(-20, 40), ThresholdGrade = ThresholdGrade2 };
                     context.Basic_Displacements.Add(displacementOriginalValue);
                 }
                 for (int j = 0; j < tmpNumbers20.Length; j++)
@@ -1354,19 +1627,19 @@ namespace GxjtBHMS.SqlServerDAL
                 //索力初始值初始化
                 for (int j = 0; j < tmpNumbers26.Length; j++)
                 {
-                    var cableForceOriginalValue = new Basic_CableForceTable { PointsNumber = tmpNumbers26[j], Time = time, CableForce = random.Next(800, 1500), Temperature = random.Next(5, 70) ,ThresholdGrade = ThresholdGrade1 };
+                    var cableForceOriginalValue = new Basic_CableForceTable { PointsNumber = tmpNumbers26[j], Time = time, CableForce = random.Next(800, 1500), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade1 };
                     context.Basic_CableForces.Add(cableForceOriginalValue);
                 }
 
                 for (int j = 0; j < tmpNumbers27.Length; j++)
                 {
-                    var cableForceOriginalValue = new Basic_CableForceTable { PointsNumber = tmpNumbers27[j], Time = time, CableForce = random.Next(800, 1500), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade2};
+                    var cableForceOriginalValue = new Basic_CableForceTable { PointsNumber = tmpNumbers27[j], Time = time, CableForce = random.Next(800, 1500), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade2 };
                     context.Basic_CableForces.Add(cableForceOriginalValue);
                 }
 
                 for (int j = 0; j < tmpNumbers28.Length; j++)
                 {
-                    var cableForceOriginalValue = new Basic_CableForceTable { PointsNumber = tmpNumbers28[j], Time = time, CableForce = random.Next(800, 1500), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade3};
+                    var cableForceOriginalValue = new Basic_CableForceTable { PointsNumber = tmpNumbers28[j], Time = time, CableForce = random.Next(800, 1500), Temperature = random.Next(5, 70), ThresholdGrade = ThresholdGrade3 };
                     context.Basic_CableForces.Add(cableForceOriginalValue);
                 }
 
@@ -1399,7 +1672,7 @@ namespace GxjtBHMS.SqlServerDAL
                 //风速初始值
                 for (int j = 0; j < tmpNumbers29.Length; j++)
                 {
-                    var windLoadOriginalValue = new Basic_WindLoadTable  { PointsNumber = tmpNumbers29[j], Time = time, WindSpeed = random.Next(0, 10), ThresholdGrade = ThresholdGrade3};
+                    var windLoadOriginalValue = new Basic_WindLoadTable { PointsNumber = tmpNumbers29[j], Time = time, WindSpeed = random.Next(0, 10), ThresholdGrade = ThresholdGrade3 };
                     context.Basic_WindLoads.Add(windLoadOriginalValue);
                 }
 
@@ -1411,20 +1684,20 @@ namespace GxjtBHMS.SqlServerDAL
         /// <param name="context"></param>
         void CreateAbnormalThresholdValue(BHMSContext context)
         {
-            var steelStrainThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "钢结构应变", MaxLevelThresholdValue = 2000, MinLevelThresholdValue = -2000, };
-            var concreteStrainThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "混凝土结构应变", MaxLevelThresholdValue = 900, MinLevelThresholdValue = -900, };
-            var upperHangerCableForceThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "上层吊杆索力", MaxLevelThresholdValue = 3000, MinLevelThresholdValue = 0, };
-            var underHangerCableForceThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "下层吊杆索力", MaxLevelThresholdValue = 2000, MinLevelThresholdValue = 0, };
-            var flexibleTiedBarCableForceThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "柔性系杆", MaxLevelThresholdValue = 3000, MinLevelThresholdValue = 0, };
+            var steelStrainThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "钢结构应变", MaxLevelThresholdValue = 1000, MinLevelThresholdValue = -1000, };
+            var concreteStrainThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "混凝土结构应变", MaxLevelThresholdValue = 80, MinLevelThresholdValue = -1069, };
+            var upperHangerCableForceThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "上层吊杆索力", MaxLevelThresholdValue = 2691, MinLevelThresholdValue = 0, };
+            var underHangerCableForceThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "下层吊杆索力", MaxLevelThresholdValue = 4392, MinLevelThresholdValue = 0, };
+            var flexibleTiedBarCableForceThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "柔性系杆", MaxLevelThresholdValue = 3212, MinLevelThresholdValue = 0, };
             var tempThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "温度", MaxLevelThresholdValue = 100, MinLevelThresholdValue = -10, };
             var humThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "湿度", MaxLevelThresholdValue = 100, MinLevelThresholdValue = 0, };
-            var windLoadThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "风速", MaxLevelThresholdValue = 60, MinLevelThresholdValue = 0, };
-            var steelArchXDisThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "钢拱肋X方向位移", MaxLevelThresholdValue = 1000, MinLevelThresholdValue = -1000, };
-            var steelArchYDisThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "钢拱肋Y方向位移", MaxLevelThresholdValue = 500, MinLevelThresholdValue = -500, };
-            var steelArchZDisThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "钢拱肋Z方向位移", MaxLevelThresholdValue = 500, MinLevelThresholdValue = -500, };
-            var bridgeDeckDisThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "桥面挠度", MaxLevelThresholdValue = 1000, MinLevelThresholdValue = -1000, };
-            var transitionPierDisThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "过渡墩变形", MaxLevelThresholdValue = 500, MinLevelThresholdValue = -500, };
-            var expansionDisThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "伸缩缝变形", MaxLevelThresholdValue = 500, MinLevelThresholdValue = -500, };
+            var windLoadThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "风速", MaxLevelThresholdValue = 40, MinLevelThresholdValue = 0, };
+            var steelArchXDisThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "钢拱肋X方向位移", MaxLevelThresholdValue = 30, MinLevelThresholdValue = -30, };
+            var steelArchYDisThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "钢拱肋Y方向位移", MaxLevelThresholdValue = 30, MinLevelThresholdValue = -30, };
+            var steelArchZDisThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "钢拱肋Z方向位移", MaxLevelThresholdValue = 375, MinLevelThresholdValue = -375, };
+            var bridgeDeckDisThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "桥面挠度", MaxLevelThresholdValue = 500, MinLevelThresholdValue = -500, };
+            var transitionPierDisThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "过渡墩变形", MaxLevelThresholdValue = 200, MinLevelThresholdValue = -200, };
+            var expansionDisThresholdValue = new Abnormal_ThresholdValueTable { TypeName = "伸缩缝变形", MaxLevelThresholdValue = 250, MinLevelThresholdValue = -250, };
             context.AbnormalThresholdValue.Add(steelStrainThresholdValue);
             context.AbnormalThresholdValue.Add(concreteStrainThresholdValue);
             context.AbnormalThresholdValue.Add(upperHangerCableForceThresholdValue);
