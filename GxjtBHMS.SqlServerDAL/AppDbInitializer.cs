@@ -810,6 +810,7 @@ namespace GxjtBHMS.SqlServerDAL
                 NegativeSecondLevelThresholdValue = DSAMiddleZThresholdN * 1.0,
             };
             context.DisplaymentThresholdValues.Add(ThresholdValue1);
+
             //桥面位移测点阈值设置
             var ThresholdValue2 = new ThresholdValue_DisplacementThresholdValueTable
             {
