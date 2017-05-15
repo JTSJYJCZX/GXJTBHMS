@@ -17,8 +17,6 @@ namespace GxjtBHMS.Service.ExtensionMethods.MonitoringDatas.DatasQuery
              
             });
         }
-
-
     }
 }
 

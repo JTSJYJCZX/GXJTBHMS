@@ -1,7 +1,4 @@
-﻿using GxjtBHMS.Models;
-using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
-using GxjtBHMS.Models.ThresholdValueSetting;
-using GxjtBHMS.Service.Implementations;
+﻿using GxjtBHMS.Models.ThresholdValueSetting;
 using System;
 
 namespace GxjtBHMS.Service

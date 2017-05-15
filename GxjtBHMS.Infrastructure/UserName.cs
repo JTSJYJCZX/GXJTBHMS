@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GxjtBHMS.Infrastructure
+﻿namespace GxjtBHMS.Infrastructure
 {
-  public class UserName
+    public class UserName
     {
         public static string GetUser(int userNumber)
         {

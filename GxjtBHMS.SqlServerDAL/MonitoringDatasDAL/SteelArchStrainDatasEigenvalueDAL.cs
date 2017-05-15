@@ -1,7 +1,4 @@
-﻿using GxjtBHMS.IDAL;
-using GxjtBHMS.Models;
-using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
-using GxjtBHMS.Models.MonitoringDatasTable;
+﻿using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
 using System;
 using System.Collections.Generic;
 using System.Linq;

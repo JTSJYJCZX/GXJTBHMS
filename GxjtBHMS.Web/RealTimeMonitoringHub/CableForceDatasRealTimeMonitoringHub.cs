@@ -3,8 +3,6 @@ using GxjtBHMS.Service.Interfaces;
 using System.Threading;
 using GxjtBHMS.DependencyInjection;
 using System.Linq;
-using GxjtBHMS.Service.ViewModels.RealTimeDatasDisplay;
-using System.Collections.Generic;
 
 namespace GxjtBHMS.Web.RealTimeMonitoringHub
 {

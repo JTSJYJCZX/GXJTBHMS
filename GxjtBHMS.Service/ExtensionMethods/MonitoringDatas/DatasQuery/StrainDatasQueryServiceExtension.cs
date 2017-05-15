@@ -18,8 +18,6 @@ namespace GxjtBHMS.Service.ExtensionMethods.MonitoringDatas.DatasQuery
                 Temperature=m.Temperature
             });
         }
-
-
     }
 }
 

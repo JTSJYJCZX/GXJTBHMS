@@ -1,10 +1,7 @@
 ﻿using GxjtBHMS.IDAL.AlarmDatasManagement;
 using GxjtBHMS.Infrastructure.Helpers;
-using GxjtBHMS.Models;
-using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
 using GxjtBHMS.Models.SafetyPreWarningTable;
 using GxjtBHMS.Service.Interfaces;
-using GxjtBHMS.SqlServerDAL;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using System;
@@ -13,7 +10,7 @@ using System.Linq;
 
 namespace GxjtBHMS.Service.Implementations
 {
-   public  class AlarmDatasFileSystemService<T>: IAlarmDatasFileSystemService<T> where T: SafetyPreWarningBaseModel
+    public  class AlarmDatasFileSystemService<T>: IAlarmDatasFileSystemService<T> where T: SafetyPreWarningBaseModel
     {
         readonly IAlarmDatasQueryDAL<T> _alarmDatasDAL;
         public AlarmDatasFileSystemService(IAlarmDatasQueryDAL<T> alarmDatasDAL)

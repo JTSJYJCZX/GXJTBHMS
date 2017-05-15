@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using GxjtBHMS.IDAL;
-using GxjtBHMS.Service.Interfaces;
-using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
-using GxjtBHMS.Infrastructure.Helpers;
 using GxjtBHMS.Models.MonitoringDatasTable;
 
 namespace GxjtBHMS.Service.Implementations

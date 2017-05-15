@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using GxjtBHMS.Service.ViewModels.DataQueryResult;
-using GxjtBHMS.Models;
 
 namespace GxjtBHMS.Service.Messaging.MonitoringDatas
 {

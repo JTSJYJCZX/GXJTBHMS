@@ -4,7 +4,6 @@ using GxjtBHMS.Service.ServiceFactory;
 using GxjtBHMS.Web.ViewModels.SafetyPreWarning;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Web.Mvc;
 
 namespace GxjtBHMS.Web.Controllers.SafetyPreWarning

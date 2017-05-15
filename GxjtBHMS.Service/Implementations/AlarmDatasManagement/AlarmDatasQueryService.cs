@@ -25,13 +25,6 @@ namespace GxjtBHMS.Service.Implementations.AlarmDatasManagement
             var datas = new List<AlarmDatasModel>();
             var models = source.OrderBy(m => m.Time).Select(m => new AlarmDatasModel { Time = DateTimeHelper.FormatDateTime(m.Time), TestType = m.PointsNumber.PointsPosition.TestType.Name,PointsPosition=m.PointsNumber.PointsPosition.Name, PointsNumber = m.PointsNumber.Name, MonitoringData = m.MonitoringData, ThresholdValue = m.ThresholdValue, ThresholdGrade = m.ThresholdGrade.ThresholdGrade,Unit=m.PointsNumber.PointsPosition.TestType.Unit});
             datas = models.ToList();
-
-            //foreach (var group in groupDatas)
-            //{
-            //    var models = group.OrderBy(m => m.Time).Select(m => new AlarmDatasModel {Time = DateTimeHelper.FormatDateTime(m.Time), TestType = m.PointsNumber.PointsPosition.TestType.Name, PointsNumber = m.PointsNumber.Name, MonitoringData =m.MonitoringData, ThresholdValue=m.ThresholdValue, ThresholdGrade=m.ThresholdGrade.ThresholdGrade, });
-            //    //var unit = group.FirstOrDefault().PointsNumber.PointsPosition.TestType.Unit;
-            //    datas.Add(new AlarmDatasModel { Models = models});
-            //}
             return datas;
         }
 
@@ -39,8 +32,6 @@ namespace GxjtBHMS.Service.Implementations.AlarmDatasManagement
         {
             return _alarmDatasQueryDAL.GetCountByContains(ps, ServiceConstant.PointsNumberPointsPositionNavigationProperty);
         }
-
-
     }
 }
 

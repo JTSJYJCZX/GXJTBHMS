@@ -70,26 +70,6 @@ namespace GxjtBHMS.Service.SafetyPreWarningQueryService
         }
 
 
-        //public IEnumerable<SafetyPreWarningDetailQueryModel>  GetSafetyPreWarningDetail(GetSafetyWarningDetailRequest req)
-        //{
-        //        var source = QuerySafetyPreWarningByTime(req);
-        //        var result = new List<SafetyPreWarningDetailQueryModel>();
-        //        foreach (var item in source)
-        //        {
-        //            var resultItem = new SafetyPreWarningDetailQueryModel();
-        //            //resultItem.Id = item.Id;
-        //            resultItem.PointsNumber = item.PointsNumber.Name;
-        //            resultItem.Time = item.Time;
-        //            resultItem.MonitoringData = item.MonitoringData;
-        //            resultItem.Unit = item.PointsNumber.PointsPosition.TestType.Unit;
-        //            resultItem.ThresholdValue = item.ThresholdValue;
-        //            resultItem.SafetyPreWarningState = item.ThresholdGrade.ThresholdGrade;
-        //            resultItem.Suggestion = item.ThresholdGrade.Suggest;
-        //            result.Add(resultItem);
-        //        }               
-        //    return result;
-        //}
-
         /// <summary>
         /// 通过时间范围查询安全预警结果
         /// </summary>
@@ -113,14 +93,5 @@ namespace GxjtBHMS.Service.SafetyPreWarningQueryService
         {
             return source.Count() == 0;
         }
-
-        //public SafetyPreWarningStateAndTotalTimesModel GetSafetyPreWarningStateAndTotalTimes(GetSafetyWarningDetailRequest req)
-        //{
-        //    var source = QuerySafetyPreWarningByTime(req);
-        //    var result = new SafetyPreWarningStateAndTotalTimesModel();
-        //    result.WarningGrade2Times=
-        //    return null;
-        //}
-
     }
 }

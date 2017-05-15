@@ -1,5 +1,4 @@
 ﻿using GxjtBHMS.Models.ManualInspectionSafetyAssessmentTable;
-using GxjtBHMS.Models.SecondLevelSafetyAssessmentTable;
 using System.Collections.Generic;
 
 namespace GxjtBHMS.Service.Messaging.ManualInspectionSafetyAssessmentReport
