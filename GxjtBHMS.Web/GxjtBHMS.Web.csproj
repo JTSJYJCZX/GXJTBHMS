@@ -340,14 +340,12 @@
     <Content Include="Content\Images\下层桥面吊杆监测平面图.png" />
     <Content Include="Content\Images\位移实时监测.png" />
     <Content Include="Content\Images\位移实时监测2.png" />
-    <Content Include="Content\Images\刚性系杆应变断面图.png" />
+    <Content Include="Content\Images\刚性系杆断面.png" />
     <Content Include="Content\Images\吊杆.png" />
     <Content Include="Content\Images\拱肋横撑截面.png" />
     <Content Include="Content\Images\柔性系杆断面.png" />
     <Content Include="Content\Images\桥型图.png" />
     <Content Include="Content\Images\混凝土应变监测立面图.png" />
-    <Content Include="Content\Images\混凝土拱肋应变断面图.png" />
-    <Content Include="Content\Images\混凝土拱肋应变立面图.png" />
     <Content Include="Content\Images\混凝土拱肋断面.png" />
     <Content Include="Content\Images\温度.png" />
     <Content Include="Content\Images\温湿度监测立面图及测点图.png" />
