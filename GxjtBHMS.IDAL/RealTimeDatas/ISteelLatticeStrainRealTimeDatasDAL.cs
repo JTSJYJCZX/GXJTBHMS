@@ -1,11 +1,11 @@
 ﻿using GxjtBHMS.Infrastructure.Domain;
-using GxjtBHMS.Models.MonitoringDatasTable;
+using GxjtBHMS.Models.RealTimeMonitoringDataTable;
 using System.Collections.Generic;
 
 namespace GxjtBHMS.IDAL
 {
-    public interface ISteelLatticeStrainRealTimeDatasDAL : IReadOnlyRepository<Basic_SteelLatticeStrainTable , int>
+    public interface ISteelLatticeStrainRealTimeDatasDAL : IReadOnlyRepository<RealTime_SteelLatticeStrainTable, int>
     {
-        IEnumerable<Basic_SteelLatticeStrainTable > GetRealTimeStrains(int pointPositionId);
+        IEnumerable<RealTime_SteelLatticeStrainTable> GetRealTimeStrains(int pointPositionId);
     }
 }

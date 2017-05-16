@@ -1,21 +1,22 @@
 ﻿using GxjtBHMS.IDAL;
 using GxjtBHMS.Models.MonitoringDatasTable;
+using GxjtBHMS.Models.RealTimeMonitoringDataTable;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL.RealTimeDatasMonitoringDAL
 {
-    public class SteelLatticeStrainRealTimeDatasDAL : Repository<Basic_SteelLatticeStrainTable , int>,ISteelLatticeStrainRealTimeDatasDAL
+    public class SteelLatticeStrainRealTimeDatasDAL : Repository<RealTime_SteelLatticeStrainTable, int>,ISteelLatticeStrainRealTimeDatasDAL
     {
-        public IEnumerable<Basic_SteelLatticeStrainTable > GetRealTimeStrains(int pointPositionId)
+        public IEnumerable<RealTime_SteelLatticeStrainTable> GetRealTimeStrains(int pointPositionId)
         {
-            List<Basic_SteelLatticeStrainTable > result = GetRealTimeDataByPositionId(pointPositionId);
+            List<RealTime_SteelLatticeStrainTable> result = GetRealTimeDataByPositionId(pointPositionId);
             return result;
         }
 
-        List<Basic_SteelLatticeStrainTable > GetRealTimeDataByPositionId(int pointPositionId)
+        List<RealTime_SteelLatticeStrainTable> GetRealTimeDataByPositionId(int pointPositionId)
         {
-            List<Basic_SteelLatticeStrainTable > result = new List<Basic_SteelLatticeStrainTable >();
+            List<RealTime_SteelLatticeStrainTable> result = new List<RealTime_SteelLatticeStrainTable>();
             var pointsNumberId = GetPointsNumberIdByPointsPositionId(pointPositionId);
             foreach (var item in pointsNumberId)
             {

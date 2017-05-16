@@ -6,6 +6,7 @@ using GxjtBHMS.Models.FirstLevelSafetyAssessmentTable;
 using GxjtBHMS.Models.ManualInspectionSafetyAssessmentTable;
 using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
 using GxjtBHMS.Models.MonitoringDatasTable;
+using GxjtBHMS.Models.RealTimeMonitoringDataTable;
 using GxjtBHMS.Models.SecondLevelSafetyAssessmentTable;
 using GxjtBHMS.Models.SpecialSafetyAssessmentReportTable;
 using GxjtBHMS.Models.ThresholdValueSetting;
@@ -52,6 +53,18 @@ namespace GxjtBHMS.SqlServerDAL
         public DbSet<Basic_TemperatureTable> Basic_Temperatures { get; set; }//温度 
         public DbSet<Basic_HumidityTable> Basic_Humiditys { get; set; }//湿度 
         public DbSet<Basic_WindLoadTable > Basic_WindLoads{ get; set; }//风载
+
+        /// <summary>
+        /// 实时显示数据表
+        /// </summary>
+        public DbSet<RealTime_SteelArchStrainTable> RealTime_SteelArchStrains { get; set; }//钢拱肋应变
+        public DbSet<RealTime_SteelLatticeStrainTable> RealTime_SteelLatticeStrains { get; set; }//钢格构应变
+        public DbSet<RealTime_ConcreteStrainTable> RealTime_ConcreteStrains { get; set; }//混凝土应变
+        public DbSet<RealTime_DisplacementTable> RealTime_Displacements { get; set; }//位移
+        public DbSet<RealTime_CableForceTable> RealTime_CableForces { get; set; }//索力
+        public DbSet<RealTime_TemperatureTable> RealTime_Temperatures { get; set; }//温度 
+        public DbSet<RealTime_HumidityTable> RealTime_Humiditys { get; set; }//湿度 
+        public DbSet<RealTime_WindLoadTable> RealTime_WindLoads { get; set; }//风载
 
         public DbSet<Eigenvalue_SteelArchStrainEigenvalueTable> SteelArchStrainEigenvalues { get; set; }//钢拱肋应变特征值
         public DbSet<Eigenvalue_SteelLatticeStrainEigenvalueTable> SteelLatticeStrainEigenvalues { get; set; }//钢格构应变特征值

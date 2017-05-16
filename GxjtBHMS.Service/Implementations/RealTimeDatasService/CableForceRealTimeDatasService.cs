@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using GxjtBHMS.Service.ViewModels.RealTimeDatasDisplay;
 using System.Linq;
 using GxjtBHMS.Models;
+using GxjtBHMS.Models.RealTimeMonitoringDataTable;
 
 namespace GxjtBHMS.Service.Implementations
 {
@@ -44,7 +45,7 @@ namespace GxjtBHMS.Service.Implementations
             return resultOfAllSection;
         }
 
-        private List<RealTimeWarningDataModel> GetResultsOfOneSection(Basic_CableForceTable[] source)
+        private List<RealTimeWarningDataModel> GetResultsOfOneSection(RealTime_CableForceTable[] source)
         {
             List<RealTimeWarningDataModel> sectionModel = new List<RealTimeWarningDataModel>();
             for (int i = 0; i < source.Length; i++)

@@ -1,21 +1,21 @@
 ﻿using GxjtBHMS.IDAL;
-using GxjtBHMS.Models;
+using GxjtBHMS.Models.RealTimeMonitoringDataTable;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL.RealTimeDatasMonitoringDAL
 {
-    public class DisplacementRealTimeDatasDAL : Repository<Basic_DisplacementTable, int>, IDisplacementRealTimeDatasDAL
+    public class DisplacementRealTimeDatasDAL : Repository<RealTime_DisplacementTable, int>, IDisplacementRealTimeDatasDAL
     {
-        public IEnumerable<Basic_DisplacementTable> GetRealTimeDisplacement(int pointPositionId)
+        public IEnumerable<RealTime_DisplacementTable> GetRealTimeDisplacement(int pointPositionId)
         {
-            List<Basic_DisplacementTable> result = GetRealTimeDataByPositionId(pointPositionId);
+            List<RealTime_DisplacementTable> result = GetRealTimeDataByPositionId(pointPositionId);
             return result;
         }
 
-        List<Basic_DisplacementTable> GetRealTimeDataByPositionId(int pointPositionId)
+        List<RealTime_DisplacementTable> GetRealTimeDataByPositionId(int pointPositionId)
         {
-            List<Basic_DisplacementTable> result = new List<Basic_DisplacementTable>();
+            List<RealTime_DisplacementTable> result = new List<RealTime_DisplacementTable>();
             var pointsNumberId = GetPointsNumberIdByPointsPositionId(pointPositionId);
             foreach (var item in pointsNumberId)
             {
