@@ -1,22 +1,21 @@
 ﻿using GxjtBHMS.IDAL;
-using GxjtBHMS.Models;
-using GxjtBHMS.Models.MonitoringDatasTable;
+using GxjtBHMS.Models.RealTimeMonitoringDataTable;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL.RealTimeDatasMonitoringDAL
 {
-    public class CableForceRealTimeDatasDAL : Repository<Basic_CableForceTable, int>, ICableForceRealTimeDatasDAL
+    public class CableForceRealTimeDatasDAL : Repository<RealTime_CableForceTable, int>, ICableForceRealTimeDatasDAL
     {
-        public IEnumerable<Basic_CableForceTable> GetRealTimeCableForce(int pointPositionId)
+        public IEnumerable<RealTime_CableForceTable> GetRealTimeCableForce(int pointPositionId)
         {
-            List<Basic_CableForceTable> result = GetRealTimeDataByPositionId(pointPositionId);
+            List<RealTime_CableForceTable> result = GetRealTimeDataByPositionId(pointPositionId);
             return result;
         }
 
-        List<Basic_CableForceTable> GetRealTimeDataByPositionId(int pointPositionId)
+        List<RealTime_CableForceTable> GetRealTimeDataByPositionId(int pointPositionId)
         {
-            List<Basic_CableForceTable> result = new List<Basic_CableForceTable>();
+            List<RealTime_CableForceTable> result = new List<RealTime_CableForceTable>();
             var pointsNumberId = GetPointsNumberIdByPointsPositionId(pointPositionId);
             foreach (var item in pointsNumberId)
             {

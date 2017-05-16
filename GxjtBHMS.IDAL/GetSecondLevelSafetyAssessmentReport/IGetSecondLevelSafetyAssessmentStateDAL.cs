@@ -1,5 +1,4 @@
 ﻿using GxjtBHMS.Infrastructure.Domain;
-using GxjtBHMS.Models.FirstLevelSafetyAssessmentTable;
 using GxjtBHMS.Models.SecondLevelSafetyAssessmentTable;
 
 namespace GxjtBHMS.IDAL

@@ -1,6 +1,5 @@
 ﻿using GxjtBHMS.IDAL;
 using GxjtBHMS.Models.ManualInspectionSafetyAssessmentTable;
-using GxjtBHMS.Models.SecondLevelSafetyAssessmentTable;
 using System;
 using System.Collections.Generic;
 using System.Linq;

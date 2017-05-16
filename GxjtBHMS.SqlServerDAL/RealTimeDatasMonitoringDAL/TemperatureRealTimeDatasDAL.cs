@@ -1,22 +1,21 @@
 ﻿using GxjtBHMS.IDAL;
-using GxjtBHMS.Models;
-using GxjtBHMS.Models.MonitoringDatasTable;
+using GxjtBHMS.Models.RealTimeMonitoringDataTable;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL.RealTimeDatasMonitoringDAL
 {
-    public class TemperatureRealTimeDatasDAL : Repository<Basic_TemperatureTable, int>, ITemperatureRealTimeDatasDAL
+    public class TemperatureRealTimeDatasDAL : Repository<RealTime_TemperatureTable, int>, ITemperatureRealTimeDatasDAL
     {
-        public IEnumerable<Basic_TemperatureTable> GetRealTimeTemperature(int pointPositionId)
+        public IEnumerable<RealTime_TemperatureTable> GetRealTimeTemperature(int pointPositionId)
         {
-            List<Basic_TemperatureTable> result = GetRealTimeDataByPositionId(pointPositionId);
+            List<RealTime_TemperatureTable> result = GetRealTimeDataByPositionId(pointPositionId);
             return result;
         }
 
-        List<Basic_TemperatureTable> GetRealTimeDataByPositionId(int pointPositionId)
+        List<RealTime_TemperatureTable> GetRealTimeDataByPositionId(int pointPositionId)
         {
-            List<Basic_TemperatureTable> result = new List<Basic_TemperatureTable>();
+            List<RealTime_TemperatureTable> result = new List<RealTime_TemperatureTable>();
             var pointsNumberId = GetPointsNumberIdByPointsPositionId(pointPositionId);
             foreach (var item in pointsNumberId)
             {

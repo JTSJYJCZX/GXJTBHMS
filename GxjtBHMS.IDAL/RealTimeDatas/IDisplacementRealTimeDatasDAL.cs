@@ -1,12 +1,11 @@
 ﻿using GxjtBHMS.Infrastructure.Domain;
-using GxjtBHMS.Models;
-using GxjtBHMS.Models.MonitoringDatasTable;
+using GxjtBHMS.Models.RealTimeMonitoringDataTable;
 using System.Collections.Generic;
 
 namespace GxjtBHMS.IDAL
 {
-    public interface IDisplacementRealTimeDatasDAL : IReadOnlyRepository<Basic_DisplacementTable, int>
+    public interface IDisplacementRealTimeDatasDAL : IReadOnlyRepository<RealTime_DisplacementTable, int>
     {
-        IEnumerable<Basic_DisplacementTable> GetRealTimeDisplacement(int pointPositionId);
+        IEnumerable<RealTime_DisplacementTable> GetRealTimeDisplacement(int pointPositionId);
     }
 }

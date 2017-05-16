@@ -1,9 +1,6 @@
 ﻿using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.ManualInspectionSafetyAssessmentReportService;
-using GxjtBHMS.Service.Messaging;
 using GxjtBHMS.Service.Messaging.ManualInspectionSafetyAssessmentReport;
-using GxjtBHMS.Service.Messaging.SecondLevelSafetyAssessmentReport;
-using GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService;
 using GxjtBHMS.Services.ViewModels;
 using GxjtBHMS.Web.Models;
 using GxjtBHMS.Web.ViewModels.SafetyAssessmentReportView;

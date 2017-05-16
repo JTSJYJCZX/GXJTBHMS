@@ -1,11 +1,8 @@
-﻿using System;
-
-namespace GxjtBHMS.Models.FirstLevelSafetyAssessmentTable
+﻿namespace GxjtBHMS.Models.FirstLevelSafetyAssessmentTable
 {
     public class FirstAssessment_FirstLevelOfSafetyAssessmentExceptionRecordTable : EntityBase<int>
     {
-
-        //测试类型
+         //测试类型
         public string TestType { get; set; }
         //测点编号
         public string MonitoringPointsNumbers { get; set; }
@@ -16,7 +13,5 @@ namespace GxjtBHMS.Models.FirstLevelSafetyAssessmentTable
         //报告编号外键
         public virtual FirstAssessment_FirstLevelSafetyAssessmentReportTable AssessmentReport { get; set; }
         public int AssessmentReportId { get; set; }
-
-
     }
 }

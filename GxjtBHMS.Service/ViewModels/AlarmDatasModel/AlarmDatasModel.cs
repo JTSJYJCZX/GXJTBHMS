@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GxjtBHMS.Service.ViewModels.AlarmDatasModel
+﻿namespace GxjtBHMS.Service.ViewModels.AlarmDatasModel
 {
-   public class AlarmDatasModel
+    public class AlarmDatasModel
     {
         public string TestType { get; set; }
         public string PointsPosition { get; set; }

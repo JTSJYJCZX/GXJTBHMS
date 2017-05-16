@@ -1,5 +1,4 @@
 ﻿using GxjtBHMS.Infrastructure.Configuration;
-using GxjtBHMS.Models;
 using GxjtBHMS.Models.SafetyPreWarningTable;
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.Interfaces.AlarmDatasQueryServiceInerfaces;

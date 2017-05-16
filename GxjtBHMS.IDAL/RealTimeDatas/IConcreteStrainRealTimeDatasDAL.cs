@@ -1,11 +1,11 @@
 ﻿using GxjtBHMS.Infrastructure.Domain;
-using GxjtBHMS.Models.MonitoringDatasTable;
+using GxjtBHMS.Models.RealTimeMonitoringDataTable;
 using System.Collections.Generic;
 
 namespace GxjtBHMS.IDAL
 {
-    public interface IConcreteStrainRealTimeDatasDAL : IReadOnlyRepository<Basic_ConcreteStrainTable , int>
+    public interface IConcreteStrainRealTimeDatasDAL : IReadOnlyRepository<RealTime_ConcreteStrainTable, int>
     {
-        IEnumerable<Basic_ConcreteStrainTable > GetRealTimeStrains(int pointPositionId);
+        IEnumerable<RealTime_ConcreteStrainTable> GetRealTimeStrains(int pointPositionId);
     }
 }

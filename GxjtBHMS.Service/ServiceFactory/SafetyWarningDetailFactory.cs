@@ -1,14 +1,10 @@
 ﻿using GxjtBHMS.Models.MonitoringDatasTable;
 using GxjtBHMS.Service.SafetyPreWarningQueryService;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GxjtBHMS.Service.ServiceFactory
 {
-   public class SafetyWarningDetailFactory
+    public class SafetyWarningDetailFactory
     {
         public static dynamic GetSafetyWarningDetailServiceFrom(int mornitoringTestTypeId)
         {

@@ -1,6 +1,5 @@
 ﻿using GxjtBHMS.Models.MonitoringDatasEigenvalueTable;
 using GxjtBHMS.Service.MonitoringDatasQueryService;
-using NPOI.SS.Formula.Functions;
 using System;
 
 namespace GxjtBHMS.Service

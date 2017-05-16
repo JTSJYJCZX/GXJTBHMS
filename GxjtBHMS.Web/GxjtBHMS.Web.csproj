@@ -340,6 +340,7 @@
     <Content Include="Content\Images\下层桥面吊杆监测平面图.png" />
     <Content Include="Content\Images\位移实时监测.png" />
     <Content Include="Content\Images\位移实时监测2.png" />
+    <Content Include="Content\Images\刚性系杆断面.png" />
     <Content Include="Content\Images\吊杆.png" />
     <Content Include="Content\Images\拱肋横撑截面.png" />
     <Content Include="Content\Images\柔性系杆断面.png" />

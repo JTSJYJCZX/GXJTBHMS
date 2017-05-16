@@ -1,5 +1,4 @@
 ﻿using GxjtBHMS.Service.ViewModels.AlarmDatasModel;
-using GxjtBHMS.Service.ViewModels.MonitoringDatas.MonitoringDatasCharts;
 using System;
 using System.Collections.Generic;
 

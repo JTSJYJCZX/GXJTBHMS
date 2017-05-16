@@ -1,5 +1,4 @@
 ﻿using GxjtBHMS.IDAL;
-using GxjtBHMS.Models.SecondLevelSafetyAssessmentTable;
 using GxjtBHMS.Models.SpecialSafetyAssessmentReportTable;
 using System;
 using System.Collections.Generic;

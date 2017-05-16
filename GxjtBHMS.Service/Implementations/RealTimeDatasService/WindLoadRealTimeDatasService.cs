@@ -44,7 +44,7 @@ namespace GxjtBHMS.Service.Implementations
             return resultOfAllSection;
         }
 
-        private List<RealTimeWarningDataModel> GetResultsOfOneSection(Basic_WindLoadTable [] source)
+        private List<RealTimeWarningDataModel> GetResultsOfOneSection(RealTime_WindLoadTable[] source)
         {
             List<RealTimeWarningDataModel> sectionModel = new List<RealTimeWarningDataModel>();
             for (int i = 0; i < source.Length; i++)

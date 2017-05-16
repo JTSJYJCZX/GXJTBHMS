@@ -2036,3 +2036,234 @@ end
 go
 
 
+-----------------------------基础数据转到实时监测数据--------------------------------------
+
+-------------索力--------------------------------------
+if(OBJECT_ID('tgr_Basic_CableForceToRealTime','TR') is not null)
+drop trigger tgr_Basic_CableForceToRealTime
+go
+create trigger tgr_Basic_CableForceToRealTime
+on Basic_CableForceTable
+for insert
+as
+set nocount on
+declare @CableForce float,@Frequency float,@Temperature float,@Time datetime,@PointsNumberId int,@ThresholdGradeId int
+select @CableForce=CableForce from inserted
+select @Frequency=Frequency from inserted
+select @Temperature=Temperature from inserted
+select @Time="Time" from inserted
+select @PointsNumberId=PointsNumberId from inserted
+select @ThresholdGradeId=ThresholdGradeId from inserted
+
+declare @TotalNumber int
+declare @MinId int
+select @TotalNumber=count(*) from RealTime_CableForceTable
+if @TotalNumber >=500
+begin
+   select @MinId=MIN(Id) from RealTime_CableForceTable
+   delete from RealTime_CableForceTable WHERE Id=@MinId
+end
+
+insert into RealTime_CableForceTable (CableForce,Frequency,Temperature,"Time",PointsNumberId,ThresholdGradeId)
+values(@CableForce,@Frequency,@Temperature,@Time,@PointsNumberId,@ThresholdGradeId)
+go
+
+-------------钢拱肋应变--------------------------------------
+if(OBJECT_ID('tgr_Basic_SteelArchStrainTableToRealTime','TR') is not null)
+drop trigger tgr_Basic_SteelArchStrainTableToRealTime
+go
+create trigger tgr_Basic_SteelArchStrainTableToRealTime
+on Basic_SteelArchStrainTable
+for insert
+as
+set nocount on
+declare @strain float,@Temperature float,@Time datetime,@PointsNumberId int,@ThresholdGradeId int
+select @strain=Strain from inserted
+select @Temperature=Temperature from inserted
+select @Time="Time" from inserted
+select @PointsNumberId=PointsNumberId from inserted
+select @ThresholdGradeId=ThresholdGradeId from inserted
+
+declare @TotalNumber int
+declare @MinId int
+select @TotalNumber=count(*) from RealTime_SteelArchStrainTable
+if @TotalNumber >=500
+begin
+   select @MinId=MIN(Id) from RealTime_SteelArchStrainTable
+   delete from RealTime_SteelArchStrainTable WHERE Id=@MinId
+end
+
+insert into RealTime_SteelArchStrainTable(Strain,Temperature,"Time",PointsNumberId,ThresholdGradeId)
+values(@strain,@Temperature,@Time,@PointsNumberId,@ThresholdGradeId)
+go
+
+-------------钢格构应变--------------------------------------
+if(OBJECT_ID('tgr_Basic_SteelLatticeStrainTableToRealTime','TR') is not null)
+drop trigger tgr_Basic_SteelLatticeStrainTableToRealTime
+go
+create trigger tgr_Basic_SteelLatticeStrainTableToRealTime
+on Basic_SteelLatticeStrainTable
+for insert
+as
+set nocount on
+declare @strain float,@Temperature float,@Time datetime,@PointsNumberId int,@ThresholdGradeId int
+select @strain=Strain from inserted
+select @Temperature=Temperature from inserted
+select @Time="Time" from inserted
+select @PointsNumberId=PointsNumberId from inserted
+select @ThresholdGradeId=ThresholdGradeId from inserted
+
+declare @TotalNumber int
+declare @MinId int
+select @TotalNumber=count(*) from RealTime_SteelLatticeStrainTable
+if @TotalNumber >=500
+begin
+   select @MinId=MIN(Id) from RealTime_SteelLatticeStrainTable
+   delete from RealTime_SteelLatticeStrainTable WHERE Id=@MinId
+end
+
+insert into RealTime_SteelLatticeStrainTable(Strain,Temperature,"Time",PointsNumberId,ThresholdGradeId)
+values(@strain,@Temperature,@Time,@PointsNumberId,@ThresholdGradeId)
+go
+
+-------------混凝土应变--------------------------------------
+if(OBJECT_ID('tgr_Basic_ConcreteStrainTableToRealTime','TR') is not null)
+drop trigger tgr_Basic_ConcreteStrainTableToRealTime
+go
+create trigger tgr_Basic_ConcreteStrainTableToRealTime
+on Basic_ConcreteStrainTable
+for insert
+as
+set nocount on
+declare @strain float,@Temperature float,@Time datetime,@PointsNumberId int,@ThresholdGradeId int
+select @strain=Strain from inserted
+select @Temperature=Temperature from inserted
+select @Time="Time" from inserted
+select @PointsNumberId=PointsNumberId from inserted
+select @ThresholdGradeId=ThresholdGradeId from inserted
+
+declare @TotalNumber int
+declare @MinId int
+select @TotalNumber=count(*) from RealTime_ConcreteStrainTable
+if @TotalNumber >=500
+begin
+   select @MinId=MIN(Id) from RealTime_ConcreteStrainTable
+   delete from RealTime_ConcreteStrainTable WHERE Id=@MinId
+end
+
+insert into RealTime_ConcreteStrainTable(Strain,Temperature,"Time",PointsNumberId,ThresholdGradeId)
+values(@strain,@Temperature,@Time,@PointsNumberId,@ThresholdGradeId)
+go
+
+-------------位移--------------------------------------
+if(OBJECT_ID('tgr_Basic_DisplacementTableToRealTime','TR') is not null)
+drop trigger tgr_Basic_DisplacementTableToRealTime
+go
+create trigger tgr_Basic_DisplacementTableToRealTime
+on Basic_DisplacementTable
+for insert
+as
+set nocount on
+declare @displacement float,@Time datetime,@PointsNumberId int,@ThresholdGradeId int
+select @displacement=Displacement from inserted
+select @Time="Time" from inserted
+select @PointsNumberId=PointsNumberId from inserted
+select @ThresholdGradeId=ThresholdGradeId from inserted
+
+declare @TotalNumber int
+declare @MinId int
+select @TotalNumber=count(*) from RealTime_DisplacementTable
+if @TotalNumber >=500
+begin
+   select @MinId=MIN(Id) from RealTime_DisplacementTable
+   delete from RealTime_DisplacementTable WHERE Id=@MinId
+end
+
+insert into RealTime_DisplacementTable(Displacement,"Time",PointsNumberId,ThresholdGradeId)
+values(@displacement,@Time,@PointsNumberId,@ThresholdGradeId)
+go
+
+-------------温度--------------------------------------
+if(OBJECT_ID('tgr_Basic_TemperatureTableToRealTime','TR') is not null)
+drop trigger tgr_Basic_TemperatureTableToRealTime
+go
+create trigger tgr_Basic_TemperatureTableToRealTime
+on Basic_TemperatureTable
+for insert
+as
+set nocount on
+declare @temperature float,@Time datetime,@PointsNumberId int,@ThresholdGradeId int
+select @temperature=Temperature from inserted
+select @Time="Time" from inserted
+select @PointsNumberId=PointsNumberId from inserted
+select @ThresholdGradeId=ThresholdGradeId from inserted
+
+declare @TotalNumber int
+declare @MinId int
+select @TotalNumber=count(*) from RealTime_TemperatureTable
+if @TotalNumber >=500
+begin
+   select @MinId=MIN(Id) from RealTime_TemperatureTable
+   delete from RealTime_TemperatureTable WHERE Id=@MinId
+end
+
+insert into RealTime_TemperatureTable(Temperature,"Time",PointsNumberId,ThresholdGradeId)
+values(@temperature,@Time,@PointsNumberId,@ThresholdGradeId)
+go
+
+-------------湿度--------------------------------------
+if(OBJECT_ID('tgr_Basic_HumidityTableToRealTime','TR') is not null)
+drop trigger tgr_Basic_HumidityTableToRealTime
+go
+create trigger tgr_Basic_HumidityTableToRealTime
+on Basic_HumidityTable
+for insert
+as
+set nocount on
+declare @humidity float,@Time datetime,@PointsNumberId int,@ThresholdGradeId int
+select @humidity=Humidity from inserted
+select @Time="Time" from inserted
+select @PointsNumberId=PointsNumberId from inserted
+select @ThresholdGradeId=ThresholdGradeId from inserted
+
+declare @TotalNumber int
+declare @MinId int
+select @TotalNumber=count(*) from RealTime_HumidityTable
+if @TotalNumber >=500
+begin
+   select @MinId=MIN(Id) from RealTime_HumidityTable
+   delete from RealTime_HumidityTable WHERE Id=@MinId
+end
+
+insert into RealTime_HumidityTable(Humidity,"Time",PointsNumberId,ThresholdGradeId)
+values(@humidity,@Time,@PointsNumberId,@ThresholdGradeId)
+go
+
+-------------风速--------------------------------------
+if(OBJECT_ID('tgr_Basic_WindLoadTableToRealTime','TR') is not null)
+drop trigger tgr_Basic_WindLoadTableToRealTime
+go
+create trigger tgr_Basic_WindLoadTableToRealTime
+on Basic_WindLoadTable
+for insert
+as
+set nocount on
+declare @windSpeed float,@WindDirection float, @Time datetime,@PointsNumberId int,@ThresholdGradeId int
+select @windSpeed=WindSpeed from inserted
+select @WindDirection=WindDirection from inserted
+select @Time="Time" from inserted
+select @PointsNumberId=PointsNumberId from inserted
+select @ThresholdGradeId=ThresholdGradeId from inserted
+
+declare @TotalNumber int
+declare @MinId int
+select @TotalNumber=count(*) from RealTime_WindLoadTable
+if @TotalNumber >=500
+begin
+   select @MinId=MIN(Id) from RealTime_WindLoadTable
+   delete from RealTime_WindLoadTable WHERE Id=@MinId
+end
+
+insert into RealTime_WindLoadTable(WindSpeed,WindDirection,"Time",PointsNumberId,ThresholdGradeId)
+values(@windSpeed,@WindDirection,@Time,@PointsNumberId,@ThresholdGradeId)
+go

@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GxjtBHMS.Models
+﻿namespace GxjtBHMS.Models
 {
-   public class Basic_TemperatureTable : MonitorDatasQueryConditionsModel
+    public class Basic_TemperatureTable : MonitorDatasQueryConditionsModel
     {
         public double Temperature { get; set; }
 
