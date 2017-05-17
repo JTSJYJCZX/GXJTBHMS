@@ -20,11 +20,11 @@ namespace GxjtBHMS.Web.RealTimeMonitoringHub
         {
             var sectionIds = _realTimeDatasService.GetSectionIdsBy(testTypeId).ToArray();
             
-            while (true == true)
+            while (true)
             {
                 var models = _realTimeDatasService.GetWarningStrainDatasBy(sectionIds);
                 Clients.All.RealTimeDisplayDatas(models);
-                Thread.Sleep(5000);
+                Thread.Sleep(10000);
             }
         }
     }
