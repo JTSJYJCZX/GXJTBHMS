@@ -1,8 +1,6 @@
 ﻿using GxjtBHMS.Service.Interfaces;
-using System.Collections.Generic;
 using GxjtBHMS.Service.Messaging.MonitoringDatas;
 using GxjtBHMS.IDAL;
-using GxjtBHMS.Models;
 using GxjtBHMS.Service.ExtensionMethods.MonitoringDatas.TestTypes;
 using System;
 

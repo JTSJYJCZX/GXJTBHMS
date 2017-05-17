@@ -1,5 +1,4 @@
-﻿using GxjtBHMS.Service.ViewModels.MonitoringDatas.MonitoringDatasCharts;
-using GxjtBHMS.Service.ViewModels.MonitoringDatas.SafetyPreWarning;
+﻿using GxjtBHMS.Service.ViewModels.MonitoringDatas.SafetyPreWarning;
 using System;
 using System.Collections.Generic;
 

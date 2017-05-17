@@ -1,14 +1,11 @@
-﻿using GxjtBHMS.IDAL;
-using GxjtBHMS.Models.MonitoringDatasTable;
-using GxjtBHMS.Models.ThresholdValueSetting;
-using GxjtBHMS.SqlServerDAL;
+﻿using GxjtBHMS.Models.MonitoringDatasTable;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL.SafetyPreWarningDAL
 {
-   
+
     public class SafetyPreWarning_CableFrceTableDAL : Repository<SafetyPreWarning_CableForceTable, int>, ISafetyPreWarningDetailDAL<SafetyPreWarning_CableForceTable>
     {
         public override IEnumerable<SafetyPreWarning_CableForceTable> FindBy(IList<Func<SafetyPreWarning_CableForceTable, bool>> ps, params string[] navigationProperties)

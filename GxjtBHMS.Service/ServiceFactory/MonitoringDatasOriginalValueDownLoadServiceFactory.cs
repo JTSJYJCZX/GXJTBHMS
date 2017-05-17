@@ -1,5 +1,4 @@
 ﻿using GxjtBHMS.Service.Implementations;
-using GxjtBHMS.Service.Implementations.OriginalValueDownLoad;
 using System;
 using GxjtBHMS.Models;
 using GxjtBHMS.Models.MonitoringDatasTable;

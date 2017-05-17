@@ -13,9 +13,5 @@ namespace GxjtBHMS.Models.ManualInspectionSafetyAssessmentTable
         //评估结果
         public int AssessmentResultStateId { get; set; }
         public virtual ManualInspectionSafetyAssessmentStateTable AssessmentResultState { get; set; }
-
-
-   
-
     }
 }

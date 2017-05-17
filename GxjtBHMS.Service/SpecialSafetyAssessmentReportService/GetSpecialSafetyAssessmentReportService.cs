@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using GxjtBHMS.Service.Messaging;
 using System.Linq;
 using GxjtBHMS.Infrastructure.Configuration;
-using GxjtBHMS.Models.SecondLevelSafetyAssessmentTable;
-using GxjtBHMS.Service.Messaging.SecondLevelSafetyAssessmentReport;
 using GxjtBHMS.Models.SpecialSafetyAssessmentReportTable;
 using GxjtBHMS.Service.Messaging.SpecialSafetyAssessmentReport;
 

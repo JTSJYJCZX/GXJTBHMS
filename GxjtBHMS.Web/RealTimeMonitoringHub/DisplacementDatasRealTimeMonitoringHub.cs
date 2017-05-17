@@ -3,8 +3,6 @@ using GxjtBHMS.Service.Interfaces;
 using System.Threading;
 using GxjtBHMS.DependencyInjection;
 using System.Linq;
-using GxjtBHMS.Service.ViewModels.RealTimeDatasDisplay;
-using System.Collections.Generic;
 
 namespace GxjtBHMS.Web.RealTimeMonitoringHub
 {
@@ -22,11 +20,11 @@ namespace GxjtBHMS.Web.RealTimeMonitoringHub
         {
             var sectionIds = _realTimeDatasService.GetSectionIdsBy(testTypeId).ToArray();
             
-            while (true == true)
+            while (true)
             {
                 var models = _realTimeDatasService.GetWarningDisplacementDatasBy(sectionIds);
                 Clients.All.RealTimeDisplayDatas(models);
-                Thread.Sleep(5000);
+                Thread.Sleep(10000);
             }
         }
     }
