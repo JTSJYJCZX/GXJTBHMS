@@ -88,6 +88,14 @@
     <Compile Include="OriginalMonitoringDatasTable\Original_SteelArchStrainTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BasicMonitoringDatasTable\Basic_TemperatureTable.cs" />
+    <Compile Include="RealTimeMonitoringDataTable\RealTime_CableForceTable.cs" />
+    <Compile Include="RealTimeMonitoringDataTable\RealTime_ConcreteStrainTable.cs" />
+    <Compile Include="RealTimeMonitoringDataTable\RealTime_DisplacementTable.cs" />
+    <Compile Include="RealTimeMonitoringDataTable\RealTime_HumidityTable.cs" />
+    <Compile Include="RealTimeMonitoringDataTable\RealTime_SteelArchStrainTable.cs" />
+    <Compile Include="RealTimeMonitoringDataTable\RealTime_SteelLatticeStrainTable.cs" />
+    <Compile Include="RealTimeMonitoringDataTable\RealTime_TemperatureTable.cs" />
+    <Compile Include="RealTimeMonitoringDataTable\RealTime_WindLoadTable.cs" />
     <Compile Include="SafetyPreWarningTable\SafetyPreWarningBaseModel.cs" />
     <Compile Include="SafetyPreWarningTable\SafetyPreWarning_CableForceTable.cs" />
     <Compile Include="SafetyPreWarningTable\SafetyPreWarning_StrainTable.cs" />

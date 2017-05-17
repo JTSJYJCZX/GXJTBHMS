@@ -1,21 +1,21 @@
 ﻿using GxjtBHMS.IDAL;
-using GxjtBHMS.Models.MonitoringDatasTable;
+using GxjtBHMS.Models.RealTimeMonitoringDataTable;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL.RealTimeDatasMonitoringDAL
 {
-    public class ConcreteStrainRealTimeDatasDAL : Repository<Basic_ConcreteStrainTable , int>, IConcreteStrainRealTimeDatasDAL
+    public class ConcreteStrainRealTimeDatasDAL : Repository<RealTime_ConcreteStrainTable, int>, IConcreteStrainRealTimeDatasDAL
     {
-        public IEnumerable<Basic_ConcreteStrainTable > GetRealTimeStrains(int pointPositionId)
+        public IEnumerable<RealTime_ConcreteStrainTable> GetRealTimeStrains(int pointPositionId)
         {
-            List<Basic_ConcreteStrainTable > result = GetRealTimeDataByPositionId(pointPositionId);
+            List<RealTime_ConcreteStrainTable> result = GetRealTimeDataByPositionId(pointPositionId);
             return result;
         }
 
-        List<Basic_ConcreteStrainTable > GetRealTimeDataByPositionId(int pointPositionId)
+        List<RealTime_ConcreteStrainTable> GetRealTimeDataByPositionId(int pointPositionId)
         {
-            List<Basic_ConcreteStrainTable > result = new List<Basic_ConcreteStrainTable >();
+            List<RealTime_ConcreteStrainTable> result = new List<RealTime_ConcreteStrainTable>();
             var pointsNumberId = GetPointsNumberIdByPointsPositionId(pointPositionId);
             foreach (var item in pointsNumberId)
             {

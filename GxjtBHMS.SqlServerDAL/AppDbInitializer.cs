@@ -783,21 +783,21 @@ namespace GxjtBHMS.SqlServerDAL
 
             ThresholdValue1 = new ThresholdValue_DisplacementThresholdValueTable
             {
-                PointsNumber = tmpNumbers18[2 * tmpNumbers18.Length / 3 + 2],
-                PositiveFirstLevelThresholdValue = DSASideZThresholdP * 0.8,
-                PositiveSecondLevelThresholdValue = DSASideZThresholdP * 1.0,
-                NegativeFirstLevelThresholdValue = DSASideZThresholdN * 0.8,
-                NegativeSecondLevelThresholdValue = DSASideZThresholdN * 1.0,
-            };
-            context.DisplaymentThresholdValues.Add(ThresholdValue1);
-
-            ThresholdValue1 = new ThresholdValue_DisplacementThresholdValueTable
-            {
                 PointsNumber = tmpNumbers18[2 * tmpNumbers18.Length / 3 + 1],
                 PositiveFirstLevelThresholdValue = DSAMiddleZThresholdP * 0.8,
                 PositiveSecondLevelThresholdValue = DSAMiddleZThresholdP * 1.0,
                 NegativeFirstLevelThresholdValue = DSAMiddleZThresholdN * 0.8,
                 NegativeSecondLevelThresholdValue = DSAMiddleZThresholdN * 1.0,
+            };
+            context.DisplaymentThresholdValues.Add(ThresholdValue1);
+
+            ThresholdValue1 = new ThresholdValue_DisplacementThresholdValueTable
+            {
+                PointsNumber = tmpNumbers18[2 * tmpNumbers18.Length / 3 + 2],
+                PositiveFirstLevelThresholdValue = DSASideZThresholdP * 0.8,
+                PositiveSecondLevelThresholdValue = DSASideZThresholdP * 1.0,
+                NegativeFirstLevelThresholdValue = DSASideZThresholdN * 0.8,
+                NegativeSecondLevelThresholdValue = DSASideZThresholdN * 1.0,
             };
             context.DisplaymentThresholdValues.Add(ThresholdValue1);
 
@@ -810,6 +810,7 @@ namespace GxjtBHMS.SqlServerDAL
                 NegativeSecondLevelThresholdValue = DSAMiddleZThresholdN * 1.0,
             };
             context.DisplaymentThresholdValues.Add(ThresholdValue1);
+
             //桥面位移测点阈值设置
             var ThresholdValue2 = new ThresholdValue_DisplacementThresholdValueTable
             {
@@ -818,6 +819,15 @@ namespace GxjtBHMS.SqlServerDAL
                 PositiveSecondLevelThresholdValue = DBDSideZThresholdP * 1.0,
                 NegativeFirstLevelThresholdValue = DBDSideZThresholdN * 0.8,
                 NegativeSecondLevelThresholdValue = DBDSideZThresholdN * 1.0,
+            };
+            context.DisplaymentThresholdValues.Add(ThresholdValue2);
+            ThresholdValue2 = new ThresholdValue_DisplacementThresholdValueTable
+            {
+                PointsNumber = tmpNumbers19[1],
+                PositiveFirstLevelThresholdValue = DBDMiddleZThresholdP * 0.8,
+                PositiveSecondLevelThresholdValue = DBDMiddleZThresholdP * 1.0,
+                NegativeFirstLevelThresholdValue = DBDMiddleZThresholdN * 0.8,
+                NegativeSecondLevelThresholdValue = DBDMiddleZThresholdN * 1.0,
             };
             context.DisplaymentThresholdValues.Add(ThresholdValue2);
             ThresholdValue2 = new ThresholdValue_DisplacementThresholdValueTable
@@ -840,25 +850,6 @@ namespace GxjtBHMS.SqlServerDAL
             context.DisplaymentThresholdValues.Add(ThresholdValue2);
             ThresholdValue2 = new ThresholdValue_DisplacementThresholdValueTable
             {
-                PointsNumber = tmpNumbers19[5],
-                PositiveFirstLevelThresholdValue = DBDSideZThresholdP * 0.8,
-                PositiveSecondLevelThresholdValue = DBDSideZThresholdP * 1.0,
-                NegativeFirstLevelThresholdValue = DBDSideZThresholdN * 0.8,
-                NegativeSecondLevelThresholdValue = DBDSideZThresholdN * 1.0,
-            };
-            context.DisplaymentThresholdValues.Add(ThresholdValue2);
-
-            ThresholdValue2 = new ThresholdValue_DisplacementThresholdValueTable
-            {
-                PointsNumber = tmpNumbers19[1],
-                PositiveFirstLevelThresholdValue = DBDMiddleZThresholdP * 0.8,
-                PositiveSecondLevelThresholdValue = DBDMiddleZThresholdP * 1.0,
-                NegativeFirstLevelThresholdValue = DBDMiddleZThresholdN * 0.8,
-                NegativeSecondLevelThresholdValue = DBDMiddleZThresholdN * 1.0,
-            };
-            context.DisplaymentThresholdValues.Add(ThresholdValue2);
-            ThresholdValue2 = new ThresholdValue_DisplacementThresholdValueTable
-            {
                 PointsNumber = tmpNumbers19[4],
                 PositiveFirstLevelThresholdValue = DBDMiddleZThresholdP * 0.8,
                 PositiveSecondLevelThresholdValue = DBDMiddleZThresholdP * 1.0,
@@ -866,7 +857,15 @@ namespace GxjtBHMS.SqlServerDAL
                 NegativeSecondLevelThresholdValue = DBDMiddleZThresholdN * 1.0,
             };
             context.DisplaymentThresholdValues.Add(ThresholdValue2);
-
+            ThresholdValue2 = new ThresholdValue_DisplacementThresholdValueTable
+            {
+                PointsNumber = tmpNumbers19[5],
+                PositiveFirstLevelThresholdValue = DBDSideZThresholdP * 0.8,
+                PositiveSecondLevelThresholdValue = DBDSideZThresholdP * 1.0,
+                NegativeFirstLevelThresholdValue = DBDSideZThresholdN * 0.8,
+                NegativeSecondLevelThresholdValue = DBDSideZThresholdN * 1.0,
+            };
+            context.DisplaymentThresholdValues.Add(ThresholdValue2);
             //伸缩缝位移测点阈值设置
             for (int i = 0; i < tmpNumbers20.Length; i++)
             {
@@ -1678,6 +1677,8 @@ namespace GxjtBHMS.SqlServerDAL
 
             }
         }
+
+
         /// <summary>
         /// 初始化异常阈值
         /// </summary>

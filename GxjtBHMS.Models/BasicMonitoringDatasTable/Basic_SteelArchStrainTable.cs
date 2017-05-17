@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace GxjtBHMS.Models.MonitoringDatasTable
+﻿namespace GxjtBHMS.Models.MonitoringDatasTable
 {
     public class Basic_SteelArchStrainTable :MonitorDatasQueryConditionsModel
     {
@@ -8,8 +6,5 @@ namespace GxjtBHMS.Models.MonitoringDatasTable
         public double Temperature { get; set; }
         public int ThresholdGradeId { get; set; }
         public virtual ThresholdGradeTable ThresholdGrade { get; set; }
-
-
-
     }
 }

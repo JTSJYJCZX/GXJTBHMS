@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using GxjtBHMS.Models.ThresholdValueSetting;
-using GxjtBHMS.Service.Messaging;
+﻿using GxjtBHMS.Service.Messaging;
 using GxjtBHMS.Service.Messaging.ThresholdValueSetting;
 
 namespace GxjtBHMS.Service.Interfaces

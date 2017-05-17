@@ -1,5 +1,4 @@
-﻿using GxjtBHMS.Models.SecondLevelSafetyAssessmentTable;
-using GxjtBHMS.Models.SpecialSafetyAssessmentReportTable;
+﻿using GxjtBHMS.Models.SpecialSafetyAssessmentReportTable;
 using System.Collections.Generic;
 
 namespace GxjtBHMS.Service.Messaging

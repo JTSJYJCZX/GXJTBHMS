@@ -1,10 +1,7 @@
 ﻿using GxjtBHMS.Models;
 using GxjtBHMS.Service.ViewModels.MonitoringDatas.MonitoringPointsPosition;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GxjtBHMS.Service.ExtensionMethods.MonitoringDatas.PointsPosition
 

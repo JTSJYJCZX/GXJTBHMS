@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace GxjtBHMS.Models.FirstLevelSafetyAssessmentTable
+﻿namespace GxjtBHMS.Models.FirstLevelSafetyAssessmentTable
 {
     public class FirstAssessment_FirstLevelOfSafetyAssessmentResultsTable : EntityBase<int>
     {
@@ -20,7 +18,5 @@ namespace GxjtBHMS.Models.FirstLevelSafetyAssessmentTable
         //报告编号外键
         public virtual FirstAssessment_FirstLevelSafetyAssessmentReportTable AssessmentReport { get; set; }
         public int AssessmentReportId { get; set; }
-
-
     }
 }

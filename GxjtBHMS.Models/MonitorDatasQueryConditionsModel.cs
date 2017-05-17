@@ -7,7 +7,5 @@ namespace GxjtBHMS.Models
         public DateTime Time { get; set; }
         public int PointsNumberId { get; set; }
         public virtual MonitoringPointsNumber PointsNumber { get; set; }
-        
-
     }
 }

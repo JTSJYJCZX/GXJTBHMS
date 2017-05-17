@@ -1,6 +1,4 @@
-﻿using GxjtBHMS.Models.ThresholdValueSetting;
-
-namespace GxjtBHMS.Models
+﻿namespace GxjtBHMS.Models
 {
     public class MonitoringPointsNumber : EntityBase<int>
     {

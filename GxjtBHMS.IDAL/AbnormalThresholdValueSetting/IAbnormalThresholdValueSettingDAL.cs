@@ -1,5 +1,4 @@
-﻿using GxjtBHMS.Models.ThresholdValueSetting;
-using GxjtBHMS.Infrastructure.Domain;
+﻿using GxjtBHMS.Infrastructure.Domain;
 using GxjtBHMS.Models.AbnormalThresholdValueSetting;
 
 namespace GxjtBHMS.IDAL
@@ -7,7 +6,6 @@ namespace GxjtBHMS.IDAL
 {
     public interface IAbnormalThresholdValueSettingDAL : IReadOnlyRepository<Abnormal_ThresholdValueTable, int>,IRepository<Abnormal_ThresholdValueTable>
     {
-
 
     }
 }

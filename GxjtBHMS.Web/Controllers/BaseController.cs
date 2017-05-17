@@ -8,6 +8,7 @@ namespace GxjtBHMS.Web.Controllers
 {
     public class BaseController : Controller
     {
+
         /// <summary>
         ///  提供将数据源转化为SelectListItem集合，具备请选择项，并保存在ViewData中的
         /// </summary>

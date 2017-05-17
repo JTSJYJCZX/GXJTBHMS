@@ -1,5 +1,4 @@
-﻿using GxjtBHMS.Models.ThresholdValueSetting;
-using GxjtBHMS.Infrastructure.Domain;
+﻿using GxjtBHMS.Infrastructure.Domain;
 
 namespace GxjtBHMS.IDAL
 

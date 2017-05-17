@@ -111,7 +111,6 @@
     <Compile Include="Implementations\AlarmDatasManagement\AlarmDatasQueryService.cs" />
     <Compile Include="Implementations\AlarmDatasManagement\AlarmDatasFileSystemService.cs" />
     <Compile Include="FirstLevelSafetyAssessmentReportService\ReportDownloadModel.cs" />
-    <Compile Include="FirstLevelSafetyAssessmentReportService\SetReportTableValue.cs" />
     <Compile Include="Implementations\EigenvalueChartQueryService\MonitorDatasQueryChartService.cs" />
     <Compile Include="Implementations\EigenvalueDownLoadService\MonitorDatasEigenValueQueryFileSystemService.cs" />
     <Compile Include="Implementations\ExcelFileConverter.cs" />

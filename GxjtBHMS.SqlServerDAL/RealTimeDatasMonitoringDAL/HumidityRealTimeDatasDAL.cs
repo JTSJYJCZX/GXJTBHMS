@@ -1,22 +1,21 @@
 ﻿using GxjtBHMS.IDAL;
-using GxjtBHMS.Models;
-using GxjtBHMS.Models.MonitoringDatasTable;
+using GxjtBHMS.Models.RealTimeMonitoringDataTable;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace GxjtBHMS.SqlServerDAL.RealTimeDatasMonitoringDAL
 {
-    public class HumidityRealTimeDatasDAL : Repository<Basic_HumidityTable, int>, IHumidityRealTimeDatasDAL
+    public class HumidityRealTimeDatasDAL : Repository<RealTime_HumidityTable, int>, IHumidityRealTimeDatasDAL
     {
-        public IEnumerable<Basic_HumidityTable> GetRealTimeHumidity(int pointPositionId)
+        public IEnumerable<RealTime_HumidityTable> GetRealTimeHumidity(int pointPositionId)
         {
-            List<Basic_HumidityTable> result = GetRealTimeDataByPositionId(pointPositionId);
+            List<RealTime_HumidityTable> result = GetRealTimeDataByPositionId(pointPositionId);
             return result;
         }
 
-        List<Basic_HumidityTable> GetRealTimeDataByPositionId(int pointPositionId)
+        List<RealTime_HumidityTable> GetRealTimeDataByPositionId(int pointPositionId)
         {
-            List<Basic_HumidityTable> result = new List<Basic_HumidityTable>();
+            List<RealTime_HumidityTable> result = new List<RealTime_HumidityTable>();
             var pointsNumberId = GetPointsNumberIdByPointsPositionId(pointPositionId);
             foreach (var item in pointsNumberId)
             {

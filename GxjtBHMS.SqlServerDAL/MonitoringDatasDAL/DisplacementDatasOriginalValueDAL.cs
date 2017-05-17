@@ -1,6 +1,5 @@
 ﻿using GxjtBHMS.IDAL;
 using GxjtBHMS.Models;
-using GxjtBHMS.Models.MonitoringDatasTable;
 using System;
 using System.Collections.Generic;
 using System.Linq;
