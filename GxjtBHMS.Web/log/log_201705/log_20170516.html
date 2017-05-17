@@ -1143,3 +1143,9 @@
    在 GxjtBHMS.SqlServerDAL.RealTimeDatasMonitoringDAL.DisplacementRealTimeDatasDAL.GetRealTimeDataByPositionId(Int32 pointPositionId) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.SqlServerDAL\RealTimeDatasMonitoringDAL\DisplacementRealTimeDatasDAL.cs:行号 23
    在 GxjtBHMS.SqlServerDAL.RealTimeDatasMonitoringDAL.DisplacementRealTimeDatasDAL.GetRealTimeDisplacement(Int32 pointPositionId) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.SqlServerDAL\RealTimeDatasMonitoringDAL\DisplacementRealTimeDatasDAL.cs:行号 12
    在 GxjtBHMS.Service.Implementations.DisplacementRealTimeDatasService.GetWarningDisplacementDatasBy(IEnumerable`1 sectionIds) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.Service\Implementations\RealTimeDatasService\DisplacementRealTimeDatasService.cs:行号 33
+2017-05-16 20:35:47,465 INFO  BHMSLogger  - Invalid row number (65536) outside allowable range (0..65535)
+2017-05-16 20:35:47,483 INFO  BHMSLogger  -    在 NPOI.HSSF.UserModel.HSSFRow.set_RowNum(Int32 value)
+   在 NPOI.HSSF.UserModel.HSSFRow..ctor(HSSFWorkbook book, HSSFSheet sheet, RowRecord record)
+   在 NPOI.HSSF.UserModel.HSSFSheet.CreateRow(Int32 rownum)
+   在 GxjtBHMS.Service.Implementations.AnomalousEventFileSystemService.ConvertToDocument(IList`1 ps) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.Service\Implementations\AnomalousEventManagement\AnomalousEventFileSystemService.cs:行号 37
+   在 GxjtBHMS.Service.AnomalousEventManagementQuery.AnomalousEventManagementQueryService.SaveAs(DatasQueryResultRequestBase req) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.Service\AnomalousEventManagementQuery\AnomalousEventManagementQueryService.cs:行号 78
