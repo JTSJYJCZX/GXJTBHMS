@@ -17,8 +17,7 @@ namespace GxjtBHMS.SqlServerDAL.AnomalousEventDAL
                 var result = DealWithConditions(ps.ToArray(), source);//处理条件筛选
 
                 return result
-                    .OrderByDescending(m => m.Time)
-                    .ThenBy(m => m.PointsNumberId)
+                    .OrderByDescending(m => m.Id)
                     .Skip((currentPageIndex - 1) * pageSize)
                     .Take(pageSize)
                     .ToList(); //排序、分页

@@ -21,9 +21,8 @@ namespace GxjtBHMS.Service.Implementations.AlarmDatasManagement
         {
             string[] navigationProperties = { ServiceConstant.PointsNumberPointsPositionNavigationProperty, ServiceConstant.ThresholdGradeNavigationProperty };
             var source = _alarmDatasQueryDAL.FindBy(ps, currentPageIndex, pageSize,navigationProperties);
-            //var groupDatas = source.GroupBy(m => m.PointsNumber.Name);
             var datas = new List<AlarmDatasModel>();
-            var models = source.OrderBy(m => m.Time).Select(m => new AlarmDatasModel { Time = DateTimeHelper.FormatDateTime(m.Time), TestType = m.PointsNumber.PointsPosition.TestType.Name,PointsPosition=m.PointsNumber.PointsPosition.Name, PointsNumber = m.PointsNumber.Name, MonitoringData = m.MonitoringData, ThresholdValue = m.ThresholdValue, ThresholdGrade = m.ThresholdGrade.ThresholdGrade,Unit=m.PointsNumber.PointsPosition.TestType.Unit});
+            var models = source.Select(m => new AlarmDatasModel { Time = DateTimeHelper.FormatDateTime(m.Time), TestType = m.PointsNumber.PointsPosition.TestType.Name,PointsPosition=m.PointsNumber.PointsPosition.Name, PointsNumber = m.PointsNumber.Name, MonitoringData = m.MonitoringData, ThresholdValue = m.ThresholdValue, ThresholdGrade = m.ThresholdGrade.ThresholdGrade,Unit=m.PointsNumber.PointsPosition.TestType.Unit});
             datas = models.ToList();
             return datas;
         }
