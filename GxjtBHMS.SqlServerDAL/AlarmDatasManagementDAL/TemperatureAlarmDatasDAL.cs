@@ -17,8 +17,7 @@ namespace GxjtBHMS.SqlServerDAL
                 var result = DealWithConditions(ps.ToArray(), source);//处理条件筛选
 
                 return result
-                    .OrderBy(m=>m.PointsNumberId)
-                    .ThenByDescending(m => m.Time)
+                    .OrderByDescending(m=>m.Id)
                     .Skip((currentPageIndex - 1) * pageSize)
                     .Take(pageSize)
                     .ToList(); //排序、分页

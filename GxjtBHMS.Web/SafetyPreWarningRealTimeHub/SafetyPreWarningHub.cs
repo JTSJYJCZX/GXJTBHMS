@@ -4,6 +4,7 @@ using GxjtBHMS.Service.Interfaces.SafetyPreWarningRealTimePushServiceInterfaces;
 using GxjtBHMS.Service.Messaging.SafetyPreWarning;
 using System.Threading;
 using GxjtBHMS.DependencyInjection;
+using GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService;
 
 namespace GxjtBHMS.Web.SafetyPreWarningRealTimeHub
 {
@@ -18,12 +19,13 @@ namespace GxjtBHMS.Web.SafetyPreWarningRealTimeHub
         {
             while (true)
             {
-                DateTime now = DateTime.Now;
+                var GetFirstLevelSafetyAssessmentReportListService = new GetFirstLevelSafetyAssessmentReportService();
+                var LastReportTime = GetFirstLevelSafetyAssessmentReportListService.GetFirstSafetyAssessmentResult().FirstSafetyAssessmentReportTime_DateTime;
                 var req = new GetSafetyWarningDetailRequest
                 {
-                    StartTime = new DateTime(now.Year, now.Month, 1),
-                    EndTime = now,
-            };
+                    StartTime = LastReportTime,
+                    EndTime = DateTime.Now
+                };
                 var model = _sfpwrtp.GetSafetyPreWarningRealTimePushModel(req);
                 Clients.All.SafetyWarningStateRealTimePushDatas(model);
                 Thread.Sleep(1000);
