@@ -1024,8 +1024,8 @@ img.info-icon {
     .img-container .A1 {
         color: #000000;
         position: absolute;
-        left: 14%;
-        margin-top: 4%;
+        left: 22%;
+        margin-top: 1%;
         z-index: 2;
         font-size: 2ex;
     }
@@ -1033,8 +1033,8 @@ img.info-icon {
     .img-container .A2 {
         color: #000000;
         position: absolute;
-        left: 29%;
-        margin-top: 4%;
+        left: 35%;
+        margin-top: 1%;
         z-index: 2;
         font-size: 2ex;
     }
@@ -1042,8 +1042,8 @@ img.info-icon {
     .img-container .A3 {
         color: #000000;
         position: absolute;
-        left: 14%;
-        margin-top: 21%;
+        left: 22%;
+        margin-top: 15%;
         z-index: 2;
         font-size: 2ex;
     }
@@ -1051,8 +1051,8 @@ img.info-icon {
     .img-container .A4 {
         color: #000000;
         position: absolute;
-        left: 29%;
-        margin-top: 21%;
+        left: 35%;
+        margin-top: 15%;
         z-index: 2;
         font-size: 2ex;
     }
@@ -1060,8 +1060,8 @@ img.info-icon {
     .img-container .A5 {
         color: #000000;
         position: absolute;
-        left: 62%;
-        margin-top: 4%;
+        left: 60%;
+        margin-top: 1%;
         z-index: 2;
         font-size: 2ex;
     }
@@ -1069,8 +1069,8 @@ img.info-icon {
     .img-container .A6 {
         color: #000000;
         position: absolute;
-        left: 77%;
-        margin-top: 4%;
+        left: 73%;
+        margin-top: 1%;
         z-index: 2;
         font-size: 2ex;
     }
@@ -1078,8 +1078,8 @@ img.info-icon {
     .img-container .A7 {
         color: #000000;
         position: absolute;
-        left: 62%;
-        margin-top: 21%;
+        left: 60%;
+        margin-top: 15%;
         z-index: 2;
         font-size: 2ex;
     }
@@ -1087,8 +1087,8 @@ img.info-icon {
     .img-container .A8 {
         color: #000000;
         position: absolute;
-        left: 77%;
-        margin-top: 21%;
+        left: 73%;
+        margin-top: 15%;
         z-index: 2;
         font-size: 2ex;
     }
@@ -1105,7 +1105,7 @@ img.info-icon {
     .img-container .HA1 {
         color: #000000;
         position: absolute;
-        left: 58%;
+        left: 56%;
         margin-top: 5%;
         z-index: 2;
         font-size: 2ex;
@@ -1114,7 +1114,7 @@ img.info-icon {
     .img-container .HA2 {
         color: #000000;
         position: absolute;
-        left: 67%;
+        left: 66%;
         margin-top: 5%;
         z-index: 2;
         font-size: 2ex;
@@ -1123,8 +1123,8 @@ img.info-icon {
     .img-container .HA3 {
         color: #000000;
         position: absolute;
-        left: 58%;
-        margin-top: 16%;
+        left: 56%;
+        margin-top: 18%;
         z-index: 2;
         font-size: 2ex;
     }
@@ -1132,8 +1132,8 @@ img.info-icon {
     .img-container .HA4 {
         color: #000000;
         position: absolute;
-        left: 67%;
-        margin-top: 16%;
+        left: 66%;
+        margin-top: 18%;
         z-index: 2;
         font-size: 2ex;
     }
@@ -1345,8 +1345,8 @@ img.info-icon {
     .img-container .SITB1 {
         color: #ff0000;
         position: absolute;
-        left: 39.5%;
-        margin-top: 1.4%;
+        left: 41.5%;
+        margin-top: 0.3%;
         z-index: 2;
         font-size: 2ex;
     }
@@ -1354,8 +1354,8 @@ img.info-icon {
     .img-container .SITB2 {
         color: #ff0000;
         position: absolute;
-        left: 50.5%;
-        margin-top: 1.4%;
+        left: 51.5%;
+        margin-top: 0.3%;
         z-index: 2;
         font-size: 2ex;
     }
@@ -1363,8 +1363,8 @@ img.info-icon {
     .img-container .SUSCB1 {
         color: #ff0000;
         position: absolute;
-        left: 37.5%;
-        margin-top: 20.5%;
+        left: 40.5%;
+        margin-top: 14%;
         z-index: 2;
         font-size: 2ex;
     }
@@ -1372,8 +1372,8 @@ img.info-icon {
     .img-container .SUSCB2 {
         color: #ff0000;
         position: absolute;
-        left: 48%;
-        margin-top: 20.5%;
+        left: 51%;
+        margin-top: 14%;
         z-index: 2;
         font-size: 2ex;
     }
@@ -1381,8 +1381,8 @@ img.info-icon {
     .img-container .SUSLB1 {
         color: #ff0000;
         position: absolute;
-        left: 29%;
-        margin-top: 22%;
+        left: 35%;
+        margin-top: 16%;
         z-index: 2;
         font-size: 2ex;
     }
@@ -1390,8 +1390,8 @@ img.info-icon {
     .img-container .SUSLB2 {
         color: #ff0000;
         position: absolute;
-        left: 45%;
-        margin-top: 22%;
+        left: 48%;
+        margin-top: 16%;
         z-index: 2;
         font-size: 2ex;
     }
@@ -1399,8 +1399,8 @@ img.info-icon {
     .img-container .SUSLB3 {
         color: #ff0000;
         position: absolute;
-        left: 62%;
-        margin-top: 22%;
+        left: 63%;
+        margin-top: 16%;
         z-index: 2;
         font-size: 2ex;
     }
@@ -1408,8 +1408,8 @@ img.info-icon {
     .img-container .SRTB1 {
         color: #ff0000;
         position: absolute;
-        left: 14%;
-        margin-top: 1.5%;
+        left: 18%;
+        margin-top: 0.5%;
         z-index: 2;
         font-size: 2ex;
     }
@@ -1418,7 +1418,7 @@ img.info-icon {
         color: #ff0000;
         position: absolute;
         left: 29%;
-        margin-top: 1.5%;
+        margin-top: 0.5%;
         z-index: 2;
         font-size: 2ex;
     }
@@ -1426,8 +1426,8 @@ img.info-icon {
     .img-container .SRTB3 {
         color: #ff0000;
         position: absolute;
-        left: 14%;
-        margin-top: 19%;
+        left: 18%;
+        margin-top: 16%;
         z-index: 2;
         font-size: 2ex;
     }
@@ -1436,7 +1436,7 @@ img.info-icon {
         color: #ff0000;
         position: absolute;
         left: 29%;
-        margin-top: 19%;
+        margin-top: 16%;
         z-index: 2;
         font-size: 2ex;
     }
@@ -1444,8 +1444,8 @@ img.info-icon {
     .img-container .SRTB5 {
         color: #ff0000;
         position: absolute;
-        left: 62%;
-        margin-top: 1.5%;
+        left: 61%;
+        margin-top: 0.5%;
         z-index: 2;
         font-size: 2ex;
     }
@@ -1453,8 +1453,8 @@ img.info-icon {
     .img-container .SRTB6 {
         color: #ff0000;
         position: absolute;
-        left: 77%;
-        margin-top: 1.5%;
+        left: 73%;
+        margin-top: 0.5%;
         z-index: 2;
         font-size: 2ex;
     }
@@ -1462,8 +1462,8 @@ img.info-icon {
     .img-container .SRTB7 {
         color: #ff0000;
         position: absolute;
-        left: 62%;
-        margin-top: 19%;
+        left: 61%;
+        margin-top: 16%;
         z-index: 2;
         font-size: 2ex;
     }
@@ -1471,8 +1471,8 @@ img.info-icon {
     .img-container .SRTB8 {
         color: #ff0000;
         position: absolute;
-        left: 77%;
-        margin-top: 19%;
+        left: 73%;
+        margin-top: 16%;
         z-index: 2;
         font-size: 2ex;
     }
@@ -2096,8 +2096,8 @@ img.info-icon {
     .img-container .CFFTBL1 {
         color: #ff0000;
         position: absolute;
-        left: 7.5%;
-        margin-top: 5%;
+        left: 5.5%;
+        margin-top: 3%;
         z-index: 2;
         font-size: 1.8ex;
     }
@@ -2105,8 +2105,8 @@ img.info-icon {
     .img-container .CFFTBL2 {
         color: #ff0000;
         position: absolute;
-        left: 7.5%;
-        margin-top: 8.5%;
+        left: 5%;
+        margin-top: 6.5%;
         z-index: 2;
         font-size: 1.8ex;
     }
@@ -2114,8 +2114,8 @@ img.info-icon {
     .img-container .CFFTBL3 {
         color: #ff0000;
         position: absolute;
-        left: 7.5%;
-        margin-top: 11.5%;
+        left: 5.0%;
+        margin-top: 10%;
         z-index: 2;
         font-size: 1.8ex;
     }
@@ -2123,8 +2123,8 @@ img.info-icon {
     .img-container .CFFTBL4 {
         color: #ff0000;
         position: absolute;
-        left: 32%;
-        margin-top: 5%;
+        left: 29%;
+        margin-top: 3%;
         z-index: 2;
         font-size: 1.8ex;
     }
@@ -2132,8 +2132,8 @@ img.info-icon {
     .img-container .CFFTBL5 {
         color: #ff0000;
         position: absolute;
-        left: 32%;
-        margin-top: 8.5%;
+        left: 29%;
+        margin-top: 6.5%;
         z-index: 2;
         font-size: 1.8ex;
     }
@@ -2141,8 +2141,8 @@ img.info-icon {
     .img-container .CFFTBL6 {
         color: #ff0000;
         position: absolute;
-        left: 32%;
-        margin-top: 11.5%;
+        left: 29%;
+        margin-top: 10%;
         z-index: 2;
         font-size: 1.8ex;
     }
@@ -2150,8 +2150,8 @@ img.info-icon {
     .img-container .CFFTBR1 {
         color: #ff0000;
         position: absolute;
-        left: 61%;
-        margin-top: 5%;
+        left: 65%;
+        margin-top: 3%;
         z-index: 2;
         font-size: 1.8ex;
     }
@@ -2159,8 +2159,8 @@ img.info-icon {
     .img-container .CFFTBR2 {
         color: #ff0000;
         position: absolute;
-        left: 61%;
-        margin-top:8.5%;
+        left: 65%;
+        margin-top:6.5%;
         z-index: 2;
         font-size: 1.8ex;
     }
@@ -2168,8 +2168,8 @@ img.info-icon {
     .img-container .CFFTBR3 {
         color: #ff0000;
         position: absolute;
-        left: 61%;
-        margin-top: 11.5%;
+        left: 65%;
+        margin-top: 10%;
         z-index: 2;
         font-size: 1.8ex;
     }
@@ -2177,8 +2177,8 @@ img.info-icon {
     .img-container .CFFTBR4 {
         color: #ff0000;
         position: absolute;
-        left: 85.5%;
-        margin-top: 5%;
+        left: 88.5%;
+        margin-top: 3%;
         z-index: 2;
         font-size: 1.8ex;
     }
@@ -2186,8 +2186,8 @@ img.info-icon {
     .img-container .CFFTBR5 {
         color: #ff0000;
         position: absolute;
-        left: 85.5%;
-        margin-top: 8.5%;
+        left: 89%;
+        margin-top: 6.5%;
         z-index: 2;
         font-size: 1.8ex;
     }
@@ -2195,8 +2195,8 @@ img.info-icon {
     .img-container .CFFTBR6 {
         color: #ff0000;
         position: absolute;
-        left: 85.5%;
-        margin-top: 11.5%;
+        left: 89%;
+        margin-top: 10%;
         z-index: 2;
         font-size: 1.8ex;
     }
