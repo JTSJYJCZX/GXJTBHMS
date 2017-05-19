@@ -597,6 +597,7 @@
     <Content Include="Scripts\jqPlot\README.txt" />
     <Content Include="Scripts\jqPlot\usage.txt" />
     <Content Include="Scripts\bootstrap-select.js.map" />
+    <None Include="Properties\PublishProfiles\BHMS.pubxml" />
     <None Include="Properties\PublishProfiles\本地部署.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />

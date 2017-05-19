@@ -47,5 +47,18 @@ namespace GxjtBHMS.Web
             //    "MonitoringPointsNumbers"
             //});
         }
+
+        protected void Application_End(object sender ,EventArgs e)
+        {
+            System.Threading.Thread.Sleep(2000);
+            HitPage();
+
+        }
+
+        private void HitPage()
+        {
+            System.Net.WebClient client = new System.Net.WebClient();
+            client.DownloadData("http://192.168.0.102");
+        }
     }
 }
