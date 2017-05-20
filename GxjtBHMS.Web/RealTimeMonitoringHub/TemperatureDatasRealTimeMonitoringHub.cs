@@ -1,31 +1,16 @@
 ﻿using Microsoft.AspNet.SignalR;
-using GxjtBHMS.Service.Interfaces;
-using System.Threading;
-using GxjtBHMS.DependencyInjection;
-using System.Linq;
+using GxjtBHMS.Web.Models;
 
 namespace GxjtBHMS.Web.RealTimeMonitoringHub
 {
     public class TemperatureDatasRealTimeMonitoringHub : Hub
     {
-        ITemperatureRealTimeDatasService _realTimeDatasService;
+        readonly TemperatureDatasTicker _realTimeDatesTicker;
+        public TemperatureDatasRealTimeMonitoringHub() : this(TemperatureDatasTicker.Instance){ }
 
-        public TemperatureDatasRealTimeMonitoringHub()
+        public TemperatureDatasRealTimeMonitoringHub(TemperatureDatasTicker tdt)
         {
-            _realTimeDatasService = new NinjectControllerFactory().GetInstance<ITemperatureRealTimeDatasService>();
-
+            _realTimeDatesTicker = tdt;
         }
-
-        //public void DisplayWarningTemperatureDatas(int testTypeId)
-        //{
-        //    var sectionIds = _realTimeDatasService.GetSectionIdsBy(testTypeId).ToArray();
-            
-        //    while (true)
-        //    {
-        //        var models = _realTimeDatasService.GetWarningTemperatureDatasBy(sectionIds);
-        //        Clients.All.RealTimeDisplayDatas(models);
-        //        Thread.Sleep(10000);
-        //    }
-        //}
     }
 }

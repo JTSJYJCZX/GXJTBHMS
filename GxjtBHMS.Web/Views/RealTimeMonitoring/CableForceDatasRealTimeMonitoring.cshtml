@@ -98,8 +98,8 @@
                 $("#" + "section" + i).css("color", model.SectionWarningColor);
             });
         }
+        $.connection.hub.logging = true;
         $.connection.hub.start().done(function () {
-            numHub.server.displayWarningCableForceDatas(5);
         })
     });
 </script>

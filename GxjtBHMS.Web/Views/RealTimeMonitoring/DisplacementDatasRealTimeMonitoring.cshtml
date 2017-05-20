@@ -83,8 +83,8 @@
                 });
             });
         }
+        $.connection.hub.logging = true;
         $.connection.hub.start().done(function () {
-            numHub.server.displayWarningDisplacementDatas(4);
         })
     });
 </script>

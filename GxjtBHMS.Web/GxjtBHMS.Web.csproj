@@ -264,7 +264,14 @@
     <Compile Include="Models\CacheHelper.cs" />
     <Compile Include="Models\NegativeStandardValueGroup.cs" />
     <Compile Include="Models\PositiveStandardValueGroup.cs" />
-    <Compile Include="Models\RealTimeDatesTicker.cs" />
+    <Compile Include="Models\RealTimeTicker\ConcreteStrainDatasTicker.cs" />
+    <Compile Include="Models\RealTimeTicker\CableForceDatasTicker.cs" />
+    <Compile Include="Models\RealTimeTicker\DisplacementDatasTicker.cs" />
+    <Compile Include="Models\RealTimeTicker\HumidityDatasTicker.cs" />
+    <Compile Include="Models\RealTimeTicker\WindLoadDatasTicker.cs" />
+    <Compile Include="Models\RealTimeTicker\TemperatureDatasTicker.cs" />
+    <Compile Include="Models\RealTimeTicker\SteelLatticeStrainDatasTicker.cs" />
+    <Compile Include="Models\RealTimeTicker\SteelArchStrainDatasTicker.cs" />
     <Compile Include="Models\ReceiveDatasModel\ReceiveStrainDatasModel.cs" />
     <Compile Include="Models\StrainDatasHandler.cs" />
     <Compile Include="Models\ThresholdValuesConvert.cs" />

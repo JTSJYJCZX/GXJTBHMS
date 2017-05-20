@@ -5,10 +5,10 @@ namespace GxjtBHMS.Web.RealTimeMonitoringHub
 {
     public class SteelArchStrainDatasRealTimeMonitoringHub : Hub
     {
-        readonly RealTimeDatesTicker _realTimeDatesTicker;
-        public SteelArchStrainDatasRealTimeMonitoringHub() : this(RealTimeDatesTicker.Instance){ }
+        readonly SteelArchStrainDatasTicker _realTimeDatesTicker;
+        public SteelArchStrainDatasRealTimeMonitoringHub() : this(SteelArchStrainDatasTicker.Instance){ }
 
-        public SteelArchStrainDatasRealTimeMonitoringHub(RealTimeDatesTicker rtdt)
+        public SteelArchStrainDatasRealTimeMonitoringHub(SteelArchStrainDatasTicker rtdt)
         {
             _realTimeDatesTicker = rtdt;
         }

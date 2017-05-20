@@ -126,8 +126,9 @@
                 $("#" + "section" + i).css("color", model.SectionWarningColor);
             });
         }
+        $.connection.hub.logging = true;
         $.connection.hub.start().done(function () {
-            numHub.server.displayWarningSteelLatticeStrainDatas(2);
+
         })
     });
 </script>

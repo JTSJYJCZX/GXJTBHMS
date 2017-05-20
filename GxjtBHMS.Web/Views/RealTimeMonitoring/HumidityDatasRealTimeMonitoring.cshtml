@@ -35,8 +35,8 @@
                     });
                 });
             }
+            $.connection.hub.logging = true;
             $.connection.hub.start().done(function () {
-                numHub.server.displayWarningHumidityDatas(6);
             })
         });
     </script>

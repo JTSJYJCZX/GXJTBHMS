@@ -5,24 +5,22 @@ using GxjtBHMS.Web.RealTimeMonitoringHub;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using System.Web;
 
 namespace GxjtBHMS.Web.Models
 {
-    public class RealTimeDatesTicker
+    public class SteelArchStrainDatasTicker
     {
         //Singleton instance
-        readonly static Lazy<RealTimeDatesTicker> _instance = new Lazy<RealTimeDatesTicker>(() => new RealTimeDatesTicker(GlobalHost.ConnectionManager.GetHubContext<SteelArchStrainDatasRealTimeMonitoringHub>().Clients));
+        readonly static Lazy<SteelArchStrainDatasTicker> _instance = new Lazy<SteelArchStrainDatasTicker>(() => new SteelArchStrainDatasTicker(GlobalHost.ConnectionManager.GetHubContext<SteelArchStrainDatasRealTimeMonitoringHub>().Clients));
         readonly TimeSpan _updateInterval = TimeSpan.FromMilliseconds(10500);
         volatile bool _updatingStockPrices = false;
         readonly object _updateStockPricesLock = new object();
         Timer _timer;
         ISteelArchStrainRealTimeDatasService _realTimeDatasService;
-        RealTimeDatesTicker(IHubConnectionContext<dynamic> clients)
+        SteelArchStrainDatasTicker(IHubConnectionContext<dynamic> clients)
         {
             _realTimeDatasService = new NinjectControllerFactory().GetInstance<ISteelArchStrainRealTimeDatasService>();
             Clients = clients;
@@ -34,7 +32,7 @@ namespace GxjtBHMS.Web.Models
         /// <summary>
         /// 获取单实例
         /// </summary>
-        public static RealTimeDatesTicker Instance { get { return _instance.Value; } }
+        public static SteelArchStrainDatasTicker Instance { get { return _instance.Value; } }
 
         void UpdateStockPrices(object state)
         {
