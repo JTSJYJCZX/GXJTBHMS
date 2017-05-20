@@ -16,16 +16,16 @@ namespace GxjtBHMS.Web.RealTimeMonitoringHub
 
         }
 
-        public void DisplayWarningHumidityDatas(int testTypeId)
-        {
-            var sectionIds = _realTimeDatasService.GetSectionIdsBy(testTypeId).ToArray();
+        //public void DisplayWarningHumidityDatas(int testTypeId)
+        //{
+        //    var sectionIds = _realTimeDatasService.GetSectionIdsBy(testTypeId).ToArray();
             
-            while (true)
-            {
-                var models = _realTimeDatasService.GetWarningHumidityDatasBy(sectionIds);
-                Clients.All.RealTimeDisplayDatas(models);
-                Thread.Sleep(10000);
-            }
-        }
+        //    while (true)
+        //    {
+        //        var models = _realTimeDatasService.GetWarningHumidityDatasBy(sectionIds);
+        //        Clients.All.RealTimeDisplayDatas(models);
+        //        Thread.Sleep(10000);
+        //    }
+        //}
     }
 }

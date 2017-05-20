@@ -138,8 +138,10 @@
                 $("#" + "section" + i).css("color", model.SectionWarningColor);
             });
         }
+        //开启SignalR Hub日志，在浏览器控制台可见
+        $.connection.hub.logging = true;
         $.connection.hub.start().done(function () {
-            numHub.server.displayWarningSteelArchStrainDatas(1);
+           
         })
     });
 </script>
