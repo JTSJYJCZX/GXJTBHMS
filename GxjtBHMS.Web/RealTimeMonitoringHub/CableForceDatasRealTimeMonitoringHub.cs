@@ -25,6 +25,7 @@ namespace GxjtBHMS.Web.RealTimeMonitoringHub
                 var models = _realTimeDatasService.GetWarningCableForceDatasBy(sectionIds);
                 Clients.All.RealTimeDisplayDatas(models);
                 Thread.Sleep(10000);
+                
             }
         }
     }
