@@ -20,6 +20,7 @@ namespace GxjtBHMS.Web.Models
         readonly object _updateStockPricesLock = new object();
         Timer _timer;
         ISteelArchStrainRealTimeDatasService _realTimeDatasService;
+
         SteelArchStrainDatasTicker(IHubConnectionContext<dynamic> clients)
         {
             _realTimeDatasService = new NinjectControllerFactory().GetInstance<ISteelArchStrainRealTimeDatasService>();
@@ -41,8 +42,7 @@ namespace GxjtBHMS.Web.Models
                 if (!_updatingStockPrices)
                 {
                     _updatingStockPrices = true;
-                    var sectionIds = _realTimeDatasService.GetSectionIdsBy(1).ToArray();
-                    var models = _realTimeDatasService.GetWarningStrainDatasBy(sectionIds);
+                    var models = GetRealDatasSource();
                     BroadcastStockPrice(models);
                     _updatingStockPrices = false;
                 }
@@ -52,6 +52,17 @@ namespace GxjtBHMS.Web.Models
         void BroadcastStockPrice(IEnumerable<IncludeSectionWarningColorDataModel> models)
         {
             Clients.All.RealTimeDisplayDatas(models);
+        }
+
+        private IEnumerable<IncludeSectionWarningColorDataModel> GetRealDatasSource()
+        {
+            var sectionIds = _realTimeDatasService.GetSectionIdsBy(1).ToArray();
+            return _realTimeDatasService.GetWarningStrainDatasBy(sectionIds);
+        }
+
+        internal IEnumerable<IncludeSectionWarningColorDataModel> GetInitDatas()
+        {
+            return GetRealDatasSource();
         }
     }
 }

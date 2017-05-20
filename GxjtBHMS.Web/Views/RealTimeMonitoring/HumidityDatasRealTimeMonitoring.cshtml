@@ -25,8 +25,9 @@
     </div>
 </div>
     <script>
+        var numHub;
         $(function () {
-            var numHub = $.connection.humidityDatasRealTimeMonitoringHub;
+            numHub = $.connection.humidityDatasRealTimeMonitoringHub;
             numHub.client.realTimeDisplayDatas = function (models) {
                 $.each(models, function (i, model) {
                     $.each(model.WarningRealTimeData, function (j, HumidityData) {
@@ -36,9 +37,19 @@
                 });
             }
             $.connection.hub.logging = true;
-            $.connection.hub.start().done(function () {
-            })
+            $.connection.hub.start().done(init)
         });
+
+        function init() {
+            numHub.server.getInitDatas().done(function (models) {
+                $.each(models, function (i, model) {
+                    $.each(model.WarningRealTimeData, function (j, HumidityData) {
+                        $("#" + HumidityData.PointsNumber).html(HumidityData.PointsNumber + ":&nbsp&nbsp" + HumidityData.CurrentData + "%");
+                        $("#" + HumidityData.PointsNumber).css("color", HumidityData.WarningColor);
+                    });
+                });
+            });
+        }
     </script>
 
 

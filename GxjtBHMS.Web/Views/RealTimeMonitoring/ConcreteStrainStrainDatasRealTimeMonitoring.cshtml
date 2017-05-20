@@ -58,8 +58,9 @@
 </script>
 
 <script>
+    var numHub;
     $(function () {
-        var numHub = $.connection.concreteStrainDatasRealTimeMonitoringHub;
+        numHub = $.connection.concreteStrainDatasRealTimeMonitoringHub;
         numHub.client.realTimeDisplayDatas = function (models) {
             $.each(models, function (i, model) {
                 $.each(model.WarningRealTimeData, function (j, strainData) {
@@ -70,10 +71,21 @@
             });
         }
         $.connection.hub.logging = true;
-        $.connection.hub.start().done(function () {
-
-        })
+        $.connection.hub.start().done(init)
     });
+
+    function init() {
+        numHub.server.getInitDatas().done(function (models) {
+            $.each(models, function (i, model) {
+                $.each(model.WarningRealTimeData, function (j, strainData) {
+                    $("#" + strainData.PointsNumber).html(strainData.PointsNumber + ":&nbsp&nbsp" + strainData.CurrentData + "με");
+                    $("#" + strainData.PointsNumber).css("color", strainData.WarningColor);
+                });
+                $("#" + "section" + i).css("color", model.SectionWarningColor);
+            });
+        });
+    }
+
 </script>
 
 

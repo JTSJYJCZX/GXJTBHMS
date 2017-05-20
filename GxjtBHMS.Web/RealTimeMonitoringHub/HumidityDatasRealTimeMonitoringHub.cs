@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNet.SignalR;
 using GxjtBHMS.Web.Models;
+using GxjtBHMS.Service.ViewModels.RealTimeDatasDisplay;
+using System.Collections.Generic;
 
 namespace GxjtBHMS.Web.RealTimeMonitoringHub
 {
@@ -11,6 +13,11 @@ namespace GxjtBHMS.Web.RealTimeMonitoringHub
         public HumidityDatasRealTimeMonitoringHub(HumidityDatasTicker hdr)
         {
             _realTimeDatesTicker = hdr;
+        }
+
+        public IEnumerable<IncludeSectionWarningColorDataModel> GetInitDatas()
+        {
+            return _realTimeDatesTicker.GetInitDatas();
         }
     }
 }

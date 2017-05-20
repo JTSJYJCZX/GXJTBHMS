@@ -55,23 +55,34 @@
 <hr />
 
 <script>
+    var numHub;
     $(function () {
-        var numHub = $.connection.safetyPreWarningHub;
-        numHub.client.safetyWarningStateRealTimePushDatas = function (models)
-        {
+        numHub = $.connection.safetyPreWarningHub;
+        numHub.client.safetyWarningStateRealTimePushDatas = function (models) {
             $("#bridgeStateText").html(models.SafetyPreWarningState);
             $("#bridgeStateColor").css("background-color", models.SafetyPreWarningColor);
             $.each(models.SafetyPreWarningStateData, function (i, model) {
-                $("#" + "testType" + model.TestTypeId+"Text").html(model.SafetyPreWarningState);
-                $("#" + "testType" + model.TestTypeId+"Color").css("background-color", model.SafetyPreWarningColor);
+                $("#" + "testType" + model.TestTypeId + "Text").html(model.SafetyPreWarningState);
+                $("#" + "testType" + model.TestTypeId + "Color").css("background-color", model.SafetyPreWarningColor);
                 $("#" + "grade2Times_testType" + model.TestTypeId).html(model.WarningGrade2Times);
                 $("#" + "grade3Times_testType" + model.TestTypeId).html(model.WarningGrade3Times);
             });
         }
-        $.connection.hub.start().done(function () {
-            numHub.server.bridgeSafetyPreWarningStateDisplay();
-        })
+        $.connection.hub.start().done(init)
     });
+
+    function init() {
+        numHub.server.getInitDatas().done(function (models) {
+            $("#bridgeStateText").html(models.SafetyPreWarningState);
+            $("#bridgeStateColor").css("background-color", models.SafetyPreWarningColor);
+            $.each(models.SafetyPreWarningStateData, function (i, model) {
+                $("#" + "testType" + model.TestTypeId + "Text").html(model.SafetyPreWarningState);
+                $("#" + "testType" + model.TestTypeId + "Color").css("background-color", model.SafetyPreWarningColor);
+                $("#" + "grade2Times_testType" + model.TestTypeId).html(model.WarningGrade2Times);
+                $("#" + "grade3Times_testType" + model.TestTypeId).html(model.WarningGrade3Times);
+            });
+        });
+    }
 
 </script>
 

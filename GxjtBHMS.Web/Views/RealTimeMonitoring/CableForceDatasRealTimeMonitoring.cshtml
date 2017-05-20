@@ -87,8 +87,9 @@
 
 
 <script>
+    var numHub;
     $(function () {
-        var numHub = $.connection.cableForceDatasRealTimeMonitoringHub;
+        numHub = $.connection.cableForceDatasRealTimeMonitoringHub;
         numHub.client.realTimeDisplayDatas = function (models) {
             $.each(models, function (i, model) {
                 $.each(model.WarningRealTimeData, function (j, cableForceData) {
@@ -99,9 +100,20 @@
             });
         }
         $.connection.hub.logging = true;
-        $.connection.hub.start().done(function () {
-        })
+        $.connection.hub.start().done(init)
     });
+
+    function init() {
+        numHub.server.getInitDatas().done(function (models) {
+            $.each(models, function (i, model) {
+                $.each(model.WarningRealTimeData, function (j, cableForceData) {
+                    $("#" + cableForceData.PointsNumber).html(cableForceData.PointsNumber + ":<br/>" + cableForceData.CurrentData + "KN");
+                    $("#" + cableForceData.PointsNumber).css("color", cableForceData.WarningColor);
+                });
+                $("#" + "section" + i).css("color", model.SectionWarningColor);
+            });
+        });
+    }
 </script>
 
 

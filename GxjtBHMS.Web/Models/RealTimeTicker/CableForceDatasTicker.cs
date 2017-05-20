@@ -41,8 +41,7 @@ namespace GxjtBHMS.Web.Models
                 if (!_updatingStockPrices)
                 {
                     _updatingStockPrices = true;
-                    var sectionIds = _realTimeDatasService.GetSectionIdsBy(5).ToArray();
-                    var models = _realTimeDatasService.GetWarningCableForceDatasBy(sectionIds);
+                    var models = GetRealDatasSource(); ;
                     BroadcastStockPrice(models);
                     _updatingStockPrices = false;
                 }
@@ -52,6 +51,17 @@ namespace GxjtBHMS.Web.Models
         void BroadcastStockPrice(IEnumerable<IncludeSectionWarningColorDataModel> models)
         {
             Clients.All.RealTimeDisplayDatas(models);
+        }
+
+        private IEnumerable<IncludeSectionWarningColorDataModel> GetRealDatasSource()
+        {
+            var sectionIds = _realTimeDatasService.GetSectionIdsBy(5).ToArray();
+            return _realTimeDatasService.GetWarningCableForceDatasBy(sectionIds);
+        }
+
+        internal IEnumerable<IncludeSectionWarningColorDataModel> GetInitDatas()
+        {
+            return GetRealDatasSource();
         }
     }
 }
