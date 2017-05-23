@@ -29,8 +29,9 @@
 </div>
 
 <script>
+    var numHub;
     $(function () {
-        var numHub = $.connection.temperatureDatasRealTimeMonitoringHub;
+        numHub = $.connection.temperatureDatasRealTimeMonitoringHub;
         numHub.client.realTimeDisplayDatas = function (models) {
             $.each(models, function (i, model) {
                 $.each(model.WarningRealTimeData, function (j, TemperatureData) {
@@ -39,10 +40,20 @@
                 });
             });
         }
-        $.connection.hub.start().done(function () {
-            numHub.server.displayWarningTemperatureDatas(7);
-        })
+        $.connection.hub.logging = true;
+        $.connection.hub.start().done(init)
     });
+
+    function init() {
+        numHub.server.getInitDatas().done(function (models) {
+            $.each(models, function (i, model) {
+                $.each(model.WarningRealTimeData, function (j, TemperatureData) {
+                    $("#" + TemperatureData.PointsNumber).html(TemperatureData.PointsNumber + ":&nbsp&nbsp" + TemperatureData.CurrentData + "℃");
+                    $("#" + TemperatureData.PointsNumber).css("color", TemperatureData.WarningColor);
+                });
+            });
+        });
+    }
 </script>
 
 

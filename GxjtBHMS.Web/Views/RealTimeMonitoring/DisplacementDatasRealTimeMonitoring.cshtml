@@ -73,8 +73,9 @@
 </script>
 
 <script>
+    var numHub;
     $(function () {
-        var numHub = $.connection.displacementDatasRealTimeMonitoringHub;
+        numHub = $.connection.displacementDatasRealTimeMonitoringHub;
         numHub.client.realTimeDisplayDatas = function (models) {
             $.each(models, function (i, model) {
                 $.each(model.WarningRealTimeData, function (j, DisplacementData) {
@@ -83,10 +84,20 @@
                 });
             });
         }
-        $.connection.hub.start().done(function () {
-            numHub.server.displayWarningDisplacementDatas(4);
-        })
+        $.connection.hub.logging = true;
+        $.connection.hub.start().done(init)
     });
+
+    function init() {
+        numHub.server.getInitDatas().done(function (models) {
+            $.each(models, function (i, model) {
+                $.each(model.WarningRealTimeData, function (j, DisplacementData) {
+                    $("#" + DisplacementData.PointsNumber).html(DisplacementData.PointsNumber + ":&nbsp&nbsp" + DisplacementData.CurrentData);
+                    $("#" + DisplacementData.PointsNumber).css("color", DisplacementData.WarningColor);
+                });
+            });
+        });
+    }
 </script>
 
 

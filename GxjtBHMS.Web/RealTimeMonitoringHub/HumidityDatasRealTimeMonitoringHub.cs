@@ -1,31 +1,23 @@
 ﻿using Microsoft.AspNet.SignalR;
-using GxjtBHMS.Service.Interfaces;
-using System.Threading;
-using GxjtBHMS.DependencyInjection;
-using System.Linq;
+using GxjtBHMS.Web.Models;
+using GxjtBHMS.Service.ViewModels.RealTimeDatasDisplay;
+using System.Collections.Generic;
 
 namespace GxjtBHMS.Web.RealTimeMonitoringHub
 {
     public class HumidityDatasRealTimeMonitoringHub : Hub
     {
-        IHumidityRealTimeDatasService _realTimeDatasService;
+        readonly HumidityDatasTicker _realTimeDatesTicker;
+        public HumidityDatasRealTimeMonitoringHub() : this(HumidityDatasTicker.Instance){ }
 
-        public HumidityDatasRealTimeMonitoringHub()
+        public HumidityDatasRealTimeMonitoringHub(HumidityDatasTicker hdr)
         {
-            _realTimeDatasService = new NinjectControllerFactory().GetInstance<IHumidityRealTimeDatasService>();
-
+            _realTimeDatesTicker = hdr;
         }
 
-        public void DisplayWarningHumidityDatas(int testTypeId)
+        public IEnumerable<IncludeSectionWarningColorDataModel> GetInitDatas()
         {
-            var sectionIds = _realTimeDatasService.GetSectionIdsBy(testTypeId).ToArray();
-            
-            while (true)
-            {
-                var models = _realTimeDatasService.GetWarningHumidityDatasBy(sectionIds);
-                Clients.All.RealTimeDisplayDatas(models);
-                Thread.Sleep(10000);
-            }
+            return _realTimeDatesTicker.GetInitDatas();
         }
     }
 }

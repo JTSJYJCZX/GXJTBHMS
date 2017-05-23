@@ -1,31 +1,23 @@
 ﻿using Microsoft.AspNet.SignalR;
-using GxjtBHMS.Service.Interfaces;
-using System.Threading;
-using GxjtBHMS.DependencyInjection;
-using System.Linq;
+using GxjtBHMS.Web.Models;
+using GxjtBHMS.Service.ViewModels.RealTimeDatasDisplay;
+using System.Collections.Generic;
 
 namespace GxjtBHMS.Web.RealTimeMonitoringHub
 {
     public class DisplacementDatasRealTimeMonitoringHub : Hub
     {
-        IDisplacementRealTimeDatasService _realTimeDatasService;
+        readonly DisplacementDatasTicker _realTimeDatesTicker;
+        public DisplacementDatasRealTimeMonitoringHub() : this(DisplacementDatasTicker.Instance){ }
 
-        public DisplacementDatasRealTimeMonitoringHub()
+        public DisplacementDatasRealTimeMonitoringHub(DisplacementDatasTicker ddt)
         {
-            _realTimeDatasService = new NinjectControllerFactory().GetInstance<IDisplacementRealTimeDatasService>();
-
+            _realTimeDatesTicker = ddt;
         }
 
-        public void DisplayWarningDisplacementDatas(int testTypeId)
+        public IEnumerable<IncludeSectionWarningColorDataModel> GetInitDatas()
         {
-            var sectionIds = _realTimeDatasService.GetSectionIdsBy(testTypeId).ToArray();
-            
-            while (true)
-            {
-                var models = _realTimeDatasService.GetWarningDisplacementDatasBy(sectionIds);
-                Clients.All.RealTimeDisplayDatas(models);
-                Thread.Sleep(10000);
-            }
+            return _realTimeDatesTicker.GetInitDatas();
         }
     }
 }

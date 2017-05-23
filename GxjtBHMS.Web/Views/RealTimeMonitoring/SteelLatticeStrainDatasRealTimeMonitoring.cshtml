@@ -115,8 +115,9 @@
 </script>
 
 <script>
+    var numHub;
     $(function () {
-        var numHub = $.connection.steelLatticeStrainDatasRealTimeMonitoringHub;
+        numHub = $.connection.steelLatticeStrainDatasRealTimeMonitoringHub;
         numHub.client.realTimeDisplayDatas = function (models) {
             $.each(models, function (i, model) {
                 $.each(model.WarningRealTimeData, function (j, strainData) {
@@ -126,10 +127,21 @@
                 $("#" + "section" + i).css("color", model.SectionWarningColor);
             });
         }
-        $.connection.hub.start().done(function () {
-            numHub.server.displayWarningSteelLatticeStrainDatas(2);
-        })
+        $.connection.hub.logging = true;
+        $.connection.hub.start().done(init)
     });
+
+    function init() {
+        numHub.server.getInitDatas().done(function (models) {
+            $.each(models, function (i, model) {
+                $.each(model.WarningRealTimeData, function (j, strainData) {
+                    $("#" + strainData.PointsNumber).html(strainData.PointsNumber + ":&nbsp&nbsp" + strainData.CurrentData + "με");
+                    $("#" + strainData.PointsNumber).css("color", strainData.WarningColor);
+                });
+                $("#" + "section" + i).css("color", model.SectionWarningColor);
+            });
+        });
+    }
 </script>
 
 

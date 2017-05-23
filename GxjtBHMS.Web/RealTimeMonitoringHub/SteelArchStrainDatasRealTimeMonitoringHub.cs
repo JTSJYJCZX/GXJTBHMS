@@ -1,34 +1,27 @@
 ﻿using Microsoft.AspNet.SignalR;
-using GxjtBHMS.Service.Interfaces;
-using System.Threading;
-using GxjtBHMS.DependencyInjection;
-using System.Linq;
+using GxjtBHMS.Web.Models;
+using GxjtBHMS.Service.ViewModels.RealTimeDatasDisplay;
+using System.Collections.Generic;
 
 namespace GxjtBHMS.Web.RealTimeMonitoringHub
 {
     public class SteelArchStrainDatasRealTimeMonitoringHub : Hub
     {
-        ISteelArchStrainRealTimeDatasService _realTimeDatasService;
+        readonly SteelArchStrainDatasTicker _realTimeDatesTicker;
+        public SteelArchStrainDatasRealTimeMonitoringHub() : this(SteelArchStrainDatasTicker.Instance){ }
 
-        public SteelArchStrainDatasRealTimeMonitoringHub()
+        public SteelArchStrainDatasRealTimeMonitoringHub(SteelArchStrainDatasTicker rtdt)
         {
-            _realTimeDatasService = new NinjectControllerFactory().GetInstance<ISteelArchStrainRealTimeDatasService>();
-
+            _realTimeDatesTicker = rtdt;
         }
 
-        public void DisplayWarningSteelArchStrainDatas(int testTypeId)
+        public IEnumerable<IncludeSectionWarningColorDataModel> GetInitDatas()
         {
-            var sectionIds = _realTimeDatasService.GetSectionIdsBy(testTypeId).ToArray();
-
-
-            while (true)
-            {
-                var models = _realTimeDatasService.GetWarningStrainDatasBy(sectionIds);
-                Clients.All.RealTimeDisplayDatas(models);
-                Thread.Sleep(10000);
-            }
-
+            return _realTimeDatesTicker.GetInitDatas();
         }
+
     }
+
+    
 
 }

@@ -16,8 +16,9 @@
     </div>
 </div>
     <script>
+        var numHub;
         $(function () {
-            var numHub = $.connection.windLoadDatasRealTimeMonitoringHub;
+            numHub = $.connection.windLoadDatasRealTimeMonitoringHub;
             numHub.client.realTimeDisplayDatas = function (models) {
                 $.each(models, function (i, model) {
                     $.each(model.WarningRealTimeData, function (j, WindLoadData) {
@@ -26,10 +27,20 @@
                     });
                 });
             }
-            $.connection.hub.start().done(function () {
-                numHub.server.displayWarningWindLoadDatas(8);
-            })
+            $.connection.hub.logging = true;
+            $.connection.hub.start().done(init)
         });
+
+        function init() {
+            numHub.server.getInitDatas().done(function (models) {
+                $.each(models, function (i, model) {
+                    $.each(model.WarningRealTimeData, function (j, WindLoadData) {
+                        $("#" + WindLoadData.PointsNumber).html(WindLoadData.PointsNumber + ":&nbsp&nbsp" + WindLoadData.CurrentData + "m/s");
+                        $("#" + WindLoadData.PointsNumber).css("color", WindLoadData.WarningColor);
+                    });
+                });
+            });
+        }
     </script>
 
 
