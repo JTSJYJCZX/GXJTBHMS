@@ -1,28 +1,35 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using GxjtBHMS.IDAL;
-using NPOI.SS.UserModel;
 using GxjtBHMS.Models.MonitoringDatasTable;
+using GxjtBHMS.Infrastructure.Helpers;
+using System;
+using System.IO;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    class SteelLatticeStrainMonitorDatasOriginalValueDownloadFileSystemService : MonitorDatasOriginalValueDownloadFileSystemServiceBase<Basic_SteelLatticeStrainTable >
+    class SteelLatticeStrainMonitorDatasOriginalValueDownloadFileSystemService : MonitorDatasOriginalValueDownloadPlainTextFileSystemTxtServiceBase<Basic_SteelLatticeStrainTable >
     {
         public SteelLatticeStrainMonitorDatasOriginalValueDownloadFileSystemService(ISteelLatticeStrainDatasOriginalValueDAL steelLatticeStrainOriginalDatasDAL):base(steelLatticeStrainOriginalDatasDAL)
         {
-            _sheetName = "钢拱肋应变原始数据查询结果";
         }
 
-        protected override void PartialHeadRow(IRow headRow)
+        protected override void CreateBody(StreamWriter sw, IEnumerable<Basic_SteelLatticeStrainTable> alldatas)
         {
-            headRow.CreateCell(3).SetCellValue("应变值(με)");
-            headRow.CreateCell(4).SetCellValue("温度(℃)");
+            foreach (var item in alldatas)
+            {
+                sw.WriteLine(string.Concat(item.PointsNumber.Name, Separator, DateTimeHelper.FormatDateTime(item.Time), Separator, item.Strain, Separator, item.Temperature));
+            }
         }
 
-        protected override void BuildPartialContent(IRow row, int index, IEnumerable<Basic_SteelLatticeStrainTable > source)
+        protected override IEnumerable<Basic_SteelLatticeStrainTable> GetDataSource(IList<Func<Basic_SteelLatticeStrainTable, bool>> ps)
         {
-            row.CreateCell(3).SetCellValue(source.ToArray()[index].Strain);
-            row.CreateCell(4).SetCellValue(source.ToArray()[index].Temperature);
+            return _dal.FindBy(ps).ToList();
+        }
+
+        protected override string GetHeader(string defaultHead)
+        {
+            return string.Concat(defaultHead, Separator, "应变值(με)", Separator, "温度(℃)");
         }
     }
 }

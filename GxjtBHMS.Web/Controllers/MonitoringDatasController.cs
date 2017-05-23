@@ -6,7 +6,9 @@ using GxjtBHMS.Web.Models;
 using GxjtBHMS.Web.ViewModels.MonitoringDatas;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
 namespace GxjtBHMS.Web.Controllers
@@ -154,10 +156,9 @@ namespace GxjtBHMS.Web.Controllers
         }
 
         /// <summary>
-        /// 原始数据下载，另存为EXCEL文档
+        /// 原始数据下载，另存为TXT文档
         /// </summary>
-        /// <returns></returns>
-        public ActionResult OriginalValueDownloadSearchResult(MornitoringDataSearchBarBaseView conditions)
+        public void OriginalValueDownloadSearchResult(MornitoringDataSearchBarBaseView conditions)
         {
             var req = new DatasQueryResultRequestBase
             {
@@ -167,18 +168,18 @@ namespace GxjtBHMS.Web.Controllers
                 PointsPositionId = conditions.MornitoringPointsPositionId
             };
             var monitoringDatasQueryService = MonitoringDatasOriginalValueDownloadServiceFactory.GetQueryServiceFrom(conditions.MornitoringTestTypeId);
-            var resp = monitoringDatasQueryService.SaveAs(req);
-            var guid = "";
-            guid = Guid.NewGuid().ToString();
-            CacheHelper.SetCache(guid, resp.Datas);
-            return Json(guid, JsonRequestBehavior.AllowGet);
+
+            string filePath = Server.MapPath("/Downloads/OriginalDatas.txt");
+
+            monitoringDatasQueryService.SaveAs(req, filePath);
+
+            DownloadFile(filePath);
         }
 
         /// <summary>
-        /// 特征值下载，另存为EXCEL文档
+        /// 特征值下载，另存为TXT文档
         /// </summary>
-        /// <returns></returns>
-        public ActionResult EigenvalueDownloadSearchResult(MornitoringDataSearchBarBaseView conditions)
+        public void EigenvalueDownloadSearchResult(MornitoringDataSearchBarBaseView conditions)
         {
             var req = new DatasQueryResultRequestBase
             {
@@ -188,31 +189,62 @@ namespace GxjtBHMS.Web.Controllers
                 PointsPositionId = conditions.MornitoringPointsPositionId
             };
             var monitoringDatasQueryService = MonitoringDatasEigenvalueQueryServiceFactory.GetQueryServiceFrom(conditions.MornitoringTestTypeId);
-            var resp = monitoringDatasQueryService.SaveAs(req);
-            var guid = Guid.NewGuid().ToString();
-            CacheHelper.SetCache(guid, resp.Datas);
-            return Json(guid, JsonRequestBehavior.AllowGet);
+            string filePath = Server.MapPath("/Downloads/Eigenvalue.txt");
+            monitoringDatasQueryService.SaveAs(req, filePath);
+            DownloadFile(filePath);
         }
 
-        public void OriginCode(string guid, int pointsPositionId,string dataType)
+        void DownloadFile(string filePath)
         {
-            object obj = CacheHelper.GetCache(guid);
-            if (obj == null)
+            FileInfo fileInfo = new FileInfo(filePath);
+
+            string fileName = Path.GetFileName(filePath);
+
+            if (fileInfo.Exists)
             {
-                throw new ApplicationException("guid invalid");
+                const long ChunkSize = 102400;//100K 每次读取文件，只读取100Ｋ，这样可以缓解服务器的压力
+                byte[] buffer = new byte[ChunkSize];
+                Response.Clear();
+                using (FileStream iStream = System.IO.File.OpenRead(filePath))
+                {
+                    long dataLengthToRead = iStream.Length;//获取下载的文件总大小
+                    Response.ContentType = "application/octet-stream";
+                    Response.AddHeader("Content-Disposition", "attachment; filename=" + HttpUtility.UrlEncode(fileName));
+                    while (dataLengthToRead > 0 && Response.IsClientConnected)
+                    {
+                        int lengthRead = iStream.Read(buffer, 0, Convert.ToInt32(ChunkSize));//读取的大小
+                        Response.OutputStream.Write(buffer, 0, lengthRead);
+                        Response.Flush();
+                        dataLengthToRead = dataLengthToRead - lengthRead;
+                    }
+                    iStream.Close();
+                    Response.Close();
+                }
             }
-            var ms = _fileConverter.GetStream(obj);
-            string preFileName = GetDownloadPreFileNameByTestTypeId(pointsPositionId,dataType);
-            Response.AddHeader("Content-Disposition", string.Format("attachment; filename={0}.xls", preFileName));
-            Response.BinaryWrite(ms.ToArray());
-            ms.Close();
-            ms.Dispose();
-            CacheHelper.RemoveAllCache(guid);
         }
 
-        string GetDownloadPreFileNameByTestTypeId(int pointsPositionId, string dataType)
-        {
-            return  _mpps.CreateDownloadFileMixedName(pointsPositionId,dataType) ;
-        }
+        //public void OriginCode(string guid, int pointsPositionId,string dataType)
+        //{
+        //    object obj = CacheHelper.GetCache(guid);
+        //    if (obj == null)
+        //    {
+        //        throw new ApplicationException("guid invalid");
+        //    }
+        //    var ms = _fileConverter.GetStream(obj);
+        //    string preFileName = GetDownloadPreFileNameByTestTypeId(pointsPositionId,dataType);
+        //    Response.AddHeader("Content-Disposition", string.Format("attachment; filename={0}.xls", preFileName));
+        //    Response.BinaryWrite(ms.ToArray());
+        //    ms.Close();
+        //    ms.Dispose();
+        //    CacheHelper.RemoveAllCache(guid);
+        //}
+
+        //string GetDownloadPreFileNameByTestTypeId(int pointsPositionId, string dataType)
+        //{
+        //    return  _mpps.CreateDownloadFileMixedName(pointsPositionId,dataType) ;
+        //}
+
+
+
     }
 }

@@ -92,6 +92,7 @@
     <Compile Include="AutoMapper\Configuration.cs" />
     <Compile Include="Implementations\AnomalousEventManagement\AnomalousEventFileSystemService.cs" />
     <Compile Include="Implementations\AnomalousEventManagement\AnomalousEventQueryService.cs" />
+    <Compile Include="Implementations\OriginalValueDownloadServiceBase\MonitorDatasOriginalValueDownloadPlainTextFileSystemTxtServiceBase.cs" />
     <Compile Include="Interfaces\AnomalousEventManagementQueryServiceInterfaces\IAnomalousEventManagementService .cs" />
     <Compile Include="Interfaces\AnomalousEventManagementQueryServiceInterfaces\IAnomalousEventManagementsFileSystemService.cs" />
     <Compile Include="Interfaces\AnomalousEventManagementQueryServiceInterfaces\IAnomalousEventManagementQueryService.cs" />
@@ -114,7 +115,6 @@
     <Compile Include="Implementations\EigenvalueChartQueryService\MonitorDatasQueryChartService.cs" />
     <Compile Include="Implementations\EigenvalueDownLoadService\MonitorDatasEigenValueQueryFileSystemService.cs" />
     <Compile Include="Implementations\ExcelFileConverter.cs" />
-    <Compile Include="Implementations\OriginalValueDownloadServiceBase\MonitorDatasOriginalValueDownloadFileSystemServiceBase.cs" />
     <Compile Include="Implementations\OriginalValueFileSystemService\CableForceMonitorDatasOriginalValueDownloadFileSystemService.cs" />
     <Compile Include="Implementations\OriginalValueFileSystemService\DisplacementMonitorDatasOriginalValueDownloadFileSystemService.cs" />
     <Compile Include="Implementations\OriginalValueFileSystemService\HumidityDatasOriginalValueDownloadFileSystemService.cs" />

@@ -1,28 +1,35 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using GxjtBHMS.IDAL;
-using NPOI.SS.UserModel;
 using GxjtBHMS.Models.MonitoringDatasTable;
+using System;
+using System.IO;
+using GxjtBHMS.Infrastructure.Helpers;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    class ConcreteStrainMonitorDatasOriginalValueDownloadFileSystemService : MonitorDatasOriginalValueDownloadFileSystemServiceBase<Basic_ConcreteStrainTable >
+    class ConcreteStrainMonitorDatasOriginalValueDownloadFileSystemService : MonitorDatasOriginalValueDownloadPlainTextFileSystemTxtServiceBase<Basic_ConcreteStrainTable >
     {
         public ConcreteStrainMonitorDatasOriginalValueDownloadFileSystemService(IConcreteStrainDatasOriginalValueDAL strainOriginalDatasDAL):base(strainOriginalDatasDAL)
         {
-            _sheetName = "混凝土应变原始数据查询结果";
         }
 
-        protected override void PartialHeadRow(IRow headRow)
+        protected override void CreateBody(StreamWriter sw, IEnumerable<Basic_ConcreteStrainTable> alldatas)
         {
-            headRow.CreateCell(3).SetCellValue("应变值(με)");
-            headRow.CreateCell(4).SetCellValue("温度(℃)");
+            foreach (var item in alldatas)
+            {
+                sw.WriteLine(string.Concat(item.PointsNumber.Name, Separator, DateTimeHelper.FormatDateTime(item.Time), Separator, item.Strain, Separator, item.Temperature));
+            }
         }
 
-        protected override void BuildPartialContent(IRow row, int index, IEnumerable<Basic_ConcreteStrainTable > source)
+        protected override IEnumerable<Basic_ConcreteStrainTable> GetDataSource(IList<Func<Basic_ConcreteStrainTable, bool>> ps)
         {
-            row.CreateCell(3).SetCellValue(source.ToArray()[index].Strain);
-            row.CreateCell(4).SetCellValue(source.ToArray()[index].Temperature);
+            return _dal.FindBy(ps).ToList();
+        }
+
+        protected override string GetHeader(string defaultHead)
+        {
+            return string.Concat(defaultHead, Separator, "应变值(με)", Separator, "温度(℃)");
         }
     }
 }

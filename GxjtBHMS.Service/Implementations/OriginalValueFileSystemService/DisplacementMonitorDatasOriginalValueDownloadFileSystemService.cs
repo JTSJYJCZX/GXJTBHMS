@@ -1,26 +1,34 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using GxjtBHMS.IDAL;
-using NPOI.SS.UserModel;
 using GxjtBHMS.Models;
+using GxjtBHMS.Infrastructure.Helpers;
+using System.IO;
+using System;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    class DisplacementMonitorDatasOriginalValueDownloadFileSystemService : MonitorDatasOriginalValueDownloadFileSystemServiceBase<Basic_DisplacementTable>
+    class DisplacementMonitorDatasOriginalValueDownloadFileSystemService : MonitorDatasOriginalValueDownloadPlainTextFileSystemTxtServiceBase<Basic_DisplacementTable>
     {
         public DisplacementMonitorDatasOriginalValueDownloadFileSystemService(IDisplacementDatasOriginalValueDAL displacementOriginalDatasDAL):base(displacementOriginalDatasDAL)
         {
-            _sheetName = "位移原始数据查询结果";
+        }
+        protected override void CreateBody(StreamWriter sw, IEnumerable<Basic_DisplacementTable> alldatas)
+        {
+            foreach (var item in alldatas)
+            {
+                sw.WriteLine(string.Concat(item.PointsNumber.Name, Separator, DateTimeHelper.FormatDateTime(item.Time), Separator, item.Displacement));
+            }
         }
 
-        protected override void PartialHeadRow(IRow headRow)
+        protected override IEnumerable<Basic_DisplacementTable> GetDataSource(IList<Func<Basic_DisplacementTable, bool>> ps)
         {
-            headRow.CreateCell(3).SetCellValue("位移值(mm)");
+            return _dal.FindBy(ps).ToList();
         }
 
-        protected override void BuildPartialContent(IRow row, int index, IEnumerable<Basic_DisplacementTable> source)
+        protected override string GetHeader(string defaultHead)
         {
-            row.CreateCell(3).SetCellValue(source.ToArray()[index].Displacement);
+            return string.Concat(defaultHead, Separator, "位移值(mm)");
         }
     }
 }

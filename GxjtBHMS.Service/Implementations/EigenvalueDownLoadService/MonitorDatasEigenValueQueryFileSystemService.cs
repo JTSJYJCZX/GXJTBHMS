@@ -6,41 +6,52 @@ using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace GxjtBHMS.Service.Implementations
 {
     public  class MonitorDatasEigenValueQueryFileSystemService<T>:IMonitorDatasQueryFileSystemService<T> where T: MonitoringDatasEigenvalueModel
     {
+        protected const string Separator = "|";
         readonly IMonitoringDatasEigenvalueDAL<T> _monitoringDatasDAL;
         public MonitorDatasEigenValueQueryFileSystemService(IMonitoringDatasEigenvalueDAL<T> monitoringDatasDAL)
         {
             _monitoringDatasDAL = monitoringDatasDAL;
         }
-        public object ConvertToDocument(IList<Func<T, bool>> ps)
+        public void ConvertToDocument(IList<Func<T, bool>> ps,string filePath)
         {
-            IEnumerable<T> monitwringDatasExcludePaging = new List<T>();
-            monitwringDatasExcludePaging = _monitoringDatasDAL.FindBy(ps, ServiceConstant.PointsNumberPointsPositionNavigationProperty);//获取不分页的查询结果
-            HSSFWorkbook workbook = new HSSFWorkbook();
-            ISheet sheet = workbook.CreateSheet("特征值查询结果");
-            IRow headRow = sheet.CreateRow(0);
-            headRow.CreateCell(0).SetCellValue("序号");
-            headRow.CreateCell(1).SetCellValue("测点编号");
-            headRow.CreateCell(2).SetCellValue("监测时间");
-            headRow.CreateCell(3).SetCellValue("最大值");
-            headRow.CreateCell(4).SetCellValue("最小值");
-            headRow.CreateCell(5).SetCellValue("平均值");
-            for (int i = 0; i < monitwringDatasExcludePaging.ToArray().Length; i++)
+            IEnumerable<T> datas = new List<T>();
+            datas = _monitoringDatasDAL.FindBy(ps, ServiceConstant.PointsNumberPointsPositionNavigationProperty);
+            if (!string.IsNullOrEmpty(filePath))
             {
-                IRow row = sheet.CreateRow(i + 1);
-                row.CreateCell(0).SetCellValue(i + 1);
-                row.CreateCell(1).SetCellValue(monitwringDatasExcludePaging.ToArray()[i].PointsNumber.Name);
-                row.CreateCell(2).SetCellValue(monitwringDatasExcludePaging.ToArray()[i].Time.FormatDateTimeToHour());
-                row.CreateCell(3).SetCellValue(monitwringDatasExcludePaging.ToArray()[i].Max);
-                row.CreateCell(4).SetCellValue(monitwringDatasExcludePaging.ToArray()[i].Min);
-                row.CreateCell(5).SetCellValue(monitwringDatasExcludePaging.ToArray()[i].Average);
+                using (FileStream fs = new FileStream(filePath, FileMode.Create, FileAccess.ReadWrite))
+                {
+                    using (StreamWriter sw = new StreamWriter(fs, Encoding.UTF8))
+                    {
+                        CreateHeader(sw);
+                        CreateBody(sw, datas);
+                        sw.Flush();
+                        sw.Close();
+                        fs.Close();
+                    }
+                }
             }
-            return workbook;
-        }      
+        }
+
+        private void CreateBody(StreamWriter sw, IEnumerable<T> datas)
+        {
+            foreach (var item in datas)
+            {
+                sw.WriteLine(string.Concat( item.PointsNumber.Name,Separator,item.Time,Separator,item.Max,Separator,item.Min,Separator,item.Average));
+            }
+        }
+
+        private void CreateHeader(StreamWriter sw)
+        {
+            string header = string.Concat("测点编号", Separator, "监测时间", Separator, "最大值", Separator, "最小值", Separator, "平均值");
+            sw.WriteLine(header);
+        }
     }
 }

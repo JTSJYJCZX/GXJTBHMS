@@ -1,28 +1,34 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using GxjtBHMS.IDAL;
-using NPOI.SS.UserModel;
 using GxjtBHMS.Models.MonitoringDatasTable;
+using System;
+using GxjtBHMS.Infrastructure.Helpers;
+using System.IO;
 
 namespace GxjtBHMS.Service.Implementations
 {
-    class SteelArchStrainMonitorDatasOriginalValueDownloadFileSystemService : MonitorDatasOriginalValueDownloadFileSystemServiceBase<Basic_SteelArchStrainTable >
+    class SteelArchStrainMonitorDatasOriginalValueDownloadFileSystemService : MonitorDatasOriginalValueDownloadPlainTextFileSystemTxtServiceBase<Basic_SteelArchStrainTable >
     {
         public SteelArchStrainMonitorDatasOriginalValueDownloadFileSystemService(ISteelArchStrainDatasOriginalValueDAL steelArchStrainOriginalDatasDAL):base(steelArchStrainOriginalDatasDAL)
         {
-            _sheetName = "钢拱肋应变原始数据查询结果";
+        }
+        protected override void CreateBody(StreamWriter sw, IEnumerable<Basic_SteelArchStrainTable> alldatas)
+        {
+            foreach (var item in alldatas)
+            {
+                sw.WriteLine(string.Concat(item.PointsNumber.Name, Separator, DateTimeHelper.FormatDateTime(item.Time), Separator, item.Strain, Separator, item.Temperature));
+            }
         }
 
-        protected override void PartialHeadRow(IRow headRow)
+        protected override IEnumerable<Basic_SteelArchStrainTable> GetDataSource(IList<Func<Basic_SteelArchStrainTable, bool>> ps)
         {
-            headRow.CreateCell(3).SetCellValue("应变值(με)");
-            headRow.CreateCell(4).SetCellValue("温度(℃)");
+            return _dal.FindBy(ps).ToList();
         }
 
-        protected override void BuildPartialContent(IRow row, int index, IEnumerable<Basic_SteelArchStrainTable > source)
+        protected override string GetHeader(string defaultHead)
         {
-            row.CreateCell(3).SetCellValue(source.ToArray()[index].Strain);
-            row.CreateCell(4).SetCellValue(source.ToArray()[index].Temperature);
+            return string.Concat(defaultHead, Separator, "应变值(με)", Separator, "温度(℃)");
         }
     }
 }

@@ -6,6 +6,6 @@ namespace GxjtBHMS.Service.Interfaces
 {
     public interface IMonitorDatasQueryFileSystemService<T> where T : MonitorDatasQueryConditionsModel
     {
-        object ConvertToDocument(IList<Func<T, bool>> ps);
+        void ConvertToDocument(IList<Func<T, bool>> ps,string filePath);
     }
 }

@@ -1,27 +1,35 @@
 ﻿using GxjtBHMS.IDAL;
+using GxjtBHMS.Infrastructure.Helpers;
 using GxjtBHMS.Models;
-using NPOI.SS.UserModel;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace GxjtBHMS.Service.Implementations.OriginalValueDownLoad
 {
-    class HumidityDatasOriginalValueDownloadFileSystemService : MonitorDatasOriginalValueDownloadFileSystemServiceBase<Basic_HumidityTable>
+    class HumidityDatasOriginalValueDownloadFileSystemService : MonitorDatasOriginalValueDownloadPlainTextFileSystemTxtServiceBase<Basic_HumidityTable>
     {
         public HumidityDatasOriginalValueDownloadFileSystemService(IHumidityDatasOriginalValueDAL humidityDatasOriginalValueDAL):base(humidityDatasOriginalValueDAL)
         {
-            _sheetName = "湿度原始数据查询结果";
         }
 
-        protected override void PartialHeadRow(IRow headRow)
+        protected override void CreateBody(StreamWriter sw, IEnumerable<Basic_HumidityTable> alldatas)
         {
-            headRow.CreateCell(3).SetCellValue("湿度(%)");
+            foreach (var item in alldatas)
+            {
+                sw.WriteLine(string.Concat(item.PointsNumber.Name, Separator, DateTimeHelper.FormatDateTime(item.Time), Separator, item.Humidity));
+            }
         }
 
-        protected override void BuildPartialContent(IRow row, int index, IEnumerable<Basic_HumidityTable> source)
+        protected override IEnumerable<Basic_HumidityTable> GetDataSource(IList<Func<Basic_HumidityTable, bool>> ps)
         {
-            row.CreateCell(3).SetCellValue(source.ToArray()[index].Humidity);
+            return _dal.FindBy(ps).ToList();
         }
 
+        protected override string GetHeader(string defaultHead)
+        {
+            return string.Concat(defaultHead, Separator, "湿度(%)");
+        }
     }
 }

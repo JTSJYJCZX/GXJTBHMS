@@ -1,0 +1,7 @@
+2017-05-20 09:50:33,594 INFO  BHMSLogger  - Invalid row number (65536) outside allowable range (0..65535)
+2017-05-20 09:50:33,601 INFO  BHMSLogger  -    在 NPOI.HSSF.UserModel.HSSFRow.set_RowNum(Int32 value)
+   在 NPOI.HSSF.UserModel.HSSFRow..ctor(HSSFWorkbook book, HSSFSheet sheet, RowRecord record)
+   在 NPOI.HSSF.UserModel.HSSFSheet.CreateRow(Int32 rownum)
+   在 GxjtBHMS.Service.Implementations.MonitorDatasOriginalValueDownloadFileSystemServiceBase`1.BuildContent(IList`1 ps, HSSFWorkbook workbook) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.Service\Implementations\OriginalValueDownloadServiceBase\MonitorDatasOriginalValueDownloadFileSystemServiceBase.cs:行号 67
+   在 GxjtBHMS.Service.Implementations.MonitorDatasOriginalValueDownloadFileSystemServiceBase`1.ConvertToDocument(IList`1 ps) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.Service\Implementations\OriginalValueDownloadServiceBase\MonitorDatasOriginalValueDownloadFileSystemServiceBase.cs:行号 34
+   在 GxjtBHMS.Service.Implementations.MonitorDatasOringinalValueDownloadServiceBase`1.SaveAs(DatasQueryResultRequestBase req) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.Service\Implementations\OriginalValueDownloadServiceBase\MonitorDatasOringinalValueDownloadServiceBase.cs:行号 27

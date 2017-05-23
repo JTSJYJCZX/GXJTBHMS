@@ -2,8 +2,10 @@
 <div id="message"><span style='color:@TempData[WebConstants.MessageColor]'>@TempData[WebConstants.MessageKey]</span></div>
 <!--图标显示开始-->
 
-<div id="dataQuery" >
+<div id="dataQuery">
+
     <input type="button" id="OriginalValueSaveAs" value="原始数据下载" class="btn btn-primary " />
+
     <input type="button" id="EigenvalueSaveAs" value="特征值数据下载" class="btn btn-primary " />
 </div>
 <hr />
@@ -21,9 +23,9 @@
 
 
 <script>
-    $(function(){
+    $(function () {
         initChart();
     });
-  
+
 </script>
 <script src="~/Scripts/dataQuery-SearchContentPartial-website.js"></script>

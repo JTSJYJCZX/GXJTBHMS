@@ -727,6 +727,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\SecondLevelSafetyAssessmentReport\" />
+    <Folder Include="Downloads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -24,7 +24,7 @@ namespace GxjtBHMS.Service.Implementations
             var datas = new List<ChartGroupDataModel>();
             foreach (var group in groupDatas)
             {
-                var models = group.OrderBy(m => m.Time).Select(m => new ChartDataModel { CreateDateTime = DateTimeHelper.FormatDateTime(m.Time), MaxValue = m.Max, MinValue = m.Min, AverageValue = m.Average });
+                var models = group.Select(m => new ChartDataModel { CreateDateTime = DateTimeHelper.FormatDateTime(m.Time), MaxValue = m.Max, MinValue = m.Min, AverageValue = m.Average });
                 var unit = group.FirstOrDefault().PointsNumber.PointsPosition.TestType.Unit;
                 datas.Add(new ChartGroupDataModel { Models = models, CategoryName = group.Key, Unit = unit });
             }

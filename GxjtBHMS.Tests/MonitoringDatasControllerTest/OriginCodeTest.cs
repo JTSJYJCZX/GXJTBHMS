@@ -30,42 +30,42 @@ namespace GxjtBHMS.Tests.ControllerTests.MonitoringDatasControllerTest
             key = Guid.NewGuid().ToString();
         }
 
-        [TestMethod]
-        public void OriginCode_ValidedGuidAndTestTypeId_ReponseAddHeaderIsCalled()
-        {
-            const string fileName = "test";
+        //[TestMethod]
+        //public void OriginCode_ValidedGuidAndTestTypeId_ReponseAddHeaderIsCalled()
+        //{
+        //    const string fileName = "test";
 
-            _monitoringPointsPositionService.CreateDownloadFileMixedName(Arg.Any<int>(),Arg.Any<string>()).Returns(fileName);
+        //    _monitoringPointsPositionService.CreateDownloadFileMixedName(Arg.Any<int>(),Arg.Any<string>()).Returns(fileName);
 
-            string preFileName = string.Format("attachment; filename={0}.xls", fileName);
+        //    string preFileName = string.Format("attachment; filename={0}.xls", fileName);
 
-            CacheHelper.SetCache(key, new HSSFWorkbook());
+        //    CacheHelper.SetCache(key, new HSSFWorkbook());
 
-            _fileConverter.GetStream(CacheHelper.GetCache(key)).Returns(new MemoryStream());
+        //    _fileConverter.GetStream(CacheHelper.GetCache(key)).Returns(new MemoryStream());
 
-            _controller.OriginCode(key, Arg.Any<int>(),Arg.Any<string>());
+        //    _controller.OriginCode(key, Arg.Any<int>(),Arg.Any<string>());
 
-            _controller.Response.Received().AddHeader("Content-Disposition", preFileName);
-        }
+        //    _controller.Response.Received().AddHeader("Content-Disposition", preFileName);
+        //}
 
-        [TestMethod]
-        public void OriginCode_ValidedGuidAndTestTypeId_ReponseBinaryWriteIsCalled()
-        {
-            CacheHelper.SetCache(key, new HSSFWorkbook());
+        //[TestMethod]
+        //public void OriginCode_ValidedGuidAndTestTypeId_ReponseBinaryWriteIsCalled()
+        //{
+        //    CacheHelper.SetCache(key, new HSSFWorkbook());
 
-            _fileConverter.GetStream(CacheHelper.GetCache(key)).Returns(new MemoryStream());
+        //    _fileConverter.GetStream(CacheHelper.GetCache(key)).Returns(new MemoryStream());
 
-            _controller.OriginCode(key, Arg.Any<int>(), Arg.Any<string>());
+        //    _controller.OriginCode(key, Arg.Any<int>(), Arg.Any<string>());
 
-            _controller.Response.Received().BinaryWrite(Arg.Any<byte[]>());
-        }
+        //    _controller.Response.Received().BinaryWrite(Arg.Any<byte[]>());
+        //}
 
-        [TestMethod]
-        [ExpectedException(typeof(ApplicationException))]
-        public void OriginCode_InvalidGuid_ThrowException()
-        {
-            _controller.OriginCode(key, Arg.Any<int>(), Arg.Any<string>());
-        }
+        //[TestMethod]
+        //[ExpectedException(typeof(ApplicationException))]
+        //public void OriginCode_InvalidGuid_ThrowException()
+        //{
+        //    _controller.OriginCode(key, Arg.Any<int>(), Arg.Any<string>());
+        //}
 
     }
 }

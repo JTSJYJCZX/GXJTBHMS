@@ -1,29 +1,35 @@
 ﻿using GxjtBHMS.IDAL.OriginalValueDownLoad;
 using GxjtBHMS.Models;
-using NPOI.SS.UserModel;
 using System.Collections.Generic;
 using System.Linq;
+using System;
+using System.IO;
+using GxjtBHMS.Infrastructure.Helpers;
 
 namespace GxjtBHMS.Service.Implementations.OriginalValueDownLoad
 {
-    class CableForceMonitorDatasOriginalValueDownloadFileSystemService : MonitorDatasOriginalValueDownloadFileSystemServiceBase<Basic_CableForceTable>
-    {       
-        public CableForceMonitorDatasOriginalValueDownloadFileSystemService(ICableForceDatasOriginalValueDAL cableForceDatasOriginalValueDAL):base(cableForceDatasOriginalValueDAL)
+    class CableForceMonitorDatasOriginalValueDownloadFileSystemService : MonitorDatasOriginalValueDownloadPlainTextFileSystemTxtServiceBase<Basic_CableForceTable>
+    {
+        public CableForceMonitorDatasOriginalValueDownloadFileSystemService(ICableForceDatasOriginalValueDAL cableForceDatasOriginalValueDAL) : base(cableForceDatasOriginalValueDAL)
         {
-           _sheetName= "索力原始数据查询结果";
         }
 
-        protected override void BuildPartialContent(IRow row,int index,IEnumerable<Basic_CableForceTable> source)
+        protected override void CreateBody(StreamWriter sw, IEnumerable<Basic_CableForceTable> alldatas)
         {
-            row.CreateCell(3).SetCellValue(source.ToArray()[index].CableForce);
-            row.CreateCell(4).SetCellValue(source.ToArray()[index].Temperature);
+            foreach (var item in alldatas)
+            {
+                sw.WriteLine(string.Concat(item.PointsNumber.Name, Separator, DateTimeHelper.FormatDateTime(item.Time), Separator, item.CableForce, Separator, item.Temperature));
+            }
         }
 
-        protected override void PartialHeadRow(IRow headRow)
+        protected override IEnumerable<Basic_CableForceTable> GetDataSource(IList<Func<Basic_CableForceTable, bool>> ps)
         {
-            _sheetName = "索力原始数据查询结果";
-            headRow.CreateCell(3).SetCellValue("索力值(kN)");
-            headRow.CreateCell(4).SetCellValue("温度(℃)");
+            return _dal.FindBy(ps).ToList();
+        }
+
+        protected override string GetHeader(string defaultHead)
+        {
+            return string.Concat(defaultHead, Separator, "索力值(kN)", Separator, "温度(℃)");
         }
     }
 }

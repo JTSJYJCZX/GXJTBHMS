@@ -59,14 +59,14 @@ namespace GxjtBHMS.Service.MonitoringDatasQueryService
             return result;
         }
 
-        public DownLoadDatasResponse SaveAs(DatasQueryResultRequestBase req)
+        public DownLoadDatasResponse SaveAs(DatasQueryResultRequestBase req,string filePath)
         {
             var resp = new DownLoadDatasResponse();
             IList<Func<T, bool>> ps = new List<Func<T, bool>>();
             try
             {
                 DealWithConditions(req, ps);
-                resp.Datas = _fileSystemService.ConvertToDocument(ps);
+                _fileSystemService.ConvertToDocument(ps, filePath);
                 resp.Succeed = true;
             }
             catch (Exception ex)
