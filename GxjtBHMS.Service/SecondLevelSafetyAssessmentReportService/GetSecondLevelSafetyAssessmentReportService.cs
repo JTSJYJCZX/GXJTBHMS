@@ -7,6 +7,7 @@ using GxjtBHMS.Infrastructure.Configuration;
 using GxjtBHMS.Models.SecondLevelSafetyAssessmentTable;
 using GxjtBHMS.Service.Messaging.SecondLevelSafetyAssessmentReport;
 using GxjtBHMS.Service.Messaging.Home;
+using GxjtBHMS.Infrastructure.Helpers;
 
 namespace GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService
 {
@@ -60,7 +61,7 @@ namespace GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService
             if (ReportCount > 0)
             {
                 var source = _getSecondLevelSafetyAssessmentReportDAL.FindBy(ServiceConstant.AssessmentResultStateNavigationProperty).OrderBy(m => m.ReportTime).Last();
-                result.SecondSafetyAssessmentReportTime = source.ReportTime.ToShortDateString();
+                result.SecondSafetyAssessmentReportTime =DateTimeHelper.FormatDateTime(source.ReportTime);
                 result.SecondSafetyAssessmentResult = source.AssessmentResultState.AssessmentGrade;
             }
             else

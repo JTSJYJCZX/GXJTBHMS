@@ -1,4 +1,5 @@
-﻿using GxjtBHMS.Service.Interfaces;
+﻿using GxjtBHMS.Infrastructure.Helpers;
+using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.Messaging;
 using GxjtBHMS.Service.Messaging.SecondLevelSafetyAssessmentReport;
 using GxjtBHMS.Service.SecondLevelSafetyAssessmentReportService;
@@ -16,8 +17,8 @@ using System.Web.Mvc;
 namespace GxjtBHMS.Web.Controllers
 {
     public class SecondLevelSafetyAssessmentController : BaseController
-    {      
-        IFileConverter _fileConverter;       
+    {
+        IFileConverter _fileConverter;
         public SecondLevelSafetyAssessmentController(IFileConverter fileConverter)
         {
             _fileConverter = fileConverter;
@@ -49,7 +50,7 @@ namespace GxjtBHMS.Web.Controllers
             {
                 wordFileSize = StyleConstants.wordFileSize,
             };
-            return PartialView("GetReportListByTimeSearchPartial",models);
+            return PartialView("GetReportListByTimeSearchPartial", models);
         }
 
         /// <summary>
@@ -95,7 +96,7 @@ namespace GxjtBHMS.Web.Controllers
                     var resultItem = new SafetyAssessmentReportViewModel();
                     resultItem.ReportName = item.ReportPeriods;
                     resultItem.ReporePath = item.ReprotPath;
-                    resultItem.ReportTime = item.ReportTime.ToShortDateString();
+                    resultItem.ReportTime = DateTimeHelper.FormatDateTime(item.ReportTime);
                     resultItem.AssessmentGrade = item.AssessmentResultState.AssessmentGrade;
                     resultItem.AssessmentState = item.AssessmentResultState.AssessmentState;
                     models.Add(resultItem);
@@ -116,7 +117,7 @@ namespace GxjtBHMS.Web.Controllers
         /// <param name="conditions"></param>
         /// <returns></returns>
         public ActionResult UploadSecondLevelSafetyAssessmentReport(int reportGradeId)
-        {           
+        {
             HttpFileCollection files = System.Web.HttpContext.Current.Request.Files;
             if (files.Count == 0)
             {
@@ -124,11 +125,11 @@ namespace GxjtBHMS.Web.Controllers
             }
             HttpPostedFile fileSave = files[0];//转换文件类型
             string ReportName = fileSave.FileName; //获得服务端上传文件的文件名
-            string path = System.Web.HttpContext.Current.Server.MapPath(StyleConstants.SecondLevelSafetyAssessmentReportUploasPath);   
+            string path = System.Web.HttpContext.Current.Server.MapPath(StyleConstants.SecondLevelSafetyAssessmentReportUploasPath);
             string ReprotPath = string.Concat(path, ReportName);//拼接上传文件的保存路径
             var GetSecondLevelSafetyAssessmentReportListService = new GetSecondLevelSafetyAssessmentReportService();
             bool reportresp = GetSecondLevelSafetyAssessmentReportListService.GetReportNameIsNotHas(ReportName);
-            if (reportresp==true)
+            if (reportresp == true)
             {
                 files[0].SaveAs(ReprotPath); //保存文件
                 DateTime uploadDate = DateTime.Now;
@@ -137,7 +138,7 @@ namespace GxjtBHMS.Web.Controllers
                     ReportGradeId = reportGradeId,
                     ReportPath = ReprotPath,
                     uploadDate = uploadDate,
-                    ReportName = ReportName,            
+                    ReportName = ReportName,
                 };
                 var resp = GetSecondLevelSafetyAssessmentReportListService.UploadSecondlevelSafetyAssessmentReport(req);
                 return Json(resp.Message, JsonRequestBehavior.AllowGet);
@@ -145,7 +146,7 @@ namespace GxjtBHMS.Web.Controllers
             else
             {
                 return Json("该文件名已存在，请重新选择文件或重命名上传文件！", JsonRequestBehavior.AllowGet);
-            }          
+            }
         }
 
         /// <summary>
@@ -154,14 +155,14 @@ namespace GxjtBHMS.Web.Controllers
         /// <param name="ReportPath">本地上传报告的路径</param>
         /// <param name="ReportName">报告名字</param>
         /// <returns></returns>
-        public ActionResult DownloadSecondLevelSafetyAssessmentReport(string ReportPath,string ReportName)
+        public ActionResult DownloadSecondLevelSafetyAssessmentReport(string ReportPath, string ReportName)
         {
             var req = new SecondLevelSafetyAssementReportUploadRequest()
             {
                 ReportPath = ReportPath,
-                ReportName=ReportName
-            };     
-            FileStream fileStream = new FileStream(ReportPath, FileMode.Open);           
+                ReportName = ReportName
+            };
+            FileStream fileStream = new FileStream(ReportPath, FileMode.Open);
             var guid = "";
             guid = Guid.NewGuid().ToString();
             CacheHelper.SetCache(guid, fileStream);
@@ -202,10 +203,10 @@ namespace GxjtBHMS.Web.Controllers
             };
             var GetSecondLevelSafetyAssessmentReportListService = new GetSecondLevelSafetyAssessmentReportService();
             var resp = GetSecondLevelSafetyAssessmentReportListService.DeleteSecondLevelSafetyAssessmentReport(req);
-            if (resp.Succeed==true)
+            if (resp.Succeed == true)
             {
                 System.IO.File.Delete(ReportPath);
-            }              
+            }
             return Json(resp.Message, JsonRequestBehavior.AllowGet);
         }
     }

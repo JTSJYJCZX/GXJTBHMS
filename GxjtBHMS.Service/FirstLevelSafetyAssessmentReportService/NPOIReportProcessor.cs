@@ -200,7 +200,7 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
         {
             table.GetRow(0).GetCell(4).SetText(Datas.ReportModel.ReportPeriods);
             table.GetRow(1).GetCell(1).SetText(Datas.ReportModel.AssessmentReasons.AssessmentReasons);
-            table.GetRow(1).GetCell(4).SetText(DateTimeHelper.FormatDate(Datas.ReportModel.ReportTime));
+            table.GetRow(1).GetCell(4).SetText(DateTimeHelper.FormatDateTime(Datas.ReportModel.ReportTime));
         }
 
         /// <summary>

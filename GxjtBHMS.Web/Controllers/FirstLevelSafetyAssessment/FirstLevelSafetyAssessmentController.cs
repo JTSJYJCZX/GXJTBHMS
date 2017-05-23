@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.Implementations;
 using GxjtBHMS.Service.Interfaces.FirstLevelAssessmInerfaces;
+using GxjtBHMS.Infrastructure.Helpers;
 
 namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
 {
@@ -63,12 +64,12 @@ namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
                 {
                     var resultItem = new SafetyAssessmentReportViewModel();
                     resultItem.ReportName = item.ReportPeriods;
-                    resultItem.ReportTime = item.ReportTime.ToShortDateString();
+                    resultItem.ReportTime = DateTimeHelper.FormatDateTime(item.ReportTime);
                     resultItem.ReportId = item.Id;
                     models.Add(resultItem);
                 }
                 resultView.SafetyAssessmentReportViewModels = models;
-                resultView.PaginatorModel = new ViewModels.PaginatorModel {TotalPages = resp.TotalPages, CurrentPageIndex = conditions.CurrentPageIndex};            
+                resultView.PaginatorModel = new ViewModels.PaginatorModel { TotalPages = resp.TotalPages, CurrentPageIndex = conditions.CurrentPageIndex };
             }
             else
             {
@@ -101,7 +102,7 @@ namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
             }
             var ms = _fileConverter.GetStream(obj);
             string preFileName = "一级安全评估报告";
-            string DownloadName= string.Concat(ReportName, preFileName);
+            string DownloadName = string.Concat(ReportName, preFileName);
             Response.AddHeader("Content-Disposition", string.Format("attachment; filename={0}.docx", DownloadName));
             Response.BinaryWrite(ms.ToArray());
             ms.Close();

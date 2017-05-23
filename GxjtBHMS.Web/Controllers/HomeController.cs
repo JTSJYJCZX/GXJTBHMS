@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using GxjtBHMS.Service.Interfaces.AlarmDatasQueryServiceInerfaces;
 using GxjtBHMS.Service.Messaging.MonitoringDatas;
+using GxjtBHMS.Infrastructure.Helpers;
 
 namespace GxjtBHMS.Web.Controllers
 {
@@ -85,7 +86,7 @@ namespace GxjtBHMS.Web.Controllers
                 FirstSafetyAssessmentResult_CableForce = FirstSafetyAssessmentResult.FirstSafetyAssessmentResult_CableForce,
                 FirstSafetyAssessmentResult_Displacement = FirstSafetyAssessmentResult.FirstSafetyAssessmentResult_Displacement,
                 FirstSafetyAssessmentResult_Stress = FirstSafetyAssessmentResult.FirstSafetyAssessmentResult_Stress,
-                FirstSafetyAssessmentReportTime = FirstSafetyAssessmentResult.FirstSafetyAssessmentReportTime,
+                FirstSafetyAssessmentReportTime =FirstSafetyAssessmentResult.FirstSafetyAssessmentReportTime,
                 SecondSafetyAssessmentResult = SecondLevelSafetyAssessmentResult.SecondSafetyAssessmentResult,
                 SecondSafetyAssessmentReportTime = SecondLevelSafetyAssessmentResult.SecondSafetyAssessmentReportTime,
                 ManualInspectionSafetyAssessmentResult = ManualInspectionSafetyAssessmentResult.ManualInspectionSafetyAssessmentResult,

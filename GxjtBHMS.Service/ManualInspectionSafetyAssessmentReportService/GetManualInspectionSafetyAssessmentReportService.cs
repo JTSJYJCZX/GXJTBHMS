@@ -8,6 +8,7 @@ using GxjtBHMS.Service.Messaging.SecondLevelSafetyAssessmentReport;
 using GxjtBHMS.Service.Messaging.ManualInspectionSafetyAssessmentReport;
 using GxjtBHMS.Models.ManualInspectionSafetyAssessmentTable;
 using GxjtBHMS.Service.Messaging.Home;
+using GxjtBHMS.Infrastructure.Helpers;
 
 namespace GxjtBHMS.Service.ManualInspectionSafetyAssessmentReportService
 {
@@ -62,7 +63,7 @@ namespace GxjtBHMS.Service.ManualInspectionSafetyAssessmentReportService
             {
                 var source = _getManualInspectionSafetyAssessmentReportDAL.FindBy(ServiceConstant.AssessmentResultStateNavigationProperty).OrderBy(m => m.ReportTime).Last();
                 result.ManualInspectionSafetyAssessmentResult = source.AssessmentResultState.AssessmentGrade;
-                result.ManualInspectionSafetyAssessmentReportTime = source.ReportTime.ToShortDateString();
+                result.ManualInspectionSafetyAssessmentReportTime = DateTimeHelper.FormatDateTime(source.ReportTime);
             }
             else
             {

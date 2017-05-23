@@ -7,6 +7,7 @@ using GxjtBHMS.Models.FirstLevelSafetyAssessmentTable;
 using GxjtBHMS.Infrastructure.Configuration;
 using GxjtBHMS.Service.Messaging.Home;
 using GxjtBHMS.IDAL.Home;
+using GxjtBHMS.Infrastructure.Helpers;
 
 namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
 {
@@ -28,9 +29,9 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
             IList<Func<FirstAssessment_FirstLevelSafetyAssessmentReportTable, bool>> ps = new List<Func<FirstAssessment_FirstLevelSafetyAssessmentReportTable, bool>>();
             try
             {
-                DealWithContainsTime(req,ps);
+                DealWithContainsTime(req, ps);
                 var numberOfResultsPrePage = ApplicationSettingsFactory.GetApplicationSettings().NumberOfResultsPrePage;//获取每页记录数
-                var source = _getFirstLevelSafetyAssessmentReportDAL.FindBy(ps,req.CurrentPageIndex, numberOfResultsPrePage);
+                var source = _getFirstLevelSafetyAssessmentReportDAL.FindBy(ps, req.CurrentPageIndex, numberOfResultsPrePage);
 
                 if (HasNoSearchResult(source))
                 {
@@ -62,11 +63,11 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
             if (ReportCount > 0)
             {
                 var source = _getFirstLevelSafetyAssessmentReportResultDAL.FindBy(ServiceConstant.ResultsAssessmentReport).OrderBy(m => m.AssessmentReportId).Last();
-                result.FirstSafetyAssessmentResult_Displacement = source.DisplacementAssessmentResult.Substring(0,2);
-                result.FirstSafetyAssessmentResult_CableForce = source.CableForceAssessmentResult.Substring(0,2);
-                result.FirstSafetyAssessmentResult_Stress = source.StrainAssessmentResult.Substring(0,2);
-                result.FirstSafetyAssessmentReportTime = source.AssessmentReport.ReportTime.ToShortDateString();
-                result.FirstSafetyAssessmentReportTime_DateTime = source.AssessmentReport.ReportTime;               
+                result.FirstSafetyAssessmentResult_Displacement = source.DisplacementAssessmentResult.Substring(0, 2);
+                result.FirstSafetyAssessmentResult_CableForce = source.CableForceAssessmentResult.Substring(0, 2);
+                result.FirstSafetyAssessmentResult_Stress = source.StrainAssessmentResult.Substring(0, 2);
+                result.FirstSafetyAssessmentReportTime = DateTimeHelper.FormatDateTime(source.AssessmentReport.ReportTime);
+                result.FirstSafetyAssessmentReportTime_DateTime = source.AssessmentReport.ReportTime;
             }
             else
             {
@@ -74,7 +75,7 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
                 result.FirstSafetyAssessmentResult_CableForce = ServiceConstant.NotEvaluated;
                 result.FirstSafetyAssessmentResult_Stress = ServiceConstant.NotEvaluated;
                 result.FirstSafetyAssessmentReportTime = ServiceConstant.NotEvaluated;
-            }          
+            }
             return result;
 
         }
@@ -84,9 +85,9 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
         /// <returns></returns>
         public SafetyAssessmentSuggestionSearchResponse GetFirstSafetyAssessmentSuggestion()
         {
-            var result = new SafetyAssessmentSuggestionSearchResponse ();
+            var result = new SafetyAssessmentSuggestionSearchResponse();
             var ReportCount = _getFirstLevelSafetyAssessmentReportResultDAL.FindBy().Count();
-            if (ReportCount>0)
+            if (ReportCount > 0)
             {
                 var source = _getFirstLevelSafetyAssessmentReportResultDAL.FindBy(ServiceConstant.ResultsAssessmentReport).OrderBy(m => m.AssessmentReportId).Last();
                 result.FirstSafetyAssessmentSuggestion_CableForce = source.CableForceAssessmentSuggestion;
@@ -127,7 +128,7 @@ namespace GxjtBHMS.Service.FirstLevelSafetyAssessmentReportService
             IEnumerable<FirstAssessment_FirstLevelSafetyAssessmentReportTable> source = _getFirstLevelSafetyAssessmentReportDAL.FindAll();
             PagedResponse resp = new PagedResponse();
             try
-            {                 
+            {
                 resp.TotalResultCount = source.Count();
                 if (resp.TotalResultCount <= 0)
                 {

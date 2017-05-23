@@ -10,3 +10,163 @@
    在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
    在 GxjtBHMS.Service.Implementations.MonitorDatasOriginalValueDownloadPlainTextFileSystemTxtServiceBase`1.ConvertToDocument(IList`1 ps, String filePath) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.Service\Implementations\OriginalValueDownloadServiceBase\MonitorDatasOriginalValueDownloadPlainTextFileSystemTxtServiceBase.cs:行号 24
    在 GxjtBHMS.Service.Implementations.MonitorDatasOringinalValueDownloadServiceBase`1.SaveAs(DatasQueryResultRequestBase req, String filePath) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.Service\Implementations\OriginalValueDownloadServiceBase\MonitorDatasOringinalValueDownloadServiceBase.cs:行号 27
+2017-05-23 11:55:02,455 INFO  BHMSLogger  - An error occurred while executing the command definition. See the inner exception for details.
+2017-05-23 11:55:02,461 INFO  BHMSLogger  -    在 System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   在 System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   在 System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.Execute(MergeOption mergeOption)
+   在 System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Load(MergeOption mergeOption)
+   在 System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.DeferredLoad()
+   在 System.Data.Entity.Core.Objects.Internal.LazyLoadBehavior.LoadProperty[TItem](TItem propertyValue, String relationshipName, String targetRoleName, Boolean mustBeNull, Object wrapperObject)
+   在 System.Data.Entity.Core.Objects.Internal.LazyLoadBehavior.<>c__DisplayClass7`2.<GetInterceptorDelegate>b__2(TProxy proxy, TItem item)
+   在 System.Data.Entity.DynamicProxies.Basic_SteelArchStrai_4F5378919A8D827C18E7BAAB3F492C7D54B5697AA582B01E0123788DB5A15EFB.get_PointsNumber()
+   在 GxjtBHMS.Service.Implementations.MonitorDatasOringinalValueDownloadServiceBase`1.<>c__DisplayClass4_0.<DealWithEqualPointsPosition>b__0(T m) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.Service\Implementations\OriginalValueDownloadServiceBase\MonitorDatasOringinalValueDownloadServiceBase.cs:行号 43
+   在 System.Linq.Enumerable.<>c__DisplayClass6_0`1.<CombinePredicates>b__0(TSource x)
+   在 System.Linq.Enumerable.<>c__DisplayClass6_0`1.<CombinePredicates>b__0(TSource x)
+   在 System.Linq.Enumerable.<>c__DisplayClass6_0`1.<CombinePredicates>b__0(TSource x)
+   在 System.Linq.Enumerable.WhereEnumerableIterator`1.MoveNext()
+   在 System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   在 System.Linq.OrderedEnumerable`1.<GetEnumerator>d__1.MoveNext()
+   在 System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   在 System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   在 GxjtBHMS.SqlServerDAL.Repository`2.FindBy(IList`1 ps, String[] navigationProperties) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.SqlServerDAL\Repository.cs:行号 126
+   在 GxjtBHMS.Service.Implementations.SteelArchStrainMonitorDatasOriginalValueDownloadFileSystemService.GetDataSource(IList`1 ps) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.Service\Implementations\OriginalValueFileSystemService\SteelArchStrainMonitorDatasOriginalValueDownloadFileSystemService.cs:行号 26
+   在 GxjtBHMS.Service.Implementations.MonitorDatasOriginalValueDownloadPlainTextFileSystemTxtServiceBase`1.ConvertToDocument(IList`1 ps, String filePath) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.Service\Implementations\OriginalValueDownloadServiceBase\MonitorDatasOriginalValueDownloadPlainTextFileSystemTxtServiceBase.cs:行号 28
+   在 GxjtBHMS.Service.Implementations.MonitorDatasOringinalValueDownloadServiceBase`1.SaveAs(DatasQueryResultRequestBase req, String filePath) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.Service\Implementations\OriginalValueDownloadServiceBase\MonitorDatasOringinalValueDownloadServiceBase.cs:行号 27
+2017-05-23 11:55:37,677 INFO  BHMSLogger  - An error occurred while executing the command definition. See the inner exception for details.
+2017-05-23 11:55:37,677 INFO  BHMSLogger  -    在 System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   在 System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   在 System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.Execute(MergeOption mergeOption)
+   在 System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Load(MergeOption mergeOption)
+   在 System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.DeferredLoad()
+   在 System.Data.Entity.Core.Objects.Internal.LazyLoadBehavior.LoadProperty[TItem](TItem propertyValue, String relationshipName, String targetRoleName, Boolean mustBeNull, Object wrapperObject)
+   在 System.Data.Entity.Core.Objects.Internal.LazyLoadBehavior.<>c__DisplayClass7`2.<GetInterceptorDelegate>b__2(TProxy proxy, TItem item)
+   在 System.Data.Entity.DynamicProxies.Basic_SteelArchStrai_4F5378919A8D827C18E7BAAB3F492C7D54B5697AA582B01E0123788DB5A15EFB.get_PointsNumber()
+   在 GxjtBHMS.Service.Implementations.MonitorDatasOringinalValueDownloadServiceBase`1.<>c__DisplayClass4_0.<DealWithEqualPointsPosition>b__0(T m) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.Service\Implementations\OriginalValueDownloadServiceBase\MonitorDatasOringinalValueDownloadServiceBase.cs:行号 43
+   在 System.Linq.Enumerable.<>c__DisplayClass6_0`1.<CombinePredicates>b__0(TSource x)
+   在 System.Linq.Enumerable.<>c__DisplayClass6_0`1.<CombinePredicates>b__0(TSource x)
+   在 System.Linq.Enumerable.<>c__DisplayClass6_0`1.<CombinePredicates>b__0(TSource x)
+   在 System.Linq.Enumerable.WhereEnumerableIterator`1.MoveNext()
+   在 System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   在 System.Linq.OrderedEnumerable`1.<GetEnumerator>d__1.MoveNext()
+   在 System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   在 System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   在 GxjtBHMS.SqlServerDAL.Repository`2.FindBy(IList`1 ps, String[] navigationProperties) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.SqlServerDAL\Repository.cs:行号 126
+   在 GxjtBHMS.Service.Implementations.SteelArchStrainMonitorDatasOriginalValueDownloadFileSystemService.GetDataSource(IList`1 ps) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.Service\Implementations\OriginalValueFileSystemService\SteelArchStrainMonitorDatasOriginalValueDownloadFileSystemService.cs:行号 26
+   在 GxjtBHMS.Service.Implementations.MonitorDatasOriginalValueDownloadPlainTextFileSystemTxtServiceBase`1.ConvertToDocument(IList`1 ps, String filePath) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.Service\Implementations\OriginalValueDownloadServiceBase\MonitorDatasOriginalValueDownloadPlainTextFileSystemTxtServiceBase.cs:行号 28
+   在 GxjtBHMS.Service.Implementations.MonitorDatasOringinalValueDownloadServiceBase`1.SaveAs(DatasQueryResultRequestBase req, String filePath) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.Service\Implementations\OriginalValueDownloadServiceBase\MonitorDatasOringinalValueDownloadServiceBase.cs:行号 27
+2017-05-23 11:55:43,311 INFO  BHMSLogger  - An error occurred while executing the command definition. See the inner exception for details.
+2017-05-23 11:55:43,311 INFO  BHMSLogger  -    在 System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   在 System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   在 System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.Execute(MergeOption mergeOption)
+   在 System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Load(MergeOption mergeOption)
+   在 System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.DeferredLoad()
+   在 System.Data.Entity.Core.Objects.Internal.LazyLoadBehavior.LoadProperty[TItem](TItem propertyValue, String relationshipName, String targetRoleName, Boolean mustBeNull, Object wrapperObject)
+   在 System.Data.Entity.Core.Objects.Internal.LazyLoadBehavior.<>c__DisplayClass7`2.<GetInterceptorDelegate>b__2(TProxy proxy, TItem item)
+   在 System.Data.Entity.DynamicProxies.Basic_SteelArchStrai_4F5378919A8D827C18E7BAAB3F492C7D54B5697AA582B01E0123788DB5A15EFB.get_PointsNumber()
+   在 GxjtBHMS.Service.Implementations.MonitorDatasOringinalValueDownloadServiceBase`1.<>c__DisplayClass4_0.<DealWithEqualPointsPosition>b__0(T m) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.Service\Implementations\OriginalValueDownloadServiceBase\MonitorDatasOringinalValueDownloadServiceBase.cs:行号 43
+   在 System.Linq.Enumerable.<>c__DisplayClass6_0`1.<CombinePredicates>b__0(TSource x)
+   在 System.Linq.Enumerable.<>c__DisplayClass6_0`1.<CombinePredicates>b__0(TSource x)
+   在 System.Linq.Enumerable.<>c__DisplayClass6_0`1.<CombinePredicates>b__0(TSource x)
+   在 System.Linq.Enumerable.WhereEnumerableIterator`1.MoveNext()
+   在 System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   在 System.Linq.OrderedEnumerable`1.<GetEnumerator>d__1.MoveNext()
+   在 System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   在 System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   在 GxjtBHMS.SqlServerDAL.Repository`2.FindBy(IList`1 ps, String[] navigationProperties) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.SqlServerDAL\Repository.cs:行号 126
+   在 GxjtBHMS.Service.Implementations.SteelArchStrainMonitorDatasOriginalValueDownloadFileSystemService.GetDataSource(IList`1 ps) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.Service\Implementations\OriginalValueFileSystemService\SteelArchStrainMonitorDatasOriginalValueDownloadFileSystemService.cs:行号 26
+   在 GxjtBHMS.Service.Implementations.MonitorDatasOriginalValueDownloadPlainTextFileSystemTxtServiceBase`1.ConvertToDocument(IList`1 ps, String filePath) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.Service\Implementations\OriginalValueDownloadServiceBase\MonitorDatasOriginalValueDownloadPlainTextFileSystemTxtServiceBase.cs:行号 28
+   在 GxjtBHMS.Service.Implementations.MonitorDatasOringinalValueDownloadServiceBase`1.SaveAs(DatasQueryResultRequestBase req, String filePath) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.Service\Implementations\OriginalValueDownloadServiceBase\MonitorDatasOringinalValueDownloadServiceBase.cs:行号 27
+2017-05-23 11:56:06,462 INFO  BHMSLogger  - An error occurred while executing the command definition. See the inner exception for details.
+2017-05-23 11:56:06,462 INFO  BHMSLogger  -    在 System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   在 System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   在 System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.Execute(MergeOption mergeOption)
+   在 System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Load(MergeOption mergeOption)
+   在 System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.DeferredLoad()
+   在 System.Data.Entity.Core.Objects.Internal.LazyLoadBehavior.LoadProperty[TItem](TItem propertyValue, String relationshipName, String targetRoleName, Boolean mustBeNull, Object wrapperObject)
+   在 System.Data.Entity.Core.Objects.Internal.LazyLoadBehavior.<>c__DisplayClass7`2.<GetInterceptorDelegate>b__2(TProxy proxy, TItem item)
+   在 System.Data.Entity.DynamicProxies.Basic_DisplacementTa_6AF69904DF2D0034FA7303070B933BB9832DC8FD30DD9D1E4EF68CE67EAE254A.get_PointsNumber()
+   在 GxjtBHMS.Service.Implementations.MonitorDatasOringinalValueDownloadServiceBase`1.<>c__DisplayClass4_0.<DealWithEqualPointsPosition>b__0(T m) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.Service\Implementations\OriginalValueDownloadServiceBase\MonitorDatasOringinalValueDownloadServiceBase.cs:行号 43
+   在 System.Linq.Enumerable.<>c__DisplayClass6_0`1.<CombinePredicates>b__0(TSource x)
+   在 System.Linq.Enumerable.<>c__DisplayClass6_0`1.<CombinePredicates>b__0(TSource x)
+   在 System.Linq.Enumerable.<>c__DisplayClass6_0`1.<CombinePredicates>b__0(TSource x)
+   在 System.Linq.Enumerable.WhereEnumerableIterator`1.MoveNext()
+   在 System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   在 System.Linq.OrderedEnumerable`1.<GetEnumerator>d__1.MoveNext()
+   在 System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   在 System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   在 GxjtBHMS.SqlServerDAL.Repository`2.FindBy(IList`1 ps, String[] navigationProperties) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.SqlServerDAL\Repository.cs:行号 126
+   在 GxjtBHMS.Service.Implementations.DisplacementMonitorDatasOriginalValueDownloadFileSystemService.GetDataSource(IList`1 ps) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.Service\Implementations\OriginalValueFileSystemService\DisplacementMonitorDatasOriginalValueDownloadFileSystemService.cs:行号 26
+   在 GxjtBHMS.Service.Implementations.MonitorDatasOriginalValueDownloadPlainTextFileSystemTxtServiceBase`1.ConvertToDocument(IList`1 ps, String filePath) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.Service\Implementations\OriginalValueDownloadServiceBase\MonitorDatasOriginalValueDownloadPlainTextFileSystemTxtServiceBase.cs:行号 28
+   在 GxjtBHMS.Service.Implementations.MonitorDatasOringinalValueDownloadServiceBase`1.SaveAs(DatasQueryResultRequestBase req, String filePath) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.Service\Implementations\OriginalValueDownloadServiceBase\MonitorDatasOringinalValueDownloadServiceBase.cs:行号 27
+2017-05-23 11:57:00,908 INFO  BHMSLogger  - An error occurred while executing the command definition. See the inner exception for details.
+2017-05-23 11:57:00,908 INFO  BHMSLogger  -    在 System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   在 System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   在 System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.Execute(MergeOption mergeOption)
+   在 System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Load(MergeOption mergeOption)
+   在 System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.DeferredLoad()
+   在 System.Data.Entity.Core.Objects.Internal.LazyLoadBehavior.LoadProperty[TItem](TItem propertyValue, String relationshipName, String targetRoleName, Boolean mustBeNull, Object wrapperObject)
+   在 System.Data.Entity.Core.Objects.Internal.LazyLoadBehavior.<>c__DisplayClass7`2.<GetInterceptorDelegate>b__2(TProxy proxy, TItem item)
+   在 System.Data.Entity.DynamicProxies.Basic_CableForceTabl_6C0DF0CDE7A292169F0C400FDA283FD4FDDA2483DDE6D8139B13A9CD46161A23.get_PointsNumber()
+   在 GxjtBHMS.Service.Implementations.MonitorDatasOringinalValueDownloadServiceBase`1.<>c__DisplayClass4_0.<DealWithEqualPointsPosition>b__0(T m) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.Service\Implementations\OriginalValueDownloadServiceBase\MonitorDatasOringinalValueDownloadServiceBase.cs:行号 43
+   在 System.Linq.Enumerable.<>c__DisplayClass6_0`1.<CombinePredicates>b__0(TSource x)
+   在 System.Linq.Enumerable.<>c__DisplayClass6_0`1.<CombinePredicates>b__0(TSource x)
+   在 System.Linq.Enumerable.WhereEnumerableIterator`1.MoveNext()
+   在 System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   在 System.Linq.OrderedEnumerable`1.<GetEnumerator>d__1.MoveNext()
+   在 System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   在 System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   在 GxjtBHMS.SqlServerDAL.Repository`2.FindBy(IList`1 ps, String[] navigationProperties) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.SqlServerDAL\Repository.cs:行号 126
+   在 GxjtBHMS.Service.Implementations.OriginalValueDownLoad.CableForceMonitorDatasOriginalValueDownloadFileSystemService.GetDataSource(IList`1 ps) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.Service\Implementations\OriginalValueFileSystemService\CableForceMonitorDatasOriginalValueDownloadFileSystemService.cs:行号 27
+   在 GxjtBHMS.Service.Implementations.MonitorDatasOriginalValueDownloadPlainTextFileSystemTxtServiceBase`1.ConvertToDocument(IList`1 ps, String filePath) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.Service\Implementations\OriginalValueDownloadServiceBase\MonitorDatasOriginalValueDownloadPlainTextFileSystemTxtServiceBase.cs:行号 28
+   在 GxjtBHMS.Service.Implementations.MonitorDatasOringinalValueDownloadServiceBase`1.SaveAs(DatasQueryResultRequestBase req, String filePath) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.Service\Implementations\OriginalValueDownloadServiceBase\MonitorDatasOringinalValueDownloadServiceBase.cs:行号 27
+2017-05-23 12:01:21,692 INFO  BHMSLogger  - An error occurred while executing the command definition. See the inner exception for details.
+2017-05-23 12:01:21,692 INFO  BHMSLogger  -    在 System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   在 System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   在 System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   在 System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.Execute(MergeOption mergeOption)
+   在 System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Load(MergeOption mergeOption)
+   在 System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.DeferredLoad()
+   在 System.Data.Entity.Core.Objects.Internal.LazyLoadBehavior.LoadProperty[TItem](TItem propertyValue, String relationshipName, String targetRoleName, Boolean mustBeNull, Object wrapperObject)
+   在 System.Data.Entity.Core.Objects.Internal.LazyLoadBehavior.<>c__DisplayClass7`2.<GetInterceptorDelegate>b__2(TProxy proxy, TItem item)
+   在 System.Data.Entity.DynamicProxies.Basic_CableForceTabl_6C0DF0CDE7A292169F0C400FDA283FD4FDDA2483DDE6D8139B13A9CD46161A23.get_PointsNumber()
+   在 GxjtBHMS.Service.Implementations.MonitorDatasOringinalValueDownloadServiceBase`1.<>c__DisplayClass4_0.<DealWithEqualPointsPosition>b__0(T m) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.Service\Implementations\OriginalValueDownloadServiceBase\MonitorDatasOringinalValueDownloadServiceBase.cs:行号 43
+   在 System.Linq.Enumerable.<>c__DisplayClass6_0`1.<CombinePredicates>b__0(TSource x)
+   在 System.Linq.Enumerable.<>c__DisplayClass6_0`1.<CombinePredicates>b__0(TSource x)
+   在 System.Linq.Enumerable.WhereEnumerableIterator`1.MoveNext()
+   在 System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   在 System.Linq.OrderedEnumerable`1.<GetEnumerator>d__1.MoveNext()
+   在 System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   在 System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   在 GxjtBHMS.SqlServerDAL.Repository`2.FindBy(IList`1 ps, String[] navigationProperties) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.SqlServerDAL\Repository.cs:行号 126
+   在 GxjtBHMS.Service.Implementations.OriginalValueDownLoad.CableForceMonitorDatasOriginalValueDownloadFileSystemService.GetDataSource(IList`1 ps) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.Service\Implementations\OriginalValueFileSystemService\CableForceMonitorDatasOriginalValueDownloadFileSystemService.cs:行号 27
+   在 GxjtBHMS.Service.Implementations.MonitorDatasOriginalValueDownloadPlainTextFileSystemTxtServiceBase`1.ConvertToDocument(IList`1 ps, String filePath) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.Service\Implementations\OriginalValueDownloadServiceBase\MonitorDatasOriginalValueDownloadPlainTextFileSystemTxtServiceBase.cs:行号 28
+   在 GxjtBHMS.Service.Implementations.MonitorDatasOringinalValueDownloadServiceBase`1.SaveAs(DatasQueryResultRequestBase req, String filePath) 位置 F:\BridgeHealthMonitoringSys\JCZX\GxjtBHMS.Service\Implementations\OriginalValueDownloadServiceBase\MonitorDatasOringinalValueDownloadServiceBase.cs:行号 27

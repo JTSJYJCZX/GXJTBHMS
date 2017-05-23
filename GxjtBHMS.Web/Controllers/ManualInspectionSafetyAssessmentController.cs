@@ -1,4 +1,5 @@
-﻿using GxjtBHMS.Service.Interfaces;
+﻿using GxjtBHMS.Infrastructure.Helpers;
+using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.ManualInspectionSafetyAssessmentReportService;
 using GxjtBHMS.Service.Messaging.ManualInspectionSafetyAssessmentReport;
 using GxjtBHMS.Services.ViewModels;
@@ -18,8 +19,8 @@ namespace GxjtBHMS.Web.Controllers
     /// 人工巡检报告上传
     /// </summary>
     public class ManualInspectionSafetyAssessmentController : BaseController
-    {      
-        IFileConverter _fileConverter;       
+    {
+        IFileConverter _fileConverter;
         public ManualInspectionSafetyAssessmentController(IFileConverter fileConverter)
         {
             _fileConverter = fileConverter;
@@ -97,7 +98,7 @@ namespace GxjtBHMS.Web.Controllers
                     var resultItem = new SafetyAssessmentReportViewModel();
                     resultItem.ReportName = item.ReportPeriods;
                     resultItem.ReporePath = item.ReprotPath;
-                    resultItem.ReportTime = item.ReportTime.ToShortDateString();
+                    resultItem.ReportTime = DateTimeHelper.FormatDateTime(item.ReportTime);
                     resultItem.AssessmentGrade = item.AssessmentResultState.AssessmentGrade;
                     resultItem.AssessmentState = item.AssessmentResultState.AssessmentState;
                     models.Add(resultItem);
@@ -118,7 +119,7 @@ namespace GxjtBHMS.Web.Controllers
         /// <param name="conditions"></param>
         /// <returns></returns>
         public ActionResult UploadManualInspectionSafetyAssessmentReport(int reportGradeId)
-        {           
+        {
             HttpFileCollection files = System.Web.HttpContext.Current.Request.Files;
             if (files.Count == 0)
             {
@@ -126,11 +127,11 @@ namespace GxjtBHMS.Web.Controllers
             }
             HttpPostedFile fileSave = files[0];//转换文件类型
             string ReportName = fileSave.FileName; //获得服务端上传文件的文件名
-            string path = System.Web.HttpContext.Current.Server.MapPath(StyleConstants.SecondLevelSafetyAssessmentReportUploasPath);   
+            string path = System.Web.HttpContext.Current.Server.MapPath(StyleConstants.SecondLevelSafetyAssessmentReportUploasPath);
             string ReprotPath = string.Concat(path, ReportName);//拼接上传文件的保存路径
             var GetManualInspectionSafetyAssessmentReportService = new GetManualInspectionSafetyAssessmentReportService();
             bool reportresp = GetManualInspectionSafetyAssessmentReportService.GetReportNameIsNotHas(ReportName);
-            if (reportresp==true)
+            if (reportresp == true)
             {
                 files[0].SaveAs(ReprotPath); //保存文件
                 DateTime uploadDate = DateTime.Now;
@@ -139,7 +140,7 @@ namespace GxjtBHMS.Web.Controllers
                     ReportGradeId = reportGradeId,
                     ReportPath = ReprotPath,
                     uploadDate = uploadDate,
-                    ReportName = ReportName,            
+                    ReportName = ReportName,
                 };
                 var resp = GetManualInspectionSafetyAssessmentReportService.UploadSecondlevelSafetyAssessmentReport(req);
                 return Json(resp.Message, JsonRequestBehavior.AllowGet);
@@ -147,7 +148,7 @@ namespace GxjtBHMS.Web.Controllers
             else
             {
                 return Json("该文件名已存在，请重新选择文件或重命名上传文件！", JsonRequestBehavior.AllowGet);
-            }          
+            }
         }
 
         /// <summary>
@@ -156,14 +157,14 @@ namespace GxjtBHMS.Web.Controllers
         /// <param name="ReportPath">本地上传报告的路径</param>
         /// <param name="ReportName">报告名字</param>
         /// <returns></returns>
-        public ActionResult DownloadManualInspectionSafetyAssessmentReport(string ReportPath,string ReportName)
+        public ActionResult DownloadManualInspectionSafetyAssessmentReport(string ReportPath, string ReportName)
         {
             var req = new ManualInspectionSafetyAssementReportUploadRequest()
             {
                 ReportPath = ReportPath,
-                ReportName=ReportName
-            };     
-            FileStream fileStream = new FileStream(ReportPath, FileMode.Open);           
+                ReportName = ReportName
+            };
+            FileStream fileStream = new FileStream(ReportPath, FileMode.Open);
             var guid = "";
             guid = Guid.NewGuid().ToString();
             CacheHelper.SetCache(guid, fileStream);
@@ -204,10 +205,10 @@ namespace GxjtBHMS.Web.Controllers
             };
             var GetManualInspectionSafetyAssessmentReportService = new GetManualInspectionSafetyAssessmentReportService();
             var resp = GetManualInspectionSafetyAssessmentReportService.DeleteSecondLevelSafetyAssessmentReport(req);
-            if (resp.Succeed==true)
+            if (resp.Succeed == true)
             {
                 System.IO.File.Delete(ReportPath);
-            }              
+            }
             return Json(resp.Message, JsonRequestBehavior.AllowGet);
         }
     }
