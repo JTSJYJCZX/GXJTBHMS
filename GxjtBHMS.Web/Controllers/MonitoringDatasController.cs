@@ -202,9 +202,6 @@ namespace GxjtBHMS.Web.Controllers
             string downLoadpath = Server.MapPath(StyleConstants.MonitoringDatasDownloadPath);
             var resp = eigenvalueDownloadService.DownloadTxt(req, downLoadpath);
 
-            var monitoringDatasQueryService = MonitoringDatasEigenvalueQueryServiceFactory.GetQueryServiceFrom(conditions.MornitoringTestTypeId);
-            string filePath = Server.MapPath("/Downloads/Eigenvalue.txt");
-            monitoringDatasQueryService.SaveAs(req, filePath);
             DownloadFile(resp.FilePath);
         }
 

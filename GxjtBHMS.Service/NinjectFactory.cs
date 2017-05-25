@@ -129,7 +129,9 @@ namespace GxjtBHMS.Service
 
             //原始数据下载绑定
             _ninjectKernel.Bind<IOriginalDatasDownloadDAL>().To<OriginalDatasDownloadDAL>();
-            
+            //特征值数据下载绑定
+            _ninjectKernel.Bind<IMonitoringDatasEigenvalueDownloadDAL>().To<MonitoringDatasEigenvalueDownloadDAL>();
+
         }
     }
 }
