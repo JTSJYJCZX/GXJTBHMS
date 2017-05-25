@@ -15,7 +15,7 @@
         public const string SafetyPreWarningThresholdGrade2Color = "#FFD306";
         public const string SafetyPreWarningThresholdGrade3Color = "Red";
 
-        //存储过程名称
+        //原始数据下载存储过程名称
         public const string BasicSteelArchStrain_Procedure = "usp_BasicSteelArchStrainSaveAsTxt";
         public const string BasicCableForce_Procedure = "usp_Basic_CableForceSaveAsTxt";
         public const string BasicConcreteStrain_Procedure = "usp_BasicConcreteStrainSaveAsTxt";
@@ -25,7 +25,7 @@
         public const string BasicTemperature_Procedure = "usp_BasicTemperatureSaveAsTxt";
         public const string BasicWindLoad_Procedure = "usp_BasicWindLoadSaveAsTxt";
 
-        //下载的存储过程名称
+        //特征值数据下载的存储过程名称
         public const string SteelArchStrainDatasEigenvalueDownloadProc = "usp_EigenvalueSteelArchStrainSaveAsTxt";
         public const string SteelLatticeStrainDatasEigenvalueDownloadProc = "usp_EigenvalueSteelLatticeStrainSaveAsTxt";
         public const string ConcreteStrainDatasEigenvalueDownloadProc = "usp_EigenvalueConcreteStrainSaveAsTxt";
