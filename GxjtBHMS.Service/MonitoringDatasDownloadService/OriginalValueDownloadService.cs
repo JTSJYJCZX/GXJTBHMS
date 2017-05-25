@@ -1,62 +1,74 @@
 ﻿using GxjtBHMS.IDAL;
+using GxjtBHMS.IDAL.OriginalValueDownLoad;
+using GxjtBHMS.Infrastructure;
 using GxjtBHMS.Models;
 using GxjtBHMS.Service.Messaging.MonitoringDatas;
 using GxjtBHMS.Service.Messaging.MonitoringDatasDownLoad;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GxjtBHMS.Service.MonitoringDatasDownloadService
 {
-  public  class OriginalValueDownloadService
+    public  class OriginalValueDownloadService:ServiceBase
     {
         IMonitoringPointsNumberDAL _mpnDAL;
-        ISteelArchStrainDatasOriginalValueDAL _steelArchStrainDatasOriginalValueDAL;
-
-
+        IOriginalDatasDownloadDAL _originalDatasDownloadDAL;
         public OriginalValueDownloadService()
         {
-            _steelArchStrainDatasOriginalValueDAL = new NinjectFactory().GetInstance<ISteelArchStrainDatasOriginalValueDAL>();
             _mpnDAL = new NinjectFactory().GetInstance<IMonitoringPointsNumberDAL>();
+            _originalDatasDownloadDAL = new NinjectFactory().GetInstance<IOriginalDatasDownloadDAL>();
         }
         public DownLoadDatasResponse DownloadTxt(DatasQueryResultRequestBase req, string path)
         {
             var resp = new DownLoadDatasResponse();
-
-            switch (req.TestTypeId)
+            try
             {
-                case 1:
-                    try
-                    {
-                        var ps = DealWithConditionParameter(req);
-                        resp.FilePath = _steelArchStrainDatasOriginalValueDAL.DownLoadTxtByExec(ps, path);
+                var ps = DealWithConditionParameter(req);
+                switch (req.TestTypeId)
+                {
+                    case 1:
+                        resp.FilePath = _originalDatasDownloadDAL.DownLoadTxtByExec(ps, path, AppConstants.BasicSteelArchStrain_Procedure);
                         resp.Succeed = true;
-                    }
-                    catch (Exception ex)
-                    {
-                        resp.Message = "无法下载数据";
-                    }
-                    return resp;
-                case 2:
-                    return resp;
-                case 3:
-                    return resp;
-                case 4:
-                    return resp;
-                case 5:
-                    return resp;
-                case 6:
-                    return resp;
-                case 7:
-                    return resp;
-                case 8:
-                    return resp;
-                default:
-                    throw new ApplicationException("No TestTypeId");
-            }
+                        break;
+                    case 2:
+                        resp.FilePath = _originalDatasDownloadDAL.DownLoadTxtByExec(ps, path, AppConstants.BasicSteelLatticeStrain_Procedure);
+                        resp.Succeed = true;
+                        break;
+                    case 3:
+                        resp.FilePath = _originalDatasDownloadDAL.DownLoadTxtByExec(ps, path, AppConstants.BasicConcreteStrain_Procedure);
+                        resp.Succeed = true;
+                        break;
+                    case 4:
+                        resp.FilePath = _originalDatasDownloadDAL.DownLoadTxtByExec(ps, path, AppConstants.BasicDisplacement_Procedure);
+                        resp.Succeed = true;
+                        break;
+                    case 5:
+                        resp.FilePath = _originalDatasDownloadDAL.DownLoadTxtByExec(ps, path, AppConstants.BasicCableForce_Procedure);
+                        resp.Succeed = true;
+                        break;
+                    case 6:
+                        resp.FilePath = _originalDatasDownloadDAL.DownLoadTxtByExec(ps, path, AppConstants.BasicHumidity_Procedure);
+                        resp.Succeed = true;
+                        break;
+                    case 7:
+                        resp.FilePath = _originalDatasDownloadDAL.DownLoadTxtByExec(ps, path, AppConstants.BasicTemperature_Procedure);
+                        resp.Succeed = true;
+                        break;
+                    case 8:
+                        resp.FilePath = _originalDatasDownloadDAL.DownLoadTxtByExec(ps, path, AppConstants.BasicWindLoad_Procedure);
+                        resp.Succeed = true;
+                        break;
+                    default:
+                        throw new ApplicationException("No TestTypeId");
+                }
 
+            }
+            catch (Exception ex)
+            {
+                resp.Message = "无法下载数据";
+                Log(ex);
+            }
+            return resp;
         }
 
         public int[] GetMonitoringPointsNumberIds(int mornitoringPointsPositionId)

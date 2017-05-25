@@ -45,15 +45,6 @@ namespace GxjtBHMS.Service
             _ninjectKernel.Bind<IMonitoringPointsNumberDAL>().To<MonitoringPointsNumberDAL>();
             _ninjectKernel.Bind<IMonitoringPointsPositionDAL>().To<MonitoringPointsPositionDAL>();
 
-            _ninjectKernel.Bind<IConcreteStrainDatasOriginalValueDAL>().To<ConcreteStrainDatasOriginalValueDAL>();
-            _ninjectKernel.Bind<ISteelArchStrainDatasOriginalValueDAL>().To<SteelArchStrainDatasOriginalValueDAL>();
-            _ninjectKernel.Bind<ISteelLatticeStrainDatasOriginalValueDAL>().To<SteelLatticeStrainDatasOriginalValueDAL>();
-            _ninjectKernel.Bind<IDisplacementDatasOriginalValueDAL>().To<DisplacementDatasOriginalValueDAL>();
-            _ninjectKernel.Bind<ICableForceDatasOriginalValueDAL>().To<CableForceDatasOriginalValueDAL>();
-            _ninjectKernel.Bind<ITemperatureDatasOriginalValueDAL>().To<TemperatureDatasOriginalValueDAL>();
-            _ninjectKernel.Bind<IHumidityDatasOriginalValueDAL>().To<HumidityDatasOriginalValueDAL>();
-            _ninjectKernel.Bind<IWindLoadDatasOriginalValueDAL>().To<WindLoadDatasOriginalValueDAL>();
-
             _ninjectKernel.Bind<IMonitoringDatasEigenvalueDAL<Eigenvalue_ConcreteStrainEigenvalueTable>>().To<ConcreteStrainDatasEigenvalueDAL>();
             _ninjectKernel.Bind<IMonitoringDatasEigenvalueDAL<Eigenvalue_SteelArchStrainEigenvalueTable>>().To<SteelArchStrainDatasEigenvalueDAL>();
             _ninjectKernel.Bind<IMonitoringDatasEigenvalueDAL<Eigenvalue_SteelLatticeStrainEigenvalueTable>>().To<SteelLatticeStrainDatasEigenvalueDAL>();
@@ -136,6 +127,9 @@ namespace GxjtBHMS.Service
             //主页中安全状态评估结果查询绑定
             _ninjectKernel.Bind<IGetFirstLevelSafetyAssessmentReportDisplacementResultDAL>().To<GetFirstLevelSafetyAssessmentReportDisplacementResultDAL>();
 
+            //原始数据下载绑定
+            _ninjectKernel.Bind<IOriginalDatasDownloadDAL>().To<OriginalDatasDownloadDAL>();
+            
         }
     }
 }

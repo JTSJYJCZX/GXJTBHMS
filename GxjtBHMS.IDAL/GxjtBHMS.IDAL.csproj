@@ -62,9 +62,7 @@
     <Compile Include="IMonitoringDatasEigenvalueDAL.cs" />
     <Compile Include="ManualInspectionSafetyAssessmentReport\IGetManualInspectionSafetyAssessmentReportDAL.cs" />
     <Compile Include="ManualInspectionSafetyAssessmentReport\IGetManualInspectionSafetyAssessmentStateDAL.cs" />
-    <Compile Include="OriginalValueDownLoad\IWindLoadDatasOriginalValueDAL.cs" />
-    <Compile Include="OriginalValueDownLoad\IHumidityDatasOriginalValueDAL.cs" />
-    <Compile Include="OriginalValueDownLoad\ITemperatureDatasOriginalValueDAL.cs" />
+    <Compile Include="OriginalValueDownLoad\IOriginalDatasDownloadDAL.cs" />
     <Compile Include="IThresholdValueDAL.cs" />
     <Compile Include="RealTimeDatas\IWindLoadRealTimeDatasDAL.cs" />
     <Compile Include="RealTimeDatas\ITemperatureRealTimeDatasDAL.cs" />
@@ -81,11 +79,6 @@
     <Compile Include="SafetyPreWarning\ISafetyPreWarningRealTimePushDAL.cs" />
     <Compile Include="ThresholdValueSetting\IThresholdValueSettingDAL.cs" />
     <Compile Include="IUser.cs" />
-    <Compile Include="OriginalValueDownLoad\ICableForceDatasOriginalValueDAL.cs" />
-    <Compile Include="OriginalValueDownLoad\IDisplacementDatasOriginalValueDAL.cs" />
-    <Compile Include="OriginalValueDownLoad\ISteelLatticeStrainDatasOriginalValueDAL.cs" />
-    <Compile Include="OriginalValueDownLoad\ISteelArchStrainDatasOriginalValueDAL.cs" />
-    <Compile Include="OriginalValueDownLoad\IConcreteStrainDatasOriginalValueDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
