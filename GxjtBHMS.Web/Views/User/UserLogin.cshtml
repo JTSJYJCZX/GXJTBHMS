@@ -5,11 +5,48 @@
     Layout = "~/Views/User/_LoginLayout.cshtml";
 }
 
-<div class="text-center">
-    <p style="color :#808080;font-family:KaiTi;font-weight:bold;font-size:xx-large;text-shadow:#808080 10px 5px 10px;">梧州市西江四桥运营期健康监测系统</p>
-</div>
+@*<div class="text-center">
+        <p style="color :#808080;font-family:KaiTi;font-weight:bold;font-size:xx-large;text-shadow:#808080 10px 5px 10px;">梧州市西江四桥运营期健康监测系统</p>
+    </div>
 
-    <img src="~/Content/Images/西江四桥.jpg" alt="西江四桥" class="img-rounded carousel-inner img-responsive img-rounded" />
+    <img src="~/Content/Images/西江四桥.jpg" alt="西江四桥" class="img-rounded carousel-inner img-responsive img-rounded" />*@
+
+@*@using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.Hidden("returnUrl", ViewData["returnUrl"])
+
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.LoginId, htmlAttributes: new { @class = "control-label col-md-2 col-md-offset-8" })
+                <div class="col-md-2 ">
+                    @Html.TextBoxFor(model => model.LoginId, new { @class = "form-control col-md-2", placeholder = "用户名" })
+                    @Html.ValidationMessageFor(model => model.LoginId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2 col-md-offset-8" })
+                <div class="col-md-2 ">
+                    @Html.PasswordFor(model => model.Password, new { @class = "form-control col-md-2 ", placeholder = "密码" })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-4 col-md-push-10">
+                    <input type="submit" value="登录" class="btn btn-default col-md-2" />
+                    <input type="reset" value="重置" class="btn btn-default col-md-2" />
+                    <span style="color:red">@ViewData["Message"]</span>
+                </div>
+            </div>
+        </div>
+    }*@
+
+
 
 @using (Html.BeginForm())
 {
@@ -17,31 +54,29 @@
 
     @Html.Hidden("returnUrl", ViewData["returnUrl"])
 
-    <div class="form-horizontal">
+    <div>
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.LoginId, htmlAttributes: new { @class = "control-label col-md-2 col-md-offset-8" })
-            <div class="col-md-2 ">
-                @Html.TextBoxFor(model => model.LoginId, new { @class = "form-control col-md-2", placeholder = "用户名" })
-                @Html.ValidationMessageFor(model => model.LoginId, "", new { @class = "text-danger" })
-            </div>
+        <div>
+            @Html.LabelFor(model => model.LoginId)
+            @Html.TextBoxFor(model => model.LoginId)
+            @Html.ValidationMessageFor(model => model.LoginId, "", new { @class = "text-danger" })
         </div>
+        <br />
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2 col-md-offset-8" })
-            <div class="col-md-2 ">
-                @Html.PasswordFor(model => model.Password, new { @class = "form-control col-md-2 ", placeholder = "密码" })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-            </div>
+        <div>
+            &nbsp
+            @Html.LabelFor(model => model.Password)
+            @Html.PasswordFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
         </div>
-
-        <div class="form-group">
-            <div class="col-md-4 col-md-push-10">
-                <input type="submit" value="登录" class="btn btn-default col-md-2" />
-                <input type="reset" value="重置" class="btn btn-default col-md-2" />
-                <span style="color:red">@ViewData["Message"]</span>
-            </div>
+        <br/>
+        <div>            
+             
+            <input type="submit" value="登   录" />
+            &nbsp 
+            <input type="reset" value="重   置" />
+            <span style="color:red">@ViewData["Message"]</span>
         </div>
     </div>
 }
