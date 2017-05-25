@@ -73,6 +73,7 @@
     <Compile Include="Home\GetFirstLevelSafetyAssessmentReportDisplacementResultDAL.cs" />
     <Compile Include="ManualInspectionSafetyAssessmentReportDAL\GetManualInspectionSafetyAssessmentReportDAL.cs" />
     <Compile Include="ManualInspectionSafetyAssessmentReportDAL\GetManualInspectionSafetyAssessmentStateDAL.cs" />
+    <Compile Include="MonitoringDatasEigenvalueDownload\MonitoringDatasEigenvalueDownloadDAL.cs" />
     <Compile Include="SecondLevelSafetyAssessmentReportDAL\GetSecondLevelSafetyAssessmentStateDAL.cs" />
     <Compile Include="SecondLevelSafetyAssessmentReportDAL\GetSecondLevelSafetyAssessmentReportDAL.cs" />
     <Compile Include="FirstLevelSafetyAssessmentReportDAL\GetFirstLevelSafetyAssessmentReportDAL.cs" />

@@ -14,5 +14,16 @@
         public const string SafetyPreWarningThresholdGrade1Color = "darkgreen";
         public const string SafetyPreWarningThresholdGrade2Color = "#FFD306";
         public const string SafetyPreWarningThresholdGrade3Color = "Red";
+
+        //下载的存储过程名称
+        public const string SteelArchStrainDatasEigenvalueDownloadProc = "usp_EigenvalueSteelArchStrainSaveAsTxt";
+        public const string SteelLatticeStrainDatasEigenvalueDownloadProc = "usp_EigenvalueSteelLatticeStrainSaveAsTxt";
+        public const string ConcreteStrainDatasEigenvalueDownloadProc = "usp_EigenvalueConcreteStrainSaveAsTxt";
+        public const string CableForceDatasEigenvalueDownloadProc = "usp_EigenvalueCableForceSaveAsTxt";
+        public const string DisplacementDatasEigenvalueDownloadProc = "usp_EigenvalueDisplacementSaveAsTxt";
+        public const string HumidityDatasEigenvalueDownloadProc = "usp_EigenvalueHumiditySaveAsTxt";
+        public const string TemperatureDatasEigenvalueDownloadProc = "usp_EigenvalueTemperatureSaveAsTxt";
+        public const string WindLoadDatasEigenvalueDownloadProc = "usp_EigenvalueWindLoadSaveAsTxt";
+
     }
 }

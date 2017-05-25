@@ -177,7 +177,6 @@ namespace GxjtBHMS.Web.Controllers
                 TestTypeId = conditions.MornitoringTestTypeId
             };
             var resp = originalValueDownloadService.DownloadTxt(req, downLoadpath);
-
             DownloadFile(resp.FilePath);
         }
 
@@ -186,17 +185,26 @@ namespace GxjtBHMS.Web.Controllers
         /// </summary>
         public void EigenvalueDownloadSearchResult(MornitoringDataSearchBarBaseView conditions)
         {
+            var eigenvalueDownloadService = new EigenvalueDownloadService();
+            if (conditions.MornitoringPointsNumberIds == null)
+            {
+                conditions.MornitoringPointsNumberIds = eigenvalueDownloadService.GetMonitoringPointsNumberIds(conditions.MornitoringPointsPositionId);
+            }
             var req = new DatasQueryResultRequestBase
             {
                 PointsNumberIds = conditions.MornitoringPointsNumberIds,
                 StartTime = conditions.StartTime,
                 EndTime = conditions.EndTime,
-                PointsPositionId = conditions.MornitoringPointsPositionId
+                PointsPositionId = conditions.MornitoringPointsPositionId,
+                TestTypeId=conditions.MornitoringTestTypeId
             };
+            string downLoadpath = Server.MapPath(StyleConstants.MonitoringDatasDownloadPath);
+            var resp = eigenvalueDownloadService.DownloadTxt(req, downLoadpath);
+
             var monitoringDatasQueryService = MonitoringDatasEigenvalueQueryServiceFactory.GetQueryServiceFrom(conditions.MornitoringTestTypeId);
             string filePath = Server.MapPath("/Downloads/Eigenvalue.txt");
             monitoringDatasQueryService.SaveAs(req, filePath);
-            DownloadFile(filePath);
+            DownloadFile(resp.FilePath);
         }
 
         void DownloadFile(string filePath)

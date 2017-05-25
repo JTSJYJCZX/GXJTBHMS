@@ -12,11 +12,9 @@ namespace GxjtBHMS.Service.MonitoringDatasQueryService
     public class MonitorDatasEigenvalueQueryServiceBase<T>:ServiceBase where T : MonitorDatasQueryConditionsModel
     {
         readonly protected IMonitorDatasEigenvalueQueryChartService<T> _chartService;
-        readonly protected IMonitorDatasQueryFileSystemService<T> _fileSystemService;
         public MonitorDatasEigenvalueQueryServiceBase()
         {
             _chartService = new NinjectFactory().GetInstance<IMonitorDatasEigenvalueQueryChartService<T>>();
-            _fileSystemService = new NinjectFactory().GetInstance<IMonitorDatasQueryFileSystemService<T>>();
         }
         protected const string NoRecordsMessage = "无记录！";
 
@@ -59,23 +57,6 @@ namespace GxjtBHMS.Service.MonitoringDatasQueryService
             return result;
         }
 
-        public DownLoadDatasResponse SaveAs(DatasQueryResultRequestBase req,string filePath)
-        {
-            var resp = new DownLoadDatasResponse();
-            IList<Func<T, bool>> ps = new List<Func<T, bool>>();
-            try
-            {
-                DealWithConditions(req, ps);
-                _fileSystemService.ConvertToDocument(ps, filePath);
-                resp.Succeed = true;
-            }
-            catch (Exception ex)
-            {
-                resp.Message = "无法下载数据";
-                Log(ex);
-            }
-            return resp;
-        }
 
         void DealWithEqualPointsPosition(DatasQueryResultRequestBase req, IList<Func<T, bool>> ps)
         {
