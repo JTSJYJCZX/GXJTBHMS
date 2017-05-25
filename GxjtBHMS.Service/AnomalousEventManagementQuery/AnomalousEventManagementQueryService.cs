@@ -75,7 +75,7 @@ namespace GxjtBHMS.Service.AnomalousEventManagementQuery
             try
             {
                 DealWithConditions(req, ps);
-                resp.Datas = _fileSystemService.ConvertToDocument(ps);
+                resp.FilePath = _fileSystemService.ConvertToDocument(ps);
                 resp.Succeed = true;
             }
             catch (Exception ex)

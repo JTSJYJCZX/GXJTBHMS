@@ -108,6 +108,7 @@
     <Compile Include="Messaging\SpecialSafetyAssessmentReport\SpecialSafetyAssementReportUploadRequest.cs" />
     <Compile Include="Messaging\SpecialSafetyAssessmentReport\SpecialSafetyAssessmentSearchRequest.cs" />
     <Compile Include="Messaging\SpecialSafetyAssessmentReport\SpecialSafetyAssessmentReportResponse.cs" />
+    <Compile Include="MonitoringDatasDownloadService\OriginalValueDownloadService.cs" />
     <Compile Include="SecondLevelSafetyAssessmentReportService\GetSecondLevelSafetyAssessmentReportService.cs" />
     <Compile Include="Implementations\AlarmDatasManagement\AlarmDatasQueryService.cs" />
     <Compile Include="Implementations\AlarmDatasManagement\AlarmDatasFileSystemService.cs" />

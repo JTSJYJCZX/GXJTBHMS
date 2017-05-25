@@ -48,6 +48,7 @@
     <Compile Include="AbnormalThresholdValueSetting\Abnormal_ThresholdValueTable.cs" />
     <Compile Include="AnomalousEventTable\AnomalousEvent_AnomalousEventTable.cs" />
     <Compile Include="AnomalousEventTable\AnomalousEventReasonTable.cs" />
+    <Compile Include="ConditionParameters.cs" />
     <Compile Include="FirstLevelSafetyAssessmentTable\FirstAssessment_FirstLevelOfSafetyAssessmentExceptionRecordTable.cs" />
     <Compile Include="FirstLevelSafetyAssessmentTable\FirstAssessment_FirstLevelOfSafetyAssessmentResultsTable.cs" />
     <Compile Include="FirstLevelSafetyAssessmentTable\FirstAssessment_FirstLevelSafetyAssessmentReasonsTable.cs" />

@@ -1,6 +1,7 @@
 ﻿using GxjtBHMS.Service;
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.Messaging.MonitoringDatas;
+using GxjtBHMS.Service.MonitoringDatasDownloadService;
 using GxjtBHMS.Web.ExtensionMehtods.MonitoringDatas;
 using GxjtBHMS.Web.Models;
 using GxjtBHMS.Web.ViewModels.MonitoringDatas;
@@ -160,20 +161,24 @@ namespace GxjtBHMS.Web.Controllers
         /// </summary>
         public void OriginalValueDownloadSearchResult(MornitoringDataSearchBarBaseView conditions)
         {
+            var originalValueDownloadService = new OriginalValueDownloadService();
+            if (conditions.MornitoringPointsNumberIds == null)
+            {
+                conditions.MornitoringPointsNumberIds = originalValueDownloadService.GetMonitoringPointsNumberIds(conditions.MornitoringPointsPositionId);
+            }
+            string downLoadpath = System.Web.HttpContext.Current.Server.MapPath(StyleConstants.MonitoringDatasDownloadPath);
             var req = new DatasQueryResultRequestBase
             {
+
                 PointsNumberIds = conditions.MornitoringPointsNumberIds,
                 StartTime = conditions.StartTime,
                 EndTime = conditions.EndTime,
-                PointsPositionId = conditions.MornitoringPointsPositionId
+                PointsPositionId = conditions.MornitoringPointsPositionId,
+                TestTypeId = conditions.MornitoringTestTypeId
             };
-            var monitoringDatasQueryService = MonitoringDatasOriginalValueDownloadServiceFactory.GetQueryServiceFrom(conditions.MornitoringTestTypeId);
+            var resp = originalValueDownloadService.DownloadTxt(req, downLoadpath);
 
-            string filePath = Server.MapPath("/Downloads/OriginalDatas.txt");
-
-            monitoringDatasQueryService.SaveAs(req, filePath);
-
-            DownloadFile(filePath);
+            DownloadFile(resp.FilePath);
         }
 
         /// <summary>
@@ -219,6 +224,7 @@ namespace GxjtBHMS.Web.Controllers
                     }
                     iStream.Close();
                     Response.Close();
+                    fileInfo.Delete();
                 }
             }
         }

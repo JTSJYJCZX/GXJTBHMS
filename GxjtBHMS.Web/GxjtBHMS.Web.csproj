@@ -735,6 +735,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\MonitoringDataDownLoad\" />
     <Folder Include="Content\SecondLevelSafetyAssessmentReport\" />
     <Folder Include="Downloads\" />
   </ItemGroup>

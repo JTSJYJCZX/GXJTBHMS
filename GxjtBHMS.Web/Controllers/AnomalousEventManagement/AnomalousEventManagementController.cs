@@ -180,7 +180,7 @@ namespace GxjtBHMS.Web.Controllers.AnomalousEventManagement
             };
             var resp = _anomalousEventManagementService.SaveAs(req);
             var guid = Guid.NewGuid().ToString();
-            CacheHelper.SetCache(guid, resp.Datas);
+            CacheHelper.SetCache(guid, resp.FilePath);
             return Json(guid, JsonRequestBehavior.AllowGet);
         }
 
