@@ -428,7 +428,6 @@
     <Content Include="Models\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Models\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Models\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Files\Template\应变查询结果模板.dotx" />
     <Content Include="ClassDiagram1.cd" />
     <Content Include="ClassDiagram2.cd" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -604,6 +603,7 @@
     <Content Include="Scripts\jqPlot\README.txt" />
     <Content Include="Scripts\jqPlot\usage.txt" />
     <Content Include="Scripts\bootstrap-select.js.map" />
+    <None Include="Properties\PublishProfiles\192.168.168.36服务器部署.pubxml" />
     <None Include="Properties\PublishProfiles\BHMS.pubxml" />
     <None Include="Properties\PublishProfiles\本地部署.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
@@ -737,6 +737,7 @@
     <Folder Include="Content\MonitoringDataDownLoad\" />
     <Folder Include="Content\SecondLevelSafetyAssessmentReport\" />
     <Folder Include="Downloads\" />
+    <Folder Include="Files\Template\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
