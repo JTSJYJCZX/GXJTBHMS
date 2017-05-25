@@ -140,6 +140,7 @@ namespace GxjtBHMS.Web.Controllers
             return Json(selectListItemCollection, JsonRequestBehavior.AllowGet);
         }
 
+
         public ActionResult GetMonitoringPointsPositionsByTestTypeId(int testTypeId = 0)
         {
             IList<SelectListItem> selectListItemCollection = new List<SelectListItem>();
