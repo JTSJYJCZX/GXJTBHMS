@@ -12,11 +12,9 @@ namespace GxjtBHMS.Service.MonitoringDatasQueryService
     public class MonitorDatasEigenvalueQueryServiceBase<T>:ServiceBase where T : MonitorDatasQueryConditionsModel
     {
         readonly protected IMonitorDatasEigenvalueQueryChartService<T> _chartService;
-        readonly protected IMonitorDatasQueryFileSystemService<T> _fileSystemService;
         public MonitorDatasEigenvalueQueryServiceBase()
         {
             _chartService = new NinjectFactory().GetInstance<IMonitorDatasEigenvalueQueryChartService<T>>();
-            _fileSystemService = new NinjectFactory().GetInstance<IMonitorDatasQueryFileSystemService<T>>();
         }
         protected const string NoRecordsMessage = "无记录！";
 
@@ -66,7 +64,6 @@ namespace GxjtBHMS.Service.MonitoringDatasQueryService
             try
             {
                 DealWithConditions(req, ps);
-                _fileSystemService.ConvertToDocument(ps, filePath);
                 resp.Succeed = true;
             }
             catch (Exception ex)
