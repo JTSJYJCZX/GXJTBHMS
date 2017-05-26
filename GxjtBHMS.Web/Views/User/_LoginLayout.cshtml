@@ -61,21 +61,6 @@
             background-color: rgba(255, 250, 2550, .6);
             float: left;
         }
-
-
-        .input-group {
-            margin: 0px 0px 30px 0px !important;
-        }
-
-        .form-control,
-        .input-group {
-            height: 40px;
-        }
-
-        .form-group {
-            margin-bottom: 0px !important;
-        }
-
         .login-title {
             padding: 10px 10px;
             background-color: rgba(0, 0, 0, .6);
@@ -93,19 +78,9 @@
                 color: #fff;
             }
 
-        .link p {
-            line-height: 20px;
-            margin-top: 30px;
-        }
-
-        .btn-sm {
-            padding: 8px 24px !important;
-            font-size: 16px !important;
-        }
     </style>
 </head>
 <body>
-
     <div class="box">
         <div class="login-box">
             <div class="login-title text-center">
@@ -118,9 +93,9 @@
             </div>
         </div>
     </div>
-    
-    @RenderSection("scripts", required: false)
 
+    @RenderSection("scripts", required: false)
+    <br />
     <div class="footer" style="text-align:center">
         <div class="footer-inner">
             <div class="footer-inner-a">
@@ -130,9 +105,10 @@
                 <a href="javascript:;" class="footer-a lianjie">友情链接</a>
             </div>
             <div>
-                <p>广西交通规划勘察设计研究院有限公司 版权所有&copy; @DateTime.Now.Year - 梧州市西江四桥健康监测系统V1.0</p>         
+                <p>广西交通规划勘察设计研究院有限公司 版权所有&copy; @DateTime.Now.Year - 梧州市西江四桥健康监测系统V1.0</p>
             </div>
         </div>
     </div>
 </body>
 </html>
+

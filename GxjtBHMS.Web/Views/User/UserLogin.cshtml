@@ -59,22 +59,20 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div>
             @Html.LabelFor(model => model.LoginId)
-            @Html.TextBoxFor(model => model.LoginId)
+            @Html.TextBoxFor(model => model.LoginId, new { style = "width:130px;" })
             @Html.ValidationMessageFor(model => model.LoginId, "", new { @class = "text-danger" })
         </div>
         <br />
 
         <div>
-            &nbsp
             @Html.LabelFor(model => model.Password)
-            @Html.PasswordFor(model => model.Password)
+            @Html.PasswordFor(model => model.Password, new { style = "width:130px;" })
             @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
         </div>
-        <br/>
-        <div>            
-             
+        <br />
+        <div>
             <input type="submit" value="登   录" />
-            &nbsp 
+            &nbsp
             <input type="reset" value="重   置" />
             <span style="color:red">@ViewData["Message"]</span>
         </div>
