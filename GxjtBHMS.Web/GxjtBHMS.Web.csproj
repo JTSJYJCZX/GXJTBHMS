@@ -237,6 +237,7 @@
     <Compile Include="Controllers\AlarmDatasManagementController.cs" />
     <Compile Include="Controllers\AnomalousEventManagement\AnomalousEventManagementController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ErrorsController.cs" />
     <Compile Include="Controllers\ManualInspectionSafetyAssessmentController.cs" />
     <Compile Include="Controllers\SpecialSafetyAssessmentController.cs" />
     <Compile Include="Controllers\SecondLevelSafetyAssessmentController.cs" />
@@ -730,7 +731,7 @@
     <Content Include="Views\AnomalousEventManagement\NoAnomalousEventManagementContentPartial.cshtml" />
     <Content Include="Views\Home\GetAbnormalEventNumberListPartial.cshtml" />
     <Content Include="Views\SystemInformation\OperationManual.cshtml" />
-    <Content Include="Views\Errors\Errors.cshtml" />
+    <Content Include="Views\Errors\ServerErrorPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

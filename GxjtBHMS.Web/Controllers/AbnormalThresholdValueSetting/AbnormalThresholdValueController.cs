@@ -10,7 +10,7 @@ using GxjtBHMS.Web.Models;
 namespace GxjtBHMS.Web.Controllers.AbnormalThresholdValue
 {
 
-    public class AbnormalThresholdValueSettingController : Controller
+    public class AbnormalThresholdValueSettingController : BaseController
     {
         // GET: Default
         public ActionResult AbnormalThresholdValueSetting()

@@ -14,7 +14,7 @@ namespace GxjtBHMS.Web.Controllers
 {
     [CheckAdminLogin]
     public class AdminUserController
-        : Controller
+        : BaseController
     {
         const string ListUserMessageActionName = "ListUserMessage";
         const string AdminSearchUserCacheProfile = "AdminSearchUserProfile";
