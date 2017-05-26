@@ -6,7 +6,7 @@ namespace GxjtBHMS.Web.Controllers
     {
         public ActionResult ServerError()
         {
-            return View("ServerErrorPage");
+            return View();
         }
     }
 }
