@@ -3,6 +3,7 @@ using GxjtBHMS.Web.ExtensionMehtods.MonitoringDatas;
 using GxjtBHMS.Web.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
 namespace GxjtBHMS.Web.Controllers
@@ -15,7 +16,8 @@ namespace GxjtBHMS.Web.Controllers
             base.OnActionExecuting(filterContext);
             if (Session[WebConstants.UserNickNameKey] == null)
             {
-                filterContext.Result = Redirect("~/User/Login");
+                string returnUrl = string.Concat("/", filterContext.ActionDescriptor.ControllerDescriptor.ControllerName, "/", filterContext.ActionDescriptor.ActionName);
+                filterContext.Result = Redirect("~/User/Login?ReturnUrl="+HttpUtility.UrlEncode(returnUrl));
             }
         }
 
