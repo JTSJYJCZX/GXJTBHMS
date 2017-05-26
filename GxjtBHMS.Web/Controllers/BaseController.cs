@@ -1,13 +1,23 @@
 ﻿using GxjtBHMS.Services.ViewModels;
 using GxjtBHMS.Web.ExtensionMehtods.MonitoringDatas;
+using GxjtBHMS.Web.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
 namespace GxjtBHMS.Web.Controllers
 {
+    [Authorize]
     public class BaseController : Controller
     {
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            base.OnActionExecuting(filterContext);
+            if (Session[WebConstants.UserNickNameKey] == null)
+            {
+                filterContext.Result = Redirect("~/User/Login");
+            }
+        }
 
         /// <summary>
         ///  提供将数据源转化为SelectListItem集合，具备请选择项，并保存在ViewData中的
@@ -19,7 +29,7 @@ namespace GxjtBHMS.Web.Controllers
             SaveSelectListItemCollectionToViewData(source, viewDataKey, true);
         }
 
-        protected void SaveSelectListItemCollectionToViewData(IEnumerable<SelectListItemModel> source, string viewDataKey,bool hasPleaseChoiceItem)
+        protected void SaveSelectListItemCollectionToViewData(IEnumerable<SelectListItemModel> source, string viewDataKey, bool hasPleaseChoiceItem)
         {
             var selectMonitoringPointsNumberListItemCollection = source != null ? source.Select(m => new SelectListItem { Text = m.Name, Value = m.Id.ToString() }) : new List<SelectListItem>();
             if (hasPleaseChoiceItem)
@@ -28,7 +38,7 @@ namespace GxjtBHMS.Web.Controllers
                 ViewData[viewDataKey] = selectMonitoringPointsNumberListItemCollection;
         }
 
-        protected void SaveSelectListItemCollectionToViewData(IEnumerable<SelectListItemModel> source, string viewDataKey, bool hasPleaseChoiceItem,int defaultChoiceId=0)
+        protected void SaveSelectListItemCollectionToViewData(IEnumerable<SelectListItemModel> source, string viewDataKey, bool hasPleaseChoiceItem, int defaultChoiceId = 0)
         {
             var selectMonitoringPointsNumberListItemCollection = source != null ? source.Select(m => new SelectListItem { Text = m.Name, Value = m.Id.ToString() }) : new List<SelectListItem>();
             if (hasPleaseChoiceItem)

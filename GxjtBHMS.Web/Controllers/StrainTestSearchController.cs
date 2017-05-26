@@ -2,7 +2,7 @@
 
 namespace GxjtBHMS.Web.Controllers
 {
-    public class StrainTestSearchController : Controller
+    public class StrainTestSearchController : BaseController
     {
 
         // GET: StrainTestSearch

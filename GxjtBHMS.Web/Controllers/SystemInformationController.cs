@@ -2,7 +2,7 @@
 
 namespace GxjtBHMS.Web.Controllers
 {
-    public class SystemInformationController : Controller
+    public class SystemInformationController : BaseController
     {
         // GET: SystemInformation
         public ActionResult Index()

@@ -10,11 +10,10 @@ using System;
 using System.Collections.Generic;
 using GxjtBHMS.Service.Interfaces.AlarmDatasQueryServiceInerfaces;
 using GxjtBHMS.Service.Messaging.MonitoringDatas;
-using GxjtBHMS.Infrastructure.Helpers;
 
 namespace GxjtBHMS.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         IMonitoringTestTypeService _mtts;
         IAnomalousEventManagementQueryService _anomalousEventManagementService;

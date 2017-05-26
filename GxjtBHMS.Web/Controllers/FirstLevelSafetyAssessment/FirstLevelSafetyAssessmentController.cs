@@ -12,7 +12,7 @@ using GxjtBHMS.Infrastructure.Helpers;
 
 namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
 {
-    public class FirstLevelSafetyAssessmentController : Controller
+    public class FirstLevelSafetyAssessmentController : BaseController
     {
         IFileConverter _fileConverter;
         IFirstLevelAssessmReportDownloadFileInerfaces _reportDownloadFile;

@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace GxjtBHMS.Web.Controllers.SafetyPreWarning
 {
-    public class SafetyPreWarningController : Controller
+    public class SafetyPreWarningController : BaseController
     {
         public ActionResult SafetyPreWarning()
         {
