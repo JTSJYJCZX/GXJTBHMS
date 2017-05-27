@@ -186,7 +186,7 @@ namespace GxjtBHMS.Web.Controllers
             var resp = alarmDatasQueryService.SaveAs(req);
             var guid = "";
             guid = Guid.NewGuid().ToString();
-            CacheHelper.SetCache(guid, resp.Datas);
+            CacheHelper.SetCache(guid, resp.FilePath);
             return Json(guid, JsonRequestBehavior.AllowGet);
         }
 
