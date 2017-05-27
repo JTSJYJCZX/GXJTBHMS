@@ -14,16 +14,28 @@ namespace GxjtBHMS.Web.Controllers
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             base.OnActionExecuting(filterContext);
+           
             if (Session[WebConstants.UserNickNameKey] == null)
             {
-                if (Request.IsAjaxRequest())
-                {
-                    Response.Write("{sessionState:timeout}");
-                    Response.Flush();
-                    Response.Close();
-                }
+                ResponseToClientByAjaxRequest("{sessionState:timeout}");
                 string returnUrl = string.Concat("/", filterContext.ActionDescriptor.ControllerDescriptor.ControllerName, "/", filterContext.ActionDescriptor.ActionName);
                 filterContext.Result = Redirect("~/User/Login?ReturnUrl=" + HttpUtility.UrlEncode(returnUrl));
+            }
+        }
+
+        protected override void OnException(ExceptionContext filterContext)
+        {
+            ResponseToClientByAjaxRequest("{serverError:true}");
+            base.OnException(filterContext);
+        }
+
+        void ResponseToClientByAjaxRequest(string content)
+        {
+            if (Request.IsAjaxRequest())
+            {
+                Response.Write("{serverError:true}");
+                Response.Flush();
+                Response.Close();
             }
         }
 

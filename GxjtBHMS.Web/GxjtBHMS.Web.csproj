@@ -607,6 +607,7 @@
     <Content Include="Scripts\bootstrap-select.js.map" />
     <None Include="Properties\PublishProfiles\192.168.168.36服务器部署.pubxml" />
     <None Include="Properties\PublishProfiles\BHMS.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\本地部署.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />

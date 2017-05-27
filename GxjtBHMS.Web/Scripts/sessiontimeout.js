@@ -5,12 +5,22 @@
     $.ajax = function (opt) {
         var _success = opt && opt.success || function (a, b) { };
         var _opt = $.extend(opt, {
-            success: function (data, textStatus) {
-                // 如果后台将请求重定向到了登录页，则data里面存放的就是登录页的源码，这里需要找到data是登录页的证据(标记)  
-                if (data.indexOf('timeout') != -1) {
-                    window.location.href = "/User/Login";
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                debugger;
+                erro = eval("(" + XMLHttpRequest.responseText + ")");
+                alert(XMLHttpRequest.responseText);
+                if (XMLHttpRequest.responseText.indexOf('serverError:true') != -1) {
+                    window.location.href = "/Errors/ServerError";
                     return;
                 }
+
+            },
+            success: function (data, textStatus) {
+                // 如果后台将请求重定向到了登录页，则data里面存放的就是登录页的源码，这里需要找到data是登录页的证据(标记)  
+                if (data.indexOf('sessionState:timeout') != -1) {
+                    window.location.href = "/User/Login";
+                    return;
+                } 
                 _success(data, textStatus);
             }
         });
