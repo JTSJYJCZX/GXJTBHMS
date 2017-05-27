@@ -48,7 +48,7 @@
 
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Login", "User", FormMethod.Post, new { id = "LoginForm" }))
 {
     @Html.AntiForgeryToken()
 
