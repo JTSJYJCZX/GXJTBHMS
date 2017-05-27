@@ -16,8 +16,14 @@ namespace GxjtBHMS.Web.Controllers
             base.OnActionExecuting(filterContext);
             if (Session[WebConstants.UserNickNameKey] == null)
             {
+                if (Request.IsAjaxRequest())
+                {
+                    Response.Write("{sessionState:timeout}");
+                    Response.Flush();
+                    Response.Close();
+                }
                 string returnUrl = string.Concat("/", filterContext.ActionDescriptor.ControllerDescriptor.ControllerName, "/", filterContext.ActionDescriptor.ActionName);
-                filterContext.Result = Redirect("~/User/Login?ReturnUrl="+HttpUtility.UrlEncode(returnUrl));
+                filterContext.Result = Redirect("~/User/Login?ReturnUrl=" + HttpUtility.UrlEncode(returnUrl));
             }
         }
 
