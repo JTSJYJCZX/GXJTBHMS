@@ -6,9 +6,6 @@
         var _success = opt && opt.success || function (a, b) { };
         var _opt = $.extend(opt, {
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-                debugger;
-                erro = eval("(" + XMLHttpRequest.responseText + ")");
-                alert(XMLHttpRequest.responseText);
                 if (XMLHttpRequest.responseText.indexOf('serverError:true') != -1) {
                     window.location.href = "/Errors/ServerError";
                     return;
