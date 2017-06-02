@@ -11,6 +11,9 @@ namespace GxjtBHMS.Web
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/sessiontimeoutandservererror.js"));
 
+            //bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+            //"~/Scripts/jquery-{version}.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
             //jquery-ui include js and css begin

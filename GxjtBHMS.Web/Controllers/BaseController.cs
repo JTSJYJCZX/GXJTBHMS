@@ -33,7 +33,7 @@ namespace GxjtBHMS.Web.Controllers
         {
             if (Request.IsAjaxRequest())
             {
-                Response.Write("{serverError:true}");
+                Response.Write(content);
                 Response.Flush();
                 Response.Close();
             }

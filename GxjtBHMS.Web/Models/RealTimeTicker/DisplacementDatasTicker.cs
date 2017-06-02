@@ -15,7 +15,7 @@ namespace GxjtBHMS.Web.Models
     {
         //Singleton instance
         readonly static Lazy<DisplacementDatasTicker> _instance = new Lazy<DisplacementDatasTicker>(() => new DisplacementDatasTicker(GlobalHost.ConnectionManager.GetHubContext<DisplacementDatasRealTimeMonitoringHub>().Clients));
-        readonly TimeSpan _updateInterval = TimeSpan.FromMilliseconds(10500);
+        readonly TimeSpan _updateInterval = TimeSpan.FromMilliseconds(1000);
         volatile bool _updatingStockPrices = false;
         readonly object _updateStockPricesLock = new object();
         Timer _timer;
