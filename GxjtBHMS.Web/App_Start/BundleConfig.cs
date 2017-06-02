@@ -9,10 +9,7 @@ namespace GxjtBHMS.Web
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/sessiontimeout.js"));
-
-            //bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-            //"~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/customAjaxSetup.js"));        
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));

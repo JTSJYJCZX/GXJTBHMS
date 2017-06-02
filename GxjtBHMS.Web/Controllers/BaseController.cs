@@ -27,21 +27,22 @@ namespace GxjtBHMS.Web.Controllers
                     string returnUrl = string.Concat("/", filterContext.ActionDescriptor.ControllerDescriptor.ControllerName, "/", filterContext.ActionDescriptor.ActionName);
                     filterContext.Result = Redirect("~/User/Login?ReturnUrl=" + HttpUtility.UrlEncode(returnUrl));
                 }
-
             }
         }
 
-        //protected override void OnException(ExceptionContext filterContext)
-        //{
-        //    if (Request.IsAjaxRequest())
-        //    {
-        //        filterContext.ExceptionHandled = true;
-        //        filterContext.HttpContext.Response.Headers.Add("errorStatus", "500");
-        //    }
-        //    else
-        //        base.OnException(filterContext);
-        //}
+        protected override void OnException(ExceptionContext filterContext)
+        {
+            if (Request.IsAjaxRequest())
+            {
+                filterContext.ExceptionHandled = true;
+                filterContext.HttpContext.Response.Headers.Add("errorStatus", "500");
+                filterContext.HttpContext.Response.Flush();
+                filterContext.HttpContext.Response.End();
+            }
+            else
+                base.OnException(filterContext);
 
+        }
 
         /// <summary>
         ///  提供将数据源转化为SelectListItem集合，具备请选择项，并保存在ViewData中的

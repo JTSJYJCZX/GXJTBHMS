@@ -23,8 +23,6 @@ namespace GxjtBHMS.Web.Controllers
             _anomalousEventManagementService = anomalousEventManagementService;
         }
 
-
-
         public ActionResult Index()
         {
             ViewData[WebConstants.UserNickNameKey] = Session[WebConstants.UserNickNameKey].ToString();
