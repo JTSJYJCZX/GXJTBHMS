@@ -15,7 +15,7 @@ namespace GxjtBHMS.Web.Models
     {
         //Singleton instance
         readonly static Lazy<HumidityDatasTicker> _instance = new Lazy<HumidityDatasTicker>(() => new HumidityDatasTicker(GlobalHost.ConnectionManager.GetHubContext<HumidityDatasRealTimeMonitoringHub>().Clients));
-        readonly TimeSpan _updateInterval = TimeSpan.FromMilliseconds(10500);
+        readonly TimeSpan _updateInterval = TimeSpan.FromMilliseconds(1000);
         volatile bool _updatingStockPrices = false;
         readonly object _updateStockPricesLock = new object();
         Timer _timer;
