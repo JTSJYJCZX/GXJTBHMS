@@ -38,22 +38,6 @@ namespace GxjtBHMS.Web.Controllers
 
             return View();
         }
-
-        /// <summary>
-        /// 仅仅做推送数据测试
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult StrainDataPushing()
-        {
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
         /// <summary>
         /// 获得安全预警的内容
         /// </summary>

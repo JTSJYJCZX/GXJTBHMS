@@ -71,6 +71,7 @@
 /// <reference path="safetyassessmentreport/secondlevelsafetyassessmentreportlist-website.js" />
 /// <reference path="safetyassessmentreport/specialsafetyassessmentreportlist-website.js" />
 /// <reference path="safetyprewarningdetail/safetyprewarningdetailsearchpartialwebsite.js" />
+/// <reference path="sessiontimeout.js" />
 /// <reference path="straindatapushing.website.js" />
 /// <reference path="system.js" />
 /// <reference path="thresholdvaluesetting/listthresholdvaluemessage-website.js" />

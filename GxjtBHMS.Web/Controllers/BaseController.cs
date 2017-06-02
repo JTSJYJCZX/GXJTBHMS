@@ -14,30 +14,34 @@ namespace GxjtBHMS.Web.Controllers
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             base.OnActionExecuting(filterContext);
-           
+
             if (Session[WebConstants.UserNickNameKey] == null)
             {
-                ResponseToClientByAjaxRequest("{sessionState:timeout}");
-                string returnUrl = string.Concat("/", filterContext.ActionDescriptor.ControllerDescriptor.ControllerName, "/", filterContext.ActionDescriptor.ActionName);
-                filterContext.Result = Redirect("~/User/Login?ReturnUrl=" + HttpUtility.UrlEncode(returnUrl));
+                if (Request.IsAjaxRequest())
+                {
+                    //向响应头添加特定会话过期键值对
+                    Response.Headers.Add("sessionstatus", "timeout");
+                }
+                else
+                {
+                    string returnUrl = string.Concat("/", filterContext.ActionDescriptor.ControllerDescriptor.ControllerName, "/", filterContext.ActionDescriptor.ActionName);
+                    filterContext.Result = Redirect("~/User/Login?ReturnUrl=" + HttpUtility.UrlEncode(returnUrl));
+                }
+
             }
         }
 
-        protected override void OnException(ExceptionContext filterContext)
-        {
-            ResponseToClientByAjaxRequest("{serverError:true}");
-            base.OnException(filterContext);
-        }
+        //protected override void OnException(ExceptionContext filterContext)
+        //{
+        //    if (Request.IsAjaxRequest())
+        //    {
+        //        filterContext.ExceptionHandled = true;
+        //        filterContext.HttpContext.Response.Headers.Add("errorStatus", "500");
+        //    }
+        //    else
+        //        base.OnException(filterContext);
+        //}
 
-        void ResponseToClientByAjaxRequest(string content)
-        {
-            if (Request.IsAjaxRequest())
-            {
-                Response.Write("{serverError:true}");
-                Response.Flush();
-                Response.Close();
-            }
-        }
 
         /// <summary>
         ///  提供将数据源转化为SelectListItem集合，具备请选择项，并保存在ViewData中的
