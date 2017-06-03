@@ -34,6 +34,7 @@ namespace GxjtBHMS.Web.Controllers
         /// 视图页
         /// </summary>
         /// <returns></returns>
+        [OutputCache(CacheProfile = "IndexProfile")]
         public ActionResult AlarmDatasManagementQuery()
         {
             return View();
@@ -43,6 +44,7 @@ namespace GxjtBHMS.Web.Controllers
         /// </summary>
         /// <param name="conditions">查询条件</param>
         /// <returns>数据查询内容分布视图</returns>
+        [OutputCache(CacheProfile = "AlarmDatasQueryProfile")]
         public ActionResult AlarmDatasQuery(AlarmDatasSearchBarView conditions)
         {
             if (conditions.EndTime < conditions.StartTime)
@@ -66,10 +68,11 @@ namespace GxjtBHMS.Web.Controllers
             }
             return Content("<span style='color:red'>无记录</span>");
         }
-        
+
 
 
         //获取报警数据
+        [OutputCache(CacheProfile = "AlarmDatasQueryProfile")]
         public ActionResult GetAlarmDatas(AlarmDatasSearchBarView conditions)
         {
             var resp = new AlarmDatasResponse();
