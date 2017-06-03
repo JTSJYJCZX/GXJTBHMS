@@ -31,10 +31,11 @@ namespace GxjtBHMS.Web.Controllers.AnomalousEventManagement
             _fileConverter = fileConverter;
         }
 
-        [OutputCache (CacheProfile = "IndexProfile")]
+        [OutputCache (CacheProfile = "PageIndexProfile")]
         public ActionResult AnomalousEventManagement(int currentPage = 1)
         {
-            var req = new DatasQueryResultRequestBase() { CurrentPageIndex = currentPage,StartTime=DateTime.Now.AddDays(-1),EndTime=DateTime.Now};
+            Response.Cache.SetOmitVaryStar(true);
+            var req = new DatasQueryResultRequestBase() { CurrentPageIndex = currentPage };
             var testTypes = _mtts.GetAllTestType().Datas.Count();
             long resultCount = 0;
             for (int i = 1; i <= testTypes; i++)
@@ -115,12 +116,14 @@ namespace GxjtBHMS.Web.Controllers.AnomalousEventManagement
         [OutputCache (CacheProfile = "AnomalousEventsProfile")]
         public ActionResult GetAnomalousEvents(AnomalousEventsQueryConditionView condition)
         {
+            Response.Cache.SetOmitVaryStar(true);
             if (condition.EndTime < condition.StartTime)
             {
                 TempData[WebConstants.MessageColor] = StyleConstants.RedColor;
                 TempData[WebConstants.Message] = "开始时间不能晚于结束时间！";              
                 return PartialView("NoAnomalousEventManagementContentPartial");
             }
+            
             var req = new AnomalousEventsQueryRequest()
             {
                 CurrentPageIndex = condition.CurrentPageIndex,
