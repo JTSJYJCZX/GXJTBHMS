@@ -22,7 +22,7 @@ namespace GxjtBHMS.Web.Controllers
             _mtts = mtts;
             _anomalousEventManagementService = anomalousEventManagementService;
         }
-
+        [OutputCache(CacheProfile = "IndexProfile")]
         public ActionResult Index()
         {
             ViewData[WebConstants.UserNickNameKey] = Session[WebConstants.UserNickNameKey].ToString();

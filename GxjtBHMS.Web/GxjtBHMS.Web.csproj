@@ -250,7 +250,6 @@
     <Compile Include="Controllers\SystemInformationController.cs" />
     <Compile Include="Files\ExtensionMehtods\GetEnumDescription\EnumUnit.cs" />
     <Compile Include="Files\FilesCreater\WordCreater.cs" />
-    <Compile Include="Controllers\StrainTestSearchController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Files\ExtensionMehtods\MonitoringDatas\MonitoringPointsNumberServiceExtensionMethods.cs" />
     <Compile Include="Files\ExtensionMehtods\MonitoringDatas\MonitoringPointsPositionServiceExtensionMethods.cs" />

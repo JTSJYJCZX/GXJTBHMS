@@ -31,10 +31,10 @@ namespace GxjtBHMS.Web.Controllers.AnomalousEventManagement
             _fileConverter = fileConverter;
         }
 
-
+        [OutputCache (CacheProfile = "IndexProfile")]
         public ActionResult AnomalousEventManagement(int currentPage = 1)
         {
-            var req = new DatasQueryResultRequestBase() { CurrentPageIndex = currentPage };
+            var req = new DatasQueryResultRequestBase() { CurrentPageIndex = currentPage,StartTime=DateTime.Now.AddDays(-1),EndTime=DateTime.Now};
             var testTypes = _mtts.GetAllTestType().Datas.Count();
             long resultCount = 0;
             for (int i = 1; i <= testTypes; i++)
@@ -112,6 +112,7 @@ namespace GxjtBHMS.Web.Controllers.AnomalousEventManagement
             return Json(selectListItemCollection, JsonRequestBehavior.AllowGet);
         }
 
+        [OutputCache (CacheProfile = "AnomalousEventsProfile")]
         public ActionResult GetAnomalousEvents(AnomalousEventsQueryConditionView condition)
         {
             var req = new AnomalousEventsQueryRequest()

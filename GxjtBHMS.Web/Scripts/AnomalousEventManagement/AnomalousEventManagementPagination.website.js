@@ -10,11 +10,6 @@ function accessResource(n) {
     var testPointPositionId = $("#monitorTestPointsPositionSelect").val();//获取测点位置编号
     var beginTime = $("#datetimepickerStart").val();
     var endTime = $("#datetimepickerEnd").val();
-    if (testTypeId == 0)
-    {
-        beginTime = null;
-        endTime = null;
-    }
     var url = "/AnomalousEventManagement/GetAnomalousEvents";
     $.ajax({
         url: url,//URL请求命令
@@ -31,6 +26,9 @@ function accessResource(n) {
         },
         success: function (datas) {
             $("#AnomalousEventManagementSearchContent").html(datas);
+            if ("#message"==null) {
+                $("#dataQuery").css("display", "inline");
+            }
             //$("#paginationNav").css("display", "block");
         },
         error: function (result) {

@@ -84,7 +84,7 @@ $(function () {
             success: function (datas) {                
                 resetLoadDataFlags();
                 $("#AnomalousEventManagementSearchContent").html(datas);
-                $("#dataQuery").css("display", "block")
+                $("#dataQuery").css("display", "block");                
             }
         });
     })  

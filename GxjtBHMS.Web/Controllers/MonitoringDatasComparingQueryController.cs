@@ -27,10 +27,13 @@ namespace GxjtBHMS.Web.Controllers
             _mpns = mpns;
             _mpps = mpps;
         }
+
+        [OutputCache(CacheProfile = "IndexProfile")]
         public ActionResult DataComparingQuery()
         {
             return View();
         }
+        [OutputCache(CacheProfile = "CompareQueryProfile") ]
         public ActionResult ComparingQuery(MornitoringDataComparingSearchBarView conditions)
         {
             if (conditions.MornitoringPointsNumberIds[0]== conditions.MornitoringPointsNumberIdsSecond[0])
@@ -131,6 +134,7 @@ namespace GxjtBHMS.Web.Controllers
             SaveSelectListItemCollectionToViewData(resp.Datas, viewDataKey, false);
         }
 
+        [OutputCache(CacheProfile = "CompareQueryProfile")]
         public ActionResult GetChartDatasComparing(MornitoringDataComparingSearchBarView conditions)
         {
             var respFirst = new ChartDatasResponse();
