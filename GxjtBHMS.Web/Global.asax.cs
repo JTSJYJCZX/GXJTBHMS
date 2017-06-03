@@ -5,8 +5,6 @@ using GxjtBHMS.Infrastructure.Logging;
 using GxjtBHMS.Service.AutoMapper;
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Web.Models;
-using System;
-using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -45,9 +43,18 @@ namespace GxjtBHMS.Web
             //    "MonitoringPointsPositions",
             //    "MonitoringPointsNumbers"
             //});
-            IPreloadDataSet dataset = new GeneralPreloadDataSet(new NinjectControllerFactory().GetInstance< IMonitoringTestTypeService>());
-            IEnumerable<dynamic> mornitoringTestTypeDatas =  dataset.Load(PreloadDataSetType.MornitoringTestType);
+            var ninjectFactory = new NinjectControllerFactory();
+            IPreloadDataSet dataset = new GeneralPreloadDataSet(
+                ninjectFactory.GetInstance<IMonitoringTestTypeService>(),
+                ninjectFactory.GetInstance<IMonitoringPointsPositionService>(),
+                ninjectFactory.GetInstance<IMonitoringPointsNumberService>());
+            var mornitoringTestTypeDatas = dataset.Load(PreloadDataSetType.MornitoringTestType);
             CacheHelper.SetCache(nameof(PreloadDataSetType.MornitoringTestType), mornitoringTestTypeDatas);
+            var monitoringPointsPositionDatas = dataset.Load(PreloadDataSetType.MonitoringPointsPositionType);
+            CacheHelper.SetCache(nameof(PreloadDataSetType.MonitoringPointsPositionType), monitoringPointsPositionDatas);
+            var monitoringPointsNumberDatas = dataset.Load(PreloadDataSetType.MonitoringPointsNumberType);
+            CacheHelper.SetCache(nameof(PreloadDataSetType.MonitoringPointsNumberType), monitoringPointsNumberDatas);
+
         }
     }
 }

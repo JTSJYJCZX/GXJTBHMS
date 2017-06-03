@@ -9,7 +9,7 @@ namespace GxjtBHMS.Service.ExtensionMethods.MonitoringDatas.PointsNumbers
     {
         public static IEnumerable<MonitoringPointsNumberViewModel> ConvertToMonitoringTestTypeViewModelCollection(this IEnumerable<MonitoringPointsNumber> source)
         {
-            return source.Select(m => new MonitoringPointsNumberViewModel { Name = m.Name, Id = m.Id });
+            return source.Select(m => new MonitoringPointsNumberViewModel { Name = m.Name, Id = m.Id, PointsPositionId = m.PointsPositionId });
         }
     }
 

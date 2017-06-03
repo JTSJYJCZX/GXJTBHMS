@@ -2,6 +2,8 @@
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.Messaging.MonitoringDatas;
 using GxjtBHMS.Service.MonitoringDatasDownloadService;
+using GxjtBHMS.Service.ViewModels.MonitoringDatas.MonitoringPointsNumber;
+using GxjtBHMS.Service.ViewModels.MonitoringDatas.MonitoringPointsPosition;
 using GxjtBHMS.Services.ViewModels;
 using GxjtBHMS.Web.ExtensionMehtods.MonitoringDatas;
 using GxjtBHMS.Web.Models;
@@ -20,16 +22,16 @@ namespace GxjtBHMS.Web.Controllers
     /// </summary>
     public class MonitoringDatasController : BaseController
     {
-        IMonitoringPointsNumberService _mpns;
+        readonly IMonitoringPointsNumberService _mpns;
         readonly IMonitoringPointsPositionService _mpps;
         readonly IPreloadDataSet _preloadDataSet;
-        IFileConverter _fileConverter;
+        readonly IFileConverter _fileConverter;
         public MonitoringDatasController
             (
             IMonitoringPointsNumberService mpns,
             IMonitoringPointsPositionService mpps,
             IPreloadDataSet preloadDataSet,
-           IFileConverter fileConverter
+            IFileConverter fileConverter
             )
         {
             _mpns = mpns;
@@ -37,6 +39,7 @@ namespace GxjtBHMS.Web.Controllers
             _preloadDataSet = preloadDataSet;
             _fileConverter = fileConverter;
         }
+
         [OutputCache(CacheProfile = "IndexProfile")]
         public ActionResult DataQuery()
         {
@@ -67,6 +70,7 @@ namespace GxjtBHMS.Web.Controllers
             }
             return Content("<span style='color:red'>无记录</span>");
         }
+
         //获取曲线图数据
         [OutputCache(CacheProfile = "MonitoringDatasQueryProfile")]
         public ActionResult GetChartDatas(MornitoringDataSearchBarBaseView conditions)
@@ -95,6 +99,7 @@ namespace GxjtBHMS.Web.Controllers
             SaveMonitoringPointsNumberSelectListItemsToViewData(tmpMornitoringPointsPositionId);
             return PartialView("DataQuerySearchPartial");
         }
+
         /// <summary>
         /// 获得测试类型下拉列表
         /// </summary>
@@ -108,6 +113,7 @@ namespace GxjtBHMS.Web.Controllers
             }
             SaveSelectListItemCollectionToViewData(testTypeDatas, WebConstants.MonitoringTestTypesKey, false);
         }
+
         /// <summary>
         /// 获得测点位置下拉列表
         /// </summary>
@@ -121,6 +127,7 @@ namespace GxjtBHMS.Web.Controllers
             }
             SaveSelectListItemCollectionToViewData(resp.Datas, WebConstants.MonitoringPointsPositionKey, false);
         }
+
         /// <summary>
         /// 获得测点编号下拉列表
         /// </summary>
@@ -130,20 +137,16 @@ namespace GxjtBHMS.Web.Controllers
             SaveSelectListItemCollectionToViewData(resp.Datas, WebConstants.MonitoringPointsNumberKey, false);
         }
 
-
-
         public ActionResult GetMonitoringPointsNumbersByPointsPositions(int pointsPositions = 0)
         {
             IList<SelectListItem> selectListItemCollection = new List<SelectListItem>();
 
             var resp = _mpns.GetMonitoringPointsNumberByPointsPositionId(pointsPositions);
 
-            if (resp.Succeed)
-            {
-                selectListItemCollection = resp
-                    .Datas
-                    .ConvertToSelectListItemCollection();
-            }
+            IEnumerable<MonitoringPointsNumberViewModel> monitoringPointsNumberDatas = CacheHelper.GetCache(nameof(PreloadDataSetType.MonitoringPointsNumberType)) as IEnumerable<MonitoringPointsNumberViewModel>;
+
+            selectListItemCollection = monitoringPointsNumberDatas.Where(m => m.PointsPositionId == pointsPositions)
+                .ConvertToSelectListItemCollection();
 
             return Json(selectListItemCollection, JsonRequestBehavior.AllowGet);
         }
@@ -153,14 +156,9 @@ namespace GxjtBHMS.Web.Controllers
         {
             IList<SelectListItem> selectListItemCollection = new List<SelectListItem>();
 
-            var resp = _mpps.GetMonitoringPointsPositionsByTestTypeId(testTypeId);
+            IEnumerable<MonitoringPointsPositionViewModel> monitoringPointsPositionsDatas = CacheHelper.GetCache(nameof(PreloadDataSetType.MonitoringPointsPositionType)) as IEnumerable<MonitoringPointsPositionViewModel>;
 
-            if (resp.Succeed)
-            {
-                selectListItemCollection = resp
-                    .Datas
-                    .ConvertToSelectListItemCollection();
-            }
+            selectListItemCollection = monitoringPointsPositionsDatas.Where(m => m.TestTypeId == testTypeId).ConvertToSelectListItemCollection();
 
             return Json(selectListItemCollection, JsonRequestBehavior.AllowGet);
         }
@@ -242,29 +240,5 @@ namespace GxjtBHMS.Web.Controllers
                 }
             }
         }
-
-        //public void OriginCode(string guid, int pointsPositionId,string dataType)
-        //{
-        //    object obj = CacheHelper.GetCache(guid);
-        //    if (obj == null)
-        //    {
-        //        throw new ApplicationException("guid invalid");
-        //    }
-        //    var ms = _fileConverter.GetStream(obj);
-        //    string preFileName = GetDownloadPreFileNameByTestTypeId(pointsPositionId,dataType);
-        //    Response.AddHeader("Content-Disposition", string.Format("attachment; filename={0}.xls", preFileName));
-        //    Response.BinaryWrite(ms.ToArray());
-        //    ms.Close();
-        //    ms.Dispose();
-        //    CacheHelper.RemoveAllCache(guid);
-        //}
-
-        //string GetDownloadPreFileNameByTestTypeId(int pointsPositionId, string dataType)
-        //{
-        //    return  _mpps.CreateDownloadFileMixedName(pointsPositionId,dataType) ;
-        //}
-
-
-
     }
 }

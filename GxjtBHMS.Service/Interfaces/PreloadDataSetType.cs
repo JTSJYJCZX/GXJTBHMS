@@ -2,6 +2,8 @@
 {
     public enum PreloadDataSetType
     {
-        MornitoringTestType
+        MornitoringTestType,
+        MonitoringPointsNumberType,
+        MonitoringPointsPositionType
     }
 }
