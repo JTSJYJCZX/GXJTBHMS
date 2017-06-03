@@ -22,20 +22,14 @@ namespace GxjtBHMS.Web.Controllers
     /// </summary>
     public class MonitoringDatasController : BaseController
     {
-        readonly IMonitoringPointsNumberService _mpns;
-        readonly IMonitoringPointsPositionService _mpps;
         readonly IPreloadDataSet _preloadDataSet;
         readonly IFileConverter _fileConverter;
         public MonitoringDatasController
             (
-            IMonitoringPointsNumberService mpns,
-            IMonitoringPointsPositionService mpps,
             IPreloadDataSet preloadDataSet,
             IFileConverter fileConverter
             )
         {
-            _mpns = mpns;
-            _mpps = mpps;
             _preloadDataSet = preloadDataSet;
             _fileConverter = fileConverter;
         }
@@ -119,13 +113,18 @@ namespace GxjtBHMS.Web.Controllers
         /// </summary>
         void SaveMonitoringPointsPositionSelectListItemsToViewData(int mornitoringTestTypeId, out int mornitoringPointsPositionId)
         {
-            var resp = _mpps.GetMonitoringPointsPositionsByTestTypeId(mornitoringTestTypeId);
+            IEnumerable<MonitoringPointsPositionViewModel> monitoringPointsPositionsDatas = CacheHelper.GetCache(nameof(PreloadDataSetType.MonitoringPointsPositionType)) as IEnumerable<MonitoringPointsPositionViewModel>;
+
+             monitoringPointsPositionsDatas.Where(m => m.TestTypeId == mornitoringTestTypeId).ConvertToSelectListItemCollection();
+
             mornitoringPointsPositionId = 0;
-            if (resp.Datas.Any())
+
+            if (monitoringPointsPositionsDatas.Any())
             {
-                mornitoringPointsPositionId = Convert.ToInt32(resp.Datas.First().Id);
+                mornitoringPointsPositionId = Convert.ToInt32(monitoringPointsPositionsDatas.First().Id);
             }
-            SaveSelectListItemCollectionToViewData(resp.Datas, WebConstants.MonitoringPointsPositionKey, false);
+
+            SaveSelectListItemCollectionToViewData(monitoringPointsPositionsDatas, WebConstants.MonitoringPointsPositionKey, false);
         }
 
         /// <summary>
@@ -133,15 +132,13 @@ namespace GxjtBHMS.Web.Controllers
         /// </summary>
         void SaveMonitoringPointsNumberSelectListItemsToViewData(int mornitoringPointsPositionId = 0)
         {
-            var resp = _mpns.GetMonitoringPointsNumberByPointsPositionId(mornitoringPointsPositionId);
-            SaveSelectListItemCollectionToViewData(resp.Datas, WebConstants.MonitoringPointsNumberKey, false);
+            IEnumerable<MonitoringPointsNumberViewModel> monitoringPointsNumbersDatas = CacheHelper.GetCache(nameof(PreloadDataSetType.MonitoringPointsNumberType)) as IEnumerable<MonitoringPointsNumberViewModel>;
+            SaveSelectListItemCollectionToViewData(monitoringPointsNumbersDatas, WebConstants.MonitoringPointsNumberKey, false);
         }
 
         public ActionResult GetMonitoringPointsNumbersByPointsPositions(int pointsPositions = 0)
         {
             IList<SelectListItem> selectListItemCollection = new List<SelectListItem>();
-
-            var resp = _mpns.GetMonitoringPointsNumberByPointsPositionId(pointsPositions);
 
             IEnumerable<MonitoringPointsNumberViewModel> monitoringPointsNumberDatas = CacheHelper.GetCache(nameof(PreloadDataSetType.MonitoringPointsNumberType)) as IEnumerable<MonitoringPointsNumberViewModel>;
 
