@@ -5,7 +5,7 @@
         &nbsp;&nbsp;&nbsp;<label for="Monthpicker">报告生成月份:</label>
         @Html.TextBoxFor(m => m.UpLoadReportTime, new { style = "width:220px", id = "Monthpicker", @class = "form-control" })
         <input type="button" id="bttnquery" value="查询" class="btn btn-primary col-md-offset-1" />
-        <input type="button" value="点击上传人工巡检报告" class="adminInput btn btn-primary  col-md-offset-1" onclick="openShutManager(this, 'unfold')" />
+        <input type="button" style="display:none" value="点击上传人工巡检报告" class="adminInput btn btn-primary  col-md-offset-1" onclick="openShutManager(this, 'unfold')" />
     </div>
 
 
@@ -61,10 +61,10 @@
 
 <script>
     $(function () {
-        if (userName != "admin") {
-            $("li.adminli").css("display", "none");
-            $("input.adminInput").css("display", "none");
-            $("td.admintd").css("display", "none");
+        if (userName == "admin") {
+            $("li.adminli").css("display", "block");
+            $("input.adminInput").css("display", "block");
+            $("td.admintd").css("display", "block");
         }
     })
 </script>
