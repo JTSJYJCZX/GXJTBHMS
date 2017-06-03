@@ -31,9 +31,10 @@ namespace GxjtBHMS.Web.Controllers.AnomalousEventManagement
             _fileConverter = fileConverter;
         }
 
-        [OutputCache (CacheProfile = "IndexProfile")]
+        [OutputCache (CacheProfile = "PageIndexProfile")]
         public ActionResult AnomalousEventManagement(int currentPage = 1)
         {
+            Response.Cache.SetOmitVaryStar(true);
             var req = new DatasQueryResultRequestBase() { CurrentPageIndex = currentPage };
             var testTypes = _mtts.GetAllTestType().Datas.Count();
             long resultCount = 0;
@@ -115,6 +116,7 @@ namespace GxjtBHMS.Web.Controllers.AnomalousEventManagement
         [OutputCache (CacheProfile = "AnomalousEventsProfile")]
         public ActionResult GetAnomalousEvents(AnomalousEventsQueryConditionView condition)
         {
+            Response.Cache.SetOmitVaryStar(true);
             var req = new AnomalousEventsQueryRequest()
             {
                 CurrentPageIndex = condition.CurrentPageIndex,

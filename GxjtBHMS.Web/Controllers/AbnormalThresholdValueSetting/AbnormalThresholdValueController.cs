@@ -16,6 +16,7 @@ namespace GxjtBHMS.Web.Controllers.AbnormalThresholdValue
         [OutputCache(CacheProfile = "IndexProfile")]
         public ActionResult AbnormalThresholdValueSetting()
         {
+            Response.Cache.SetOmitVaryStar(true);
             return View();
         }
 

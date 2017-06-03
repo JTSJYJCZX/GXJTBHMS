@@ -37,6 +37,7 @@ namespace GxjtBHMS.Web.Controllers
         [OutputCache(CacheProfile = "IndexProfile")]
         public ActionResult AlarmDatasManagementQuery()
         {
+            Response.Cache.SetOmitVaryStar(true);
             return View();
         }
         /// <summary>
@@ -47,6 +48,7 @@ namespace GxjtBHMS.Web.Controllers
         [OutputCache(CacheProfile = "AlarmDatasQueryProfile")]
         public ActionResult AlarmDatasQuery(AlarmDatasSearchBarView conditions)
         {
+            Response.Cache.SetOmitVaryStar(true);
             if (conditions.EndTime < conditions.StartTime)
             {
                 return Content("<span style='color:red'>开始时间不能晚于结束时间</span>");
@@ -75,6 +77,7 @@ namespace GxjtBHMS.Web.Controllers
         [OutputCache(CacheProfile = "AlarmDatasQueryProfile")]
         public ActionResult GetAlarmDatas(AlarmDatasSearchBarView conditions)
         {
+            Response.Cache.SetOmitVaryStar(true);
             var resp = new AlarmDatasResponse();
             var req = new GetAlarmDatasRequest
             {

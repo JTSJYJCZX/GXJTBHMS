@@ -25,6 +25,7 @@ namespace GxjtBHMS.Web.Controllers
         [OutputCache(CacheProfile = "IndexProfile")]
         public ActionResult Index()
         {
+            Response.Cache.SetOmitVaryStar(true);
             ViewData[WebConstants.UserNickNameKey] = Session[WebConstants.UserNickNameKey].ToString();
             return View();
         }
