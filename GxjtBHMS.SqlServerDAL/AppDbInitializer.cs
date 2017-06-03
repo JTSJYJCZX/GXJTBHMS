@@ -593,14 +593,16 @@ namespace GxjtBHMS.SqlServerDAL
 
         private void InitialWindloadThresholdValue(BHMSContext context)
         {
-            var p = 24;
+            var p = 24.0;
+            var firstLevelCoefficient = 0.8;     //一级系数
+            var SecondLevelCoefficient = 1.0;    //二级系数
             for (int i = 0; i < tmpNumbers29.Length; i++)
             {
                 var ThresholdValue = new ThresholdValue_WindLoadThresholdValueTable
                 {
                     PointsNumber = tmpNumbers29[i],
-                    PositiveFirstLevelThresholdValue = p * 0.8,
-                    PositiveSecondLevelThresholdValue = p * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(p * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(p * SecondLevelCoefficient, 1),
                 };
                 context.WindLoadThresholdValues.Add(ThresholdValue);
             }
@@ -618,15 +620,17 @@ namespace GxjtBHMS.SqlServerDAL
 
         private void InitialHumidityThresholdValue(BHMSContext context)
         {
-            var outHumidityP = 100;
-            var inHumidityP = 60;
+            var outHumidityP = 100.0;
+            var inHumidityP = 60.0;
+            var firstLevelCoefficient = 0.8;     //一级系数
+            var SecondLevelCoefficient = 1.0;    //二级系数
             for (int i = 0; i < tmpNumbers24.Length; i++)
             {
                 var ThresholdValue = new ThresholdValue_HumidityThresholdValueTable
                 {
                     PointsNumber = tmpNumbers24[i],
-                    PositiveFirstLevelThresholdValue = outHumidityP * 0.8,
-                    PositiveSecondLevelThresholdValue = outHumidityP * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(outHumidityP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(outHumidityP * SecondLevelCoefficient, 1),
                 };
                 context.HumidityThresholdValues.Add(ThresholdValue);
             }
@@ -635,8 +639,8 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_HumidityThresholdValueTable
                 {
                     PointsNumber = tmpNumbers25[i],
-                    PositiveFirstLevelThresholdValue = inHumidityP * 0.8,
-                    PositiveSecondLevelThresholdValue = inHumidityP * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(inHumidityP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(inHumidityP * SecondLevelCoefficient, 1),
                 };
                 context.HumidityThresholdValues.Add(ThresholdValue);
             }
@@ -654,20 +658,21 @@ namespace GxjtBHMS.SqlServerDAL
 
         private void InitialTemperatureThresholdValue(BHMSContext context)
         {
-            var outTemperatureP = 46;
-            var outTemperatureN = -3;
-            var inTemperatureP = 60;
-            var inTemperatureN = -3;
-
+            var outTemperatureP = 46.0;
+            var outTemperatureN = -3.0;
+            var inTemperatureP = 60.0;
+            var inTemperatureN = -3.0;
+            var firstLevelCoefficient = 0.8;     //一级系数
+            var SecondLevelCoefficient = 1.0;    //二级系数
             for (int i = 0; i < tmpNumbers22.Length; i++)
             {
                 var ThresholdValue = new ThresholdValue_TemperatureThresholdValueTable
                 {
                     PointsNumber = tmpNumbers22[i],
-                    PositiveFirstLevelThresholdValue = outTemperatureP * 0.8,
-                    PositiveSecondLevelThresholdValue = outTemperatureP * 1.0,
-                    NegativeFirstLevelThresholdValue = outTemperatureN * 0.8,
-                    NegativeSecondLevelThresholdValue = outTemperatureN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(outTemperatureP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(outTemperatureP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(outTemperatureN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(outTemperatureN * SecondLevelCoefficient, 1),
                 };
                 context.TemperatureThresholdValues.Add(ThresholdValue);
             }
@@ -676,10 +681,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_TemperatureThresholdValueTable
                 {
                     PointsNumber = tmpNumbers23[i],
-                    PositiveFirstLevelThresholdValue = inTemperatureP * 0.8,
-                    PositiveSecondLevelThresholdValue = inTemperatureP * 1.0,
-                    NegativeFirstLevelThresholdValue = inTemperatureN * 0.8,
-                    NegativeSecondLevelThresholdValue = inTemperatureN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(inTemperatureP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(inTemperatureP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(inTemperatureN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(inTemperatureN * SecondLevelCoefficient, 1),
                 };
                 context.TemperatureThresholdValues.Add(ThresholdValue);
             }
@@ -696,16 +701,18 @@ namespace GxjtBHMS.SqlServerDAL
 
         private void InitialCableForceThresholdValue(BHMSContext context)
         {
-            var cFUPH = 1946;
-            var cFUNH = 2870;
-            var cFFTB = 2087;
+            var cFUPH = 1946.0;
+            var cFUNH = 2870.0;
+            var cFFTB = 2087.0;
+            var firstLevelCoefficient = 0.8;     //一级系数
+            var SecondLevelCoefficient = 1.0;    //二级系数
             for (int i = 0; i < tmpNumbers26.Length; i++)
             {
                 var ThresholdValue = new ThresholdValue_CableForceThresholdValueTable
                 {
                     PointsNumber = tmpNumbers26[i],
-                    PositiveFirstLevelThresholdValue = cFUPH * 0.8,
-                    PositiveSecondLevelThresholdValue = cFUPH * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(cFUPH * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(cFUPH * SecondLevelCoefficient, 1),
                 };
                 context.CableForceThresholdValues.Add(ThresholdValue);
             }
@@ -714,8 +721,8 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_CableForceThresholdValueTable
                 {
                     PointsNumber = tmpNumbers27[i],
-                    PositiveFirstLevelThresholdValue = cFUNH * 0.8,
-                    PositiveSecondLevelThresholdValue = cFUNH * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(cFUNH * firstLevelCoefficient, 3),
+                    PositiveSecondLevelThresholdValue = Math.Round(cFUNH * SecondLevelCoefficient, 3),
                 };
                 context.CableForceThresholdValues.Add(ThresholdValue);
             }
@@ -724,8 +731,8 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_CableForceThresholdValueTable
                 {
                     PointsNumber = tmpNumbers28[i],
-                    PositiveFirstLevelThresholdValue = cFFTB * 0.8,
-                    PositiveSecondLevelThresholdValue = cFFTB * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(cFFTB * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(cFFTB * SecondLevelCoefficient, 1),
                 };
                 context.CableForceThresholdValues.Add(ThresholdValue);
             }
@@ -742,31 +749,32 @@ namespace GxjtBHMS.SqlServerDAL
 
         private void InitialDisplaymentThresholdValue(BHMSContext context)
         {
-            var DSAXYThresholdP = 15;
-            var DSAXYThresholdN = -15;
-            var DSAMiddleZThresholdP = 65;
-            var DSAMiddleZThresholdN = -84;
+            var DSAXYThresholdP = 15.0;
+            var DSAXYThresholdN = -15.0;
+            var DSAMiddleZThresholdP = 65.0;
+            var DSAMiddleZThresholdN = -84.0;
             var DSASideZThresholdP = 6.8;
             var DSASideZThresholdN = -24.4;
-            var DBDMiddleZThresholdP = 65;
+            var DBDMiddleZThresholdP = 65.0;
             var DBDMiddleZThresholdN = -115.7;
             var DBDSideZThresholdP = 6.5;
             var DBDSideZThresholdN = -48.1;
-            var DSPThresholdP = 150;
-            var DSPThresholdN = 0;
-            var DDEThresholdP = 100;
-            var DDEThresholdN = 0;
-
+            var DSPThresholdP = 150.0;
+            var DSPThresholdN = 0.0;
+            var DDEThresholdP = 100.0;
+            var DDEThresholdN = 0.0;
+            var firstLevelCoefficient = 0.8;     //一级系数
+            var SecondLevelCoefficient = 1.0;    //二级系数
             //拱肋位移测点阈值设置
             for (int i = 0; i < 2 * tmpNumbers18.Length / 3; i++)
             {
                 var ThresholdValue = new ThresholdValue_DisplacementThresholdValueTable
                 {
                     PointsNumber = tmpNumbers18[i],
-                    PositiveFirstLevelThresholdValue = DSAXYThresholdP * 0.8,
-                    PositiveSecondLevelThresholdValue = DSAXYThresholdP * 1.0,
-                    NegativeFirstLevelThresholdValue = DSAXYThresholdN * 0.8,
-                    NegativeSecondLevelThresholdValue = DSAXYThresholdN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(DSAXYThresholdP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(DSAXYThresholdP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(DSAXYThresholdN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(DSAXYThresholdN * SecondLevelCoefficient, 1),
                 };
                 context.DisplaymentThresholdValues.Add(ThresholdValue);
             }
@@ -774,40 +782,40 @@ namespace GxjtBHMS.SqlServerDAL
             var ThresholdValue1 = new ThresholdValue_DisplacementThresholdValueTable
             {
                 PointsNumber = tmpNumbers18[2 * tmpNumbers18.Length / 3],
-                PositiveFirstLevelThresholdValue = DSASideZThresholdP * 0.8,
-                PositiveSecondLevelThresholdValue = DSASideZThresholdP * 1.0,
-                NegativeFirstLevelThresholdValue = DSASideZThresholdN * 0.8,
-                NegativeSecondLevelThresholdValue = DSASideZThresholdN * 1.0,
+                PositiveFirstLevelThresholdValue = Math.Round(DSASideZThresholdP * firstLevelCoefficient, 1),
+                PositiveSecondLevelThresholdValue = Math.Round(DSASideZThresholdP * SecondLevelCoefficient, 1),
+                NegativeFirstLevelThresholdValue = Math.Round(DSASideZThresholdN * firstLevelCoefficient, 1),
+                NegativeSecondLevelThresholdValue = Math.Round(DSASideZThresholdN * SecondLevelCoefficient, 1),
             };
             context.DisplaymentThresholdValues.Add(ThresholdValue1);
 
             ThresholdValue1 = new ThresholdValue_DisplacementThresholdValueTable
             {
                 PointsNumber = tmpNumbers18[2 * tmpNumbers18.Length / 3 + 1],
-                PositiveFirstLevelThresholdValue = DSAMiddleZThresholdP * 0.8,
-                PositiveSecondLevelThresholdValue = DSAMiddleZThresholdP * 1.0,
-                NegativeFirstLevelThresholdValue = DSAMiddleZThresholdN * 0.8,
-                NegativeSecondLevelThresholdValue = DSAMiddleZThresholdN * 1.0,
+                PositiveFirstLevelThresholdValue = Math.Round(DSAMiddleZThresholdP * firstLevelCoefficient, 1),
+                PositiveSecondLevelThresholdValue = Math.Round(DSAMiddleZThresholdP * SecondLevelCoefficient, 1),
+                NegativeFirstLevelThresholdValue = Math.Round(DSAMiddleZThresholdN * firstLevelCoefficient, 1),
+                NegativeSecondLevelThresholdValue = Math.Round(DSAMiddleZThresholdN * SecondLevelCoefficient, 1),
             };
             context.DisplaymentThresholdValues.Add(ThresholdValue1);
 
             ThresholdValue1 = new ThresholdValue_DisplacementThresholdValueTable
             {
                 PointsNumber = tmpNumbers18[2 * tmpNumbers18.Length / 3 + 2],
-                PositiveFirstLevelThresholdValue = DSASideZThresholdP * 0.8,
-                PositiveSecondLevelThresholdValue = DSASideZThresholdP * 1.0,
-                NegativeFirstLevelThresholdValue = DSASideZThresholdN * 0.8,
-                NegativeSecondLevelThresholdValue = DSASideZThresholdN * 1.0,
+                PositiveFirstLevelThresholdValue = Math.Round(DSASideZThresholdP * firstLevelCoefficient, 1),
+                PositiveSecondLevelThresholdValue = Math.Round(DSASideZThresholdP * SecondLevelCoefficient, 1),
+                NegativeFirstLevelThresholdValue = Math.Round(DSASideZThresholdN * firstLevelCoefficient, 1),
+                NegativeSecondLevelThresholdValue = Math.Round(DSASideZThresholdN * SecondLevelCoefficient, 1),
             };
             context.DisplaymentThresholdValues.Add(ThresholdValue1);
 
             ThresholdValue1 = new ThresholdValue_DisplacementThresholdValueTable
             {
                 PointsNumber = tmpNumbers18[2 * tmpNumbers18.Length / 3 + 3],
-                PositiveFirstLevelThresholdValue = DSAMiddleZThresholdP * 0.8,
-                PositiveSecondLevelThresholdValue = DSAMiddleZThresholdP * 1.0,
-                NegativeFirstLevelThresholdValue = DSAMiddleZThresholdN * 0.8,
-                NegativeSecondLevelThresholdValue = DSAMiddleZThresholdN * 1.0,
+                PositiveFirstLevelThresholdValue = Math.Round(DSAMiddleZThresholdP * firstLevelCoefficient, 1),
+                PositiveSecondLevelThresholdValue = Math.Round(DSAMiddleZThresholdP * SecondLevelCoefficient, 1),
+                NegativeFirstLevelThresholdValue = Math.Round(DSAMiddleZThresholdN * firstLevelCoefficient, 1),
+                NegativeSecondLevelThresholdValue = Math.Round(DSAMiddleZThresholdN * SecondLevelCoefficient, 1),
             };
             context.DisplaymentThresholdValues.Add(ThresholdValue1);
 
@@ -815,55 +823,55 @@ namespace GxjtBHMS.SqlServerDAL
             var ThresholdValue2 = new ThresholdValue_DisplacementThresholdValueTable
             {
                 PointsNumber = tmpNumbers19[0],
-                PositiveFirstLevelThresholdValue = DBDSideZThresholdP * 0.8,
-                PositiveSecondLevelThresholdValue = DBDSideZThresholdP * 1.0,
-                NegativeFirstLevelThresholdValue = DBDSideZThresholdN * 0.8,
-                NegativeSecondLevelThresholdValue = DBDSideZThresholdN * 1.0,
+                PositiveFirstLevelThresholdValue = Math.Round(DBDSideZThresholdP * firstLevelCoefficient, 1),
+                PositiveSecondLevelThresholdValue = Math.Round(DBDSideZThresholdP * SecondLevelCoefficient, 1),
+                NegativeFirstLevelThresholdValue = Math.Round(DBDSideZThresholdN * firstLevelCoefficient, 1),
+                NegativeSecondLevelThresholdValue = Math.Round(DBDSideZThresholdN * SecondLevelCoefficient, 1),
             };
             context.DisplaymentThresholdValues.Add(ThresholdValue2);
             ThresholdValue2 = new ThresholdValue_DisplacementThresholdValueTable
             {
                 PointsNumber = tmpNumbers19[1],
-                PositiveFirstLevelThresholdValue = DBDMiddleZThresholdP * 0.8,
-                PositiveSecondLevelThresholdValue = DBDMiddleZThresholdP * 1.0,
-                NegativeFirstLevelThresholdValue = DBDMiddleZThresholdN * 0.8,
-                NegativeSecondLevelThresholdValue = DBDMiddleZThresholdN * 1.0,
+                PositiveFirstLevelThresholdValue = Math.Round(DBDMiddleZThresholdP * firstLevelCoefficient, 1),
+                PositiveSecondLevelThresholdValue = Math.Round(DBDMiddleZThresholdP * SecondLevelCoefficient, 1),
+                NegativeFirstLevelThresholdValue = Math.Round(DBDMiddleZThresholdN * firstLevelCoefficient, 1),
+                NegativeSecondLevelThresholdValue = Math.Round(DBDMiddleZThresholdN * SecondLevelCoefficient, 1),
             };
             context.DisplaymentThresholdValues.Add(ThresholdValue2);
             ThresholdValue2 = new ThresholdValue_DisplacementThresholdValueTable
             {
                 PointsNumber = tmpNumbers19[2],
-                PositiveFirstLevelThresholdValue = DBDSideZThresholdP * 0.8,
-                PositiveSecondLevelThresholdValue = DBDSideZThresholdP * 1.0,
-                NegativeFirstLevelThresholdValue = DBDSideZThresholdN * 0.8,
-                NegativeSecondLevelThresholdValue = DBDSideZThresholdN * 1.0,
+                PositiveFirstLevelThresholdValue = Math.Round(DBDSideZThresholdP * firstLevelCoefficient, 1),
+                PositiveSecondLevelThresholdValue = Math.Round(DBDSideZThresholdP * SecondLevelCoefficient, 1),
+                NegativeFirstLevelThresholdValue = Math.Round(DBDSideZThresholdN * firstLevelCoefficient, 1),
+                NegativeSecondLevelThresholdValue = Math.Round(DBDSideZThresholdN * SecondLevelCoefficient, 1),
             };
             context.DisplaymentThresholdValues.Add(ThresholdValue2);
             ThresholdValue2 = new ThresholdValue_DisplacementThresholdValueTable
             {
                 PointsNumber = tmpNumbers19[3],
-                PositiveFirstLevelThresholdValue = DBDSideZThresholdP * 0.8,
-                PositiveSecondLevelThresholdValue = DBDSideZThresholdP * 1.0,
-                NegativeFirstLevelThresholdValue = DBDSideZThresholdN * 0.8,
-                NegativeSecondLevelThresholdValue = DBDSideZThresholdN * 1.0,
+                PositiveFirstLevelThresholdValue = Math.Round(DBDSideZThresholdP * firstLevelCoefficient, 1),
+                PositiveSecondLevelThresholdValue = Math.Round(DBDSideZThresholdP * SecondLevelCoefficient, 1),
+                NegativeFirstLevelThresholdValue = Math.Round(DBDSideZThresholdN * firstLevelCoefficient, 1),
+                NegativeSecondLevelThresholdValue = Math.Round(DBDSideZThresholdN * SecondLevelCoefficient, 1),
             };
             context.DisplaymentThresholdValues.Add(ThresholdValue2);
             ThresholdValue2 = new ThresholdValue_DisplacementThresholdValueTable
             {
                 PointsNumber = tmpNumbers19[4],
-                PositiveFirstLevelThresholdValue = DBDMiddleZThresholdP * 0.8,
-                PositiveSecondLevelThresholdValue = DBDMiddleZThresholdP * 1.0,
-                NegativeFirstLevelThresholdValue = DBDMiddleZThresholdN * 0.8,
-                NegativeSecondLevelThresholdValue = DBDMiddleZThresholdN * 1.0,
+                PositiveFirstLevelThresholdValue = Math.Round(DBDMiddleZThresholdP * firstLevelCoefficient, 1),
+                PositiveSecondLevelThresholdValue = Math.Round(DBDMiddleZThresholdP * SecondLevelCoefficient, 1),
+                NegativeFirstLevelThresholdValue = Math.Round(DBDMiddleZThresholdN * firstLevelCoefficient, 1),
+                NegativeSecondLevelThresholdValue = Math.Round(DBDMiddleZThresholdN * SecondLevelCoefficient, 1),
             };
             context.DisplaymentThresholdValues.Add(ThresholdValue2);
             ThresholdValue2 = new ThresholdValue_DisplacementThresholdValueTable
             {
                 PointsNumber = tmpNumbers19[5],
-                PositiveFirstLevelThresholdValue = DBDSideZThresholdP * 0.8,
-                PositiveSecondLevelThresholdValue = DBDSideZThresholdP * 1.0,
-                NegativeFirstLevelThresholdValue = DBDSideZThresholdN * 0.8,
-                NegativeSecondLevelThresholdValue = DBDSideZThresholdN * 1.0,
+                PositiveFirstLevelThresholdValue = Math.Round(DBDSideZThresholdP * firstLevelCoefficient, 1),
+                PositiveSecondLevelThresholdValue = Math.Round(DBDSideZThresholdP * SecondLevelCoefficient, 1),
+                NegativeFirstLevelThresholdValue = Math.Round(DBDSideZThresholdN * firstLevelCoefficient, 1),
+                NegativeSecondLevelThresholdValue = Math.Round(DBDSideZThresholdN * SecondLevelCoefficient, 1),
             };
             context.DisplaymentThresholdValues.Add(ThresholdValue2);
             //伸缩缝位移测点阈值设置
@@ -872,10 +880,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_DisplacementThresholdValueTable
                 {
                     PointsNumber = tmpNumbers20[i],
-                    PositiveFirstLevelThresholdValue = DSPThresholdP * 0.8,
-                    PositiveSecondLevelThresholdValue = DSPThresholdP * 1.0,
-                    NegativeFirstLevelThresholdValue = DSPThresholdN * 0.8,
-                    NegativeSecondLevelThresholdValue = DSPThresholdN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(DSPThresholdP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(DSPThresholdP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(DSPThresholdN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(DSPThresholdN * SecondLevelCoefficient, 1),
                 };
                 context.DisplaymentThresholdValues.Add(ThresholdValue);
             }
@@ -884,10 +892,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_DisplacementThresholdValueTable
                 {
                     PointsNumber = tmpNumbers21[i],
-                    PositiveFirstLevelThresholdValue = DDEThresholdP * 0.8,
-                    PositiveSecondLevelThresholdValue = DDEThresholdP * 1.0,
-                    NegativeFirstLevelThresholdValue = DDEThresholdN * 0.8,
-                    NegativeSecondLevelThresholdValue = DDEThresholdN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(DDEThresholdP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(DDEThresholdP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(DDEThresholdN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(DDEThresholdN * SecondLevelCoefficient, 1),
                 };
                 context.DisplaymentThresholdValues.Add(ThresholdValue);
             }
@@ -919,17 +927,18 @@ namespace GxjtBHMS.SqlServerDAL
             var steelLJHLStrainThresholdN = -777.00;
             var steelGZLStrainThresholdP = 445.00;
             var steelGZLStrainThresholdN = -748.00;
-
+            var firstLevelCoefficient = 0.8;     //一级系数
+            var SecondLevelCoefficient = 1.0;    //二级系数
 
             for (int i = 0; i < tmpNumbers1.Length; i++)
             {
                 var ThresholdValue = new ThresholdValue_SteelArchStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers1[i],
-                    PositiveFirstLevelThresholdValue = sideSteelArchStrainThresholdP * 0.8,
-                    PositiveSecondLevelThresholdValue = sideSteelArchStrainThresholdP * 1.0,
-                    NegativeFirstLevelThresholdValue = sideSteelArchStrainThresholdN * 0.8,
-                    NegativeSecondLevelThresholdValue = sideSteelArchStrainThresholdN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(sideSteelArchStrainThresholdP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(sideSteelArchStrainThresholdP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(sideSteelArchStrainThresholdN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(sideSteelArchStrainThresholdN * SecondLevelCoefficient, 1),
                 };
                 context.SteelArchStrainThresholdValues.Add(ThresholdValue);
             }
@@ -938,10 +947,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_SteelArchStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers2[i],
-                    PositiveFirstLevelThresholdValue = middleSteelArchStrainThresholdP * 0.8,
-                    PositiveSecondLevelThresholdValue = middleSteelArchStrainThresholdP * 1.0,
-                    NegativeFirstLevelThresholdValue = middleSteelArchStrainThresholdN * 0.8,
-                    NegativeSecondLevelThresholdValue = middleSteelArchStrainThresholdN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(middleSteelArchStrainThresholdP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(middleSteelArchStrainThresholdP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(middleSteelArchStrainThresholdN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(middleSteelArchStrainThresholdN * SecondLevelCoefficient, 1),
                 };
                 context.SteelArchStrainThresholdValues.Add(ThresholdValue);
             }
@@ -950,10 +959,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_SteelArchStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers3[i],
-                    PositiveFirstLevelThresholdValue = sideSteelArchStrainThresholdP * 0.8,
-                    PositiveSecondLevelThresholdValue = sideSteelArchStrainThresholdP * 1.0,
-                    NegativeFirstLevelThresholdValue = sideSteelArchStrainThresholdN * 0.8,
-                    NegativeSecondLevelThresholdValue = sideSteelArchStrainThresholdN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(sideSteelArchStrainThresholdP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(sideSteelArchStrainThresholdP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(sideSteelArchStrainThresholdN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(sideSteelArchStrainThresholdN * SecondLevelCoefficient, 1),
                 };
                 context.SteelArchStrainThresholdValues.Add(ThresholdValue);
             }
@@ -962,10 +971,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_SteelArchStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers4[i],
-                    PositiveFirstLevelThresholdValue = middleSteelArchStrainThresholdP * 0.8,
-                    PositiveSecondLevelThresholdValue = middleSteelArchStrainThresholdP * 1.0,
-                    NegativeFirstLevelThresholdValue = middleSteelArchStrainThresholdN * 0.8,
-                    NegativeSecondLevelThresholdValue = middleSteelArchStrainThresholdN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(middleSteelArchStrainThresholdP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(middleSteelArchStrainThresholdP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(middleSteelArchStrainThresholdN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(middleSteelArchStrainThresholdN * SecondLevelCoefficient, 1),
                 };
                 context.SteelArchStrainThresholdValues.Add(ThresholdValue);
             }
@@ -974,10 +983,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_SteelArchStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers5[i],
-                    PositiveFirstLevelThresholdValue = sideSteelArchStrainThresholdP * 0.8,
-                    PositiveSecondLevelThresholdValue = sideSteelArchStrainThresholdP * 1.0,
-                    NegativeFirstLevelThresholdValue = sideSteelArchStrainThresholdN * 0.8,
-                    NegativeSecondLevelThresholdValue = sideSteelArchStrainThresholdN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(sideSteelArchStrainThresholdP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(sideSteelArchStrainThresholdP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(sideSteelArchStrainThresholdN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(sideSteelArchStrainThresholdN * SecondLevelCoefficient, 1),
                 };
                 context.SteelArchStrainThresholdValues.Add(ThresholdValue);
             }
@@ -986,10 +995,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_SteelArchStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers6[i],
-                    PositiveFirstLevelThresholdValue = steelArchHCStrainThresholdP * 0.8,
-                    PositiveSecondLevelThresholdValue = steelArchHCStrainThresholdP * 1.0,
-                    NegativeFirstLevelThresholdValue = steelArchHCStrainThresholdN * 0.8,
-                    NegativeSecondLevelThresholdValue = steelArchHCStrainThresholdN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(steelArchHCStrainThresholdP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(steelArchHCStrainThresholdP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(steelArchHCStrainThresholdN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(steelArchHCStrainThresholdN * SecondLevelCoefficient, 1),
                 };
                 context.SteelArchStrainThresholdValues.Add(ThresholdValue);
             }
@@ -998,10 +1007,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_SteelArchStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers7[i],
-                    PositiveFirstLevelThresholdValue = steelArchHCStrainThresholdP * 0.8,
-                    PositiveSecondLevelThresholdValue = steelArchHCStrainThresholdP * 1.0,
-                    NegativeFirstLevelThresholdValue = steelArchHCStrainThresholdN * 0.8,
-                    NegativeSecondLevelThresholdValue = steelArchHCStrainThresholdN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(steelArchHCStrainThresholdP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(steelArchHCStrainThresholdP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(steelArchHCStrainThresholdN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(steelArchHCStrainThresholdN * SecondLevelCoefficient, 1),
                 };
                 context.SteelArchStrainThresholdValues.Add(ThresholdValue);
             }
@@ -1010,10 +1019,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_SteelLatticeStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers8[i],
-                    PositiveFirstLevelThresholdValue = steelLJHLStrainThresholdP * 0.8,
-                    PositiveSecondLevelThresholdValue = steelLJHLStrainThresholdP * 1.0,
-                    NegativeFirstLevelThresholdValue = steelLJHLStrainThresholdN * 0.8,
-                    NegativeSecondLevelThresholdValue = steelLJHLStrainThresholdN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(steelLJHLStrainThresholdP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(steelLJHLStrainThresholdP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(steelLJHLStrainThresholdN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(steelLJHLStrainThresholdN * SecondLevelCoefficient, 1),
                 };
                 context.SteelLatticeStrainThresholdValues.Add(ThresholdValue);
             }
@@ -1022,10 +1031,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_SteelLatticeStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers9[i],
-                    PositiveFirstLevelThresholdValue = steelLJHLStrainThresholdP * 0.8,
-                    PositiveSecondLevelThresholdValue = steelLJHLStrainThresholdP * 1.0,
-                    NegativeFirstLevelThresholdValue = steelLJHLStrainThresholdN * 0.8,
-                    NegativeSecondLevelThresholdValue = steelLJHLStrainThresholdN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(steelLJHLStrainThresholdP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(steelLJHLStrainThresholdP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(steelLJHLStrainThresholdN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(steelLJHLStrainThresholdN * SecondLevelCoefficient, 1),
                 };
                 context.SteelLatticeStrainThresholdValues.Add(ThresholdValue);
             }
@@ -1034,10 +1043,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_SteelLatticeStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers10[i],
-                    PositiveFirstLevelThresholdValue = steelGHLStrainThresholdP * 0.8,
-                    PositiveSecondLevelThresholdValue = steelGHLStrainThresholdP * 1.0,
-                    NegativeFirstLevelThresholdValue = steelGHLStrainThresholdN * 0.8,
-                    NegativeSecondLevelThresholdValue = steelGHLStrainThresholdN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(steelGHLStrainThresholdP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(steelGHLStrainThresholdP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(steelGHLStrainThresholdN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(steelGHLStrainThresholdN * SecondLevelCoefficient, 1),
                 };
                 context.SteelLatticeStrainThresholdValues.Add(ThresholdValue);
             }
@@ -1046,10 +1055,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_SteelLatticeStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers11[i],
-                    PositiveFirstLevelThresholdValue = steelGHLStrainThresholdP * 0.8,
-                    PositiveSecondLevelThresholdValue = steelGHLStrainThresholdP * 1.0,
-                    NegativeFirstLevelThresholdValue = steelGHLStrainThresholdN * 0.8,
-                    NegativeSecondLevelThresholdValue = steelGHLStrainThresholdN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(steelGHLStrainThresholdP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(steelGHLStrainThresholdP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(steelGHLStrainThresholdN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(steelGHLStrainThresholdN * SecondLevelCoefficient, 1),
                 };
                 context.SteelLatticeStrainThresholdValues.Add(ThresholdValue);
             }
@@ -1058,10 +1067,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_SteelLatticeStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers12[i],
-                    PositiveFirstLevelThresholdValue = steelGZLStrainThresholdP * 0.8,
-                    PositiveSecondLevelThresholdValue = steelGZLStrainThresholdP * 1.0,
-                    NegativeFirstLevelThresholdValue = steelGZLStrainThresholdN * 0.8,
-                    NegativeSecondLevelThresholdValue = steelGZLStrainThresholdN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(steelGZLStrainThresholdP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(steelGZLStrainThresholdP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(steelGZLStrainThresholdN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(steelGZLStrainThresholdN * SecondLevelCoefficient, 1),
                 };
                 context.SteelLatticeStrainThresholdValues.Add(ThresholdValue);
             }
@@ -1070,10 +1079,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_SteelLatticeStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers13[i],
-                    PositiveFirstLevelThresholdValue = steelGZLStrainThresholdP * 0.8,
-                    PositiveSecondLevelThresholdValue = steelGZLStrainThresholdP * 1.0,
-                    NegativeFirstLevelThresholdValue = steelGZLStrainThresholdN * 0.8,
-                    NegativeSecondLevelThresholdValue = steelGZLStrainThresholdN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(steelGZLStrainThresholdP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(steelGZLStrainThresholdP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(steelGZLStrainThresholdN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(steelGZLStrainThresholdN * SecondLevelCoefficient, 1),
                 };
                 context.SteelLatticeStrainThresholdValues.Add(ThresholdValue);
             }
@@ -1083,10 +1092,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_SteelLatticeStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers14[i],
-                    PositiveFirstLevelThresholdValue = steelGXGUpStrainThresholdP * 0.8,
-                    PositiveSecondLevelThresholdValue = steelGXGUpStrainThresholdP * 1.0,
-                    NegativeFirstLevelThresholdValue = steelGXGUpStrainThresholdN * 0.8,
-                    NegativeSecondLevelThresholdValue = steelGXGUpStrainThresholdN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(steelGXGUpStrainThresholdP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(steelGXGUpStrainThresholdP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(steelGXGUpStrainThresholdN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(steelGXGUpStrainThresholdN * SecondLevelCoefficient, 1),
                 };
                 context.SteelLatticeStrainThresholdValues.Add(ThresholdValue);
             }
@@ -1095,10 +1104,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_SteelLatticeStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers14[i],
-                    PositiveFirstLevelThresholdValue = steelGXGDownStrainThresholdP * 0.8,
-                    PositiveSecondLevelThresholdValue = steelGXGDownStrainThresholdP * 1.0,
-                    NegativeFirstLevelThresholdValue = steelGXGDownStrainThresholdN * 0.8,
-                    NegativeSecondLevelThresholdValue = steelGXGDownStrainThresholdN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(steelGXGDownStrainThresholdP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(steelGXGDownStrainThresholdP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(steelGXGDownStrainThresholdN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(steelGXGDownStrainThresholdN * SecondLevelCoefficient, 1),
                 };
                 context.SteelLatticeStrainThresholdValues.Add(ThresholdValue);
             }
@@ -1108,10 +1117,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_SteelLatticeStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers14[i],
-                    PositiveFirstLevelThresholdValue = steelGXGUpStrainThresholdP * 0.8,
-                    PositiveSecondLevelThresholdValue = steelGXGUpStrainThresholdP * 1.0,
-                    NegativeFirstLevelThresholdValue = steelGXGUpStrainThresholdN * 0.8,
-                    NegativeSecondLevelThresholdValue = steelGXGUpStrainThresholdN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(steelGXGUpStrainThresholdP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(steelGXGUpStrainThresholdP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(steelGXGUpStrainThresholdN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(steelGXGUpStrainThresholdN * SecondLevelCoefficient, 1),
                 };
                 context.SteelLatticeStrainThresholdValues.Add(ThresholdValue);
             }
@@ -1120,10 +1129,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_SteelLatticeStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers14[i],
-                    PositiveFirstLevelThresholdValue = steelGXGDownStrainThresholdP * 0.8,
-                    PositiveSecondLevelThresholdValue = steelGXGDownStrainThresholdP * 1.0,
-                    NegativeFirstLevelThresholdValue = steelGXGDownStrainThresholdN * 0.8,
-                    NegativeSecondLevelThresholdValue = steelGXGDownStrainThresholdN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(steelGXGDownStrainThresholdP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(steelGXGDownStrainThresholdP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(steelGXGDownStrainThresholdN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(steelGXGDownStrainThresholdN * SecondLevelCoefficient, 1),
                 };
                 context.SteelLatticeStrainThresholdValues.Add(ThresholdValue);
             }
@@ -1133,10 +1142,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_SteelLatticeStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers15[i],
-                    PositiveFirstLevelThresholdValue = steelGXGUpStrainThresholdP * 0.8,
-                    PositiveSecondLevelThresholdValue = steelGXGUpStrainThresholdP * 1.0,
-                    NegativeFirstLevelThresholdValue = steelGXGUpStrainThresholdN * 0.8,
-                    NegativeSecondLevelThresholdValue = steelGXGUpStrainThresholdN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(steelGXGUpStrainThresholdP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(steelGXGUpStrainThresholdP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(steelGXGUpStrainThresholdN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(steelGXGUpStrainThresholdN * SecondLevelCoefficient, 1),
                 };
                 context.SteelLatticeStrainThresholdValues.Add(ThresholdValue);
             }
@@ -1145,10 +1154,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_SteelLatticeStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers15[i],
-                    PositiveFirstLevelThresholdValue = steelGXGDownStrainThresholdP * 0.8,
-                    PositiveSecondLevelThresholdValue = steelGXGDownStrainThresholdP * 1.0,
-                    NegativeFirstLevelThresholdValue = steelGXGDownStrainThresholdN * 0.8,
-                    NegativeSecondLevelThresholdValue = steelGXGDownStrainThresholdN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(steelGXGDownStrainThresholdP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(steelGXGDownStrainThresholdP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(steelGXGDownStrainThresholdN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(steelGXGDownStrainThresholdN * SecondLevelCoefficient, 1),
                 };
                 context.SteelLatticeStrainThresholdValues.Add(ThresholdValue);
             }
@@ -1157,10 +1166,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_SteelLatticeStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers15[i],
-                    PositiveFirstLevelThresholdValue = steelGXGUpStrainThresholdP * 0.8,
-                    PositiveSecondLevelThresholdValue = steelGXGUpStrainThresholdP * 1.0,
-                    NegativeFirstLevelThresholdValue = steelGXGUpStrainThresholdN * 0.8,
-                    NegativeSecondLevelThresholdValue = steelGXGUpStrainThresholdN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(steelGXGUpStrainThresholdP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(steelGXGUpStrainThresholdP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(steelGXGUpStrainThresholdN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(steelGXGUpStrainThresholdN * SecondLevelCoefficient, 1),
                 };
                 context.SteelLatticeStrainThresholdValues.Add(ThresholdValue);
             }
@@ -1169,10 +1178,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_SteelLatticeStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers15[i],
-                    PositiveFirstLevelThresholdValue = steelGXGDownStrainThresholdP * 0.8,
-                    PositiveSecondLevelThresholdValue = steelGXGDownStrainThresholdP * 1.0,
-                    NegativeFirstLevelThresholdValue = steelGXGDownStrainThresholdN * 0.8,
-                    NegativeSecondLevelThresholdValue = steelGXGDownStrainThresholdN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(steelGXGDownStrainThresholdP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(steelGXGDownStrainThresholdP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(steelGXGDownStrainThresholdN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(steelGXGDownStrainThresholdN * SecondLevelCoefficient, 1),
                 };
                 context.SteelLatticeStrainThresholdValues.Add(ThresholdValue);
             }
@@ -1184,17 +1193,18 @@ namespace GxjtBHMS.SqlServerDAL
             var concreteUpStrainThresholdN = -222.00;
             var concreteDownStrainThresholdP = 0;
             var concreteDownStrainThresholdN = -244.00;
-
+            var firstLevelCoefficient = 0.8;     //一级系数
+            var SecondLevelCoefficient = 1.0;    //二级系数
 
             for (int i = 0; i < tmpNumbers16.Length / 4; i++)
             {
                 var ThresholdValue = new ThresholdValue_ConcreteStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers16[i],
-                    PositiveFirstLevelThresholdValue = concreteUpStrainThresholdP * 0.8,
-                    PositiveSecondLevelThresholdValue = concreteUpStrainThresholdP * 1.0,
-                    NegativeFirstLevelThresholdValue = concreteUpStrainThresholdN * 0.8,
-                    NegativeSecondLevelThresholdValue = concreteUpStrainThresholdN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(concreteUpStrainThresholdP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(concreteUpStrainThresholdP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(concreteUpStrainThresholdN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(concreteUpStrainThresholdN * SecondLevelCoefficient, 1),
                 };
                 context.ConcreteStrainThresholdValues.Add(ThresholdValue);
             }
@@ -1203,10 +1213,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_ConcreteStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers16[i],
-                    PositiveFirstLevelThresholdValue = concreteDownStrainThresholdP * 0.8,
-                    PositiveSecondLevelThresholdValue = concreteDownStrainThresholdP * 1.0,
-                    NegativeFirstLevelThresholdValue = concreteDownStrainThresholdN * 0.8,
-                    NegativeSecondLevelThresholdValue = concreteDownStrainThresholdN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(concreteDownStrainThresholdP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(concreteDownStrainThresholdP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(concreteDownStrainThresholdN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(concreteDownStrainThresholdN * SecondLevelCoefficient, 1),
                 };
                 context.ConcreteStrainThresholdValues.Add(ThresholdValue);
             }
@@ -1215,10 +1225,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_ConcreteStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers16[i],
-                    PositiveFirstLevelThresholdValue = concreteUpStrainThresholdP * 0.8,
-                    PositiveSecondLevelThresholdValue = concreteUpStrainThresholdP * 1.0,
-                    NegativeFirstLevelThresholdValue = concreteUpStrainThresholdN * 0.8,
-                    NegativeSecondLevelThresholdValue = concreteUpStrainThresholdN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(concreteUpStrainThresholdP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(concreteUpStrainThresholdP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(concreteUpStrainThresholdN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(concreteUpStrainThresholdN * SecondLevelCoefficient, 1),
                 };
                 context.ConcreteStrainThresholdValues.Add(ThresholdValue);
             }
@@ -1227,10 +1237,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_ConcreteStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers16[i],
-                    PositiveFirstLevelThresholdValue = concreteDownStrainThresholdP * 0.8,
-                    PositiveSecondLevelThresholdValue = concreteDownStrainThresholdP * 1.0,
-                    NegativeFirstLevelThresholdValue = concreteDownStrainThresholdN * 0.8,
-                    NegativeSecondLevelThresholdValue = concreteDownStrainThresholdN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(concreteDownStrainThresholdP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(concreteDownStrainThresholdP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(concreteDownStrainThresholdN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(concreteDownStrainThresholdN * SecondLevelCoefficient, 1),
                 };
                 context.ConcreteStrainThresholdValues.Add(ThresholdValue);
             }
@@ -1240,10 +1250,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_ConcreteStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers17[i],
-                    PositiveFirstLevelThresholdValue = concreteUpStrainThresholdP * 0.8,
-                    PositiveSecondLevelThresholdValue = concreteUpStrainThresholdP * 1.0,
-                    NegativeFirstLevelThresholdValue = concreteUpStrainThresholdN * 0.8,
-                    NegativeSecondLevelThresholdValue = concreteUpStrainThresholdN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(concreteUpStrainThresholdP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(concreteUpStrainThresholdP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(concreteUpStrainThresholdN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(concreteUpStrainThresholdN * SecondLevelCoefficient, 1),
                 };
                 context.ConcreteStrainThresholdValues.Add(ThresholdValue);
             }
@@ -1252,10 +1262,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_ConcreteStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers17[i],
-                    PositiveFirstLevelThresholdValue = concreteDownStrainThresholdP * 0.8,
-                    PositiveSecondLevelThresholdValue = concreteDownStrainThresholdP * 1.0,
-                    NegativeFirstLevelThresholdValue = concreteDownStrainThresholdN * 0.8,
-                    NegativeSecondLevelThresholdValue = concreteDownStrainThresholdN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(concreteDownStrainThresholdP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(concreteDownStrainThresholdP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(concreteDownStrainThresholdN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(concreteDownStrainThresholdN * SecondLevelCoefficient, 1),
                 };
                 context.ConcreteStrainThresholdValues.Add(ThresholdValue);
             }
@@ -1264,10 +1274,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_ConcreteStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers17[i],
-                    PositiveFirstLevelThresholdValue = concreteUpStrainThresholdP * 0.8,
-                    PositiveSecondLevelThresholdValue = concreteUpStrainThresholdP * 1.0,
-                    NegativeFirstLevelThresholdValue = concreteUpStrainThresholdN * 0.8,
-                    NegativeSecondLevelThresholdValue = concreteUpStrainThresholdN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(concreteUpStrainThresholdP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(concreteUpStrainThresholdP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(concreteUpStrainThresholdN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(concreteUpStrainThresholdN * SecondLevelCoefficient, 1),
                 };
                 context.ConcreteStrainThresholdValues.Add(ThresholdValue);
             }
@@ -1276,10 +1286,10 @@ namespace GxjtBHMS.SqlServerDAL
                 var ThresholdValue = new ThresholdValue_ConcreteStrainThresholdValueTable
                 {
                     PointsNumber = tmpNumbers17[i],
-                    PositiveFirstLevelThresholdValue = concreteDownStrainThresholdP * 0.8,
-                    PositiveSecondLevelThresholdValue = concreteDownStrainThresholdP * 1.0,
-                    NegativeFirstLevelThresholdValue = concreteDownStrainThresholdN * 0.8,
-                    NegativeSecondLevelThresholdValue = concreteDownStrainThresholdN * 1.0,
+                    PositiveFirstLevelThresholdValue = Math.Round(concreteDownStrainThresholdP * firstLevelCoefficient, 1),
+                    PositiveSecondLevelThresholdValue = Math.Round(concreteDownStrainThresholdP * SecondLevelCoefficient, 1),
+                    NegativeFirstLevelThresholdValue = Math.Round(concreteDownStrainThresholdN * firstLevelCoefficient, 1),
+                    NegativeSecondLevelThresholdValue = Math.Round(concreteDownStrainThresholdN * SecondLevelCoefficient, 1),
                 };
                 context.ConcreteStrainThresholdValues.Add(ThresholdValue);
             }
