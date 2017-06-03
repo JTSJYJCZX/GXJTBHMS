@@ -2,6 +2,7 @@
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.Messaging.MonitoringDatas;
 using GxjtBHMS.Service.MonitoringDatasDownloadService;
+using GxjtBHMS.Services.ViewModels;
 using GxjtBHMS.Web.ExtensionMehtods.MonitoringDatas;
 using GxjtBHMS.Web.Models;
 using GxjtBHMS.Web.ViewModels.MonitoringDatas;
@@ -19,20 +20,21 @@ namespace GxjtBHMS.Web.Controllers
     /// </summary>
     public class MonitoringDatasController : BaseController
     {
-        IMonitoringTestTypeService _mtts;
         IMonitoringPointsNumberService _mpns;
         readonly IMonitoringPointsPositionService _mpps;
+        readonly IPreloadDataSet _preloadDataSet;
         IFileConverter _fileConverter;
         public MonitoringDatasController
-            (IMonitoringTestTypeService mtts,
+            (
             IMonitoringPointsNumberService mpns,
             IMonitoringPointsPositionService mpps,
+            IPreloadDataSet preloadDataSet,
            IFileConverter fileConverter
             )
         {
-            _mtts = mtts;
             _mpns = mpns;
             _mpps = mpps;
+            _preloadDataSet = preloadDataSet;
             _fileConverter = fileConverter;
         }
         [OutputCache(CacheProfile = "IndexProfile")]
@@ -99,12 +101,12 @@ namespace GxjtBHMS.Web.Controllers
         void SaveMonitoringTestTypesSelectListItemsToViewData(out int firstTestTypeId)
         {
             firstTestTypeId = 1;
-            var resp = _mtts.GetAllTestType();
-            if (resp.Datas.Any())
+            IEnumerable<SelectListItemModel> testTypeDatas = CacheHelper.GetCache(nameof(PreloadDataSetType.MornitoringTestType)) as IEnumerable<SelectListItemModel>;
+            if (testTypeDatas.Any())
             {
-                firstTestTypeId = Convert.ToInt32(resp.Datas.First().Id);
+                firstTestTypeId = Convert.ToInt32(testTypeDatas.First().Id);
             }
-            SaveSelectListItemCollectionToViewData(resp.Datas, WebConstants.MonitoringTestTypesKey, false);
+            SaveSelectListItemCollectionToViewData(testTypeDatas, WebConstants.MonitoringTestTypesKey, false);
         }
         /// <summary>
         /// 获得测点位置下拉列表

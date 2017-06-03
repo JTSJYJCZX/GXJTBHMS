@@ -3,6 +3,10 @@ using GxjtBHMS.Infrastructure.Configuration;
 using GxjtBHMS.Infrastructure.Email;
 using GxjtBHMS.Infrastructure.Logging;
 using GxjtBHMS.Service.AutoMapper;
+using GxjtBHMS.Service.Interfaces;
+using GxjtBHMS.Web.Models;
+using System;
+using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -41,6 +45,9 @@ namespace GxjtBHMS.Web
             //    "MonitoringPointsPositions",
             //    "MonitoringPointsNumbers"
             //});
+            IPreloadDataSet dataset = new GeneralPreloadDataSet(new NinjectControllerFactory().GetInstance< IMonitoringTestTypeService>());
+            IEnumerable<dynamic> mornitoringTestTypeDatas =  dataset.Load(PreloadDataSetType.MornitoringTestType);
+            CacheHelper.SetCache(nameof(PreloadDataSetType.MornitoringTestType), mornitoringTestTypeDatas);
         }
     }
 }

@@ -112,6 +112,9 @@ namespace GxjtBHMS.DependencyInjection
             _ninjectKernel.Bind<IAnomalousEventManagementService>().To<AnomalousEventQueryService>();
             _ninjectKernel.Bind<IAnomalousEventManagementQueryService>().To<AnomalousEventManagementQueryService>();
             _ninjectKernel.Bind<IAnomalousEventQueryDAL>().To<AnomalousQueryDAL>();
+
+            //预加载应用程序管理接口
+            _ninjectKernel.Bind<IPreloadDataSet>().To<GeneralPreloadDataSet>();
         }
     }
 }

@@ -95,6 +95,9 @@
     <Compile Include="Interfaces\AnomalousEventManagementQueryServiceInterfaces\IAnomalousEventManagementService .cs" />
     <Compile Include="Interfaces\AnomalousEventManagementQueryServiceInterfaces\IAnomalousEventManagementsFileSystemService.cs" />
     <Compile Include="Interfaces\AnomalousEventManagementQueryServiceInterfaces\IAnomalousEventManagementQueryService.cs" />
+    <Compile Include="Implementations\GeneralPreloadDataSet.cs" />
+    <Compile Include="Interfaces\IPreloadDataSet.cs" />
+    <Compile Include="Interfaces\PreloadDataSetType.cs" />
     <Compile Include="ManualInspectionSafetyAssessmentReportService\GetManualInspectionSafetyAssessmentReportService.cs" />
     <Compile Include="Messaging\AnomalousEventManagement\AnomalousEventManagementResponse.cs" />
     <Compile Include="Messaging\Home\SafetyAssessmentSuggestionSearchResponse .cs" />
