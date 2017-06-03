@@ -8,9 +8,9 @@
     <title>梧州西江四桥健康监测系统</title>
     @Styles.Render("~/Content/css")
     @Styles.Render("~/content/mask/chardinjs")
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/system")
     @Scripts.Render("~/bundles/mask/chardinjs")
@@ -144,8 +144,8 @@
                         <ul id="systemSetting3" class="nav nav-list collapse secondmenu" style="height: 0px;">
                             <li><a href=@Url.Action("DataQuery", "MonitoringDatas")><i class="glyphicon glyphicon-eye-open"></i>&nbsp数据查询</a></li>
                             <li><a href=@Url.Action("DataComparingQuery", "MonitoringDatasComparingQuery")><i class="glyphicon glyphicon-fullscreen"></i>&nbsp对比查询</a></li>
-                            <li><a href=@Url.Action("AlarmDatasManagementQuery", "AlarmDatasManagement")><i class="glyphicon glyphicon-edit"></i>&nbsp预警数据管理</a></li>
-                            <li class="adminli"><a href=@Url.Action("AnomalousEventManagement", "AnomalousEventManagement")><i class="glyphicon glyphicon-eye-open"></i>&nbsp异常事件管理</a></li>
+                            <li><a href=@Url.Action("AlarmDatasManagementQuery", "AlarmDatasManagement")><i class="glyphicon glyphicon-edit"></i>&nbsp预警数据查询</a></li>
+                            <li><a href=@Url.Action("AnomalousEventManagement", "AnomalousEventManagement")><i class="glyphicon glyphicon-eye-open"></i>&nbsp异常事件查询</a></li>
                         </ul>
                     </li>
 

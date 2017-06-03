@@ -26,8 +26,10 @@ namespace GxjtBHMS.Web.Controllers
             _fileConverter = fileConverter;
         }
 
+        [OutputCache(CacheProfile = "IndexProfile")]
         public ActionResult ManualInspectionSafetyAssessment()
         {
+            Response.Cache.SetOmitVaryStar(true);
             var GetManualInspectionSafetyAssessmentReportListService = new GetManualInspectionSafetyAssessmentReportService();
             var resp = GetManualInspectionSafetyAssessmentReportListService.GetTotalPages();
             if (resp.Succeed)
@@ -76,8 +78,10 @@ namespace GxjtBHMS.Web.Controllers
         /// </summary>
         /// <param name="conditions"></param>
         /// <returns></returns>
+        [OutputCache(CacheProfile = "SafetyAssessmentReportListProfile")]
         public ActionResult GetManualInspectionSafetyAssessmentReportList(SafetyAssessmentReportSearchBaseView conditions)
         {
+            Response.Cache.SetOmitVaryStar(true);
             var req = new ManualInspectionSafetyAssessmentSearchRequest()
             {
                 CurrentPageIndex = conditions.CurrentPageIndex,

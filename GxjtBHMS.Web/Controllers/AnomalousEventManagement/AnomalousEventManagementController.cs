@@ -31,9 +31,10 @@ namespace GxjtBHMS.Web.Controllers.AnomalousEventManagement
             _fileConverter = fileConverter;
         }
 
-
+        [OutputCache (CacheProfile = "PageIndexProfile")]
         public ActionResult AnomalousEventManagement(int currentPage = 1)
         {
+            Response.Cache.SetOmitVaryStar(true);
             var req = new DatasQueryResultRequestBase() { CurrentPageIndex = currentPage };
             var testTypes = _mtts.GetAllTestType().Datas.Count();
             long resultCount = 0;
@@ -112,8 +113,17 @@ namespace GxjtBHMS.Web.Controllers.AnomalousEventManagement
             return Json(selectListItemCollection, JsonRequestBehavior.AllowGet);
         }
 
+        [OutputCache (CacheProfile = "AnomalousEventsProfile")]
         public ActionResult GetAnomalousEvents(AnomalousEventsQueryConditionView condition)
         {
+            Response.Cache.SetOmitVaryStar(true);
+            if (condition.EndTime < condition.StartTime)
+            {
+                TempData[WebConstants.MessageColor] = StyleConstants.RedColor;
+                TempData[WebConstants.Message] = "开始时间不能晚于结束时间！";              
+                return PartialView("NoAnomalousEventManagementContentPartial");
+            }
+            
             var req = new AnomalousEventsQueryRequest()
             {
                 CurrentPageIndex = condition.CurrentPageIndex,
@@ -170,6 +180,10 @@ namespace GxjtBHMS.Web.Controllers.AnomalousEventManagement
         /// <returns></returns>
         public ActionResult AnomalousEventsDownloadSearchResult(AnomalousEventsQueryConditionView condition)
         {
+            if (condition.EndTime < condition.StartTime)
+            {
+                return Content("<span style='color:red'>开始时间不能晚于结束时间</span>");
+            }
             var req = new AnomalousEventsQueryRequest()
             {
                 CurrentPageIndex = condition.CurrentPageIndex,

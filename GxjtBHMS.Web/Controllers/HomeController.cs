@@ -22,11 +22,10 @@ namespace GxjtBHMS.Web.Controllers
             _mtts = mtts;
             _anomalousEventManagementService = anomalousEventManagementService;
         }
-
-
-
+        [OutputCache(CacheProfile = "IndexProfile")]
         public ActionResult Index()
         {
+            Response.Cache.SetOmitVaryStar(true);
             ViewData[WebConstants.UserNickNameKey] = Session[WebConstants.UserNickNameKey].ToString();
             return View();
         }
@@ -35,22 +34,6 @@ namespace GxjtBHMS.Web.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "我们是交通设计院";
-
-            return View();
-        }
-
-        /// <summary>
-        /// 仅仅做推送数据测试
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult StrainDataPushing()
-        {
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
 
             return View();
         }
@@ -124,9 +107,10 @@ namespace GxjtBHMS.Web.Controllers
         {
             var req = new DatasQueryResultRequestBase()
             {
-                StartTime = DateTime.Now.Date,
+                StartTime = DateTime.Now.AddDays(-1),
+                EndTime = DateTime.Now
             };
-            DateTime AbnormalEventSearchTime=DateTime.Now.Date;
+            //DateTime AbnormalEventSearchTime=DateTime.Now.Date;
             var GetAbnormalEventResult = _anomalousEventManagementService.GetAnomalousEventByTime(req);
 
 

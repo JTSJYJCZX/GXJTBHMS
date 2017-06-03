@@ -10,8 +10,10 @@ namespace GxjtBHMS.Web.Controllers.SafetyPreWarning
 {
     public class SafetyPreWarningController : BaseController
     {
+        [OutputCache(CacheProfile = "IndexProfile")]
         public ActionResult SafetyPreWarning()
         {
+            Response.Cache.SetOmitVaryStar(true);
             return View();
         }
 
@@ -31,8 +33,10 @@ namespace GxjtBHMS.Web.Controllers.SafetyPreWarning
             return LastReportTime;
         }
 
+        [OutputCache (CacheProfile = "SafetyWarningDetailProfile")]
         public ActionResult GetSafetyWarningDetail(QuerySafetyPreWarningConditonView conditons)
         {
+            Response.Cache.SetOmitVaryStar(true);
             int i = 0;
             var source = GetSafetyWarningDetailResultBy(conditons);  
             var resultView = new SafetyPreWarningModels();

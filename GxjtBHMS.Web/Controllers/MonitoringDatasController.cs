@@ -2,6 +2,9 @@
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.Messaging.MonitoringDatas;
 using GxjtBHMS.Service.MonitoringDatasDownloadService;
+using GxjtBHMS.Service.ViewModels.MonitoringDatas.MonitoringPointsNumber;
+using GxjtBHMS.Service.ViewModels.MonitoringDatas.MonitoringPointsPosition;
+using GxjtBHMS.Services.ViewModels;
 using GxjtBHMS.Web.ExtensionMehtods.MonitoringDatas;
 using GxjtBHMS.Web.Models;
 using GxjtBHMS.Web.ViewModels.MonitoringDatas;
@@ -19,29 +22,35 @@ namespace GxjtBHMS.Web.Controllers
     /// </summary>
     public class MonitoringDatasController : BaseController
     {
-        IMonitoringTestTypeService _mtts;
-        IMonitoringPointsNumberService _mpns;
+        readonly IMonitoringPointsNumberService _mpns;
         readonly IMonitoringPointsPositionService _mpps;
-        IFileConverter _fileConverter;
+        readonly IPreloadDataSet _preloadDataSet;
+        readonly IFileConverter _fileConverter;
         public MonitoringDatasController
-            (IMonitoringTestTypeService mtts,
+            (
             IMonitoringPointsNumberService mpns,
             IMonitoringPointsPositionService mpps,
-           IFileConverter fileConverter
+            IPreloadDataSet preloadDataSet,
+            IFileConverter fileConverter
             )
         {
-            _mtts = mtts;
             _mpns = mpns;
             _mpps = mpps;
+            _preloadDataSet = preloadDataSet;
             _fileConverter = fileConverter;
         }
+
+        [OutputCache(CacheProfile = "IndexProfile")]
         public ActionResult DataQuery()
         {
+            Response.Cache.SetOmitVaryStar(true);
             return View();
         }
 
+        [OutputCache(CacheProfile = "MonitoringDatasQueryProfile")]
         public ActionResult Query(MornitoringDataSearchBarBaseView conditions)
         {
+            Response.Cache.SetOmitVaryStar(true);
             if (conditions.EndTime < conditions.StartTime)
             {
                 return Content("<span style='color:red'>开始时间不能晚于结束时间</span>");
@@ -61,9 +70,12 @@ namespace GxjtBHMS.Web.Controllers
             }
             return Content("<span style='color:red'>无记录</span>");
         }
+
         //获取曲线图数据
+        [OutputCache(CacheProfile = "MonitoringDatasQueryProfile")]
         public ActionResult GetChartDatas(MornitoringDataSearchBarBaseView conditions)
         {
+            Response.Cache.SetOmitVaryStar(true);
             var resp = new ChartDatasResponse();
             var req = new GetChartDatasRequest
             {
@@ -87,19 +99,21 @@ namespace GxjtBHMS.Web.Controllers
             SaveMonitoringPointsNumberSelectListItemsToViewData(tmpMornitoringPointsPositionId);
             return PartialView("DataQuerySearchPartial");
         }
+
         /// <summary>
         /// 获得测试类型下拉列表
         /// </summary>
         void SaveMonitoringTestTypesSelectListItemsToViewData(out int firstTestTypeId)
         {
             firstTestTypeId = 1;
-            var resp = _mtts.GetAllTestType();
-            if (resp.Datas.Any())
+            IEnumerable<SelectListItemModel> testTypeDatas = CacheHelper.GetCache(nameof(PreloadDataSetType.MornitoringTestType)) as IEnumerable<SelectListItemModel>;
+            if (testTypeDatas.Any())
             {
-                firstTestTypeId = Convert.ToInt32(resp.Datas.First().Id);
+                firstTestTypeId = Convert.ToInt32(testTypeDatas.First().Id);
             }
-            SaveSelectListItemCollectionToViewData(resp.Datas, WebConstants.MonitoringTestTypesKey, false);
+            SaveSelectListItemCollectionToViewData(testTypeDatas, WebConstants.MonitoringTestTypesKey, false);
         }
+
         /// <summary>
         /// 获得测点位置下拉列表
         /// </summary>
@@ -113,6 +127,7 @@ namespace GxjtBHMS.Web.Controllers
             }
             SaveSelectListItemCollectionToViewData(resp.Datas, WebConstants.MonitoringPointsPositionKey, false);
         }
+
         /// <summary>
         /// 获得测点编号下拉列表
         /// </summary>
@@ -122,20 +137,16 @@ namespace GxjtBHMS.Web.Controllers
             SaveSelectListItemCollectionToViewData(resp.Datas, WebConstants.MonitoringPointsNumberKey, false);
         }
 
-
-
         public ActionResult GetMonitoringPointsNumbersByPointsPositions(int pointsPositions = 0)
         {
             IList<SelectListItem> selectListItemCollection = new List<SelectListItem>();
 
             var resp = _mpns.GetMonitoringPointsNumberByPointsPositionId(pointsPositions);
 
-            if (resp.Succeed)
-            {
-                selectListItemCollection = resp
-                    .Datas
-                    .ConvertToSelectListItemCollection();
-            }
+            IEnumerable<MonitoringPointsNumberViewModel> monitoringPointsNumberDatas = CacheHelper.GetCache(nameof(PreloadDataSetType.MonitoringPointsNumberType)) as IEnumerable<MonitoringPointsNumberViewModel>;
+
+            selectListItemCollection = monitoringPointsNumberDatas.Where(m => m.PointsPositionId == pointsPositions)
+                .ConvertToSelectListItemCollection();
 
             return Json(selectListItemCollection, JsonRequestBehavior.AllowGet);
         }
@@ -145,14 +156,9 @@ namespace GxjtBHMS.Web.Controllers
         {
             IList<SelectListItem> selectListItemCollection = new List<SelectListItem>();
 
-            var resp = _mpps.GetMonitoringPointsPositionsByTestTypeId(testTypeId);
+            IEnumerable<MonitoringPointsPositionViewModel> monitoringPointsPositionsDatas = CacheHelper.GetCache(nameof(PreloadDataSetType.MonitoringPointsPositionType)) as IEnumerable<MonitoringPointsPositionViewModel>;
 
-            if (resp.Succeed)
-            {
-                selectListItemCollection = resp
-                    .Datas
-                    .ConvertToSelectListItemCollection();
-            }
+            selectListItemCollection = monitoringPointsPositionsDatas.Where(m => m.TestTypeId == testTypeId).ConvertToSelectListItemCollection();
 
             return Json(selectListItemCollection, JsonRequestBehavior.AllowGet);
         }
@@ -197,7 +203,7 @@ namespace GxjtBHMS.Web.Controllers
                 StartTime = conditions.StartTime,
                 EndTime = conditions.EndTime,
                 PointsPositionId = conditions.MornitoringPointsPositionId,
-                TestTypeId=conditions.MornitoringTestTypeId
+                TestTypeId = conditions.MornitoringTestTypeId
             };
             string downLoadpath = Server.MapPath(StyleConstants.MonitoringDatasDownloadPath);
             var resp = eigenvalueDownloadService.DownloadTxt(req, downLoadpath);
@@ -234,29 +240,5 @@ namespace GxjtBHMS.Web.Controllers
                 }
             }
         }
-
-        //public void OriginCode(string guid, int pointsPositionId,string dataType)
-        //{
-        //    object obj = CacheHelper.GetCache(guid);
-        //    if (obj == null)
-        //    {
-        //        throw new ApplicationException("guid invalid");
-        //    }
-        //    var ms = _fileConverter.GetStream(obj);
-        //    string preFileName = GetDownloadPreFileNameByTestTypeId(pointsPositionId,dataType);
-        //    Response.AddHeader("Content-Disposition", string.Format("attachment; filename={0}.xls", preFileName));
-        //    Response.BinaryWrite(ms.ToArray());
-        //    ms.Close();
-        //    ms.Dispose();
-        //    CacheHelper.RemoveAllCache(guid);
-        //}
-
-        //string GetDownloadPreFileNameByTestTypeId(int pointsPositionId, string dataType)
-        //{
-        //    return  _mpps.CreateDownloadFileMixedName(pointsPositionId,dataType) ;
-        //}
-
-
-
     }
 }

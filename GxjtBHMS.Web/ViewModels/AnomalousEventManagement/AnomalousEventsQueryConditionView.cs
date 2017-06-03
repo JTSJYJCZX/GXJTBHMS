@@ -8,6 +8,8 @@ namespace GxjtBHMS.Web.ViewModels.AnomalousEventManagement
         public AnomalousEventsQueryConditionView()
         {
             CurrentPageIndex = WebConstants.FirstPageIndex;
+            StartTime = DateTime.Now.AddDays(-1);
+            EndTime = DateTime.Now;
         }
         public int CurrentPageIndex { get; set; }
         public DateTime StartTime { get; set; }

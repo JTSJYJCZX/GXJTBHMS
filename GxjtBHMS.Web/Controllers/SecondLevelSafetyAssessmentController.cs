@@ -24,8 +24,10 @@ namespace GxjtBHMS.Web.Controllers
             _fileConverter = fileConverter;
         }
 
+        [OutputCache(CacheProfile = "IndexProfile")]
         public ActionResult SecondLevelSafetyAssessment()
         {
+            Response.Cache.SetOmitVaryStar(true);
             var GetSecondLevelSafetyAssessmentReportListService = new GetSecondLevelSafetyAssessmentReportService();
             var resp = GetSecondLevelSafetyAssessmentReportListService.GetTotalPages();
             if (resp.Succeed)
@@ -74,8 +76,10 @@ namespace GxjtBHMS.Web.Controllers
         /// </summary>
         /// <param name="conditions"></param>
         /// <returns></returns>
+        [OutputCache(CacheProfile = "SafetyAssessmentReportListProfile")]
         public ActionResult GetSecondLevelSafetyAssessmentReportList(SafetyAssessmentReportSearchBaseView conditions)
         {
+            Response.Cache.SetOmitVaryStar(true);
             var req = new SecondLevelSafetyAssessmentSearchRequest()
             {
                 CurrentPageIndex = conditions.CurrentPageIndex,

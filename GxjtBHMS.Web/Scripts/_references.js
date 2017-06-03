@@ -11,6 +11,7 @@
 /// <reference path="bootstrap.min.js" />
 /// <reference path="bootstrap-select.min.js" />
 /// <reference path="chardinjs.min.js" />
+/// <reference path="customajaxsetup.js" />
 /// <reference path="datacomparingquery-searchcontentpartial-website.js" />
 /// <reference path="datacomparingquerysearchpartial.website.js" />
 /// <reference path="dataquery-searchcontentpartial-website.js" />

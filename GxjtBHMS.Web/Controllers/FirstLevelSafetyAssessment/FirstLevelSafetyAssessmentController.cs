@@ -21,8 +21,10 @@ namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
             _reportDownloadFile = reportDownloadFile;
             _fileConverter = new WordFileConvert();
         }
+        [OutputCache(CacheProfile = "IndexProfile")]
         public ActionResult FirstLevelSafetyAssessment()
         {
+            Response.Cache.SetOmitVaryStar(true);
             var GetFirstLevelSafetyAssessmentReportListService = new GetFirstLevelSafetyAssessmentReportService();
             var resp = GetFirstLevelSafetyAssessmentReportListService.GetTotalPages();
             if (resp.Succeed)
@@ -43,8 +45,10 @@ namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
             return PartialView("GetTimeSearchPartial");
         }
 
+        [OutputCache(CacheProfile = "SafetyAssessmentReportListProfile")]
         public ActionResult GetFirstLevelSafetyAssessmentReportList(SafetyAssessmentReportSearchBaseView conditions)
         {
+            Response.Cache.SetOmitVaryStar(true);
             var req = new FirstLevelSafetyAssessmentSearchRequest()
             {
                 CurrentPageIndex = conditions.CurrentPageIndex,
