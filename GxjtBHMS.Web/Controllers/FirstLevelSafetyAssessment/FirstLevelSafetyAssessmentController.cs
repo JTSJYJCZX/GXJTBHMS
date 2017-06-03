@@ -21,6 +21,7 @@ namespace GxjtBHMS.Web.Controllers.FirstLevelSafetyAssessment
             _reportDownloadFile = reportDownloadFile;
             _fileConverter = new WordFileConvert();
         }
+        [OutputCache(CacheProfile = "IndexProfile")]
         public ActionResult FirstLevelSafetyAssessment()
         {
             var GetFirstLevelSafetyAssessmentReportListService = new GetFirstLevelSafetyAssessmentReportService();

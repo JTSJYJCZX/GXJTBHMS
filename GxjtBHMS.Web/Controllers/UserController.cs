@@ -22,7 +22,7 @@ namespace GxjtBHMS.Web.Controllers
             _userService = userService;
         }
 
-        [OutputCache(CacheProfile = LoginCacheProfile)]
+        [OutputCache(CacheProfile = "IndexProfile")]
         [ActionName(UserLoginActionName)]
         [AllowAnonymous]//允许匿名访问
         public ActionResult UserLogin(string returnUrl)

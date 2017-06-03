@@ -13,6 +13,7 @@ namespace GxjtBHMS.Web.Controllers.AbnormalThresholdValue
     public class AbnormalThresholdValueSettingController : BaseController
     {
         // GET: Default
+        [OutputCache(CacheProfile = "IndexProfile")]
         public ActionResult AbnormalThresholdValueSetting()
         {
             return View();

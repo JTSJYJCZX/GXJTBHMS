@@ -35,13 +35,17 @@ namespace GxjtBHMS.Web.Controllers
             _mpps = mpps;
             _fileConverter = fileConverter;
         }
+        [OutputCache(CacheProfile = "IndexProfile")]
         public ActionResult DataQuery()
         {
+            Response.Cache.SetOmitVaryStar(true);
             return View();
         }
 
+        [OutputCache(CacheProfile = "MonitoringDatasQueryProfile")]
         public ActionResult Query(MornitoringDataSearchBarBaseView conditions)
         {
+            Response.Cache.SetOmitVaryStar(true);
             if (conditions.EndTime < conditions.StartTime)
             {
                 return Content("<span style='color:red'>开始时间不能晚于结束时间</span>");
@@ -62,8 +66,10 @@ namespace GxjtBHMS.Web.Controllers
             return Content("<span style='color:red'>无记录</span>");
         }
         //获取曲线图数据
+        [OutputCache(CacheProfile = "MonitoringDatasQueryProfile")]
         public ActionResult GetChartDatas(MornitoringDataSearchBarBaseView conditions)
         {
+            Response.Cache.SetOmitVaryStar(true);
             var resp = new ChartDatasResponse();
             var req = new GetChartDatasRequest
             {
@@ -197,7 +203,7 @@ namespace GxjtBHMS.Web.Controllers
                 StartTime = conditions.StartTime,
                 EndTime = conditions.EndTime,
                 PointsPositionId = conditions.MornitoringPointsPositionId,
-                TestTypeId=conditions.MornitoringTestTypeId
+                TestTypeId = conditions.MornitoringTestTypeId
             };
             string downLoadpath = Server.MapPath(StyleConstants.MonitoringDatasDownloadPath);
             var resp = eigenvalueDownloadService.DownloadTxt(req, downLoadpath);
