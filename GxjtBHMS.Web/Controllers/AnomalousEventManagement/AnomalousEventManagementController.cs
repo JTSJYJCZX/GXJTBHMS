@@ -115,6 +115,12 @@ namespace GxjtBHMS.Web.Controllers.AnomalousEventManagement
         [OutputCache (CacheProfile = "AnomalousEventsProfile")]
         public ActionResult GetAnomalousEvents(AnomalousEventsQueryConditionView condition)
         {
+            if (condition.EndTime < condition.StartTime)
+            {
+                TempData[WebConstants.MessageColor] = StyleConstants.RedColor;
+                TempData[WebConstants.Message] = "开始时间不能晚于结束时间！";              
+                return PartialView("NoAnomalousEventManagementContentPartial");
+            }
             var req = new AnomalousEventsQueryRequest()
             {
                 CurrentPageIndex = condition.CurrentPageIndex,
@@ -171,6 +177,10 @@ namespace GxjtBHMS.Web.Controllers.AnomalousEventManagement
         /// <returns></returns>
         public ActionResult AnomalousEventsDownloadSearchResult(AnomalousEventsQueryConditionView condition)
         {
+            if (condition.EndTime < condition.StartTime)
+            {
+                return Content("<span style='color:red'>开始时间不能晚于结束时间</span>");
+            }
             var req = new AnomalousEventsQueryRequest()
             {
                 CurrentPageIndex = condition.CurrentPageIndex,

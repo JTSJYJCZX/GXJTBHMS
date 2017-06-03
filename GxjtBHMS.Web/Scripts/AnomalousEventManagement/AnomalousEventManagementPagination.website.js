@@ -26,9 +26,9 @@ function accessResource(n) {
         },
         success: function (datas) {
             $("#AnomalousEventManagementSearchContent").html(datas);
-            if ("#message"==null) {
-                $("#dataQuery").css("display", "inline");
-            }
+            $("#dataQuery").css("display", "block");
+            $("#message").css("display", "none");
+
             //$("#paginationNav").css("display", "block");
         },
         error: function (result) {

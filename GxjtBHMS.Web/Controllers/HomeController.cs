@@ -106,9 +106,10 @@ namespace GxjtBHMS.Web.Controllers
         {
             var req = new DatasQueryResultRequestBase()
             {
-                StartTime = DateTime.Now.Date,
+                StartTime = DateTime.Now.AddDays(-1),
+                EndTime = DateTime.Now
             };
-            DateTime AbnormalEventSearchTime=DateTime.Now.Date;
+            //DateTime AbnormalEventSearchTime=DateTime.Now.Date;
             var GetAbnormalEventResult = _anomalousEventManagementService.GetAnomalousEventByTime(req);
 
 
