@@ -41,5 +41,10 @@
         /// 数据库连接字符串名称
         /// </summary>
         string DBConnectionName { get; }
+
+        /// <summary>
+        /// 实时数据读取间隔时间，单位为秒
+        /// </summary>
+        int RealReadDatasInterval { get; }
     }
 }

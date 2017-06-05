@@ -1,4 +1,5 @@
 ﻿using GxjtBHMS.DependencyInjection;
+using GxjtBHMS.Infrastructure.Configuration;
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.ViewModels.RealTimeDatasDisplay;
 using GxjtBHMS.Web.RealTimeMonitoringHub;
@@ -15,7 +16,7 @@ namespace GxjtBHMS.Web.Models
     {
         //Singleton instance
         readonly static Lazy<ConcreteStrainDatasTicker> _instance = new Lazy<ConcreteStrainDatasTicker>(() => new ConcreteStrainDatasTicker(GlobalHost.ConnectionManager.GetHubContext<ConcreteStrainDatasRealTimeMonitoringHub>().Clients));
-        readonly TimeSpan _updateInterval = TimeSpan.FromMilliseconds(1000);
+        readonly TimeSpan _updateInterval = TimeSpan.FromMilliseconds(ApplicationSettingsFactory.GetApplicationSettings().RealReadDatasInterval);
         volatile bool _updatingStockPrices = false;
         readonly object _updateStockPricesLock = new object();
         Timer _timer;
@@ -53,7 +54,7 @@ namespace GxjtBHMS.Web.Models
             Clients.All.RealTimeDisplayDatas(models);
         }
 
-        private IEnumerable<IncludeSectionWarningColorDataModel> GetRealDatasSource()
+        IEnumerable<IncludeSectionWarningColorDataModel> GetRealDatasSource()
         {
             var sectionIds = _realTimeDatasService.GetSectionIdsBy(3).ToArray();
             return _realTimeDatasService.GetWarningStrainDatasBy(sectionIds);
