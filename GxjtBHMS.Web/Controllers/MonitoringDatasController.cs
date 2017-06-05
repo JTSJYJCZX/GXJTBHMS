@@ -160,9 +160,12 @@ namespace GxjtBHMS.Web.Controllers
                 conditions.MornitoringPointsNumberIds = originalValueDownloadService.GetMonitoringPointsNumberIds(conditions.MornitoringPointsPositionId);
             }
             string downLoadpath = System.Web.HttpContext.Current.Server.MapPath(StyleConstants.MonitoringDatasDownloadPath);
+            if (System.IO.Directory.Exists(downLoadpath) == false)
+            {
+                System.IO.Directory.CreateDirectory(downLoadpath);
+            }
             var req = new DatasQueryResultRequestBase
             {
-
                 PointsNumberIds = conditions.MornitoringPointsNumberIds,
                 StartTime = conditions.StartTime,
                 EndTime = conditions.EndTime,
@@ -192,6 +195,10 @@ namespace GxjtBHMS.Web.Controllers
                 TestTypeId = conditions.MornitoringTestTypeId
             };
             string downLoadpath = Server.MapPath(StyleConstants.MonitoringDatasDownloadPath);
+            if (System.IO.Directory.Exists(downLoadpath) == false)
+            {
+                System.IO.Directory.CreateDirectory(downLoadpath);
+            }
             var resp = eigenvalueDownloadService.DownloadTxt(req, downLoadpath);
 
             DownloadFile(resp.FilePath);
