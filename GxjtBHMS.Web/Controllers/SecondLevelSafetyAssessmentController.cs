@@ -114,7 +114,6 @@ namespace GxjtBHMS.Web.Controllers
             }
             return PartialView("GetSecondLevelSafetyAssessmentListPartial", resultView);
         }
-
         /// <summary>
         /// 上传评估报告
         /// </summary>
@@ -130,11 +129,16 @@ namespace GxjtBHMS.Web.Controllers
             HttpPostedFile fileSave = files[0];//转换文件类型
             string ReportName = fileSave.FileName; //获得服务端上传文件的文件名
             string path = System.Web.HttpContext.Current.Server.MapPath(StyleConstants.SecondLevelSafetyAssessmentReportUploasPath);
+            if (System.IO.Directory.Exists(path)==false)
+            {
+                System.IO.Directory.CreateDirectory(path);
+            }
             string ReprotPath = string.Concat(path, ReportName);//拼接上传文件的保存路径
             var GetSecondLevelSafetyAssessmentReportListService = new GetSecondLevelSafetyAssessmentReportService();
             bool reportresp = GetSecondLevelSafetyAssessmentReportListService.GetReportNameIsNotHas(ReportName);
             if (reportresp == true)
             {
+
                 files[0].SaveAs(ReprotPath); //保存文件
                 DateTime uploadDate = DateTime.Now;
                 var req = new SecondLevelSafetyAssementReportUploadRequest()
