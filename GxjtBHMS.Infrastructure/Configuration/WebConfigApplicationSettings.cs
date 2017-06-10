@@ -4,6 +4,22 @@ namespace GxjtBHMS.Infrastructure.Configuration
 {
     public class WebConfigApplicationSettings : IApplicationSettings
     {
+        int IApplicationSettings.RealReadDatasInterval
+        {
+            get
+            {
+                bool isSuccess;
+                int result;
+                isSuccess = int.TryParse(ConfigurationManager.AppSettings["AdminLoginId"], out result);
+                if (!isSuccess)
+                {
+                    result = 5000;
+                }
+                return result;
+            }
+
+        }
+
         string IApplicationSettings.AdminLoginId
         {
             get
@@ -66,7 +82,11 @@ namespace GxjtBHMS.Infrastructure.Configuration
             {
                 bool isSuccess;
                 int result;
-                isSuccess = int.TryParse(ConfigurationManager.AppSettings["NumberOfResultsPrePage"],out result);
+                isSuccess = int.TryParse(ConfigurationManager.AppSettings["NumberOfResultsPrePage"], out result);
+                if (!isSuccess)
+                {
+                    result = 10;
+                }
                 return result;
             }
         }

@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using GxjtBHMS.Service.ViewModels.RealTimeDatasDisplay;
 using System.Linq;
-using GxjtBHMS.Models;
 using GxjtBHMS.Models.RealTimeMonitoringDataTable;
 
 namespace GxjtBHMS.Service.Implementations

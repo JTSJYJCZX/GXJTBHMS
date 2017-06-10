@@ -1,4 +1,5 @@
 ﻿using GxjtBHMS.DependencyInjection;
+using GxjtBHMS.Infrastructure.Configuration;
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.ViewModels.RealTimeDatasDisplay;
 using GxjtBHMS.Web.RealTimeMonitoringHub;
@@ -15,7 +16,7 @@ namespace GxjtBHMS.Web.Models
     {
         //Singleton instance
         readonly static Lazy<DisplacementDatasTicker> _instance = new Lazy<DisplacementDatasTicker>(() => new DisplacementDatasTicker(GlobalHost.ConnectionManager.GetHubContext<DisplacementDatasRealTimeMonitoringHub>().Clients));
-        readonly TimeSpan _updateInterval = TimeSpan.FromMilliseconds(1000);
+        readonly TimeSpan _updateInterval = TimeSpan.FromMilliseconds(ApplicationSettingsFactory.GetApplicationSettings().RealReadDatasInterval);
         volatile bool _updatingStockPrices = false;
         readonly object _updateStockPricesLock = new object();
         Timer _timer;
