@@ -24,10 +24,12 @@ namespace GxjtBHMS.Web.Models
 
         SteelArchStrainDatasTicker(IHubConnectionContext<dynamic> clients)
         {
+          
             _realTimeDatasService = new NinjectControllerFactory().GetInstance<ISteelArchStrainRealTimeDatasService>();
             Clients = clients;
             //定时器
-            _timer = new Timer(UpdateStockPrices, null, _updateInterval, _updateInterval);
+            _timer = new Timer(UpdateStockPrices, null, 0, 5000);
+       
         }
 
         IHubConnectionContext<dynamic> Clients { get; set; }
@@ -43,8 +45,11 @@ namespace GxjtBHMS.Web.Models
                 if (!_updatingStockPrices)
                 {
                     _updatingStockPrices = true;
+                    
                     var models = GetRealDatasSource();
+                                
                     BroadcastStockPrice(models);
+                   
                     _updatingStockPrices = false;
                 }
             }
