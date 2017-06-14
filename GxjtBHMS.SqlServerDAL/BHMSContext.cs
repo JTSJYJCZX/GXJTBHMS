@@ -113,5 +113,15 @@ namespace GxjtBHMS.SqlServerDAL
         //异常事件
         public DbSet<AnomalousEventReasonTable> AnomalousEventReasons { get; set; }//异常事件原因
         public DbSet<AnomalousEvent_AnomalousEventTable> AnomalousEvent { get; set; }//异常事件
+
+        //基础（原始）数据下载
+        public DbSet<Download_CableForceTable> Download_CableForceTable { get; set; }
+        public DbSet<Download_ConcreteStrainTable> Download_ConcreteStrainTable { get; set; }
+        public DbSet<Download_DisplacementTable> Download_DisplacementTable { get; set; }
+        public DbSet<Download_HumidityTable> Download_HumidityTable { get; set; }
+        public DbSet<Download_SteelArchStrainTable> Download_SteelArchStrainTable { get; set; }
+        public DbSet<Download_SteelLatticeStrainTable> Download_SteelLatticeStrainTable { get; set; }
+        public DbSet<Download_TemperatureTable> Download_TemperatureTable { get; set; }
+        public DbSet<Download_WindLoadTable> Download_WindLoadTable { get; set; }
     }
 }

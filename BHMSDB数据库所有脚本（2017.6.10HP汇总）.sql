@@ -426,7 +426,10 @@ go
 
 
 -----------------------------------------------------------------------------------------
------------------------------原始数据转到特征值数据--------------------------------------
+-----------------------------基础数据转到特征值数据--------------------------------------
+-----------------------------基础数据转到特征值数据--------------------------------------
+-----------------------------基础数据转到特征值数据--------------------------------------
+-----------------------------基础数据转到特征值数据--------------------------------------
 -----------------------------------------------------------------------------------------
 
 
@@ -482,6 +485,11 @@ begin
 	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
 	insert into Eigenvalue_CableForceEigenvalueTable ("Max","Min",Average,"Time",PointsNumberId)
 		values(@max,@min,@average,@startTime,@pointsNumberId)
+	insert into Download_CableForceTable 
+		select CableForce,Frequency,Temperature,ThresholdGradeId,"Time",PointsNumberId 
+		from Basic_CableForceTable 
+		where PointsNumberId=@pointsNumberId and "Time"< @EndTime  ----------------------------------------复制基础数据到下载表格
+	delete Basic_CableForceTable where PointsNumberId=@pointsNumberId and "Time"< @EndTime
 end
 go
 
