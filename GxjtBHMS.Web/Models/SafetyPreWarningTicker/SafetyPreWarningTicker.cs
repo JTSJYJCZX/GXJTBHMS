@@ -16,9 +16,9 @@ namespace GxjtBHMS.Web.Models
     {
         //Singleton instance
         readonly static Lazy<SafetyPreWarningTicker> _instance = new Lazy<SafetyPreWarningTicker>(() => new SafetyPreWarningTicker(GlobalHost.ConnectionManager.GetHubContext<SafetyPreWarningHub>().Clients));
-        readonly TimeSpan _updateInterval = TimeSpan.FromMilliseconds(ApplicationSettingsFactory.GetApplicationSettings().RealReadDatasInterval);
-        volatile bool _updatingStockPrices;
-        readonly object _updateStockPricesLock = new object();
+        readonly int _updateInterval = ApplicationSettingsFactory.GetApplicationSettings().RealReadDatasInterval;
+        volatile bool _updatingSafetyPreWarning;
+        readonly object _updateSafetyPreWarningLock = new object();
         Timer _timer;
         ISafetyPreWarningRealTimePushService _sfpwrtp;
         SafetyPreWarningTicker(IHubConnectionContext<dynamic> clients)
@@ -26,7 +26,7 @@ namespace GxjtBHMS.Web.Models
             _sfpwrtp = new NinjectControllerFactory().GetInstance<ISafetyPreWarningRealTimePushService>();
             Clients = clients;
             //定时器
-            _timer = new Timer(UpdateStockPrices, null, _updateInterval, _updateInterval);
+            _timer = new Timer(UpdateSafetyPreWarning, null, 0, _updateInterval);
         }
 
         IHubConnectionContext<dynamic> Clients { get; set; }
@@ -35,35 +35,30 @@ namespace GxjtBHMS.Web.Models
         /// </summary>
         public static SafetyPreWarningTicker Instance { get { return _instance.Value; } }
 
-        void UpdateStockPrices(object state)
+        void UpdateSafetyPreWarning(object state)
         {
-            lock (_updateStockPricesLock)
+            lock (_updateSafetyPreWarningLock)
             {
-                if (!_updatingStockPrices)
+                if (!_updatingSafetyPreWarning)
                 {
-                    _updatingStockPrices = true;
+                    _updatingSafetyPreWarning = true;
                     var model = GetRealDatasSource();
-                    BroadcastStockPrice(model);
-                    _updatingStockPrices = false;
+                    BroadcastSafetyPreWarning(model);
+                    _updatingSafetyPreWarning = false;
                 }
             }
         }
 
-        void BroadcastStockPrice(AllSafetyPreWarningStateDataModel models)
+        void BroadcastSafetyPreWarning(AllSafetyPreWarningStateDataModel models)
         {
             Clients.All.SafetyWarningStateRealTimePushDatas(models);
         }
 
         private AllSafetyPreWarningStateDataModel GetRealDatasSource()
         {
-            var GetFirstLevelSafetyAssessmentReportListService = new GetFirstLevelSafetyAssessmentReportService();
-            var LastReportTime = GetFirstLevelSafetyAssessmentReportListService.GetFirstSafetyAssessmentResult().FirstSafetyAssessmentReportTime_DateTime;
-            var req = new GetSafetyWarningDetailRequest
-            {
-                StartTime = LastReportTime,
-                EndTime = DateTime.Now
-            };
-            return _sfpwrtp.GetSafetyPreWarningRealTimePushModel(req);
+            return _sfpwrtp.GetSafetyPreWarningRealTimePushModel();
+
+
         }
 
         internal AllSafetyPreWarningStateDataModel GetInitDatas()

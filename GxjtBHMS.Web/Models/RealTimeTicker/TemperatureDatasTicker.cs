@@ -16,9 +16,9 @@ namespace GxjtBHMS.Web.Models
     {
         //Singleton instance
         readonly static Lazy<TemperatureDatasTicker> _instance = new Lazy<TemperatureDatasTicker>(() => new TemperatureDatasTicker(GlobalHost.ConnectionManager.GetHubContext<TemperatureDatasRealTimeMonitoringHub>().Clients));
-        readonly TimeSpan _updateInterval = TimeSpan.FromMilliseconds(ApplicationSettingsFactory.GetApplicationSettings().RealReadDatasInterval);
-        volatile bool _updatingStockPrices = false;
-        readonly object _updateStockPricesLock = new object();
+        readonly int _updateInterval = ApplicationSettingsFactory.GetApplicationSettings().RealReadDatasInterval;
+        volatile bool _updatingTemperatureDatas = false;
+        readonly object _updateTemperatureDatasLock = new object();
         Timer _timer;
         ITemperatureRealTimeDatasService _realTimeDatasService;
         TemperatureDatasTicker(IHubConnectionContext<dynamic> clients)
@@ -26,7 +26,7 @@ namespace GxjtBHMS.Web.Models
             _realTimeDatasService = new NinjectControllerFactory().GetInstance<ITemperatureRealTimeDatasService>();
             Clients = clients;
             //定时器
-            _timer = new Timer(UpdateStockPrices, null, 0, 5000);
+            _timer = new Timer(UpdateTemperatureDatas, null, 0, _updateInterval);
         }
 
         IHubConnectionContext<dynamic> Clients { get; set; }
@@ -35,21 +35,21 @@ namespace GxjtBHMS.Web.Models
         /// </summary>
         public static TemperatureDatasTicker Instance { get { return _instance.Value; } }
 
-        void UpdateStockPrices(object state)
+        void UpdateTemperatureDatas(object state)
         {
-            lock (_updateStockPricesLock)
+            lock (_updateTemperatureDatasLock)
             {
-                if (!_updatingStockPrices)
+                if (!_updatingTemperatureDatas)
                 {
-                    _updatingStockPrices = true;
+                    _updatingTemperatureDatas = true;
                     var models = GetRealDatasSource();
-                    BroadcastStockPrice(models);
-                    _updatingStockPrices = false;
+                    BroadcastTemperatureDatas(models);
+                    _updatingTemperatureDatas = false;
                 }
             }
         }
 
-        void BroadcastStockPrice(IEnumerable<IncludeSectionWarningColorDataModel> models)
+        void BroadcastTemperatureDatas(IEnumerable<IncludeSectionWarningColorDataModel> models)
         {
             Clients.All.RealTimeDisplayDatas(models);
         }

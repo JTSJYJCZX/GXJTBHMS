@@ -5,7 +5,6 @@ using GxjtBHMS.Service.Implementations;
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.SqlServerDAL;
 using Ninject;
-using GxjtBHMS.Models;
 using GxjtBHMS.IDAL.OriginalValueDownLoad;
 using GxjtBHMS.SqlServerDAL.MonitoringDatasDAL;
 using GxjtBHMS.SqlServerDAL.ThresholdValueDatasDAL;
@@ -13,8 +12,6 @@ using GxjtBHMS.Models.ThresholdValueSetting;
 using GxjtBHMS.Service.Interfaces.MonitoringDatasQueryServiceInerfaces;
 using GxjtBHMS.SqlServerDAL.AbnormalThresholdValueSettingDAL;
 using GxjtBHMS.SqlServerDAL.SafetyPreWarningDAL;
-using GxjtBHMS.IDAL.SafetyPreWarning;
-using GxjtBHMS.SqlServerDAL.SafetyPreWarningRealTimePushDAL;
 using GxjtBHMS.SqlServerDAL.FirstLevelSafetyAssessmentReportDAL;
 using GxjtBHMS.Service.Interfaces.AlarmDatasQueryServiceInerfaces;
 using GxjtBHMS.Service.Implementations.AlarmDatasManagement;
@@ -82,11 +79,11 @@ namespace GxjtBHMS.Service
             _ninjectKernel.Bind<ISafetyPreWarningDetailDAL<SafetyPreWarning_TemperatureTable>>().To<SafetyPreWarning_TemperatureTableDAL>();
             _ninjectKernel.Bind<ISafetyPreWarningDetailDAL<SafetyPreWarning_WindLoadTable>>().To<SafetyPreWarning_WindLoadTableDAL>();
 
-            //安全预警Hub推送DAL注入
-            _ninjectKernel.Bind<ISafetyPreWarningRealTimePushDAL<SafetyPreWarning_CableForceTable>>().To<CableForce_SafetyPreWarningRealTimePushDAL>();
-            _ninjectKernel.Bind<ISafetyPreWarningRealTimePushDAL<SafetyPreWarning_DisplacementTable>>().To<Displacement_SafetyPreWarningRealTimePushDAL>();
-            _ninjectKernel.Bind<ISafetyPreWarningRealTimePushDAL<SafetyPreWarning_WindLoadTable>>().To<WindLoad_SafetyPreWarningRealTimePushDAL>();
-            _ninjectKernel.Bind<ISafetyPreWarningRealTimePushDAL<SafetyPreWarning_TemperatureTable>>().To<Temperature_SafetyPreWarningRealTimePushDAL>();
+            ////安全预警Hub推送DAL注入
+            //_ninjectKernel.Bind<ISafetyPreWarningRealTimePushDAL<SafetyPreWarning_CableForceTable>>().To<CableForce_SafetyPreWarningRealTimePushDAL>();
+            //_ninjectKernel.Bind<ISafetyPreWarningRealTimePushDAL<SafetyPreWarning_DisplacementTable>>().To<Displacement_SafetyPreWarningRealTimePushDAL>();
+            //_ninjectKernel.Bind<ISafetyPreWarningRealTimePushDAL<SafetyPreWarning_WindLoadTable>>().To<WindLoad_SafetyPreWarningRealTimePushDAL>();
+            //_ninjectKernel.Bind<ISafetyPreWarningRealTimePushDAL<SafetyPreWarning_TemperatureTable>>().To<Temperature_SafetyPreWarningRealTimePushDAL>();
 
 
 

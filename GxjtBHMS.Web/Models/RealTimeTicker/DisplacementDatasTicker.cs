@@ -16,9 +16,9 @@ namespace GxjtBHMS.Web.Models
     {
         //Singleton instance
         readonly static Lazy<DisplacementDatasTicker> _instance = new Lazy<DisplacementDatasTicker>(() => new DisplacementDatasTicker(GlobalHost.ConnectionManager.GetHubContext<DisplacementDatasRealTimeMonitoringHub>().Clients));
-        readonly TimeSpan _updateInterval = TimeSpan.FromMilliseconds(ApplicationSettingsFactory.GetApplicationSettings().RealReadDatasInterval);
-        volatile bool _updatingStockPrices = false;
-        readonly object _updateStockPricesLock = new object();
+        readonly int _updateInterval = ApplicationSettingsFactory.GetApplicationSettings().RealReadDatasInterval;
+        volatile bool _updatingDisplacementDatas = false;
+        readonly object _updateDisplacementDatasLock = new object();
         Timer _timer;
         IDisplacementRealTimeDatasService _realTimeDatasService;
         DisplacementDatasTicker(IHubConnectionContext<dynamic> clients)
@@ -26,7 +26,7 @@ namespace GxjtBHMS.Web.Models
             _realTimeDatasService = new NinjectControllerFactory().GetInstance<IDisplacementRealTimeDatasService>();
             Clients = clients;
             //定时器
-            _timer = new Timer(UpdateStockPrices, null, 0, 5000);
+            _timer = new Timer(UpdateDisplacementDatas, null, 0, _updateInterval);
         }
 
         IHubConnectionContext<dynamic> Clients { get; set; }
@@ -35,21 +35,21 @@ namespace GxjtBHMS.Web.Models
         /// </summary>
         public static DisplacementDatasTicker Instance { get { return _instance.Value; } }
 
-        void UpdateStockPrices(object state)
+        void UpdateDisplacementDatas(object state)
         {
-            lock (_updateStockPricesLock)
+            lock (_updateDisplacementDatasLock)
             {
-                if (!_updatingStockPrices)
+                if (!_updatingDisplacementDatas)
                 {
-                    _updatingStockPrices = true;
+                    _updatingDisplacementDatas = true;
                     var models = GetRealDatasSource();
-                    BroadcastStockPrice(models);
-                    _updatingStockPrices = false;
+                    BroadcastDisplacementDatas(models);
+                    _updatingDisplacementDatas = false;
                 }
             }
         }
 
-        void BroadcastStockPrice(IEnumerable<IncludeSectionWarningColorDataModel> models)
+        void BroadcastDisplacementDatas(IEnumerable<IncludeSectionWarningColorDataModel> models)
         {
             Clients.All.RealTimeDisplayDatas(models);
         }

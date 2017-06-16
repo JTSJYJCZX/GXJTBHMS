@@ -16,9 +16,9 @@ namespace GxjtBHMS.Web.Models
     {
         //Singleton instance
         readonly static Lazy<CableForceDatasTicker> _instance = new Lazy<CableForceDatasTicker>(() => new CableForceDatasTicker(GlobalHost.ConnectionManager.GetHubContext<CableForceDatasRealTimeMonitoringHub>().Clients));
-        readonly TimeSpan _updateInterval = TimeSpan.FromMilliseconds(ApplicationSettingsFactory.GetApplicationSettings().RealReadDatasInterval);
-        volatile bool _updatingStockPrices = false;
-        readonly object _updateStockPricesLock = new object();
+        readonly int _updateInterval = ApplicationSettingsFactory.GetApplicationSettings().RealReadDatasInterval;
+        volatile bool _updatingCableForceDatas = false;
+        readonly object _updateCableForceDatasLock = new object();
         Timer _timer;
         ICableForceRealTimeDatasService _realTimeDatasService;
         CableForceDatasTicker(IHubConnectionContext<dynamic> clients)
@@ -26,7 +26,7 @@ namespace GxjtBHMS.Web.Models
             _realTimeDatasService = new NinjectControllerFactory().GetInstance<ICableForceRealTimeDatasService>();
             Clients = clients;
             //定时器
-            _timer = new Timer(UpdateStockPrices, null, 0, 5000);
+            _timer = new Timer(UpdateCableForceDatas, null, 0, _updateInterval);
         }
 
         IHubConnectionContext<dynamic> Clients { get; set; }
@@ -35,21 +35,21 @@ namespace GxjtBHMS.Web.Models
         /// </summary>
         public static CableForceDatasTicker Instance { get { return _instance.Value; } }
 
-        void UpdateStockPrices(object state)
+        void UpdateCableForceDatas(object state)
         {
-            lock (_updateStockPricesLock)
+            lock (_updateCableForceDatasLock)
             {
-                if (!_updatingStockPrices)
+                if (!_updatingCableForceDatas)
                 {
-                    _updatingStockPrices = true;
+                    _updatingCableForceDatas = true;
                     var models = GetRealDatasSource(); ;
-                    BroadcastStockPrice(models);
-                    _updatingStockPrices = false;
+                    BroadcastCableForceDatas(models);
+                    _updatingCableForceDatas = false;
                 }
             }
         }
 
-        void BroadcastStockPrice(IEnumerable<IncludeSectionWarningColorDataModel> models)
+        void BroadcastCableForceDatas(IEnumerable<IncludeSectionWarningColorDataModel> models)
         {
             Clients.All.RealTimeDisplayDatas(models);
         }

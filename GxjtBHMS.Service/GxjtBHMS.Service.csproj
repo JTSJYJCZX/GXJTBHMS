@@ -166,12 +166,7 @@
     <Compile Include="Messaging\ThresholdValueSetting\ThresholdValueWithoutNegativeModel.cs" />
     <Compile Include="Messaging\ThresholdValueSetting\ThresholdValueWithoutNegativeResponse.cs" />
     <Compile Include="SafetyPreWarningQueryService\SafetyPreWarningQueryServiceBase.cs" />
-    <Compile Include="SafetyPreWarningRealTimeHubService\CableForce_SafetyPreWarningRealTimePushService.cs" />
-    <Compile Include="SafetyPreWarningRealTimeHubService\Displacement_SafetyPreWarningRealTimePushService.cs" />
-    <Compile Include="SafetyPreWarningRealTimeHubService\GetOneTypeSafetyPreWarningRealTimePushService.cs" />
     <Compile Include="SafetyPreWarningRealTimeHubService\SafetyPreWarningRealTimePushService.cs" />
-    <Compile Include="SafetyPreWarningRealTimeHubService\Temperature_SafetyPreWarningRealTimePushService.cs" />
-    <Compile Include="SafetyPreWarningRealTimeHubService\WindLoad_SafetyPreWarningRealTimePushService.cs" />
     <Compile Include="ServiceFactory\AlarmDatasManagementServiceFactory.cs" />
     <Compile Include="ExtensionMethods\AdminUser\UserServiceExtension.cs" />
     <Compile Include="ExtensionMethods\GetEnumDescription\EnumUnit.cs" />

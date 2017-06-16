@@ -426,467 +426,6 @@ go
 
 
 -----------------------------------------------------------------------------------------
------------------------------基础数据转到特征值数据--------------------------------------
------------------------------基础数据转到特征值数据--------------------------------------
------------------------------基础数据转到特征值数据--------------------------------------
------------------------------基础数据转到特征值数据--------------------------------------
------------------------------------------------------------------------------------------
-
-
--------------索力基础数据转到特征值数据表---------------------------------
-if(OBJECT_ID('tgr_Basic_EigenValue_CableForceTable','TR') is not null)
-drop trigger tgr_Basic_EigenValue_CableForceTable
-go
-create trigger tgr_Basic_EigenValue_CableForceTable
-on Basic_CableForceTable
-for insert
-as
-set nocount on
-declare @max float,@min float,@average int,@pointsNumberId int,@insertTime datetime,
-@preInsertTime datetime,@startTime datetime,@endTime datetime,
-@insertHourTime datetime,@preInsertHourTime datetime
-
-select @insertTime="Time" from inserted
-select @pointsNumberId=PointsNumberId from inserted
-select top 1 @preInsertTime = "Time" from(
-	select top 2 "Time" from Basic_CableForceTable where PointsNumberId=@pointsNumberId order by "Time" desc ) as a
-	order by a.Time  
-
-select @insertHourTime=dateadd(ms,-datepart(ms,@insertTime),dateadd(ss,-datepart(ss,@insertTime),dateadd(mi,-datepart(mi,@insertTime),@insertTime)))
-select @preInsertHourTime=dateadd(ms,-datepart(ms,@preInsertTime),dateadd(ss,-datepart(ss,@preInsertTime),dateadd(mi,-datepart(mi,@preInsertTime),@preInsertTime)))
-
-if ((select count(*) from Basic_CableForceTable where PointsNumberId=@pointsNumberId)=1)
-begin
-	return
-end
-
-if datediff(hh,@preInsertHourTime,@insertHourTime)=1
-begin
-    set @endTime=@insertHourTime
-	select @startTime=dateadd(hh,-1,@endTime)
-	select @max=MAX(CableForce) from Basic_CableForceTable 
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	select @min=MIN(CableForce) from Basic_CableForceTable 
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	select @average=AVG(CableForce) from Basic_CableForceTable 
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	insert into Eigenvalue_CableForceEigenvalueTable ("Max","Min",Average,"Time",PointsNumberId)
-		values(@max,@min,@average,@startTime,@pointsNumberId)
-end
-if datediff(hh,@preInsertHourTime,@insertHourTime)>1
-begin
-    set @startTime=@preInsertHourTime
-	select @endTime=dateadd(hh,1,@preInsertHourTime)
-	select @max=MAX(CableForce) from Basic_CableForceTable 
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	select @min=MIN(CableForce) from Basic_CableForceTable 
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	select @average=AVG(CableForce) from Basic_CableForceTable 
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	insert into Eigenvalue_CableForceEigenvalueTable ("Max","Min",Average,"Time",PointsNumberId)
-		values(@max,@min,@average,@startTime,@pointsNumberId)
-	insert into Download_CableForceTable 
-		select CableForce,Frequency,Temperature,ThresholdGradeId,"Time",PointsNumberId 
-		from Basic_CableForceTable 
-		where PointsNumberId=@pointsNumberId and "Time"< @EndTime  ----------------------------------------复制基础数据到下载表格
-	delete Basic_CableForceTable where PointsNumberId=@pointsNumberId and "Time"< @EndTime
-end
-go
-
-
--------------------位移基础数据转到特征值数据表------------------------------------
-if(OBJECT_ID('tgr_Basic_EigenValue_DisplacementTable','TR') is not null)
-drop trigger tgr_Basic_EigenValue_DisplacementTable
-go
-create trigger tgr_Basic_EigenValue_DisplacementTable
-on Basic_DisplacementTable
-for insert
-as
-set nocount on
-declare @max float,@min float,@average int,@pointsNumberId int,@insertTime datetime,
-@preInsertTime datetime,@startTime datetime,@endTime datetime,
-@insertHourTime datetime,@preInsertHourTime datetime
-
-select @insertTime="Time" from inserted
-select @pointsNumberId=PointsNumberId from inserted
-select top 1 @preInsertTime = "Time" from(
-	select top 2 "Time" from Basic_DisplacementTable where PointsNumberId=@pointsNumberId order by "Time" desc ) as a
-	order by a.Time  
-
-select @insertHourTime=dateadd(ms,-datepart(ms,@insertTime),dateadd(ss,-datepart(ss,@insertTime),dateadd(mi,-datepart(mi,@insertTime),@insertTime)))
-select @preInsertHourTime=dateadd(ms,-datepart(ms,@preInsertTime),dateadd(ss,-datepart(ss,@preInsertTime),dateadd(mi,-datepart(mi,@preInsertTime),@preInsertTime)))
-
-if ((select count(*) from Basic_DisplacementTable where PointsNumberId=@pointsNumberId)=1)
-begin
-	return
-end
-
-if datediff(hh,@preInsertHourTime,@insertHourTime)=1
-begin
-    set @endTime=@insertHourTime
-	select @startTime=dateadd(hh,-1,@endTime)
-	select @max=MAX(Displacement) from Basic_DisplacementTable 
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	select @min=MIN(Displacement) from Basic_DisplacementTable 
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	select @average=AVG(Displacement) from Basic_DisplacementTable 
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	insert into Eigenvalue_DisplacementEigenvalueTable ("Max","Min",Average,"Time",PointsNumberId)
-		values(@max,@min,@average,@startTime,@pointsNumberId)
-end
-if datediff(hh,@preInsertHourTime,@insertHourTime)>1
-begin
-    set @startTime=@preInsertHourTime
-	select @endTime=dateadd(hh,1,@preInsertHourTime)
-	select @max=MAX(Displacement) from Basic_DisplacementTable 
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	select @min=MIN(Displacement) from Basic_DisplacementTable 
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	select @average=AVG(Displacement) from Basic_DisplacementTable 
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	insert into Eigenvalue_DisplacementEigenvalueTable ("Max","Min",Average,"Time",PointsNumberId)
-		values(@max,@min,@average,@startTime,@pointsNumberId)
-end
-go
-
-
-
-
-
---------------------------混凝土应变基础数据转到特征值数据表--------------------------------
-if(OBJECT_ID('tgr_Basic_EigenValue_ConcreteStrainTable','TR') is not null)           --改名字
-drop trigger tgr_Basic_EigenValue_ConcreteStrainTable              --改名字
-go
-create trigger tgr_Basic_EigenValue_ConcreteStrainTable     --改名字
-on Basic_ConcreteStrainTable   --替换基础数据表格
-for insert
-as
-set nocount on
-declare @max float,@min float,@average int,@pointsNumberId int,@insertTime datetime,
-@preInsertTime datetime,@startTime datetime,@endTime datetime,
-@insertHourTime datetime,@preInsertHourTime datetime
-
-select @insertTime="Time" from inserted
-select @pointsNumberId=PointsNumberId from inserted
-select top 1 @preInsertTime = "Time" from(
-	select top 2 "Time" from Basic_ConcreteStrainTable where PointsNumberId=@pointsNumberId order by "Time" desc ) as a
-	order by a.Time             --替换基础数据表格
-
-select @insertHourTime=dateadd(ms,-datepart(ms,@insertTime),dateadd(ss,-datepart(ss,@insertTime),dateadd(mi,-datepart(mi,@insertTime),@insertTime)))
-select @preInsertHourTime=dateadd(ms,-datepart(ms,@preInsertTime),dateadd(ss,-datepart(ss,@preInsertTime),dateadd(mi,-datepart(mi,@preInsertTime),@preInsertTime)))
-
-if ((select count(*) from Basic_ConcreteStrainTable where PointsNumberId=@pointsNumberId)=1)      --替换基础数据表格
-begin
-	return
-end
-
-if datediff(hh,@preInsertHourTime,@insertHourTime)=1
-begin
-    set @endTime=@insertHourTime
-	select @startTime=dateadd(hh,-1,@endTime)
-	select @max=MAX(Strain) from Basic_ConcreteStrainTable              --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	select @min=MIN(Strain) from Basic_ConcreteStrainTable                --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	select @average=AVG(Strain) from Basic_ConcreteStrainTable             --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	insert into Eigenvalue_ConcreteStrainEigenvalueTable ("Max","Min",Average,"Time",PointsNumberId)
-		values(@max,@min,@average,@startTime,@pointsNumberId)               --替换阈值表格
-end
-if datediff(hh,@preInsertHourTime,@insertHourTime)>1
-begin
-    set @startTime=@preInsertHourTime
-	select @endTime=dateadd(hh,1,@preInsertHourTime)
-	select @max=MAX(Strain) from Basic_ConcreteStrainTable                     --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	select @min=MIN(Strain) from Basic_ConcreteStrainTable                     --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	select @average=AVG(Strain) from Basic_ConcreteStrainTable                 --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	insert into Eigenvalue_ConcreteStrainEigenvalueTable ("Max","Min",Average,"Time",PointsNumberId)
-		values(@max,@min,@average,@startTime,@pointsNumberId)                       --替换阈值表格
-end
-go
-
-
--------------------------------湿度基础数据转到特征值数据表------------------------------------
-if(OBJECT_ID('tgr_Basic_EigenValue_HumidityTable','TR') is not null)           --改名字
-drop trigger tgr_Basic_EigenValue_HumidityTable              --改名字
-go
-create trigger tgr_Basic_EigenValue_HumidityTable     --改名字
-on Basic_HumidityTable   --替换基础数据表格
-for insert
-as
-set nocount on
-declare @max float,@min float,@average int,@pointsNumberId int,@insertTime datetime,
-@preInsertTime datetime,@startTime datetime,@endTime datetime,
-@insertHourTime datetime,@preInsertHourTime datetime
-
-select @insertTime="Time" from inserted
-select @pointsNumberId=PointsNumberId from inserted
-select top 1 @preInsertTime = "Time" from(
-	select top 2 "Time" from Basic_HumidityTable where PointsNumberId=@pointsNumberId order by "Time" desc ) as a
-	order by a.Time             --替换基础数据表格
-
-select @insertHourTime=dateadd(ms,-datepart(ms,@insertTime),dateadd(ss,-datepart(ss,@insertTime),dateadd(mi,-datepart(mi,@insertTime),@insertTime)))
-select @preInsertHourTime=dateadd(ms,-datepart(ms,@preInsertTime),dateadd(ss,-datepart(ss,@preInsertTime),dateadd(mi,-datepart(mi,@preInsertTime),@preInsertTime)))
-
-if ((select count(*) from Basic_HumidityTable where PointsNumberId=@pointsNumberId)=1)      --替换基础数据表格
-begin
-	return
-end
-
-if datediff(hh,@preInsertHourTime,@insertHourTime)=1
-begin
-    set @endTime=@insertHourTime
-	select @startTime=dateadd(hh,-1,@endTime)
-	select @max=MAX(Humidity) from Basic_HumidityTable              --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	select @min=MIN(Humidity) from Basic_HumidityTable                --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	select @average=AVG(Humidity) from Basic_HumidityTable             --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	insert into Eigenvalue_HumidityEigenvalueTable ("Max","Min",Average,"Time",PointsNumberId)
-		values(@max,@min,@average,@startTime,@pointsNumberId)               --替换阈值表格
-end
-if datediff(hh,@preInsertHourTime,@insertHourTime)>1
-begin
-    set @startTime=@preInsertHourTime
-	select @endTime=dateadd(hh,1,@preInsertHourTime)
-	select @max=MAX(Humidity) from Basic_HumidityTable                     --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	select @min=MIN(Humidity) from Basic_HumidityTable                     --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	select @average=AVG(Humidity) from Basic_HumidityTable                 --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	insert into Eigenvalue_HumidityEigenvalueTable ("Max","Min",Average,"Time",PointsNumberId)
-		values(@max,@min,@average,@startTime,@pointsNumberId)                       --替换阈值表格
-end
-go
-
------------------拱箱拱应变基础数据转到特征值数据表--------------------------------------
-if(OBJECT_ID('tgr_Basic_EigenValue_SteelArchStrainTable','TR') is not null)           --改名字
-drop trigger tgr_Basic_EigenValue_SteelArchStrainTable              --改名字
-go
-create trigger tgr_Basic_EigenValue_SteelArchStrainTable     --改名字
-on Basic_SteelArchStrainTable   --替换基础数据表格
-for insert
-as
-set nocount on
-declare @max float,@min float,@average int,@pointsNumberId int,@insertTime datetime,
-@preInsertTime datetime,@startTime datetime,@endTime datetime,
-@insertHourTime datetime,@preInsertHourTime datetime
-
-select @insertTime="Time" from inserted
-select @pointsNumberId=PointsNumberId from inserted
-select top 1 @preInsertTime = "Time" from(
-	select top 2 "Time" from Basic_SteelArchStrainTable where PointsNumberId=@pointsNumberId order by "Time" desc ) as a
-	order by a.Time             --替换基础数据表格
-
-select @insertHourTime=dateadd(ms,-datepart(ms,@insertTime),dateadd(ss,-datepart(ss,@insertTime),dateadd(mi,-datepart(mi,@insertTime),@insertTime)))
-select @preInsertHourTime=dateadd(ms,-datepart(ms,@preInsertTime),dateadd(ss,-datepart(ss,@preInsertTime),dateadd(mi,-datepart(mi,@preInsertTime),@preInsertTime)))
-
-if ((select count(*) from Basic_SteelArchStrainTable where PointsNumberId=@pointsNumberId)=1)      --替换基础数据表格
-begin
-	return
-end
-
-if datediff(hh,@preInsertHourTime,@insertHourTime)=1
-begin
-    set @endTime=@insertHourTime
-	select @startTime=dateadd(hh,-1,@endTime)
-	select @max=MAX(Strain) from Basic_SteelArchStrainTable              --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	select @min=MIN(Strain) from Basic_SteelArchStrainTable                --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	select @average=AVG(Strain) from Basic_SteelArchStrainTable             --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	insert into Eigenvalue_SteelArchStrainEigenvalueTable ("Max","Min",Average,"Time",PointsNumberId)
-		values(@max,@min,@average,@startTime,@pointsNumberId)               --替换阈值表格
-end
-if datediff(hh,@preInsertHourTime,@insertHourTime)>1
-begin
-    set @startTime=@preInsertHourTime
-	select @endTime=dateadd(hh,1,@preInsertHourTime)
-	select @max=MAX(Strain) from Basic_SteelArchStrainTable                     --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	select @min=MIN(Strain) from Basic_SteelArchStrainTable                     --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	select @average=AVG(Strain) from Basic_SteelArchStrainTable                 --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	insert into Eigenvalue_SteelArchStrainEigenvalueTable ("Max","Min",Average,"Time",PointsNumberId)
-		values(@max,@min,@average,@startTime,@pointsNumberId)                       --替换阈值表格
-end
-go
-
-
------------------------钢格构应变基础数据转到特征值数据表----------------------------------------
-if(OBJECT_ID('tgr_Basic_EigenValue_SteelLatticeStrainTable','TR') is not null)           --改名字
-drop trigger tgr_Basic_EigenValue_SteelLatticeStrainTable              --改名字
-go
-create trigger tgr_Basic_EigenValue_SteelLatticeStrainTable     --改名字
-on Basic_SteelLatticeStrainTable   --替换基础数据表格
-for insert
-as
-set nocount on
-declare @max float,@min float,@average int,@pointsNumberId int,@insertTime datetime,
-@preInsertTime datetime,@startTime datetime,@endTime datetime,
-@insertHourTime datetime,@preInsertHourTime datetime
-
-select @insertTime="Time" from inserted
-select @pointsNumberId=PointsNumberId from inserted
-select top 1 @preInsertTime = "Time" from(
-	select top 2 "Time" from Basic_SteelLatticeStrainTable where PointsNumberId=@pointsNumberId order by "Time" desc ) as a
-	order by a.Time             --替换基础数据表格
-
-select @insertHourTime=dateadd(ms,-datepart(ms,@insertTime),dateadd(ss,-datepart(ss,@insertTime),dateadd(mi,-datepart(mi,@insertTime),@insertTime)))
-select @preInsertHourTime=dateadd(ms,-datepart(ms,@preInsertTime),dateadd(ss,-datepart(ss,@preInsertTime),dateadd(mi,-datepart(mi,@preInsertTime),@preInsertTime)))
-
-if ((select count(*) from Basic_SteelLatticeStrainTable where PointsNumberId=@pointsNumberId)=1)      --替换基础数据表格
-begin
-	return
-end
-
-if datediff(hh,@preInsertHourTime,@insertHourTime)=1
-begin
-    set @endTime=@insertHourTime
-	select @startTime=dateadd(hh,-1,@endTime)
-	select @max=MAX(Strain) from Basic_SteelLatticeStrainTable              --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	select @min=MIN(Strain) from Basic_SteelLatticeStrainTable                --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	select @average=AVG(Strain) from Basic_SteelLatticeStrainTable             --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	insert into Eigenvalue_SteelLatticeStrainEigenvalueTable ("Max","Min",Average,"Time",PointsNumberId)
-		values(@max,@min,@average,@startTime,@pointsNumberId)               --替换阈值表格
-end
-if datediff(hh,@preInsertHourTime,@insertHourTime)>1
-begin
-    set @startTime=@preInsertHourTime
-	select @endTime=dateadd(hh,1,@preInsertHourTime)
-	select @max=MAX(Strain) from Basic_SteelLatticeStrainTable                     --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	select @min=MIN(Strain) from Basic_SteelLatticeStrainTable                     --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	select @average=AVG(Strain) from Basic_SteelLatticeStrainTable                 --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	insert into Eigenvalue_SteelLatticeStrainEigenvalueTable ("Max","Min",Average,"Time",PointsNumberId)
-		values(@max,@min,@average,@startTime,@pointsNumberId)                       --替换阈值表格
-end
-go
-
----------------------温度基础数据转到特征值数据表-------------------------------
-if(OBJECT_ID('tgr_Basic_EigenValue_TemperatureTable','TR') is not null)           --改名字
-drop trigger tgr_Basic_EigenValue_TemperatureTable              --改名字
-go
-create trigger tgr_Basic_EigenValue_TemperatureTable     --改名字
-on Basic_TemperatureTable   --替换基础数据表格
-for insert
-as
-set nocount on
-declare @max float,@min float,@average int,@pointsNumberId int,@insertTime datetime,
-@preInsertTime datetime,@startTime datetime,@endTime datetime,
-@insertHourTime datetime,@preInsertHourTime datetime
-
-select @insertTime="Time" from inserted
-select @pointsNumberId=PointsNumberId from inserted
-select top 1 @preInsertTime = "Time" from(
-	select top 2 "Time" from Basic_TemperatureTable where PointsNumberId=@pointsNumberId order by "Time" desc ) as a
-	order by a.Time             --替换基础数据表格
-
-select @insertHourTime=dateadd(ms,-datepart(ms,@insertTime),dateadd(ss,-datepart(ss,@insertTime),dateadd(mi,-datepart(mi,@insertTime),@insertTime)))
-select @preInsertHourTime=dateadd(ms,-datepart(ms,@preInsertTime),dateadd(ss,-datepart(ss,@preInsertTime),dateadd(mi,-datepart(mi,@preInsertTime),@preInsertTime)))
-
-if ((select count(*) from Basic_TemperatureTable where PointsNumberId=@pointsNumberId)=1)      --替换基础数据表格
-begin
-	return
-end
-
-if datediff(hh,@preInsertHourTime,@insertHourTime)=1
-begin
-    set @endTime=@insertHourTime
-	select @startTime=dateadd(hh,-1,@endTime)
-	select @max=MAX(Temperature) from Basic_TemperatureTable              --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	select @min=MIN(Temperature) from Basic_TemperatureTable                --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	select @average=AVG(Temperature) from Basic_TemperatureTable             --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	insert into Eigenvalue_TemperatureEigenvalueTable ("Max","Min",Average,"Time",PointsNumberId)
-		values(@max,@min,@average,@startTime,@pointsNumberId)               --替换阈值表格
-end
-if datediff(hh,@preInsertHourTime,@insertHourTime)>1
-begin
-    set @startTime=@preInsertHourTime
-	select @endTime=dateadd(hh,1,@preInsertHourTime)
-	select @max=MAX(Temperature) from Basic_TemperatureTable                     --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	select @min=MIN(Temperature) from Basic_TemperatureTable                     --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	select @average=AVG(Temperature) from Basic_TemperatureTable                 --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	insert into Eigenvalue_TemperatureEigenvalueTable ("Max","Min",Average,"Time",PointsNumberId)
-		values(@max,@min,@average,@startTime,@pointsNumberId)                       --替换阈值表格
-end
-go
-
----------------------------------风速基础数据转到特征值数据表-------------------------------
-if(OBJECT_ID('tgr_Basic_EigenValue_WindLoadTable','TR') is not null)           --改名字
-drop trigger tgr_Basic_EigenValue_WindLoadTable              --改名字
-go
-create trigger tgr_Basic_EigenValue_WindLoadTable     --改名字
-on Basic_WindLoadTable   --替换基础数据表格
-for insert
-as
-set nocount on
-declare @max float,@min float,@average int,@pointsNumberId int,@insertTime datetime,
-@preInsertTime datetime,@startTime datetime,@endTime datetime,
-@insertHourTime datetime,@preInsertHourTime datetime
-
-select @insertTime="Time" from inserted
-select @pointsNumberId=PointsNumberId from inserted
-select top 1 @preInsertTime = "Time" from(
-	select top 2 "Time" from Basic_WindLoadTable where PointsNumberId=@pointsNumberId order by "Time" desc ) as a
-	order by a.Time             --替换基础数据表格
-
-select @insertHourTime=dateadd(ms,-datepart(ms,@insertTime),dateadd(ss,-datepart(ss,@insertTime),dateadd(mi,-datepart(mi,@insertTime),@insertTime)))
-select @preInsertHourTime=dateadd(ms,-datepart(ms,@preInsertTime),dateadd(ss,-datepart(ss,@preInsertTime),dateadd(mi,-datepart(mi,@preInsertTime),@preInsertTime)))
-
-if ((select count(*) from Basic_WindLoadTable where PointsNumberId=@pointsNumberId)=1)      --替换基础数据表格
-begin
-	return
-end
-
-if datediff(hh,@preInsertHourTime,@insertHourTime)=1
-begin
-    set @endTime=@insertHourTime
-	select @startTime=dateadd(hh,-1,@endTime)
-	select @max=MAX(WindSpeed) from Basic_WindLoadTable              --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	select @min=MIN(WindSpeed) from Basic_WindLoadTable                --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	select @average=AVG(WindSpeed) from Basic_WindLoadTable             --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	insert into Eigenvalue_WindLoadEigenvalueTable ("Max","Min",Average,"Time",PointsNumberId)
-		values(@max,@min,@average,@startTime,@pointsNumberId)               --替换阈值表格
-end
-if datediff(hh,@preInsertHourTime,@insertHourTime)>1
-begin
-    set @startTime=@preInsertHourTime
-	select @endTime=dateadd(hh,1,@preInsertHourTime)
-	select @max=MAX(WindSpeed) from Basic_WindLoadTable                     --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	select @min=MIN(WindSpeed) from Basic_WindLoadTable                     --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	select @average=AVG(WindSpeed) from Basic_WindLoadTable                 --替换测试类型和表格
-	where PointsNumberId=@pointsNumberId and "Time" >= @startTime and "Time"< @endTime
-	insert into Eigenvalue_WindLoadEigenvalueTable ("Max","Min",Average,"Time",PointsNumberId)
-		values(@max,@min,@average,@startTime,@pointsNumberId)                       --替换阈值表格
-end
-go
-
-
------------------------------------------------------------------------------------------
 -----------------------------原始数据转到预警数据----------------------------------------
 -----------------------------------------------------------------------------------------
 
@@ -2133,241 +1672,6 @@ end
 go
 
 
--------------------------------基础数据转到实时监测数据--------------------------------------
--------------------------------基础数据转到实时监测数据--------------------------------------
--------------------------------基础数据转到实时监测数据--------------------------------------
-
----------------索力--------------------------------------
---if(OBJECT_ID('tgr_Basic_CableForceToRealTime','TR') is not null)
---drop trigger tgr_Basic_CableForceToRealTime
---go
---create trigger tgr_Basic_CableForceToRealTime
---on Basic_CableForceTable
---for insert
---as
---set nocount on
---declare @CableForce float,@Frequency float,@Temperature float,@Time datetime,@PointsNumberId int,@ThresholdGradeId int
---select @CableForce=CableForce from inserted
---select @Frequency=Frequency from inserted
---select @Temperature=Temperature from inserted
---select @Time="Time" from inserted
---select @PointsNumberId=PointsNumberId from inserted
---select @ThresholdGradeId=ThresholdGradeId from inserted
-
---declare @TotalNumber int
---declare @MinId int
---select @TotalNumber=count(*) from RealTime_CableForceTable
---if @TotalNumber >=500
---begin
---   select @MinId=MIN(Id) from RealTime_CableForceTable
---   delete from RealTime_CableForceTable WHERE Id=@MinId
---end
-
---insert into RealTime_CableForceTable (CableForce,Frequency,Temperature,"Time",PointsNumberId,ThresholdGradeId)
---values(@CableForce,@Frequency,@Temperature,@Time,@PointsNumberId,@ThresholdGradeId)
---go
-
----------------钢拱肋应变--------------------------------------
---if(OBJECT_ID('tgr_Basic_SteelArchStrainTableToRealTime','TR') is not null)
---drop trigger tgr_Basic_SteelArchStrainTableToRealTime
---go
---create trigger tgr_Basic_SteelArchStrainTableToRealTime
---on Basic_SteelArchStrainTable
---for insert
---as
---set nocount on
---declare @strain float,@Temperature float,@Time datetime,@PointsNumberId int,@ThresholdGradeId int
---select @strain=Strain from inserted
---select @Temperature=Temperature from inserted
---select @Time="Time" from inserted
---select @PointsNumberId=PointsNumberId from inserted
---select @ThresholdGradeId=ThresholdGradeId from inserted
-
---declare @TotalNumber int
---declare @MinId int
---select @TotalNumber=count(*) from RealTime_SteelArchStrainTable
---if @TotalNumber >=500
---begin
---   select @MinId=MIN(Id) from RealTime_SteelArchStrainTable
---   delete from RealTime_SteelArchStrainTable WHERE Id=@MinId
---end
-
---insert into RealTime_SteelArchStrainTable(Strain,Temperature,"Time",PointsNumberId,ThresholdGradeId)
---values(@strain,@Temperature,@Time,@PointsNumberId,@ThresholdGradeId)
---go
-
----------------钢格构应变--------------------------------------
---if(OBJECT_ID('tgr_Basic_SteelLatticeStrainTableToRealTime','TR') is not null)
---drop trigger tgr_Basic_SteelLatticeStrainTableToRealTime
---go
---create trigger tgr_Basic_SteelLatticeStrainTableToRealTime
---on Basic_SteelLatticeStrainTable
---for insert
---as
---set nocount on
---declare @strain float,@Temperature float,@Time datetime,@PointsNumberId int,@ThresholdGradeId int
---select @strain=Strain from inserted
---select @Temperature=Temperature from inserted
---select @Time="Time" from inserted
---select @PointsNumberId=PointsNumberId from inserted
---select @ThresholdGradeId=ThresholdGradeId from inserted
-
---declare @TotalNumber int
---declare @MinId int
---select @TotalNumber=count(*) from RealTime_SteelLatticeStrainTable
---if @TotalNumber >=500
---begin
---   select @MinId=MIN(Id) from RealTime_SteelLatticeStrainTable
---   delete from RealTime_SteelLatticeStrainTable WHERE Id=@MinId
---end
-
---insert into RealTime_SteelLatticeStrainTable(Strain,Temperature,"Time",PointsNumberId,ThresholdGradeId)
---values(@strain,@Temperature,@Time,@PointsNumberId,@ThresholdGradeId)
---go
-
----------------混凝土应变--------------------------------------
---if(OBJECT_ID('tgr_Basic_ConcreteStrainTableToRealTime','TR') is not null)
---drop trigger tgr_Basic_ConcreteStrainTableToRealTime
---go
---create trigger tgr_Basic_ConcreteStrainTableToRealTime
---on Basic_ConcreteStrainTable
---for insert
---as
---set nocount on
---declare @strain float,@Temperature float,@Time datetime,@PointsNumberId int,@ThresholdGradeId int
---select @strain=Strain from inserted
---select @Temperature=Temperature from inserted
---select @Time="Time" from inserted
---select @PointsNumberId=PointsNumberId from inserted
---select @ThresholdGradeId=ThresholdGradeId from inserted
-
---declare @TotalNumber int
---declare @MinId int
---select @TotalNumber=count(*) from RealTime_ConcreteStrainTable
---if @TotalNumber >=500
---begin
---   select @MinId=MIN(Id) from RealTime_ConcreteStrainTable
---   delete from RealTime_ConcreteStrainTable WHERE Id=@MinId
---end
-
---insert into RealTime_ConcreteStrainTable(Strain,Temperature,"Time",PointsNumberId,ThresholdGradeId)
---values(@strain,@Temperature,@Time,@PointsNumberId,@ThresholdGradeId)
---go
-
----------------位移--------------------------------------
---if(OBJECT_ID('tgr_Basic_DisplacementTableToRealTime','TR') is not null)
---drop trigger tgr_Basic_DisplacementTableToRealTime
---go
---create trigger tgr_Basic_DisplacementTableToRealTime
---on Basic_DisplacementTable
---for insert
---as
---set nocount on
---declare @displacement float,@Time datetime,@PointsNumberId int,@ThresholdGradeId int
---select @displacement=Displacement from inserted
---select @Time="Time" from inserted
---select @PointsNumberId=PointsNumberId from inserted
---select @ThresholdGradeId=ThresholdGradeId from inserted
-
---declare @TotalNumber int
---declare @MinId int
---select @TotalNumber=count(*) from RealTime_DisplacementTable
---if @TotalNumber >=500
---begin
---   select @MinId=MIN(Id) from RealTime_DisplacementTable
---   delete from RealTime_DisplacementTable WHERE Id=@MinId
---end
-
---insert into RealTime_DisplacementTable(Displacement,"Time",PointsNumberId,ThresholdGradeId)
---values(@displacement,@Time,@PointsNumberId,@ThresholdGradeId)
---go
-
----------------温度--------------------------------------
---if(OBJECT_ID('tgr_Basic_TemperatureTableToRealTime','TR') is not null)
---drop trigger tgr_Basic_TemperatureTableToRealTime
---go
---create trigger tgr_Basic_TemperatureTableToRealTime
---on Basic_TemperatureTable
---for insert
---as
---set nocount on
---declare @temperature float,@Time datetime,@PointsNumberId int,@ThresholdGradeId int
---select @temperature=Temperature from inserted
---select @Time="Time" from inserted
---select @PointsNumberId=PointsNumberId from inserted
---select @ThresholdGradeId=ThresholdGradeId from inserted
-
---declare @TotalNumber int
---declare @MinId int
---select @TotalNumber=count(*) from RealTime_TemperatureTable
---if @TotalNumber >=500
---begin
---   select @MinId=MIN(Id) from RealTime_TemperatureTable
---   delete from RealTime_TemperatureTable WHERE Id=@MinId
---end
-
---insert into RealTime_TemperatureTable(Temperature,"Time",PointsNumberId,ThresholdGradeId)
---values(@temperature,@Time,@PointsNumberId,@ThresholdGradeId)
---go
-
----------------湿度--------------------------------------
---if(OBJECT_ID('tgr_Basic_HumidityTableToRealTime','TR') is not null)
---drop trigger tgr_Basic_HumidityTableToRealTime
---go
---create trigger tgr_Basic_HumidityTableToRealTime
---on Basic_HumidityTable
---for insert
---as
---set nocount on
---declare @humidity float,@Time datetime,@PointsNumberId int,@ThresholdGradeId int
---select @humidity=Humidity from inserted
---select @Time="Time" from inserted
---select @PointsNumberId=PointsNumberId from inserted
---select @ThresholdGradeId=ThresholdGradeId from inserted
-
---declare @TotalNumber int
---declare @MinId int
---select @TotalNumber=count(*) from RealTime_HumidityTable
---if @TotalNumber >=500
---begin
---   select @MinId=MIN(Id) from RealTime_HumidityTable
---   delete from RealTime_HumidityTable WHERE Id=@MinId
---end
-
---insert into RealTime_HumidityTable(Humidity,"Time",PointsNumberId,ThresholdGradeId)
---values(@humidity,@Time,@PointsNumberId,@ThresholdGradeId)
---go
-
----------------风速--------------------------------------
---if(OBJECT_ID('tgr_Basic_WindLoadTableToRealTime','TR') is not null)
---drop trigger tgr_Basic_WindLoadTableToRealTime
---go
---create trigger tgr_Basic_WindLoadTableToRealTime
---on Basic_WindLoadTable
---for insert
---as
---set nocount on
---declare @windSpeed float,@WindDirection float, @Time datetime,@PointsNumberId int,@ThresholdGradeId int
---select @windSpeed=WindSpeed from inserted
---select @WindDirection=WindDirection from inserted
---select @Time="Time" from inserted
---select @PointsNumberId=PointsNumberId from inserted
---select @ThresholdGradeId=ThresholdGradeId from inserted
-
---declare @TotalNumber int
---declare @MinId int
---select @TotalNumber=count(*) from RealTime_WindLoadTable
---if @TotalNumber >=500
---begin
---   select @MinId=MIN(Id) from RealTime_WindLoadTable
---   delete from RealTime_WindLoadTable WHERE Id=@MinId
---end
-
---insert into RealTime_WindLoadTable(WindSpeed,WindDirection,"Time",PointsNumberId,ThresholdGradeId)
---values(@windSpeed,@WindDirection,@Time,@PointsNumberId,@ThresholdGradeId)
---go
-
-
 -------------------------------------------------------------------
 ----------------------数据下载脚本---------------------------------------------------------数据下载脚本-----------------------------------
 ----------------------数据下载脚本---------------------------------------------------------数据下载脚本-----------------------------------
@@ -2426,7 +1730,7 @@ BEGIN
 	begin
     select Strain,Temperature,"Time",Name 
 	into temp 
-	from Basic_SteelArchStrainTable as Ba 
+	from Download_SteelArchStrainTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN1 and "Time" between @StartTime and @EndTime
@@ -2435,7 +1739,7 @@ if @MPN2>0
 	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name 
-	from Basic_SteelArchStrainTable as Ba 
+	from Download_SteelArchStrainTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN2 and "Time" between @StartTime and @EndTime
@@ -2444,7 +1748,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name 
-	from Basic_SteelArchStrainTable as Ba 
+	from Download_SteelArchStrainTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN3 and "Time" between @StartTime and @EndTime
@@ -2453,7 +1757,7 @@ if  @MPN3>0
  	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name 
-	from Basic_SteelArchStrainTable as Ba 
+	from Download_SteelArchStrainTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN4 and "Time" between @StartTime and @EndTime
@@ -2462,7 +1766,7 @@ if  @MPN3>0
  	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name 
-	from Basic_SteelArchStrainTable as Ba 
+	from Download_SteelArchStrainTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN5 and "Time" between @StartTime and @EndTime
@@ -2471,7 +1775,7 @@ if  @MPN3>0
  	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name 
-	from Basic_SteelArchStrainTable as Ba 
+	from Download_SteelArchStrainTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN6 and "Time" between @StartTime and @EndTime
@@ -2480,7 +1784,7 @@ if  @MPN3>0
  	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name 
-	from Basic_SteelArchStrainTable as Ba 
+	from Download_SteelArchStrainTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN7 and "Time" between @StartTime and @EndTime
@@ -2489,7 +1793,7 @@ if  @MPN3>0
  	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name 
-	from Basic_SteelArchStrainTable as Ba 
+	from Download_SteelArchStrainTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN8 and "Time" between @StartTime and @EndTime
@@ -2498,7 +1802,7 @@ if  @MPN3>0
  	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name 
-	from Basic_SteelArchStrainTable as Ba 
+	from Download_SteelArchStrainTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN9 and "Time" between @StartTime and @EndTime
@@ -2507,7 +1811,7 @@ if  @MPN3>0
  	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name 
-	from Basic_SteelArchStrainTable as Ba 
+	from Download_SteelArchStrainTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN10 and "Time" between @StartTime and @EndTime
@@ -2559,7 +1863,7 @@ BEGIN
 	begin
     select Strain,Temperature,"Time",Name 
 	into temp 
-	from Basic_SteelLatticeStrainTable as Ba         --- ********需要修改需要修改需要修改需要修改********
+	from Download_SteelLatticeStrainTable as Ba         --- ********需要修改需要修改需要修改需要修改********
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN1 and "Time" between @StartTime and @EndTime
@@ -2568,7 +1872,7 @@ if @MPN2>0
 	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name 
-	from Basic_SteelLatticeStrainTable as Ba 
+	from Download_SteelLatticeStrainTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN2 and "Time" between @StartTime and @EndTime
@@ -2577,7 +1881,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name 
-	from Basic_SteelLatticeStrainTable as Ba 
+	from Download_SteelLatticeStrainTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN3 and "Time" between @StartTime and @EndTime
@@ -2586,7 +1890,7 @@ if  @MPN3>0
  	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name 
-	from Basic_SteelLatticeStrainTable as Ba 
+	from Download_SteelLatticeStrainTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN4 and "Time" between @StartTime and @EndTime
@@ -2595,7 +1899,7 @@ if  @MPN3>0
  	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name 
-	from Basic_SteelLatticeStrainTable as BSAST 
+	from Download_SteelLatticeStrainTable as BSAST 
 	inner join MonitoringPointsNumbers as MPN 
 	on BSAST.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN5 and "Time" between @StartTime and @EndTime
@@ -2604,7 +1908,7 @@ if  @MPN3>0
  	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name 
-	from Basic_SteelLatticeStrainTable as BSAST 
+	from Download_SteelLatticeStrainTable as BSAST 
 	inner join MonitoringPointsNumbers as MPN 
 	on BSAST.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN6 and "Time" between @StartTime and @EndTime
@@ -2613,7 +1917,7 @@ if  @MPN3>0
  	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name 
-	from Basic_SteelLatticeStrainTable as BSAST 
+	from Download_SteelLatticeStrainTable as BSAST 
 	inner join MonitoringPointsNumbers as MPN 
 	on BSAST.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN7 and "Time" between @StartTime and @EndTime
@@ -2622,7 +1926,7 @@ if  @MPN3>0
  	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name 
-	from Basic_SteelLatticeStrainTable as BSAST 
+	from Download_SteelLatticeStrainTable as BSAST 
 	inner join MonitoringPointsNumbers as MPN 
 	on BSAST.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN8 and "Time" between @StartTime and @EndTime
@@ -2631,7 +1935,7 @@ if  @MPN9>0
  	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name 
-	from Basic_SteelLatticeStrainTable as BSAST 
+	from Download_SteelLatticeStrainTable as BSAST 
 	inner join MonitoringPointsNumbers as MPN 
 	on BSAST.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN9 and "Time" between @StartTime and @EndTime
@@ -2640,7 +1944,7 @@ if  @MPN10>0
  	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name 
-	from Basic_SteelLatticeStrainTable as BSAST 
+	from Download_SteelLatticeStrainTable as BSAST 
 	inner join MonitoringPointsNumbers as MPN 
 	on BSAST.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN10 and "Time" between @StartTime and @EndTime
@@ -2694,7 +1998,7 @@ BEGIN
 	begin
     select CableForce,Frequency,Temperature,"Time",Name 
 	into temp 
-	from Basic_CableForceTable as Ba 
+	from Download_CableForceTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN1 and "Time" between @StartTime and @EndTime
@@ -2703,7 +2007,7 @@ if @MPN2>0
 	begin
 	insert into temp 
 	select CableForce,Frequency,Temperature,"Time",Name 
-	from Basic_CableForceTable as Ba 
+	from Download_CableForceTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN2 and "Time" between @StartTime and @EndTime
@@ -2712,7 +2016,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select CableForce,Frequency,Temperature,"Time",Name 
-	from Basic_CableForceTable as Ba 
+	from Download_CableForceTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN3 and "Time" between @StartTime and @EndTime
@@ -2721,7 +2025,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select CableForce,Frequency,Temperature,"Time",Name 
-	from Basic_CableForceTable as Ba 
+	from Download_CableForceTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN4 and "Time" between @StartTime and @EndTime
@@ -2730,7 +2034,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select CableForce,Frequency,Temperature,"Time",Name 
-	from Basic_CableForceTable as Ba 
+	from Download_CableForceTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN5 and "Time" between @StartTime and @EndTime
@@ -2739,7 +2043,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select CableForce,Frequency,Temperature,"Time",Name 
-	from Basic_CableForceTable as Ba 
+	from Download_CableForceTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN6 and "Time" between @StartTime and @EndTime
@@ -2748,7 +2052,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select CableForce,Frequency,Temperature,"Time",Name 
-	from Basic_CableForceTable as Ba 
+	from Download_CableForceTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN7 and "Time" between @StartTime and @EndTime
@@ -2757,7 +2061,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select CableForce,Frequency,Temperature,"Time",Name 
-	from Basic_CableForceTable as Ba 
+	from Download_CableForceTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN8 and "Time" between @StartTime and @EndTime
@@ -2766,7 +2070,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select CableForce,Frequency,Temperature,"Time",Name 
-	from Basic_CableForceTable as Ba 
+	from Download_CableForceTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN9 and "Time" between @StartTime and @EndTime
@@ -2775,7 +2079,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select CableForce,Frequency,Temperature,"Time",Name 
-	from Basic_CableForceTable as Ba 
+	from Download_CableForceTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN10 and "Time" between @StartTime and @EndTime
@@ -2784,7 +2088,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select CableForce,Frequency,Temperature,"Time",Name 
-	from Basic_CableForceTable as Ba 
+	from Download_CableForceTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN11 and "Time" between @StartTime and @EndTime
@@ -2793,7 +2097,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select CableForce,Frequency,Temperature,"Time",Name 
-	from Basic_CableForceTable as Ba 
+	from Download_CableForceTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN12 and "Time" between @StartTime and @EndTime
@@ -2802,7 +2106,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select CableForce,Frequency,Temperature,"Time",Name 
-	from Basic_CableForceTable as Ba 
+	from Download_CableForceTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN13 and "Time" between @StartTime and @EndTime
@@ -2811,7 +2115,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select CableForce,Frequency,Temperature,"Time",Name 
-	from Basic_CableForceTable as Ba 
+	from Download_CableForceTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN14 and "Time" between @StartTime and @EndTime
@@ -2820,7 +2124,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select CableForce,Frequency,Temperature,"Time",Name 
-	from Basic_CableForceTable as Ba 
+	from Download_CableForceTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN15 and "Time" between @StartTime and @EndTime
@@ -2829,7 +2133,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select CableForce,Frequency,Temperature,"Time",Name 
-	from Basic_CableForceTable as Ba 
+	from Download_CableForceTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN16 and "Time" between @StartTime and @EndTime
@@ -2838,7 +2142,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select CableForce,Frequency,Temperature,"Time",Name 
-	from Basic_CableForceTable as Ba 
+	from Download_CableForceTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN17 and "Time" between @StartTime and @EndTime
@@ -2847,7 +2151,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select CableForce,Frequency,Temperature,"Time",Name 
-	from Basic_CableForceTable as Ba 
+	from Download_CableForceTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN18 and "Time" between @StartTime and @EndTime
@@ -2856,7 +2160,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select CableForce,Frequency,Temperature,"Time",Name 
-	from Basic_CableForceTable as Ba 
+	from Download_CableForceTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN19 and "Time" between @StartTime and @EndTime
@@ -2865,7 +2169,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select CableForce,Frequency,Temperature,"Time",Name 
-	from Basic_CableForceTable as Ba 
+	from Download_CableForceTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN20 and "Time" between @StartTime and @EndTime
@@ -2874,7 +2178,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select CableForce,Frequency,Temperature,"Time",Name 
-	from Basic_CableForceTable as Ba 
+	from Download_CableForceTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN21 and "Time" between @StartTime and @EndTime
@@ -2883,7 +2187,7 @@ if  @MPN22>0
 	begin
 	insert into temp 
 	select CableForce,Frequency,Temperature,"Time",Name 
-	from Basic_CableForceTable as Ba 
+	from Download_CableForceTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN22 and "Time" between @StartTime and @EndTime
@@ -2892,7 +2196,7 @@ if  @MPN23>0
 	begin
 	insert into temp 
 	select CableForce,Frequency,Temperature,"Time",Name 
-	from Basic_CableForceTable as Ba 
+	from Download_CableForceTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN23 and "Time" between @StartTime and @EndTime
@@ -2901,7 +2205,7 @@ if  @MPN24>0
 	begin
 	insert into temp 
 	select CableForce,Frequency,Temperature,"Time",Name 
-	from Basic_CableForceTable as Ba 
+	from Download_CableForceTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN24 and "Time" between @StartTime and @EndTime
@@ -2910,7 +2214,7 @@ if  @MPN25>0
 	begin
 	insert into temp 
 	select CableForce,Frequency,Temperature,"Time",Name 
-	from Basic_CableForceTable as Ba 
+	from Download_CableForceTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN25 and "Time" between @StartTime and @EndTime
@@ -2919,7 +2223,7 @@ if  @MPN26>0
 	begin
 	insert into temp 
 	select CableForce,Frequency,Temperature,"Time",Name 
-	from Basic_CableForceTable as Ba 
+	from Download_CableForceTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN26 and "Time" between @StartTime and @EndTime
@@ -2928,7 +2232,7 @@ if  @MPN27>0
 	begin
 	insert into temp 
 	select CableForce,Frequency,Temperature,"Time",Name 
-	from Basic_CableForceTable as Ba 
+	from Download_CableForceTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN27 and "Time" between @StartTime and @EndTime
@@ -2980,7 +2284,7 @@ BEGIN
 	begin
     select Humidity,"Time",Name 
 	into temp 
-	from Basic_HumidityTable as Ba         --- ********需要修改需要修改需要修改需要修改********
+	from Download_HumidityTable as Ba         --- ********需要修改需要修改需要修改需要修改********
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN1 and "Time" between @StartTime and @EndTime
@@ -2989,7 +2293,7 @@ if @MPN2>0
 	begin
 	insert into temp 
 	select Humidity,"Time",Name 
-	from Basic_HumidityTable as Ba 
+	from Download_HumidityTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN2 and "Time" between @StartTime and @EndTime
@@ -2998,7 +2302,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select Humidity,"Time",Name 
-	from Basic_HumidityTable as Ba 
+	from Download_HumidityTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN3 and "Time" between @StartTime and @EndTime
@@ -3007,7 +2311,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select Humidity,"Time",Name 
-	from Basic_HumidityTable as Ba 
+	from Download_HumidityTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN4 and "Time" between @StartTime and @EndTime
@@ -3016,7 +2320,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select Humidity,"Time",Name 
-	from Basic_HumidityTable as Ba 
+	from Download_HumidityTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN5 and "Time" between @StartTime and @EndTime
@@ -3025,7 +2329,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select Humidity,"Time",Name 
-	from Basic_HumidityTable as Ba 
+	from Download_HumidityTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN6 and "Time" between @StartTime and @EndTime
@@ -3034,7 +2338,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select Humidity,"Time",Name 
-	from Basic_HumidityTable as Ba 
+	from Download_HumidityTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN7 and "Time" between @StartTime and @EndTime
@@ -3043,7 +2347,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select Humidity,"Time",Name 
-	from Basic_HumidityTable as Ba 
+	from Download_HumidityTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN8 and "Time" between @StartTime and @EndTime
@@ -3052,7 +2356,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select Humidity,"Time",Name 
-	from Basic_HumidityTable as Ba 
+	from Download_HumidityTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN9 and "Time" between @StartTime and @EndTime
@@ -3061,7 +2365,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select Humidity,"Time",Name 
-	from Basic_HumidityTable as Ba 
+	from Download_HumidityTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN10 and "Time" between @StartTime and @EndTime
@@ -3113,7 +2417,7 @@ BEGIN
 	begin
     select Displacement,"Time",Name 
 	into temp 
-	from Basic_DisplacementTable as Ba         --- ********需要修改需要修改需要修改需要修改********
+	from Download_DisplacementTable as Ba         --- ********需要修改需要修改需要修改需要修改********
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN1 and "Time" between @StartTime and @EndTime
@@ -3122,7 +2426,7 @@ if @MPN2>0
 	begin
 	insert into temp 
 	select Displacement,"Time",Name 
-	from Basic_DisplacementTable as Ba 
+	from Download_DisplacementTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN2 and "Time" between @StartTime and @EndTime
@@ -3131,7 +2435,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select Displacement,"Time",Name 
-	from Basic_DisplacementTable as Ba 
+	from Download_DisplacementTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN3 and "Time" between @StartTime and @EndTime
@@ -3140,7 +2444,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select Displacement,"Time",Name 
-	from Basic_DisplacementTable as Ba 
+	from Download_DisplacementTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN4 and "Time" between @StartTime and @EndTime
@@ -3149,7 +2453,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select Displacement,"Time",Name 
-	from Basic_DisplacementTable as Ba 
+	from Download_DisplacementTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN5 and "Time" between @StartTime and @EndTime
@@ -3158,7 +2462,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select Displacement,"Time",Name 
-	from Basic_DisplacementTable as Ba 
+	from Download_DisplacementTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN6 and "Time" between @StartTime and @EndTime
@@ -3167,7 +2471,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select Displacement,"Time",Name 
-	from Basic_DisplacementTable as Ba 
+	from Download_DisplacementTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN7 and "Time" between @StartTime and @EndTime
@@ -3176,7 +2480,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select Displacement,"Time",Name 
-	from Basic_DisplacementTable as Ba 
+	from Download_DisplacementTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN8 and "Time" between @StartTime and @EndTime
@@ -3185,7 +2489,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select Displacement,"Time",Name 
-	from Basic_DisplacementTable as Ba 
+	from Download_DisplacementTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id  
 	where PointsNumberId=@MPN9 and "Time" between @StartTime and @EndTime
@@ -3194,7 +2498,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select Displacement,"Time",Name 
-	from Basic_DisplacementTable as Ba 
+	from Download_DisplacementTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN10 and "Time" between @StartTime and @EndTime
@@ -3203,7 +2507,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select Displacement,"Time",Name 
-	from Basic_DisplacementTable as Ba 
+	from Download_DisplacementTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN11 and "Time" between @StartTime and @EndTime
@@ -3212,7 +2516,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select Displacement,"Time",Name 
-	from Basic_DisplacementTable as Ba 
+	from Download_DisplacementTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN12 and "Time" between @StartTime and @EndTime
@@ -3221,7 +2525,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select Displacement,"Time",Name 
-	from Basic_DisplacementTable as Ba 
+	from Download_DisplacementTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN13 and "Time" between @StartTime and @EndTime
@@ -3230,7 +2534,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select Displacement,"Time",Name 
-	from Basic_DisplacementTable as Ba 
+	from Download_DisplacementTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN14 and "Time" between @StartTime and @EndTime
@@ -3239,7 +2543,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select Displacement,"Time",Name 
-	from Basic_DisplacementTable as Ba 
+	from Download_DisplacementTable as Ba 
 	inner join MonitoringPointsNumbers as MPN 
 	on Ba.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN15 and "Time" between @StartTime and @EndTime
@@ -3292,7 +2596,7 @@ BEGIN
 	begin
     select Temperature,"Time",Name 
 	into temp 
-	from Basic_TemperatureTable as BTT 
+	from Download_TemperatureTable as BTT 
 	inner join MonitoringPointsNumbers as MPN 
 	on BTT.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN1 and "Time" between @StartTime and @EndTime
@@ -3301,7 +2605,7 @@ if @MPN2>0
 	begin
 	insert into temp 
 	select Temperature,"Time",Name  
-	from Basic_TemperatureTable as BTT 
+	from Download_TemperatureTable as BTT 
 	inner join MonitoringPointsNumbers as MPN 
 	on BTT.PointsNumberId=MPN.Id
 	where PointsNumberId=@MPN2 and "Time" between @StartTime and @EndTime
@@ -3310,7 +2614,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select Temperature,"Time",Name  
-	from Basic_TemperatureTable as BTT 
+	from Download_TemperatureTable as BTT 
 	inner join MonitoringPointsNumbers as MPN 
 	on BTT.PointsNumberId=MPN.Id
 	where PointsNumberId=@MPN3 and "Time" between @StartTime and @EndTime
@@ -3319,7 +2623,7 @@ if  @MPN3>0
  	begin
 	insert into temp 
 	select Temperature,"Time",Name  
-	from Basic_TemperatureTable as BTT 
+	from Download_TemperatureTable as BTT 
 	inner join MonitoringPointsNumbers as MPN 
 	on BTT.PointsNumberId=MPN.Id
 	where PointsNumberId=@MPN4 and "Time" between @StartTime and @EndTime
@@ -3328,7 +2632,7 @@ if  @MPN3>0
  	begin
 	insert into temp 
 	select Temperature,"Time",Name  
-	from Basic_TemperatureTable as BTT 
+	from Download_TemperatureTable as BTT 
 	inner join MonitoringPointsNumbers as MPN 
 	on BTT.PointsNumberId=MPN.Id
 	where PointsNumberId=@MPN5 and "Time" between @StartTime and @EndTime
@@ -3337,7 +2641,7 @@ if  @MPN3>0
  	begin
 	insert into temp 
 	select Temperature,"Time",Name  
-	from Basic_TemperatureTable as BTT 
+	from Download_TemperatureTable as BTT 
 	inner join MonitoringPointsNumbers as MPN 
 	on BTT.PointsNumberId=MPN.Id
 	where PointsNumberId=@MPN6 and "Time" between @StartTime and @EndTime
@@ -3346,7 +2650,7 @@ if  @MPN3>0
  	begin
 	insert into temp 
 	select Temperature,"Time",Name  
-	from Basic_TemperatureTable as BTT 
+	from Download_TemperatureTable as BTT 
 	inner join MonitoringPointsNumbers as MPN 
 	on BTT.PointsNumberId=MPN.Id
 	where PointsNumberId=@MPN7 and "Time" between @StartTime and @EndTime
@@ -3355,7 +2659,7 @@ if  @MPN3>0
  	begin
 	insert into temp 
 	select Temperature,"Time",Name  
-	from Basic_TemperatureTable as BTT 
+	from Download_TemperatureTable as BTT 
 	inner join MonitoringPointsNumbers as MPN 
 	on BTT.PointsNumberId=MPN.Id
 	where PointsNumberId=@MPN8 and "Time" between @StartTime and @EndTime
@@ -3364,7 +2668,7 @@ if @MPN9>0
 	begin
 	insert into temp 
 	select Temperature,"Time",Name  
-	from Basic_TemperatureTable as BTT 
+	from Download_TemperatureTable as BTT 
 	inner join MonitoringPointsNumbers as MPN 
 	on BTT.PointsNumberId=MPN.Id
 	where PointsNumberId=@MPN9 and "Time" between @StartTime and @EndTime
@@ -3373,7 +2677,7 @@ if  @MPN10>0
 	begin
 	insert into temp 
 	select Temperature,"Time",Name  
-	from Basic_TemperatureTable as BTT 
+	from Download_TemperatureTable as BTT 
 	inner join MonitoringPointsNumbers as MPN 
 	on BTT.PointsNumberId=MPN.Id
 	where PointsNumberId=@MPN10 and "Time" between @StartTime and @EndTime
@@ -3382,7 +2686,7 @@ if  @MPN10>0
  	begin
 	insert into temp 
 	select Temperature,"Time",Name  
-	from Basic_TemperatureTable as BTT 
+	from Download_TemperatureTable as BTT 
 	inner join MonitoringPointsNumbers as MPN 
 	on BTT.PointsNumberId=MPN.Id
 	where PointsNumberId=@MPN11 and "Time" between @StartTime and @EndTime
@@ -3391,7 +2695,7 @@ if  @MPN10>0
  	begin
 	insert into temp 
 	select Temperature,"Time",Name  
-	from Basic_TemperatureTable as BTT 
+	from Download_TemperatureTable as BTT 
 	inner join MonitoringPointsNumbers as MPN 
 	on BTT.PointsNumberId=MPN.Id
 	where PointsNumberId=@MPN12 and "Time" between @StartTime and @EndTime
@@ -3400,7 +2704,7 @@ if  @MPN10>0
  	begin
 	insert into temp 
 	select Temperature,"Time",Name  
-	from Basic_TemperatureTable as BTT 
+	from Download_TemperatureTable as BTT 
 	inner join MonitoringPointsNumbers as MPN 
 	on BTT.PointsNumberId=MPN.Id
 	where PointsNumberId=@MPN13 and "Time" between @StartTime and @EndTime
@@ -3409,7 +2713,7 @@ if  @MPN10>0
  	begin
 	insert into temp 
 	select Temperature,"Time",Name  
-	from Basic_TemperatureTable as BTT 
+	from Download_TemperatureTable as BTT 
 	inner join MonitoringPointsNumbers as MPN 
 	on BTT.PointsNumberId=MPN.Id
 	where PointsNumberId=@MPN14 and "Time" between @StartTime and @EndTime
@@ -3418,10 +2722,10 @@ if  @MPN10>0
  	begin
 	insert into temp 
 	select Temperature,"Time",Name  
-	from Basic_TemperatureTable as BTT 
+	from Download_TemperatureTable as BTT 
 	inner join MonitoringPointsNumbers as MPN 
 	on BTT.PointsNumberId=MPN.Id
-	where PointsNumberId=@MPN8 and "Time" between @StartTime and @EndTime
+	where PointsNumberId=@MPN15 and "Time" between @StartTime and @EndTime
 	end
 set @TxtPath=@filePath_name+@DataType+'_'+@Date+'_'+@fileNameRandId+'.txt' ---拼接文件输出地址
 --------打开 'xp_cmdshell'模块-----
@@ -3470,7 +2774,7 @@ BEGIN
 	begin
     select WindSpeed,"Time",Name 
 	into temp 
-	from Basic_WindLoadTable as BWT 
+	from Download_WindLoadTable as BWT 
 	inner join MonitoringPointsNumbers as MPN 
 	on BWT.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN1 and "Time" between @StartTime and @EndTime
@@ -3479,7 +2783,7 @@ if @MPN2>0
 	begin
 	insert into temp 
 	select WindSpeed,"Time",Name  
-	from Basic_WindLoadTable as BWT 
+	from Download_WindLoadTable as BWT 
 	inner join MonitoringPointsNumbers as MPN 
 	on BWT.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN2 and "Time" between @StartTime and @EndTime
@@ -3488,7 +2792,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select WindSpeed,"Time",Name  
-	from Basic_WindLoadTable as BWT 
+	from Download_WindLoadTable as BWT 
 	inner join MonitoringPointsNumbers as MPN 
 	on BWT.PointsNumberId=MPN.Id  
 	where PointsNumberId=@MPN3 and "Time" between @StartTime and @EndTime
@@ -3497,7 +2801,7 @@ if  @MPN3>0
  	begin
 	insert into temp 
 	select WindSpeed,"Time",Name  
-	from Basic_WindLoadTable as BWT 
+	from Download_WindLoadTable as BWT 
 	inner join MonitoringPointsNumbers as MPN 
 	on BWT.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN4 and "Time" between @StartTime and @EndTime
@@ -3506,7 +2810,7 @@ if  @MPN3>0
  	begin
 	insert into temp 
 	select WindSpeed,"Time",Name  
-	from Basic_WindLoadTable as BWT 
+	from Download_WindLoadTable as BWT 
 	inner join MonitoringPointsNumbers as MPN 
 	on BWT.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN5 and "Time" between @StartTime and @EndTime
@@ -3559,7 +2863,7 @@ BEGIN
 	begin
     select Strain,Temperature,"Time",Name  
 	into temp 
-	from Basic_ConcreteStrainTable as BCST 
+	from Download_ConcreteStrainTable as BCST 
 	inner join MonitoringPointsNumbers as MPN 
 	on BCST.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN1 and "Time" between @StartTime and @EndTime
@@ -3568,7 +2872,7 @@ if @MPN2>0
 	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name  
-	from Basic_ConcreteStrainTable as BCST 
+	from Download_ConcreteStrainTable as BCST 
 	inner join MonitoringPointsNumbers as MPN 
 	on BCST.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN2 and "Time" between @StartTime and @EndTime
@@ -3577,7 +2881,7 @@ if  @MPN3>0
 	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name  
-	from Basic_ConcreteStrainTable as BCST 
+	from Download_ConcreteStrainTable as BCST 
 	inner join MonitoringPointsNumbers as MPN 
 	on BCST.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN3 and "Time" between @StartTime and @EndTime
@@ -3586,7 +2890,7 @@ if  @MPN3>0
  	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name  
-	from Basic_ConcreteStrainTable as BCST 
+	from Download_ConcreteStrainTable as BCST 
 	inner join MonitoringPointsNumbers as MPN 
 	on BCST.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN4 and "Time" between @StartTime and @EndTime
@@ -3595,7 +2899,7 @@ if  @MPN3>0
  	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name  
-	from Basic_ConcreteStrainTable as BCST 
+	from Download_ConcreteStrainTable as BCST 
 	inner join MonitoringPointsNumbers as MPN 
 	on BCST.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN5 and "Time" between @StartTime and @EndTime
@@ -3604,7 +2908,7 @@ if  @MPN3>0
  	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name  
-	from Basic_ConcreteStrainTable as BCST 
+	from Download_ConcreteStrainTable as BCST 
 	inner join MonitoringPointsNumbers as MPN 
 	on BCST.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN6 and "Time" between @StartTime and @EndTime
@@ -3613,7 +2917,7 @@ if  @MPN3>0
  	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name  
-	from Basic_ConcreteStrainTable as BCST 
+	from Download_ConcreteStrainTable as BCST 
 	inner join MonitoringPointsNumbers as MPN 
 	on BCST.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN7 and "Time" between @StartTime and @EndTime
@@ -3622,7 +2926,7 @@ if  @MPN3>0
  	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name  
-	from Basic_ConcreteStrainTable as BCST 
+	from Download_ConcreteStrainTable as BCST 
 	inner join MonitoringPointsNumbers as MPN 
 	on BCST.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN8 and "Time" between @StartTime and @EndTime
@@ -3631,7 +2935,7 @@ if @MPN9>0
 	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name  
-	from Basic_ConcreteStrainTable as BCST 
+	from Download_ConcreteStrainTable as BCST 
 	inner join MonitoringPointsNumbers as MPN 
 	on BCST.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN9 and "Time" between @StartTime and @EndTime
@@ -3640,7 +2944,7 @@ if  @MPN10>0
 	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name  
-	from Basic_ConcreteStrainTable as BCST 
+	from Download_ConcreteStrainTable as BCST 
 	inner join MonitoringPointsNumbers as MPN 
 	on BCST.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN10 and "Time" between @StartTime and @EndTime
@@ -3649,7 +2953,7 @@ if  @MPN10>0
  	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name  
-	from Basic_ConcreteStrainTable as BCST 
+	from Download_ConcreteStrainTable as BCST 
 	inner join MonitoringPointsNumbers as MPN 
 	on BCST.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN11 and "Time" between @StartTime and @EndTime
@@ -3658,7 +2962,7 @@ if  @MPN10>0
  	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name  
-	from Basic_ConcreteStrainTable as BCST 
+	from Download_ConcreteStrainTable as BCST 
 	inner join MonitoringPointsNumbers as MPN 
 	on BCST.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN12 and "Time" between @StartTime and @EndTime
@@ -3667,7 +2971,7 @@ if  @MPN10>0
  	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name  
-	from Basic_ConcreteStrainTable as BCST 
+	from Download_ConcreteStrainTable as BCST 
 	inner join MonitoringPointsNumbers as MPN 
 	on BCST.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN13 and "Time" between @StartTime and @EndTime
@@ -3676,7 +2980,7 @@ if  @MPN10>0
  	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name  
-	from Basic_ConcreteStrainTable as BCST 
+	from Download_ConcreteStrainTable as BCST 
 	inner join MonitoringPointsNumbers as MPN 
 	on BCST.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN14 and "Time" between @StartTime and @EndTime
@@ -3685,7 +2989,7 @@ if  @MPN10>0
  	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name  
-	from Basic_ConcreteStrainTable as BCST 
+	from Download_ConcreteStrainTable as BCST 
 	inner join MonitoringPointsNumbers as MPN 
 	on BCST.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN15 and "Time" between @StartTime and @EndTime
@@ -3694,7 +2998,7 @@ if  @MPN16>0
  	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name  
-	from Basic_ConcreteStrainTable as BCST 
+	from Download_ConcreteStrainTable as BCST 
 	inner join MonitoringPointsNumbers as MPN 
 	on BCST.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN16 and "Time" between @StartTime and @EndTime
@@ -3703,7 +3007,7 @@ if  @MPN16>0
  	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name  
-	from Basic_ConcreteStrainTable as BCST 
+	from Download_ConcreteStrainTable as BCST 
 	inner join MonitoringPointsNumbers as MPN 
 	on BCST.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN17 and "Time" between @StartTime and @EndTime
@@ -3712,7 +3016,7 @@ if  @MPN16>0
  	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name  
-	from Basic_ConcreteStrainTable as BCST 
+	from Download_ConcreteStrainTable as BCST 
 	inner join MonitoringPointsNumbers as MPN 
 	on BCST.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN18 and "Time" between @StartTime and @EndTime
@@ -3721,7 +3025,7 @@ if  @MPN16>0
  	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name  
-	from Basic_ConcreteStrainTable as BCST 
+	from Download_ConcreteStrainTable as BCST 
 	inner join MonitoringPointsNumbers as MPN 
 	on BCST.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN19 and "Time" between @StartTime and @EndTime
@@ -3730,7 +3034,7 @@ if  @MPN16>0
  	begin
 	insert into temp 
 	select Strain,Temperature,"Time",Name  
-	from Basic_ConcreteStrainTable as BCST 
+	from Download_ConcreteStrainTable as BCST 
 	inner join MonitoringPointsNumbers as MPN 
 	on BCST.PointsNumberId=MPN.Id 
 	where PointsNumberId=@MPN20 and "Time" between @StartTime and @EndTime
@@ -5072,3 +4376,575 @@ drop index SafetyPreWarning_WindLoadTable.index_Time
 create nonclustered
 index index_Time on SafetyPreWarning_WindLoadTable(Time)
 go
+
+go
+------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------处理基础数据表格--------------------------------------------------------
+----------------------------------------------------处理基础数据表格--------------------------------------------------------
+----------------------------------------------------处理基础数据表格--------------------------------------------------------
+----------------------------------------------------处理基础数据表格--------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
+
+----------------------------------------------处理索力基础数据表格-------------------------------------------------------------------
+if exists(select * from dbo.sysobjects where id = object_id(N'[dbo].[usp_DealWithEigenvalue_CableForceEigenvalueTable]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop proc [usp_DealWithEigenvalue_CableForceEigenvalueTable]    ---查找是否存在该存储过程，否则删除。    ********需要修改需要修改需要修改需要修改********
+GO
+CREATE PROCEDURE [dbo].[usp_DealWithEigenvalue_CableForceEigenvalueTable]   ---创建存储过程
+AS
+BEGIN
+	SET NOCOUNT ON;
+	declare @startTime datetime,
+	@endTime datetime,
+	@currentTime datetime,
+	@PointNumberId int,
+	@startPointNumberId int=121,
+	@endPointNumberId int=158,
+	@max float,@min float,@average float
+	set @currentTime=GETDATE()
+	set @endTime=dateadd(ms,-datepart(ms,@currentTime),dateadd(ss,-datepart(ss,@currentTime),dateadd(mi,-datepart(mi,@currentTime),@currentTime)))
+	select @startTime=dateadd(hh,-1,@endTime)
+	set @PointNumberId=@startPointNumberId
+	while @PointNumberId<=@endPointNumberId
+		begin
+			select @max=MAX(CableForce) from Basic_CableForceTable 
+			where PointsNumberId=@PointNumberId and "Time" >= @startTime and "Time"< @endTime
+			select @min=MIN(CableForce) from Basic_CableForceTable 
+			where PointsNumberId=@PointNumberId and "Time" >= @startTime and "Time"< @endTime
+			select @average=AVG(CableForce) from Basic_CableForceTable 
+			where PointsNumberId=@PointNumberId and "Time" >= @startTime and "Time"< @endTime
+			insert into Eigenvalue_CableForceEigenvalueTable ("Max","Min",Average,"Time",PointsNumberId)
+				values(@max,@min,@average,@startTime,@PointNumberId)
+			set @PointNumberId=@PointNumberId+1
+		end
+	insert into Download_CableForceTable                -------------------------复制基础数据到下载表格
+		select CableForce,Frequency,Temperature,ThresholdGradeId,"Time",PointsNumberId 
+		from Basic_CableForceTable 
+		where "Time"< @EndTime  
+	delete Basic_CableForceTable where "Time"< @EndTime  ---------------------------删除基础数据表格数据
+END
+GO
+
+----------------------------------------------处理混凝土应力基础数据表格-------------------------------------------------------------------
+if exists(select * from dbo.sysobjects where id = object_id(N'[dbo].[usp_DealWithEigenvalue_ConcreteStrainEigenvalueTable]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop proc [usp_DealWithEigenvalue_ConcreteStrainEigenvalueTable]    ---查找是否存在该存储过程，否则删除。    ********需要修改需要修改需要修改需要修改********
+GO
+CREATE PROCEDURE [dbo].[usp_DealWithEigenvalue_ConcreteStrainEigenvalueTable]   ---创建存储过程
+AS
+BEGIN
+	SET NOCOUNT ON;
+	declare @startTime datetime,
+	@endTime datetime,
+	@currentTime datetime,
+	@PointNumberId int,
+	@startPointNumberId int=79,
+	@endPointNumberId int=94,
+	@max float,@min float,@average float
+	set @currentTime=GETDATE()
+	set @endTime=dateadd(ms,-datepart(ms,@currentTime),dateadd(ss,-datepart(ss,@currentTime),dateadd(mi,-datepart(mi,@currentTime),@currentTime)))
+	select @startTime=dateadd(hh,-1,@endTime)
+	set @PointNumberId=@startPointNumberId
+	while @PointNumberId<=@endPointNumberId
+		begin
+			select @max=MAX(Strain) from Basic_ConcreteStrainTable 
+			where PointsNumberId=@PointNumberId and "Time" >= @startTime and "Time"< @endTime
+			select @min=MIN(Strain) from Basic_ConcreteStrainTable 
+			where PointsNumberId=@PointNumberId and "Time" >= @startTime and "Time"< @endTime
+			select @average=AVG(Strain) from Basic_ConcreteStrainTable 
+			where PointsNumberId=@PointNumberId and "Time" >= @startTime and "Time"< @endTime
+			insert into Eigenvalue_ConcreteStrainEigenvalueTable ("Max","Min",Average,"Time",PointsNumberId)
+				values(@max,@min,@average,@startTime,@PointNumberId)
+			set @PointNumberId=@PointNumberId+1
+		end
+	insert into Download_ConcreteStrainTable                -------------------------复制基础数据到下载表格
+		select Strain,Temperature,ThresholdGradeId,"Time",PointsNumberId 
+		from Basic_ConcreteStrainTable 
+		where "Time"< @EndTime  
+	delete Basic_ConcreteStrainTable where "Time"< @EndTime  ---------------------------删除基础数据表格数据
+END
+GO
+
+----------------------------------------------处理位移基础数据表格-------------------------------------------------------------------
+if exists(select * from dbo.sysobjects where id = object_id(N'[dbo].[usp_DealWithEigenvalue_DisplacementEigenvalueTable]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop proc [usp_DealWithEigenvalue_DisplacementEigenvalueTable]    ---查找是否存在该存储过程，否则删除。    ********需要修改需要修改需要修改需要修改********
+GO
+CREATE PROCEDURE [dbo].[usp_DealWithEigenvalue_DisplacementEigenvalueTable]   ---创建存储过程
+AS
+BEGIN
+	SET NOCOUNT ON;
+	declare @startTime datetime,
+	@endTime datetime,
+	@currentTime datetime,
+	@PointNumberId int,
+	@startPointNumberId int=95,
+	@endPointNumberId int=120,
+	@max float,@min float,@average float
+	set @currentTime=GETDATE()
+	set @endTime=dateadd(ms,-datepart(ms,@currentTime),dateadd(ss,-datepart(ss,@currentTime),dateadd(mi,-datepart(mi,@currentTime),@currentTime)))
+	select @startTime=dateadd(hh,-1,@endTime)
+	set @PointNumberId=@startPointNumberId
+	while @PointNumberId<=@endPointNumberId
+		begin
+			select @max=MAX(Displacement) from Basic_DisplacementTable 
+			where PointsNumberId=@PointNumberId and "Time" >= @startTime and "Time"< @endTime
+			select @min=MIN(Displacement) from Basic_DisplacementTable 
+			where PointsNumberId=@PointNumberId and "Time" >= @startTime and "Time"< @endTime
+			select @average=AVG(Displacement) from Basic_DisplacementTable 
+			where PointsNumberId=@PointNumberId and "Time" >= @startTime and "Time"< @endTime
+			insert into Eigenvalue_DisplacementEigenvalueTable ("Max","Min",Average,"Time",PointsNumberId)
+				values(@max,@min,@average,@startTime,@PointNumberId)
+			set @PointNumberId=@PointNumberId+1
+		end
+	insert into Download_DisplacementTable                -------------------------复制基础数据到下载表格
+		select Displacement,ThresholdGradeId,"Time",PointsNumberId 
+		from Basic_DisplacementTable 
+		where "Time"< @EndTime  
+	delete Basic_DisplacementTable where "Time"< @EndTime  ---------------------------删除基础数据表格数据
+END
+GO
+
+----------------------------------------------处理湿度基础数据表格-------------------------------------------------------------------
+if exists(select * from dbo.sysobjects where id = object_id(N'[dbo].[usp_DealWithEigenvalue_HumidityEigenvalueTable]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop proc [usp_DealWithEigenvalue_HumidityEigenvalueTable]    ---查找是否存在该存储过程，否则删除。    ********需要修改需要修改需要修改需要修改********
+GO
+CREATE PROCEDURE [dbo].[usp_DealWithEigenvalue_HumidityEigenvalueTable]   ---创建存储过程
+AS
+BEGIN
+	SET NOCOUNT ON;
+	declare @startTime datetime,
+	@endTime datetime,
+	@currentTime datetime,
+	@PointNumberId int,
+	@startPointNumberId int=159,
+	@endPointNumberId int=167,
+	@max float,@min float,@average float
+	set @currentTime=GETDATE()
+	set @endTime=dateadd(ms,-datepart(ms,@currentTime),dateadd(ss,-datepart(ss,@currentTime),dateadd(mi,-datepart(mi,@currentTime),@currentTime)))
+	select @startTime=dateadd(hh,-1,@endTime)
+	set @PointNumberId=@startPointNumberId
+	while @PointNumberId<=@endPointNumberId
+		begin
+			select @max=MAX(Humidity) from Basic_HumidityTable 
+			where PointsNumberId=@PointNumberId and "Time" >= @startTime and "Time"< @endTime
+			select @min=MIN(Humidity) from Basic_HumidityTable 
+			where PointsNumberId=@PointNumberId and "Time" >= @startTime and "Time"< @endTime
+			select @average=AVG(Humidity) from Basic_HumidityTable 
+			where PointsNumberId=@PointNumberId and "Time" >= @startTime and "Time"< @endTime
+			insert into Eigenvalue_HumidityEigenvalueTable ("Max","Min",Average,"Time",PointsNumberId)
+				values(@max,@min,@average,@startTime,@PointNumberId)
+			set @PointNumberId=@PointNumberId+1
+		end
+	insert into Download_HumidityTable                -------------------------复制基础数据到下载表格
+		select Humidity,ThresholdGradeId,"Time",PointsNumberId 
+		from Basic_HumidityTable 
+		where "Time"< @EndTime  
+	delete Basic_HumidityTable where "Time"< @EndTime  ---------------------------删除基础数据表格数据
+END
+GO
+
+----------------------------------------------处理钢拱肋应变基础数据表格-------------------------------------------------------------------
+if exists(select * from dbo.sysobjects where id = object_id(N'[dbo].[usp_DealWithEigenvalue_SteelArchStrainEigenvalueTable]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop proc [usp_DealWithEigenvalue_SteelArchStrainEigenvalueTable]    ---查找是否存在该存储过程，否则删除。    ********需要修改需要修改需要修改需要修改********
+GO
+CREATE PROCEDURE [dbo].[usp_DealWithEigenvalue_SteelArchStrainEigenvalueTable]   ---创建存储过程
+AS
+BEGIN
+	SET NOCOUNT ON;
+	declare @startTime datetime,
+	@endTime datetime,
+	@currentTime datetime,
+	@PointNumberId int,
+	@startPointNumberId int=1,
+	@endPointNumberId int=48,
+	@max float,@min float,@average float
+	set @currentTime=GETDATE()
+	set @endTime=dateadd(ms,-datepart(ms,@currentTime),dateadd(ss,-datepart(ss,@currentTime),dateadd(mi,-datepart(mi,@currentTime),@currentTime)))
+	select @startTime=dateadd(hh,-1,@endTime)
+	set @PointNumberId=@startPointNumberId
+	while @PointNumberId<=@endPointNumberId
+		begin
+			select @max=MAX(Strain) from Basic_SteelArchStrainTable 
+			where PointsNumberId=@PointNumberId and "Time" >= @startTime and "Time"< @endTime
+			select @min=MIN(Strain) from Basic_SteelArchStrainTable 
+			where PointsNumberId=@PointNumberId and "Time" >= @startTime and "Time"< @endTime
+			select @average=AVG(Strain) from Basic_SteelArchStrainTable 
+			where PointsNumberId=@PointNumberId and "Time" >= @startTime and "Time"< @endTime
+			insert into Eigenvalue_SteelArchStrainEigenvalueTable ("Max","Min",Average,"Time",PointsNumberId)
+				values(@max,@min,@average,@startTime,@PointNumberId)
+			set @PointNumberId=@PointNumberId+1
+		end
+	insert into Download_SteelArchStrainTable                -------------------------复制基础数据到下载表格
+		select Strain,Temperature,ThresholdGradeId,"Time",PointsNumberId 
+		from Basic_SteelArchStrainTable 
+		where "Time"< @EndTime  
+	delete Basic_SteelArchStrainTable where "Time"< @EndTime  ---------------------------删除基础数据表格数据
+END
+GO
+
+----------------------------------------------处理钢格构应变基础数据表格-------------------------------------------------------------------
+if exists(select * from dbo.sysobjects where id = object_id(N'[dbo].[usp_DealWithEigenvalue_SteelLatticeStrainEigenvalueTable]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop proc [usp_DealWithEigenvalue_SteelLatticeStrainEigenvalueTable]    ---查找是否存在该存储过程，否则删除。    ********需要修改需要修改需要修改需要修改********
+GO
+CREATE PROCEDURE [dbo].[usp_DealWithEigenvalue_SteelLatticeStrainEigenvalueTable]   ---创建存储过程
+AS
+BEGIN
+	SET NOCOUNT ON;
+	declare @startTime datetime,
+	@endTime datetime,
+	@currentTime datetime,
+	@PointNumberId int,
+	@startPointNumberId int=49,
+	@endPointNumberId int=78,
+	@max float,@min float,@average float
+	set @currentTime=GETDATE()
+	set @endTime=dateadd(ms,-datepart(ms,@currentTime),dateadd(ss,-datepart(ss,@currentTime),dateadd(mi,-datepart(mi,@currentTime),@currentTime)))
+	select @startTime=dateadd(hh,-1,@endTime)
+	set @PointNumberId=@startPointNumberId
+	while @PointNumberId<=@endPointNumberId
+		begin
+			select @max=MAX(Strain) from Basic_SteelLatticeStrainTable 
+			where PointsNumberId=@PointNumberId and "Time" >= @startTime and "Time"< @endTime
+			select @min=MIN(Strain) from Basic_SteelLatticeStrainTable 
+			where PointsNumberId=@PointNumberId and "Time" >= @startTime and "Time"< @endTime
+			select @average=AVG(Strain) from Basic_SteelLatticeStrainTable 
+			where PointsNumberId=@PointNumberId and "Time" >= @startTime and "Time"< @endTime
+			insert into Eigenvalue_SteelLatticeStrainEigenvalueTable ("Max","Min",Average,"Time",PointsNumberId)
+				values(@max,@min,@average,@startTime,@PointNumberId)
+			set @PointNumberId=@PointNumberId+1
+		end
+	insert into Download_SteelLatticeStrainTable                -------------------------复制基础数据到下载表格
+		select Strain,Temperature,ThresholdGradeId,"Time",PointsNumberId 
+		from Basic_SteelLatticeStrainTable 
+		where "Time"< @EndTime  
+	delete Basic_SteelLatticeStrainTable where "Time"< @EndTime  ---------------------------删除基础数据表格数据
+END
+GO
+
+
+----------------------------------------------处理温度基础数据表格-------------------------------------------------------------------
+if exists(select * from dbo.sysobjects where id = object_id(N'[dbo].[usp_DealWithEigenvalue_TemperatureEigenvalueTable]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop proc [usp_DealWithEigenvalue_TemperatureEigenvalueTable]    ---查找是否存在该存储过程，否则删除。    ********需要修改需要修改需要修改需要修改********
+GO
+CREATE PROCEDURE [dbo].[usp_DealWithEigenvalue_TemperatureEigenvalueTable]   ---创建存储过程
+AS
+BEGIN
+	SET NOCOUNT ON;
+	declare @startTime datetime,
+	@endTime datetime,
+	@currentTime datetime,
+	@PointNumberId int,
+	@startPointNumberId int=168,
+	@endPointNumberId int=176,
+	@max float,@min float,@average float
+	set @currentTime=GETDATE()
+	set @endTime=dateadd(ms,-datepart(ms,@currentTime),dateadd(ss,-datepart(ss,@currentTime),dateadd(mi,-datepart(mi,@currentTime),@currentTime)))
+	select @startTime=dateadd(hh,-1,@endTime)
+	set @PointNumberId=@startPointNumberId
+	while @PointNumberId<=@endPointNumberId
+		begin
+			select @max=MAX(Temperature) from Basic_TemperatureTable 
+			where PointsNumberId=@PointNumberId and "Time" >= @startTime and "Time"< @endTime
+			select @min=MIN(Temperature) from Basic_TemperatureTable 
+			where PointsNumberId=@PointNumberId and "Time" >= @startTime and "Time"< @endTime
+			select @average=AVG(Temperature) from Basic_TemperatureTable 
+			where PointsNumberId=@PointNumberId and "Time" >= @startTime and "Time"< @endTime
+			insert into Eigenvalue_TemperatureEigenvalueTable ("Max","Min",Average,"Time",PointsNumberId)
+				values(@max,@min,@average,@startTime,@PointNumberId)
+			set @PointNumberId=@PointNumberId+1
+		end
+	insert into Download_TemperatureTable                -------------------------复制基础数据到下载表格
+		select Temperature,ThresholdGradeId,"Time",PointsNumberId 
+		from Basic_TemperatureTable 
+		where "Time"< @EndTime  
+	delete Basic_TemperatureTable where "Time"< @EndTime  ---------------------------删除基础数据表格数据
+END
+GO
+
+----------------------------------------------处理风载基础数据表格-------------------------------------------------------------------
+if exists(select * from dbo.sysobjects where id = object_id(N'[dbo].[usp_DealWithEigenvalue_WindLoadEigenvalueTable]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop proc [usp_DealWithEigenvalue_WindLoadEigenvalueTable]    ---查找是否存在该存储过程，否则删除。    ********需要修改需要修改需要修改需要修改********
+GO
+CREATE PROCEDURE [dbo].[usp_DealWithEigenvalue_WindLoadEigenvalueTable]   ---创建存储过程
+AS
+BEGIN
+	SET NOCOUNT ON;
+	declare @startTime datetime,
+	@endTime datetime,
+	@currentTime datetime,
+	@PointNumberId int,
+	@startPointNumberId int=177,
+	@endPointNumberId int=177,
+	@max float,@min float,@average float
+	set @currentTime=GETDATE()
+	set @endTime=dateadd(ms,-datepart(ms,@currentTime),dateadd(ss,-datepart(ss,@currentTime),dateadd(mi,-datepart(mi,@currentTime),@currentTime)))
+	select @startTime=dateadd(hh,-1,@endTime)
+	set @PointNumberId=@startPointNumberId
+	while @PointNumberId<=@endPointNumberId
+		begin
+			select @max=MAX(WindSpeed) from Basic_WindLoadTable 
+			where PointsNumberId=@PointNumberId and "Time" >= @startTime and "Time"< @endTime
+			select @min=MIN(WindSpeed) from Basic_WindLoadTable 
+			where PointsNumberId=@PointNumberId and "Time" >= @startTime and "Time"< @endTime
+			select @average=AVG(WindSpeed) from Basic_WindLoadTable 
+			where PointsNumberId=@PointNumberId and "Time" >= @startTime and "Time"< @endTime
+			insert into Eigenvalue_WindLoadEigenvalueTable ("Max","Min",Average,"Time",PointsNumberId)
+				values(@max,@min,@average,@startTime,@PointNumberId)
+			set @PointNumberId=@PointNumberId+1
+		end
+	insert into Download_WindLoadTable                -------------------------复制基础数据到下载表格
+		select WindSpeed,WindDirection,ThresholdGradeId,"Time",PointsNumberId 
+		from Basic_WindLoadTable 
+		where "Time"< @EndTime  
+	delete Basic_WindLoadTable where "Time"< @EndTime  ---------------------------删除基础数据表格数据
+END
+GO
+
+
+----------------------------------------------处理基础数据表格的存储过程的存储过程-------------------------------------------------------------------
+if exists(select * from dbo.sysobjects where id = object_id(N'[dbo].[usp_DealWithBasicTable]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop proc [usp_DealWithBasicTable]    ---查找是否存在该存储过程，否则删除。    ********需要修改需要修改需要修改需要修改********
+GO
+CREATE PROCEDURE [dbo].[usp_DealWithBasicTable]   ---创建一个处理基础数据存储过程的存储过程
+AS
+BEGIN
+	SET NOCOUNT ON;
+	exec [dbo].[usp_DealWithEigenvalue_CableForceEigenvalueTable]
+	exec [dbo].[usp_DealWithEigenvalue_ConcreteStrainEigenvalueTable]
+	exec [dbo].[usp_DealWithEigenvalue_DisplacementEigenvalueTable]
+	exec [dbo].[usp_DealWithEigenvalue_HumidityEigenvalueTable]
+	exec [dbo].[usp_DealWithEigenvalue_SteelArchStrainEigenvalueTable]
+	exec [dbo].[usp_DealWithEigenvalue_SteelLatticeStrainEigenvalueTable]
+	exec [dbo].[usp_DealWithEigenvalue_TemperatureEigenvalueTable]
+	exec [dbo].[usp_DealWithEigenvalue_WindLoadEigenvalueTable]
+END
+GO
+
+
+GO
+-- =============================================
+-- Author:		<Author,houp>
+-- Create date: <Create Date,2017-6-14,>
+-- Description:	<作业每小时执行删除的存储过程>
+-- =============================================
+--------------------------------------------------------------------------------------------
+--------------------------删除原始数据--------------------------------------------
+--------------------------------------------------------------------------------------------
+if exists(select * from dbo.sysobjects where id = object_id(N'[dbo].[usp_DeleteOriginalDataTable]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop proc [usp_DeleteOriginalDataTable]    ---查找是否存在该存储过程，否则删除。    ********需要修改需要修改需要修改需要修改********
+GO
+CREATE PROCEDURE [dbo].[usp_DeleteOriginalDataTable]   ---创建删除原始数据表格存储过程
+AS
+BEGIN
+	SET NOCOUNT ON;
+	 delete from [dbo].[Original_CableForceTable]  WHERE  datepart(hh,"Time")<datepart(hh,GETDATE()) or datepart(dd,"Time")<datepart(dd,getdate())
+	 delete from [dbo].[Original_ConcreteStrainTable]  WHERE datepart(hh,"Time")<datepart(hh,GETDATE()) or datepart(dd,"Time")<=datepart(dd,getdate())
+	 delete from [dbo].[Original_DisplacementTable]  WHERE datepart(hh,"Time")<datepart(hh,GETDATE()) or datepart(dd,"Time")<=datepart(dd,getdate())
+	 delete from [dbo].[Original_HumidityTable]  WHERE datepart(hh,"Time")<datepart(hh,GETDATE()) or datepart(dd,"Time")<=datepart(dd,getdate())
+	 delete from [dbo].[Original_SteelArchStrainTable]  WHERE datepart(hh,"Time")<datepart(hh,GETDATE()) or datepart(dd,"Time")<=datepart(dd,getdate())
+	 delete from [dbo].[Original_SteelLatticeStrainTable]  WHERE datepart(hh,"Time")<datepart(hh,GETDATE()) or datepart(dd,"Time")<=datepart(dd,getdate())
+	 delete from [dbo].[Original_TemperatureTable]  WHERE datepart(hh,"Time")<datepart(hh,GETDATE()) or datepart(dd,"Time")<=datepart(dd,getdate())
+	 delete from [dbo].[Original_WindLoadTable]  WHERE datepart(hh,"Time")<datepart(hh,GETDATE()) or datepart(dd,"Time")<=datepart(dd,getdate())
+	END
+GO
+
+
+
+-----------------------------------------------------------安全预警存储过程------------------------------------------------------------------------
+-----------------------------------------------------------安全预警存储过程------------------------------------------------------------------------
+-----------------------------------------------------------安全预警存储过程------------------------------------------------------------------------
+-----------------------------------------------------------安全预警存储过程------------------------------------------------------------------------
+if exists(select * from dbo.sysobjects where id = object_id(N'[dbo].[usp_SafetyWarningRealTimeSearch]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop proc [usp_SafetyWarningRealTimeSearch]    ---查找是否存在该存储过程，否则删除。    ********需要修改需要修改需要修改需要修改********
+GO
+CREATE PROCEDURE [dbo].[usp_SafetyWarningRealTimeSearch]   ---安全预警实时推送
+@preFirstAssessmentReportTime datetime output,  ---前次报告时间
+@totalSafetyWarningResult nvarchar(max) output,
+@totalSafetyWarningColor nvarchar(max) output,
+@cableForceSafetyWarningResult nvarchar(max) output,
+@cableForceSafetyWarningColor nvarchar(max) output,
+@cableForceRedWarningTimes int output,
+@cableForceYellowWarningTimes int output,
+
+@displacementSafetyWarningResult nvarchar(max) output,
+@displacementSafetyWarningColor nvarchar(max) output,
+@displacementRedWarningTimes int output,
+@displacementYellowWarningTimes int output,
+
+@windLoadSafetyWarningResult nvarchar(max) output,
+@windLoadSafetyWarningColor nvarchar(max) output,
+@windLoadRedWarningTimes int output,
+@windLoadYellowWarningTimes int output,
+
+@temperatureSafetyWarningResult nvarchar(max) output,
+@temperatureSafetyWarningColor nvarchar(max) output,
+@temperatureRedWarningTimes int output,
+@temperatureYellowWarningTimes int output
+AS
+declare @maxId int,@CurrentTime datetime=getdate(),@DifTime datetime,@SafetyWarningTime datetime,@TotalThresholdGradeId int,
+@CableForceThresholdGradeId int,@DisplacementThresholdGradeId int,@WindLoadThresholdGradeId int,@TemperatureThresholdGradeId int
+
+BEGIN
+	SET NOCOUNT ON;
+	select @maxId=MAX(Id) from FirstAssessment_FirstLevelSafetyAssessmentReportTable
+	select @preFirstAssessmentReportTime= ReportTime from FirstAssessment_FirstLevelSafetyAssessmentReportTable where Id=@maxId	
+	set @TotalThresholdGradeId=1
+	-----------------索力预警-----------------------
+	select @maxId=MAX(Id) from SafetyPreWarning_CableForceTable
+	select @SafetyWarningTime=Time	from SafetyPreWarning_CableForceTable where Id=@maxId	
+	select @DifTime=DATEDIFF(SS,@SafetyWarningTime,@CurrentTime) from SafetyPreWarning_CableForceTable where Id=@maxId
+	if (select count(*) from SafetyPreWarning_CableForceTable)=0
+		begin
+		select @WindLoadThresholdGradeId=1
+		select @windLoadSafetyWarningResult=ThresholdGrade from ThresholdGradeTables where Id=@WindLoadThresholdGradeId
+		select @windLoadSafetyWarningColor=ThresholdColor from ThresholdGradeTables where Id=@WindLoadThresholdGradeId		
+		end
+	if @DifTime<30
+		begin
+		select @CableForceThresholdGradeId=ThresholdGradeId from SafetyPreWarning_CableForceTable where Id=@maxId	
+		select @cableForceSafetyWarningResult=ThresholdGrade from ThresholdGradeTables where Id=@CableForceThresholdGradeId
+		select @cableForceSafetyWarningColor=ThresholdColor from ThresholdGradeTables where Id=@CableForceThresholdGradeId		
+		end
+	else
+		begin
+		select @CableForceThresholdGradeId=1
+		select @cableForceSafetyWarningResult=ThresholdGrade from ThresholdGradeTables where Id=@CableForceThresholdGradeId
+		select @cableForceSafetyWarningColor=ThresholdColor from ThresholdGradeTables where Id=@CableForceThresholdGradeId		
+		end
+	select @cableForceRedWarningTimes=count(*) from SafetyPreWarning_CableForceTable 
+		where ThresholdGradeId=3 and ("Time" between @preFirstAssessmentReportTime and @CurrentTime)
+	select @cableForceYellowWarningTimes=count(*) from SafetyPreWarning_CableForceTable 
+		where ThresholdGradeId=2 and ("Time" between @preFirstAssessmentReportTime and @CurrentTime)
+	if @TotalThresholdGradeId<@CableForceThresholdGradeId
+	set @TotalThresholdGradeId=@CableForceThresholdGradeId
+
+	-----------------位移预警-----------------------
+	select @maxId=MAX(Id) from SafetyPreWarning_DisplacementTable
+	select @SafetyWarningTime=Time	from SafetyPreWarning_DisplacementTable where Id=@maxId	
+	select @DifTime=DATEDIFF(SS,@SafetyWarningTime,@CurrentTime) from SafetyPreWarning_DisplacementTable where Id=@maxId
+	if (select count(*) from SafetyPreWarning_DisplacementTable)=0
+		begin
+		select @WindLoadThresholdGradeId=1
+		select @windLoadSafetyWarningResult=ThresholdGrade from ThresholdGradeTables where Id=@WindLoadThresholdGradeId
+		select @windLoadSafetyWarningColor=ThresholdColor from ThresholdGradeTables where Id=@WindLoadThresholdGradeId		
+		end
+	if @DifTime<30
+		begin
+		select @DisplacementThresholdGradeId=ThresholdGradeId from SafetyPreWarning_DisplacementTable where Id=@maxId	
+		select @displacementSafetyWarningResult=ThresholdGrade from ThresholdGradeTables where Id=@DisplacementThresholdGradeId
+		select @displacementSafetyWarningColor=ThresholdColor from ThresholdGradeTables where Id=@DisplacementThresholdGradeId		
+		end
+	else
+		begin
+		select @DisplacementThresholdGradeId=1
+		select @displacementSafetyWarningResult=ThresholdGrade from ThresholdGradeTables where Id=@DisplacementThresholdGradeId
+		select @displacementSafetyWarningColor=ThresholdColor from ThresholdGradeTables where Id=@DisplacementThresholdGradeId		
+		end
+	select @displacementRedWarningTimes=count(*) from SafetyPreWarning_DisplacementTable 
+		where ThresholdGradeId=3 and ("Time" between @preFirstAssessmentReportTime and @CurrentTime)
+	select @displacementYellowWarningTimes=count(*) from SafetyPreWarning_DisplacementTable 
+		where ThresholdGradeId=2 and ("Time" between @preFirstAssessmentReportTime and @CurrentTime)
+	if @TotalThresholdGradeId<@DisplacementThresholdGradeId
+	set @TotalThresholdGradeId=@DisplacementThresholdGradeId
+
+	-----------------风速预警-----------------------
+	select @maxId=MAX(Id) from SafetyPreWarning_WindLoadTable
+	select @SafetyWarningTime=Time	from SafetyPreWarning_WindLoadTable where Id=@maxId	
+	select @DifTime=DATEDIFF(SS,@SafetyWarningTime,@CurrentTime) from SafetyPreWarning_WindLoadTable where Id=@maxId
+	if (select count(*) from SafetyPreWarning_WindLoadTable)=0
+		begin
+		select @WindLoadThresholdGradeId=1
+		select @windLoadSafetyWarningResult=ThresholdGrade from ThresholdGradeTables where Id=@WindLoadThresholdGradeId
+		select @windLoadSafetyWarningColor=ThresholdColor from ThresholdGradeTables where Id=@WindLoadThresholdGradeId		
+		end
+	if @DifTime<30
+		begin
+		select @WindLoadThresholdGradeId=ThresholdGradeId from SafetyPreWarning_WindLoadTable where Id=@maxId	
+		select @windLoadSafetyWarningResult=ThresholdGrade from ThresholdGradeTables where Id=@WindLoadThresholdGradeId
+		select @windLoadSafetyWarningColor=ThresholdColor from ThresholdGradeTables where Id=@WindLoadThresholdGradeId		
+		end
+	else
+		begin
+		select @WindLoadThresholdGradeId=1
+		select @windLoadSafetyWarningResult=ThresholdGrade from ThresholdGradeTables where Id=@WindLoadThresholdGradeId
+		select @windLoadSafetyWarningColor=ThresholdColor from ThresholdGradeTables where Id=@WindLoadThresholdGradeId		
+		end
+	select @windLoadRedWarningTimes=count(*) from SafetyPreWarning_WindLoadTable 
+		where ThresholdGradeId=3 and ("Time" between @preFirstAssessmentReportTime and @CurrentTime)
+	select @windLoadYellowWarningTimes=count(*) from SafetyPreWarning_WindLoadTable 
+		where ThresholdGradeId=2 and ("Time" between @preFirstAssessmentReportTime and @CurrentTime)
+	if @TotalThresholdGradeId<@WindLoadThresholdGradeId
+	set @TotalThresholdGradeId=@WindLoadThresholdGradeId
+
+			-----------------温度预警-----------------------
+	select @maxId=MAX(Id) from SafetyPreWarning_TemperatureTable
+	select @SafetyWarningTime=Time	from SafetyPreWarning_TemperatureTable where Id=@maxId	
+	select @DifTime=DATEDIFF(SS,@SafetyWarningTime,@CurrentTime) from SafetyPreWarning_TemperatureTable where Id=@maxId
+	if (select count(*) from SafetyPreWarning_TemperatureTable)=0
+		begin
+		select @WindLoadThresholdGradeId=1
+		select @windLoadSafetyWarningResult=ThresholdGrade from ThresholdGradeTables where Id=@WindLoadThresholdGradeId
+		select @windLoadSafetyWarningColor=ThresholdColor from ThresholdGradeTables where Id=@WindLoadThresholdGradeId		
+		end
+	if @DifTime<30
+		begin
+		select @TemperatureThresholdGradeId=ThresholdGradeId from SafetyPreWarning_TemperatureTable where Id=@maxId	
+		select @temperatureSafetyWarningResult=ThresholdGrade from ThresholdGradeTables where Id=@TemperatureThresholdGradeId
+		select @temperatureSafetyWarningColor=ThresholdColor from ThresholdGradeTables where Id=@TemperatureThresholdGradeId		
+		end
+	else
+		begin
+		select @TemperatureThresholdGradeId=1
+		select @temperatureSafetyWarningResult=ThresholdGrade from ThresholdGradeTables where Id=@TemperatureThresholdGradeId
+		select @temperatureSafetyWarningColor=ThresholdColor from ThresholdGradeTables where Id=@TemperatureThresholdGradeId		
+		end
+	select @temperatureRedWarningTimes=count(*) from SafetyPreWarning_TemperatureTable 
+		where ThresholdGradeId=3 and ("Time" between @preFirstAssessmentReportTime and @CurrentTime)
+	select @temperatureYellowWarningTimes=count(*) from SafetyPreWarning_TemperatureTable 
+		where ThresholdGradeId=2 and ("Time" between @preFirstAssessmentReportTime and @CurrentTime)
+	if @TotalThresholdGradeId<@temperatureRedWarningTimes
+	set @TotalThresholdGradeId=@temperatureRedWarningTimes
+			-----------------总体-----------------------
+	select @totalSafetyWarningResult=ThresholdGrade from ThresholdGradeTables where Id=@TotalThresholdGradeId
+	select @totalSafetyWarningColor=ThresholdColor from ThresholdGradeTables where Id=@TotalThresholdGradeId
+END
+GO
+
+-------------------------------------------测试预警实时推送的代码-------------------------------------------------------------------------
+--declare
+--@preFirstAssessmentReportTime datetime,  ---前次报告时间
+--@totalSafetyWarningResult nvarchar(max),
+--@totalSafetyWarningColor nvarchar(max),
+--@cableForceSafetyWarningResult nvarchar(max),
+--@cableForceSafetyWarningColor nvarchar(max),
+--@cableForceRedWarningTimes int,
+--@cableForceYellowWarningTimes int,
+
+--@displacementSafetyWarningResult nvarchar(max),
+--@displacementSafetyWarningColor nvarchar(max),
+--@displacementRedWarningTimes int,
+--@displacementYellowWarningTimes int,
+
+--@windLoadSafetyWarningResult nvarchar(max),
+--@windLoadSafetyWarningColor nvarchar(max),
+--@windLoadRedWarningTimes int ,
+--@windLoadYellowWarningTimes int,
+
+--@temperatureSafetyWarningResult nvarchar(max),
+--@temperatureSafetyWarningColor nvarchar(max),
+--@temperatureRedWarningTimes int,
+--@temperatureYellowWarningTimes int
+
+--exec usp_SafetyWarningRealTimeSearch @preFirstAssessmentReportTime=@preFirstAssessmentReportTime output,@totalSafetyWarningResult=@totalSafetyWarningResult output,@totalSafetyWarningColor=@totalSafetyWarningColor output,@cableForceSafetyWarningResult=@cableForceSafetyWarningResult output,@cableForceSafetyWarningColor=@cableForceSafetyWarningColor output,@cableForceRedWarningTimes=@cableForceRedWarningTimes output,@cableForceYellowWarningTimes=@cableForceYellowWarningTimes output,@displacementSafetyWarningResult=@displacementSafetyWarningResult output,@displacementSafetyWarningColor=@displacementSafetyWarningColor output,@displacementRedWarningTimes=@displacementRedWarningTimes output,@displacementYellowWarningTimes=@displacementYellowWarningTimes output,@windLoadSafetyWarningResult=@windLoadSafetyWarningResult output,@windLoadSafetyWarningColor=@windLoadSafetyWarningColor output,@windLoadRedWarningTimes=@windLoadRedWarningTimes output,@windLoadYellowWarningTimes=@windLoadYellowWarningTimes output,@temperatureSafetyWarningResult=@temperatureSafetyWarningResult output,@temperatureSafetyWarningColor=@temperatureSafetyWarningColor output,@temperatureRedWarningTimes=@temperatureRedWarningTimes output,@temperatureYellowWarningTimes=@temperatureYellowWarningTimes output
+
+
+--print @windLoadSafetyWarningColor
+--print @windLoadSafetyWarningResult
+--print @temperatureSafetyWarningResult
+--print @temperatureSafetyWarningColor
+--print @cableForceRedWarningTimes
+--print @cableForceYellowWarningTimes
+--print @displacementRedWarningTimes
+--print @displacementYellowWarningTimes
+--print @windLoadRedWarningTimes
+--print @windLoadYellowWarningTimes
+--print @temperatureRedWarningTimes
+--print @temperatureYellowWarningTimes

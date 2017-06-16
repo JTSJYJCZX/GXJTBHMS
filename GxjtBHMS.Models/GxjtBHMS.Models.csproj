@@ -105,6 +105,7 @@
     <Compile Include="RealTimeMonitoringDataTable\RealTime_SteelLatticeStrainTable.cs" />
     <Compile Include="RealTimeMonitoringDataTable\RealTime_TemperatureTable.cs" />
     <Compile Include="RealTimeMonitoringDataTable\RealTime_WindLoadTable.cs" />
+    <Compile Include="SafetyPreWarningRealPushModel\AllSafetyWarningDatasModel.cs" />
     <Compile Include="SafetyPreWarningTable\SafetyPreWarningBaseModel.cs" />
     <Compile Include="SafetyPreWarningTable\SafetyPreWarning_CableForceTable.cs" />
     <Compile Include="SafetyPreWarningTable\SafetyPreWarning_StrainTable.cs" />

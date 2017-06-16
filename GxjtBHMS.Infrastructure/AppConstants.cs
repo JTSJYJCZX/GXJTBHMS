@@ -34,6 +34,8 @@
         public const string HumidityDatasEigenvalueDownloadProc = "usp_EigenvalueHumiditySaveAsTxt";
         public const string TemperatureDatasEigenvalueDownloadProc = "usp_EigenvalueTemperatureSaveAsTxt";
         public const string WindLoadDatasEigenvalueDownloadProc = "usp_EigenvalueWindLoadSaveAsTxt";
+        //安全预警的存储过程名称
+        public const string SafetyWarningRealTimeProc = "usp_SafetyWarningRealTimeSearch";
 
     }
 }

@@ -1,5 +1,4 @@
 ﻿using GxjtBHMS.IDAL;
-using GxjtBHMS.IDAL.SafetyPreWarning;
 using GxjtBHMS.Models.MonitoringDatasTable;
 using GxjtBHMS.Service.Implementations;
 using GxjtBHMS.Service.Interfaces;
@@ -7,7 +6,6 @@ using GxjtBHMS.Service.Interfaces.SafetyPreWarningRealTimePushServiceInterfaces;
 using GxjtBHMS.Service.SafetyPreWarningRealTimeHubService;
 using GxjtBHMS.SqlServerDAL;
 using GxjtBHMS.SqlServerDAL.RealTimeDatasMonitoringDAL;
-using GxjtBHMS.SqlServerDAL.SafetyPreWarningRealTimePushDAL;
 using Ninject;
 using System;
 using System.Web.Mvc;
@@ -22,6 +20,8 @@ using GxjtBHMS.Service.Implementations.AlarmDatasManagement;
 using GxjtBHMS.Service.AnomalousEventManagementQuery;
 using GxjtBHMS.IDAL.AnomalousEventIDAL;
 using GxjtBHMS.SqlServerDAL.AnomalousEventDAL;
+using GxjtBHMS.IDAL.SafetyPreWarning;
+using GxjtBHMS.SqlServerDAL.SafetyPreWarningDAL;
 
 namespace GxjtBHMS.DependencyInjection
 {
@@ -80,19 +80,15 @@ namespace GxjtBHMS.DependencyInjection
 
             _ninjectKernel.Bind<IFileConverter>().To<ExcelFileConverter>();
 
+
+
+            ////获取安全预警数据注入
             _ninjectKernel.Bind<ISafetyPreWarningRealTimePushService>().To<SafetyPreWarningRealTimePushService>();
 
-            //获取单值安全预警数据注入
-            _ninjectKernel.Bind<IGetOneTypeSafetyPreWarningRealTimePushService<SafetyPreWarning_CableForceTable>>().To<GetOneTypeSafetyPreWarningRealTimePushServiceBase<SafetyPreWarning_CableForceTable>>();
-            _ninjectKernel.Bind<IGetOneTypeSafetyPreWarningRealTimePushService<SafetyPreWarning_DisplacementTable>>().To<GetOneTypeSafetyPreWarningRealTimePushServiceBase<SafetyPreWarning_DisplacementTable>>();
-            _ninjectKernel.Bind<IGetOneTypeSafetyPreWarningRealTimePushService<SafetyPreWarning_TemperatureTable>>().To<GetOneTypeSafetyPreWarningRealTimePushServiceBase<SafetyPreWarning_TemperatureTable>>();
-            _ninjectKernel.Bind<IGetOneTypeSafetyPreWarningRealTimePushService<SafetyPreWarning_WindLoadTable>>().To<GetOneTypeSafetyPreWarningRealTimePushServiceBase<SafetyPreWarning_WindLoadTable>>();
 
             //安全预警Hub推送DAL注入
-            _ninjectKernel.Bind<ISafetyPreWarningRealTimePushDAL<SafetyPreWarning_CableForceTable>>().To<CableForce_SafetyPreWarningRealTimePushDAL>();
-            _ninjectKernel.Bind<ISafetyPreWarningRealTimePushDAL<SafetyPreWarning_DisplacementTable>>().To<Displacement_SafetyPreWarningRealTimePushDAL>();
-            _ninjectKernel.Bind<ISafetyPreWarningRealTimePushDAL<SafetyPreWarning_WindLoadTable>>().To<WindLoad_SafetyPreWarningRealTimePushDAL>();
-            _ninjectKernel.Bind<ISafetyPreWarningRealTimePushDAL<SafetyPreWarning_TemperatureTable>>().To<Temperature_SafetyPreWarningRealTimePushDAL>();
+            _ninjectKernel.Bind<ISafetyPreWarningRealTimePushDAL>().To<SafetyPreWarningRealTimePushDAL>();
+
 
 
             //一级安全评估报告下载

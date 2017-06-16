@@ -16,9 +16,9 @@ namespace GxjtBHMS.Web.Models
     {
         //Singleton instance
         readonly static Lazy<HumidityDatasTicker> _instance = new Lazy<HumidityDatasTicker>(() => new HumidityDatasTicker(GlobalHost.ConnectionManager.GetHubContext<HumidityDatasRealTimeMonitoringHub>().Clients));
-        readonly TimeSpan _updateInterval = TimeSpan.FromMilliseconds(ApplicationSettingsFactory.GetApplicationSettings().RealReadDatasInterval);
-        volatile bool _updatingStockPrices = false;
-        readonly object _updateStockPricesLock = new object();
+        readonly int _updateInterval = ApplicationSettingsFactory.GetApplicationSettings().RealReadDatasInterval;
+        volatile bool _updatingHumidityDatas = false;
+        readonly object _updateHumidityDatasLock = new object();
         Timer _timer;
         IHumidityRealTimeDatasService _realTimeDatasService;
         HumidityDatasTicker(IHubConnectionContext<dynamic> clients)
@@ -26,7 +26,7 @@ namespace GxjtBHMS.Web.Models
             _realTimeDatasService = new NinjectControllerFactory().GetInstance<IHumidityRealTimeDatasService>();
             Clients = clients;
             //定时器
-            _timer = new Timer(UpdateStockPrices, null, 0, 5000);
+            _timer = new Timer(UpdateHumidityDatas, null, 0, _updateInterval);
         }
 
         IHubConnectionContext<dynamic> Clients { get; set; }
@@ -35,21 +35,21 @@ namespace GxjtBHMS.Web.Models
         /// </summary>
         public static HumidityDatasTicker Instance { get { return _instance.Value; } }
 
-        void UpdateStockPrices(object state)
+        void UpdateHumidityDatas(object state)
         {
-            lock (_updateStockPricesLock)
+            lock (_updateHumidityDatasLock)
             {
-                if (!_updatingStockPrices)
+                if (!_updatingHumidityDatas)
                 {
-                    _updatingStockPrices = true;
+                    _updatingHumidityDatas = true;
                     var models = GetRealDatasSource();
-                    BroadcastStockPrice(models);
-                    _updatingStockPrices = false;
+                    BroadcastHumidityDatas(models);
+                    _updatingHumidityDatas = false;
                 }
             }
         }
 
-        void BroadcastStockPrice(IEnumerable<IncludeSectionWarningColorDataModel> models)
+        void BroadcastHumidityDatas(IEnumerable<IncludeSectionWarningColorDataModel> models)
         {
             Clients.All.RealTimeDisplayDatas(models);
         }
