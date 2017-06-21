@@ -608,6 +608,7 @@
     <Content Include="Scripts\bootstrap-select.js.map" />
     <None Include="Properties\PublishProfiles\BHMS.pubxml" />
     <None Include="Properties\PublishProfiles\本地部署.pubxml" />
+    <None Include="Properties\PublishProfiles\远程发布.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
