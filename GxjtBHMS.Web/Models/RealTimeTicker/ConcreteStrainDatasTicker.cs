@@ -1,4 +1,5 @@
 ﻿using GxjtBHMS.DependencyInjection;
+using GxjtBHMS.Infrastructure.Configuration;
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.ViewModels.RealTimeDatasDisplay;
 using GxjtBHMS.Web.RealTimeMonitoringHub;
@@ -15,9 +16,9 @@ namespace GxjtBHMS.Web.Models
     {
         //Singleton instance
         readonly static Lazy<ConcreteStrainDatasTicker> _instance = new Lazy<ConcreteStrainDatasTicker>(() => new ConcreteStrainDatasTicker(GlobalHost.ConnectionManager.GetHubContext<ConcreteStrainDatasRealTimeMonitoringHub>().Clients));
-        readonly TimeSpan _updateInterval = TimeSpan.FromMilliseconds(10500);
-        volatile bool _updatingStockPrices = false;
-        readonly object _updateStockPricesLock = new object();
+        readonly int _updateInterval = ApplicationSettingsFactory.GetApplicationSettings().RealReadDatasInterval;
+        volatile bool _updatingConcreteStrainDatas = false;
+        readonly object _updateConcreteStrainDatasLock = new object();
         Timer _timer;
         IConcreteStrainRealTimeDatasService _realTimeDatasService;
         ConcreteStrainDatasTicker(IHubConnectionContext<dynamic> clients)
@@ -25,7 +26,7 @@ namespace GxjtBHMS.Web.Models
             _realTimeDatasService = new NinjectControllerFactory().GetInstance<IConcreteStrainRealTimeDatasService>();
             Clients = clients;
             //定时器
-            _timer = new Timer(UpdateStockPrices, null, _updateInterval, _updateInterval);
+            _timer = new Timer(UpdateConcreteStrainDatas, null, 0, _updateInterval);
         }
 
         IHubConnectionContext<dynamic> Clients { get; set; }
@@ -34,26 +35,26 @@ namespace GxjtBHMS.Web.Models
         /// </summary>
         public static ConcreteStrainDatasTicker Instance { get { return _instance.Value; } }
 
-        void UpdateStockPrices(object state)
+        void UpdateConcreteStrainDatas(object state)
         {
-            lock (_updateStockPricesLock)
+            lock (_updateConcreteStrainDatasLock)
             {
-                if (!_updatingStockPrices)
+                if (!_updatingConcreteStrainDatas)
                 {
-                    _updatingStockPrices = true;
+                    _updatingConcreteStrainDatas = true;
                     var models = GetRealDatasSource(); ;
-                    BroadcastStockPrice(models);
-                    _updatingStockPrices = false;
+                    BroadcastConcreteStrainDatas(models);
+                    _updatingConcreteStrainDatas = false;
                 }
             }
         }
 
-        void BroadcastStockPrice(IEnumerable<IncludeSectionWarningColorDataModel> models)
+        void BroadcastConcreteStrainDatas(IEnumerable<IncludeSectionWarningColorDataModel> models)
         {
             Clients.All.RealTimeDisplayDatas(models);
         }
 
-        private IEnumerable<IncludeSectionWarningColorDataModel> GetRealDatasSource()
+        IEnumerable<IncludeSectionWarningColorDataModel> GetRealDatasSource()
         {
             var sectionIds = _realTimeDatasService.GetSectionIdsBy(3).ToArray();
             return _realTimeDatasService.GetWarningStrainDatasBy(sectionIds);

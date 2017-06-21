@@ -3,11 +3,8 @@ using GxjtBHMS.Infrastructure.Configuration;
 using GxjtBHMS.Infrastructure.Email;
 using GxjtBHMS.Infrastructure.Logging;
 using GxjtBHMS.Service.AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Caching;
+using GxjtBHMS.Service.Interfaces;
+using GxjtBHMS.Web.Models;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -46,19 +43,18 @@ namespace GxjtBHMS.Web
             //    "MonitoringPointsPositions",
             //    "MonitoringPointsNumbers"
             //});
-        }
+            var ninjectFactory = new NinjectControllerFactory();
+            IPreloadDataSet dataset = new GeneralPreloadDataSet(
+                ninjectFactory.GetInstance<IMonitoringTestTypeService>(),
+                ninjectFactory.GetInstance<IMonitoringPointsPositionService>(),
+                ninjectFactory.GetInstance<IMonitoringPointsNumberService>());
+            var mornitoringTestTypeDatas = dataset.Load(PreloadDataSetType.MornitoringTestType);
+            CacheHelper.SetCache(nameof(PreloadDataSetType.MornitoringTestType), mornitoringTestTypeDatas);
+            var monitoringPointsPositionDatas = dataset.Load(PreloadDataSetType.MonitoringPointsPositionType);
+            CacheHelper.SetCache(nameof(PreloadDataSetType.MonitoringPointsPositionType), monitoringPointsPositionDatas);
+            var monitoringPointsNumberDatas = dataset.Load(PreloadDataSetType.MonitoringPointsNumberType);
+            CacheHelper.SetCache(nameof(PreloadDataSetType.MonitoringPointsNumberType), monitoringPointsNumberDatas);
 
-        protected void Application_End(object sender ,EventArgs e)
-        {
-            System.Threading.Thread.Sleep(2000);
-            HitPage();
-
-        }
-
-        private void HitPage()
-        {
-            System.Net.WebClient client = new System.Net.WebClient();
-            client.DownloadData("http://192.168.0.102");
         }
     }
 }

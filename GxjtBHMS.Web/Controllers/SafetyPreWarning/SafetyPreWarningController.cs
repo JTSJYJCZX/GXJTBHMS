@@ -8,10 +8,12 @@ using System.Web.Mvc;
 
 namespace GxjtBHMS.Web.Controllers.SafetyPreWarning
 {
-    public class SafetyPreWarningController : Controller
+    public class SafetyPreWarningController : BaseController
     {
+        [OutputCache(CacheProfile = "IndexProfile")]
         public ActionResult SafetyPreWarning()
         {
+            Response.Cache.SetOmitVaryStar(true);
             return View();
         }
 
@@ -31,12 +33,14 @@ namespace GxjtBHMS.Web.Controllers.SafetyPreWarning
             return LastReportTime;
         }
 
+        [OutputCache (CacheProfile = "ParamIsTestTypeIdProfile")]
         public ActionResult GetSafetyWarningDetail(QuerySafetyPreWarningConditonView conditons)
         {
+            Response.Cache.SetOmitVaryStar(true);
             int i = 0;
             var source = GetSafetyWarningDetailResultBy(conditons);  
             var resultView = new SafetyPreWarningModels();
-            if (source.Succeed==true)
+            if (source.Succeed == true)
             {
                 var models = new List<SafetyPreWarningViewModel>();
                 foreach (var item in source.Datas)
@@ -56,10 +60,7 @@ namespace GxjtBHMS.Web.Controllers.SafetyPreWarning
                 resultView.SafetyPreWarnings = models;
                 return PartialView("SafetyPreWarningDetailListPartial", resultView);
             }
-            else
-            {
-                return Content("<span style='color:red'>无记录</span>");
-            }
+            return Content("<span style='color:red'>无记录</span>");
 
         }
 

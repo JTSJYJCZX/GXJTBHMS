@@ -155,15 +155,15 @@ img.info-icon {
 
 #hotspotContainer1 .info-iconRS1 {
     position: absolute;
-    top: 22%;
-    left: 3.3%;
+    top: 15%;
+    left: 2.8%;
     font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconRS2 {
     position: absolute;
-    top: 22%;
-    left: 94%;
+    top: 15%;
+    left: 94.6%;
     font-size: 12px;
 }
 
@@ -178,83 +178,83 @@ img.info-icon {
 #hotspotContainer1 .info-iconCA2 {
     position: absolute;
     top: 64%;
-    left: 63.2%;
+    left: 64%;
     font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconSLS1 {
     position: absolute;
-    top: 36%;
+    top: 31%;
     left: 29%;
     font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconSLS2 {
     position: absolute;
-    top: 36%;
-    left: 66%;
+    top: 31%;
+    left: 67%;
     font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconSLS3 {
     position: absolute;
-    top: 25%;
+    top: 21%;
     left: 35%;
     font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconSLS4 {
     position: absolute;
-    top: 25%;
-    left: 59%;
+    top: 21%;
+    left: 61%;
     font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconSLS5 {
     position: absolute;
-    top: 30%;
+    top: 26%;
     left: 32%;
     font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconSLS6 {
     position: absolute;
-    top: 30%;
-    left: 62%;
+    top: 26%;
+    left: 64%;
     font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconSLS7 {
     position: absolute;
-    top: 36%;
+    top: 31%;
     left: 5%;
     font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconSLS8 {
     position: absolute;
-    top: 36.5%;
+    top: 31%;
     left: 91%;
     font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconSLSRS1 {
     position: absolute;
-    top: 27%;
-    left: 2.5%;
+    top: 20%;
+    left: 3%;
     font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconSLSRS2 {
     position: absolute;
-    top: 27%;
+    top: 20%;
     left: 94.5%;
     font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconCF1 {
     position: absolute;
-    top: 16%;
+    top: 12%;
     left: 50%;
     font-size: 12px;
 }
@@ -268,23 +268,23 @@ img.info-icon {
 
 #hotspotContainer1 .info-iconCF3 {
     position: absolute;
-    top: 40%;
-    left: 6%;
+    top: 38%;
+    left: 5.3%;
     font-size: 12px;
 }
 
 #hotspotContainer1 .info-iconCFRS1 {
     position: absolute;
-    top: 27%;
-    left: 3%;
+    top: 24.5%;
+    left: 2.5%;
     font-size: 12px;
 }
 
 
 #hotspotContainer1 .info-iconCFRS2 {
     position: absolute;
-    top: 27%;
-    left: 95%;
+    top: 24.5%;
+    left: 94.5%;
     font-size: 12px;
 }
 
@@ -1027,7 +1027,7 @@ img.info-icon {
         left: 22%;
         margin-top: 1%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .A2 {
@@ -1036,7 +1036,7 @@ img.info-icon {
         left: 35%;
         margin-top: 1%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .A3 {
@@ -1045,7 +1045,7 @@ img.info-icon {
         left: 22%;
         margin-top: 15%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .A4 {
@@ -1054,7 +1054,7 @@ img.info-icon {
         left: 35%;
         margin-top: 15%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .A5 {
@@ -1063,7 +1063,7 @@ img.info-icon {
         left: 60%;
         margin-top: 1%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .A6 {
@@ -1072,7 +1072,7 @@ img.info-icon {
         left: 73%;
         margin-top: 1%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .A7 {
@@ -1081,7 +1081,7 @@ img.info-icon {
         left: 60%;
         margin-top: 15%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .A8 {
@@ -1090,7 +1090,7 @@ img.info-icon {
         left: 73%;
         margin-top: 15%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .A9 {
@@ -1108,7 +1108,7 @@ img.info-icon {
         left: 56%;
         margin-top: 5%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .HA2 {
@@ -1117,7 +1117,7 @@ img.info-icon {
         left: 66%;
         margin-top: 5%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .HA3 {
@@ -1126,7 +1126,7 @@ img.info-icon {
         left: 56%;
         margin-top: 18%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .HA4 {
@@ -1135,7 +1135,7 @@ img.info-icon {
         left: 66%;
         margin-top: 18%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
 
@@ -1276,7 +1276,7 @@ img.info-icon {
         left: 15%;
         margin-top: 2.5%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.9ex;
     }
 
     .img-container .CAAL2 {
@@ -1285,7 +1285,7 @@ img.info-icon {
         left: 29%;
         margin-top: 2.5%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.9ex;
     }
 
     .img-container .CAAL3 {
@@ -1294,7 +1294,7 @@ img.info-icon {
         left: 15%;
         margin-top: 25%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.9ex;
     }
 
     .img-container .CAAL4 {
@@ -1303,7 +1303,7 @@ img.info-icon {
         left: 29%;
         margin-top: 25%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.9ex;
     }
 
     .img-container .CAAL5 {
@@ -1312,7 +1312,7 @@ img.info-icon {
         left: 62%;
         margin-top: 2.5%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.9ex;
     }
 
     .img-container .CAAL6 {
@@ -1321,7 +1321,7 @@ img.info-icon {
         left: 77%;
         margin-top: 2.5%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.9ex;
     }
 
     .img-container .CAAL7 {
@@ -1330,7 +1330,7 @@ img.info-icon {
         left: 62%;
         margin-top: 25%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.9ex;
     }
 
     .img-container .CAAL8 {
@@ -1339,7 +1339,7 @@ img.info-icon {
         left: 77%;
         margin-top: 25%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.9ex;
     }
 
     .img-container .SITB1 {
@@ -1348,7 +1348,7 @@ img.info-icon {
         left: 41.5%;
         margin-top: 0.3%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .SITB2 {
@@ -1357,7 +1357,7 @@ img.info-icon {
         left: 51.5%;
         margin-top: 0.3%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .SUSCB1 {
@@ -1366,7 +1366,7 @@ img.info-icon {
         left: 40.5%;
         margin-top: 14%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .SUSCB2 {
@@ -1375,7 +1375,7 @@ img.info-icon {
         left: 51%;
         margin-top: 14%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .SUSLB1 {
@@ -1384,7 +1384,7 @@ img.info-icon {
         left: 35%;
         margin-top: 16%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .SUSLB2 {
@@ -1393,7 +1393,7 @@ img.info-icon {
         left: 48%;
         margin-top: 16%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .SUSLB3 {
@@ -1402,7 +1402,7 @@ img.info-icon {
         left: 63%;
         margin-top: 16%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .SRTB1 {
@@ -1411,7 +1411,7 @@ img.info-icon {
         left: 18%;
         margin-top: 0.5%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .SRTB2 {
@@ -1420,7 +1420,7 @@ img.info-icon {
         left: 29%;
         margin-top: 0.5%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .SRTB3 {
@@ -1429,7 +1429,7 @@ img.info-icon {
         left: 18%;
         margin-top: 16%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .SRTB4 {
@@ -1438,7 +1438,7 @@ img.info-icon {
         left: 29%;
         margin-top: 16%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .SRTB5 {
@@ -1447,7 +1447,7 @@ img.info-icon {
         left: 61%;
         margin-top: 0.5%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .SRTB6 {
@@ -1456,7 +1456,7 @@ img.info-icon {
         left: 73%;
         margin-top: 0.5%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .SRTB7 {
@@ -1465,7 +1465,7 @@ img.info-icon {
         left: 61%;
         margin-top: 16%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .SRTB8 {
@@ -1474,14 +1474,14 @@ img.info-icon {
         left: 73%;
         margin-top: 16%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .HE1 {
         color: #ff0000;
         position: absolute;
-        left: 52%;
-        margin-top: 27.5%;
+        left: 51%;
+        margin-top: 28.5%;
         z-index: 2;
         font-size: 1.7ex;
     }
@@ -1490,7 +1490,7 @@ img.info-icon {
         color: #ff0000;
         position: absolute;
         left: 19%;
-        margin-top: 24%;
+        margin-top: 25%;
         z-index: 2;
         font-size: 1.7ex;
     }
@@ -1499,7 +1499,7 @@ img.info-icon {
         color: #ff0000;
         position: absolute;
         left: 48%;
-        margin-top: 24%;
+        margin-top: 25%;
         z-index: 2;
         font-size: 1.7ex;
     }
@@ -1508,7 +1508,7 @@ img.info-icon {
         color: #ff0000;
         position: absolute;
         left: 65%;
-        margin-top: 24%;
+        margin-top: 25%;
         z-index: 2;
         font-size: 1.7ex;
     }
@@ -1517,7 +1517,7 @@ img.info-icon {
         color: #ff0000;
         position: absolute;
         left: 83%;
-        margin-top: 24%;
+        margin-top: 25%;
         z-index: 2;
         font-size: 1.7ex;
     }
@@ -1560,16 +1560,16 @@ img.info-icon {
 
     .img-container .info-iconTRS1 {
         position: absolute;
-        left: 2.9%;
-        margin-top: 4.5%;
+        left: 3.2%;
+        margin-top: 5.4%;
         z-index: 2;
         font-size: 1.5ex;
     }
 
     .img-container .info-iconTRS2 {
         position: absolute;
-        left: 95%;
-        margin-top: 4.5%;
+        left: 94%;
+        margin-top: 5.5%;
         z-index: 2;
         font-size: 1.5ex;
     }
@@ -1586,7 +1586,7 @@ img.info-icon {
     .img-container .info-iconWRS1 {
         position: absolute;
         left: 2.9%;
-        margin-top: 4.6%;
+        margin-top: 5.2%;
         z-index: 2;
         font-size: 1.5ex;
     }
@@ -1594,7 +1594,7 @@ img.info-icon {
     .img-container .info-iconWRS2 {
         position: absolute;
         left: 95%;
-        margin-top: 4.6%;
+        margin-top: 5.2%;
         z-index: 2;
         font-size: 1.5ex;
     }
@@ -1602,257 +1602,178 @@ img.info-icon {
     .img-container .DSA1 {
         color: #ff0000;
         position: absolute;
-        left: 17.5%;
-        margin-top: 23%;
+        left: 18%;
+        margin-top: 24.5%;
         z-index: 2;
-        font-size: 2.0ex;
+        font-size: 1.8ex;
     }
-
-    /*.img-container .DSA1Y {
-        color: #ff0000;
-        position: absolute;
-        left: 17.5%;
-        margin-top: 27%;
-        z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
-    }
-
-    .img-container .DSA1Z {
-        color: #ff0000;
-        position: absolute;
-        left: 17.5%;
-        margin-top: 28%;
-        z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
-    }*/
 
     .img-container .DSA2 {
         color: #ff0000;
         position: absolute;
         left: 51%;
-        margin-top: 23%;
+        margin-top: 24.5%;
         z-index: 2;
-        font-size: 2.0ex;
+        font-size: 1.8ex;
     }
-
-    /*.img-container .DSA2Y {
-        color: #ff0000;
-        position: absolute;
-        left: 51%;
-        margin-top: 27%;
-        z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
-    }
-
-    .img-container .DSA2Z {
-        color: #ff0000;
-        position: absolute;
-        left: 51%;
-        margin-top: 28%;
-        z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
-    }*/
 
     .img-container .DSA3 {
         color: #ff0000;
         position: absolute;
         left: 84%;
-        margin-top: 23%;
+        margin-top: 24.5%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
-
-    /*.img-container .DSA3Y {
-        color: #ff0000;
-        position: absolute;
-        left: 79%;
-        margin-top: 28%;
-        z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
-    }
-
-    .img-container .DSA3Z {
-        color: #ff0000;
-        position: absolute;
-        left: 79%;
-        margin-top: 29%;
-        z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
-    }*/
 
     .img-container .DSA4 {
         color: #ff0000;
         position: absolute;
         left: 51%;
-        margin-top: 33%;
+        margin-top: 33.5%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
-    /*.img-container .DSA4Y {
-        color: #ff0000;
-        position: absolute;
-        left: 51%;
-        margin-top: 36%;
-        z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
-    }
-
-    .img-container .DSA4Z {
-        color: #ff0000;
-        position: absolute;
-        left: 51%;
-        margin-top: 37%;
-        z-index: 2;
-        font-weight: bold;
-        font-size: 2.5ex;
-    }*/
 
     .img-container .DBD1 {
         color: #ff0000;
         position: absolute;
         left: 17%;
-        margin-top: 31%;
+        margin-top: 31.3%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .DBD2 {
         color: #ff0000;
         position: absolute;
-        left: 43%;
-        margin-top: 30%;
+        left: 47%;
+        margin-top: 31.3%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .DBD3 {
         color: #ff0000;
         position: absolute;
         left: 82%;
-        margin-top: 31%;
+        margin-top: 31.3%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .DBD4 {
         color: #ff0000;
         position: absolute;
         left: 17%;
-        margin-top: 34%;
+        margin-top: 34.3%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .DBD5 {
         color: #ff0000;
         position: absolute;
-        left: 43%;
-        margin-top: 33%;
+        left: 45%;
+        margin-top: 34.3%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .DBD6 {
         color: #ff0000;
         position: absolute;
         left: 82%;
-        margin-top: 34%;
+        margin-top: 34.3%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .DSP1 {
         color: #ff0000;
         position: absolute;
         left: 27%;
-        margin-top: 27%;
+        margin-top: 28%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .DSP2 {
         color: #ff0000;
         position: absolute;
         left: 71%;
-        margin-top: 27%;
+        margin-top: 28%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .DSP3 {
         color: #ff0000;
         position: absolute;
         left: 27%;
-        margin-top: 35%;
+        margin-top: 35.5%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .DSP4 {
         color: #ff0000;
         position: absolute;
         left: 71%;
-        margin-top: 35%;
+        margin-top: 35.5%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .DE1 {
         color: #ff0000;
         position: absolute;
-        left: 4%;
-        margin-top: 28%;
+        left: 6%;
+        margin-top: 28.5%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .DE2 {
         color: #ff0000;
         position: absolute;
         left: 92%;
-        margin-top: 28%;
+        margin-top: 28.5%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .DE3 {
         color: #ff0000;
         position: absolute;
-        left: 4%;
-        margin-top: 34%;
+        left: 6%;
+        margin-top: 35%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .DE4 {
         color: #ff0000;
         position: absolute;
         left: 92%;
-        margin-top: 34%;
+        margin-top: 35%;
         z-index: 2;
-        font-size: 2ex;
+        font-size: 1.8ex;
     }
 
     .img-container .info-iconDRS1 {
         position: absolute;
-        left: 2.5%;
-        margin-top: 7.6%;
+        left: 3.4%;
+        margin-top: 4.4%;
         z-index: 2;
         font-size: 1.5ex;
     }
 
     .img-container .info-iconDRS2 {
         position: absolute;
-        left: 94%;
-        margin-top: 7.6%;
+        left: 94.5%;
+        margin-top: 4.5%;
         z-index: 2;
         font-size: 1.5ex;
     }
@@ -2061,7 +1982,7 @@ img.info-icon {
         color: #ff0000;
         position: absolute;
         left: 16%;
-        margin-top: 12%;
+        margin-top: 11%;
         z-index: 2;
         font-size: 1.6ex;
     }
@@ -2070,7 +1991,7 @@ img.info-icon {
         color: #ff0000;
         position: absolute;
         left: 29%;
-        margin-top: 12%;
+        margin-top: 11%;
         z-index: 2;
         font-size: 1.6ex;
     }
@@ -2079,7 +2000,7 @@ img.info-icon {
         color: #ff0000;
         position: absolute;
         left: 66%;
-        margin-top: 12%;
+        margin-top: 11%;
         z-index: 2;
         font-size: 1.6ex;
     }
@@ -2088,7 +2009,7 @@ img.info-icon {
         color: #ff0000;
         position: absolute;
         left: 79%;
-        margin-top: 12%;
+        margin-top: 11%;
         z-index: 2;
         font-size: 1.6ex;
     }

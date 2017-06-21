@@ -22,9 +22,10 @@ namespace GxjtBHMS.Web.Controllers
             _fileConverter = fileConverter;
         }
 
-
+        [OutputCache(CacheProfile = "IndexProfile")]
         public ActionResult SpecialSafetyAssessment()
         {
+            Response.Cache.SetOmitVaryStar(true);
             var _getSpecialSafetyAssessmentReportService = new GetSpecialSafetyAssessmentReportService();
             var resp = _getSpecialSafetyAssessmentReportService.GetTotalPages();
             if (resp.Succeed)
@@ -54,8 +55,10 @@ namespace GxjtBHMS.Web.Controllers
         /// </summary>
         /// <param name="conditions"></param>
         /// <returns></returns>
+        [OutputCache(CacheProfile = "SafetyAssessmentReportListProfile")]
         public ActionResult GetSpecialSafetyAssessmentReportList(SafetyAssessmentReportSearchBaseView conditions)
         {
+            Response.Cache.SetOmitVaryStar(true);
             var req = new SpecialSafetyAssessmentSearchRequest()
             {
                 CurrentPageIndex = conditions.CurrentPageIndex,
@@ -104,6 +107,10 @@ namespace GxjtBHMS.Web.Controllers
             HttpPostedFile fileSave = files[0];//转换文件类型
             string ReportName = fileSave.FileName; //获得服务端上传文件的文件名
             string path = System.Web.HttpContext.Current.Server.MapPath(StyleConstants.SecondLevelSafetyAssessmentReportUploasPath);
+            if (System.IO.Directory.Exists(path) == false)
+            {
+                System.IO.Directory.CreateDirectory(path);
+            }
             string ReprotPath = string.Concat(path, ReportName);//拼接上传文件的保存路径
             var _getSpecialSafetyAssessmentReportService = new GetSpecialSafetyAssessmentReportService();
             bool reportresp = _getSpecialSafetyAssessmentReportService.GetReportNameIsNotHas(ReportName);

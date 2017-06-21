@@ -1,6 +1,10 @@
 ﻿using GxjtBHMS.Service;
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.Messaging.MonitoringDatas;
+using GxjtBHMS.Service.MonitoringDatasDownloadService;
+using GxjtBHMS.Service.ViewModels.MonitoringDatas.MonitoringPointsNumber;
+using GxjtBHMS.Service.ViewModels.MonitoringDatas.MonitoringPointsPosition;
+using GxjtBHMS.Services.ViewModels;
 using GxjtBHMS.Web.ExtensionMehtods.MonitoringDatas;
 using GxjtBHMS.Web.Models;
 using GxjtBHMS.Web.ViewModels.MonitoringDatas;
@@ -18,29 +22,23 @@ namespace GxjtBHMS.Web.Controllers
     /// </summary>
     public class MonitoringDatasController : BaseController
     {
-        IMonitoringTestTypeService _mtts;
-        IMonitoringPointsNumberService _mpns;
-        readonly IMonitoringPointsPositionService _mpps;
-        IFileConverter _fileConverter;
-        public MonitoringDatasController
-            (IMonitoringTestTypeService mtts,
-            IMonitoringPointsNumberService mpns,
-            IMonitoringPointsPositionService mpps,
-           IFileConverter fileConverter
-            )
+        readonly IPreloadDataSet _preloadDataSet;
+        public MonitoringDatasController(IPreloadDataSet preloadDataSet)
         {
-            _mtts = mtts;
-            _mpns = mpns;
-            _mpps = mpps;
-            _fileConverter = fileConverter;
+            _preloadDataSet = preloadDataSet;
         }
+
+        [OutputCache(CacheProfile = "IndexProfile")]
         public ActionResult DataQuery()
         {
+            Response.Cache.SetOmitVaryStar(true);
             return View();
         }
 
+        [OutputCache(CacheProfile = "MonitoringDatasQueryProfile")]
         public ActionResult Query(MornitoringDataSearchBarBaseView conditions)
         {
+            Response.Cache.SetOmitVaryStar(true);
             if (conditions.EndTime < conditions.StartTime)
             {
                 return Content("<span style='color:red'>开始时间不能晚于结束时间</span>");
@@ -60,9 +58,12 @@ namespace GxjtBHMS.Web.Controllers
             }
             return Content("<span style='color:red'>无记录</span>");
         }
+
         //获取曲线图数据
+        [OutputCache(CacheProfile = "MonitoringDatasQueryProfile")]
         public ActionResult GetChartDatas(MornitoringDataSearchBarBaseView conditions)
         {
+            Response.Cache.SetOmitVaryStar(true);
             var resp = new ChartDatasResponse();
             var req = new GetChartDatasRequest
             {
@@ -86,72 +87,65 @@ namespace GxjtBHMS.Web.Controllers
             SaveMonitoringPointsNumberSelectListItemsToViewData(tmpMornitoringPointsPositionId);
             return PartialView("DataQuerySearchPartial");
         }
+
         /// <summary>
         /// 获得测试类型下拉列表
         /// </summary>
         void SaveMonitoringTestTypesSelectListItemsToViewData(out int firstTestTypeId)
         {
             firstTestTypeId = 1;
-            var resp = _mtts.GetAllTestType();
-            if (resp.Datas.Any())
+            IEnumerable<SelectListItemModel> testTypeDatas = CacheHelper.GetCache(nameof(PreloadDataSetType.MornitoringTestType)) as IEnumerable<SelectListItemModel>;
+            if (testTypeDatas.Any())
             {
-                firstTestTypeId = Convert.ToInt32(resp.Datas.First().Id);
+                firstTestTypeId = Convert.ToInt32(testTypeDatas.First().Id);
             }
-            SaveSelectListItemCollectionToViewData(resp.Datas, WebConstants.MonitoringTestTypesKey, false);
+            SaveSelectListItemCollectionToViewData(testTypeDatas, WebConstants.MonitoringTestTypesKey, false);
         }
+
         /// <summary>
         /// 获得测点位置下拉列表
         /// </summary>
         void SaveMonitoringPointsPositionSelectListItemsToViewData(int mornitoringTestTypeId, out int mornitoringPointsPositionId)
         {
-            var resp = _mpps.GetMonitoringPointsPositionsByTestTypeId(mornitoringTestTypeId);
+            IEnumerable<MonitoringPointsPositionViewModel> monitoringPointsPositionsDatas = CacheHelper.GetCache(nameof(PreloadDataSetType.MonitoringPointsPositionType)) as IEnumerable<MonitoringPointsPositionViewModel>;
+
             mornitoringPointsPositionId = 0;
-            if (resp.Datas.Any())
+
+            if (monitoringPointsPositionsDatas.Any())
             {
-                mornitoringPointsPositionId = Convert.ToInt32(resp.Datas.First().Id);
+                mornitoringPointsPositionId = Convert.ToInt32(monitoringPointsPositionsDatas.First().Id);
             }
-            SaveSelectListItemCollectionToViewData(resp.Datas, WebConstants.MonitoringPointsPositionKey, false);
+
+            SaveSelectListItemCollectionToViewData(monitoringPointsPositionsDatas.Where(m => m.TestTypeId == mornitoringTestTypeId), WebConstants.MonitoringPointsPositionKey, false);
         }
+
         /// <summary>
         /// 获得测点编号下拉列表
         /// </summary>
         void SaveMonitoringPointsNumberSelectListItemsToViewData(int mornitoringPointsPositionId = 0)
         {
-            var resp = _mpns.GetMonitoringPointsNumberByPointsPositionId(mornitoringPointsPositionId);
-            SaveSelectListItemCollectionToViewData(resp.Datas, WebConstants.MonitoringPointsNumberKey, false);
+            IEnumerable<MonitoringPointsNumberViewModel> monitoringPointsNumbersDatas = CacheHelper.GetCache(nameof(PreloadDataSetType.MonitoringPointsNumberType)) as IEnumerable<MonitoringPointsNumberViewModel>;
+            SaveSelectListItemCollectionToViewData(monitoringPointsNumbersDatas.Where(m => m.PointsPositionId == mornitoringPointsPositionId), WebConstants.MonitoringPointsNumberKey, false);
         }
 
-
-
+        [OutputCache(CacheProfile = "ParamIsPointsPositionIdProfile")]
         public ActionResult GetMonitoringPointsNumbersByPointsPositions(int pointsPositions = 0)
         {
+            Response.Cache.SetOmitVaryStar(true);
             IList<SelectListItem> selectListItemCollection = new List<SelectListItem>();
-
-            var resp = _mpns.GetMonitoringPointsNumberByPointsPositionId(pointsPositions);
-
-            if (resp.Succeed)
-            {
-                selectListItemCollection = resp
-                    .Datas
-                    .ConvertToSelectListItemCollection();
-            }
-
+            IEnumerable<MonitoringPointsNumberViewModel> monitoringPointsNumberDatas = CacheHelper.GetCache(nameof(PreloadDataSetType.MonitoringPointsNumberType)) as IEnumerable<MonitoringPointsNumberViewModel>;
+            selectListItemCollection = monitoringPointsNumberDatas.Where(m => m.PointsPositionId == pointsPositions)
+                .ConvertToSelectListItemCollection();
             return Json(selectListItemCollection, JsonRequestBehavior.AllowGet);
         }
 
+        [OutputCache(CacheProfile = "ParamIsTestTypeIdProfile")]
         public ActionResult GetMonitoringPointsPositionsByTestTypeId(int testTypeId = 0)
         {
+            Response.Cache.SetOmitVaryStar(true);
             IList<SelectListItem> selectListItemCollection = new List<SelectListItem>();
-
-            var resp = _mpps.GetMonitoringPointsPositionsByTestTypeId(testTypeId);
-
-            if (resp.Succeed)
-            {
-                selectListItemCollection = resp
-                    .Datas
-                    .ConvertToSelectListItemCollection();
-            }
-
+            IEnumerable<MonitoringPointsPositionViewModel> monitoringPointsPositionsDatas = CacheHelper.GetCache(nameof(PreloadDataSetType.MonitoringPointsPositionType)) as IEnumerable<MonitoringPointsPositionViewModel>;
+            selectListItemCollection = monitoringPointsPositionsDatas.Where(m => m.TestTypeId == testTypeId).ConvertToSelectListItemCollection();
             return Json(selectListItemCollection, JsonRequestBehavior.AllowGet);
         }
 
@@ -160,20 +154,26 @@ namespace GxjtBHMS.Web.Controllers
         /// </summary>
         public void OriginalValueDownloadSearchResult(MornitoringDataSearchBarBaseView conditions)
         {
+            var originalValueDownloadService = new OriginalValueDownloadService();
+            if (conditions.MornitoringPointsNumberIds == null)
+            {
+                conditions.MornitoringPointsNumberIds = originalValueDownloadService.GetMonitoringPointsNumberIds(conditions.MornitoringPointsPositionId);
+            }
+            string downLoadpath = System.Web.HttpContext.Current.Server.MapPath(StyleConstants.MonitoringDatasDownloadPath);
+            if (System.IO.Directory.Exists(downLoadpath) == false)
+            {
+                System.IO.Directory.CreateDirectory(downLoadpath);
+            }
             var req = new DatasQueryResultRequestBase
             {
                 PointsNumberIds = conditions.MornitoringPointsNumberIds,
                 StartTime = conditions.StartTime,
                 EndTime = conditions.EndTime,
-                PointsPositionId = conditions.MornitoringPointsPositionId
+                PointsPositionId = conditions.MornitoringPointsPositionId,
+                TestTypeId = conditions.MornitoringTestTypeId
             };
-            var monitoringDatasQueryService = MonitoringDatasOriginalValueDownloadServiceFactory.GetQueryServiceFrom(conditions.MornitoringTestTypeId);
-
-            string filePath = Server.MapPath("/Downloads/OriginalDatas.txt");
-
-            monitoringDatasQueryService.SaveAs(req, filePath);
-
-            DownloadFile(filePath);
+            var resp = originalValueDownloadService.DownloadTxt(req, downLoadpath);
+            DownloadFile(resp.FilePath);
         }
 
         /// <summary>
@@ -181,17 +181,27 @@ namespace GxjtBHMS.Web.Controllers
         /// </summary>
         public void EigenvalueDownloadSearchResult(MornitoringDataSearchBarBaseView conditions)
         {
+            var eigenvalueDownloadService = new EigenvalueDownloadService();
+            if (conditions.MornitoringPointsNumberIds == null)
+            {
+                conditions.MornitoringPointsNumberIds = eigenvalueDownloadService.GetMonitoringPointsNumberIds(conditions.MornitoringPointsPositionId);
+            }
             var req = new DatasQueryResultRequestBase
             {
                 PointsNumberIds = conditions.MornitoringPointsNumberIds,
                 StartTime = conditions.StartTime,
                 EndTime = conditions.EndTime,
-                PointsPositionId = conditions.MornitoringPointsPositionId
+                PointsPositionId = conditions.MornitoringPointsPositionId,
+                TestTypeId = conditions.MornitoringTestTypeId
             };
-            var monitoringDatasQueryService = MonitoringDatasEigenvalueQueryServiceFactory.GetQueryServiceFrom(conditions.MornitoringTestTypeId);
-            string filePath = Server.MapPath("/Downloads/Eigenvalue.txt");
-            monitoringDatasQueryService.SaveAs(req, filePath);
-            DownloadFile(filePath);
+            string downLoadpath = Server.MapPath(StyleConstants.MonitoringDatasDownloadPath);
+            if (System.IO.Directory.Exists(downLoadpath) == false)
+            {
+                System.IO.Directory.CreateDirectory(downLoadpath);
+            }
+            var resp = eigenvalueDownloadService.DownloadTxt(req, downLoadpath);
+
+            DownloadFile(resp.FilePath);
         }
 
         void DownloadFile(string filePath)
@@ -219,32 +229,9 @@ namespace GxjtBHMS.Web.Controllers
                     }
                     iStream.Close();
                     Response.Close();
+                    fileInfo.Delete();
                 }
             }
         }
-
-        //public void OriginCode(string guid, int pointsPositionId,string dataType)
-        //{
-        //    object obj = CacheHelper.GetCache(guid);
-        //    if (obj == null)
-        //    {
-        //        throw new ApplicationException("guid invalid");
-        //    }
-        //    var ms = _fileConverter.GetStream(obj);
-        //    string preFileName = GetDownloadPreFileNameByTestTypeId(pointsPositionId,dataType);
-        //    Response.AddHeader("Content-Disposition", string.Format("attachment; filename={0}.xls", preFileName));
-        //    Response.BinaryWrite(ms.ToArray());
-        //    ms.Close();
-        //    ms.Dispose();
-        //    CacheHelper.RemoveAllCache(guid);
-        //}
-
-        //string GetDownloadPreFileNameByTestTypeId(int pointsPositionId, string dataType)
-        //{
-        //    return  _mpps.CreateDownloadFileMixedName(pointsPositionId,dataType) ;
-        //}
-
-
-
     }
 }

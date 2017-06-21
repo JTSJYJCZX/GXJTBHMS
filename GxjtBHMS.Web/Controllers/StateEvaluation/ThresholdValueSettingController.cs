@@ -36,7 +36,7 @@ namespace GxjtBHMS.Web.Controllers.StateEvaluation
         /// 通过下拉菜单条件查询阈值列表
         /// </summary>
         /// <param name="conditions"></param>
-        /// <returns></returns>
+        /// <returns></returns>       
         public ActionResult GetThresholdValueSettingListByPullDownSearchBar(ThresholdValueSearchBarBaseView conditions)
         {
 

@@ -10,11 +10,13 @@ using GxjtBHMS.Web.Models;
 namespace GxjtBHMS.Web.Controllers.AbnormalThresholdValue
 {
 
-    public class AbnormalThresholdValueSettingController : Controller
+    public class AbnormalThresholdValueSettingController : BaseController
     {
         // GET: Default
+        [OutputCache(CacheProfile = "IndexProfile")]
         public ActionResult AbnormalThresholdValueSetting()
         {
+            Response.Cache.SetOmitVaryStar(true);
             return View();
         }
 

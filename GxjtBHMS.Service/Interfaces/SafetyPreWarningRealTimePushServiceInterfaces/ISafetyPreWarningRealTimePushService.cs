@@ -5,6 +5,6 @@ namespace GxjtBHMS.Service.Interfaces.SafetyPreWarningRealTimePushServiceInterfa
 {
     public interface ISafetyPreWarningRealTimePushService
     {
-        AllSafetyPreWarningStateDataModel GetSafetyPreWarningRealTimePushModel(GetSafetyWarningDetailRequest req);
+        AllSafetyPreWarningStateDataModel GetSafetyPreWarningRealTimePushModel();
     }
 }

@@ -1,6 +1,4 @@
-﻿using GxjtBHMS.Web.Models;
-
-namespace GxjtBHMS.Web.ViewModels.SafetyPreWarning
+﻿namespace GxjtBHMS.Web.ViewModels.SafetyPreWarning
 {
     public class QuerySafetyPreWarningConditonView
     {

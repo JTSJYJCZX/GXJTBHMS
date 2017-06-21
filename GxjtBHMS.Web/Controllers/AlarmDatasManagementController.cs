@@ -34,8 +34,10 @@ namespace GxjtBHMS.Web.Controllers
         /// 视图页
         /// </summary>
         /// <returns></returns>
+        [OutputCache(CacheProfile = "IndexProfile")]
         public ActionResult AlarmDatasManagementQuery()
         {
+            Response.Cache.SetOmitVaryStar(true);
             return View();
         }
         /// <summary>
@@ -43,8 +45,10 @@ namespace GxjtBHMS.Web.Controllers
         /// </summary>
         /// <param name="conditions">查询条件</param>
         /// <returns>数据查询内容分布视图</returns>
+        [OutputCache(CacheProfile = "AlarmDatasQueryProfile")]
         public ActionResult AlarmDatasQuery(AlarmDatasSearchBarView conditions)
         {
+            Response.Cache.SetOmitVaryStar(true);
             if (conditions.EndTime < conditions.StartTime)
             {
                 return Content("<span style='color:red'>开始时间不能晚于结束时间</span>");
@@ -66,12 +70,14 @@ namespace GxjtBHMS.Web.Controllers
             }
             return Content("<span style='color:red'>无记录</span>");
         }
-        
+
 
 
         //获取报警数据
+        [OutputCache(CacheProfile = "AlarmDatasQueryProfile")]
         public ActionResult GetAlarmDatas(AlarmDatasSearchBarView conditions)
         {
+            Response.Cache.SetOmitVaryStar(true);
             var resp = new AlarmDatasResponse();
             var req = new GetAlarmDatasRequest
             {
@@ -186,7 +192,7 @@ namespace GxjtBHMS.Web.Controllers
             var resp = alarmDatasQueryService.SaveAs(req);
             var guid = "";
             guid = Guid.NewGuid().ToString();
-            CacheHelper.SetCache(guid, resp.Datas);
+            CacheHelper.SetCache(guid, resp.FilePath);
             return Json(guid, JsonRequestBehavior.AllowGet);
         }
 

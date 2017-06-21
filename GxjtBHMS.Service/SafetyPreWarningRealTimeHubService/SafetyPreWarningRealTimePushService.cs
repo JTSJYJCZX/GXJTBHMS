@@ -4,60 +4,58 @@ using GxjtBHMS.Service.ViewModels.SafetyPreWarning;
 using GxjtBHMS.Service.Messaging.SafetyPreWarning;
 using System.Collections.Generic;
 using System.Linq;
+using GxjtBHMS.IDAL.SafetyPreWarning;
 
 namespace GxjtBHMS.Service.SafetyPreWarningRealTimeHubService
 {
-    public class SafetyPreWarningRealTimePushService: ISafetyPreWarningRealTimePushService
+    public class SafetyPreWarningRealTimePushService : ISafetyPreWarningRealTimePushService
     {
-        IGetOneTypeSafetyPreWarningRealTimePushService<SafetyPreWarning_CableForceTable> _cfrts;
-        IGetOneTypeSafetyPreWarningRealTimePushService<SafetyPreWarning_DisplacementTable> _drts;
-        IGetOneTypeSafetyPreWarningRealTimePushService<SafetyPreWarning_TemperatureTable> _trts;
-        IGetOneTypeSafetyPreWarningRealTimePushService<SafetyPreWarning_WindLoadTable> _wlrts;
+        ISafetyPreWarningRealTimePushDAL _sfwrp;
 
-        public SafetyPreWarningRealTimePushService(IGetOneTypeSafetyPreWarningRealTimePushService<SafetyPreWarning_CableForceTable> cfrts,
-             IGetOneTypeSafetyPreWarningRealTimePushService<SafetyPreWarning_DisplacementTable> drts,
-             IGetOneTypeSafetyPreWarningRealTimePushService<SafetyPreWarning_TemperatureTable> trts,
-             IGetOneTypeSafetyPreWarningRealTimePushService<SafetyPreWarning_WindLoadTable> wlrts) 
+
+        public SafetyPreWarningRealTimePushService(ISafetyPreWarningRealTimePushDAL sfwrp)
         {
-            _cfrts = cfrts;
-            _drts = drts;
-            _trts =trts;
-            _wlrts = wlrts;
+            _sfwrp = sfwrp;
+
         }
 
-        public AllSafetyPreWarningStateDataModel GetSafetyPreWarningRealTimePushModel(GetSafetyWarningDetailRequest req)
+        public AllSafetyPreWarningStateDataModel GetSafetyPreWarningRealTimePushModel()
         {
-            return new AllSafetyPreWarningStateDataModel
+            AllSafetyPreWarningStateDataModel models = new AllSafetyPreWarningStateDataModel();
+            var source = _sfwrp.GetAllSafetyDatas();
+            models.SafetyPreWarningState = source.TotalSafetyPreWarningState;
+            models.SafetyPreWarningColor = source.TotalSafetyPreWarningColor;
+            
+            List<SafetyPreWarningStateAndTotalTimesModel> result = new List<SafetyPreWarningStateAndTotalTimesModel>()
             {
-                SafetyPreWarningColor = getBridgeSafetyState(req).SafetyPreWarningColor,
-                SafetyPreWarningState = getBridgeSafetyState(req).SafetyPreWarningState,
-                SafetyPreWarningStateData = GetAllSafetyDatas(req)
+                 new SafetyPreWarningStateAndTotalTimesModel { TestTypeId = 1,
+                SafetyPreWarningState=source.CableForceSafetyPreWarningState,
+                SafetyPreWarningColor=source.CableForceSafetyPreWarningColor,
+                WarningGrade2Times=source.CableForceWarningGrade2Times,
+                WarningGrade3Times=source.CableForceWarningGrade3Times },
+
+                new SafetyPreWarningStateAndTotalTimesModel { TestTypeId = 2,
+                SafetyPreWarningState=source.DisplacementSafetyPreWarningState,
+                SafetyPreWarningColor=source.DisplacementSafetyPreWarningColor,
+                WarningGrade2Times=source.DisplacementWarningGrade2Times,
+                WarningGrade3Times=source.DisplacementWarningGrade3Times },
+
+                new SafetyPreWarningStateAndTotalTimesModel { TestTypeId = 3,
+                SafetyPreWarningState=source.WindLoadSafetyPreWarningState,
+                SafetyPreWarningColor=source.WindLoadSafetyPreWarningColor,
+                WarningGrade2Times=source.WindLoadWarningGrade2Times,
+                WarningGrade3Times=source.WindLoadWarningGrade3Times },
+
+                new SafetyPreWarningStateAndTotalTimesModel { TestTypeId = 4,
+                SafetyPreWarningState=source.TemperatureSafetyPreWarningState,
+                SafetyPreWarningColor=source.TemperatureSafetyPreWarningColor,
+                WarningGrade2Times=source.TemperatureWarningGrade2Times,
+                WarningGrade3Times=source.TemperatureWarningGrade3Times },
             };
+            models.SafetyPreWarningStateData = result;            
+            return models;
         }
 
-        List<SafetyPreWarningStateAndTotalTimesModel> GetAllSafetyDatas(GetSafetyWarningDetailRequest req)
-        {
-            var cableForceData = _cfrts.GetSafetyPreWarningStateModel(req,1);
-            var displacementData = _drts.GetSafetyPreWarningStateModel(req,2);
-            var windLoadData = _wlrts.GetSafetyPreWarningStateModel(req,3);
-            var temperatureData = _trts.GetSafetyPreWarningStateModel(req, 4);
-            return new List<SafetyPreWarningStateAndTotalTimesModel>
-            {
-                cableForceData,
-                displacementData,
-                temperatureData,
-                windLoadData
-            };
-        }
 
-        SafetyStateModel getBridgeSafetyState(GetSafetyWarningDetailRequest req)
-        {
-            var datas = GetAllSafetyDatas(req);
-            var bridgeSafetyState=new SafetyStateModel();
-            var maxBridgeId = datas.Select(m => m.GradeId).Max();
-            bridgeSafetyState.SafetyPreWarningColor = datas.Where(m => m.GradeId == maxBridgeId).Select(m => m.SafetyPreWarningColor).First();
-            bridgeSafetyState.SafetyPreWarningState = datas.Where(m => m.GradeId == maxBridgeId).Select(m => m.SafetyPreWarningState).First();
-            return bridgeSafetyState;
-        }
     }
 }

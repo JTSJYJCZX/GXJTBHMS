@@ -2,6 +2,6 @@
 {
     public  class DownLoadDatasResponse: ResponseBase
     {
-        public object Datas { get; set; }
+        public dynamic FilePath { get; set; }
     }
 }

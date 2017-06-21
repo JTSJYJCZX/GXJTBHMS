@@ -76,7 +76,7 @@ namespace GxjtBHMS.Service.MonitoringDatasQueryService
             try
             {
                 DealWithConditions(req, ps);
-                resp.Datas = _fileSystemService.ConvertToDocument(ps);
+                resp.FilePath = _fileSystemService.ConvertToDocument(ps);
                 resp.Succeed = true;
             }
             catch (Exception ex)

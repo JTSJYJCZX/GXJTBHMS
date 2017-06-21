@@ -2,8 +2,8 @@
 
 <div>
      <label class="control-label" style="font-family:STSong; font-size:14px"> 桥梁当前安全预警状况：</label>
-    <span id="bridgeStateText" style="font-family:STSong;font-size:14px;width:100px">桥梁安全状态</span>
-    <span id="bridgeStateColor" class="circle"></span>
+    <span id="bridgeStateText" style="font-family:STSong;font-size:14px;width:100px">正常</span>
+    <span id="bridgeStateColor" class="circle" style="background-color:darkgreen"></span>
 
     <label class="control-label col-lg-offset-1"  style="font-family:STSong; font-size:14px"> 上一次安全评估时间：</label>
      @Html.TextBox("LastReportTime", ViewData["LastReportTime"], new { @class = "text-center", @style = "border:hidden;font-size:14px", @readonly=true})
@@ -11,48 +11,48 @@
 <hr >
 <div >
     <label class="control-label" style="font-family:STSong;font-size:14px"> 索力预警状况：</label>
-    <span id="testType1Text" style="font-family:STSong;font-size:14px;width:100px"></span>
-    <span id="testType1Color" class="circle"></span>
+    <span id="testType1Text" style="font-family:STSong;font-size:14px;width:100px">正常</span>
+    <span id="testType1Color" class="circle" style="background-color:darkgreen"></span>
     <label class="control-label col-lg-offset-1" style="font-family:STSong;font-size:14px"> 黄色报警数：</label>
     <span id="grade2Times_testType1" style="font-size:14px;width:50px"></span>
     <label class="control-label col-lg-offset-1" style="font-family:STSong;font-size:14px"> 红色报警数：</label>
     <span id="grade3Times_testType1" style="font-size:14px;width:50px"></span>
     <input type="button" value="点击查看本期安全评估详情" id="CableForceWarningDetail" class="btn btn-primary  col-lg-offset-1">
 </div>
-<hr class=dotline color=#111111 size=1>
+<br/>
 <div>
     <label class="control-label" style="font-family:STSong;font-size:14px"> 位移预警状况：</label>
-    <span id="testType2Text" style="font-family:STSong;font-size:14px;width:100px"></span>
-    <span id="testType2Color" class="circle1"></span>
+    <span id="testType2Text" style="font-family:STSong;font-size:14px;width:100px">正常</span>
+    <span id="testType2Color" class="circle1" style="background-color:darkgreen"></span>
     <label class="control-label col-lg-offset-1" style="font-family:STSong;font-size:14px"> 黄色报警数：</label>
     <span id="grade2Times_testType2" style="font-size:14px;width:50px"></span>
     <label class="control-label col-lg-offset-1" style="font-family:STSong;font-size:14px"> 红色报警数：</label>
     <span id="grade3Times_testType2" style="font-size:14px;width:50px"></span>
     <input type="button" value="点击查看本期安全评估详情" id="DisplacementWarningDetail" class="btn btn-primary  col-lg-offset-1">
 </div>
-<hr class=dotline color=#111111 size=1>
+<br />
 <div>
     <label class="control-label" style="font-family:STSong;font-size:14px"> 风速预警状况：</label>
-    <span id="testType3Text" style="font-family:STSong;font-size:14px;width:100px"></span>
-    <span id="testType3Color" class="circle1"></span>
+    <span id="testType3Text" style="font-family:STSong;font-size:14px;width:100px">正常</span>
+    <span id="testType3Color" class="circle1" style="background-color:darkgreen"></span>
     <label class="control-label col-lg-offset-1" style="font-family:STSong;font-size:14px"> 黄色报警数：</label>
     <span id="grade2Times_testType3" style="font-size:14px;width:50px"></span>
     <label class="control-label col-lg-offset-1" style="font-family:STSong;font-size:14px"> 红色报警数：</label>
     <span id="grade3Times_testType3" style="font-size:14px;width:50px"></span>
     <input type="button" value="点击查看本期安全评估详情" id="WindLoadWarningDetail" class="btn btn-primary  col-lg-offset-1">
 </div>
-<hr class=dotline color=#111111 size=1>
+<br />
 <div >
     <label class="control-label" style="font-family:STSong;font-size:14px"> 温度预警状况：</label>
-    <span id="testType4Text" style="font-family:STSong;font-size:14px;width:100px"></span>
-    <span id="testType4Color" class="circle1"></span>
+    <span id="testType4Text" style="font-family:STSong;font-size:14px;width:100px">正常</span>
+    <span id="testType4Color" class="circle1" style="background-color:darkgreen"></span>
     <label class="control-label col-lg-offset-1"style="font-family:STSong;font-size:14px"> 黄色报警数：</label>
     <span id="grade2Times_testType4" style="font-size:14px;width:50px"></span>
     <label class="control-label col-lg-offset-1"style="font-family:STSong;font-size:14px"> 红色报警数：</label>
     <span id="grade3Times_testType4" style="font-size:14px;width:50px"></span>
     <input type="button" value="点击查看本期安全评估详情" id="TemperatureWarningDetail" class="btn btn-primary  col-lg-offset-1">
 </div>
-<hr />
+
 
 <script>
     var numHub;

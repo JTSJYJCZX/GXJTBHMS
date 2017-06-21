@@ -27,12 +27,18 @@ namespace GxjtBHMS.Web.Controllers
             _mpns = mpns;
             _mpps = mpps;
         }
+
+        [OutputCache(CacheProfile = "IndexProfile")]
         public ActionResult DataComparingQuery()
         {
+            Response.Cache.SetOmitVaryStar(true);
             return View();
         }
+
+        [OutputCache(CacheProfile = "CompareQueryProfile") ]
         public ActionResult ComparingQuery(MornitoringDataComparingSearchBarView conditions)
         {
+            Response.Cache.SetOmitVaryStar(true);
             if (conditions.MornitoringPointsNumberIds[0]== conditions.MornitoringPointsNumberIdsSecond[0])
             {
                 return Content("<span style='color:red'>对比查询不能选择同一个测点</span>");
@@ -131,8 +137,10 @@ namespace GxjtBHMS.Web.Controllers
             SaveSelectListItemCollectionToViewData(resp.Datas, viewDataKey, false);
         }
 
+        [OutputCache(CacheProfile = "CompareQueryProfile")]
         public ActionResult GetChartDatasComparing(MornitoringDataComparingSearchBarView conditions)
         {
+            Response.Cache.SetOmitVaryStar(true);
             var respFirst = new ChartDatasResponse();
             var respSecond = new ChartDatasResponse();
             var reqFirst = new GetChartDatasRequest

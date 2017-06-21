@@ -1,4 +1,5 @@
 ﻿using GxjtBHMS.DependencyInjection;
+using GxjtBHMS.Infrastructure.Configuration;
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.ViewModels.RealTimeDatasDisplay;
 using GxjtBHMS.Web.RealTimeMonitoringHub;
@@ -15,18 +16,20 @@ namespace GxjtBHMS.Web.Models
     {
         //Singleton instance
         readonly static Lazy<SteelArchStrainDatasTicker> _instance = new Lazy<SteelArchStrainDatasTicker>(() => new SteelArchStrainDatasTicker(GlobalHost.ConnectionManager.GetHubContext<SteelArchStrainDatasRealTimeMonitoringHub>().Clients));
-        readonly TimeSpan _updateInterval = TimeSpan.FromMilliseconds(10500);
-        volatile bool _updatingStockPrices = false;
-        readonly object _updateStockPricesLock = new object();
+        readonly int _updateInterval = ApplicationSettingsFactory.GetApplicationSettings().RealReadDatasInterval;
+        volatile bool _updatingSteelArchStrainDatas = false;
+        readonly object _updateSteelArchStrainDatasLock = new object();
         Timer _timer;
         ISteelArchStrainRealTimeDatasService _realTimeDatasService;
 
         SteelArchStrainDatasTicker(IHubConnectionContext<dynamic> clients)
         {
+          
             _realTimeDatasService = new NinjectControllerFactory().GetInstance<ISteelArchStrainRealTimeDatasService>();
             Clients = clients;
             //定时器
-            _timer = new Timer(UpdateStockPrices, null, _updateInterval, _updateInterval);
+            _timer = new Timer(UpdateSteelArchStrainDatas, null, 0, _updateInterval);
+       
         }
 
         IHubConnectionContext<dynamic> Clients { get; set; }
@@ -35,21 +38,24 @@ namespace GxjtBHMS.Web.Models
         /// </summary>
         public static SteelArchStrainDatasTicker Instance { get { return _instance.Value; } }
 
-        void UpdateStockPrices(object state)
+        void UpdateSteelArchStrainDatas(object state)
         {
-            lock (_updateStockPricesLock)
+            lock (_updateSteelArchStrainDatasLock)
             {
-                if (!_updatingStockPrices)
+                if (!_updatingSteelArchStrainDatas)
                 {
-                    _updatingStockPrices = true;
+                    _updatingSteelArchStrainDatas = true;
+                    
                     var models = GetRealDatasSource();
-                    BroadcastStockPrice(models);
-                    _updatingStockPrices = false;
+                                
+                    BroadcastSteelArchStrainDatas(models);
+                   
+                    _updatingSteelArchStrainDatas = false;
                 }
             }
         }
 
-        void BroadcastStockPrice(IEnumerable<IncludeSectionWarningColorDataModel> models)
+        void BroadcastSteelArchStrainDatas(IEnumerable<IncludeSectionWarningColorDataModel> models)
         {
             Clients.All.RealTimeDisplayDatas(models);
         }

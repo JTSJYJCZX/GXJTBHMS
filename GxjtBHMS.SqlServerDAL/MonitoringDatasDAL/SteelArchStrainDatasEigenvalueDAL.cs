@@ -2,8 +2,8 @@
 
 namespace GxjtBHMS.SqlServerDAL
 {
-    public class SteelArchStrainDatasEigenvalueDAL : Repository<Eigenvalue_SteelArchStrainEigenvalueTable, int>,IMonitoringDatasEigenvalueDAL<Eigenvalue_SteelArchStrainEigenvalueTable>
+    public class SteelArchStrainDatasEigenvalueDAL : Repository<Eigenvalue_SteelArchStrainEigenvalueTable, int>, IMonitoringDatasEigenvalueDAL<Eigenvalue_SteelArchStrainEigenvalueTable>
     {
-
+      
     }
 }

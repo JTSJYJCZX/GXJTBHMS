@@ -1,4 +1,5 @@
 ﻿using GxjtBHMS.DependencyInjection;
+using GxjtBHMS.Infrastructure.Configuration;
 using GxjtBHMS.Service.Interfaces;
 using GxjtBHMS.Service.ViewModels.RealTimeDatasDisplay;
 using GxjtBHMS.Web.RealTimeMonitoringHub;
@@ -15,9 +16,9 @@ namespace GxjtBHMS.Web.Models
     {
         //Singleton instance
         readonly static Lazy<WindLoadDatasTicker> _instance = new Lazy<WindLoadDatasTicker>(() => new WindLoadDatasTicker(GlobalHost.ConnectionManager.GetHubContext<WindLoadDatasRealTimeMonitoringHub>().Clients));
-        readonly TimeSpan _updateInterval = TimeSpan.FromMilliseconds(10500);
-        volatile bool _updatingStockPrices = false;
-        readonly object _updateStockPricesLock = new object();
+        readonly int _updateInterval = ApplicationSettingsFactory.GetApplicationSettings().RealReadDatasInterval;
+        volatile bool _updatingWindLoadDatas = false;
+        readonly object _updateWindLoadDatasLock = new object();
         Timer _timer;
         IWindLoadRealTimeDatasService _realTimeDatasService;
         WindLoadDatasTicker(IHubConnectionContext<dynamic> clients)
@@ -25,7 +26,7 @@ namespace GxjtBHMS.Web.Models
             _realTimeDatasService = new NinjectControllerFactory().GetInstance<IWindLoadRealTimeDatasService>();
             Clients = clients;
             //定时器
-            _timer = new Timer(UpdateStockPrices, null, _updateInterval, _updateInterval);
+            _timer = new Timer(UpdateWindLoadDatas, null, 0, _updateInterval);
         }
 
         IHubConnectionContext<dynamic> Clients { get; set; }
@@ -34,21 +35,21 @@ namespace GxjtBHMS.Web.Models
         /// </summary>
         public static WindLoadDatasTicker Instance { get { return _instance.Value; } }
 
-        void UpdateStockPrices(object state)
+        void UpdateWindLoadDatas(object state)
         {
-            lock (_updateStockPricesLock)
+            lock (_updateWindLoadDatasLock)
             {
-                if (!_updatingStockPrices)
+                if (!_updatingWindLoadDatas)
                 {
-                    _updatingStockPrices = true;
+                    _updatingWindLoadDatas = true;
                     var models = GetRealDatasSource();
-                    BroadcastStockPrice(models);
-                    _updatingStockPrices = false;
+                    BroadcastWindLoadDatas(models);
+                    _updatingWindLoadDatas = false;
                 }
             }
         }
 
-        void BroadcastStockPrice(IEnumerable<IncludeSectionWarningColorDataModel> models)
+        void BroadcastWindLoadDatas(IEnumerable<IncludeSectionWarningColorDataModel> models)
         {
             Clients.All.RealTimeDisplayDatas(models);
         }

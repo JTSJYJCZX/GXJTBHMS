@@ -52,6 +52,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -72,6 +73,9 @@
     <Compile Include="Home\GetFirstLevelSafetyAssessmentReportDisplacementResultDAL.cs" />
     <Compile Include="ManualInspectionSafetyAssessmentReportDAL\GetManualInspectionSafetyAssessmentReportDAL.cs" />
     <Compile Include="ManualInspectionSafetyAssessmentReportDAL\GetManualInspectionSafetyAssessmentStateDAL.cs" />
+    <Compile Include="MonitoringDatasDAL\OriginalDatasDownloadDAL.cs" />
+    <Compile Include="MonitoringDatasEigenvalueDownload\MonitoringDatasEigenvalueDownloadDAL.cs" />
+    <Compile Include="SafetyPreWarningDAL\SafetyPreWarningRealTimePushDAL.cs" />
     <Compile Include="SecondLevelSafetyAssessmentReportDAL\GetSecondLevelSafetyAssessmentStateDAL.cs" />
     <Compile Include="SecondLevelSafetyAssessmentReportDAL\GetSecondLevelSafetyAssessmentReportDAL.cs" />
     <Compile Include="FirstLevelSafetyAssessmentReportDAL\GetFirstLevelSafetyAssessmentReportDAL.cs" />
@@ -80,20 +84,12 @@
     <Compile Include="BHMSContext.cs" />
     <Compile Include="DALConstant.cs" />
     <Compile Include="MonitoringDatasDAL\CableForceDatasEigenvalueDAL.cs" />
-    <Compile Include="MonitoringDatasDAL\CableForceDatasOriginalValueDAL.cs" />
-    <Compile Include="MonitoringDatasDAL\DisplacementDatasOriginalValueDAL.cs" />
-    <Compile Include="MonitoringDatasDAL\HumidityDatasOriginalValueDAL.cs" />
-    <Compile Include="MonitoringDatasDAL\SteelLatticeStrainDatasOriginalValueDAL.cs" />
-    <Compile Include="MonitoringDatasDAL\SteelArchStrainDatasOriginalValueDAL.cs" />
-    <Compile Include="MonitoringDatasDAL\TemperatureDatasOriginalValueDAL.cs" />
     <Compile Include="MonitoringDatasDAL\WindLoadDatasEigenvalueDAL.cs" />
-    <Compile Include="MonitoringDatasDAL\ConcreteStrainDatasOriginalValueDAL.cs" />
     <Compile Include="MonitoringDatasDAL\DisplaymentDatasEigenvalueDAL.cs" />
     <Compile Include="MonitoringDatasDAL\HumidityDatasEigenvalueDAL.cs" />
     <Compile Include="MonitoringDatasDAL\SteelArchStrainDatasEigenvalueDAL.cs" />
     <Compile Include="MonitoringDatasDAL\SteelLatticeStrainDatasEigenvalueDAL.cs" />
     <Compile Include="MonitoringDatasDAL\TemperatureDatasEigenvalueDAL.cs" />
-    <Compile Include="MonitoringDatasDAL\WindLoadDatasOriginalValueDAL.cs" />
     <Compile Include="MonitoringPointsNumberDAL.cs" />
     <Compile Include="MonitoringPointsPositionDAL.cs" />
     <Compile Include="MonitoringTestTypeDAL.cs" />
@@ -108,10 +104,6 @@
     <Compile Include="RealTimeDatasMonitoringDAL\SteelArchStrainRealTimeDatasDAL.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="MonitoringDatasDAL\ConcreteStrainDatasEigenvalueDAL.cs" />
-    <Compile Include="SafetyPreWarningRealTimePushDAL\WindLoad_SafetyPreWarningRealTimePushDAL.cs" />
-    <Compile Include="SafetyPreWarningRealTimePushDAL\Temperature_SafetyPreWarningRealTimePushDAL.cs" />
-    <Compile Include="SafetyPreWarningRealTimePushDAL\Displacement_SafetyPreWarningRealTimePushDAL.cs" />
-    <Compile Include="SafetyPreWarningRealTimePushDAL\CableForce_SafetyPreWarningRealTimePushDAL.cs" />
     <Compile Include="SafetyPreWarningDAL\SafetyPreWarning_DisplacementTableDAL.cs" />
     <Compile Include="SafetyPreWarningDAL\SafetyPreWarning_TemperatureTableDAL.cs" />
     <Compile Include="SafetyPreWarningDAL\SafetyPreWarning_WindLoadTableDAL.cs" />

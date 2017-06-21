@@ -1,0 +1,60 @@
+2017-05-25 11:44:24,869 INFO  BHMSLogger  - 在将 varchar 值 '@MPN' 转换成数据类型 int 时失败。
+2017-05-25 11:44:24,876 INFO  BHMSLogger  -    在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   在 GxjtBHMS.SqlServerDAL.MonitoringDatasEigenvalueDownloadDAL.DownLoadTxtByExec(ConditionParameters ps, String path, String ProcName) 位置 D:\健康监测系统开发文件\jtsjyjczx\GxjtBHMS.SqlServerDAL\MonitoringDatasEigenvalueDownload\MonitoringDatasEigenvalueDownloadDAL.cs:行号 37
+   在 GxjtBHMS.Service.MonitoringDatasDownloadService.EigenvalueDownloadService.DownloadTxt(DatasQueryResultRequestBase req, String path) 位置 D:\健康监测系统开发文件\jtsjyjczx\GxjtBHMS.Service\MonitoringDatasDownloadService\EigenvalueDownloadService.cs:行号 71
+2017-05-25 11:46:15,383 INFO  BHMSLogger  - 数据库中已存在名为 'temp' 的对象。
+2017-05-25 11:46:15,390 INFO  BHMSLogger  -    在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   在 GxjtBHMS.SqlServerDAL.MonitoringDatasEigenvalueDownloadDAL.DownLoadTxtByExec(ConditionParameters ps, String path, String ProcName) 位置 D:\健康监测系统开发文件\jtsjyjczx\GxjtBHMS.SqlServerDAL\MonitoringDatasEigenvalueDownload\MonitoringDatasEigenvalueDownloadDAL.cs:行号 37
+   在 GxjtBHMS.Service.MonitoringDatasDownloadService.EigenvalueDownloadService.DownloadTxt(DatasQueryResultRequestBase req, String path) 位置 D:\健康监测系统开发文件\jtsjyjczx\GxjtBHMS.Service\MonitoringDatasDownloadService\EigenvalueDownloadService.cs:行号 71
+2017-05-25 11:47:43,780 INFO  BHMSLogger  - 找不到存储过程 'usp_EigenvalueConcreteStrainSaveAsTxt'。
+2017-05-25 11:47:43,787 INFO  BHMSLogger  -    在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   在 GxjtBHMS.SqlServerDAL.MonitoringDatasEigenvalueDownloadDAL.DownLoadTxtByExec(ConditionParameters ps, String path, String ProcName) 位置 D:\健康监测系统开发文件\jtsjyjczx\GxjtBHMS.SqlServerDAL\MonitoringDatasEigenvalueDownload\MonitoringDatasEigenvalueDownloadDAL.cs:行号 37
+   在 GxjtBHMS.Service.MonitoringDatasDownloadService.EigenvalueDownloadService.DownloadTxt(DatasQueryResultRequestBase req, String path) 位置 D:\健康监测系统开发文件\jtsjyjczx\GxjtBHMS.Service\MonitoringDatasDownloadService\EigenvalueDownloadService.cs:行号 58
+2017-05-25 11:52:24,216 INFO  BHMSLogger  - 在将 varchar 值 '@MPN' 转换成数据类型 int 时失败。
+2017-05-25 11:52:24,224 INFO  BHMSLogger  -    在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   在 GxjtBHMS.SqlServerDAL.MonitoringDatasEigenvalueDownloadDAL.DownLoadTxtByExec(ConditionParameters ps, String path, String ProcName) 位置 D:\健康监测系统开发文件\jtsjyjczx\GxjtBHMS.SqlServerDAL\MonitoringDatasEigenvalueDownload\MonitoringDatasEigenvalueDownloadDAL.cs:行号 37
+   在 GxjtBHMS.Service.MonitoringDatasDownloadService.EigenvalueDownloadService.DownloadTxt(DatasQueryResultRequestBase req, String path) 位置 D:\健康监测系统开发文件\jtsjyjczx\GxjtBHMS.Service\MonitoringDatasDownloadService\EigenvalueDownloadService.cs:行号 71
+2017-05-25 15:15:52,699 INFO  BHMSLogger  - 数据库中已存在名为 'temp' 的对象。
+2017-05-25 15:15:52,706 INFO  BHMSLogger  -    在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   在 GxjtBHMS.SqlServerDAL.MonitoringDatasEigenvalueDownloadDAL.DownLoadTxtByExec(ConditionParameters ps, String path, String ProcName) 位置 D:\健康监测系统开发文件\jtsjyjczx\GxjtBHMS.SqlServerDAL\MonitoringDatasEigenvalueDownload\MonitoringDatasEigenvalueDownloadDAL.cs:行号 37
+   在 GxjtBHMS.Service.MonitoringDatasDownloadService.EigenvalueDownloadService.DownloadTxt(DatasQueryResultRequestBase req, String path) 位置 D:\健康监测系统开发文件\jtsjyjczx\GxjtBHMS.Service\MonitoringDatasDownloadService\EigenvalueDownloadService.cs:行号 123

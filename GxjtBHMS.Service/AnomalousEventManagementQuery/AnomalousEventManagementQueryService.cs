@@ -31,11 +31,11 @@ namespace GxjtBHMS.Service.AnomalousEventManagementQuery
             {
                 DealWithConditions(req, ps);
                 var numberOfResultsPrePage = ApplicationSettingsFactory.GetApplicationSettings().NumberOfResultsPrePage;//获取每页记录数
-                resp.Datas = _anomalousEventManagementQueryService.GetAnomalousEventManagementsSourceBy(ps,req.CurrentPageIndex,numberOfResultsPrePage);
+                resp.Datas = _anomalousEventManagementQueryService.GetAnomalousEventManagementsSourceBy(ps, req.CurrentPageIndex, numberOfResultsPrePage);
                 resp.TotalResultCount = _anomalousEventManagementQueryService.GetTotalResultCountBy(ps);
                 resp.Succeed = true;
             }
-            catch 
+            catch
             {
                 resp.Message = NoRecordsMessage;
             }
@@ -75,7 +75,7 @@ namespace GxjtBHMS.Service.AnomalousEventManagementQuery
             try
             {
                 DealWithConditions(req, ps);
-                resp.Datas = _fileSystemService.ConvertToDocument(ps);
+                resp.FilePath = _fileSystemService.ConvertToDocument(ps);
                 resp.Succeed = true;
             }
             catch (Exception ex)
@@ -100,7 +100,6 @@ namespace GxjtBHMS.Service.AnomalousEventManagementQuery
                 ps.Add(m => m.Time >= req.StartTime);
                 ps.Add(m => m.Time <= req.EndTime);
             }
-
         }
 
 
@@ -120,19 +119,9 @@ namespace GxjtBHMS.Service.AnomalousEventManagementQuery
         {
             var resp = new AnomalousEventManagementResponse();
             IList<Func<AnomalousEvent_AnomalousEventTable, bool>> ps = new List<Func<AnomalousEvent_AnomalousEventTable, bool>>();
-            DealWithSearchTime(req, ps);               
+            DealWithSearchTimeRange(req, ps);
             resp.Datas = _anomalousEventManagementQueryService.GetAnomalousEventSourceBy(ps);
             return resp;
-        }
-
-        /// <summary>
-        /// 主页搜索数量用的时间条件
-        /// </summary>
-        /// <param name="req"></param>
-        /// <param name="ps"></param>
-        void DealWithSearchTime(DatasQueryResultRequestBase req, IList<Func<AnomalousEvent_AnomalousEventTable, bool>> ps)
-        {
-                ps.Add(m => m.Time >=req.StartTime);
         }
     }
 }

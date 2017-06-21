@@ -2,7 +2,7 @@
 
 namespace GxjtBHMS.Web.Controllers.RealTimeMonitoring
 {
-    public class RealTimeMonitoringController : Controller
+    public class RealTimeMonitoringController : BaseController
     {
         public ActionResult SteelArchStrainDatasRealTimeMonitoring()
         {
